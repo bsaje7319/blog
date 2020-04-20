@@ -1,0 +1,121 @@
+.. contents::
+   :depth: 3
+..
+
+消息提示和异常处理
+==================
+
+消息提示
+--------
+
+app.py
+
+::
+
+   from flask import Flask, flash, render_template, request,abort
+
+   app = Flask(__name__)
+   app.secret_key = "123"
+
+
+   @app.route("/")
+   def hello_world():
+       flash("hello jikexueyuan")
+       return render_template("index.html")
+
+
+   @app.route("/login", methods=["POST"])
+   def login():
+       form = request.form
+       username = form.get("username")
+       password = form.get("password")
+
+       if not username:
+           flash("请输入用户名....")
+           return render_template("index.html")
+       if not password:
+           flash("请输入密码.....")
+           return render_template("index.html")
+       if username == "jikexueyuan" and password == "123456":
+           flash("登录成功")
+           return render_template("index.html")
+       else:
+           flash("用户名密码错误！！！")
+           return render_template("index.html")
+
+index.html
+
+::
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <title>极客学院</title>
+       <h1>Hello Login</h1>
+
+       <form action="/login" method="post">
+           <input type="text" name="username">
+           <input type="password" name="password">
+           <input type="submit" value="Submit">
+       </form>
+
+
+
+       <h2>{{ get_flashed_messages()[0] }}</h2>
+   </head>
+   <body>
+
+   </body>
+   </html>
+
+异常处理
+--------
+
+::
+
+   @app.errorhandler(404)
+   def not_found(e):
+       return render_template("404.html"), 404
+
+
+
+   @app.route("/users/<user_id>")
+   def users(user_id):
+       if int(user_id) == 1:
+           return render_template("user.html")
+       else:
+           abort(404)
+
+404.html
+
+::
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <title>Title</title>
+       <h1>您要找的页面去火星了！！</h1>
+       <h2>页面不存在，，，</h2>
+   </head>
+   <body>
+
+   </body>
+   </html>
+
+user.html
+
+::
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <title>Title</title>
+   </head>
+   <body>
+   <h1>User </h1>
+
+   </body>
+   </html>

@@ -1,0 +1,823 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>20.9. 使用API &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="20.10. 数据的存储" href="09.数据的存储.html" />
+    <link rel="prev" title="20.8. 3种爬虫模式性能对比" href="07.三种爬虫模式性能对比.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">20. Python网络爬虫</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.基础语法复习.html">20.1. 基础语法复习</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01_1.python的网络请求.html">20.2. python的网络请求</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.爬虫原理和网页结构.html">20.3. 爬虫原理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.我的第一个爬虫程序.html">20.4. 我的第一个爬虫程序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.正则表达式.html">20.5. 正则表达式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.re模块的常用方法.html">20.6. re模块的常用方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Lxml库和Xpath语法.html">20.7. Lxml库和Xpath语法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.三种爬虫模式性能对比.html">20.8. 3种爬虫模式性能对比</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">20.9. 使用API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#postput">20.9.1. POST、PUT方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#json">20.9.2. 解析Json数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#json-api">20.9.3. 使用JSON API免费接口查询信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">20.9.4. 使用聚合数据API入口查询菜谱大全</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">20.9.5. 调用API接口查询天气</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">20.9.6. 有道词典的API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apipexels">20.9.7. 利用翻译API来爬取PEXELS图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">20.9.8. 使用爬取糗事百科用户地址并转为经纬度分析用户数据</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="09.数据的存储.html">20.10. 数据的存储</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.多进程爬虫.html">20.11. 多进程爬虫</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.异步加载.html">20.12. 异步加载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.表单交互与模拟登录.html">20.13. 表单交互与模拟登陆</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Selenium模拟浏览器.html">20.14. Selenium模拟浏览器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.手写Python爬虫.html">20.15. 手写python爬虫</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取中国天气网图片.html">20.16. 案例：爬取中国天气网图片</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取小说.html">20.17. 案例：爬取小说</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取猫眼电影TOP100排行.html">20.18. 案例：爬取猫眼电影TOP100排行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：使用BeautifulSoup爬取租房信息.html">20.19. 使用BeautifulSoup爬取租房信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取糗事百科内容.html">20.20. 爬取糗事百科内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取纳斯达克股票数据.html">20.21. 案例：爬取纳斯达克股票数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取股票网站数据转为json.html">20.22. 案例：爬取股票网站数据转为json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取豆瓣TOP250的电影和书籍.html">20.23. 案例：爬取豆瓣TOP250的电影和书籍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取起点中文网数据存到excel中.html">20.24. 案例：爬取起点中文网数据存到excel中</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取酷狗TOP500的数据.html">20.25. 爬取酷狗TOP500的数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取今日头条信息(Ajax).html">20.26. 案例：爬取今日头条信息(Ajax)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">20. Python网络爬虫</a> &raquo;</li>
+        
+      <li>20.9. 使用API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/22.Python网络爬虫/08.使用API.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#api" id="id7">使用API</a><ul>
+<li><a class="reference internal" href="#postput" id="id8">POST、PUT方法</a></li>
+<li><a class="reference internal" href="#json" id="id9">解析Json数据</a></li>
+<li><a class="reference internal" href="#json-api" id="id10">使用JSON API免费接口查询信息</a></li>
+<li><a class="reference internal" href="#id1" id="id11">使用聚合数据API入口查询菜谱大全</a></li>
+<li><a class="reference internal" href="#id2" id="id12">调用API接口查询天气</a></li>
+<li><a class="reference internal" href="#id3" id="id13">有道词典的API</a><ul>
+<li><a class="reference internal" href="#post" id="id14">直接使用网页post访问有道云翻译</a></li>
+<li><a class="reference internal" href="#id4" id="id15">查询身份证的API</a></li>
+<li><a class="reference internal" href="#facebook-apipo" id="id16">使用Facebook API收集粉丝专页PO文</a></li>
+<li><a class="reference internal" href="#id5" id="id17">爬取煎蛋网的图片下载到本地</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apipexels" id="id18">利用翻译API来爬取PEXELS图片</a></li>
+<li><a class="reference internal" href="#id6" id="id19">使用爬取糗事百科用户地址并转为经纬度分析用户数据</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="api">
+<h1><a class="toc-backref" href="#id7">20.9. 使用API</a><a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="postput">
+<h2><a class="toc-backref" href="#id8">20.9.1. POST、PUT方法</a><a class="headerlink" href="#postput" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>1· POST 方法就是填写表单或提交信息时所做的事情， 如登录一个网址， 使用的便是
+POST方法。
+2· PUT 方法在API 里有时会用到。PUT请求是用来更新一个对象或信息。对于老用
+户的个人信息进行更新时就会用到PUT方法。
+3· DELETE 方法用于删除一个对象， 但在公共API 中并不常见， 毕竟一个公司不会让
+其他人随便地删除数据库中的信息。
+</pre></div>
+</div>
+</div>
+<div class="section" id="json">
+<h2><a class="toc-backref" href="#id9">20.9.2. 解析Json数据</a><a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/12 16:34</span>
+<span class="c1"># filename: 02.解析JSON库.py</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">jsonstring</span> <span class="o">=</span> <span class="s1">&#39;{&quot;user_man&quot;:[{&quot;name&quot;:&quot;Perter&quot;},{&quot;name&quot;:&quot;xiaohu&quot;}],&#39;</span> \
+             <span class="s1">&#39;&quot;user_woman&quot;:[{&quot;name&quot;:&quot;andi&quot;},{&quot;name&quot;:&quot;zhangsan&quot;}]}&#39;</span>
+
+
+<span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">jsonstring</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_man&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_woman&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_man&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_woman&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_woman&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_man&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>输出信息：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Perter&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;xiaohu&#39;</span><span class="p">}]</span>
+<span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;andi&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;zhangsan&#39;</span><span class="p">}]</span>
+<span class="n">Perter</span>
+<span class="n">zhangsan</span>
+
+<span class="n">zhangsan</span>
+<span class="n">Perter</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="json-api">
+<h2><a class="toc-backref" href="#id10">20.9.3. 使用JSON API免费接口查询信息</a><a class="headerlink" href="#json-api" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.bejson.com/knownjson/webInterface/">http://www.bejson.com/knownjson/webInterface/</a></p>
+<p><code class="docutils literal"><span class="pre">聚合数据API入口</span></code></p>
+<p><a class="reference external" href="https://www.juhe.cn/">https://www.juhe.cn/</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/12 21:52</span>
+<span class="c1"># filename: 调用测试.py</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+
+<span class="n">shop_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入商品名称：&quot;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://suggest.taobao.com/sug?code=utf-8&amp;q=</span><span class="si">{}</span><span class="s2">&amp;callback=cb&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">shop_name</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;cb(&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出信息</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>请输入商品名称：手机
+{&#39;result&#39;: [[&#39;手机壳&#39;, &#39;4947514.056456573&#39;],
+            [&#39;手机壳苹果x&#39;, &#39;850054.4360219479&#39;],
+            [&#39;手机壳苹果&#39;, &#39;1364618.3711661247&#39;],
+            [&#39;手机壳苹果xmax&#39;, &#39;679602.8614586157&#39;],
+            [&#39;手机包&#39;, &#39;4472144.733740886&#39;],
+            [&#39;手机壳苹果8plus&#39;, &#39;1464863.950425368&#39;],
+            [&#39;手机包女斜挎&#39;, &#39;1244778.9998044153&#39;],
+            [&#39;手机壳苹果7plus&#39;, &#39;948602.4724484907&#39;],
+            [&#39;手机包包 女包 新款2019&#39;, &#39;252956.53722329382&#39;],
+            [&#39;手机壳xr&#39;, &#39;997560.3360825442&#39;]]}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id11">20.9.4. 使用聚合数据API入口查询菜谱大全</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/12 21:52</span>
+<span class="c1"># filename: 调用测试.py</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+
+
+<span class="n">caipu_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入菜谱名称：&quot;</span><span class="p">)</span>
+<span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;ae17f16ecb87ff3f76e87695ae709496&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://apis.juhe.cn/cook/query?key=</span><span class="si">{0}</span><span class="s2">&amp;menu=</span><span class="si">{1}</span><span class="s2">&amp;rn=2&amp;pn=3&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">caipu_name</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1"># pprint.pprint(json_data)</span>
+
+<span class="c1"># 写入json数据</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;西红柿鸡蛋汤.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出信息： <img alt="image0" src="../../_images/json-api001.png" /></p>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id12">20.9.5. 调用API接口查询天气</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/13 11:13</span>
+<span class="c1"># filename: 03.调用api接口查询全国天气.py</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+
+<span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;91536efa9a578f9b33318278dc711eb5&quot;</span>
+<span class="n">city_weather</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入查询的城市：&quot;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://v.juhe.cn/weather/index?format=2&amp;cityname=</span><span class="si">{0}</span><span class="s2">&amp;key=</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">city_weather</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;武汉天气.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;武汉天气.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json_info</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json_info</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出信息： <img alt="image1" src="../../_images/json-api0002.png" /></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>天气获取接口
+https://www.apiopen.top/weatherApi?city=成都
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>随机推荐段子（包含文字、图片、GIF、视频）：
+https://www.apiopen.top/satinApi?type=1&amp;page=1
+
+接口传参说明：
+type=1    : 全部
+type=2 : 文字
+type=3 : 图片
+type=4 : 视频
+page=1:页码
+
+当page=0时，会随机返回一页数据，page&gt;=1时会返回相应页码的数据，图片包含GIF，is_gif 字段判断。
+返回type备注：
+type=1 : 全部
+type=41 : 视频
+type=10 : 图片
+type=29 : 段子
+type=31 : 声音
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id13">20.9.6. 有道词典的API</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/usr/bin/env python
+#-*- coding:utf8 -*-
+# auther; 18793
+# Date：2019/7/13 14:07
+# filename: 使用有道翻译的api.py
+
+import requests
+import json
+import pprint
+
+translate = input(&quot;请要翻译的词语：&quot;)
+url = &quot;http://fanyi.youdao.com/translate?&amp;doctype=json&amp;type=AUTO&amp;i={}&quot;.format(translate)
+
+res = requests.get(url)
+json_data = json.loads(res.text)
+translate_json_data = json_data[&quot;translateResult&quot;][0][0][&quot;tgt&quot;]
+
+with open(&quot;翻译.json&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+    json.dump(translate_json_data, f, ensure_ascii=False, indent=4)
+
+with open(&quot;翻译.json&quot;, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:
+    json_info = json.load(f)
+    print(translate_json_data)
+
+
+
+type的类型有：
+
+ZH_CN2EN 中文　»　英语
+ZH_CN2JA 中文　»　日语
+ZH_CN2KR 中文　»　韩语
+ZH_CN2FR 中文　»　法语
+ZH_CN2RU 中文　»　俄语
+ZH_CN2SP 中文　»　西语
+EN2ZH_CN 英语　»　中文
+JA2ZH_CN 日语　»　中文
+KR2ZH_CN 韩语　»　中文
+FR2ZH_CN 法语　»　中文
+RU2ZH_CN 俄语　»　中文
+SP2ZH_CN 西语　»　中文
+</pre></div>
+</div>
+<div class="section" id="post">
+<h3><a class="toc-backref" href="#id14">直接使用网页post访问有道云翻译</a><a class="headerlink" href="#post" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/8/9 17:50</span>
+<span class="c1"># filename: 06.使用有道云翻译API.py</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+
+<span class="k">def</span> <span class="nf">translate_date</span><span class="p">(</span><span class="n">world</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://fanyi.youdao.com/translate&#39;</span>
+
+    <span class="n">Form_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;i&#39;</span><span class="p">:</span> <span class="n">world</span><span class="p">,</span>
+        <span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="s1">&#39;AUTO&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="s1">&#39;AUTO&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;smartresult&#39;</span><span class="p">:</span> <span class="s1">&#39;dict&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;client&#39;</span><span class="p">:</span> <span class="s1">&#39;fanyideskweb&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;salt&#39;</span><span class="p">:</span> <span class="s1">&#39;15653441929319&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;sign&#39;</span><span class="p">:</span> <span class="s1">&#39;e06b85ab13b925e8a0fd85383c85e9b8&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="s1">&#39;1565344192931&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;bv&#39;</span><span class="p">:</span> <span class="s1">&#39;53539dde41bde18f4a71bb075fcf2e66&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;doctype&#39;</span><span class="p">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;2.1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;keyfrom&#39;</span><span class="p">:</span> <span class="s1">&#39;fanyi.web&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;action&#39;</span><span class="p">:</span> <span class="s1">&#39;FY_BY_REALTlME&#39;</span>
+    <span class="p">}</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Form_data</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="s1">&#39;translateResult&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;tgt&#39;</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">translate_date</span><span class="p">(</span><span class="s2">&quot;运维开发&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image2" src="../../_images/API-youdao000001.png" /></p>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id15">查询身份证的API</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/25 14:03</span>
+<span class="c1"># filename: ID_Card验证.py</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+
+<span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;d3cbaa24a5ebc4e885da53e7b7f8f028&quot;</span>
+
+<span class="n">id_card</span> <span class="o">=</span> <span class="s2">&quot;420981199407226517&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">r&#39;http://apis.juhe.cn/idcard/index?key=</span><span class="si">{0}</span><span class="s1">&amp;cardno=</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">id_card</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="facebook-apipo">
+<h3><a class="toc-backref" href="#id16">使用Facebook API收集粉丝专页PO文</a><a class="headerlink" href="#facebook-apipo" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">使用Facebook API收集粉丝专页PO文</span>
+<span class="sd">JSON格式</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">urllib.request</span> <span class="k">as</span> <span class="nn">ur</span>
+
+<span class="n">access_token</span><span class="o">=</span><span class="s2">&quot;EAACEdEose0cBAOr9JdbNwSpBGdOeKgZCuWn24wXsqr3xnZA1taleuSRJW7UnSr3qt0mxBTkgjI6t4Cna2H7sXyOA9mZAyZAGv77NkZAxmf0WrbhfZCZBIkRBZATv6AE5rTUtsEgfpdY2f2hDUc9hb0iG1OTPY8rT1Vxhg24cvPnwBUruWletfw0zDZA8ZBGOO7N7IZD&quot;</span>
+<span class="n">access_id</span><span class="o">=</span><span class="s2">&quot;368113116692686&quot;</span>
+
+<span class="n">urls</span> <span class="o">=</span> <span class="s2">&quot;https://graph.facebook.com/v2.11/</span><span class="si">{}</span><span class="s2">/posts?limit=2&amp;access_token=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">access_id</span><span class="p">,</span><span class="n">access_token</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">ur</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+    <span class="n">s</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">r_data</span><span class="o">=</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r_data</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;created_time&quot;</span><span class="p">],</span><span class="n">r_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;message&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id17">爬取煎蛋网的图片下载到本地</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/13 13:34</span>
+<span class="c1"># filename: 04.爬取煎蛋网图片.py</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+
+<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;http://jandan.net/zoo/page-</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)]</span>
+<span class="c1"># url = &quot;http://jandan.net/zoo/page-1&quot;</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;D://GitHub/21_staduy_python/19.框架学习/爬虫学习/01.爬虫三大库/使用API/煎蛋网/&quot;</span>
+
+<span class="n">header</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36&quot;</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">get_photo</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">selector</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">photo_urls</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id]/div/div/div[2]/p/a/@href&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">photo_url</span> <span class="ow">in</span> <span class="n">photo_urls</span><span class="p">:</span>
+        <span class="c1"># print(photo_url)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http:&quot;</span> <span class="o">+</span> <span class="n">photo_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">photo_url</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:],</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>  <span class="c1"># 把图片内容写入文件</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+        <span class="n">get_photo</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="apipexels">
+<h2><a class="toc-backref" href="#id18">20.9.7. 利用翻译API来爬取PEXELS图片</a><a class="headerlink" href="#apipexels" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/13 11:25</span>
+<span class="c1"># filename: 爬取PEXELS图片.py</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">爬取PEXELS网站上的图片,该网站提提供海量的图片素材，图片质量很高，</span>
+<span class="sd">https://www.pexels.com/</span>
+
+
+<span class="sd">通过收到输入关键字，发现网页变化</span>
+<span class="sd">https://www.pexels.com/search/book/</span>
+<span class="sd">https://www.pexels.com/search/office/</span>
+<span class="sd">https://www.pexels.com/search/beautiful%20girl/</span>
+<span class="sd">https://www.pexels.com/search/girl/</span>
+
+<span class="sd">可以通过API进行中文转换英文，然后构造URL</span>
+<span class="sd">爬取图片</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># 导入模块</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;accept&quot;</span><span class="p">:</span> <span class="s2">&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36&quot;</span>
+<span class="p">}</span>
+
+<span class="n">url_path</span> <span class="o">=</span> <span class="s2">&quot;https://www.pexels.com/search/&quot;</span>
+<span class="n">word</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;输入你要下载的图片：&quot;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://fanyi.youdao.com/translate?&amp;doctype=json&amp;type=AUTO&amp;i=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">translate_json_data</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s2">&quot;translateResult&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;tgt&quot;</span><span class="p">]</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="n">url_path</span> <span class="o">+</span> <span class="n">translate_json_data</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span>  <span class="c1"># 通过API获取英文并构造URL</span>
+
+<span class="c1"># url = &quot;https://www.pexels.com/search/book/&quot;</span>
+<span class="n">wb_data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">wb_data</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
+<span class="n">imags</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;article &gt; a &gt; img&quot;</span><span class="p">)</span>
+<span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">imags</span><span class="p">:</span>
+    <span class="n">photo</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">)</span>
+    <span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">photo</span><span class="p">)</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;D:/GitHub/21_staduy_python/19.框架学习\爬虫学习/01.爬虫三大库/使用API/Photo_example/&quot;</span>
+
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">10</span><span class="p">:],</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>      <span class="c1">#写入图片内容</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                  <span class="c1">#关闭文件</span>
+</pre></div>
+</div>
+<p>运行程序，输入中文搜索词，在本地的Photo_example文件中便会下载相应的图片。如下图所示：
+<img alt="image3" src="../../_images/paqu-api0001.png" /></p>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id19">20.9.8. 使用爬取糗事百科用户地址并转为经纬度分析用户数据</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">个人BDP是一款在线的数据可视化工具</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>1.个人BDP
+① 登陆个人BDP，网址为：https://me.bdp.cn/home.html
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/13 23:44</span>
+<span class="c1"># filename: 05.爬取糗事百科热门板块的用户信息.py</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">1.抓取糗事百科网的URL构造。</span>
+<span class="sd">2.先爬取详细页的网站链接，进而爬取数据。</span>
+<span class="sd">3.通过百度地图API进行用户位置的经纬度转换。</span>
+<span class="sd">4.运用csv库，把爬取的信息存储在本地的CSV文件中。</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;D:/GitHub/21_staduy_python/19.框架学习/爬虫学习/01.爬虫三大库/使用API/map.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+<span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">((</span><span class="s2">&quot;address&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">))</span>  <span class="c1"># 写入header数据</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36&quot;</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">get_user_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    获取进入用户详细页URL的函数</span>
+<span class="sd">    :param url:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url_part</span> <span class="o">=</span> <span class="s2">&quot;https://www.qiushibaike.com&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">selector</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">url_infos</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//li[starts-with(@id,&quot;qiushi_tag&quot;)]&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">url_info</span> <span class="ow">in</span> <span class="n">url_infos</span><span class="p">:</span>
+        <span class="n">user_part_urls</span> <span class="o">=</span> <span class="n">url_info</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;div/div/a/@href&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_part_urls</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># 判断用户是否有详细信息</span>
+            <span class="n">user_part_url</span> <span class="o">=</span> <span class="n">user_part_urls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">user_part_url</span> <span class="o">=</span> <span class="n">url_part</span> <span class="o">+</span> <span class="n">user_part_url</span>
+            <span class="n">get_user_address</span><span class="p">(</span><span class="n">user_part_url</span><span class="p">)</span>
+            <span class="c1"># print(user_part_url)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>  <span class="c1"># 如无，则pass掉</span>
+
+
+<span class="k">def</span> <span class="nf">get_user_address</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    获取用户地址信息</span>
+<span class="sd">    :param url:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">selector</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@class=&quot;user-main clearfix&quot;]/div[3]/div[2]/ul/li[5]/text()&#39;</span><span class="p">):</span>
+        <span class="n">address_info</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@class=&quot;user-main clearfix&quot;]/div[3]/div[2]/ul/li[5]/text()&#39;</span><span class="p">)</span>
+        <span class="n">address_info</span> <span class="o">=</span> <span class="n">address_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;·&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">get_geo</span><span class="p">(</span><span class="n">address_info</span><span class="p">)</span>
+        <span class="c1"># print(address_info)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">get_geo</span><span class="p">(</span><span class="n">address</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    定义获取用户地址的经纬度</span>
+<span class="sd">    :param address:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;svZI4iaMvmTqTaKEljF9oPyAkNShZzLV&quot;</span>
+    <span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;http://api.map.baidu.com/geocoding/v3/?address=</span><span class="si">{0}</span><span class="s2">&amp;output=json&amp;ak=</span><span class="si">{1}</span><span class="s2">&amp;callback=showLocation&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">address</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;showLocation&amp;&amp;showLocation(&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">)</span>
+    <span class="n">json_date</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">lng</span> <span class="o">=</span> <span class="n">json_date</span><span class="p">[</span><span class="s2">&quot;result&quot;</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;lng&#39;</span><span class="p">]</span>
+        <span class="n">lat</span> <span class="o">=</span> <span class="n">json_date</span><span class="p">[</span><span class="s2">&quot;result&quot;</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+        <span class="n">address</span> <span class="o">=</span> <span class="n">address</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">((</span><span class="n">address</span><span class="p">,</span> <span class="n">lng</span><span class="p">,</span> <span class="n">lat</span><span class="p">))</span>
+        <span class="c1"># print((address, lng, lat))</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://www.qiushibaike.com/8hr/page/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">36</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+        <span class="n">get_user_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="c1"># url = &quot;https://www.qiushibaike.com/8hr/page/1&quot;</span>
+    <span class="c1"># get_user_url(url)</span>
+
+    <span class="c1"># url = &quot;https://www.qiushibaike.com/users/38730746&quot;</span>
+    <span class="c1"># get_user_address(url)</span>
+
+    <span class="c1"># url = &quot;https://www.qiushibaike.com/8hr/page/1&quot;</span>
+    <span class="c1"># get_user_url(url)</span>
+    <span class="c1"># url = &quot;https://www.qiushibaike.com/users/31617169/&quot;</span>
+    <span class="c1"># get_user_address(url)</span>
+    <span class="c1"># get_geo(&quot;上海&quot;)</span>
+    <span class="c1"># get_geo(&quot;武汉&quot;)</span>
+    <span class="c1"># get_geo(&quot;北京&quot;)</span>
+    <span class="c1"># get_geo(&quot;宜昌&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="09.数据的存储.html" class="btn btn-neutral float-right" title="20.10. 数据的存储" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="07.三种爬虫模式性能对比.html" class="btn btn-neutral float-left" title="20.8. 3种爬虫模式性能对比" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,596 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>22.4.5. Django流程跑通 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="22.4.6. 实战演练-开发Django站点" href="07.实战演练-开发Django站点.html" />
+    <link rel="prev" title="22.4.4. Django框架的使用" href="02.Django框架的使用.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask_Web框架/index.html">22.2. Flask_Web框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">22.4. Django学习</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="10.Python高效开发实战-Django/index.html">22.4.1. Python高效开发实战-Django</a></li>
+<li class="toctree-l4"><a class="reference internal" href="20.简单的博客系统/index.html">22.4.2. 简单的博客系统</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01.安装DjangoWeb框架.html">22.4.3. 安装DjangoWeb框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02.Django框架的使用.html">22.4.4. Django框架的使用</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">22.4.5. Django流程跑通</a></li>
+<li class="toctree-l4"><a class="reference internal" href="07.实战演练-开发Django站点.html">22.4.6. 实战演练-开发Django站点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="08.Django模型层.html">22.4.7. Django模型层</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="../index.html">22. Python框架学习</a> &raquo;</li>
+        
+          <li><a href="index.html">22.4. Django学习</a> &raquo;</li>
+        
+      <li>22.4.5. Django流程跑通</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/Python/24.Python框架学习/04.Django学习/03.Django流程跑通.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#django" id="id7">Django流程跑通</a><ul>
+<li><a class="reference internal" href="#id1" id="id8">路由</a></li>
+<li><a class="reference internal" href="#id2" id="id9">表单</a></li>
+<li><a class="reference internal" href="#id3" id="id10">视图</a><ul>
+<li><a class="reference internal" href="#id4" id="id11">定义一个404错误页面</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cbv" id="id12">基于类的视图(CBV)</a></li>
+<li><a class="reference internal" href="#id5" id="id13">Django模板</a><ul>
+<li><a class="reference internal" href="#id6" id="id14">Django简单分发流程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="django">
+<h1><a class="toc-backref" href="#id7">22.4.5. Django流程跑通</a><a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h1>
+<p>app1下的admin.py中配置</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span> <span class="c1"># 引入admin模块</span>
+<span class="kn">from</span> <span class="nn">app1.models</span> <span class="k">import</span> <span class="n">Person</span><span class="p">,</span> <span class="n">Order</span> <span class="c1"># 引入数据模型类</span>
+
+<span class="k">class</span> <span class="nc">PersonAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    创建PersonAdmin类，继承于admin.ModelAdmin</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#  配置展示列表，在Person板块下的列表展示</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span><span class="p">)</span>
+    <span class="c1"># 配置过滤查询字段，在Person板块下右侧过滤框</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span><span class="p">)</span>
+    <span class="c1"># 配置可以搜索的字段，在Person板块下右侧搜索框</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;first_name&#39;</span><span class="p">,)</span>
+    <span class="c1"># 配置只读字段展示，设置后该字段不可编辑</span>
+    <span class="n">readonly_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span> <span class="s1">&#39;updated_at&#39;</span><span class="p">)</span>
+<span class="c1"># 绑定Person模型到PersonAdmin管理后台</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Person</span><span class="p">,</span> <span class="n">PersonAdmin</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>配置完成后，登录http://127.0.0.1:8000/admin/</li>
+</ul>
+<p><img alt="image0" src="../../../_images/admin_django.PNG" /></p>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id8">路由</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image1" src="../../../_images/Django_urls0001.png" /></p>
+<p>Django的URL路由流程： （1）Django查找全局urlpatterns变量（urls.py）
+（2）按照先后顺序，对URL逐一匹配urlpatterns每个元素
+（3）找到第一个匹配时停止查找，根据匹配结果执行对应的处理函数
+（4）如果没有找到或出现异常，Django进行错误处理</p>
+<p>Django支持三种表达格式：</p>
+<p>（1） 精确字符串格式</p>
+<p>（2）Django的转换格式</p>
+<p>（3）正则表达式格式</p>
+<p>demo下的urls.py</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span><span class="p">,</span><span class="n">include</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;app1/&#39;</span><span class="p">,</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;app1.urls&#39;</span><span class="p">))</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>找到项目根目录的配置文件夹demo下面的urls.py文件，打开文件，添加如下代码：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">app1</span> <span class="k">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">app1_views</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># 精确匹配视图</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;articles/2003/&#39;</span><span class="p">,</span> <span class="n">app1_views</span><span class="o">.</span><span class="n">special_case_2003</span><span class="p">),</span>
+    <span class="c1"># 匹配一个整数</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;articles/&lt;int:year&gt;/&#39;</span><span class="p">,</span> <span class="n">app1_views</span><span class="o">.</span><span class="n">year_archive</span><span class="p">),</span>
+    <span class="c1"># 匹配两个位置的整数</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;articles/&lt;int:year&gt;/&lt;int:month&gt;/&#39;</span><span class="p">,</span> <span class="n">app1_views</span><span class="o">.</span><span class="n">month_archive</span><span class="p">),</span>
+    <span class="c1"># 匹配两个位置的整数和一个slug类型的字符串</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;articles/&lt;int:year&gt;/&lt;int:month&gt;/&lt;slug:slug&gt;/&#39;</span><span class="p">,</span> <span class="n">app1_views</span><span class="o">.</span><span class="n">article_detail</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>如果想使用正则表达式，则使用如下代码:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">re_path</span>
+<span class="kn">from</span> <span class="nn">app1</span> <span class="k">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">views</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># 精确匹配</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;articles/2003/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">special_case_2003</span><span class="p">),</span>
+    <span class="c1"># 按照正则表达式匹配4位数字年份</span>
+    <span class="n">re_path</span><span class="p">(</span><span class="s1">r&#39;^articles/(?P&lt;year&gt;[0-9]</span><span class="si">{4}</span><span class="s1">)/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">year_archive</span><span class="p">),</span>
+    <span class="c1"># 按照正则表达式匹配4位数字年份和2位数字月份</span>
+    <span class="n">re_path</span><span class="p">(</span><span class="s1">r&#39;^articles/(?P&lt;year&gt;[0-9]</span><span class="si">{4}</span><span class="s1">)/(?P&lt;month&gt;[0-9]</span><span class="si">{2}</span><span class="s1">)/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">month_archive</span><span class="p">),</span>
+    <span class="c1"># 按照正则表达式匹配4位数字年份和2位数字月份和一个至少1位的slug类型的字符串</span>
+    <span class="n">re_path</span><span class="p">(</span><span class="s1">r&#39;^articles/(?P&lt;year&gt;[0-9]</span><span class="si">{4}</span><span class="s1">)/(?P&lt;month&gt;[0-9]</span><span class="si">{2}</span><span class="s1">)/(?P&lt;slug&gt;[\w-]+)/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">article_detail</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id9">表单</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>在app1文件夹下创建一个forms.py文件，添加如下类代码：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="k">import</span> <span class="n">forms</span>
+<span class="k">class</span> <span class="nc">PersonForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;你的名字&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;你的姓氏&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>表单类forms.Form有一个is_valid()方法，可以在views.py中验证提交的表单是否符合规则。
+对于提交的内容，在views.py编写如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">app1.forms</span> <span class="k">import</span> <span class="n">PersonForm</span>
+
+<span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c1"># 判断请求方法是否为POST</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="c1"># 将请求数据填充到PersonForm实例中</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">PersonForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="c1"># 判断form是否为有效表单</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="c1"># 使用form.cleaned_data获取请求的数据</span>
+            <span class="n">first_name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span>
+            <span class="n">last_name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span>
+            <span class="c1"># 响应拼接后的字符串</span>
+            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">first_name</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="n">last_name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s1">&#39;/error/&#39;</span><span class="p">)</span>
+    <span class="c1"># 请求为GET方法</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;name.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">PersonForm</span><span class="p">()})</span>
+</pre></div>
+</div>
+<p>在app1下创建一个templates目录，编写name.html文件</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form action=&quot;/app1/get_name&quot; method=&quot;post&quot;&gt;
+    {% csrf_token %}
+    {{ form }}
+    &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>添加URL到创建的app1/urls.py文件中。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">re_path</span>
+<span class="kn">from</span> <span class="nn">app1</span> <span class="k">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">views</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;get_name&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">get_name</span><span class="p">),</span>
+    <span class="c1">## 精确匹配</span>
+    <span class="c1"># path(&#39;articles/2003/&#39;, views.special_case_2003),</span>
+    <span class="c1"># # 按照正则表达式匹配4位数字年份</span>
+    <span class="c1"># re_path(r&#39;^articles/(?P&lt;year&gt;[0-9]{4})/$&#39;, views.year_archive),</span>
+    <span class="c1"># # 按照正则表达式匹配4位数字年份和2位数字月份</span>
+    <span class="c1"># re_path(r&#39;^articles/(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[0-9]{2})/$&#39;, views.month_archive),</span>
+    <span class="c1"># # 按照正则表达式匹配4位数字年份和2位数字月份和一个至少1位的slug类型的字符串</span>
+    <span class="c1"># re_path(r&#39;^articles/(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[0-9]{2})/(?P&lt;slug&gt;[\w-]+)/$&#39;, views.article_detail),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>此时访问访问 <a class="reference external" href="http://127.0.0.1:8000/app1/get_name">http://127.0.0.1:8000/app1/get_name</a></p>
+<p><img alt="image2" src="../../../_images/django001.png" /></p>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id10">视图</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>在django项目中定义新的视图，app1/views.py</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span>  <span class="c1"># 导入响应对象</span>
+<span class="kn">import</span> <span class="nn">datetime</span>  <span class="c1"># 导入时间模块</span>
+
+<span class="k">def</span> <span class="nf">current_datetime</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># 定义一个视图方法，必须带有请求对象作为参数</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>  <span class="c1"># 请求的时间</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&lt;html&gt;&lt;body&gt;It is now </span><span class="si">%s</span><span class="s2">.&lt;/body&gt;&lt;/html&gt;&quot;</span> <span class="o">%</span> <span class="n">now</span>  <span class="c1"># 生成html代码</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>  <span class="c1"># 将响应对象返回，数据为生成的html代码</span>
+</pre></div>
+</div>
+<p>添加URL到创建的app1/urls.py文件中。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">path</span><span class="p">(</span><span class="s1">&#39;current_datetime&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">current_datetime</span><span class="p">),</span>
+</pre></div>
+</div>
+<p><img alt="image3" src="../../../_images/django002.png" /></p>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id11">定义一个404错误页面</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>app1/views.py</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span><span class="p">,</span> <span class="n">Http404</span>
+<span class="kn">from</span> <span class="nn">app1.forms</span> <span class="k">import</span> <span class="n">PersonForm</span>
+<span class="kn">from</span> <span class="nn">app1.models</span> <span class="k">import</span> <span class="n">Person</span>
+
+<span class="k">def</span> <span class="nf">person_detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>  <span class="c1"># url参数pk</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Person</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>  <span class="c1"># 获取Person数据</span>
+    <span class="k">except</span> <span class="n">Person</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">Http404</span><span class="p">(</span><span class="s1">&#39;Person Does Not Exist&#39;</span><span class="p">)</span>  <span class="c1"># 获取不到抛出Http404错误页面</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;person_detail.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="n">p</span><span class="p">})</span>  <span class="c1"># 返回详细信息视图</span>
+</pre></div>
+</div>
+<p>app1/urls.py</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">path</span><span class="p">(</span><span class="s1">&#39;person_detail/&lt;int:pk&gt;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">person_detail</span><span class="p">),</span>
+</pre></div>
+</div>
+<p><img alt="image4" src="../../../_images/django003.png" /></p>
+</div>
+</div>
+<div class="section" id="cbv">
+<h2><a class="toc-backref" href="#id12">基于类的视图(CBV)</a><a class="headerlink" href="#cbv" title="Permalink to this headline">¶</a></h2>
+<p>app1/views.py</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">app1.forms</span> <span class="k">import</span> <span class="n">PersonForm</span>
+
+<span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c1"># 判断请求方法是否为POST</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="c1"># 将请求数据填充到PersonForm实例中</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">PersonForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="c1"># 判断form是否为有效表单</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="c1"># 使用form.cleaned_data获取请求的数据</span>
+            <span class="n">first_name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span>
+            <span class="n">last_name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span>
+            <span class="c1"># 响应拼接后的字符串</span>
+            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">first_name</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="n">last_name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s1">&#39;/error/&#39;</span><span class="p">)</span>
+    <span class="c1"># 请求为GET方法</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;name.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">PersonForm</span><span class="p">()})</span>
+
+
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span>  <span class="c1"># 导入响应对象</span>
+<span class="kn">import</span> <span class="nn">datetime</span>  <span class="c1"># 导入时间模块</span>
+
+<span class="k">def</span> <span class="nf">current_datetime</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># 定义一个视图方法，必须带有请求对象作为参数</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>  <span class="c1"># 请求的时间</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&lt;html&gt;&lt;body&gt;It is now </span><span class="si">%s</span><span class="s2">.&lt;/body&gt;&lt;/html&gt;&quot;</span> <span class="o">%</span> <span class="n">now</span>  <span class="c1"># 生成html代码</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>  <span class="c1"># 将响应对象返回，数据为生成的html代码</span>
+
+
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span><span class="p">,</span> <span class="n">Http404</span>
+<span class="kn">from</span> <span class="nn">app1.forms</span> <span class="k">import</span> <span class="n">PersonForm</span>
+<span class="kn">from</span> <span class="nn">app1.models</span> <span class="k">import</span> <span class="n">Person</span>
+
+<span class="k">def</span> <span class="nf">person_detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>  <span class="c1"># url参数pk</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Person</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>  <span class="c1"># 获取Person数据</span>
+    <span class="k">except</span> <span class="n">Person</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">Http404</span><span class="p">(</span><span class="s1">&#39;Person Does Not Exist&#39;</span><span class="p">)</span>  <span class="c1"># 获取不到抛出Http404错误页面</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;person_detail.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="n">p</span><span class="p">})</span>  <span class="c1"># 返回详细信息视图</span>
+
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span><span class="p">,</span> <span class="n">Http404</span>
+<span class="kn">from</span> <span class="nn">django.views</span> <span class="k">import</span> <span class="n">View</span>
+<span class="kn">from</span> <span class="nn">app1.forms</span> <span class="k">import</span> <span class="n">PersonForm</span>
+<span class="kn">from</span> <span class="nn">app1.models</span> <span class="k">import</span> <span class="n">Person</span>
+
+<span class="k">class</span> <span class="nc">PersonFormView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+    <span class="n">form_class</span> <span class="o">=</span> <span class="n">PersonForm</span>  <span class="c1"># 定义表单类</span>
+    <span class="n">initial</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">}</span>  <span class="c1"># 定义表单初始化展示参数</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;name.html&#39;</span>  <span class="c1"># 定义渲染的模板</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>  <span class="c1"># 定义GET请求的方法</span>
+        <span class="c1"># 渲染表单</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">,</span>
+                          <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_class</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">initial</span><span class="p">)})</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>  <span class="c1"># 定义POST请求的方法</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_class</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>  <span class="c1"># 填充表单实例</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>  <span class="c1"># 判断请求是否有效</span>
+            <span class="c1"># 使用form.cleaned_data获取请求的数据</span>
+            <span class="n">first_name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span>
+            <span class="n">last_name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span>
+            <span class="c1"># 响应拼接后的字符串</span>
+            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">first_name</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="n">last_name</span><span class="p">)</span>  <span class="c1"># 返回拼接的字符串</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>  <span class="c1"># 如果表单无效，返回表单</span>
+</pre></div>
+</div>
+<p>app1/urls.py</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">re_path</span>
+<span class="kn">from</span> <span class="nn">app1</span> <span class="k">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">views</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;get_name&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">get_name</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;get_name1&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">PersonFormView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>        <span class="c1"># 看这里，就是类视图的url路由</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;current_datetime&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">current_datetime</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;person_detail/&lt;int:pk&gt;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">person_detail</span><span class="p">),</span>
+    <span class="c1">## 精确匹配</span>
+    <span class="c1"># path(&#39;articles/2003/&#39;, views.special_case_2003),</span>
+    <span class="c1"># # 按照正则表达式匹配4位数字年份</span>
+    <span class="c1"># re_path(r&#39;^articles/(?P&lt;year&gt;[0-9]{4})/$&#39;, views.year_archive),</span>
+    <span class="c1"># # 按照正则表达式匹配4位数字年份和2位数字月份</span>
+    <span class="c1"># re_path(r&#39;^articles/(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[0-9]{2})/$&#39;, views.month_archive),</span>
+    <span class="c1"># # 按照正则表达式匹配4位数字年份和2位数字月份和一个至少1位的slug类型的字符串</span>
+    <span class="c1"># re_path(r&#39;^articles/(?P&lt;year&gt;[0-9]{4})/(?P&lt;month&gt;[0-9]{2})/(?P&lt;slug&gt;[\w-]+)/$&#39;, views.article_detail),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>在浏览器中访问 <a class="reference external" href="http://127.0.0.1:8000/app1/get_name1">http://127.0.0.1:8000/app1/get_name1</a></p>
+<p><img alt="image5" src="../../../_images/django004.png" /></p>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id13">Django模板</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Django指定的模板引擎在settings.py文件中定义，代码如下：</p>
+<p><img alt="image6" src="../../../_images/django_module00001.png" /></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[{</span>
+        <span class="c1"># 模板引擎，默认为Django模板</span>
+        <span class="s1">&#39;BACKEND&#39;</span><span class="p">:</span> <span class="s1">&#39;django.template.backends.django.DjangoTemplates&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;DIRS&#39;</span><span class="p">:</span> <span class="p">[],</span>  <span class="c1"># 模板所在的目录</span>
+        <span class="s1">&#39;APP_DIRS&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># 是否启用APP目录</span>
+        <span class="s1">&#39;OPTIONS&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>app1/templates目录下的html文件都为模板文件。</p>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id14">Django简单分发流程</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p><img alt="image7" src="../../../_images/django_qianfeng000002.png" /></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="07.实战演练-开发Django站点.html" class="btn btn-neutral float-right" title="22.4.6. 实战演练-开发Django站点" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="02.Django框架的使用.html" class="btn btn-neutral float-left" title="22.4.4. Django框架的使用" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

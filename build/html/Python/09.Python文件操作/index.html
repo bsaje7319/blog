@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>9. Python文件操作 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="9.1. Open()函数介绍" href="01.open()函数介绍.html" />
+    <link rel="prev" title="8.7. 测试程序" href="../08.异常处理/7.测试程序.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9. Python文件操作</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.open()函数介绍.html">9.1. Open()函数介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html">9.2. 读写文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.使用with语句读写文件.html">9.3. 使用with语句读写文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.高级文件操作.html">9.4. 高级文件操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.目录操作.html">9.5. 目录操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.目录迭代的两种方式.html">9.6. 目录迭代的两种方式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.批量文件重命名.html">9.7. 批量文件重命名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.读取文件向xls中写入姓名和考号.html">9.8. 读取文件向xls中写入姓名和考号</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.获取当前的路径.html">9.9. 获取当前的路径</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.StringIO和BytesIO用法.html">9.10. StringIO和BytesIO用法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.fileinput模块操作文件.html">9.11. fileinput模块操作文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.shutil操作文件.html">9.12. shutil操作文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.文件和流.html">9.13. 文件和流</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.二进制文件的读写.html">9.14. 二进制文件的读写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.小试牛刀-批量文件修改后缀名.html">9.15. 小试牛刀-批量文件修改后缀名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.使用python管理压缩包.html">9.16. 使用python管理压缩包</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+      <li>9. Python文件操作</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/09.Python文件操作/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python">
+<h1>9. Python文件操作<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.open()函数介绍.html">9.1. Open()函数介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.open()函数介绍.html#id1">9.1.1. 语法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.open()函数介绍.html#id2">9.1.2. 打开文件的模</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.open()函数介绍.html#id3">代码示例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.读写文件.html">9.2. 读写文件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.读写文件.html#id2">9.2.1. 再次理解文件打开的模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.读写文件.html#python">9.2.2. Python文件读取方式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html#id3">代码示例 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html#id4">代码示例 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.读写文件.html#id5">9.2.3. 逐行读取文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html#id6">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.读写文件.html#while">9.2.4. 读取大文件时，建议采用while循环来逐行进行读取</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html#id7">代码示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html#id9">代码示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html#id11">将文件中的所有单词首字母大写</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.读写文件.html#id12">9.2.5. 追加日志</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html#id13">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.读写文件.html#rb">9.2.6. 二进制读取“rb”</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html#id15">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.读写文件.html#id17">9.2.7. Python文件写入方式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html#id18">代码示例1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.读写文件.html#id19">9.2.8. 代码示例2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.读写文件.html#wb">9.2.9. 二进制写“wb”</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html#id20">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.读写文件.html#id22">9.2.10. Python文件操作所提供的方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.读写文件.html#id23">9.2.11. 文件随机读写</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html#id24">代码示例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03.使用with语句读写文件.html">9.3. 使用with语句读写文件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#id1">9.3.1. with语句介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#id2">9.3.2. with工作原理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.使用with语句读写文件.html#id3">代码演示</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.使用with语句读写文件.html#id4">整个运行过程如下：</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#id5">9.3.3. 使用 with 处理文件打开</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#with-python-3">9.3.4. 使用with忽视异常(仅限Python 3)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.使用with语句读写文件.html#id6">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#id7">9.3.5. 同时打开多个文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#id8">9.3.6. 使用with读取文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#id9">9.3.7. 同时开启2个文件修改后改名</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#copy">9.3.8. 模拟copy文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#id10">9.3.9. 模拟copy二进制（图片、音影）文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#id11">9.3.10. 上下文管理器介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#open">9.3.11. 定义一个类似open函数的上下文管理器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#id12">9.3.12. 文件操作,读写实现用户注册登录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.使用with语句读写文件.html#id13">9.3.13. 总结</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04.高级文件操作.html">9.4. 高级文件操作</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#os">9.4.1. os模块常用的文件处理函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#id2">9.4.2. os模块常用的目录处理函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#os-path">9.4.3. os.path模块常用函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#id3">9.4.4. 文件属性信息转换 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#exists">9.4.5. exists()检查文件是否存在</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#isfile">9.4.6. isfile()检测文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#copy">9.4.7. copy()进行复制文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#id4">9.4.8. 重命名文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#id5">9.4.9. os.path模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#id6">9.4.10. 永久删除文件或文件夹</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#bif">9.4.11. 操作文件目录相关BIF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#id7">9.4.12. 使用案例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#id8">9.4.13. 文件赋权示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.高级文件操作.html#id9">9.4.14. 文件内容管理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.高级文件操作.html#md5">MD5校验比较</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.高级文件操作.html#id10">找到目录下的重复文件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05.目录操作.html">9.5. 目录操作</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05.目录操作.html#osos-path">9.5.1. 初探os和os.path模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.目录操作.html#id2">9.5.2. 创建目录</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05.目录操作.html#id3">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05.目录操作.html#id4">9.5.3. 删除目录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.目录操作.html#id5">9.5.4. 遍历目录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.目录操作.html#fnmatch">9.5.5. 使用fnmatch找到指定的文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.目录操作.html#glob">9.5.6. 使用glob找到指定的文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.目录操作.html#id6">9.5.7. 操作文件目录的函数案例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="06.目录迭代的两种方式.html">9.6. 目录迭代的两种方式</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="06.目录迭代的两种方式.html#id2">9.6.1. 方式一</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.目录迭代的两种方式.html#id3">9.6.2. 方式二</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.目录迭代的两种方式.html#id4">9.6.3. 遍历文件下的所有目录</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="06.目录迭代的两种方式.html#id5">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="06.目录迭代的两种方式.html#id6">9.6.4. 文件属性浏览</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="07.批量文件重命名.html">9.7. 批量文件重命名</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="07.批量文件重命名.html#id2">9.7.1. 代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="08.读取文件向xls中写入姓名和考号.html">9.8. 读取文件向xls中写入姓名和考号</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="08.读取文件向xls中写入姓名和考号.html#id1">9.8.1. 先读取出内容,在写入xls中</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="08.读取文件向xls中写入姓名和考号.html#id2">代码示例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="09.获取当前的路径.html">9.9. 获取当前的路径</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10.StringIO和BytesIO用法.html">9.10. StringIO和BytesIO用法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="10.StringIO和BytesIO用法.html#stringio">9.10.1. StringIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="10.StringIO和BytesIO用法.html#id1">代码示例 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.StringIO和BytesIO用法.html#id2">像读文件一样的使用StringIO</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="10.StringIO和BytesIO用法.html#bytesio">9.10.2. BytesIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="10.StringIO和BytesIO用法.html#id3">像读文件一样的使用BytesIO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="11.fileinput模块操作文件.html">9.11. fileinput模块操作文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12.shutil操作文件.html">9.12. shutil操作文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13.文件和流.html">9.13. 文件和流</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="13.文件和流.html#stdin">9.13.1. 1.stdin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.文件和流.html#stdout">9.13.2. 2.stdout将输出的内容保存到文件中</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.文件和流.html#stderr">9.13.3. 3.stderr记录输出异常信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.文件和流.html#java">9.13.4. 模拟Java的输入、输出流</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.文件和流.html#id2">9.13.5. 浏览文件属性</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="14.二进制文件的读写.html">9.14. 二进制文件的读写</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15.小试牛刀-批量文件修改后缀名.html">9.15. 小试牛刀-批量文件修改后缀名</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="15.小试牛刀-批量文件修改后缀名.html#id2">9.15.1. 代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="16.使用python管理压缩包.html">9.16. 使用python管理压缩包</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="16.使用python管理压缩包.html#tarfiletar">9.16.1. 使用tarfile库读取和创建tar包</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="16.使用python管理压缩包.html#tar">创建tar包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.使用python管理压缩包.html#tarfile">使用tarfile库读取与创建压缩包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.使用python管理压缩包.html#id1">备份指定文件到压缩包中</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="16.使用python管理压缩包.html#zipfilezip">9.16.2. 使用zipfile库创建和读取zip压缩包</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="16.使用python管理压缩包.html#zip">1.读取zip文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.使用python管理压缩包.html#id2">2.创建zip文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.使用python管理压缩包.html#id3">3.将一个文件夹备份到一个ZIP文件</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="16.使用python管理压缩包.html#shutil">9.16.3. 使用shutil创建和读取压缩包</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="16.使用python管理压缩包.html#id4">shutil创建压缩包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.使用python管理压缩包.html#id5">使用shutil读取压缩包</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01.open()函数介绍.html" class="btn btn-neutral float-right" title="9.1. Open()函数介绍" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../08.异常处理/7.测试程序.html" class="btn btn-neutral float-left" title="8.7. 测试程序" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

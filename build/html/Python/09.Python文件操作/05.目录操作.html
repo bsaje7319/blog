@@ -1,0 +1,534 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>9.5. 目录操作 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="9.6. 目录迭代的两种方式" href="06.目录迭代的两种方式.html" />
+    <link rel="prev" title="9.4. 高级文件操作" href="04.高级文件操作.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">9. Python文件操作</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.open()函数介绍.html">9.1. Open()函数介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.读写文件.html">9.2. 读写文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.使用with语句读写文件.html">9.3. 使用with语句读写文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.高级文件操作.html">9.4. 高级文件操作</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">9.5. 目录操作</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#osos-path">9.5.1. 初探os和os.path模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">9.5.2. 创建目录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">9.5.3. 删除目录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">9.5.4. 遍历目录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fnmatch">9.5.5. 使用fnmatch找到指定的文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#glob">9.5.6. 使用glob找到指定的文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">9.5.7. 操作文件目录的函数案例</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="06.目录迭代的两种方式.html">9.6. 目录迭代的两种方式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.批量文件重命名.html">9.7. 批量文件重命名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.读取文件向xls中写入姓名和考号.html">9.8. 读取文件向xls中写入姓名和考号</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.获取当前的路径.html">9.9. 获取当前的路径</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.StringIO和BytesIO用法.html">9.10. StringIO和BytesIO用法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.fileinput模块操作文件.html">9.11. fileinput模块操作文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.shutil操作文件.html">9.12. shutil操作文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.文件和流.html">9.13. 文件和流</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.二进制文件的读写.html">9.14. 二进制文件的读写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.小试牛刀-批量文件修改后缀名.html">9.15. 小试牛刀-批量文件修改后缀名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.使用python管理压缩包.html">9.16. 使用python管理压缩包</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">9. Python文件操作</a> &raquo;</li>
+        
+      <li>9.5. 目录操作</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/09.Python文件操作/05.目录操作.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id7">目录操作</a><ul>
+<li><a class="reference internal" href="#osos-path" id="id8">初探os和os.path模块</a></li>
+<li><a class="reference internal" href="#id2" id="id9">创建目录</a><ul>
+<li><a class="reference internal" href="#id3" id="id10">代码示例</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4" id="id11">删除目录</a></li>
+<li><a class="reference internal" href="#id5" id="id12">遍历目录</a></li>
+<li><a class="reference internal" href="#fnmatch" id="id13">使用fnmatch找到指定的文件</a></li>
+<li><a class="reference internal" href="#glob" id="id14">使用glob找到指定的文件</a></li>
+<li><a class="reference internal" href="#id6" id="id15">操作文件目录的函数案例</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id7">9.5. 目录操作</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="osos-path">
+<h2><a class="toc-backref" href="#id8">9.5.1. 初探os和os.path模块</a><a class="headerlink" href="#osos-path" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>os模块是python 内置与操作系统功能和文件系统相关的模块，
+该模块中的语句的执行结果通常与操作系统有关
+os.path模块
+
+import os
+print(os.name)      #获取操作系统信息
+print(os.linesep)      #获取操作系统操作符
+print(os.path.abspath(&quot;D:\GitHub\\21天python\python IO&quot;))
+print(os.path.join(r&#39;D:\GitHub&#39;,r&#39;demo\test.txt&#39;))
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id9">9.5.2. 创建目录</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id10">代码示例</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c1">#os.mkdir(path=None,mode=None)</span>
+<span class="c1">#os.mkdir(&quot;D:\\deam&quot;)        #创建目录，如果目录存在，会抛出异常</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">if not os.path.exists(&quot;D:\\deam&quot;):</span>
+<span class="sd">    os.mkdir(&quot;D:\\deam&quot;)</span>
+<span class="sd">else:</span>
+<span class="sd">    print(&quot;该目录已经存在！！！！&quot;)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+<span class="c1">#创建一个递归函数，用于创建目录</span>
+<span class="k">def</span> <span class="nf">mkdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>    <span class="c1">#创建一个递归函数用于创建目录</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>  <span class="c1">#判断是否为路径</span>
+        <span class="n">mkdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>      <span class="c1">#创建目录</span>
+
+<span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;D:</span><span class="se">\\</span><span class="s1">deam</span><span class="se">\\</span><span class="s1">test</span><span class="se">\\</span><span class="s1">aaa&#39;</span><span class="p">)</span>
+
+
+<span class="c1">#创建多级目录的函数</span>
+<span class="c1">#os.makedirs()</span>
+<span class="sd">&quot;&quot;&quot;makedirs(name [, mode=0o777][, exist_ok=False])&quot;&quot;&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">deam</span><span class="se">\\</span><span class="s2">test</span><span class="se">\\</span><span class="s2">bbb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id11">9.5.3. 删除目录</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>代码示例</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1">#删除目录</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span><span class="nn">shutil</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">if os.path.exists(&quot;D:\deam\\test\\aaa&quot;):</span>
+<span class="sd">    os.rmdir(&quot;D:\deam\\test\\aaa&quot;)</span>
+<span class="sd">else:</span>
+<span class="sd">    print(&quot;目录不存在！！！&quot;)</span>
+
+<span class="sd">if os.path.exists(&quot;D:\deam\\test\\bbb&quot;):</span>
+<span class="sd">    os.rmdir(&quot;D:\deam\\test\\bbb&quot;)</span>
+<span class="sd">else:</span>
+<span class="sd">    print(&quot;目录不存在！！！&quot;)</span>
+
+<span class="sd">if os.path.exists(&quot;D:\deam&quot;):</span>
+<span class="sd">    os.rmdir(&quot;D:\\deam&quot;)</span>
+<span class="sd">else:</span>
+<span class="sd">    print(&quot;目录不存在！！！&quot;)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;D:\deam&quot;</span>
+<span class="n">aaa_path</span> <span class="o">=</span> <span class="s2">&quot;D:\deam</span><span class="se">\\</span><span class="s2">test</span><span class="se">\\</span><span class="s2">aaa&quot;</span>
+<span class="n">bbb_path</span> <span class="o">=</span> <span class="s2">&quot;D:\deam</span><span class="se">\\</span><span class="s2">test</span><span class="se">\\</span><span class="s2">bbb&quot;</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">aaa_path</span><span class="p">):</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="s2">&quot;D:\deam</span><span class="se">\\</span><span class="s2">test</span><span class="se">\\</span><span class="s2">aaa&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;目录不存在！！！&quot;</span><span class="p">)</span>
+
+<span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id12">9.5.4. 遍历目录</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>代码示例</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c1">#os.walk(top, topdown=True, onerror=None, followlinks=False)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">   dirpath, dirnames, filenames</span>
+
+<span class="sd">    dirpath is a string, the path to the directory.</span>
+<span class="sd">    dirnames is a list of the names of the subdirectories in dirpath (excluding &#39;.&#39; and &#39;..&#39;).</span>
+<span class="sd">    filenames is a list of the names of the non-directory files in dirpath.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">r&quot;D:\Cisco_iso&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;【&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="s2">&quot;】目录下包含的文件和目录：&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">root</span><span class="p">,</span><span class="n">dirs</span><span class="p">,</span><span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">topdown</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>  <span class="c1">#遍历指定目录</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>      <span class="c1">#输出遍历到的目录</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>      <span class="c1">#输出遍历到的文件</span>
+</pre></div>
+</div>
+<p>eg</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">CF</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+<span class="n">CF_listdir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span> <span class="n">CF</span> <span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">CF</span><span class="o">+</span><span class="s2">&quot;/newFolder&quot;</span><span class="p">)</span>       <span class="c1">#创建文件夹</span>
+<span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">CF</span><span class="o">+</span><span class="s2">&quot;/newFolder1&quot;</span><span class="p">)</span>  <span class="c1">#创建文件夹</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">CF</span><span class="o">+</span><span class="s2">&quot;/newFolder1&quot;</span><span class="p">,</span><span class="n">CF</span><span class="o">+</span><span class="s2">&quot;/renewFolder&quot;</span><span class="p">)</span> <span class="c1">#更名</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;当前文件夹：&quot;</span><span class="o">+</span><span class="n">CF</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;文件夹中的文件与文件夹：</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">CF_listdir</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fnmatch">
+<h2><a class="toc-backref" href="#id13">9.5.5. 使用fnmatch找到指定的文件</a><a class="headerlink" href="#fnmatch" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/19 20:46</span>
+<span class="c1"># filename: fnmatch模块.py</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">fnmatch</span>
+
+<span class="n">fnmatch1</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">fnmatch</span><span class="o">.</span><span class="n">fnmatch</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;*.txt&quot;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnmatch1</span><span class="p">)</span>
+
+<span class="n">fnmatch2</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">fnmatch</span><span class="o">.</span><span class="n">fnmatch</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;[a-z]*&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnmatch2</span><span class="p">)</span>
+
+<span class="n">fnmatch3</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">fnmatch</span><span class="o">.</span><span class="n">fnmatch</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;[a-z]?.txt&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnmatch3</span><span class="p">)</span>
+
+<span class="n">fnmatch4</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">fnmatch</span><span class="o">.</span><span class="n">fnmatch</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;[!a-z]*&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fnmatch4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="glob">
+<h2><a class="toc-backref" href="#id14">9.5.6. 使用glob找到指定的文件</a><a class="headerlink" href="#glob" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/19 20:57</span>
+<span class="c1"># filename: glob模块.py</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">使用glob以后，不需要调用os.listdir获取文件列表，直接通过模式匹配即可。</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.txt&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;[a-z]?.txt&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;[!a-z]?.txt&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id15">9.5.7. 操作文件目录的函数案例</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/19 21:16</span>
+<span class="c1"># filename: main.py</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">fnmatch</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="k">def</span> <span class="nf">is_file_match</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">patterns</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">patterns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">fnmatch</span><span class="o">.</span><span class="n">fnmatch</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">pattern</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">find_specific_files</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">patterns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">],</span> <span class="n">exclude_dirs</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">is_file_match</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">patterns</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">exclude_dirs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dirnames</span><span class="p">:</span>
+                <span class="n">dirnames</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># 查到目录下的所有文件</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">find_specific_files</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="c1"># 查找目录下的所有py和txt文件</span>
+    <span class="n">patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;*.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;*.py&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">find_specific_files</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">,</span> <span class="n">patterns</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="c1"># 查找目录下除了dir目录以外其他目录下的所有文件</span>
+    <span class="n">patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;*.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;*.py&#39;</span><span class="p">]</span>
+    <span class="n">exclude_dirs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dir&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">find_specific_files</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">,</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">exclude_dirs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="c1"># 找到某个目录及子目录下最老的十个文件</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">find_specific_files</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">)}</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">])[:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+    <span class="c1"># 找到某个目录及子目录下，所有文件名包含“python”的文件</span>
+    <span class="n">file2</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">find_specific_files</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">,</span> <span class="n">patterns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;*python*&#39;</span><span class="p">])]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">file2</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+    <span class="c1"># 找到某个目录及子目录下，排除.git子目录以后所有的Python文件</span>
+    <span class="n">file3</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">find_specific_files</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">,</span> <span class="n">patterns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;*.py&#39;</span><span class="p">],</span> <span class="n">exclude_dirs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;.git&#39;</span><span class="p">])]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">file3</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+    <span class="c1"># 删除某个目录及子目录下的所有pyc文件</span>
+    <span class="n">file4</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">find_specific_files</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">,</span> <span class="n">patterns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;*.pyc&#39;</span><span class="p">])]</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">file4</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="06.目录迭代的两种方式.html" class="btn btn-neutral float-right" title="9.6. 目录迭代的两种方式" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="04.高级文件操作.html" class="btn btn-neutral float-left" title="9.4. 高级文件操作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

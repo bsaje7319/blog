@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>14.8. 使用PyInstaller生成可执行程序 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="14.9. 用py2exe生成可执行程序" href="09.用py2exe生成可执行程序.html" />
+    <link rel="prev" title="14.7. Excel操作XlsxWriter模块" href="07.Excel操作XlsxWriter模块.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">14. Python 三方库学习</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.psutil模块.html">14.1. psutil模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html">14.2. paramiko模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.IPy模块.html">14.3. IPy模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.dnspython模块.html">14.4. DNS处理模块dnspython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.difflib文本比较模块.html">14.5. difflib文本比较模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.pycurl探测web服务各项指标.html">14.6. pycurl探测web服务状态</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html">14.7. Excel操作XlsxWriter模块</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">14.8. 使用PyInstaller生成可执行程序</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">14.8.1. 安装PyInstaller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">14.8.2. 生成可执行程序</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="09.用py2exe生成可执行程序.html">14.9. 用py2exe生成可执行程序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.用cx_freeze生成可执行文件.html">14.10. 用cx_freeze生成可执行文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.使用python定时执行任务.html">14.11. 使用python定时执行任务</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.Python3读写Excel文件.html">14.12. Python3读写Excel文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Python操作Rabbitmq详解.html">14.13. Python操作Rabbitmq详解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.打包和发布.html">14.14. 打包和发布</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html">14.15. Jinja2模板</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">14. Python 三方库学习</a> &raquo;</li>
+        
+      <li>14.8. 使用PyInstaller生成可执行程序</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/14.Python三方库/08.使用PyInstaller生成可执行程序.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#pyinstaller" id="id4">使用PyInstaller生成可执行程序</a><ul>
+<li><a class="reference internal" href="#id1" id="id5">安装PyInstaller</a></li>
+<li><a class="reference internal" href="#id2" id="id6">生成可执行程序</a><ul>
+<li><a class="reference internal" href="#id3" id="id7">打包一个大型项目</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="pyinstaller">
+<h1><a class="toc-backref" href="#id4">14.8. 使用PyInstaller生成可执行程序</a><a class="headerlink" href="#pyinstaller" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id5">14.8.1. 安装PyInstaller</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyinstaller</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id6">14.8.2. 生成可执行程序</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Pyinstaller工具的命令语法如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>pyinstaller 选项 Python源文件
+
+不管这个Pyhton应用是单文件的应用，还是多文件的应用，只要在使用pyinstaller命令时编译作为程序入口的Python程序即可。
+</pre></div>
+</div>
+<p><img alt="image0" src="../../_images/pyinstaller001.png" /></p>
+<p><img alt="image1" src="../../_images/pyinstaller0003.png" /></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>pyinstaller -F -w command_test.py
+
+-F 选项指定生成单个的可执行程序，
+-w 选项指定生成图形用户界面程序（不需要命令行界面）
+</pre></div>
+</div>
+<p><img alt="image2" src="../../_images/pyinstaller0004.png" /></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>pyinstaller -D -w command_test.py
+-D 选项产生一个目录（包含多个文件）作为可执行程序
+</pre></div>
+</div>
+<p><img alt="image3" src="../../_images/pyinstaller00005.png" /></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>1.打包多个py文件并且去除cmd黑框
+
+格式：pyinstaller.exe -F 路径\文件名.py 路径\文件名.py --noconsole
+
+
+
+在我们打包的时候：如果是直接指定python文件进行pyinstaller打包的话，需要添加--noconsole
+例如：pyinstaller -F mycode.py --noconsole
+
+或者如下
+pyinstaller -F -w mycode.py （-w就是取消窗口）
+
+
+pyinstaller -D code.py
+pyinstaller -F code.py
+pyinstaller -w -F code.py
+</pre></div>
+</div>
+<p>pyinstaller打包教程</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>方法如下：
+
+1.确保已安装python解释器
+
+2.确认pip是否是最新版本
+
+python -m pip install --upgrade pip
+3.安装pyinstaller
+
+pip install pyinstaller
+4.使用pyinstaller打包程序
+
+在要打包的python文件的目录下执行如下命令：
+
+pyinstaller -F -i res\app.ico 你的python文件名.py
+其中res目录为你的项目文件下的资源目录，项目中用到的图片均放置在里面，其中app.ico是生成你的可执行文件的图标。
+
+5.拷贝资源文件目录res到生成目录下的dist目录下
+执行dist目录下的exe文件，打包完成。
+
+
+6.如果你想加个图标、取消运行时跳出控制台:
+python pyinstaller.py  -w  --onefile --icon=&quot;my.ico&quot; sspw.py
+</pre></div>
+</div>
+<p>后记：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>1.程序设置自定义图标：pyinstaller -F -i ico_path  py_path
+首先需要下载一张正常的ico，不能用直接修改后缀的。
+下载图片：　　  https://www.easyicon.net
+图片改为ico:　　http://www.ico.la/
+输入命令 pyinstaller -F -i &quot;demo.ico&quot; &quot;main.py&quot;
+
+2.报错提示：
+pyinstaller -F -i &quot;demo.ico&quot; &quot;main.py&quot; 命令格式一定是先图标路径，再程序路径。
+路径最好为英文，没有中文字符；脚本名称里没有特殊字符如 .
+使用utf8编码
+图标文件必须是正常格式，不能直接更改后缀。
+tuble index out of range ---》pyinstaller版本尚未支持python的版本
+
+3.窗口程序
+使用 pyinstaller -F -w  -i ico_path  py_path ，这样脚本不会弹出命令窗，前提是用了GUI库.
+
+4.导入模块问题
+pyinstaller -F -w  -i  --hidden-import queue ico_path  py_path 加上选项
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id7">打包一个大型项目</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyinstaller</span></code></p>
+<p>项目结构图</p>
+<p><img alt="image4" src="../../_images/pyinstaller-python.png" /></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># 可以使用 pyi-makespec 命令生成规范文件，本项目的主模块是app_main.py,使用命令如下：
+pyi-makespec app_main.py
+
+# 如果要加上图标，打包成一个单一文件，使用如下：
+pyi-makespec -F -i D:\downloads\cat001.ico app_main.py
+
+可以通过pyi-makespec demo.py来生成demo.spec文件。
+</pre></div>
+</div>
+<p>打包图标如果出现如下报错</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">from_buffer</span><span class="p">()</span> <span class="n">cannot</span> <span class="k">return</span> <span class="n">the</span> <span class="n">address</span> <span class="n">of</span> <span class="n">the</span> <span class="n">raw</span> <span class="n">string</span> <span class="n">within</span> <span class="n">a</span> <span class="nb">str</span> <span class="ow">or</span> <span class="n">unicode</span> <span class="ow">or</span> <span class="nb">bytearray</span> <span class="nb">object</span>
+</pre></div>
+</div>
+<p>网上看了一下，一般setuptools运行完就可以打包程序了，可能这是python3.5的bug？通过大神一顿操作分析，我得知问题在于日志信息中的cffi报错，于是安装了cffi</p>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">cffi</span></code></p>
+<p>然后在当前目录下生成app_main.spec文件。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- mode: python -*-</span>
+
+<span class="n">block_cipher</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">([</span><span class="s1">&#39;app_main.py&#39;</span><span class="p">],</span>
+             <span class="n">pathex</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;D:</span><span class="se">\\</span><span class="s1">GitHub</span><span class="se">\\</span><span class="s1">PetStore&#39;</span><span class="p">],</span>
+             <span class="n">binaries</span><span class="o">=</span><span class="p">[],</span>
+             <span class="n">datas</span><span class="o">=</span><span class="p">[],</span>
+             <span class="o">............</span>
+</pre></div>
+</div>
+<p>dates变量可以设置要添加的资源文件，修改app_main.spec文件内容如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- mode: python -*-</span>
+
+<span class="n">block_cipher</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">added_files</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="s1">&#39;resources&#39;</span><span class="p">,</span> <span class="s1">&#39;resources&#39;</span><span class="p">),</span>
+                <span class="p">(</span><span class="s1">&#39;config.ini&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+                <span class="p">]</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">([</span><span class="s1">&#39;app_main.py&#39;</span><span class="p">],</span>
+             <span class="n">pathex</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;D:</span><span class="se">\\</span><span class="s1">GitHub</span><span class="se">\\</span><span class="s1">PetStore&#39;</span><span class="p">],</span>
+             <span class="n">binaries</span><span class="o">=</span><span class="p">[],</span>
+             <span class="n">datas</span><span class="o">=</span><span class="n">added_files</span><span class="p">,</span>
+             <span class="o">....................</span>
+</pre></div>
+</div>
+<p>发布成功之后，exe文件生成目录：PetStore:raw-latex:<cite>dist</cite>_main下
+app_main.exe</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pyinstaller</span> <span class="n">app_main</span><span class="o">.</span><span class="n">spec</span>
+</pre></div>
+</div>
+<p><img alt="image5" src="../../_images/pyinstaller00001.png" /></p>
+<p><img alt="image6" src="../../_images/pyinstaller00002.png" /></p>
+<p><a class="reference external" href="http://www.xz577.com/j/24847.html">python打包exe能运行但是没有结果解决方案</a></p>
+<p>参考文献：</p>
+<p><a class="reference external" href="https://shazhenyu.blog.csdn.net/article/details/104054250">https://shazhenyu.blog.csdn.net/article/details/104054250</a></p>
+<p><a class="reference external" href="http://blog.itpub.net/26736162/viewspace-2644904/">http://blog.itpub.net/26736162/viewspace-2644904/</a></p>
+<p><a class="reference external" href="https://www.cnblogs.com/gopythoner/p/6337543.html">https://www.cnblogs.com/gopythoner/p/6337543.html</a></p>
+<p><a class="reference external" href="https://www.jianshu.com/p/48f6dea265eb">https://www.jianshu.com/p/48f6dea265eb</a></p>
+<p>使用pyinstaller将pyqt5打包成exe格式</p>
+<p><a class="reference external" href="https://blog.csdn.net/qq_40587575/article/details/85076934">https://blog.csdn.net/qq_40587575/article/details/85076934</a></p>
+<p><a class="reference external" href="https://blog.csdn.net/wolencoder/article/details/80557311">https://blog.csdn.net/wolencoder/article/details/80557311</a></p>
+<p><a class="reference external" href="https://blog.csdn.net/qq_27197395/article/details/83411114">https://blog.csdn.net/qq_27197395/article/details/83411114</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="09.用py2exe生成可执行程序.html" class="btn btn-neutral float-right" title="14.9. 用py2exe生成可执行程序" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="07.Excel操作XlsxWriter模块.html" class="btn btn-neutral float-left" title="14.7. Excel操作XlsxWriter模块" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Linux+Nginx+uWSGI配置 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="建立安全的HTTPS网站" href="03.建立安全的HTTPS网站.html" />
+    <link rel="prev" title="关系数据库建模" href="01.关系数据库建模.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">22. Python框架学习</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02.Flask_Web框架/index.html">22.2. Flask_Web框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">22.4. Django学习</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="index.html">22.4.1. Python高效开发实战-Django</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../20.简单的博客系统/index.html">22.4.2. 简单的博客系统</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01.安装DjangoWeb框架.html">22.4.3. 安装DjangoWeb框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../02.Django框架的使用.html">22.4.4. Django框架的使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../03.Django流程跑通.html">22.4.5. Django流程跑通</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../07.实战演练-开发Django站点.html">22.4.6. 实战演练-开发Django站点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../08.Django模型层.html">22.4.7. Django模型层</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="../../index.html">22. Python框架学习</a> &raquo;</li>
+        
+          <li><a href="../index.html">22.4. Django学习</a> &raquo;</li>
+        
+          <li><a href="index.html">22.4.1. Python高效开发实战-Django</a> &raquo;</li>
+        
+      <li>Linux+Nginx+uWSGI配置</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/Python/24.Python框架学习/04.Django学习/10.Python高效开发实战-Django/02.Linux+Nginx+uWSGI配置.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#linux-nginx-uwsgi" id="id1">Linux+Nginx+uWSGI配置</a><ul>
+<li><a class="reference internal" href="#nginx" id="id2">安装Nginx</a></li>
+<li><a class="reference internal" href="#uwsgi" id="id3">安装uWSGI及配置</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="linux-nginx-uwsgi">
+<h1><a class="toc-backref" href="#id1">Linux+Nginx+uWSGI配置</a><a class="headerlink" href="#linux-nginx-uwsgi" title="Permalink to this headline">¶</a></h1>
+<p>Nginx是Python在Linx环境下的首选Web服务器之一。</p>
+<div class="section" id="nginx">
+<h2><a class="toc-backref" href="#id2">安装Nginx</a><a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h2>
+<p>Centos7 环境：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">epel</span><span class="o">-</span><span class="n">release</span> <span class="o">-</span><span class="n">y</span>
+<span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">nginx</span>
+</pre></div>
+</div>
+<p>Nginx相关程序及文件的路径</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>* 程序文件：  /usr/sbin/nginx目录中
+* 全局配置文件： /etc/nginx/nginx.conf
+* 访问日志文件：/var/log/nginx/access.log
+* 错误日志文件：/var/log/ngoinx/error.log
+* 站点配置文件：/etc/nginx/sites-enabled/default
+</pre></div>
+</div>
+<p>安装好后可以通过如下命令启动Nginx服务器</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 启动nginx服务</span>
+<span class="n">service</span> <span class="n">nginx</span> <span class="n">start</span>
+
+<span class="c1"># 停止nginx服务</span>
+<span class="n">service</span> <span class="n">nginx</span> <span class="n">stop</span>
+
+<span class="c1"># 查看Nginx服务的状态</span>
+<span class="n">service</span> <span class="n">nginx</span> <span class="n">status</span>
+
+<span class="c1"># 重启Nginx服务器</span>
+<span class="n">service</span> <span class="n">nginx</span> <span class="n">restart</span>
+</pre></div>
+</div>
+<p>Nginx配置文件</p>
+<p>nginx.conf</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="p">;</span>
+<span class="n">worker_processes</span> <span class="mi">4</span><span class="p">;</span>
+<span class="n">pid</span> <span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nginx</span><span class="o">.</span><span class="n">pid</span><span class="p">;</span>
+
+<span class="n">events</span> <span class="p">{</span>
+    <span class="n">worker_connections</span> <span class="mi">768</span><span class="p">;</span>
+    <span class="c1"># multi_accept on;</span>
+<span class="p">}</span>
+
+<span class="n">http</span> <span class="p">{</span>
+
+    <span class="c1">##</span>
+    <span class="c1"># Basic Settings</span>
+    <span class="c1">##</span>
+
+    <span class="n">sendfile</span> <span class="n">on</span><span class="p">;</span>
+    <span class="n">tcp_nopush</span> <span class="n">on</span><span class="p">;</span>
+    <span class="n">tcp_nodelay</span> <span class="n">on</span><span class="p">;</span>
+    <span class="n">keepalive_timeout</span> <span class="mi">65</span><span class="p">;</span>
+    <span class="n">types_hash_max_size</span> <span class="mi">2048</span><span class="p">;</span>
+    <span class="c1"># server_tokens off;</span>
+
+    <span class="c1"># server_names_hash_bucket_size 64;</span>
+    <span class="c1"># server_name_in_redirect off;</span>
+
+    <span class="n">include</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">mime</span><span class="o">.</span><span class="n">types</span><span class="p">;</span>
+    <span class="n">default_type</span> <span class="n">application</span><span class="o">/</span><span class="n">octet</span><span class="o">-</span><span class="n">stream</span><span class="p">;</span>
+
+    <span class="c1">##</span>
+    <span class="c1"># Logging Settings</span>
+    <span class="c1">##</span>
+
+    <span class="n">access_log</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">access</span><span class="o">.</span><span class="n">log</span><span class="p">;</span>
+    <span class="n">error_log</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">error</span><span class="o">.</span><span class="n">log</span><span class="p">;</span>
+
+    <span class="c1">##</span>
+    <span class="c1"># Gzip Settings</span>
+    <span class="c1">##</span>
+
+    <span class="n">gzip</span> <span class="n">on</span><span class="p">;</span>
+    <span class="n">gzip_disable</span> <span class="s2">&quot;msie6&quot;</span><span class="p">;</span>
+
+    <span class="c1"># gzip_vary on;</span>
+    <span class="c1"># gzip_proxied any;</span>
+    <span class="c1"># gzip_comp_level 6;</span>
+    <span class="c1"># gzip_buffers 16 8k;</span>
+    <span class="c1"># gzip_http_version 1.1;</span>
+    <span class="c1"># gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;</span>
+
+    <span class="c1">##</span>
+    <span class="c1"># nginx-naxsi config</span>
+    <span class="c1">##</span>
+    <span class="c1"># Uncomment it if you installed nginx-naxsi</span>
+    <span class="c1">##</span>
+
+    <span class="c1">#include /etc/nginx/naxsi_core.rules;</span>
+
+    <span class="c1">##</span>
+    <span class="c1"># nginx-passenger config</span>
+    <span class="c1">##</span>
+    <span class="c1"># Uncomment it if you installed nginx-passenger</span>
+    <span class="c1">##</span>
+
+    <span class="c1">#passenger_root /usr;</span>
+    <span class="c1">#passenger_ruby /usr/bin/ruby;</span>
+
+    <span class="c1">##</span>
+    <span class="c1"># Virtual Host Configs</span>
+    <span class="c1">##</span>
+
+    <span class="n">include</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/*.</span><span class="n">conf</span><span class="p">;</span>
+    <span class="n">include</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">enabled</span><span class="o">/*</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="c1">#mail {</span>
+<span class="c1">#   # See sample authentication script at:</span>
+<span class="c1">#   # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript</span>
+<span class="c1">#</span>
+<span class="c1">#   # auth_http localhost/auth.php;</span>
+<span class="c1">#   # pop3_capabilities &quot;TOP&quot; &quot;USER&quot;;</span>
+<span class="c1">#   # imap_capabilities &quot;IMAP4rev1&quot; &quot;UIDPLUS&quot;;</span>
+<span class="c1">#</span>
+<span class="c1">#   server {</span>
+<span class="c1">#       listen     localhost:110;</span>
+<span class="c1">#       protocol   pop3;</span>
+<span class="c1">#       proxy      on;</span>
+<span class="c1">#   }</span>
+<span class="c1">#</span>
+<span class="c1">#   server {</span>
+<span class="c1">#       listen     localhost:143;</span>
+<span class="c1">#       protocol   imap;</span>
+<span class="c1">#       proxy      on;</span>
+<span class="c1">#   }</span>
+<span class="c1">#}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="uwsgi">
+<h2><a class="toc-backref" href="#id3">安装uWSGI及配置</a><a class="headerlink" href="#uwsgi" title="Permalink to this headline">¶</a></h2>
+<p>uWSGIshi WSGI在Linux中的一种实现，这样开发者就无需资金编写WSGI
+Server了。</p>
+<p>使用pip命令可以直接安装uWSGI：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">uwsgi</span>
+</pre></div>
+</div>
+<p>1.运行uwsgi命令启动WSGI服务器</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>----http-socket 指定监听端口
+--wsgi-file 指定服务器端的程序名
+
+[root@172-16-72-3 template]# uwsgi --http-socket=9090 --wsgi-file webapp.py
+*** Starting uWSGI 2.0.18 (64bit) on [Thu Dec 26 07:47:15 2019] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-39) on 26 December 2019 07:44:33
+os: Linux-3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019
+nodename: 172-16-72-3
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 8
+current working directory: /home/centos/template
+detected binary path: /usr/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) ***
+*** WARNING: you are running uWSGI witho
+</pre></div>
+</div>
+<p>uwsgi 还允许通过一个配置文件设置这些配置参数，编写uwsgi.ini配置文件如下</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">uwsgi</span><span class="p">]</span>
+<span class="n">socket</span> <span class="o">=</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span> <span class="mi">3011</span>
+<span class="n">wsgi</span><span class="o">-</span><span class="n">file</span> <span class="o">=</span> <span class="n">webapp</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>启动uWSGI时直接指定配置文件:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">3</span> <span class="n">template</span><span class="p">]</span><span class="c1"># uwsgi uwsgi.ini</span>
+</pre></div>
+</div>
+<p>如下配置文件用于Socket方式启动一个uWSGI服务器，并配置了进程和线程数</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">uwsgi</span><span class="p">]</span>
+<span class="n">socket</span> <span class="o">=</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span> <span class="mi">3011</span>
+<span class="n">wsgi</span><span class="o">-</span><span class="n">file</span> <span class="o">=</span> <span class="n">webapp</span><span class="o">.</span><span class="n">py</span>
+<span class="n">process</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">threads</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>2.集成Nginx与uWSGI</p>
+<p>uWSGI接口：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">uwsgi</span><span class="p">]</span>
+<span class="n">socket</span> <span class="o">=</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span> <span class="mi">3011</span>
+<span class="n">wsgi</span><span class="o">-</span><span class="n">file</span> <span class="o">=</span> <span class="n">webapp</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Nginx的站点配置文件为：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># You may add here your</span>
+<span class="c1"># server {</span>
+<span class="c1">#   ...</span>
+<span class="c1"># }</span>
+<span class="c1"># statements for each of your virtual hosts to this file</span>
+
+<span class="c1">##</span>
+<span class="c1"># You should look at the following URL&#39;s in order to grasp a solid understanding</span>
+<span class="c1"># of Nginx configuration files in order to fully unleash the power of Nginx.</span>
+<span class="c1"># http://wiki.nginx.org/Pitfalls</span>
+<span class="c1"># http://wiki.nginx.org/QuickStart</span>
+<span class="c1"># http://wiki.nginx.org/Configuration</span>
+<span class="c1">#</span>
+<span class="c1"># Generally, you will want to move this file somewhere, and start with a clean</span>
+<span class="c1"># file but keep this around for reference. Or just disable in sites-enabled.</span>
+<span class="c1">#</span>
+<span class="c1"># Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.</span>
+<span class="c1">##</span>
+
+
+
+<span class="n">server</span> <span class="p">{</span>
+    <span class="n">listen</span> <span class="mi">80</span><span class="p">;</span>
+    <span class="n">server_name</span> <span class="mf">121.12</span><span class="o">.</span><span class="mf">134.11</span><span class="p">;</span>   <span class="c1">#server ip</span>
+
+    <span class="n">location</span> <span class="o">/</span><span class="p">{</span>
+        <span class="n">uwsgi_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3011</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>可以为一个uWSGI配置多个Nginx
+Server和location，这样就轻松实现了以多个域名访问同一个Python程序</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="03.建立安全的HTTPS网站.html" class="btn btn-neutral float-right" title="建立安全的HTTPS网站" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="01.关系数据库建模.html" class="btn btn-neutral float-left" title="关系数据库建模" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

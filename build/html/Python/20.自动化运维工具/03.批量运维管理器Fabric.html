@@ -1,0 +1,739 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>18.3. 批量运维管理器Fabric &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="18.4. Ansible入门与playbook实战" href="04.Ansible入门与playbook实战.html" />
+    <link rel="prev" title="18.2. 系统批量运维管理器paramiko" href="02.系统批量运维管理器paramiko.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">18. 自动化运维工具</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.系统批量运维管理器pexpect.html">18.1. 系统批量运维管理器pexpect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.系统批量运维管理器paramiko.html">18.2. 系统批量运维管理器paramiko</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">18.3. 批量运维管理器Fabric</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">18.3.1. 简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">18.3.2. Fabric安装</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="04.Ansible入门与playbook实战.html">18.4. Ansible入门与playbook实战</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.Saltstack安装使用入门.html">18.5. Saltstack安装使用入门（自己总结）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.业务服务监控详解.html">18.6. 业务服务监控详解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Supervisor在Devops工作中的应用.html">18.7. Supervisor在Devops工作中的应用</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">18. 自动化运维工具</a> &raquo;</li>
+        
+      <li>18.3. 批量运维管理器Fabric</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/20.自动化运维工具/03.批量运维管理器Fabric.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#fabric" id="id8">批量运维管理器Fabric</a><ul>
+<li><a class="reference internal" href="#id1" id="id9">简介</a></li>
+<li><a class="reference internal" href="#id2" id="id10">Fabric安装</a><ul>
+<li><a class="reference internal" href="#id3" id="id11">查看本地与远程主机信息</a></li>
+<li><a class="reference internal" href="#id4" id="id12">动态获取远程目录列表</a></li>
+<li><a class="reference internal" href="#id5" id="id13">网关模式文件上传与执行</a></li>
+<li><a class="reference internal" href="#id6" id="id14">实例1:文件打包、上传与校验</a></li>
+<li><a class="reference internal" href="#lnmp" id="id15">部署LNMP业务服务环境</a></li>
+<li><a class="reference internal" href="#id7" id="id16">生产环境代码包发布管理</a></li>
+<li><a class="reference internal" href="#fabricapi" id="id17">Fabric常用API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="fabric">
+<h1><a class="toc-backref" href="#id8">18.3. 批量运维管理器Fabric</a><a class="headerlink" href="#fabric" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id9">18.3.1. 简介</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Fabric是基于Python2.5以上版本实现的SSH命令行工具，简化了SSH的应用程序部署及系统管理任务。提供了系统
+基础的操作组件，可以实现本地或远程shell命令，包括命令执行、文件上传、下载及完整执行日志输出等功能
+Fabric在paramiko的基础上做了更高一层的封装，操作起来会更加简单。
+
+官方网站：http://www.fabfile.org
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id10">18.3.2. Fabric安装</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>pip安装</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">fabric</span><span class="o">==</span><span class="mf">1.14</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">easy_install</span> <span class="n">fabric</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>源码安装</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">F</span><span class="o">/</span><span class="n">Fabric</span><span class="o">/</span><span class="n">Fabric</span><span class="o">-</span><span class="mf">1.8</span><span class="o">.</span><span class="mf">2.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">check</span><span class="o">-</span><span class="n">certificate</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">Fabric</span><span class="o">-</span><span class="mf">1.8</span><span class="o">.</span><span class="mf">2.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">cd</span> <span class="n">Fabric</span><span class="o">-</span><span class="mf">1.8</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">instal</span>
+</pre></div>
+</div>
+<p>eg:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">fabric.api</span> <span class="k">import</span> <span class="n">run</span>
+
+<span class="k">def</span> <span class="nf">host_type</span><span class="p">():</span>
+    <span class="n">run</span><span class="p">(</span><span class="s1">&#39;uname -s&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出信息</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@pxe</span><span class="o">-</span><span class="n">server</span> <span class="mf">03.</span><span class="n">批量运维管理器Fabric</span><span class="p">]</span><span class="c1"># fab -H 192.168.0.100 host_type</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">Executing</span> <span class="n">task</span> <span class="s1">&#39;host_type&#39;</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">run</span><span class="p">:</span> <span class="n">uname</span> <span class="o">-</span><span class="n">s</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">Login</span> <span class="n">password</span> <span class="k">for</span> <span class="s1">&#39;root&#39;</span><span class="p">:</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="n">Linux</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span>
+
+
+<span class="n">Done</span><span class="o">.</span>
+<span class="n">Disconnecting</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="o">...</span> <span class="n">done</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@runs_once</span>  <span class="c1">#主机遍历过程中，只有第一台触发此函数</span>
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id11">查看本地与远程主机信息</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">fabric.api</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">user</span><span class="o">=</span><span class="s1">&#39;root&#39;</span>
+<span class="n">env</span><span class="o">.</span><span class="n">hosts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;192.168.1.21&#39;</span><span class="p">,</span><span class="s1">&#39;192.168.1.22&#39;</span><span class="p">]</span>
+<span class="n">env</span><span class="o">.</span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;SKJh935yft#&#39;</span>
+
+<span class="nd">@runs_once</span>
+<span class="k">def</span> <span class="nf">local_task</span><span class="p">():</span>
+    <span class="n">local</span><span class="p">(</span><span class="s2">&quot;uname -a&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">remote_task</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="s2">&quot;/data/logs&quot;</span><span class="p">):</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;ls -l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出信息</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@pxe</span><span class="o">-</span><span class="n">server</span> <span class="mf">03.</span><span class="n">批量运维管理器Fabric</span><span class="p">]</span><span class="c1"># fab -f simple01.py local_task</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">Executing</span> <span class="n">task</span> <span class="s1">&#39;local_task&#39;</span>
+<span class="p">[</span><span class="n">localhost</span><span class="p">]</span> <span class="n">local</span><span class="p">:</span> <span class="n">uname</span> <span class="o">-</span><span class="n">a</span>
+<span class="n">Linux</span> <span class="n">pxe</span><span class="o">-</span><span class="n">server</span> <span class="mf">3.10</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">957.</span><span class="n">el7</span><span class="o">.</span><span class="n">x86_64</span> <span class="c1">#1 SMP Thu Nov 8 23:39:32 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span>
+
+<span class="n">Done</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@pxe</span><span class="o">-</span><span class="n">server</span> <span class="mf">03.</span><span class="n">批量运维管理器Fabric</span><span class="p">]</span><span class="c1"># fab -f simple01.py remote_task</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">Executing</span> <span class="n">task</span> <span class="s1">&#39;remote_task&#39;</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">run</span><span class="p">:</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="n">总用量</span> <span class="mi">221060</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">185540433</span> <span class="mi">8</span><span class="n">月</span>  <span class="mi">17</span> <span class="mi">21</span><span class="p">:</span><span class="mi">57</span> <span class="n">jdk</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span>  <span class="mi">40824607</span> <span class="mi">8</span><span class="n">月</span>  <span class="mi">17</span> <span class="mi">21</span><span class="p">:</span><span class="mi">57</span> <span class="n">vagrant_2</span><span class="o">.</span><span class="mf">2.4</span><span class="n">_x86_64</span><span class="o">.</span><span class="n">rpm</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span>
+
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">Executing</span> <span class="n">task</span> <span class="s1">&#39;remote_task&#39;</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">run</span><span class="p">:</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="n">总用量</span> <span class="mi">221060</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">185540433</span> <span class="mi">8</span><span class="n">月</span>  <span class="mi">17</span> <span class="mi">21</span><span class="p">:</span><span class="mi">58</span> <span class="n">jdk</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span>  <span class="mi">40824607</span> <span class="mi">8</span><span class="n">月</span>  <span class="mi">17</span> <span class="mi">21</span><span class="p">:</span><span class="mi">58</span> <span class="n">vagrant_2</span><span class="o">.</span><span class="mf">2.4</span><span class="n">_x86_64</span><span class="o">.</span><span class="n">rpm</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span>
+
+
+<span class="n">Done</span><span class="o">.</span>
+<span class="n">Disconnecting</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="o">...</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Disconnecting</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="o">...</span> <span class="n">done</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id12">动态获取远程目录列表</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">fabric.api</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">user</span><span class="o">=</span><span class="s1">&#39;root&#39;</span>
+<span class="n">env</span><span class="o">.</span><span class="n">hosts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;192.168.1.21&#39;</span><span class="p">,</span><span class="s1">&#39;192.168.1.22&#39;</span><span class="p">]</span>
+<span class="n">env</span><span class="o">.</span><span class="n">password</span><span class="o">=</span><span class="s2">&quot;SKJh935yft#&quot;</span>
+
+<span class="nd">@runs_once</span>      <span class="c1">##主机遍历过程中，只有第一台触发此函数</span>
+<span class="k">def</span> <span class="nf">input_raw</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">prompt</span><span class="p">(</span><span class="s2">&quot;please input directory name:&quot;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;/home&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">worktask</span><span class="p">(</span><span class="n">dirname</span><span class="p">):</span>
+    <span class="n">run</span><span class="p">(</span><span class="s2">&quot;ls -l &quot;</span><span class="o">+</span><span class="n">dirname</span><span class="p">)</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">go</span><span class="p">():</span>       <span class="c1">#限定只有go函数对fab命令可见</span>
+    <span class="n">getdirname</span> <span class="o">=</span> <span class="n">input_raw</span><span class="p">()</span>
+    <span class="n">worktask</span><span class="p">(</span><span class="n">getdirname</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出信息</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@pxe</span><span class="o">-</span><span class="n">server</span> <span class="mf">03.</span><span class="n">批量运维管理器Fabric</span><span class="p">]</span><span class="c1"># fab -f simple02.py go</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">Executing</span> <span class="n">task</span> <span class="s1">&#39;go&#39;</span>
+<span class="n">please</span> <span class="nb">input</span> <span class="n">directory</span> <span class="n">name</span><span class="p">:</span> <span class="p">[</span><span class="o">/</span><span class="n">home</span><span class="p">]</span> <span class="o">/</span><span class="n">root</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">run</span><span class="p">:</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">root</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="n">总用量</span> <span class="mi">4</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="o">-</span><span class="n">rw</span><span class="o">-------.</span>  <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">1863</span> <span class="mi">2</span><span class="n">月</span>  <span class="mi">13</span> <span class="mi">2019</span> <span class="n">anaconda</span><span class="o">-</span><span class="n">ks</span><span class="o">.</span><span class="n">cfg</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">14</span> <span class="n">root</span> <span class="n">root</span>  <span class="mi">184</span> <span class="mi">6</span><span class="n">月</span>   <span class="mi">4</span> <span class="mi">12</span><span class="p">:</span><span class="mi">52</span> <span class="n">docbook</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>   <span class="mi">3</span> <span class="n">root</span> <span class="n">root</span>   <span class="mi">22</span> <span class="mi">6</span><span class="n">月</span>   <span class="mi">4</span> <span class="mi">13</span><span class="p">:</span><span class="mi">13</span> <span class="n">linuxidc</span><span class="o">-</span><span class="n">vagrant</span><span class="o">-</span><span class="n">project</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span>
+
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">Executing</span> <span class="n">task</span> <span class="s1">&#39;go&#39;</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">run</span><span class="p">:</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">root</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="n">总用量</span> <span class="mi">4</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="o">-</span><span class="n">rw</span><span class="o">-------.</span>  <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">1863</span> <span class="mi">2</span><span class="n">月</span>  <span class="mi">13</span> <span class="mi">2019</span> <span class="n">anaconda</span><span class="o">-</span><span class="n">ks</span><span class="o">.</span><span class="n">cfg</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">14</span> <span class="n">root</span> <span class="n">root</span>  <span class="mi">184</span> <span class="mi">6</span><span class="n">月</span>   <span class="mi">4</span> <span class="mi">12</span><span class="p">:</span><span class="mi">52</span> <span class="n">docbook</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span> <span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>   <span class="mi">3</span> <span class="n">root</span> <span class="n">root</span>   <span class="mi">22</span> <span class="mi">6</span><span class="n">月</span>   <span class="mi">4</span> <span class="mi">13</span><span class="p">:</span><span class="mi">13</span> <span class="n">linuxidc</span><span class="o">-</span><span class="n">vagrant</span><span class="o">-</span><span class="n">project</span>
+<span class="p">[</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="p">]</span> <span class="n">out</span><span class="p">:</span>
+
+
+<span class="n">Done</span><span class="o">.</span>
+<span class="n">Disconnecting</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span><span class="o">...</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Disconnecting</span> <span class="kn">from</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.103</span><span class="o">...</span> <span class="n">done</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>通过Fabric的env对象定义网关模式，即俗称的中转、堡垒机环境。</p>
+<p>定义格式为“env.gateway=‘192.168.1.23’”，其中IP“192.168.1.23”为堡垒机IP，</p>
+<p>再结合任务函数<code class="docutils literal"><span class="pre">实现目标主机文件上传与执行</span></code>的操作</p>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id13">网关模式文件上传与执行</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">fabric.api</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fabric.context_managers</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fabric.contrib.console</span> <span class="k">import</span> <span class="n">confirm</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">user</span><span class="o">=</span><span class="s1">&#39;root&#39;</span>
+<span class="n">env</span><span class="o">.</span><span class="n">gateway</span><span class="o">=</span><span class="s1">&#39;192.168.1.23&#39;</span>      <span class="c1">#定义堡垒机IP，作为文件上传、执行的中转设备</span>
+<span class="n">env</span><span class="o">.</span><span class="n">hosts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;192.168.1.21&#39;</span><span class="p">,</span><span class="s1">&#39;192.168.1.22&#39;</span><span class="p">]</span>
+
+<span class="c1">#假如所有主机密码都不一样，可以通过env.passwords字典变量一一指定</span>
+<span class="n">env</span><span class="o">.</span><span class="n">passwords</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;root@192.168.1.21:22&#39;</span><span class="p">:</span> <span class="s1">&#39;SKJh935yft#&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;root@192.168.1.22:22&#39;</span><span class="p">:</span> <span class="s1">&#39;SKJh935yft#&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;root@192.168.1.23:22&#39;</span><span class="p">:</span> <span class="s1">&#39;KJSD9325hgs&#39;</span>   <span class="c1">#堡垒机账号信息</span>
+<span class="p">}</span>
+
+<span class="c1">#本地安装包路径</span>
+<span class="n">lpackpath</span><span class="o">=</span><span class="s2">&quot;/home/install/lnmp0.9.tar.gz&quot;</span>
+<span class="c1">#远程安装包路径</span>
+<span class="n">rpackpath</span><span class="o">=</span><span class="s2">&quot;/tmp/install&quot;</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">put_task</span><span class="p">():</span>
+    <span class="n">run</span><span class="p">(</span><span class="s2">&quot;mkdir -p /tmp/install&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">warn_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="c1">#上传安装包</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">put</span><span class="p">(</span><span class="n">lpackpath</span><span class="p">,</span> <span class="n">rpackpath</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">failed</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">confirm</span><span class="p">(</span><span class="s2">&quot;put file failed, Continue[Y/N]?&quot;</span><span class="p">):</span>
+        <span class="n">abort</span><span class="p">(</span><span class="s2">&quot;Aborting file put task!&quot;</span><span class="p">)</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">run_task</span><span class="p">():</span>
+    <span class="c1">#执行远程命令，安装lnmp环境</span>
+    <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="s2">&quot;/tmp/install&quot;</span><span class="p">):</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;tar -zxvf lnmp0.9.tar.gz&quot;</span><span class="p">)</span>
+        <span class="c1">#使用with继续继承/tmp/install目录位置状态</span>
+        <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="s2">&quot;lnmp0.9/&quot;</span><span class="p">):</span>
+            <span class="n">run</span><span class="p">(</span><span class="s2">&quot;./centos.sh&quot;</span><span class="p">)</span>
+
+<span class="nd">@task</span>
+<span class="c1">#上传、安装组合</span>
+<span class="k">def</span> <span class="nf">go</span><span class="p">():</span>
+    <span class="n">put_task</span><span class="p">()</span>
+    <span class="n">run_task</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id14">实例1:文件打包、上传与校验</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">fabric.api</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fabric.context_managers</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fabric.contrib.console</span> <span class="k">import</span> <span class="n">confirm</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">user</span><span class="o">=</span><span class="s1">&#39;root&#39;</span>
+<span class="n">env</span><span class="o">.</span><span class="n">hosts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;192.168.1.21&#39;</span><span class="p">,</span><span class="s1">&#39;192.168.1.22&#39;</span><span class="p">,</span><span class="s1">&#39;192.168.1.23&#39;</span><span class="p">]</span>
+<span class="n">env</span><span class="o">.</span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;SKJh935yft#&#39;</span>
+
+
+<span class="nd">@task</span>
+<span class="nd">@runs_once</span>
+<span class="k">def</span> <span class="nf">tar_task</span><span class="p">():</span>     <span class="c1">#本地打包任务函数，只执行一次</span>
+    <span class="k">with</span> <span class="n">lcd</span><span class="p">(</span><span class="s2">&quot;/data/logs&quot;</span><span class="p">):</span>
+        <span class="n">local</span><span class="p">(</span><span class="s2">&quot;tar -czf access.tar.gz access.log&quot;</span><span class="p">)</span>
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">put_task</span><span class="p">():</span>     <span class="c1">#上传文件任务函数</span>
+    <span class="n">run</span><span class="p">(</span><span class="s2">&quot;mkdir -p /data/logs&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="s2">&quot;/data/logs&quot;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">warn_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="c1">##put（上传）出现异常时继续执行，非终止</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">put</span><span class="p">(</span><span class="s2">&quot;/data/logs/access.tar.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;/data/logs/access.tar.gz&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">failed</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">confirm</span><span class="p">(</span><span class="s2">&quot;put file failed, Continue[Y/N]?&quot;</span><span class="p">):</span>
+            <span class="c1">##出现异常时，确认用户是否继续，（Y继续）</span>
+            <span class="n">abort</span><span class="p">(</span><span class="s2">&quot;Aborting file put task!&quot;</span><span class="p">)</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">check_task</span><span class="p">():</span>           <span class="c1">##校验文件任务函数</span>
+    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">warn_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="c1">#本地local命令需要配置capture=True才能捕获返回值</span>
+        <span class="n">lmd5</span><span class="o">=</span><span class="n">local</span><span class="p">(</span><span class="s2">&quot;md5sum /data/logs/access.tar.gz&quot;</span><span class="p">,</span><span class="n">capture</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">rmd5</span><span class="o">=</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;md5sum /data/logs/access.tar.gz&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lmd5</span><span class="o">==</span><span class="n">rmd5</span><span class="p">:</span>          <span class="c1">##对比本地及远程文件md5信息</span>
+        <span class="nb">print</span> <span class="s2">&quot;OK&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="s2">&quot;ERROR&quot;</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">go</span><span class="p">():</span>
+    <span class="n">tar_task</span><span class="p">()</span>
+    <span class="n">put_task</span><span class="p">()</span>
+    <span class="n">check_task</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>三个功能互相独立，可以分开运行</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fab</span> <span class="o">-</span><span class="n">f</span> <span class="n">simple4</span><span class="o">.</span><span class="n">py</span> <span class="n">tar_task</span> <span class="c1">#文件打包</span>
+<span class="n">fab</span> <span class="o">-</span><span class="n">f</span> <span class="n">simple4</span><span class="o">.</span><span class="n">py</span> <span class="n">put_task</span> <span class="c1">#文件上传</span>
+<span class="n">fab</span> <span class="o">-</span><span class="n">f</span> <span class="n">simple4</span><span class="o">.</span><span class="n">py</span> <span class="n">check_task</span> <span class="c1">#文件校验</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>组合在一起运行</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">fab</span> <span class="pre">-f</span> <span class="pre">simple4.py</span> <span class="pre">go</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">go</span><span class="p">():</span>
+    <span class="n">tar_task</span><span class="p">()</span>
+    <span class="n">put_task</span><span class="p">()</span>
+    <span class="n">check_task</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lnmp">
+<h3><a class="toc-backref" href="#id15">部署LNMP业务服务环境</a><a class="headerlink" href="#lnmp" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">fabric.colors</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fabric.api</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">user</span><span class="o">=</span><span class="s1">&#39;root&#39;</span>
+
+<span class="c1">#定义业务角色分组</span>
+<span class="n">env</span><span class="o">.</span><span class="n">roledefs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;webservers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;192.168.1.21&#39;</span><span class="p">,</span> <span class="s1">&#39;192.168.1.22&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;dbservers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;192.168.1.23&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">passwords</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;root@192.168.1.21:22&#39;</span><span class="p">:</span> <span class="s1">&#39;SKJh935yft#&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;root@192.168.1.22:22&#39;</span><span class="p">:</span> <span class="s1">&#39;SKJh935yft#&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;root@192.168.1.23:22&#39;</span><span class="p">:</span> <span class="s1">&#39;KJSD9325hgs&#39;</span>
+<span class="p">}</span>
+
+<span class="c1">#webtask任务函数引用&#39;webservers&#39;角色修饰符</span>
+<span class="nd">@roles</span><span class="p">(</span><span class="s1">&#39;webservers&#39;</span><span class="p">)</span>
+<span class="c1">#部署nginx php php-fpm等环境</span>
+<span class="k">def</span> <span class="nf">webtask</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">yellow</span><span class="p">(</span><span class="s2">&quot;Install nginx php php-fpm...&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">warn_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;yum -y install nginx&quot;</span><span class="p">)</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;yum -y install php-fpm php-mysql php-mbstring php-xml php-mcrypt php-gd&quot;</span><span class="p">)</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;chkconfig --levels 235 php-fpm on&quot;</span><span class="p">)</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;chkconfig --levels 235 nginx on&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># dbtask任务函数引用&#39;dbservers&#39;角色修饰符</span>
+<span class="nd">@roles</span><span class="p">(</span><span class="s1">&#39;dbservers&#39;</span><span class="p">)</span>
+<span class="c1">#部署mysql环境</span>
+<span class="k">def</span> <span class="nf">dbtask</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">yellow</span><span class="p">(</span><span class="s2">&quot;Install Mysql...&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">warn_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;yum -y install mysql mysql-server&quot;</span><span class="p">)</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;chkconfig --levels 235 mysqld on&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># publictask任务函数同时引用两个角色修饰符</span>
+<span class="nd">@roles</span> <span class="p">(</span><span class="s1">&#39;webservers&#39;</span><span class="p">,</span> <span class="s1">&#39;dbservers&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">publictask</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">yellow</span><span class="p">(</span><span class="s2">&quot;Install epel ntp...&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">warn_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm&quot;</span><span class="p">)</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;yum -y install ntp&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">deploy</span><span class="p">():</span>
+    <span class="n">execute</span><span class="p">(</span><span class="n">publictask</span><span class="p">)</span>
+    <span class="n">execute</span><span class="p">(</span><span class="n">webtask</span><span class="p">)</span>
+    <span class="n">execute</span><span class="p">(</span><span class="n">dbtask</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>程序生产环境的发布是业务上线最后一个环节，要求具备源码打
+包、发布、切换、回滚、版本管理等功能，本示例实现了这一整套流程
+功能，其中版本切换与回滚使用了Linux下的软链接实现。</p>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id16">生产环境代码包发布管理</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">fabric.api</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fabric.colors</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fabric.context_managers</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fabric.contrib.console</span> <span class="k">import</span> <span class="n">confirm</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">user</span><span class="o">=</span><span class="s1">&#39;root&#39;</span>
+<span class="n">env</span><span class="o">.</span><span class="n">hosts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;192.168.1.21&#39;</span><span class="p">,</span><span class="s1">&#39;192.168.1.22&#39;</span><span class="p">]</span>
+<span class="n">env</span><span class="o">.</span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;SKJh935yft#&#39;</span>
+
+<span class="c1">#开发机项目主目录</span>
+<span class="n">env</span><span class="o">.</span><span class="n">project_dev_source</span> <span class="o">=</span> <span class="s1">&#39;/data/dev/Lwebadmin/&#39;</span>
+<span class="c1">#开发机项目压缩包存储目录</span>
+<span class="n">env</span><span class="o">.</span><span class="n">project_tar_source</span> <span class="o">=</span> <span class="s1">&#39;/data/dev/releases/&#39;</span>
+<span class="c1">#项目压缩包名前缀，文件名为release.tar.gz</span>
+<span class="n">env</span><span class="o">.</span><span class="n">project_pack_name</span> <span class="o">=</span> <span class="s1">&#39;release&#39;</span>
+
+<span class="c1">#项目生产环境主目录</span>
+<span class="n">env</span><span class="o">.</span><span class="n">deploy_project_root</span> <span class="o">=</span> <span class="s1">&#39;/data/www/Lwebadmin/&#39;</span>
+<span class="c1">#项目发布目录，位于主目录下面</span>
+<span class="n">env</span><span class="o">.</span><span class="n">deploy_release_dir</span> <span class="o">=</span> <span class="s1">&#39;releases&#39;</span>
+<span class="c1">#对外服务的当前版本软链接</span>
+<span class="n">env</span><span class="o">.</span><span class="n">deploy_current_dir</span> <span class="o">=</span> <span class="s1">&#39;current&#39;</span>
+
+<span class="c1">#版本号</span>
+<span class="n">env</span><span class="o">.</span><span class="n">deploy_version</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;v2&quot;</span>
+
+<span class="c1">#获得用户输入的版本号，以便做版本回滚操作</span>
+<span class="nd">@runs_once</span>
+<span class="k">def</span> <span class="nf">input_versionid</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">prompt</span><span class="p">(</span><span class="s2">&quot;please input project rollback version ID:&quot;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1">#打包本地项目主目录，并将压缩包存储到本地压缩包目录</span>
+<span class="nd">@task</span>
+<span class="nd">@runs_once</span>
+<span class="k">def</span> <span class="nf">tar_source</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">yellow</span><span class="p">(</span><span class="s2">&quot;Creating source package...&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">lcd</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">project_dev_source</span><span class="p">):</span>
+        <span class="n">local</span><span class="p">(</span><span class="s2">&quot;tar -czf </span><span class="si">%s</span><span class="s2">.tar.gz .&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">project_tar_source</span> <span class="o">+</span> <span class="n">env</span><span class="o">.</span><span class="n">project_pack_name</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="n">green</span><span class="p">(</span><span class="s2">&quot;Creating source package success!&quot;</span><span class="p">)</span>
+
+
+<span class="c1">#上传任务函数</span>
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">put_package</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">yellow</span><span class="p">(</span><span class="s2">&quot;Start put package...&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">warn_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_project_root</span><span class="o">+</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_release_dir</span><span class="p">):</span>
+            <span class="n">run</span><span class="p">(</span><span class="s2">&quot;mkdir </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_version</span><span class="p">))</span>  <span class="c1">#创建版本目录</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">deploy_full_path</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_project_root</span> <span class="o">+</span> <span class="n">env</span><span class="o">.</span><span class="n">deploy_release_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="o">+</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_version</span>
+
+    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">warn_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>  <span class="c1">#上传项目压缩包至此目录</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">put</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">project_tar_source</span> <span class="o">+</span> <span class="n">env</span><span class="o">.</span><span class="n">project_pack_name</span> <span class="o">+</span><span class="s2">&quot;.tar.gz&quot;</span><span class="p">,</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_full_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">failed</span> <span class="ow">and</span> <span class="n">no</span><span class="p">(</span><span class="s2">&quot;put file failed, Continue[Y/N]?&quot;</span><span class="p">):</span>
+        <span class="n">abort</span><span class="p">(</span><span class="s2">&quot;Aborting file put task!&quot;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_full_path</span><span class="p">):</span>  <span class="c1">#成功解压后删除压缩包</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;tar -zxvf </span><span class="si">%s</span><span class="s2">.tar.gz&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">project_pack_name</span><span class="p">))</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;rm -rf </span><span class="si">%s</span><span class="s2">.tar.gz&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">project_pack_name</span><span class="p">))</span>
+
+    <span class="nb">print</span> <span class="n">green</span><span class="p">(</span><span class="s2">&quot;Put &amp; untar package success!&quot;</span><span class="p">)</span>
+
+
+<span class="c1">#为当前版本目录做软链接</span>
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">make_symlink</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">yellow</span><span class="p">(</span><span class="s2">&quot;update current symlink&quot;</span><span class="p">)</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">deploy_full_path</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_project_root</span> <span class="o">+</span> <span class="n">env</span><span class="o">.</span><span class="n">deploy_release_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="o">+</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_version</span>
+    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">warn_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="c1">#删除软链接，重新创建并指定软链源目录，新版本生效</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;rm -rf </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_project_root</span> <span class="o">+</span> <span class="n">env</span><span class="o">.</span><span class="n">deploy_current_dir</span><span class="p">))</span>
+        <span class="n">run</span><span class="p">(</span><span class="s2">&quot;ln -s </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_full_path</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">deploy_project_root</span> <span class="o">+</span> <span class="n">env</span><span class="o">.</span><span class="n">deploy_current_dir</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="n">green</span><span class="p">(</span><span class="s2">&quot;make symlink success!&quot;</span><span class="p">)</span>
+
+<span class="c1">#版本回滚任务函数</span>
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">rollback</span><span class="p">():</span>
+   <span class="c1">#获得用户输入的回滚版本号</span>
+    <span class="nb">print</span> <span class="n">yellow</span><span class="p">(</span><span class="s2">&quot;rollback project version&quot;</span><span class="p">)</span>
+    <span class="n">versionid</span><span class="o">=</span> <span class="n">input_versionid</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">versionid</span><span class="o">==</span><span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">abort</span><span class="p">(</span><span class="s2">&quot;Project version ID error,abort!&quot;</span><span class="p">)</span>
+
+    <span class="n">env</span><span class="o">.</span><span class="n">deploy_full_path</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_project_root</span> <span class="o">+</span> <span class="n">env</span><span class="o">.</span><span class="n">deploy_release_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="o">+</span><span class="n">versionid</span>
+    <span class="c1">#删除软链接，重新创建并指定软链源目录，新版本生效</span>
+    <span class="n">run</span><span class="p">(</span><span class="s2">&quot;rm -f </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">env</span><span class="o">.</span><span class="n">deploy_project_root</span> <span class="o">+</span> <span class="n">env</span><span class="o">.</span><span class="n">deploy_current_dir</span><span class="p">)</span>
+    <span class="n">run</span><span class="p">(</span><span class="s2">&quot;ln -s </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_full_path</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">deploy_project_root</span> <span class="o">+</span> <span class="n">env</span><span class="o">.</span><span class="n">deploy_current_dir</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="n">green</span><span class="p">(</span><span class="s2">&quot;rollback success!&quot;</span><span class="p">)</span>
+
+<span class="c1">#自动化程序版本发布入口函数</span>
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">go</span><span class="p">():</span>
+    <span class="n">tar_source</span><span class="p">()</span>
+    <span class="n">put_package</span><span class="p">()</span>
+    <span class="n">make_symlink</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>本示例实现了一个通用性很强的代码发布管理功能，支持快速部署与回滚，无论发布还是回滚，都可以通过切换current的软链来实现，非常灵活。
+<img alt="image0" src="../../_images/deploy-fabrc0001.png" /></p>
+<p>在生产环境中Nginx的配置如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>server_name domain.com
+index index.html index.htm index.php；
+root /data/www/Lwebadmin/current；
+</pre></div>
+</div>
+</div>
+<div class="section" id="fabricapi">
+<h3><a class="toc-backref" href="#id17">Fabric常用API</a><a class="headerlink" href="#fabricapi" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">local</span>    <span class="c1">#执行本地命令，如local(&#39;uname -s&#39;)</span>
+<span class="n">lcd</span>      <span class="c1">#切换本地目录，如lcd(&#39;/home&#39;)</span>
+<span class="n">cd</span>       <span class="c1">#切换远程目录</span>
+<span class="n">run</span>     <span class="c1">#执行远程命令</span>
+<span class="n">sudo</span>   <span class="c1">#sudo方式执行远程命令，如sudo(&#39;/etc/init.d/httpd start&#39;)</span>
+<span class="n">put</span>     <span class="c1">#上次本地文件导远程主机，如put(&#39;/home/user.info&#39;,&#39;/data/user.info&#39;)</span>
+<span class="n">get</span>     <span class="c1">#从远程主机下载文件到本地，如：get(&#39;/data/user.info&#39;,&#39;/home/user.info&#39;)</span>
+<span class="n">prompt</span>  <span class="c1">#获得用户输入信息，如：prompt(&#39;please input user password:&#39;)</span>
+<span class="n">confirm</span>  <span class="c1">#获得提示信息确认，如：confirm(&#39;Test failed,Continue[Y/N]?&#39;)</span>
+<span class="n">reboot</span>   <span class="c1">#重启远程主机，如：reboot()</span>
+
+<span class="nd">@task</span>   <span class="c1">#函数修饰符，标识的函数为fab可调用的，非标记对fab不可见，纯业务逻辑</span>
+<span class="nd">@runs_once</span>   <span class="c1">#函数修饰符，标识的函数只会执行一次，不受多台主机影响</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="04.Ansible入门与playbook实战.html" class="btn btn-neutral float-right" title="18.4. Ansible入门与playbook实战" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="02.系统批量运维管理器paramiko.html" class="btn btn-neutral float-left" title="18.2. 系统批量运维管理器paramiko" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>10.2. fmt包 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="10.3. Socket网络" href="03.Socket网络.html" />
+    <link rel="prev" title="10.1. 文件IO的操作" href="01.文件IO的操作.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">10. 10.Go标准库</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.文件IO的操作.html">10.1. 文件IO的操作</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.2. fmt包</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#verb">10.2.1. 格式化verb应用</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="03.Socket网络.html">10.3. Socket网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.模板.html">10.4. 模板</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.net_http包.html">10.5. net_http包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html">10.6. Go语言操作MySQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html">10.7. Json序列化和反序列化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.Go语言常用资料及工具详细汇总.html">10.8. Go语言常用资料及工具详细汇总</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">10. 10.Go标准库</a> &raquo;</li>
+        
+      <li>10.2. fmt包</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/10.Go标准库/02.fmt包.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#fmt" id="id1">fmt包</a><ul>
+<li><a class="reference internal" href="#verb" id="id2">格式化verb应用</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="fmt">
+<h1><a class="toc-backref" href="#id1">10.2. fmt包</a><a class="headerlink" href="#fmt" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Println、Fprintln、Sprintln 输出内容时会加上换行符；
+Print、Fprint、Sprint 输出内容时不加上换行符；
+Printf、Fprintf、Sprintf 按照指定格式化文本输出内容。
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Print、Printf、Println 输出内容到标准输出os.Stdout；
+Fprint、Fprintf、Fprintln 输出内容到指定的io.Writer；
+Sprint、Sprintf、Sprintln 输出内容到字符串。
+</pre></div>
+</div>
+<div class="section" id="verb">
+<h2><a class="toc-backref" href="#id2">10.2.1. 格式化verb应用</a><a class="headerlink" href="#verb" title="Permalink to this headline">¶</a></h2>
+<p>代码示例</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s2">&quot;fmt&quot;</span>
+    <span class="s2">&quot;os&quot;</span>
+<span class="p">)</span>
+
+<span class="nb">type</span> <span class="n">User</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">name</span> <span class="n">string</span>
+    <span class="n">age</span>  <span class="nb">int</span>
+<span class="p">}</span>
+
+<span class="n">var</span> <span class="n">valF</span> <span class="n">float64</span> <span class="o">=</span> <span class="mf">32.9983</span>
+<span class="n">var</span> <span class="n">valI</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">89</span>
+<span class="n">var</span> <span class="n">valS</span> <span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;Go is an open source programmig language that makes it&quot;</span>
+<span class="n">var</span> <span class="n">valB</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">true</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">p</span> <span class="p">:</span><span class="o">=</span> <span class="n">User</span><span class="p">{</span>
+        <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+        <span class="n">age</span><span class="p">:</span>  <span class="mi">18</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf struct </span><span class="si">%%</span><span class="s2">v: %v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf struct </span><span class="si">%%</span><span class="s2">+v: %+v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf struct </span><span class="si">%%</span><span class="s2">#v: %#v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf struct </span><span class="si">%%</span><span class="s2">T: %T</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf struct </span><span class="si">%%</span><span class="s2">p: %p</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;-------------------------------------------------------&quot;</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf float64 </span><span class="si">%%</span><span class="s2">v: %v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valF</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf float64 </span><span class="si">%%</span><span class="s2">+v: %+v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valF</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf float64 </span><span class="si">%%</span><span class="s2">#v: %#v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valF</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf float64 </span><span class="si">%%</span><span class="s2">T: %T</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valF</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf float64 </span><span class="si">%%</span><span class="s2">f: </span><span class="si">%f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valF</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf float64 </span><span class="si">%%</span><span class="s2">4.3f: </span><span class="si">%4.3f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valF</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf float64 </span><span class="si">%%</span><span class="s2">8.3f: </span><span class="si">%8.3f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valF</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf float64 </span><span class="si">%%</span><span class="s2">-8.3f: </span><span class="si">%-8.3f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valF</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf float64 </span><span class="si">%%</span><span class="s2">e: </span><span class="si">%e</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valF</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf float64 </span><span class="si">%%</span><span class="s2">E: </span><span class="si">%E</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valF</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;-------------------------------------------------------&quot;</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">v: %v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">+v: %+v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">#v: %#v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">T: %T</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">d: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">8d: </span><span class="si">%8d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">-8d: </span><span class="si">%-8d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">b: %b</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">c: </span><span class="si">%c</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">o: </span><span class="si">%o</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">U: %U</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">q: %q</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf int </span><span class="si">%%</span><span class="s2">x: </span><span class="si">%x</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valI</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;-------------------------------------------------------&quot;</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf string </span><span class="si">%%</span><span class="s2">v:%v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valS</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf string </span><span class="si">%%</span><span class="s2">+v:%+v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valS</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf string </span><span class="si">%%</span><span class="s2">#v:%#v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valS</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf string </span><span class="si">%%</span><span class="s2">T:%T</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valS</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf string </span><span class="si">%%</span><span class="s2">X:</span><span class="si">%X</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valS</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf string </span><span class="si">%%</span><span class="s2">200s:</span><span class="si">%200s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valS</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf string </span><span class="si">%%</span><span class="s2">-200s:</span><span class="si">%-200s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valS</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf string </span><span class="si">%%</span><span class="s2">q:%q</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valS</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;-------------------------------------------------------&quot;</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf bool </span><span class="si">%%</span><span class="s2">v: %v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valB</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf bool </span><span class="si">%%</span><span class="s2">+v: %+v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valB</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf bool </span><span class="si">%%</span><span class="s2">#v: %#v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valB</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf bool </span><span class="si">%%</span><span class="s2">T: %T</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valB</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Printf bool </span><span class="si">%%</span><span class="s2">t: %t</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">valB</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;-------------------------------------------------------&quot;</span><span class="p">)</span>
+    <span class="n">s</span> <span class="p">:</span><span class="o">=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s2">&quot;a </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;string&quot;</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="s2">&quot;an </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;error&quot;</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="03.Socket网络.html" class="btn btn-neutral float-right" title="10.3. Socket网络" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="01.文件IO的操作.html" class="btn btn-neutral float-left" title="10.1. 文件IO的操作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

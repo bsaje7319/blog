@@ -1,0 +1,672 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>20.7. Lxml库和Xpath语法 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="20.8. 3种爬虫模式性能对比" href="07.三种爬虫模式性能对比.html" />
+    <link rel="prev" title="20.6. re模块的常用方法" href="05.re模块的常用方法.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">20. Python网络爬虫</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.基础语法复习.html">20.1. 基础语法复习</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01_1.python的网络请求.html">20.2. python的网络请求</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.爬虫原理和网页结构.html">20.3. 爬虫原理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.我的第一个爬虫程序.html">20.4. 我的第一个爬虫程序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.正则表达式.html">20.5. 正则表达式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.re模块的常用方法.html">20.6. re模块的常用方法</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">20.7. Lxml库和Xpath语法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lxml">20.7.1. Lxml库的安装</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">20.7.2. Lxml库的使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xpath">20.7.3. Xpath语法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="07.三种爬虫模式性能对比.html">20.8. 3种爬虫模式性能对比</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.使用API.html">20.9. 使用API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.数据的存储.html">20.10. 数据的存储</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.多进程爬虫.html">20.11. 多进程爬虫</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.异步加载.html">20.12. 异步加载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.表单交互与模拟登录.html">20.13. 表单交互与模拟登陆</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Selenium模拟浏览器.html">20.14. Selenium模拟浏览器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.手写Python爬虫.html">20.15. 手写python爬虫</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取中国天气网图片.html">20.16. 案例：爬取中国天气网图片</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取小说.html">20.17. 案例：爬取小说</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取猫眼电影TOP100排行.html">20.18. 案例：爬取猫眼电影TOP100排行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：使用BeautifulSoup爬取租房信息.html">20.19. 使用BeautifulSoup爬取租房信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取糗事百科内容.html">20.20. 爬取糗事百科内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取纳斯达克股票数据.html">20.21. 案例：爬取纳斯达克股票数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取股票网站数据转为json.html">20.22. 案例：爬取股票网站数据转为json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取豆瓣TOP250的电影和书籍.html">20.23. 案例：爬取豆瓣TOP250的电影和书籍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取起点中文网数据存到excel中.html">20.24. 案例：爬取起点中文网数据存到excel中</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取酷狗TOP500的数据.html">20.25. 爬取酷狗TOP500的数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取今日头条信息(Ajax).html">20.26. 案例：爬取今日头条信息(Ajax)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">20. Python网络爬虫</a> &raquo;</li>
+        
+      <li>20.7. Lxml库和Xpath语法</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/22.Python网络爬虫/06.Lxml库和Xpath语法.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#lxmlxpath" id="id10">Lxml库和Xpath语法</a><ul>
+<li><a class="reference internal" href="#lxml" id="id11">Lxml库的安装</a></li>
+<li><a class="reference internal" href="#id1" id="id12">Lxml库的使用</a></li>
+<li><a class="reference internal" href="#xpath" id="id13">Xpath语法</a><ul>
+<li><a class="reference internal" href="#id2" id="id14">1.父节点</a></li>
+<li><a class="reference internal" href="#id3" id="id15">2.子节点</a></li>
+<li><a class="reference internal" href="#id4" id="id16">3.同胞节点</a></li>
+<li><a class="reference internal" href="#id5" id="id17">4.先辈节点</a></li>
+<li><a class="reference internal" href="#id6" id="id18">5.后代节点</a></li>
+<li><a class="reference internal" href="#id7" id="id19">节点的选择</a></li>
+<li><a class="reference internal" href="#starts-with" id="id20">当遇到相同的字符开头的多个标签时。可以通过starts-with()获取多个标签的内容</a></li>
+<li><a class="reference internal" href="#id8" id="id21">属性多值匹配</a></li>
+<li><a class="reference internal" href="#id9" id="id22">多属性匹配</a></li>
+<li><a class="reference internal" href="#string" id="id23">当遇到嵌套标签的时候，可以通过string(.)完成。如下：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="lxmlxpath">
+<h1><a class="toc-backref" href="#id10">20.7. Lxml库和Xpath语法</a><a class="headerlink" href="#lxmlxpath" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lxml">
+<h2><a class="toc-backref" href="#id11">20.7.1. Lxml库的安装</a><a class="headerlink" href="#lxml" title="Permalink to this headline">¶</a></h2>
+<p>windows和Linux上安装Lxml库</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">lxml</span>
+</pre></div>
+</div>
+<p>lxml中xpath测试网页元素抓取工具<code class="docutils literal"><span class="pre">XPathTools_jb51</span></code>,可以在网上下载用于调试程序。</p>
+<p>或者网页版本的元素提取工具:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">qqe2</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">xpath</span>
+
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">bejson</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">othertools</span><span class="o">/</span><span class="n">findelement</span><span class="o">/</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>还有一个Google插件<code class="docutils literal"><span class="pre">xpath-helper</span></code></li>
+<li>Firefox插件 <code class="docutils literal"><span class="pre">XPath</span> <span class="pre">Checker</span></code></li>
+</ul>
+<p>参考文献：</p>
+<p><a class="reference external" href="https://blog.csdn.net/zwq912318834/article/details/78178316">https://blog.csdn.net/zwq912318834/article/details/78178316</a></p>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id12">20.7.2. Lxml库的使用</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/10 21:07</span>
+<span class="c1"># filename: 01.基础.py</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"># 修正HTML代码</span>
+<span class="sd">parser = etree.HTMLParser(encoding=&quot;utf-8&quot;)</span>
+<span class="sd">html = etree.HTML(&quot;test001.html&quot;, parser=parser)</span>
+<span class="sd">result = etree.tostring(html)</span>
+<span class="sd">print(result)</span>
+
+<span class="sd"># 读取HTML文件</span>
+<span class="sd">parser = etree.HTMLParser(encoding=&quot;utf-8&quot;)</span>
+<span class="sd">html = etree.parse(&quot;test001.html&quot;, parser=parser)</span>
+<span class="sd">result = etree.tostring(html, pretty_print=True)</span>
+<span class="sd">print(result)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># 解析HTML文件</span>
+
+<span class="c1">## 代理头文件</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36&quot;</span>
+<span class="p">}</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://www.doupoxs.com/&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">html</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xpath">
+<h2><a class="toc-backref" href="#id13">20.7.3. Xpath语法</a><a class="headerlink" href="#xpath" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id14">1.父节点</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>user是name、sex、id、gold的父节点</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">hujianli</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">sex</span><span class="o">&gt;</span> <span class="n">MAN</span> <span class="o">&lt;/</span><span class="n">sex</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="mi">30</span><span class="o">&lt;/</span><span class="nb">id</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">gold</span><span class="o">&gt;</span><span class="mi">99</span><span class="o">&lt;/</span><span class="n">gold</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">user</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id15">2.子节点</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>name、sex、id、glod是user的子节点</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">hujianli</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">sex</span><span class="o">&gt;</span> <span class="n">MAN</span> <span class="o">&lt;/</span><span class="n">sex</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="mi">30</span><span class="o">&lt;/</span><span class="nb">id</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">gold</span><span class="o">&gt;</span><span class="mi">99</span><span class="o">&lt;/</span><span class="n">gold</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">user</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id16">3.同胞节点</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>name、sex、id、glod是同胞节点</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">hujianli</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">sex</span><span class="o">&gt;</span> <span class="n">MAN</span> <span class="o">&lt;/</span><span class="n">sex</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="mi">30</span><span class="o">&lt;/</span><span class="nb">id</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">gold</span><span class="o">&gt;</span><span class="mi">99</span><span class="o">&lt;/</span><span class="n">gold</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">user</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id17">4.先辈节点</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>name的先辈节点是user和user-databse</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">user</span><span class="o">-</span><span class="n">database</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">hujianli</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">sex</span><span class="o">&gt;</span> <span class="n">MAN</span> <span class="o">&lt;/</span><span class="n">sex</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="mi">30</span><span class="o">&lt;/</span><span class="nb">id</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">gold</span><span class="o">&gt;</span><span class="mi">99</span><span class="o">&lt;/</span><span class="n">gold</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">user</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">user</span><span class="o">-</span><span class="n">database</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id18">5.后代节点</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>user-database 的后代节点是user、name、sex、id、gold</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">user</span><span class="o">-</span><span class="n">database</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">hujianli</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">sex</span><span class="o">&gt;</span> <span class="n">MAN</span> <span class="o">&lt;/</span><span class="n">sex</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="mi">30</span><span class="o">&lt;/</span><span class="nb">id</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">gold</span><span class="o">&gt;</span><span class="mi">99</span><span class="o">&lt;/</span><span class="n">gold</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">user</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">user</span><span class="o">-</span><span class="n">database</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id19">节点的选择</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p><img alt="image0" src="../../_images/xpath-jiedianchoice001.png" /></p>
+<p>根据上面的例子举例 <img alt="image1" src="../../_images/xpath-jiedianchoice002.png" /></p>
+<p>xpath语法中的位于用来查找某个特定的节点或者包含某个指定值的节点。谓语被嵌套在方括号中。
+<img alt="image2" src="../../_images/xpath-weiyu001.png" /></p>
+<p><img alt="image3" src="../../_images/xpath_weiyu0001.png" /></p>
+<p>xpath中也可以使用通配符来选取位置的元素，常用的就是“*”通配符，它可以匹配任何元素节点。</p>
+<p>xtpath路径在chrom中，可以右键复制得到，如下图： <img alt="image4" src="../../_images/xpath0004-.png" /></p>
+<p>例子：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">这是标题</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;cn_search_engine&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://www.baidu.com&quot;</span><span class="o">&gt;</span><span class="n">百度</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;other_search_engine&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://www.bing.com&quot;</span><span class="o">&gt;</span><span class="n">Bing</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://www.google.com&quot;</span><span class="o">&gt;</span><span class="n">Google</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&quot;//&quot;和&quot;/&quot;的区别
+两者都用来表示一个节点的路径，不同节点名用“/”分开
+
+//代表相对路径，匹配可以是任意深度的节点
+/ 代表绝对路径，故对于网页来说，匹配从/html开始
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">##语句一:</span>
+<span class="n">dom_tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div/a/@href&#39;</span><span class="p">)</span>
+
+<span class="c1">##语句二：</span>
+<span class="n">dom_tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div/a/@href&#39;</span><span class="p">)</span>
+
+
+<span class="n">获取元素属性和文字的区别</span>
+<span class="n">dom_tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div/a/@href&#39;</span><span class="p">)</span>
+<span class="c1">#将返回所有的链接网址</span>
+
+<span class="n">dom_tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div/a/text()&#39;</span><span class="p">)</span>
+<span class="c1">#将获取所有链接的名称</span>
+</pre></div>
+</div>
+<p>举例如下：</p>
+<p>获取糗事百科中用户的id信息</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/10 21:35</span>
+<span class="c1"># filename: 02.使用xpath获取简单元素.py</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36&quot;</span>
+<span class="p">}</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.qiushibaike.com/text/&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTMLParser</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="n">selector</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">parser</span><span class="o">=</span><span class="n">parser</span><span class="p">)</span>
+<span class="nb">id</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//*[@id=</span><span class="se">\&quot;</span><span class="s2">qiushi_tag_121978518</span><span class="se">\&quot;</span><span class="s2">]/div[1]/a[2]/h2/text()&quot;</span><span class="p">)</span>  <span class="c1"># 通过/text()可以获取标签中的文字信息</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出结果：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">缺个老婆好多年了</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>获取的结果为列表，可以通过切片获得字符串数据结构。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">id</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//*[@id=</span><span class="se">\&quot;</span><span class="s2">qiushi_tag_121978518</span><span class="se">\&quot;</span><span class="s2">]/div[1]/a[2]/h2/text()&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1">#</span>
+</pre></div>
+</div>
+<p>输出结果：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">缺个老婆好多年了</span>
+</pre></div>
+</div>
+<p>批量抓取数据时，采用“先抓大后抓小，寻找循环点。”</p>
+<p>如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/10 21:54</span>
+<span class="c1"># filename: 03.使用xpath批量爬取数据.py</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36&quot;</span>
+<span class="p">}</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.qiushibaike.com/text/&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">selector</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">url_infos</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@class=&quot;article block untagged mb15 typs_hot&quot;]&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">url_info</span> <span class="ow">in</span> <span class="n">url_infos</span><span class="p">:</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">url_info</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;div[1]/a[2]/h2/text()&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+
+<span class="c1"># //*[@id=&quot;qiushi_tag_121978518&quot;]/div[1]/a[2]/h2</span>
+<span class="c1"># //*[@id=&quot;qiushi_tag_121978518&quot;]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="starts-with">
+<h3><a class="toc-backref" href="#id20">当遇到相同的字符开头的多个标签时。可以通过starts-with()获取多个标签的内容</a><a class="headerlink" href="#starts-with" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/10 22:06</span>
+<span class="c1"># filename: test-hu.py</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+<span class="n">html1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;!DOCTYPE html&gt;</span>
+<span class="s2">&lt;html lang=&quot;en&quot;&gt;</span>
+<span class="s2">&lt;head&gt;</span>
+<span class="s2">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="s2">    &lt;title&gt;Title&lt;/title&gt;</span>
+<span class="s2">&lt;/head&gt;</span>
+<span class="s2">&lt;body&gt;</span>
+<span class="s2">&lt;li class=&quot;tag-1&quot;&gt;需要的内容1&lt;/li&gt;</span>
+<span class="s2">&lt;li class=&quot;tag-2&quot;&gt;需要的内容2&lt;/li&gt;</span>
+<span class="s2">&lt;li class=&quot;tag-3&quot;&gt;需要的内容3&lt;/li&gt;</span>
+
+<span class="s2">&lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">selector</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">html1</span><span class="p">)</span>                                                    <span class="c1"># 直接读取html文件内容</span>
+<span class="c1"># selecctor = etree.HTML(open(&quot;test-hu01.html&quot;, encoding=&quot;utf-8&quot;).read())       #打开html文件进行爬取过滤</span>
+<span class="n">contenrs</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//li[starts-with(@class,&quot;tag&quot;)]/text()&#39;</span><span class="p">)</span>             <span class="c1"># starts-with()可以获取类似标签的信息</span>
+<span class="k">for</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">contenrs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>  <span class="c1"># starts-with()可以获取类似标签的信息</span>
+
+<span class="c1"># /html/body/li[1]</span>
+</pre></div>
+</div>
+<p>输出内容</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">需要的内容1</span>
+<span class="n">需要的内容2</span>
+<span class="n">需要的内容3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id21">属性多值匹配</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/8/20 13:50</span>
+<span class="c1"># filename: 04.属性多值匹配.py</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">&lt;li class=&quot;li li-first&quot;&gt;&lt;a href=&quot;link.html&quot;&gt; first item&lt;/a&gt;&lt;li&gt;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">html</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//li[contains(@class,&quot;li&quot;)]/a/text()&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出信息如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39; first item&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id22">多属性匹配</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/8/20 13:50</span>
+<span class="c1"># filename: 04.属性多值匹配.py</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">&lt;li class=&quot;li li-first&quot; name=&quot;item&quot;&gt;&lt;a href=&quot;link.html&quot;&gt; first item&lt;/a&gt;&lt;li&gt;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">html</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//li[contains(@class,&quot;li&quot;) and @name=&quot;item&quot;]/a/text()&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出信息</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39; first item&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="string">
+<h3><a class="toc-backref" href="#id23">当遇到嵌套标签的时候，可以通过string(.)完成。如下：</a><a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h3>
+<p>test-hu02.html</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;red&quot;&gt;需要的内容1
+
+    &lt;h1&gt;需要的内容2&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p><img alt="image5" src="../../_images/lxml-qiantao001.png" /></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/7/10 22:21</span>
+<span class="c1"># filename: test-hu02.py</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+
+<span class="n">selector</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;test-hu02.html&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">content1</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@class=&quot;red&quot;]&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">content2</span> <span class="o">=</span> <span class="n">content1</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;string(.)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">content2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出内容</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">需要的内容1</span>
+
+    <span class="n">需要的内容2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="07.三种爬虫模式性能对比.html" class="btn btn-neutral float-right" title="20.8. 3种爬虫模式性能对比" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="05.re模块的常用方法.html" class="btn btn-neutral float-left" title="20.6. re模块的常用方法" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

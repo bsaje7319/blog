@@ -1,0 +1,338 @@
+.. contents::
+   :depth: 3
+..
+
+声明函数
+========
+
+普通函数的声明形式
+------------------
+
+Go语言的函数声明以func标识，后面紧接着函数名、参数列表、返回参数列表及函数体，
+具体形式如下：
+
+::
+
+   func 函数名（参数列表）（返回参数列表）{
+       函数体   
+    }
+
+::
+
+   · 函数名：由字母、数字、下划线组成。其中，函数名的第一个字母不能为数字。在同一个包内，函数名称不能重名。
+   · 参数列表： 一个参数由参数变量和参数类型组成。其中参数列表中的变量作为函数的局部变量而存在。
+   · 返回参数列表：可以是返回值类型列表，也可以是类似参数列表中变量名和类型名的组合。函数在声明有返回值时，必须在函数体中使用return语句提供返回值列表。
+   · 函数体： 能够被重复调用的代码片段
+
+参数类型的简写
+--------------
+
+在参数列表中，如有多个参数变量，则以逗号分割；如果相邻变量是同类型，则可以将类型省略。
+例如：
+
+::
+
+   package main
+
+   import "fmt"
+
+   func func1(a, b int) int{
+       return a + b
+   }
+   func main() {
+       sum_num := func1(2,3)
+       fmt.Println(sum_num)    //5
+
+   }
+
+函数的返回值
+------------
+
+Go
+语言支持多返回值，多返回值方便地获得函数执行后的多个返回参数，Go语言经常使用多返回值中的最后一个返回参数
+返回函数执行中可能发生的错误。示例代码如下：
+
+::
+
+   conn,err := connectToNetwork()
+
+   这段代码中,connectToNetwork返回两个参数，conn表示连接对象，err返回错误。
+
+Go语言既支持安全指针，也支持多返回值，因此在使用函数进行逻辑编写时更为方便。
+
+1. 同一种类型返回值
+~~~~~~~~~~~~~~~~~~~
+
+::
+
+   package main
+
+   import "fmt"
+   /*
+   纯类型的返回值对于代码可读性不是很友好，特别是在同类型的返回值出现时，无法区分每个返回参数的意义
+    */
+   func typeTwoValues() (int, int) {
+       return 1, 2
+   }
+
+   func main() {
+       a, b := typeTwoValues()
+       fmt.Println(a, b)   // 1 2
+   }
+
+2.带有变量名的返回值
+~~~~~~~~~~~~~~~~~~~~
+
+::
+
+   func namedRetValues() (a, b int) {
+       a = 1
+       return a, 2
+   }
+
+注意：
+同一种类型返回值和命名返回值两种形式只能二选一，混用时将会发生编译错误，例如下面的代码：
+
+::
+
+   func namedRetValuse() (a,b,int,int)
+
+3.调用函数
+~~~~~~~~~~
+
+Go语言中函数调用格式如下：
+
+::
+
+   返回值变量列表 = 函数名（参数列表）
+   · 函数名： 需要调用的函数名
+   · 参数列表： 参数变量以逗号分隔，尾部无需以逗号结尾
+   · 返回值变量列表： 多个返回值使用逗号分隔
+
+例如，加法函数调用样式如下：
+
+::
+
+   result := add(1,1)
+
+-  一个将秒解析为时间的多返回值函数
+
+::
+
+   package main
+
+   import "fmt"
+
+   const (
+       //分钟
+       SecondsPermiute = 60
+       //小时
+       SecondSPerHour = SecondsPermiute * 60
+       //天
+       SecondSPerDay = SecondSPerHour * 24
+   )
+
+   func resolveTime(seconds int) (day int, hour int, minute int) {
+       day = seconds / SecondSPerDay
+       hour = seconds / SecondSPerHour
+       minute = seconds / SecondsPermiute
+       return
+   }
+
+   func main() {
+       // 打印所有返回值
+       fmt.Println(resolveTime(1000))      //0 0 16
+
+       // 打印小时和分钟
+       _, hour, minue := resolveTime(18000)
+       fmt.Println(hour, minue)                // 5 300
+       // 只获取天数
+       day,_,_ := resolveTime(90000)
+       fmt.Println(day)                        //1
+
+   }
+
+-  函数中参数传递效果测试
+
+::
+
+   package main
+
+   import "fmt"
+   /*
+   Data声明为结构体类型
+    */
+   type Data struct {
+       complax  [] int     // 测试切片在参数传递中的效果
+       instance InnerData  //示例分配的innerData
+       ptr      *InnerData // 将ptr声明为InnerData的指针类型
+   }
+
+   /*
+   内嵌的结构
+    */
+   type InnerData struct {
+       a int
+   }
+
+   /*
+   值传递测试函数
+   */
+   func passByvalue(inFunc Data) Data {
+       //输出参数的成员情况
+       fmt.Printf("inFunc value: %+v\n", inFunc)
+       // 打印inFunc的指针
+       fmt.Printf("inFunc ptr: %p\n", &inFunc)
+       return inFunc
+   }
+
+   func main() {
+       // 准备传入函数的结构
+       in := Data{
+           complax:  []int{1, 2, 3},
+           instance: InnerData{5,},
+           ptr:      &InnerData{1},
+       }
+       // 输出结构的成员情况
+       fmt.Printf("in value: %+v\n", in)
+       // 输出结构的指针地址
+       fmt.Printf("in ptr: %p\n", &in)
+       // 传入结构体，返回同类型的结构体
+       out := passByvalue(in)
+       // 输出结构的指针地址
+       fmt.Printf("pput ptr: %p\n", &out)
+
+   }
+
+   /*
+   in value: {complax:[1 2 3] instance:{a:5} ptr:0xc00000a0b8}
+   in ptr: 0xc00005c330
+   inFunc value: {complax:[1 2 3] instance:{a:5} ptr:0xc00000a0b8}
+   inFunc ptr: 0xc00005c3c0
+   pput ptr: 0xc00005c390
+
+   所有的Data结构的指针发生了变化，意味着所有的结构都是一块新的内存，无论是将Data结构传入函数内部，
+   还是通过函数返回传回Data都发生了复制行为。
+
+   所有Data结构中的成员值没有发生变化，原样传递，意味着所有的参数都是值传递
+
+   Data结构中的ptr成员在传递过程中保持一致，指针在函数参数值传递中传递的只是指针值，不会复制指针指向的部分。
+   */
+
+4.函数变量-把函数作为值保存到变量中
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+   package main
+
+   import "fmt"
+
+   func fire() {
+       fmt.Println("fire")
+   }
+
+   func main() {
+       //var f func()
+       //var f = fire      // 将函数fire的值赋值给f
+       f := fire
+       f() // 调用函数
+   }
+
+递归与回调
+~~~~~~~~~~
+
+Go 语言中也可以使用相互调用的递归函数：多个函数之间相互调用形成闭环。
+
+::
+
+   package main
+
+   import "fmt"
+
+   func main() {
+       callback(1, Add)
+   }
+
+   func Add(a, b int) {
+       fmt.Printf("The sum of %d and %d is: %d\n", a, b, a+b)
+   }
+
+   func callback(y int, f func(int, int)) {
+       f(y, 2)
+   }
+
+字符串的链式处理-操作与数据分离的设计技巧
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+   package main
+
+   import (
+       "fmt"
+       "strings"
+   )
+
+   /*
+   字符串处理函数，传入字符串切片，和字符串切片处理链
+   */
+   func StringProcess(list []string, chain []func(string) string) {
+       // 遍历每一个字符串
+       for index, str := range list {
+           // 第一个要处理的字符串
+           result := str
+           // 遍历每一个处理链
+           for _, proc := range chain {
+               //输入一个字符串进行处理，返回数据作为下一个处理链的输入
+               result = proc(result)
+           }
+           // 将结果放回到切片
+           list[index] = result
+       }
+   }
+
+   /*
+   自定义处理函数，自定义移除前缀的处理函数，移除字符串指定的前缀
+   */
+   func removePrefix(str string) string {
+       return strings.TrimPrefix(str, "go")
+   }
+
+   /*
+   字符串处理主流程
+   */
+
+   func main() {
+       // 待处理的字符串列表
+       list := []string{
+           "go huajinli1",
+           "go huajinli2",
+           "go huajinli3",
+           "go huajinli4",
+           "go huajinli5",
+       }
+
+       // 处理链函数
+       chain := []func(string) string{
+           removePrefix,
+           strings.TrimSpace,
+           strings.ToUpper,
+       }
+       // 处理字符串
+       StringProcess(list, chain)
+
+       // 输出处理好的字符串
+       for _, str := range list {
+           fmt.Println(str)
+       }
+
+   }
+
+   /*
+   HUAJINLI1
+   HUAJINLI2
+   HUAJINLI3
+   HUAJINLI4
+   HUAJINLI5
+   */

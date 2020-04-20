@@ -1,0 +1,701 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>14.14. 打包和发布 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="14.15. Jinja2模板" href="15.Jinja2模板.html" />
+    <link rel="prev" title="14.13. Python操作Rabbitmq详解" href="13.Python操作Rabbitmq详解.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">14. Python 三方库学习</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.psutil模块.html">14.1. psutil模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html">14.2. paramiko模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.IPy模块.html">14.3. IPy模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.dnspython模块.html">14.4. DNS处理模块dnspython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.difflib文本比较模块.html">14.5. difflib文本比较模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.pycurl探测web服务各项指标.html">14.6. pycurl探测web服务状态</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html">14.7. Excel操作XlsxWriter模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.使用PyInstaller生成可执行程序.html">14.8. 使用PyInstaller生成可执行程序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.用py2exe生成可执行程序.html">14.9. 用py2exe生成可执行程序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.用cx_freeze生成可执行文件.html">14.10. 用cx_freeze生成可执行文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.使用python定时执行任务.html">14.11. 使用python定时执行任务</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.Python3读写Excel文件.html">14.12. Python3读写Excel文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Python操作Rabbitmq详解.html">14.13. Python操作Rabbitmq详解</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">14.14. 打包和发布</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zipapp">14.14.1. zipapp模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">14.14.2. 使用zipapp模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">14.14.3. 创建独立应用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pythonpypiwhl">14.14.4. 将python包发布到PyPI和制作whl文件方式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setuptools">14.14.5. Setuptools基础</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">14.14.6. 打包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-entry-pointspython">14.14.7. Python编程：entry_points将Python模块转变为命令行工具</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">14.14.8. 打包且成为命令行模式的示例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">14.14.9. 小结</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html">14.15. Jinja2模板</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">14. Python 三方库学习</a> &raquo;</li>
+        
+      <li>14.14. 打包和发布</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/14.Python三方库/14.打包和发布.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id7">打包和发布</a><ul>
+<li><a class="reference internal" href="#zipapp" id="id8">zipapp模块</a></li>
+<li><a class="reference internal" href="#id2" id="id9">使用zipapp模块</a><ul>
+<li><a class="reference internal" href="#python" id="id10">生成可执行的Python档案包</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3" id="id11">创建独立应用</a></li>
+<li><a class="reference internal" href="#pythonpypiwhl" id="id12">将python包发布到PyPI和制作whl文件方式</a></li>
+<li><a class="reference internal" href="#setuptools" id="id13">Setuptools基础</a></li>
+<li><a class="reference internal" href="#id4" id="id14">打包</a></li>
+<li><a class="reference internal" href="#python-entry-pointspython" id="id15">Python编程：entry_points将Python模块转变为命令行工具</a></li>
+<li><a class="reference internal" href="#id5" id="id16">打包且成为命令行模式的示例</a></li>
+<li><a class="reference internal" href="#id6" id="id17">小结</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id7">14.14. 打包和发布</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="zipapp">
+<h2><a class="toc-backref" href="#id8">14.14.1. zipapp模块</a><a class="headerlink" href="#zipapp" title="Permalink to this headline">¶</a></h2>
+<p>zipapp模块可用于生成可执行的Python档案包，这个档案包会包含目录下所有的Python程序。
+如果使用pip工具先将Python程序所依赖的模块下载到目标目录下，
+那么就可以生成可独立运行的Python程序–只要目标及其上安装有Python解释器环境即可。</p>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id9">14.14.2. 使用zipapp模块</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>python提供一个zipapp模块，通过该模块可以将一个Python模块(可能包含很多个源程序)打包成一个Python应用。
+甚至发布成一个Windows的可执行程序。</p>
+<div class="section" id="python">
+<h3><a class="toc-backref" href="#id10">生成可执行的Python档案包</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">zipapp</span> <span class="n">source</span> <span class="p">[</span><span class="n">option</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>source参数可以是单个的python文件，也可以是文件夹。如果souce参数是文件夹，那么zipapp模块
+会打包该文件夹中所有的Python文件。</p>
+<p>创建app目录</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ tree
+.
+└── app
+    ├── app.py
+    └── say_hello.py
+</pre></div>
+</div>
+<p>say_hello.py</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
+<span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;，您好！&quot;</span>
+</pre></div>
+</div>
+<p>app.py</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">say_hello</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;程序开始执行&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">say_hello</span><span class="p">(</span><span class="s1">&#39;孙悟空&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>在app目录下执行</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">zipapp</span> <span class="n">app</span> <span class="o">-</span><span class="n">o</span> <span class="n">first</span><span class="o">.</span><span class="n">pyz</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;app:main&quot;</span>
+</pre></div>
+</div>
+<p>上面命令指定将当前目录下的app子目录下的所有Python源文件打包成一个档案包，并通过-o选择指定所生产的档案包的文件名为
+<code class="docutils literal"><span class="pre">first.pyz</span></code>；-m选项指定使用app.py模块中的main函数作为程序入口。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ tree
+.
+├── app
+│   ├── app.py
+│   └── say_hello.py
+└── first.pyz
+</pre></div>
+</div>
+<p>接下来可以使用python命令来运行first.pyz文件。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python first.pyz
+程序开始执行
+孙悟空，您好！
+</pre></div>
+</div>
+<p>通过命令行工具在app目录下执行如下命令：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">zipapp</span> <span class="n">app</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;app:main&quot;</span>
+</pre></div>
+</div>
+<p>上面命令没有指定-o选项，该命令将会使用默认的输出文件名：
+source参数值加.pyz后缀。
+运行上面的命令会在当前目录下生成一个app.pyz文件。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>├── app
+│   ├── app.py
+│   └── say_hello.py
+├── app.pyz
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id11">14.14.3. 创建独立应用</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>上面的方式打包得到的档案包只有当前项目的Python文件，如果Python应用还需要使用第三方模块和包，
+比如（连接Mysql的驱动），那么仅仅打包该应用的Python程序是不够的。</p>
+<p>需要执行如下两步操作： ·1. 将应用依赖模块和包下载到应用目录中。
+·2.使用zipapp将应用和依赖模块一起打包成档案包。</p>
+<p>在dbapp下创建两个文件如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ tree
+.
+├── dbapp
+│   ├── __main__.py
+│   └── exec_select.py
+└── requirements.txt
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">__main__.py</span></code>文件作为程序入口。这样程序在打包档案包时就不需要知道程序入口了。</p>
+<p>下面是<code class="docutils literal"><span class="pre">__main__.py</span></code>文件代码：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">exec_select</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="c1"># 执行query_db()函数</span>
+<span class="n">query_db</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>requirements.txt</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+</div>
+<p>通过命令行工具执行如下命令：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>python -m pip install -r requirements.txt --target dbapp
+Collecting mysql-connector-python
+  Downloading https://files.pythonhosted.org/packages/1f/e9/474a3cfb87e5eff6db9cec4ded8e52c098c77411382a86bea2bd836576d0/mysql_connector_python-8.0.19-cp
+35-cp35m-win_amd64.whl (4.3MB)
+     |████████████████████████████████| 4.3MB 547kB/s
+</pre></div>
+</div>
+<p>上面的命令时间上就是使用pip模块来安装模块，其中python -m pip install
+表示要安装模块。</p>
+<p>–target选项指定将模块安装到指定目录下，此处指定将依赖模块安装到dbapp子目录下。</p>
+<p>-r 选项支持两个值</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">直接指定要安装的模块或包</span>
+<span class="o">&gt;</span> <span class="n">使用清单文件指定要安装的模块和包</span>
+</pre></div>
+</div>
+<p>当依赖模块较多时，建议使用清单文件来列出所依赖的模块。</p>
+<p>如果项目依赖多个模块，可以在requirements.txt文件中定义多行，每行定义一个模块。
+执行完上面的命令，可以看到dbapp子目录下有大量关于mysql0connector-python模块的文件。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>· 如果pip在dbapp子目录下生成了.dist-info目录，则建议删除该目录。
+· 使用zipapp模块执行打包操作，如果dbapp子目录下包含了__main__.py文件，该文件会作为程序入口，因此打包时不需要指定-m选项。
+</pre></div>
+</div>
+<p>使用如下命令来打包</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">zipapp</span> <span class="n">dbapp</span>
+</pre></div>
+</div>
+<p>运行上面命令，将会得到一个大约为18MB的档案包。因为档案包包含了<code class="docutils literal"><span class="pre">mysql-connector-python</span></code>模块，所有其比较大。</p>
+<p>只要目标机器上安装了合适版本的Python解释器，即可运行该独立应用，我们可以先使用如下命令卸载在Python目录下安装的<code class="docutils literal"><span class="pre">mysql-connector-python</span></code>模块。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">uninstall</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+</div>
+<p>此时本机的python目录下不在包含mysql-connector-python模块，但dbapp.pyz程序依然可以正常运行–因为它自包含了<code class="docutils literal"><span class="pre">mysql-connector-python</span></code>模块。</p>
+</div>
+<div class="section" id="pythonpypiwhl">
+<h2><a class="toc-backref" href="#id12">14.14.4. 将python包发布到PyPI和制作whl文件方式</a><a class="headerlink" href="#pythonpypiwhl" title="Permalink to this headline">¶</a></h2>
+<p>参考文献</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">jb51</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">article</span><span class="o">/</span><span class="mf">177180.</span><span class="n">htm</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setuptools">
+<h2><a class="toc-backref" href="#id13">14.14.5. Setuptools基础</a><a class="headerlink" href="#setuptools" title="Permalink to this headline">¶</a></h2>
+<p>Setuptools和较旧的Distutils都是用于发布Python包的工具包，让你能够使用Python轻松地编写安装脚本。这些脚本
+可用于生成可发布的归档文档，供用户用来编译和安装你编写的库。</p>
+<p><code class="docutils literal"><span class="pre">setuptools</span></code>是 Python Enterprise Application Kit(PEAK)的一个副项目,
+它是一组Python的 distutilsde工具的增强版(适用于 Python 2.3.5
+以上的版本,64 位平台则适用于 Python 2.4 以上的版本),
+可以让程序员更方便的创建和发布 Python
+包,特别是那些对其它包具有依赖性的状况。</p>
+<p>举例脚本程序 <code class="docutils literal"><span class="pre">hello.py</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/2/3 16:21</span>
+<span class="c1"># filename: hello.py</span>
+
+<span class="k">def</span> <span class="nf">hello1</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world1&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">hello2</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">简单的Setuptools安装脚本</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/2/3 16:15</span>
+<span class="c1"># filename: setup.py.py</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">简单的Setuptools安装脚本</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="k">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span>
+      <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+      <span class="n">description</span><span class="o">=</span><span class="s1">&#39;A simple example&#39;</span><span class="p">,</span>
+      <span class="n">author</span><span class="o">=</span><span class="s1">&#39;Magnus Lie Hetland&#39;</span><span class="p">,</span>
+      <span class="n">py_modules</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">Python</span><span class="o">-</span><span class="n">code</span>\<span class="n">代码打包为exe文件</span>\<span class="mf">03.</span><span class="n">Setuptools打包</span><span class="o">&gt;</span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">usage</span><span class="p">:</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="n">global_opts</span><span class="p">]</span> <span class="n">cmd1</span> <span class="p">[</span><span class="n">cmd1_opts</span><span class="p">]</span> <span class="p">[</span><span class="n">cmd2</span> <span class="p">[</span><span class="n">cmd2_opts</span><span class="p">]</span> <span class="o">...</span><span class="p">]</span>
+   <span class="ow">or</span><span class="p">:</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span> <span class="p">[</span><span class="n">cmd1</span> <span class="n">cmd2</span> <span class="o">...</span><span class="p">]</span>
+   <span class="ow">or</span><span class="p">:</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">commands</span>
+   <span class="ow">or</span><span class="p">:</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">cmd</span> <span class="o">--</span><span class="n">help</span>
+
+<span class="n">error</span><span class="p">:</span> <span class="n">no</span> <span class="n">commands</span> <span class="n">supplied</span>
+</pre></div>
+</div>
+<p>从上述输出可知，要获得更多的信息，可使用开关 –help 或 –help-commands
+。尝试执行命令 build ，让Setuptools行动起来。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">Python</span><span class="o">-</span><span class="n">code</span>\<span class="n">代码打包为exe文件</span>\<span class="mf">03.</span><span class="n">Setuptools打包</span><span class="o">&gt;</span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
+<span class="n">running</span> <span class="n">build</span>
+<span class="n">running</span> <span class="n">build_py</span>
+<span class="n">creating</span> <span class="n">build</span>
+<span class="n">creating</span> <span class="n">build</span>\<span class="n">lib</span>
+<span class="n">copying</span> <span class="n">hello</span><span class="o">.</span><span class="n">py</span> <span class="o">-&gt;</span> <span class="n">build</span>\<span class="n">lib</span>
+</pre></div>
+</div>
+<p>Setuptools创建了一个名为build的目录，其中包含子目录lib。
+同时将将hello.py复制到了这个子目录中。
+目录build相当于工作区，Setuptools在其中组装包（以及编译扩展库等）。
+安装时不需要执行命令 <code class="docutils literal"><span class="pre">build</span></code> ，因为当你执行命令
+<code class="docutils literal"><span class="pre">install</span></code>时，如果需要，命令build 会自动运行。</p>
+<p>输入以下命令，模块将会被安装到解释器对应的Lib/site-packages目录下：</p>
+<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">Python</span><span class="o">-</span><span class="n">code</span>\<span class="n">代码打包为exe文件</span>\<span class="mf">03.</span><span class="n">Setuptools打包</span><span class="o">&gt;</span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<span class="o">.....</span>
+<span class="n">Processing</span> <span class="n">Hello</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">py3</span><span class="o">.</span><span class="mf">5.</span><span class="n">egg</span>
+<span class="n">Copying</span> <span class="n">Hello</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">py3</span><span class="o">.</span><span class="mf">5.</span><span class="n">egg</span> <span class="n">to</span> <span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="mi">18793</span>\<span class="n">anaconda3</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>
+<span class="n">Adding</span> <span class="n">Hello</span> <span class="mf">1.0</span> <span class="n">to</span> <span class="n">easy</span><span class="o">-</span><span class="n">install</span><span class="o">.</span><span class="n">pth</span> <span class="n">file</span>
+
+<span class="n">Installed</span> <span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="mi">18793</span>\<span class="n">anaconda3</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">hello</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">py3</span><span class="o">.</span><span class="mf">5.</span><span class="n">egg</span>
+<span class="n">Processing</span> <span class="n">dependencies</span> <span class="k">for</span> <span class="n">Hello</span><span class="o">==</span><span class="mf">1.0</span>
+<span class="n">Finished</span> <span class="n">processing</span> <span class="n">dependencies</span> <span class="k">for</span> <span class="n">Hello</span><span class="o">==</span><span class="mf">1.0</span>
+</pre></div>
+</div>
+<p>将hello.py作为包放置到<code class="docutils literal"><span class="pre">anaconda3\lib\site-packages</span></code>中，可以直接当做包进行import导入</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hello</span>
+<span class="n">hello</span><span class="o">.</span><span class="n">hello1</span><span class="p">()</span>
+<span class="n">hello</span><span class="o">.</span><span class="n">hello2</span><span class="p">(</span><span class="s2">&quot;hujianli&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>这就是用于安装Python模块、包和扩展的标准机制。你只需提供一个小小的安装脚本即可。
+如你所见，在安装过程中，Setuptools创建了一个.egg文件，这是一个独立的Python包。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id14">14.14.6. 打包</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>编写让用户能够安装模块的脚本setup.py后，就可使用它来创建归档文件了。你还可使用它
+来创建Windows安装程序、RPM包、egg文件、wheel文件等（wheel将最终取代egg）。这里只介绍
+如何创建.tar.gz文件，你应该能够根据文档轻松地创建其他格式的文件。
+要创建源代码归档文件，可使用命令 sdist （表示source distribution）。</p>
+<p>· 打包创建tar.gz文件</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span>
+<span class="n">running</span> <span class="n">sdist</span>
+<span class="n">running</span> <span class="n">egg_info</span>
+<span class="n">writing</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">names</span> <span class="n">to</span> <span class="n">Hello</span><span class="o">.</span><span class="n">egg</span><span class="o">-</span><span class="n">info</span>\<span class="n">top_level</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">writing</span> <span class="n">dependency_links</span> <span class="n">to</span> <span class="n">Hello</span><span class="o">.</span><span class="n">egg</span><span class="o">-</span><span class="n">info</span>\<span class="n">dependency_links</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">writing</span> <span class="n">Hello</span><span class="o">.</span><span class="n">egg</span><span class="o">-</span><span class="n">info</span>\<span class="n">PKG</span><span class="o">-</span><span class="n">INFO</span>
+<span class="n">reading</span> <span class="n">manifest</span> <span class="n">file</span> <span class="s1">&#39;Hello.egg-info\SOURCES.txt&#39;</span>
+<span class="n">writing</span> <span class="n">manifest</span> <span class="n">file</span> <span class="s1">&#39;Hello.egg-info\SOURCES.txt&#39;</span>
+<span class="n">warning</span><span class="p">:</span> <span class="n">sdist</span><span class="p">:</span> <span class="n">standard</span> <span class="n">file</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span> <span class="n">should</span> <span class="n">have</span> <span class="n">one</span> <span class="n">of</span> <span class="n">README</span><span class="p">,</span> <span class="n">README</span><span class="o">.</span><span class="n">rst</span><span class="p">,</span> <span class="n">README</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>现在，除目录build外，应该还有一个名为dist的目录。在这个目录中，有一个名为Hello-1.0.tar.gz
+的文件。你可将其分发给他人，而对方可将其解压缩，再使用脚本setup.py进行安装。</p>
+<p>· 打包创建wheel文件.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="python-entry-pointspython">
+<h2><a class="toc-backref" href="#id15">14.14.7. Python编程：entry_points将Python模块转变为命令行工具</a><a class="headerlink" href="#python-entry-pointspython" title="Permalink to this headline">¶</a></h2>
+<p>将模块变<code class="docutils literal"><span class="pre">“/usr/bin/”</span></code>目录下的命令行工具 参考文献：</p>
+<p><a class="reference external" href="https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
+<p>示例代码</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># coding: utf-8</span>
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="k">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;emcli&#39;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span>
+    <span class="n">author</span><span class="o">=</span><span class="s1">&#39;Mingxing LAI&#39;</span><span class="p">,</span>
+    <span class="n">author_email</span><span class="o">=</span><span class="s1">&#39;me@mingxinglai.com&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://github.com/lalor/emcli&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;A email client in terminal&#39;</span><span class="p">,</span>
+    <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;emcli&#39;</span><span class="p">],</span>
+    <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;yagmail&#39;</span><span class="p">],</span>
+    <span class="n">tests_require</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;nose&#39;</span><span class="p">,</span> <span class="s1">&#39;tox&#39;</span><span class="p">],</span>
+    <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;emcli=emcli:main&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>参考如下<code class="docutils literal"><span class="pre">setup.py</span></code>文件：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mouday</span><span class="o">/</span><span class="n">PureMySQL</span><span class="o">/</span><span class="n">blob</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id16">14.14.8. 打包且成为命令行模式的示例</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>[root@keepalived-master python01]# tree
+.
+├── pyHello
+│   ├── hello.py
+│   ├── __init__.py
+│   └── __main__.py
+└── setup.py
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">cat</span> <span class="pre">pyHello/hello.py</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/4/1 14:01</span>
+<span class="c1"># filename: hello.py</span>
+
+<span class="k">def</span> <span class="nf">hello1</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world1&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">hello2</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">hello1</span><span class="p">()</span>
+    <span class="n">hello2</span><span class="p">(</span><span class="s2">&quot;hujianli&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">cat</span> <span class="pre">pyHello/__main__.py</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/4/1 14:03</span>
+<span class="c1"># filename: __main__.py</span>
+<span class="kn">from</span> <span class="nn">.hello</span> <span class="k">import</span> <span class="n">main</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">setup.py</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/4/1 14:06</span>
+<span class="c1"># filename: setup.py</span>
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="k">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">打包的用的setup必须引入，</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s1">&#39;0.0.3&#39;</span>
+
+<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;pyHello&#39;</span><span class="p">,</span>
+      <span class="n">version</span><span class="o">=</span><span class="n">VERSION</span><span class="p">,</span>
+      <span class="n">description</span><span class="o">=</span><span class="s2">&quot;a command line tool for camel hello&quot;</span><span class="p">,</span>
+      <span class="n">long_description</span><span class="o">=</span><span class="s1">&#39;a python command tool for camel hello&#39;</span><span class="p">,</span>
+      <span class="n">classifiers</span><span class="o">=</span><span class="p">[],</span>  <span class="c1"># Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers</span>
+      <span class="n">keywords</span><span class="o">=</span><span class="s1">&#39;pyHello&#39;</span><span class="p">,</span>
+      <span class="n">author</span><span class="o">=</span><span class="s1">&#39;Peng Shiyu&#39;</span><span class="p">,</span>
+      <span class="n">author_email</span><span class="o">=</span><span class="s1">&#39;pengshiyuyx@gmail.com&#39;</span><span class="p">,</span>
+      <span class="n">license</span><span class="o">=</span><span class="s1">&#39;MIT&#39;</span><span class="p">,</span>
+      <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(),</span>
+      <span class="n">include_package_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+      <span class="n">zip_safe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+      <span class="n">install_requires</span><span class="o">=</span><span class="p">[],</span>
+      <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+          <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s1">&#39;pyHello = pyHello.hello:main&#39;</span>
+          <span class="p">]</span>
+      <span class="p">}</span>
+      <span class="p">)</span>
+</pre></div>
+</div>
+<p>其中有个<code class="docutils literal"><span class="pre">console_scripts</span></code>的键，表示注册一个叫作<code class="docutils literal"><span class="pre">pyHello</span></code>的系统命令，
+这个命令会调用<code class="docutils literal"><span class="pre">pyHello.hello的main函数</span></code>，安装的时候由setuptools来帮助我们生成了<code class="docutils literal"><span class="pre">/usr/local/bin/pyHello</span></code>这个文件。
+选择这种方式，而不是直接复制文件，是基于如下原因：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>· 没办法预先知道Python解释器的版本和位置。
+· 很难确定会安装在哪里。
+· 无法优雅地解决可移植到不同系统上的问题。
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">deploy.sh</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">dist</span> <span class="n">build</span> <span class="o">*.</span><span class="n">egg</span><span class="o">-</span><span class="n">info</span>
+
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span> <span class="n">bdist_wheel</span>
+<span class="n">twine</span> <span class="n">upload</span> <span class="n">dist</span><span class="o">/*</span>
+
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">dist</span> <span class="n">build</span> <span class="o">*.</span><span class="n">egg</span><span class="o">-</span><span class="n">info</span>
+</pre></div>
+</div>
+<p>使用entry_points的优点，就是可以让这些入口点能够被其他Python程序动态发现包所提供的功能，但是对应的代码的耦合度非常低。</p>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id17">14.14.9. 小结</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>·
+Setuptools：Setuptools工具包让你能够编写安装脚本。根据约定，这种安装脚本被命名
+为setup.py。使用这种脚本，可安装模块、包和扩展。</p>
+<p>·
+Setuptools的命令:可使用多个命令来运行setup.py脚本，如build、build_ext、install、sdist和bdist
+。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="15.Jinja2模板.html" class="btn btn-neutral float-right" title="14.15. Jinja2模板" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="13.Python操作Rabbitmq详解.html" class="btn btn-neutral float-left" title="14.13. Python操作Rabbitmq详解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

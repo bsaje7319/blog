@@ -1,0 +1,537 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>12.14. collections模块 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="12.15. Python标准库系列之Redis模块" href="15.Redis模块.html" />
+    <link rel="prev" title="12.13. subprocess模块" href="13.subprocess模块.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">12. Python 标准库学习</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.csv模块文件读写.html">12.1. csv模块文件读写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.json、pickle、shelve模块.html">12.2. Json和Pickle序列化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.shutil模块.html">12.3. shutil模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.time、datetime模块.html">12.4. time、datetime模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.randome模块.html">12.5. randome模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.os(系统模块).html">12.6. os模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.sys(系统操作模块).html">12.7. sys系统操作模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.configparser模块.html">12.8. configparser模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.hashlib模块.html">12.9. hashlib算法库模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.re模块.html">12.10. re模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.logging模块.html">12.11. logging模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.zipfile、tarfile模块学习.html">12.12. zipfile、tarfile模块学习</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.subprocess模块.html">12.13. subprocess模块</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">12.14. collections模块</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#namedtuple">12.14.1. namedtuple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deque">12.14.2. deque</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chainmap">12.14.3. ChainMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#counter">12.14.4. Counter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ordereddict">12.14.5. OrderedDict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#defaultdict">12.14.6. defaultdict</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="15.Redis模块.html">12.15. Python标准库系列之Redis模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.urlib模块.html">12.16. urllib模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="17.Stringw文本常量和模块.html">12.17. Stringw文本常量和模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="18.math模块.html">12.18. math模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="19.tempfile模块.html">12.19. tempfile模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="20.argparse解析命令行参数.html">12.20. argparse解析命令行参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="21.解析XML文档.html">12.21. 解析XML文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="22.getopt模块.html">12.22. getopt模块</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">12. Python 标准库学习</a> &raquo;</li>
+        
+      <li>12.14. collections模块</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/12.Python标准库/14.collections模块.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#collections" id="id2">collections模块</a><ul>
+<li><a class="reference internal" href="#namedtuple" id="id3">namedtuple</a></li>
+<li><a class="reference internal" href="#deque" id="id4">deque</a><ul>
+<li><a class="reference internal" href="#id1" id="id5">问题</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#chainmap" id="id6">ChainMap</a></li>
+<li><a class="reference internal" href="#counter" id="id7">Counter</a></li>
+<li><a class="reference internal" href="#ordereddict" id="id8">OrderedDict</a></li>
+<li><a class="reference internal" href="#defaultdict" id="id9">defaultdict</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="collections">
+<h1><a class="toc-backref" href="#id2">12.14. collections模块</a><a class="headerlink" href="#collections" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="namedtuple">
+<h2><a class="toc-backref" href="#id3">12.14.1. namedtuple</a><a class="headerlink" href="#namedtuple" title="Permalink to this headline">¶</a></h2>
+<p><strong>工厂函数，用于创建具有命名字段的元组子类</strong></p>
+<p>语法</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">namedtuple</span><span class="p">(</span><span class="n">typename</span><span class="p">,</span> <span class="n">field_names</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>示例：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 导入namedtuple</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
+<span class="c1"># 创建一个用户类，拥有name,age,sex属性</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">User</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;User&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="s2">&quot;age&quot;</span><span class="p">,</span><span class="s2">&quot;sex&quot;</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">user1</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s2">&quot;as&quot;</span><span class="p">,</span><span class="s2">&quot;22&quot;</span><span class="p">,</span><span class="s2">&quot;男&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">user1</span>
+<span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;as&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="s1">&#39;22&#39;</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s1">&#39;男&#39;</span><span class="p">)</span>
+<span class="c1"># 通过属性进行访问</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">user1</span><span class="o">.</span><span class="n">name</span>
+<span class="s1">&#39;as&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">user1</span><span class="o">.</span><span class="n">age</span>
+<span class="s1">&#39;22&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">user1</span><span class="o">.</span><span class="n">sex</span>
+<span class="s1">&#39;男&#39;</span>
+<span class="c1"># 拆包</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span> <span class="o">=</span> <span class="n">user1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span>
+<span class="p">(</span><span class="s1">&#39;as&#39;</span><span class="p">,</span> <span class="s1">&#39;22&#39;</span><span class="p">,</span> <span class="s1">&#39;男&#39;</span><span class="p">)</span>
+<span class="c1"># namedtuple转换为字典</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">user1</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+<span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;as&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;22&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;男&#39;</span><span class="p">)])</span>
+<span class="c1"># 初始化时也可以传入一个字典</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">user_info_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;ansheng&quot;</span><span class="p">,</span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="s2">&quot;20&quot;</span><span class="p">,</span><span class="s2">&quot;sex&quot;</span><span class="p">:</span><span class="s2">&quot;男&quot;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">User</span><span class="p">(</span><span class="o">**</span><span class="n">user_info_dict</span><span class="p">)</span>
+<span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ansheng&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s1">&#39;男&#39;</span><span class="p">)</span>
+<span class="c1"># 传入一个可迭代的</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">user_info_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ansheng&quot;</span><span class="p">,</span><span class="s2">&quot;20&quot;</span><span class="p">,</span><span class="s2">&quot;女&quot;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">User</span><span class="p">(</span><span class="o">*</span><span class="n">user_info_list</span><span class="p">)</span>
+<span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ansheng&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s1">&#39;女&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">user_info_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ansheng&quot;</span><span class="p">,</span><span class="s2">&quot;20&quot;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">User</span><span class="p">(</span><span class="o">*</span><span class="n">user_info_list</span><span class="p">,</span><span class="s2">&quot;男&quot;</span><span class="p">)</span>
+<span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ansheng&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s1">&#39;男&#39;</span><span class="p">)</span>
+<span class="c1"># _make方法</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">User</span><span class="o">.</span><span class="n">_make</span><span class="p">([</span><span class="s2">&quot;as&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;男&quot;</span><span class="p">])</span>
+<span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;as&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s1">&#39;男&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deque">
+<h2><a class="toc-backref" href="#id4">12.14.2. deque</a><a class="headerlink" href="#deque" title="Permalink to this headline">¶</a></h2>
+<p>双端队列 示例</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">deque</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">users_deque</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="s2">&quot;user1&quot;</span><span class="p">,</span> <span class="s2">&quot;user2&quot;</span><span class="p">,</span> <span class="s2">&quot;user3&quot;</span><span class="p">],</span> <span class="n">maxlen</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">users_deque</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="s2">&quot;user4&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">users_deque</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;user4&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">users_deque</span>
+<span class="go">deque([&#39;user4&#39;, &#39;user1&#39;, &#39;user2&#39;, &#39;user3&#39;, &#39;user4&#39;], maxlen=10)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>使用 deque(maxlen=N) 构造函数会新建一个固定大小的队列。</li>
+<li>当新的元素加入并且这个队列已满的时候， 最老的元素会自动被移除掉。</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">28</span><span class="p">]:</span> <span class="n">q</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">28</span><span class="p">]:</span> <span class="n">deque</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">30</span><span class="p">]:</span> <span class="n">q</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">30</span><span class="p">]:</span> <span class="n">deque</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">30</span><span class="p">]:</span> <span class="n">q</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">30</span><span class="p">]:</span> <span class="n">deque</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">31</span><span class="p">]:</span> <span class="n">q</span><span class="o">.</span><span class="n">ap</span>
+<span class="n">q</span><span class="o">.</span><span class="n">append</span>     <span class="n">q</span><span class="o">.</span><span class="n">appendleft</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">31</span><span class="p">]:</span> <span class="n">q</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>            <span class="c1">#左边新增</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">32</span><span class="p">]:</span> <span class="n">q</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">32</span><span class="p">]:</span> <span class="n">deque</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">34</span><span class="p">]:</span> <span class="n">q</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>            <span class="c1">#左边新增</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">35</span><span class="p">]:</span> <span class="n">q</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">35</span><span class="p">]:</span> <span class="n">deque</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>                    <span class="c1">#删除最末端的数，并返回数值</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="mi">2</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">37</span><span class="p">]:</span> <span class="n">q</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">37</span><span class="p">]:</span> <span class="n">deque</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>                <span class="c1">#删除最左边的数，并返回数值</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="mi">8</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="n">q</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="n">deque</span><span class="p">([</span><span class="mi">9</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id5">问题</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>在迭代操作或者其他操作的时候，怎样只保留最后有限几个元素的历史记录？
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">deque</span>
+
+<span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">previous_lines</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="n">history</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">line</span><span class="p">,</span> <span class="n">previous_lines</span>
+        <span class="n">previous_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="c1"># Example use on a file</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">r&#39;../../cookbook/somefile.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span><span class="p">,</span> <span class="n">prevlines</span> <span class="ow">in</span> <span class="n">search</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">pline</span> <span class="ow">in</span> <span class="n">prevlines</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">pline</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="chainmap">
+<h2><a class="toc-backref" href="#id6">12.14.3. ChainMap</a><a class="headerlink" href="#chainmap" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>dict-like class for creating a single view of multiple mappings</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">ChainMap</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dict2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_dict</span> <span class="o">=</span> <span class="n">ChainMap</span><span class="p">(</span><span class="n">dict1</span><span class="p">,</span> <span class="n">dict2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_dict</span><span class="o">.</span><span class="n">maps</span>
+<span class="go">[{&#39;a&#39;: &#39;a&#39;, &#39;b&#39;: &#39;b&#39;}, {&#39;c&#39;: &#39;c&#39;, &#39;d&#39;: &#39;d&#39;}]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">new_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">a a</span>
+<span class="go">b b</span>
+<span class="go">d d</span>
+<span class="go">c c</span>
+
+
+
+
+<span class="go">a = {&#39;x&#39;: 1, &#39;z&#39;: 3 }</span>
+<span class="go">b = {&#39;y&#39;: 2, &#39;z&#39;: 4 }</span>
+<span class="go">from collections import ChainMap</span>
+<span class="go">c = ChainMap(a,b)</span>
+<span class="go">print(c[&#39;x&#39;]) # Outputs 1 (from a)</span>
+<span class="go">print(c[&#39;y&#39;]) # Outputs 2 (from b)</span>
+<span class="go">print(c[&#39;z&#39;]) # Outputs 3 (from a)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="counter">
+<h2><a class="toc-backref" href="#id7">12.14.4. Counter</a><a class="headerlink" href="#counter" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>统计元素出现的次数 示例</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
+<span class="go"># 拥挤英文字母出现的次数</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters_counter</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters_counter</span>
+<span class="go">Counter({&#39;A&#39;: 5, &#39;B&#39;: 2, &#39;C&#39;: 1, &#39;H&#39;: 1, &#39;D&#39;: 1})</span>
+<span class="go"># 出现最多的前2个元素</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters_counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">[(&#39;A&#39;, 5), (&#39;B&#39;, 2)]</span>
+<span class="go"># 统计字符串</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Counter</span><span class="p">(</span><span class="s2">&quot;asdasdsczasdasdasdasd&quot;</span><span class="p">)</span>
+<span class="go">Counter({&#39;s&#39;: 7, &#39;a&#39;: 6, &#39;d&#39;: 6, &#39;c&#39;: 1, &#39;z&#39;: 1})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ordereddict">
+<h2><a class="toc-backref" href="#id8">12.14.5. OrderedDict</a><a class="headerlink" href="#ordereddict" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>dict subclass that remembers the order entries were added</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user_dict</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user_dict</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;As&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user_dict</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user_dict</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;男&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user_dict</span>
+<span class="go">OrderedDict([(&#39;name&#39;, &#39;As&#39;), (&#39;age&#39;, 18), (&#39;sex&#39;, &#39;男&#39;)])</span>
+<span class="go"># 把name移动到最后</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user_dict</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user_dict</span>
+<span class="go">OrderedDict([(&#39;age&#39;, 18), (&#39;sex&#39;, &#39;男&#39;), (&#39;name&#39;, &#39;As&#39;)])</span>
+<span class="go"># 移除最后一个元素</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user_dict</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
+<span class="go">(&#39;name&#39;, &#39;As&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user_dict</span>
+<span class="go">OrderedDict([(&#39;age&#39;, 18), (&#39;sex&#39;, &#39;男&#39;)])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="defaultdict">
+<h2><a class="toc-backref" href="#id9">12.14.6. defaultdict</a><a class="headerlink" href="#defaultdict" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>当字典中Key不存在时，设置默认值</li>
+</ul>
+<p>语法</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">defaultdict</span><span class="p">(</span><span class="n">FUNC_NAME</span><span class="p">)</span>
+<span class="n">接受一个函数名称</span>
+</pre></div>
+</div>
+<p>Code 统计列表中字母出现的次数</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>from collections import defaultdict
+
+letters = [&quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;A&quot;, &quot;H&quot;, &quot;D&quot;, &quot;B&quot;]
+
+data_dict = defaultdict(int)
+
+for letter in letters:
+    data_dict[letter] += 1
+print(data_dict)
+
+Output
+defaultdict(&lt;class &#39;int&#39;&gt;, {&#39;A&#39;: 3, &#39;B&#39;: 2, &#39;C&#39;: 1, &#39;H&#39;: 1, &#39;D&#39;: 1})
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="15.Redis模块.html" class="btn btn-neutral float-right" title="12.15. Python标准库系列之Redis模块" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="13.subprocess模块.html" class="btn btn-neutral float-left" title="12.13. subprocess模块" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

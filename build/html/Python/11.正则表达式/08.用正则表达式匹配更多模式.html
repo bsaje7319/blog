@@ -1,0 +1,568 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>11.8. 用正则表达式匹配更多模式 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="12. Python 标准库学习" href="../12.Python标准库/index.html" />
+    <link rel="prev" title="11.7. 编译正则表达式" href="07编译正则表达式.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">11. Python正则表达式</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.正则表达式.html">11.1. 正则表达式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.匹配字符串示例.html">11.2. 匹配字符串示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.替换字符串示例.html">11.3. 替换字符串示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.分割字符串示例.html">11.4. 分割字符串示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.初始化正则.html">11.5. 初始化正则表达式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.正则表达式举例.html">11.6. 正则表达式举例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07编译正则表达式.html">11.7. 编译正则表达式</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">11.8. 用正则表达式匹配更多模式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">11.8.1. 利用括号分组</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">11.8.2. 用管道匹配多个分组</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">11.8.3. 用问号实现可选匹配</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">11.8.4. 用星号匹配零次或多次</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">11.8.5. 用加号匹配一次或多次</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">11.8.6. 用花括号匹配特定次数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">11.8.7. 贪心和非贪心匹配</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">11.8.8. 通配字符</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">11.8.9. 正则表达式符号简述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">11.8.10. 不区分大小写的匹配</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">11.8.11. 管理复杂的正则表达式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#re-ignorec-asere-dotall-re-verbose">11.8.12. 组合使用 re.IGNOREC ASE、re.DOTALL 和 re.VERBOSE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">11. Python正则表达式</a> &raquo;</li>
+        
+      <li>11.8. 用正则表达式匹配更多模式</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/11.正则表达式/08.用正则表达式匹配更多模式.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id16">用正则表达式匹配更多模式</a><ul>
+<li><a class="reference internal" href="#id2" id="id17">利用括号分组</a></li>
+<li><a class="reference internal" href="#id3" id="id18">用管道匹配多个分组</a></li>
+<li><a class="reference internal" href="#id4" id="id19">用问号实现可选匹配</a></li>
+<li><a class="reference internal" href="#id5" id="id20">用星号匹配零次或多次</a></li>
+<li><a class="reference internal" href="#id6" id="id21">用加号匹配一次或多次</a></li>
+<li><a class="reference internal" href="#id7" id="id22">用花括号匹配特定次数</a></li>
+<li><a class="reference internal" href="#id8" id="id23">贪心和非贪心匹配</a></li>
+<li><a class="reference internal" href="#id9" id="id24">通配字符</a><ul>
+<li><a class="reference internal" href="#id10" id="id25">.匹配单个字符</a></li>
+<li><a class="reference internal" href="#id11" id="id26">用点-星匹配所有字符</a></li>
+<li><a class="reference internal" href="#id12" id="id27">用句点字符匹配换行</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13" id="id28">正则表达式符号简述</a></li>
+<li><a class="reference internal" href="#id14" id="id29">不区分大小写的匹配</a></li>
+<li><a class="reference internal" href="#id15" id="id30">管理复杂的正则表达式</a></li>
+<li><a class="reference internal" href="#re-ignorec-asere-dotall-re-verbose" id="id31">组合使用 re.IGNOREC ASE、re.DOTALL 和 re.VERBOSE</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id16">11.8. 用正则表达式匹配更多模式</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id17">11.8.1. 利用括号分组</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/22 15:23</span>
+<span class="c1"># filename: main.py</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">phoneNum</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;(\d\d\d)-(\d\d\d-\d\d\d\d)&quot;</span><span class="p">)</span>
+<span class="n">mo</span> <span class="o">=</span> <span class="n">phoneNum</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;My number is 415-555-4242.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># 415</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># 555-4242</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># 415-555-4242</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 415-555-4242</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id18">11.8.2. 用管道匹配多个分组</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/22 15:26</span>
+<span class="c1"># filename: re-main2.py</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">herRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;Batman|Tina Fey&#39;</span><span class="p">)</span>
+<span class="n">mo1</span> <span class="o">=</span> <span class="n">herRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Batman and Tina Fey&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo1</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># Batman</span>
+
+<span class="n">mo2</span> <span class="o">=</span> <span class="n">herRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Tina Fey and Batman &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo2</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># Tina Fey</span>
+
+<span class="n">batRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;Bat(man|mobile|copter|bat)&quot;</span><span class="p">)</span>
+<span class="n">mo</span> <span class="o">=</span> <span class="n">batRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Batmobile lost a wheel&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>   <span class="c1"># Batmobile</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># mobile</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id19">11.8.3. 用问号实现可选匹配</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/22 15:33</span>
+<span class="c1"># filename: re-main3.py</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">batRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;Bat(wo)?man&quot;</span><span class="p">)</span>
+<span class="n">mo1</span> <span class="o">=</span> <span class="n">batRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;The Adventures of Batman&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo1</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1">#Batman</span>
+
+<span class="n">mo2</span> <span class="o">=</span> <span class="n">batRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;The Adventures of Batwoman&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo2</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1">#Batwoman</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id20">11.8.4. 用星号匹配零次或多次</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/22 15:37</span>
+<span class="c1"># filename: re-main4.py</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">batRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;Bat(wo)*man&#39;</span><span class="p">)</span>
+<span class="n">mo1</span> <span class="o">=</span> <span class="n">batRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;The Adventures of Batman&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo1</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># Batman</span>
+
+<span class="n">mo2</span> <span class="o">=</span> <span class="n">batRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;The Adventures of Batwoman&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo2</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># Batwoman</span>
+
+<span class="n">mo3</span> <span class="o">=</span> <span class="n">batRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;The Adventures of Batwowowowoman&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo3</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># Batwowowowoman</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id21">11.8.5. 用加号匹配一次或多次</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/22 15:37</span>
+<span class="c1"># filename: re-main4.py</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">batRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;Bat(wo)+man&#39;</span><span class="p">)</span>
+<span class="n">mo1</span> <span class="o">=</span> <span class="n">batRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;The Adventures of Batwoman&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo1</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># Batman</span>
+
+<span class="n">mo2</span> <span class="o">=</span> <span class="n">batRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;The Adventures of Batwowowowowowoman&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo2</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># Batwowowowowowoman</span>
+
+<span class="n">mo3</span> <span class="o">=</span> <span class="n">batRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;The Adventures of Batman&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo3</span> <span class="o">==</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id22">11.8.6. 用花括号匹配特定次数</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/22 15:41</span>
+<span class="c1"># filename: re-main5.py</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">haregex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;(Ha)</span><span class="si">{3}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">mo1</span> <span class="o">=</span> <span class="n">haregex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;HaHaHa&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo1</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># HaHaHa</span>
+
+<span class="n">mo2</span> <span class="o">=</span> <span class="n">haregex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Ha&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo2</span> <span class="o">==</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id23">11.8.7. 贪心和非贪心匹配</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/22 15:48</span>
+<span class="c1"># filename: re-main6.py</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1"># 贪婪匹配</span>
+<span class="n">regreedyHaRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;(Ha){3,5}&quot;</span><span class="p">)</span>
+<span class="n">mo1</span> <span class="o">=</span> <span class="n">regreedyHaRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;HaHaHaHaHa&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo1</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>      <span class="c1"># HaHaHaHaHa</span>
+
+<span class="c1"># 非贪婪匹配</span>
+<span class="n">regreedyHaRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;(Ha){3,5}?&quot;</span><span class="p">)</span>
+<span class="n">mo1</span> <span class="o">=</span> <span class="n">regreedyHaRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;HaHaHaHaHa&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo1</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>      <span class="c1"># HaHaHa</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id24">11.8.8. 通配字符</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id25">.匹配单个字符</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">.（句点）字符称为“通配符”。它匹配除了换行之外的所有字符，句点字符只匹配一个字符。</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">atRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;.at&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">atRegex</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;The cat in the hat sat on the flat mat.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>   <span class="c1">#[&#39;cat&#39;, &#39;hat&#39;, &#39;sat&#39;, &#39;lat&#39;, &#39;mat&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3><a class="toc-backref" href="#id26">用点-星匹配所有字符</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>(.*)        #贪婪匹配模式
+(.*?)       #非贪婪匹配模式
+</pre></div>
+</div>
+<p>点-星使用“贪心”模式：它总是匹配尽可能多的文本。要用“非贪心”模式匹配所有文本，就使用点-星和问号。
+像和大括号一起使用时那样，问号告诉Python 用非贪心模式匹配。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/22 15:57</span>
+<span class="c1"># filename: sample01.py</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">nameRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;First Name: (.*) Last Name: (.*)&#39;</span><span class="p">)</span>
+<span class="n">mo</span> <span class="o">=</span> <span class="n">nameRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;First Name: Al Last Name: Sweigart&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>      <span class="c1">#Al</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>      <span class="c1">#Sweigart</span>
+
+
+<span class="n">nongreedyRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;&lt;.*?&gt;&#39;</span><span class="p">)</span>
+<span class="n">mo</span> <span class="o">=</span> <span class="n">nongreedyRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;&lt;To serve man&gt; for dinner.&gt;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>       <span class="c1">#&lt;To serve man&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3><a class="toc-backref" href="#id27">用句点字符匹配换行</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/22 16:00</span>
+<span class="c1"># filename: sample02.py</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">noNewlineRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;.*&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">noNewlineRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;Serve the public trust.</span><span class="se">\n</span><span class="s1">Protect the innocent.</span><span class="se">\n</span><span class="s1">Uphold the law.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># 通过传入 re.DOTALL 作为 re.compile()的第二个参数，可以让句点字符匹配所有字符，包括换行字符</span>
+<span class="n">newlineRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;.*&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">newlineRegex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;Serve the public trust.</span><span class="se">\n</span><span class="s1">Protect the innocent.</span><span class="se">\n</span><span class="s1">Uphold the law.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id13">
+<h2><a class="toc-backref" href="#id28">11.8.9. 正则表达式符号简述</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>   ?匹配零次或一次前面的分组。
+   *匹配零次或多次前面的分组。
+   +匹配一次或多次前面的分组。
+   {n}匹配 n 次前面的分组。
+   {n,}匹配 n 次或更多前面的分组。
+   {,m}匹配零次到 m 次前面的分组。
+   {n,m}匹配至少 n 次、至多 m 次前面的分组。
+   {n,m}?或*?或+?对前面的分组进行非贪心匹配。
+   ^spam 意味着字符串必须以 spam 开始。
+   spam$意味着字符串必须以 spam 结束。
+   .匹配所有字符，换行符除外。
+   \d、\w 和\s 分别匹配数字、单词和空格。
+   \D、\W 和\S 分别匹配出数字、单词和空格外的所有字符。
+   [abc]匹配方括号内的任意字符（诸如 a、b 或 c）。
+   [^abc]匹配不在方括号内的任意字符。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h2><a class="toc-backref" href="#id29">11.8.10. 不区分大小写的匹配</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">robocop</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;robocop&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="n">result1</span> <span class="o">=</span> <span class="n">robocop</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;RoboCop is part man, part machine, all cop.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result1</span><span class="p">)</span>
+
+<span class="n">result2</span> <span class="o">=</span> <span class="n">robocop</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ROBOCOP protects the innocent.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result2</span><span class="p">)</span>
+
+<span class="n">result3</span> <span class="o">=</span> <span class="n">robocop</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;Al, why does your programming book talk about robocop so much?&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h2><a class="toc-backref" href="#id30">11.8.11. 管理复杂的正则表达式</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<p>要实现这种详细模式，可以向<code class="docutils literal"><span class="pre">re.compile()</span></code>传入变量<code class="docutils literal"><span class="pre">re.VERBOSE</span></code>，作为第二个参数。</p>
+<p>可以将正则表达式放在多行中，并加上注释</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">phoneRegex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;&#39;&#39;(</span>
+<span class="s1">(\d</span><span class="si">{3}</span><span class="s1">|\(\d</span><span class="si">{3}</span><span class="s1">\))?              # area code</span>
+<span class="s1">(\s|-|\.)?                      # separator</span>
+<span class="s1">\d</span><span class="si">{3}</span><span class="s1">                           # first 3 digits</span>
+<span class="s1">(\s|-|\.)                       # separator</span>
+<span class="s1">\d</span><span class="si">{4}</span><span class="s1">                           # last 4 digits</span>
+<span class="s1">(\s*(ext|x|ext.)\s*\d{2,5})?    # extension</span>
+<span class="s1">)&#39;&#39;&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>使用了<code class="docutils literal"><span class="pre">三重引号(''')</span></code>，创建了一个多行字符串。这样就可以将正则表达式定义放在多行中，让它更可读。</p>
+<p>正则表达式字符串中的注释规则，与普通的 Python
+代码一样：#符号和它后面直到行末的内容，都被忽略。
+而且，表示正则表达式的多行字符串中，多余的空白字符也不认为是要匹配的文本模式的一部分。这让你能够组织正则表达式，让它更可读。</p>
+</div>
+<div class="section" id="re-ignorec-asere-dotall-re-verbose">
+<h2><a class="toc-backref" href="#id31">11.8.12. 组合使用 re.IGNOREC ASE、re.DOTALL 和 re.VERBOSE</a><a class="headerlink" href="#re-ignorec-asere-dotall-re-verbose" title="Permalink to this headline">¶</a></h2>
+<p>如果希望正则表达式不区分大小写，并且句点字符匹配换行</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">someRegexValue</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>或者</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">someRegexValue</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../12.Python标准库/index.html" class="btn btn-neutral float-right" title="12. Python 标准库学习" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="07编译正则表达式.html" class="btn btn-neutral float-left" title="11.7. 编译正则表达式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

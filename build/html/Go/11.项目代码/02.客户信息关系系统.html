@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>11.2. 客户信息关系系统 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="Python自动化运维" href="../../Python/index.html" />
+    <link rel="prev" title="11.1. 家庭收支记账软件" href="01.家庭收支记账软件.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">11. 项目代码</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.家庭收支记账软件.html">11.1. 家庭收支记账软件</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">11.2. 客户信息关系系统</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#model">11.2.1. model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service">11.2.2. service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#view">11.2.3. view</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">11. 项目代码</a> &raquo;</li>
+        
+      <li>11.2. 客户信息关系系统</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/11.项目代码/02.客户信息关系系统.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id2">客户信息关系系统</a><ul>
+<li><a class="reference internal" href="#model" id="id3">model</a></li>
+<li><a class="reference internal" href="#service" id="id4">service</a></li>
+<li><a class="reference internal" href="#view" id="id5">view</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id2">11.2. 客户信息关系系统</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="model">
+<h2><a class="toc-backref" href="#id3">11.2.1. model</a><a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
+<p>model/customer.go</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package model
+
+import &quot;fmt&quot;
+
+// 声明一个Customer结构体，表示一个客户信息
+type Customer struct {
+    Id     int
+    Name   string
+    Gender string
+    Age    int
+    Phone  string
+    Email  string
+}
+
+//使用工厂模式返回一个Customer的实例
+func NewCustomer(id int, name string, gender string, age int, phone string, email string) Customer {
+    return Customer{
+        Id:     id,
+        Name:   name,
+        Gender: gender,
+        Age:    age,
+        Phone:  phone,
+        Email:  email,
+    }
+}
+
+//第二种创建Customer实例方法，不带id
+func NewCustomer2(name string, gender string, age int, phone string, email string) Customer {
+    return Customer{
+        Name:   name,
+        Gender: gender,
+        Age:    age,
+        Phone:  phone,
+        Email:  email,
+    }
+}
+
+func (this Customer) GetInfo() string {
+    info := fmt.Sprintf(&quot;%v\t\t%v\t\t%v\t\t%v\t\t%v\t\t%v&quot;, this.Id, this.Name, this.Gender, this.Age, this.Phone, this.Email)
+    return info
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="service">
+<h2><a class="toc-backref" href="#id4">11.2.2. service</a><a class="headerlink" href="#service" title="Permalink to this headline">¶</a></h2>
+<p>service/customerService.go</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package service
+
+import (
+    &quot;github.com/go_hexin01/day35/model&quot;
+)
+
+//该CuteomerService,完成对Customer的操作，包括增删改查
+type CustomerService struct {
+    customers []model.Customer
+    //声明一个字段，表示当前切片含有多少个客户
+    //该字段后面，还可以作为新客户的 id+1
+    customerNum int
+}
+
+// 编写一个方法，返回*CustomerService
+func NewCustomerService() *CustomerService {
+    // 为了能够看到有客户在切片中，我们初始化一个客户
+    customerService := &amp;CustomerService{}
+    customerService.customerNum = 1
+    customer := model.NewCustomer(1, &quot;张三&quot;, &quot;男&quot;, 20, &quot;112&quot;, &quot;hjl@qq.com&quot;)
+    customerService.customers = append(customerService.customers, customer)
+    return customerService
+}
+
+// 返回客户切片List方法。
+func (this *CustomerService) List() []model.Customer {
+    return this.customers
+}
+
+// 添加客户到customers切片
+//!!!
+func (this *CustomerService) Add(customer model.Customer) bool {
+    //我们确定一个分配id的规则，就是添加的顺序
+    this.customerNum++
+    // 将id赋值给新加入的信息中，自增1
+    customer.Id = this.customerNum
+    // 添加到切片
+    this.customers = append(this.customers, customer)
+    return true
+}
+
+// 根据id号删除切片中的元素
+func (this *CustomerService) Delete(id int) bool {
+    index := this.FindByid(id)
+    if index == -1 {
+        return false
+    }
+    // 如果从切片中删除一个元素
+    this.customers = append(this.customers[:index], this.customers[index+1:]...)
+    return true
+}
+
+// 根据id查找客户在切片中对应下标，如果没有该客户，返回-1
+func (this *CustomerService) FindByid(id int) int {
+    index := -1
+    //遍历this.customers切片
+    for i := 0; i &lt; len(this.customers); i++ {
+        if this.customers[i].Id == id {
+            //找到
+            index = i
+        }
+    }
+    return index
+}
+
+// 根据ID获取切片内容信息
+func (this *CustomerService) GetInfoById(id int) model.Customer {
+    i := id - 1
+    return this.customers[i]
+}
+
+//根据id修改客户信息
+func (this *CustomerService) Update(id int, customer model.Customer) bool {
+    for i := 0; i &lt; len(this.customers); i++{
+        if this.customers[i].Id == id{
+            this.customers[i].Name = customer.Name
+            this.customers[i].Gender = customer.Gender
+            this.customers[i].Age = customer.Age
+            this.customers[i].Phone = customer.Phone
+            this.customers[i].Email = customer.Email
+        }
+    }
+    return true
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="view">
+<h2><a class="toc-backref" href="#id5">11.2.3. view</a><a class="headerlink" href="#view" title="Permalink to this headline">¶</a></h2>
+<p>view/customerView.go</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;github.com/go_hexin01/day35/model&quot;
+    &quot;github.com/go_hexin01/day35/service&quot;
+)
+
+func main() {
+    // 在main函数中，创建一个customerView，并运行显示主菜单
+    customerView := customerView{
+        key:  &quot;&quot;,
+        loop: true,
+    }
+    //这里完成对 customerView 结构体的 customerService 字段的初始化
+    customerView.customerService = service.NewCustomerService()
+
+    // 显示主菜单
+    customerView.mainMenu()
+}
+
+type customerView struct {
+    //定义必要字段
+    key  string //接收用户输入....
+    loop bool   //表示是否循环的显示主菜单
+    //增加一个字段customerService
+    customerService *service.CustomerService
+}
+
+// 列出所有客户，遍历切片返回客户信息
+func (this *customerView) list() {
+    //获取到当前所有的客户信息(在切片中)
+    customers := this.customerService.List()
+
+    //显示
+    fmt.Println(&quot;----------------------客户列表------------------------------&quot;)
+    fmt.Println(&quot;编号\t\t姓名\t\t性别\t\t年龄\t\t电话\t\t邮箱&quot;)
+    for i := 0; i &lt; len(customers); i++ {
+        //fmt.Println(customers[i].Id,&quot;\t&quot;,customers[i].Name ....)
+        fmt.Println(customers[i].GetInfo())
+    }
+    fmt.Printf(&quot;\n-----------------客户列表完成------------------------\n\n&quot;)
+}
+
+//得到用户的输入，信息构建新的客户，并完成添加
+func (this *customerView) add() {
+    fmt.Println(&quot;----------------------------添加客户--------------------------&quot;)
+    fmt.Print(&quot;姓名:&quot;)
+    name := &quot;&quot;
+    fmt.Scanln(&amp;name)
+    fmt.Print(&quot;性别:&quot;)
+    gender := &quot;&quot;
+    fmt.Scanln(&amp;gender)
+    fmt.Print(&quot;年龄:&quot;)
+    age := 0
+    fmt.Scanln(&amp;age)
+    fmt.Print(&quot;电话:&quot;)
+    phone := &quot;&quot;
+    fmt.Scanln(&amp;phone)
+    fmt.Print(&quot;邮箱:&quot;)
+    email := &quot;&quot;
+    fmt.Scanln(&amp;email)
+    //构建一个新的Custom实例，
+    //注意id号没有让用户输入，id是唯一的，需要系统分配
+    customer := model.NewCustomer2(name, gender, age, phone, email)
+    //调用
+    if this.customerService.Add(customer) {
+        fmt.Println(&quot;------------------添加完成--------------------&quot;)
+    } else {
+        fmt.Println(&quot;------------------添加失败--------------------&quot;)
+    }
+
+}
+
+//得到用户的输如id，删除该id对应的客户
+func (this *customerView) delete() {
+    fmt.Println(&quot;----------------------------------删除客户----------------------------------&quot;)
+    fmt.Println(&quot;请输入要删除客户的编号(-1退出)&quot;)
+    id := -1
+    fmt.Scanln(&amp;id)
+    if id == -1 {
+        return //放弃删除操作
+    }
+    fmt.Println(&quot;确认是否删除(Y/N)&quot;)
+    // 这里可以加入一个循环判断，直到用户输入y或者n，才退出
+    choice := &quot;&quot;
+    fmt.Scanln(&amp;choice)
+    if choice == &quot;y&quot; || choice == &quot;Y&quot; {
+        //调用customerService的Deletc方法
+        if this.customerService.Delete(id) {
+            fmt.Println(&quot;----------------------删除完成---------------------------------------&quot;)
+        } else {
+            fmt.Println(&quot;------------删除失败，输入的id号不存在--------------------------------&quot;)
+        }
+    }
+
+}
+
+//得到用户的输入id，修改该id对应客户
+func (this *customerView) update() {
+    this.list()
+    fmt.Println()
+    fmt.Println(&quot;---------------修改客户--------------------------&quot;)
+    fmt.Println(&quot;请输入要修改客户的编号(-1退出)&quot;)
+    id := -1
+    fmt.Scanln(&amp;id)
+    if id == -1 {
+        return //放弃修改操作
+    }
+    fmt.Println(&quot;确认是否修改(Y/N)&quot;)
+    //这里可以加入一个循环判断，直到用户输入y或者n，才退出...
+    choice := &quot;&quot;
+    fmt.Scanln(&amp;choice)
+    if choice == &quot;y&quot; || choice == &quot;Y&quot; {
+        //调用CustomerService的FindByid方法
+        if this.customerService.FindByid(id) != -1 {
+            customer := this.customerService.GetInfoById(id)
+            fmt.Printf(&quot;姓名(%v:)&quot;, customer.Name)
+            name := &quot;&quot;
+            fmt.Scanln(&amp;name)
+            fmt.Printf(&quot;性别（%v）：&quot;, customer.Gender)
+            gender := &quot;&quot;
+            fmt.Scanln(&amp;gender)
+            fmt.Printf(&quot;年龄（%v）：&quot;, customer.Age)
+            age := 0
+            fmt.Scanln(&amp;age)
+            fmt.Printf(&quot;电话（%v）：&quot;, customer.Phone)
+            phone := &quot;&quot;
+            fmt.Scanln(&amp;phone)
+            fmt.Printf(&quot;邮箱（%v）：&quot;, customer.Email)
+            email := &quot;&quot;
+            fmt.Scanln(&amp;email)
+            customer2 := model.NewCustomer2(name, gender, age, phone, email)
+            this.customerService.Update(id, customer2)
+        }
+    }
+}
+
+//退出
+func (this *customerView) logout() {
+    fmt.Print(&quot;确认是否退出(Y/N)&quot;)
+    for {
+        fmt.Scanln(&amp;this.key)
+        // 如果输入其他就一直询问，是否退出
+        if this.key == &quot;Y&quot; || this.key == &quot;y&quot; || this.key == &quot;N&quot; || this.key == &quot;n&quot;{
+            break
+        }
+        fmt.Print(&quot;你的输入有误，确认是否退出(Y/N)&quot;)
+    }
+    // 如果是y或者Y就退出程序
+    if this.key == &quot;y&quot;|| this.key == &quot;Y&quot;{
+        this.loop = false
+    }
+
+}
+
+func (this *customerView) mainMenu() {
+    for {
+        fmt.Println(&quot;--------------------客户信息管理软件-----------------------&quot;)
+        fmt.Println(&quot;1 添加客户&quot;)
+        fmt.Println(&quot;2 修改客户&quot;)
+        fmt.Println(&quot;3 删除客户&quot;)
+        fmt.Println(&quot;4 客户列表&quot;)
+        fmt.Println(&quot;5 退    出&quot;)
+        fmt.Print(&quot;请选择(1-5): &quot;)
+        fmt.Scanln(&amp;this.key)
+        switch this.key {
+        case &quot;1&quot;:
+            //fmt.Println(&quot;添加客户&quot;)
+            this.add()
+        case &quot;2&quot;:
+            //fmt.Println(&quot;修改客户&quot;)
+            this.update()
+        case &quot;3&quot;:
+            //fmt.Println(&quot;删除客户&quot;)
+            this.delete()
+        case &quot;4&quot;:
+            //fmt.Println(&quot;客户列表&quot;)
+            this.list()
+        case &quot;5&quot;:
+            //退出
+            //this.loop = false
+            this.logout()
+        default:
+            fmt.Println(&quot;你的输入有误，请重新输入.....&quot;)
+        }
+        //如果loop为false状态就退出
+        if !this.loop {
+            break
+        }
+    }
+    fmt.Println(&quot;你退出了客户关系管理系统......&quot;)
+}
+</pre></div>
+</div>
+<p><img alt="image0" src="../../_images/go_client_guanxi01.png" /></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../Python/index.html" class="btn btn-neutral float-right" title="Python自动化运维" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="01.家庭收支记账软件.html" class="btn btn-neutral float-left" title="11.1. 家庭收支记账软件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

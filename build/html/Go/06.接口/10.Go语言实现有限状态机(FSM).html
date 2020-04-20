@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.10. 10.Go语言实现有限状态机(FSM) &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="7. 07.包" href="../07.包/index.html" />
+    <link rel="prev" title="6.9. 09.类型分支-批量判断空接口中变量的类型" href="09.类型分支-批量判断空接口中变量的类型.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6. 06.接口</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.声明接口.html">6.1. 01.声明接口</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.实现接口的条件.html">6.2. 02.实现接口的条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.理解类型与接口的关系.html">6.3. 03.理解类型与接口的关系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.常见的类型的便捷排序.html">6.4. 04.常见的类型的便捷排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.对结构体数据进行排序.html">6.5. 05.对结构体数据进行排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.接口的嵌套组合-将多个接口放在一个接口内.html">6.6. 06.接口的嵌套组合-将多个接口放在一个接口内</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.在接口和类型间转换.html">6.7. 07.在接口和类型间转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.空接口类型(interface{})-能保存所有值的类型.html">6.8. 08.空接口类型(interface{})-能保存所有值的类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.类型分支-批量判断空接口中变量的类型.html">6.9. 09.类型分支-批量判断空接口中变量的类型</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.10. 10.Go语言实现有限状态机(FSM)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">6.10.1. 有限状态机的举例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">6. 06.接口</a> &raquo;</li>
+        
+      <li>6.10. 10.Go语言实现有限状态机(FSM)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/06.接口/10.Go语言实现有限状态机(FSM).txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#go-fsm" id="id2">10.Go语言实现有限状态机(FSM)</a><ul>
+<li><a class="reference internal" href="#id1" id="id3">有限状态机的举例</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="go-fsm">
+<h1><a class="toc-backref" href="#id2">6.10. 10.Go语言实现有限状态机(FSM)</a><a class="headerlink" href="#go-fsm" title="Permalink to this headline">¶</a></h1>
+<p>有限状态机又简称 FSM（Finite-State Machine
+的首字母缩写），也可以称为有限状态自动机。它是为研究有限内存的计算过程和某些语言类而抽象出的一种计算模型。有限状态机拥有有限数量的状态，每个状态可以迁移到零个或多个状态，输入字串决定执行哪个状态的迁移。</p>
+<p>现实生活中，状态是随处可见的，并且通过不同的状态来做不同的事。比如冷了加衣服、饿了吃饭、困了睡觉等。这里的冷了、饿了、困了是三种不同的状态，并且根据这三个状态的转变驱动了不同行为的产生（加衣服、吃饭和睡觉）。</p>
+<p>有限状态机的组成
+有限状态机有两个必要的特点，一是离散的，二是有限的。基于这两点，现实世界上绝大多数事物因为复杂的状态而无法用有限状态机表示。</p>
+<p>而描述事物的有限状态机模型的元素由以下组成：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>· 状态（State）：事物的状态，包括初始状态和所有事件触发后的状态。
+· 事件（Event）：触发状态变化或者保持原状态的事件。
+· 行为或转换（Action/Transition）：执行状态转换的过程。
+· 检测器（Guard）：检测某种状态要转换成另一种状态的条件是否满足。
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id3">6.10.1. 有限状态机的举例</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>FSM 持有有限多个状态集合，有当前状态、默认状态、接收的外部数据等。
+并且 FSM 有一系列的行为：启动 FSM、退出 FSM 以及状态转移等。
+
+State（状态）也会有一系列的行为：
+进入状态，转移状态等。
+并且 State 还有动作行为，比如电视机当前频道正在播放西游记，切换频道后就变成了播放封神榜，原理上是一样的。
+</pre></div>
+</div>
+<p>【示例】下面以游戏中的宠物为例，将这个宠物看做一个 FSM，比如这个宠物每天
+8 点开始挣金币，中午 12 点开始打坐练功，8 点和 12 点就是对这个 FSM
+的输入语句，对应的状态则开始执行，代码如下所示：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="o">//</span> <span class="n">接口</span>
+<span class="nb">type</span> <span class="n">IFSMState</span> <span class="n">interface</span> <span class="p">{</span>
+    <span class="n">Enter</span><span class="p">()</span>
+    <span class="n">Exit</span><span class="p">()</span>
+    <span class="n">CheckTransition</span><span class="p">(</span><span class="n">hour</span> <span class="nb">int</span><span class="p">)</span> <span class="nb">bool</span>
+    <span class="n">Hour</span><span class="p">()</span> <span class="nb">int</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">State父struct</span>
+<span class="nb">type</span> <span class="n">FSMState</span> <span class="n">struct</span><span class="p">{}</span>
+
+<span class="o">//</span> <span class="n">进入状态</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">FSMState</span><span class="p">)</span> <span class="n">Enter</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">退出状态</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">FSMState</span><span class="p">)</span> <span class="n">Exit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">状态转移检测</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">FSMState</span><span class="p">)</span> <span class="n">CheckTransition</span><span class="p">(</span><span class="n">hour</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">打坐</span>
+<span class="nb">type</span> <span class="n">ZazenState</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">hour</span> <span class="nb">int</span>
+    <span class="n">FSMState</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">NewZazenState</span><span class="p">()</span> <span class="o">*</span><span class="n">ZazenState</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="n">ZazenState</span><span class="p">{</span><span class="n">hour</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">ZazenState</span><span class="p">)</span> <span class="n">Enter</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;ZazenState: 开始打坐&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">ZazenState</span><span class="p">)</span> <span class="n">Exit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;Zazenstate: 退出打坐&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">ZazenState</span><span class="p">)</span> <span class="n">Hour</span><span class="p">()</span> <span class="nb">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">hour</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">状态转移检测</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">ZazenState</span><span class="p">)</span> <span class="n">CheckTransition</span><span class="p">(</span><span class="n">hour</span> <span class="nb">int</span><span class="p">)</span> <span class="nb">bool</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">hour</span> <span class="o">==</span> <span class="n">this</span><span class="o">.</span><span class="n">hour</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">true</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">false</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">工作</span>
+<span class="nb">type</span> <span class="n">WorkerState</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">hour</span> <span class="nb">int</span>
+    <span class="n">FSMState</span>
+<span class="p">}</span>
+<span class="n">func</span> <span class="n">NewWorkerState</span><span class="p">()</span> <span class="o">*</span><span class="n">WorkerState</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="n">WorkerState</span><span class="p">{</span><span class="n">hour</span><span class="p">:</span> <span class="mi">12</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">WorkerState</span><span class="p">)</span> <span class="n">Enter</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;WorkerState: 开始工作&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">WorkerState</span><span class="p">)</span> <span class="n">Exit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;WorkerState: 退出工作&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">WorkerState</span><span class="p">)</span> <span class="n">Hour</span><span class="p">()</span> <span class="nb">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">hour</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">状态转移检测</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">WorkerState</span><span class="p">)</span> <span class="n">CheckTransition</span><span class="p">(</span><span class="n">hour</span> <span class="nb">int</span><span class="p">)</span> <span class="nb">bool</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">hour</span> <span class="o">==</span> <span class="n">this</span><span class="o">.</span><span class="n">hour</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">true</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">false</span>
+<span class="p">}</span>
+
+<span class="nb">type</span> <span class="n">FSM</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">持有状态集合</span>
+    <span class="n">states</span> <span class="nb">map</span><span class="p">[</span><span class="n">string</span><span class="p">]</span><span class="n">IFSMState</span>
+    <span class="o">//</span> <span class="n">当前状态</span>
+    <span class="n">current_state</span> <span class="n">IFSMState</span>
+    <span class="o">//</span> <span class="n">默认状态</span>
+    <span class="n">default_state</span> <span class="n">IFSMState</span>
+    <span class="o">//</span> <span class="n">外部输入数据</span>
+    <span class="n">input_data</span> <span class="nb">int</span>
+    <span class="o">//</span> <span class="n">是否初始化</span>
+    <span class="n">inited</span> <span class="nb">bool</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">初始化FSM</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">FSM</span><span class="p">)</span> <span class="n">Init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">添加状态到FSM</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">FSM</span><span class="p">)</span> <span class="n">AddState</span><span class="p">(</span><span class="n">key</span> <span class="n">string</span><span class="p">,</span> <span class="n">state</span> <span class="n">IFSMState</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">this</span><span class="o">.</span><span class="n">states</span> <span class="o">==</span> <span class="n">nil</span> <span class="p">{</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">states</span> <span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="nb">map</span><span class="p">[</span><span class="n">string</span><span class="p">]</span><span class="n">IFSMState</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">设置默认的State</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">FSM</span><span class="p">)</span> <span class="n">SetDefaultState</span><span class="p">(</span><span class="n">state</span> <span class="n">IFSMState</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">default_state</span> <span class="o">=</span> <span class="n">state</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">转移状态</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">FSM</span><span class="p">)</span> <span class="n">TransitionState</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">nextState</span> <span class="p">:</span><span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">default_state</span>
+    <span class="n">input_data</span> <span class="p">:</span><span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">input_data</span>
+    <span class="k">if</span> <span class="n">this</span><span class="o">.</span><span class="n">inited</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">v</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="n">this</span><span class="o">.</span><span class="n">states</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">input_data</span> <span class="o">==</span> <span class="n">v</span><span class="o">.</span><span class="n">Hour</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">nextState</span> <span class="o">=</span> <span class="n">v</span>
+                <span class="k">break</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">ok</span> <span class="p">:</span><span class="o">=</span> <span class="n">nextState</span><span class="o">.</span><span class="n">CheckTransition</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">input_data</span><span class="p">);</span> <span class="n">ok</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">this</span><span class="o">.</span><span class="n">current_state</span> <span class="o">!=</span> <span class="n">nil</span> <span class="p">{</span>
+            <span class="o">//</span> <span class="n">退出前一个状态</span>
+            <span class="n">this</span><span class="o">.</span><span class="n">current_state</span><span class="o">.</span><span class="n">Exit</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">current_state</span> <span class="o">=</span> <span class="n">nextState</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">inited</span> <span class="o">=</span> <span class="n">true</span>
+        <span class="n">nextState</span><span class="o">.</span><span class="n">Enter</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">设置输入数据</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">FSM</span><span class="p">)</span> <span class="n">SetInputData</span><span class="p">(</span><span class="n">inputData</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">input_data</span> <span class="o">=</span> <span class="n">inputData</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">TransitionState</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">重置</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">this</span> <span class="o">*</span><span class="n">FSM</span><span class="p">)</span> <span class="n">Reset</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">inited</span> <span class="o">=</span> <span class="n">false</span>
+<span class="p">}</span>
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">zazenState</span> <span class="p">:</span><span class="o">=</span> <span class="n">NewZazenState</span><span class="p">()</span>
+    <span class="n">workerState</span> <span class="p">:</span><span class="o">=</span> <span class="n">NewWorkerState</span><span class="p">()</span>
+    <span class="n">fsm</span> <span class="p">:</span><span class="o">=</span> <span class="n">new</span><span class="p">(</span><span class="n">FSM</span><span class="p">)</span>
+    <span class="n">fsm</span><span class="o">.</span><span class="n">AddState</span><span class="p">(</span><span class="s2">&quot;ZazenState&quot;</span><span class="p">,</span> <span class="n">zazenState</span><span class="p">)</span>
+    <span class="n">fsm</span><span class="o">.</span><span class="n">AddState</span><span class="p">(</span><span class="s2">&quot;WorkerState&quot;</span><span class="p">,</span> <span class="n">workerState</span><span class="p">)</span>
+    <span class="n">fsm</span><span class="o">.</span><span class="n">SetDefaultState</span><span class="p">(</span><span class="n">zazenState</span><span class="p">)</span>
+    <span class="n">fsm</span><span class="o">.</span><span class="n">Init</span><span class="p">()</span>
+    <span class="n">fsm</span><span class="o">.</span><span class="n">SetInputData</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">fsm</span><span class="o">.</span><span class="n">SetInputData</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">fsm</span><span class="o">.</span><span class="n">SetInputData</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">fsm</span><span class="o">.</span><span class="n">SetInputData</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">fsm</span><span class="o">.</span><span class="n">SetInputData</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="o">/*</span>
+<span class="n">ZazenState</span><span class="p">:</span> <span class="n">开始打坐</span>
+<span class="n">Zazenstate</span><span class="p">:</span> <span class="n">退出打坐</span>
+<span class="n">WorkerState</span><span class="p">:</span> <span class="n">开始工作</span>
+<span class="n">WorkerState</span><span class="p">:</span> <span class="n">退出工作</span>
+<span class="n">WorkerState</span><span class="p">:</span> <span class="n">开始工作</span>
+<span class="n">WorkerState</span><span class="p">:</span> <span class="n">退出工作</span>
+<span class="n">ZazenState</span><span class="p">:</span> <span class="n">开始打坐</span>
+<span class="n">Zazenstate</span><span class="p">:</span> <span class="n">退出打坐</span>
+<span class="n">WorkerState</span><span class="p">:</span> <span class="n">开始工作</span>
+ <span class="o">*/</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../07.包/index.html" class="btn btn-neutral float-right" title="7. 07.包" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="09.类型分支-批量判断空接口中变量的类型.html" class="btn btn-neutral float-left" title="6.9. 09.类型分支-批量判断空接口中变量的类型" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

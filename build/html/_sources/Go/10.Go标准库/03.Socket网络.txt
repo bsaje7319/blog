@@ -1,0 +1,119 @@
+.. contents::
+   :depth: 3
+..
+
+Socket网络
+==========
+
+tcp_server.go
+
+::
+
+   package main
+
+   import (
+       "bufio"
+       "fmt"
+       "io"
+       "net"
+       "time"
+   )
+
+   func main() {
+       var tcpAddr *net.TCPAddr
+       tcpAddr, _ = net.ResolveTCPAddr("tcp", "127.0.0.1:999")
+       tcpListener, _ := net.ListenTCP("tcp", tcpAddr)
+       defer tcpListener.Close()
+       fmt.Println("Server ready to read .....")
+       for {
+           tcpConn, err := tcpListener.AcceptTCP()
+           if err != nil {
+               fmt.Println("accept error:", err)
+               continue
+           }
+           fmt.Println("A client connected :" + tcpConn.RemoteAddr().String())
+           go tcpPipe(tcpConn)
+       }
+   }
+
+   func tcpPipe(conn *net.TCPConn) {
+       ipStr := conn.RemoteAddr().String()
+       defer func() {
+           fmt.Println("Disconnected : " + ipStr)
+           conn.Close()
+       }()
+
+       reader := bufio.NewReader(conn)
+       i := 0
+       for {
+           message, err := reader.ReadString('\n') //将数据按照换行符进行读取
+           if err != nil || err == io.EOF {
+               break
+           }
+           fmt.Println(string(message))
+           time.Sleep(time.Second * 3)
+
+           msg := time.Now().String() + conn.RemoteAddr().String() + " Server say hello! \n"
+           b := []byte(msg)
+           conn.Write(b)
+           i++
+           if i > 10 {
+               break
+           }
+       }
+
+   }
+
+tcp_client.go
+
+::
+
+   package main
+
+   import (
+       "bufio"
+       "fmt"
+       "io"
+       "net"
+       "time"
+   )
+
+   func main() {
+       var tcpAddr *net.TCPAddr
+       tcpAddr, _ = net.ResolveTCPAddr("tcp", "127.0.0.1:999")
+       conn, err := net.DialTCP("tcp", nil, tcpAddr)
+       if err != nil {
+           fmt.Println("Client connect error !" + err.Error())
+           return
+       }
+
+       defer conn.Close()
+       fmt.Println(conn.LocalAddr().String() + " : Client connected!")
+       onMessageRecived(conn)
+
+   }
+
+   func onMessageRecived(conn *net.TCPConn) {
+       reader := bufio.NewReader(conn)
+       b := []byte(conn.LocalAddr().String() + " Say hello to Server ....\n")
+       conn.Write(b)
+       for {
+           msg, err := reader.ReadString('\n')
+           fmt.Println("ReadString")
+           fmt.Println(msg)
+           if err != nil || err == io.EOF {
+               fmt.Println(err)
+               break
+           }
+           time.Sleep(time.Second * 2)
+           fmt.Println("writing ...")
+
+           b :=[]byte(conn.LocalAddr().String() + " write data to Server .... \n ")
+           _,err = conn.Write(b)
+
+           if err != nil {
+               fmt.Println(err)
+               break
+           }
+       }
+   }

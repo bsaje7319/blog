@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1.1. 字符编码处理 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="1.2. 代码注释" href="02.代码注释.html" />
+    <link rel="prev" title="1. Python数据类型" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">1. Python数据类型</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1.1. 字符编码处理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.1.1. 入门</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.1.2. 记忆方法参考下图：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.1.3. 指定字符编码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pychrm">1.1.4. Pychrm设置文件头模板</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python">1.1.5. Python中的保留字</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="02.代码注释.html">1.2. 代码注释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.字符串数据类型.html">1.3. 字符串数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.列表数据类型.html">1.4. 列表 List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.元祖数据类型.html">1.5. 元祖 Tuple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.字典数据结构.html">1.6. 字典 Dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.集合数据类型.html">1.7. 集合 Set()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.数据类型转换.html">1.8. Python数据类型转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.关于深浅拷贝.html">1.9. 深浅拷贝</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.列表实现堆和队列.html">1.10. 列表实现堆和队列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html">1.11. 内置常量与逻辑运算符、比较运算符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html#in-not-in">1.12. in 和not in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.建立大型数据结构.html">1.13. 建立大型数据结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Python常用IDE集成环境.html">1.14. Python常用IDE集成环境</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">1. Python数据类型</a> &raquo;</li>
+        
+      <li>1.1. 字符编码处理</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/01.Python数据类型/01.字符编码处理.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id6">字符编码处理</a><ul>
+<li><a class="reference internal" href="#id2" id="id7">入门</a></li>
+<li><a class="reference internal" href="#id3" id="id8">记忆方法参考下图：</a></li>
+<li><a class="reference internal" href="#id4" id="id9">指定字符编码</a></li>
+<li><a class="reference internal" href="#pychrm" id="id10">Pychrm设置文件头模板</a></li>
+<li><a class="reference internal" href="#python" id="id11">Python中的保留字</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id6">1.1. 字符编码处理</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id7">1.1.1. 入门</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>1.字符编码 python解释器在加载 .py
+文件中的代码时，会对内容进行编码（默认ascill）</p>
+<p><code class="docutils literal"><span class="pre">ASCII</span></code>（American Standard Code for Information
+Interchange，美国标准信息交换代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言，其最多只能用
+8 位来表示（一个字节），即：2**8 = 256，所以，ASCII码最多只能表示 256
+个符号。
+显然ASCII码无法将世界上的各种文字和符号全部表示，所以，就需要新出一种可以代表所有字符和符号的编码，即：Unicode</p>
+<p><code class="docutils literal"><span class="pre">Unicode</span></code>（统一码、万国码、单一码）是一种在计算机上使用的字符编码。Unicode
+是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，规定虽有的字符和符号最少由
+16 位来表示（2个字节），即：2 **16 = 65536，
+注：此处说的的是最少2个字节，可能更多</p>
+<p><code class="docutils literal"><span class="pre">UTF-8</span></code>，是对Unicode编码的压缩和优化，他不再使用最少使用2个字节，而是将所有的字符和符号进行分类：ascii码中的内容用1个字节保存、欧洲的字符用2个字节保存，东亚的字符用3个字节保存…</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>python2.x版本，默认支持的字符编码为ASCll    python3.x版本，默认支持的是Unicode，不用声明字符编码可以直接显示中文
+</pre></div>
+</div>
+<p>简单来说：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#encode(&quot;utf-8&quot;) 编码为utf-8，解码必须一致
+#decode(&quot;utf-8&quot;) 解码utf-8
+
+Unicode 最纯，
+utf-8 ————&gt; Unicode -----&gt; gbk
+gbk -------&gt; Unicode -----utf-8
+</pre></div>
+</div>
+<p>代码演示：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="n">wd</span> <span class="o">=</span> <span class="s2">&quot;胡建力学python&quot;</span>
+<span class="n">wd_encode</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wd_encode</span><span class="p">)</span>
+<span class="n">wd_decode</span> <span class="o">=</span> <span class="n">wd_encode</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wd_decode</span><span class="p">)</span>
+
+<span class="n">wd_encode_gb2312</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;gb2312&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wd_encode_gb2312</span><span class="p">)</span>
+<span class="n">wd_decode_gb2312</span> <span class="o">=</span> <span class="n">wd_encode_gb2312</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;gb2312&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wd_decode_gb2312</span><span class="p">)</span>
+
+<span class="n">wd_encode_utf8</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wd_encode_utf8</span><span class="p">)</span>
+<span class="n">wd_decode_utf8</span> <span class="o">=</span> <span class="n">wd_encode_utf8</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wd_decode_utf8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id8">1.1.2. 记忆方法参考下图：</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id5">
+<img alt="Alt text" src="../../_images/encode_decode.png" />
+<p class="caption"><span class="caption-text">Alt text</span></p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id9">1.1.3. 指定字符编码</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>python制定字符编码的方式有多种，而编码格式是要写在解释器的下面的，常用的如下面三种:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">第一种</span>
+<span class="c1">#!/usr/bin/env python</span>
+<span class="c1"># _*_ coding:utf-8 _*_</span>
+
+<span class="n">第二种</span>
+<span class="c1">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf-8 -*-</span>
+
+<span class="n">第三种</span>
+<span class="c1">#!/usr/bin/env python</span>
+<span class="c1"># coding:utf-8</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pychrm">
+<h2><a class="toc-backref" href="#id10">1.1.4. Pychrm设置文件头模板</a><a class="headerlink" href="#pychrm" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>用于开发团队标记文件</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; ${USER}</span>
+<span class="c1"># Date：${DATE} ${TIME}</span>
+<span class="c1"># filename: ${NAME}.py</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="python">
+<h2><a class="toc-backref" href="#id11">1.1.5. Python中的保留字</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">keyword</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span>
+
+<span class="p">[</span><span class="s1">&#39;False&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;as&#39;</span><span class="p">,</span> <span class="s1">&#39;assert&#39;</span><span class="p">,</span> <span class="s1">&#39;break&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;continue&#39;</span><span class="p">,</span> <span class="s1">&#39;def&#39;</span><span class="p">,</span> <span class="s1">&#39;del&#39;</span><span class="p">,</span> <span class="s1">&#39;elif&#39;</span><span class="p">,</span> <span class="s1">&#39;else&#39;</span><span class="p">,</span> <span class="s1">&#39;except&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;finally&#39;</span><span class="p">,</span> <span class="s1">&#39;for&#39;</span><span class="p">,</span> <span class="s1">&#39;from&#39;</span><span class="p">,</span> <span class="s1">&#39;global&#39;</span><span class="p">,</span> <span class="s1">&#39;if&#39;</span><span class="p">,</span> <span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;lambda&#39;</span><span class="p">,</span> <span class="s1">&#39;nonlocal&#39;</span><span class="p">,</span> <span class="s1">&#39;not&#39;</span><span class="p">,</span> <span class="s1">&#39;or&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span><span class="p">,</span> <span class="s1">&#39;raise&#39;</span><span class="p">,</span> <span class="s1">&#39;return&#39;</span><span class="p">,</span> <span class="s1">&#39;try&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;while&#39;</span><span class="p">,</span> <span class="s1">&#39;with&#39;</span><span class="p">,</span> <span class="s1">&#39;yield&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="02.代码注释.html" class="btn btn-neutral float-right" title="1.2. 代码注释" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="1. Python数据类型" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+.. contents::
+   :depth: 3
+..
+
+文件IO的操作
+============
+
+文件系统
+--------
+
+对于文件和目录的操作，Go主要在os 提供了的相应函数：
+
+::
+
+   func Mkdir(name string, perm FileMode) error
+
+   func Chdir(dir string) error
+
+   func TempDir() string
+
+   func Rename(oldpath, newpath string) error
+
+   func Chmod(name string, mode FileMode) error
+
+   func Open(name string) (*File, error) {
+   return OpenFile(name, O_RDONLY, 0)
+   }
+
+   func Create(name string) (*File, error) {
+       return OpenFile(name, O_RDWR|O_CREATE|O_TRUNC, 0666)
+   }
+
+   func OpenFile(name string, flag int, perm FileMode) (*File, error) {
+       testlog.Open(name)
+       return openFileNolog(name, flag, perm)
+   }
+
+三种读取文件方式的比较
+----------------------
+
+::
+
+   package main
+
+   import (
+       "bufio"
+       "fmt"
+       "io"
+       "io/ioutil"
+       "os"
+       "time"
+   )
+
+   /*
+   file.Read 方式读文件
+   */
+   func read1(path string) {
+       fi, err := os.Open(path)
+       if err != nil {
+           panic(err)
+       }
+       defer fi.Close()
+       buf := make([]byte, 1024)
+       for {
+           n, err := fi.Read(buf)
+           if err != nil && err != io.EOF {
+               panic(err)
+           }
+           if 0 == n {
+               break
+           }
+       }
+   }
+
+   /*
+   bufio方式读文件
+   */
+   func read2(path string) {
+       fi, err := os.Open(path)
+       if err != nil {
+           panic(err)
+       }
+       defer fi.Close()
+       r := bufio.NewReader(fi)
+       buf := make([]byte, 1024)
+       for {
+           n, err := r.Read(buf)
+           if err != nil && err != io.EOF {
+               panic(err)
+           }
+           if 0 == n {
+               break
+           }
+       }
+   }
+
+   /*
+   ioutil方式读文件
+    */
+   func read3(path string) {
+       fi, err := os.Open(path)
+       if err != nil {
+           panic(err)
+       }
+       defer fi.Close()
+       _, err = ioutil.ReadAll(fi)
+   }
+
+   func main() {
+       file := "D:\\go_studay\\go_path\\src\\github.com\\medallion42\\IO操作\\system.log"
+       start := time.Now()
+       read1(file)
+       t1 := time.Now()
+       fmt.Printf("Cost time %v\n", t1.Sub(start))
+
+       read2(file)
+       t2 := time.Now()
+       fmt.Printf("Cost time %v\n", t2.Sub(t1))
+
+       read3(file)
+       t3 := time.Now()
+       fmt.Printf("Cost time %v\n", t3.Sub(t2))
+   }
+
+   /*
+   Cost time 24.9336ms
+   Cost time 10.0036ms
+   Cost time 19.9605ms
+
+
+   bufio < ioutil < file.Read
+   bufio读同一文件耗费时间最少， 效果稳稳地保持在最佳。
+   */
+
+文件操作实战
+------------
+
+::
+
+   package main
+
+   import (
+       "fmt"
+       "io"
+       "os"
+   )
+
+   /*创建文件，同时写入数据
+   filename:写入文件名
+   info1:写入文件详细内容
+   */
+   func Touch_File(filename string, info1 string) bool {
+       file, err := os.OpenFile(filename, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0666)
+       if err != nil {
+           fmt.Println("open file failed, err:", err)
+           return false
+       }
+       defer file.Close()
+       _, err2 := file.WriteString(info1)
+       if err2 != nil {
+           fmt.Println("写入文件内容失败...")
+           return false
+       } else {
+           fmt.Println("写入文件成功....")
+       }
+       return true
+
+   }
+
+   /*CopyFile 拷贝文件函数.
+   dstName:目标文件名称
+   srcName:源文件名称
+   */
+   func CopyFile(dstName, srcName string) (written int64, err error) {
+       // 以读方式打开源文件
+       src, err2 := os.Open(srcName)
+       if err2 != nil {
+           fmt.Printf("open %s failed, err:%v.\n", srcName, err)
+           return
+       }
+       defer src.Close()
+       // 以写|创建的方式打开目标文件
+       dst, err3 := os.OpenFile(dstName, os.O_WRONLY|os.O_CREATE, 0644)
+       if err3 != nil {
+           fmt.Printf("open %s failed, err:%v.\n", dstName, err)
+           return
+       }
+       defer dst.Close()
+       return io.Copy(dst, src) //调用io.Copy()拷贝内容
+   }
+
+   func main() {
+       path, erra := os.Getwd()
+       if erra != nil {
+           panic(erra)
+       }
+       pwd_file := path + "\\day03\\sample07\\hujianli.txt"
+       Touch_File(pwd_file,"this is test file")
+   }

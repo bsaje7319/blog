@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8. 并发 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="8.1. 01.轻量级线程(goroutine)-根据需要随时创建“线程“" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html" />
+    <link rel="prev" title="7.5. 05.工厂模式自动注册-管理多个包的结构体" href="../07.包/05.工厂模式自动注册-管理多个包的结构体.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 包</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8. 并发</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html">8.1. 01.轻量级线程(goroutine)-根据需要随时创建“线程“</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.goroutine和coroutine的区别.html">8.2. 02.goroutine和coroutine的区别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html">8.3. 03.通道(channel)-在多个goroutine间通信的管道</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Go语言无缓冲的通道.html">8.4. 04.Go语言无缓冲的通道</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.Go语言带缓冲的通道.html">8.5. 05.Go语言带缓冲的通道</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言channel超时机制.html">8.6. 06.Go语言channel超时机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据.html">8.7. 07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.Go语言RPC(模拟远程过程调用).html">8.8. 08.Go语言RPC(模拟远程过程调用)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.Go语言关闭通道后继续使用通道.html">8.9. 09.Go语言关闭通道后继续使用通道</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.Go语言多核并行化.html">8.10. 10.Go语言多核并行化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html">8.11. 11.Go语言Telnet回音服务器-TCP服务器的基本结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.同步-保证并发环境下数据访问的正确性.html">8.12. 12.同步-保证并发环境下数据访问的正确性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.html">8.13. 互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.Go语言等待组（sync.WaitGroup).html">8.14. 14.Go语言等待组（sync.WaitGroup)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+      <li>8. 并发</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/08.并发/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>8. 并发<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html">8.1. 01.轻量级线程(goroutine)-根据需要随时创建“线程“</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html#id1">8.1.1. 进程/线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html#id2">8.1.2. 并发/并行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html#id3">8.1.3. 协程/线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html#id4">8.1.4. 使用普通函数创建goroutine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html#id5">例子</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html#id6">8.1.5. 使用匿名函数创建goroutine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html#id7">1.使用匿名函数创建goroutine的格式</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html#golangcpu">8.1.6. 设置Golang运行的cpu数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.goroutine和coroutine的区别.html">8.2. 02.goroutine和coroutine的区别</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html">8.3. 03.通道(channel)-在多个goroutine间通信的管道</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html#id1">8.3.1. 通道的特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html#id2">8.3.2. 声明通道类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html#id3">8.3.3. 创建通道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html#id4">8.3.4. 使用通道发送数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html#id5">8.3.5. 使用通道接收数据</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html#id6">使用通道做并发同步的写法如下：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html#id7">遍历通道数据的例子请参考下面的代码。</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html#id8">示例：并发打印</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html#id9">示例，同时发送和接收(不带缓冲的通道)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04.Go语言无缓冲的通道.html">8.4. 04.Go语言无缓冲的通道</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05.Go语言带缓冲的通道.html">8.5. 05.Go语言带缓冲的通道</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05.Go语言带缓冲的通道.html#id1">8.5.1. 创建带缓冲的通道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.Go语言带缓冲的通道.html#id2">8.5.2. 阻塞条件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.Go语言带缓冲的通道.html#id3">8.5.3. 示例，同时接收和发送(带缓冲)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="06.Go语言channel超时机制.html">8.6. 06.Go语言channel超时机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据.html">8.7. 07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08.Go语言RPC(模拟远程过程调用).html">8.8. 08.Go语言RPC(模拟远程过程调用)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09.Go语言关闭通道后继续使用通道.html">8.9. 09.Go语言关闭通道后继续使用通道</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="09.Go语言关闭通道后继续使用通道.html#id1">8.9.1. 从已关闭的通道接收数据时将不会发生阻塞</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="10.Go语言多核并行化.html">8.10. 10.Go语言多核并行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html">8.11. 11.Go语言Telnet回音服务器-TCP服务器的基本结构</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html#id1">8.11.1. 接受连接</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html#id2">8.11.2. 会话处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html#telnet">8.11.3. Telnet命令处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html#id3">8.11.4. 程序入口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html#id4">8.11.5. 程序测试如下</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html#id5">8.11.6. 测试关闭会话</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="12.同步-保证并发环境下数据访问的正确性.html">8.12. 12.同步-保证并发环境下数据访问的正确性</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="12.同步-保证并发环境下数据访问的正确性.html#id2">8.12.1. 竞态检测-检测代码在并发环境下可能出现的问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.html">8.13. 互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.html#sync-rwmutex">8.13.1. 读写互斥锁(sync.RWMutex)-在读比写多的环境下比互斥锁更高效</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="14.Go语言等待组（sync.WaitGroup).html">8.14. 14.Go语言等待组（sync.WaitGroup)</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html" class="btn btn-neutral float-right" title="8.1. 01.轻量级线程(goroutine)-根据需要随时创建“线程“" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../07.包/05.工厂模式自动注册-管理多个包的结构体.html" class="btn btn-neutral float-left" title="7.5. 05.工厂模式自动注册-管理多个包的结构体" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

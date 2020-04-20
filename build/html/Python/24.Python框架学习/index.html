@@ -1,0 +1,438 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>22. Python框架学习 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="22.1. 常用的GUI框架" href="01.常用的GUI框架/index.html" />
+    <link rel="prev" title="21.4.1. 2019年最流行的10个前端框架" href="../23.前端技术/04.前端框架/01.2019年最流行的10个前端框架.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">22. Python框架学习</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/index.html">22.2. Flask_Web框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/index.html">22.4. Django学习</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+      <li>22. Python框架学习</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/24.Python框架学习/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python">
+<h1>22. Python框架学习<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.常用的GUI框架/1.常用的GUI框架工具包.html">22.1.1. 常用的GUI框架工具包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.常用的GUI框架/2.wxPython框架的使用.html">22.1.2. wxPython框架的使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/2.wxPython框架的使用.html#id1">1 安装wxPython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/2.wxPython框架的使用.html#wx-app">创建一个wx.App子类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/2.wxPython框架的使用.html#id2">直接使用wx.App类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/2.wxPython框架的使用.html#wx-frame">使用wx.Frame框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/2.wxPython框架的使用.html#id3">常用控件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/2.wxPython框架的使用.html#wx-textctrl">使用wx.TextCtrl实现登录界面</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/2.wxPython框架的使用.html#button">Button按钮类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/2.wxPython框架的使用.html#boxsizer">BoxSizer布局 + 事件绑定</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01.常用的GUI框架/3.Qt框架初探.html">22.1.3. Qt框架初探</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/3.Qt框架初探.html#pyqt">安装PyQt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/3.Qt框架初探.html#id1">使用第三方开发工具</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/3.Qt框架初探.html#id2">Qt中的常用控件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/3.Qt框架初探.html#id3">Qt设计工具中的布局管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/3.Qt框架初探.html#id6">Qt设计工具信号与槽的关联</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/3.Qt框架初探.html#id8">Qt资源文件的使用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/3.Qt框架初探.html#id9">实战项目</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html">22.1.4. TkinterGUI模块</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#thinter-15">thinter核心组件，包括了15种核心组件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#gui">创建GUI程序第一步</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id1">创建具有标签和按钮组件的主窗口</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id2">在主窗口中创建各种不同的按钮</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id3">文本框</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id4">标签</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id5">菜单</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id8">绘制图形</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id9">响应操作事件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id10">对话框</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id11">3种简单的输入对话框的实例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id12">创建文件打开和保存对话框的实例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id13">创建图片、文字实例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id14">创建颜色选择对话框实例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.常用的GUI框架/4.TkinterGUI模块.html#id15">自定义对话框</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.Flask_Web框架/index.html">22.2. Flask_Web框架</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/01.安装Flask项目环境.html">22.2.1. 安装Flask项目环境</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/01.安装Flask项目环境.html#id1">安装虚拟环境</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/01.安装Flask项目环境.html#id2">安装Flask模块</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/02.路由.html">22.2.2. 路由</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/02.路由.html#id2">新增一个路由</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/02.路由.html#http">Http方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/02.路由.html#cookie">使用cookie跟踪用户的实例：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/02.路由.html#session">使用session跟踪用户的实例：</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/03.静态文件.html">22.2.3. 静态文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/03.静态文件.html#id2">加载静态图片</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/03.静态文件.html#id3">接收上传文件</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/04.模板.html">22.2.4. 模板</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/04_1.消息提示和异常处理.html">22.2.5. 消息提示和异常处理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/04_1.消息提示和异常处理.html#id2">消息提示</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/04_1.消息提示和异常处理.html#id3">异常处理</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/05.Jinja2模板引擎.html">22.2.6. Jinja2模板引擎</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/05.Jinja2模板引擎.html#id1">变量</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/06.过滤器.html">22.2.7. 过滤器</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/06.过滤器.html#id2">常用的过滤器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/06.过滤器.html#id3">自定义过滤器</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/07.if和for的使用.html">22.2.8. if和for的使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/08.宏的使用和导入.html">22.2.9. 宏的使用和导入</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/08.宏的使用和导入.html#id2">宏的两种导入方式</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/09.set、with在模板中自定义变量.html">22.2.10. set、with在模板中自定义变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/10.蓝图的使用.html">22.2.11. 蓝图的使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/11.Flask-SQLAlchemy.html">22.2.12. Flask-SQLAlchemy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/11.Flask-SQLAlchemy.html#id1">安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/11.Flask-SQLAlchemy.html#id2">连接数据库</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.Flask_Web框架/12.Flask框架中使用数据库.html">22.2.13. Flask框架中使用数据库</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/12.Flask框架中使用数据库.html#flasksqlit3">flask使用sqlit3的两种方式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Flask_Web框架/12.Flask框架中使用数据库.html#id1">Flask使用数据库实现用户登录-用户注销功能</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/01.Scrapy爬虫框架.html">22.3.1. Scrapy爬虫框架</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/01.Scrapy爬虫框架.html#id1">Scrapy的安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/01.Scrapy爬虫框架.html#id2">明日学院里面给出的环境准备如下</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/01.Scrapy爬虫框架.html#id3">小猪短租网的信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/01.Scrapy爬虫框架.html#id5">开始爬取小猪租房网的信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/01.Scrapy爬虫框架.html#id6">Scrapy实战-爬取简书网热门专题信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/01.Scrapy爬虫框架.html#scrapy-mongodb">Scrapy实战 - 简书热门专题之MongoDB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/01.Scrapy爬虫框架.html#scrapy-mysql">Scrapy实战 - 简书热门专题之MySQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/01.Scrapy爬虫框架.html#id7">Scrapy实战 - 简书推荐信息(Mongodb存储)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/02.MongoDB的常用操作与导出.html">22.3.2. MongoDB的常用操作与导出</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/02.MongoDB的常用操作与导出.html#mongodbcsv">将mongodb数据写入csv文件中</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/03.Scrapy框架深入学习.html">22.3.3. Scrapy框架深入学习</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/03.Scrapy框架深入学习.html#id1">最简单的Scrapy爬虫程序：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/03.Scrapy框架深入学习.html#id2">新闻供稿爬虫的Scrapy实现</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/03.Scrapy框架深入学习.html#id5">Scrapy常用函数及方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/03.Scrapy框架深入学习.html#id7">Scrapy项目调试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/03.Scrapy框架深入学习.html#cookie">1.禁止Cookie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/03.Scrapy框架深入学习.html#id8">2.设置下载延迟</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/03.Scrapy框架深入学习.html#ip">3.使用IP池</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Scrapy爬虫框架/03.Scrapy框架深入学习.html#id9">4.使用用户代理池</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/04.Scrapy下载文件和图片.html">22.3.4. Scrapy下载文件和图片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/05.项目实战：爬取matplotlib源码文件.html">22.3.5. 项目实战：爬取matplotlib源码文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/06.项目实战：下载360图片.html">22.3.6. 项目实战:下载360图片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/07.模拟登陆webscraping.com网站.html">22.3.7. 模拟登陆webscraping.com网站</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/08.识别验证码.html">22.3.8. 识别验证码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/09.Cookies登录.html">22.3.9. Cookies登录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/10.数据库：SQLite篇.html">22.3.10. 数据库：SQLite篇</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/11.数据库：MySQL篇.html">22.3.11. 数据库：MySQL篇</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/12.数据库：MongoDB篇.html">22.3.12. 数据库：MongoDB篇</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/13.数据库：Redis篇.html">22.3.13. 数据库：Redis篇</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.Scrapy爬虫框架/14.Fiddler学习.html">22.3.14. Fiddler学习</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04.Django学习/index.html">22.4. Django学习</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04.Django学习/10.Python高效开发实战-Django/index.html">22.4.1. Python高效开发实战-Django</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/10.Python高效开发实战-Django/01.关系数据库建模.html">关系数据库建模</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/10.Python高效开发实战-Django/02.Linux+Nginx+uWSGI配置.html">Linux+Nginx+uWSGI配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/10.Python高效开发实战-Django/03.建立安全的HTTPS网站.html">建立安全的HTTPS网站</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04.Django学习/20.简单的博客系统/index.html">22.4.2. 简单的博客系统</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/20.简单的博客系统/01.网站配置.html">网站配置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04.Django学习/01.安装DjangoWeb框架.html">22.4.3. 安装DjangoWeb框架</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/01.安装DjangoWeb框架.html#virtualenv">安装virtualenv虚拟环境</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04.Django学习/02.Django框架的使用.html">22.4.4. Django框架的使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/02.Django框架的使用.html#id1">创建一个Django项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/02.Django框架的使用.html#app">创建App</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/02.Django框架的使用.html#models">数据模型（models）</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04.Django学习/03.Django流程跑通.html">22.4.5. Django流程跑通</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/03.Django流程跑通.html#id1">路由</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/03.Django流程跑通.html#id2">表单</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/03.Django流程跑通.html#id3">视图</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/03.Django流程跑通.html#cbv">基于类的视图(CBV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/03.Django流程跑通.html#id5">Django模板</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04.Django学习/07.实战演练-开发Django站点.html">22.4.6. 实战演练-开发Django站点</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/07.实战演练-开发Django站点.html#id1">建立项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/07.实战演练-开发Django站点.html#id2">建立应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/07.实战演练-开发Django站点.html#id3">访问应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/07.实战演练-开发Django站点.html#id4">模型类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/07.实战演练-开发Django站点.html#id7">4.移植到数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/07.实战演练-开发Django站点.html#id8">表单视图</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04.Django学习/08.Django模型层.html">22.4.7. Django模型层</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.Django学习/08.Django模型层.html#id1">1.模型类定义</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01.常用的GUI框架/index.html" class="btn btn-neutral float-right" title="22.1. 常用的GUI框架" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../23.前端技术/04.前端框架/01.2019年最流行的10个前端框架.html" class="btn btn-neutral float-left" title="21.4.1. 2019年最流行的10个前端框架" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

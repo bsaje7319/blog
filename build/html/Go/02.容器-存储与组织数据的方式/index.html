@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. 容器-存储与组织数据的方式 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="2.1. 数组-固定大小的连续空间" href="01.数组-固定大小的连续空间.html" />
+    <link rel="prev" title="1.8. 编译与工具" href="../01.Go语言基本语法与使用/08.编译与工具.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. Go语言基本语法与使用</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. 容器-存储与组织数据的方式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.数组-固定大小的连续空间.html">2.1. 数组-固定大小的连续空间</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.切片-动态分配大小的连续空间.html">2.2. 切片-动态分配大小的连续空间</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.映射（map）-建立事务关联的容器.html">2.3. 02.映射（map）-建立事务关联的容器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.列表-可以快速增删的非连续空间的容器.html">2.4. 列表-可以快速增删的非连续空间的容器</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+      <li>2. 容器-存储与组织数据的方式</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/02.容器-存储与组织数据的方式/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>2. 容器-存储与组织数据的方式<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.数组-固定大小的连续空间.html">2.1. 数组-固定大小的连续空间</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.数组-固定大小的连续空间.html#id2">2.1.1. 声明数组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.数组-固定大小的连续空间.html#id3">2.1.2. 初始化数组，可以在声明时直接进行初始化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.数组-固定大小的连续空间.html#for">2.1.3. 使用for循环遍历数组,两种方式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.切片-动态分配大小的连续空间.html">2.2. 切片-动态分配大小的连续空间</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.切片-动态分配大小的连续空间.html#id2">2.2.1. 切片</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.切片-动态分配大小的连续空间.html#id3">从数组切片生成新的切片</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.切片-动态分配大小的连续空间.html#id4">声明切片</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.切片-动态分配大小的连续空间.html#make">使用make()函数构造切片</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.切片-动态分配大小的连续空间.html#append">使用append()函数为切片添加元素</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.切片-动态分配大小的连续空间.html#id5">复制切片元素到另一个切片</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.切片-动态分配大小的连续空间.html#id6">从切片中删除元素</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03.映射（map）-建立事务关联的容器.html">2.3. 02.映射（map）-建立事务关联的容器</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03.映射（map）-建立事务关联的容器.html#id1">2.3.1. 添加关联到map并访问关联和数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.映射（map）-建立事务关联的容器.html#id2">2.3.2. 遍历map中的键值对– 访问关联关系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.映射（map）-建立事务关联的容器.html#delete-map">2.3.3. 使用delete()函数从map中删除键值对</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.映射（map）-建立事务关联的容器.html#id3">2.3.4. 清空map中的所有元素</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.映射（map）-建立事务关联的容器.html#map-sync-map">2.3.5. 能够在并发环境中使用的map-sync.Map</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04.列表-可以快速增删的非连续空间的容器.html">2.4. 列表-可以快速增删的非连续空间的容器</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04.列表-可以快速增删的非连续空间的容器.html#id2">2.4.1. 初始化列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.列表-可以快速增删的非连续空间的容器.html#id3">2.4.2. 在列表中插入元素</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.列表-可以快速增删的非连续空间的容器.html#id4">2.4.3. 在列表中删除元素</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.列表-可以快速增删的非连续空间的容器.html#id5">2.4.4. 遍历列表，访问列表的每一个元素</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01.数组-固定大小的连续空间.html" class="btn btn-neutral float-right" title="2.1. 数组-固定大小的连续空间" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../01.Go语言基本语法与使用/08.编译与工具.html" class="btn btn-neutral float-left" title="1.8. 编译与工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

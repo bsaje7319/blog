@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.8. 08 宕机恢复(recover)-防止程序崩溃 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="5. 05.结构体" href="../05.结构体/index.html" />
+    <link rel="prev" title="4.7. 07.宕机(panic)-程序终止运行" href="07.宕机(panic)-程序终止运行.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">4. 04.函数</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.声明函数.html">4.1. 声明函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.匿名函数.html">4.2. 匿名函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.闭包.html">4.3. 闭包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.可变参数-参数数量不固定的函数形式.html">4.4. 可变参数-参数数量不固定的函数形式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.延迟执行语句(defer).html">4.5. 延迟执行语句(defer)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.处理运行时发生的错误.html">4.6. 处理运行时发生的错误</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.宕机(panic)-程序终止运行.html">4.7. 07.宕机(panic)-程序终止运行</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">4.8. 08 宕机恢复(recover)-防止程序崩溃</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">4.8.1. 让程序在崩溃时继续执行</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#panicrecover">4.8.2. panic和recover的关系</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">4. 04.函数</a> &raquo;</li>
+        
+      <li>4.8. 08 宕机恢复(recover)-防止程序崩溃</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/04.函数/08.宕机恢复(recover)-防止程序崩溃.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#recover" id="id2">08 宕机恢复(recover)-防止程序崩溃</a><ul>
+<li><a class="reference internal" href="#id1" id="id3">让程序在崩溃时继续执行</a></li>
+<li><a class="reference internal" href="#panicrecover" id="id4">panic和recover的关系</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="recover">
+<h1><a class="toc-backref" href="#id2">4.8. 08 宕机恢复(recover)-防止程序崩溃</a><a class="headerlink" href="#recover" title="Permalink to this headline">¶</a></h1>
+<p>无论是代码运行错误由Runtime层抛出的panic崩溃，还是主动触发的panic崩溃，
+都可以配合defer和recover实现错误捕捉和恢复，让代码在发送崩溃后允许继续运行。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>在其他语言中，可以通过try/catch机制捕获异常，没有捕获的严重异常会导致宕机，
+捕获的异常可以忽略，让代码继续运行。
+Go没有异常系统，使用panic触发宕机类似于其他语言的排除异常，
+
+那么recover的宕机恢复机制就对应try/catch机制。
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id3">4.8.1. 让程序在崩溃时继续执行</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;runtime&quot;
+)
+
+// 崩溃时需要传递的上下文信息，声明错误的结构体，成员保存错误的执行函数
+type panicContext struct {
+    function string // 所在函数
+}
+
+// 保护方式允许一个函数
+func ProtectRun(entry func()) {
+    // 延迟处理的函数，defer将闭包延迟执行，当panic触发崩溃时，ProtectRun()函数将结束运行，此时defer后的闭包将会调用
+    defer func() {
+        // 发生宕机时，获取panic传递的上下文并打印
+        err := recover()                // recover()获取painc传入的参数
+        switch err.(type) {             // 使用switch对err变量进行类型断言
+        case runtime.Error:             // 运行时错误
+            fmt.Println(&quot;runtime error:&quot;, err)
+        default: // 非运行时错误
+            fmt.Println(&quot;error:&quot;, err)
+        }
+    }()
+    entry()
+}
+func main() {
+    fmt.Println(&quot;运行前&quot;)
+
+    // 允许一段手动触发的错误
+    ProtectRun(func() {
+        fmt.Println(&quot;手动宕机前&quot;)
+        // 使用panic传递上下文，将一个结构体附带信息传递过去，此时，recover获取结构体信息，并打印出来
+        panic(&amp;panicContext{&quot;手动触发 panic&quot;,})
+        fmt.Println(&quot;手动宕机后&quot;)
+    })
+
+    // 故意造成空指针访问错误
+    ProtectRun(func() {
+        fmt.Println(&quot;赋值宕机前&quot;)
+        var a *int
+        *a = 1
+        fmt.Println(&quot;赋值宕机后&quot;)
+    })
+    fmt.Println(&quot;运行后&quot;)
+
+}
+
+//运行前
+//手动宕机前
+//error: &amp;{手动触发 panic}
+//赋值宕机前
+//runtime error: runtime error: invalid memory address or nil pointer dereference
+//运行后
+</pre></div>
+</div>
+</div>
+<div class="section" id="panicrecover">
+<h2><a class="toc-backref" href="#id4">4.8.2. panic和recover的关系</a><a class="headerlink" href="#panicrecover" title="Permalink to this headline">¶</a></h2>
+<p>panic与defer组合有如下几个特性：</p>
+<p>· 有panic没有cover程序宕机</p>
+<p>·
+有panic也有conver捕获，程序不会宕机。执行完对应的defer后，从宕机点退出当前函数后继续执行。</p>
+<p>·
+在painc触发的defer函数内，可以继续调用panic，进一步将错误外抛直到程序整体崩溃。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../05.结构体/index.html" class="btn btn-neutral float-right" title="5. 05.结构体" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="07.宕机(panic)-程序终止运行.html" class="btn btn-neutral float-left" title="4.7. 07.宕机(panic)-程序终止运行" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

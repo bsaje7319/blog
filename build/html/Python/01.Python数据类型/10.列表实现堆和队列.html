@@ -1,0 +1,673 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1.10. 列表实现堆和队列 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="1.11. 内置常量与逻辑运算符、比较运算符" href="11.内置常量与逻辑运算符、比较运算符.html" />
+    <link rel="prev" title="1.9. 深浅拷贝" href="09.关于深浅拷贝.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">1. Python数据类型</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.字符编码处理.html">1.1. 字符编码处理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.代码注释.html">1.2. 代码注释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.字符串数据类型.html">1.3. 字符串数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.列表数据类型.html">1.4. 列表 List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.元祖数据类型.html">1.5. 元祖 Tuple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.字典数据结构.html">1.6. 字典 Dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.集合数据类型.html">1.7. 集合 Set()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.数据类型转换.html">1.8. Python数据类型转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.关于深浅拷贝.html">1.9. 深浅拷贝</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1.10. 列表实现堆和队列</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.10.1. 堆栈是指最先进入堆栈的元素最后才输出 — “后进后出”的顺序。</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.10.2. 队列是指最先进入队列的元素最先输出— “先进先出”的顺序，排队处理流程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.10.3. 队列代码示例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rotate">1.10.4. 队列的rotate()方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">1.10.5. 双端队列</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.10.6. 堆的使用</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html">1.11. 内置常量与逻辑运算符、比较运算符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html#in-not-in">1.12. in 和not in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.建立大型数据结构.html">1.13. 建立大型数据结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Python常用IDE集成环境.html">1.14. Python常用IDE集成环境</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">1. Python数据类型</a> &raquo;</li>
+        
+      <li>1.10. 列表实现堆和队列</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/01.Python数据类型/10.列表实现堆和队列.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id7">列表实现堆和队列</a><ul>
+<li><a class="reference internal" href="#id2" id="id8">堆栈是指最先进入堆栈的元素最后才输出 — “后进后出”的顺序。</a></li>
+<li><a class="reference internal" href="#id3" id="id9">队列是指最先进入队列的元素最先输出— “先进先出”的顺序，排队处理流程</a></li>
+<li><a class="reference internal" href="#id4" id="id10">队列代码示例</a></li>
+<li><a class="reference internal" href="#rotate" id="id11">队列的rotate()方法</a></li>
+<li><a class="reference internal" href="#id5" id="id12">双端队列</a></li>
+<li><a class="reference internal" href="#id6" id="id13">堆的使用</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id7">1.10. 列表实现堆和队列</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id8">1.10.1. 堆栈是指最先进入堆栈的元素最后才输出 — “后进后出”的顺序。</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>栈中的放入和移除操作有统一的称谓——入栈（push）和出栈（pop）。
+Python没有入栈方法，但可以使用append方法代替</li>
+<li>pop方法和append方法实现压栈和出栈</li>
+</ul>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf-8 -*-</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;18793&#39;</span>
+
+<span class="c1">#堆栈的实现</span>
+<span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;grape&quot;</span><span class="p">,</span> <span class="s2">&quot;grape&quot;</span><span class="p">]</span>
+<span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;弹出的元素: &quot;</span><span class="p">,</span><span class="nb">list</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>eg</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/8/19 9:27</span>
+<span class="c1"># filename: 自定义堆栈结构.py</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">定义一个堆栈数据结构</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">PyStack</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 用列表创建堆栈</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>  <span class="c1"># 默认堆栈大小</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># 栈顶的位置</span>
+
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        向堆栈中推入数据</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_Full</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">myException</span><span class="p">(</span><span class="s2">&quot;Stack is full, unable to push data&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        向堆栈中移除数据</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_Empty</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">myException</span><span class="p">(</span><span class="s2">&quot;Stack is Empty, unable to pop data&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">element</span>
+
+    <span class="k">def</span> <span class="nf">is_Empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        判断是否为空栈</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">Top</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        返回栈顶的位置</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">top</span>
+
+    <span class="k">def</span> <span class="nf">is_Full</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        判断是否为满栈</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">clear_Stack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        清空堆栈信息</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+
+<span class="k">class</span> <span class="nc">myException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">mytest</span> <span class="o">=</span> <span class="n">PyStack</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">mytest</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;栈顶的位置为：</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mytest</span><span class="o">.</span><span class="n">Top</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;开始出栈操作.....&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">mytest</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;清空堆栈.....&quot;</span><span class="p">)</span>
+    <span class="n">mytest</span><span class="o">.</span><span class="n">clear_Stack</span><span class="p">()</span>
+
+    <span class="c1"># for i in range(21):   此处将引发异常</span>
+    <span class="c1">#     mytest.push(i)</span>
+</pre></div>
+</div>
+<p>输出结果</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">9</span>
+<span class="mi">9</span>
+<span class="mi">8</span>
+<span class="mi">7</span>
+<span class="mi">6</span>
+<span class="mi">5</span>
+<span class="mi">4</span>
+<span class="mi">3</span>
+<span class="mi">2</span>
+<span class="mi">1</span>
+<span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id9">1.10.2. 队列是指最先进入队列的元素最先输出— “先进先出”的顺序，排队处理流程</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>append()、pop() 可以模拟这两个数据结构</p>
+<p>列表实现 eg</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1">#队列的实现</span>
+<span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;grape&quot;</span><span class="p">,</span> <span class="s2">&quot;grape&quot;</span><span class="p">]</span>
+<span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;弹出的元素: &quot;</span><span class="p">,</span><span class="nb">list</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>队列实现 eg</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/5/11 16:39</span>
+<span class="c1"># filename: 双端队列.py</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">deque</span>
+
+<span class="c1">#元素入栈</span>
+<span class="n">stack</span> <span class="o">=</span> <span class="n">deque</span><span class="p">((</span><span class="s2">&quot;Kotln&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">))</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;hujianli01&quot;</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;hujianli02&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stack入栈后的元素: &quot;</span><span class="p">,</span><span class="n">stack</span><span class="p">)</span>
+
+
+<span class="c1">#元素出栈，先进先出</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">popleft</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">popleft</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stack出栈后的元素:&quot;</span><span class="p">,</span><span class="n">stack</span><span class="p">)</span>
+
+<span class="c1">#元素出栈，后进先出</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stack出栈后的元素:&quot;</span><span class="p">,</span><span class="n">stack</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id10">1.10.3. 队列代码示例</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="k">class</span> <span class="nc">PyQueue</span><span class="p">:</span>
+    <span class="c1"># 创建队</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 队</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>  <span class="c1"># 队大小</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># 尾队</span>
+
+    <span class="k">def</span> <span class="nf">setSize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="c1"># 设置队大小</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
+
+    <span class="k">def</span> <span class="nf">In</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+        <span class="c1"># 入队</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QueueException</span><span class="p">(</span><span class="s2">&quot;PyQueueEmpty&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">Out</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 出队</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">queue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">element</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QueueException</span><span class="p">(</span><span class="s2">&quot;PyQueueEmpty&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">End</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 输出尾队</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span>
+
+    <span class="k">def</span> <span class="nf">empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 清除队</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+
+<span class="k">class</span> <span class="nc">QueueException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="c1"># 自定义异常类</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">PyQueue</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;入队10个元素&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">In</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># 元素入队</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;输出队尾的元素：&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">queue</span><span class="o">.</span><span class="n">End</span><span class="p">())</span>  <span class="c1"># 输出尾队</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;出队10个元素&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">queue</span><span class="o">.</span><span class="n">Out</span><span class="p">())</span>  <span class="c1"># 元素出队</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;入队20个元素&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">In</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># 元素入队</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;出队20个元素&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>  <span class="c1"># 引发异常，队为空队</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">queue</span><span class="o">.</span><span class="n">Out</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;清空队列....&quot;</span><span class="p">)</span>
+    <span class="n">queue</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>       <span class="c1">#清空队</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rotate">
+<h2><a class="toc-backref" href="#id11">1.10.4. 队列的rotate()方法</a><a class="headerlink" href="#rotate" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/usr/bin/env python
+#-*- coding:utf8 -*-
+# auther; 18793
+# Date：2019/5/11 16:47
+# filename: 队列的rotate()方法.py
+from collections import deque
+q = deque(range(5))
+print(&quot;q中的元素：&quot;,q)
+
+#执行旋转，使之首尾相连
+q.rotate()
+print(&quot;q中的元素：&quot;,q)
+
+#再次执行旋转，使之首尾相连
+q.rotate()
+print(&quot;q中的元素：&quot;,q)
+
+
+q中的元素： deque([0, 1, 2, 3, 4])
+q中的元素： deque([4, 0, 1, 2, 3])
+q中的元素： deque([3, 4, 0, 1, 2])
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id12">1.10.5. 双端队列</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/10/28 21:05</span>
+<span class="c1"># filename: 双端队列.py</span>
+<span class="k">class</span> <span class="nc">Deque</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: 清空队列</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">item</span> <span class="o">==</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">addFront</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param item: 插入值</span>
+<span class="sd">        :return: 在队列尾部插入</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">addRear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param item: 插入值</span>
+<span class="sd">        :return: 在队列首部插入</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">removeFront</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: 返回队列尾部值</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">item</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">removeRear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: 返回队列首部值</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">item</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :return: 返回队列长度</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">item</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">hu</span> <span class="o">=</span> <span class="n">Deque</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hu</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">())</span>
+    <span class="n">hu</span><span class="o">.</span><span class="n">addRear</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">hu</span><span class="o">.</span><span class="n">addFront</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">)</span>
+    <span class="n">hu</span><span class="o">.</span><span class="n">addFront</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">)</span>
+    <span class="n">hu</span><span class="o">.</span><span class="n">addFront</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hu</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hu</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">())</span>
+    <span class="n">hu</span><span class="o">.</span><span class="n">addRear</span><span class="p">(</span><span class="mf">8.8</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hu</span><span class="o">.</span><span class="n">removeRear</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hu</span><span class="o">.</span><span class="n">removeFront</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id13">1.10.6. 堆的使用</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>eg</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/5/11 17:03</span>
+<span class="c1"># filename: 堆操作.py</span>
+<span class="kn">from</span> <span class="nn">heapq</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">my_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">my_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># my_data依然是一个list列表</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;my_data的元素:&quot;</span><span class="p">,</span> <span class="n">my_data</span><span class="p">)</span>
+
+<span class="c1"># 对my_data应用堆属性</span>
+<span class="n">heapify</span><span class="p">(</span><span class="n">my_data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;应用堆之后my_data的元素: &quot;</span><span class="p">,</span> <span class="n">my_data</span><span class="p">)</span>
+<span class="n">heappush</span><span class="p">(</span><span class="n">my_data</span><span class="p">,</span> <span class="mf">7.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;添加7.2之后my_data的元素：&quot;</span><span class="p">,</span> <span class="n">my_data</span><span class="p">)</span>
+
+<span class="c1"># 弹出最小的元素</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">heappop</span><span class="p">(</span><span class="n">my_data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">heappop</span><span class="p">(</span><span class="n">my_data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;弹出两个元素之后my_data的元素：&quot;</span><span class="p">,</span> <span class="n">my_data</span><span class="p">)</span>
+
+<span class="c1"># 弹出最小的元素，压入指定元素</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">heapreplace</span><span class="p">(</span><span class="n">my_data</span><span class="p">,</span> <span class="mf">8.1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;执行replace之后my_data的元素：&quot;</span><span class="p">,</span> <span class="n">my_data</span><span class="p">)</span>
+
+<span class="c1"># 获取最大和最小的n个元素</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;my_data中最大的3个元素：&quot;</span><span class="p">,</span> <span class="n">nlargest</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">my_data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;my_data中最小的4个元素：&quot;</span><span class="p">,</span> <span class="n">nsmallest</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">my_data</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>当程序要获取列表中最大的n个元素，或者最小的n个元素时，使用堆能缓存列表的排序结果，
+因此具有较好的性能。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="11.内置常量与逻辑运算符、比较运算符.html" class="btn btn-neutral float-right" title="1.11. 内置常量与逻辑运算符、比较运算符" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="09.关于深浅拷贝.html" class="btn btn-neutral float-left" title="1.9. 深浅拷贝" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

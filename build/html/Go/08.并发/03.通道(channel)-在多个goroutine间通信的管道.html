@@ -1,0 +1,613 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8.3. 03.通道(channel)-在多个goroutine间通信的管道 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="8.4. 04.Go语言无缓冲的通道" href="04.Go语言无缓冲的通道.html" />
+    <link rel="prev" title="8.2. 02.goroutine和coroutine的区别" href="02.goroutine和coroutine的区别.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">8. 08.并发</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html">8.1. 01.轻量级线程(goroutine)-根据需要随时创建“线程“</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.goroutine和coroutine的区别.html">8.2. 02.goroutine和coroutine的区别</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">8.3. 03.通道(channel)-在多个goroutine间通信的管道</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">8.3.1. 通道的特性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">8.3.2. 声明通道类型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">8.3.3. 创建通道</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">8.3.4. 使用通道发送数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">8.3.5. 使用通道接收数据</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="04.Go语言无缓冲的通道.html">8.4. 04.Go语言无缓冲的通道</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.Go语言带缓冲的通道.html">8.5. 05.Go语言带缓冲的通道</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言channel超时机制.html">8.6. 06.Go语言channel超时机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据.html">8.7. 07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.Go语言RPC(模拟远程过程调用).html">8.8. 08.Go语言RPC(模拟远程过程调用)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.Go语言关闭通道后继续使用通道.html">8.9. 09.Go语言关闭通道后继续使用通道</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.Go语言多核并行化.html">8.10. 10.Go语言多核并行化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html">8.11. 11.Go语言Telnet回音服务器-TCP服务器的基本结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.同步-保证并发环境下数据访问的正确性.html">8.12. 12.同步-保证并发环境下数据访问的正确性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.html">8.13. 互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.Go语言等待组（sync.WaitGroup).html">8.14. 14.Go语言等待组（sync.WaitGroup)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">8. 08.并发</a> &raquo;</li>
+        
+      <li>8.3. 03.通道(channel)-在多个goroutine间通信的管道</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#channel-goroutine" id="id10">03.通道(channel)-在多个goroutine间通信的管道</a><ul>
+<li><a class="reference internal" href="#id1" id="id11">通道的特性</a></li>
+<li><a class="reference internal" href="#id2" id="id12">声明通道类型</a></li>
+<li><a class="reference internal" href="#id3" id="id13">创建通道</a></li>
+<li><a class="reference internal" href="#id4" id="id14">使用通道发送数据</a></li>
+<li><a class="reference internal" href="#id5" id="id15">使用通道接收数据</a><ul>
+<li><a class="reference internal" href="#id6" id="id16">使用通道做并发同步的写法如下：</a></li>
+<li><a class="reference internal" href="#id7" id="id17">遍历通道数据的例子请参考下面的代码。</a></li>
+<li><a class="reference internal" href="#id8" id="id18">示例：并发打印</a></li>
+<li><a class="reference internal" href="#id9" id="id19">示例，同时发送和接收(不带缓冲的通道)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="channel-goroutine">
+<h1><a class="toc-backref" href="#id10">8.3. 03.通道(channel)-在多个goroutine间通信的管道</a><a class="headerlink" href="#channel-goroutine" title="Permalink to this headline">¶</a></h1>
+<p>Go语言提倡使用通信的方法代替共享内存，这里通信的方法就是使用通道(channel).</p>
+<p><img alt="image0" src="../../_images/go_channel00001.png" /></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>在地铁站、食堂、洗手间等公共场所人很多的情况下，大家养成了排队的习惯，
+目的也是避免拥挤、插队导致的低效的资源使用和交换过程。代码与数据也是如此，多个 goroutine 为了争抢数据，势必造成执行的低效率，使用队列的方式是最高效的，channel 就是一种队列一样的结构。
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id11">8.3.1. 通道的特性</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Go语言中的通道（channel）是一种特殊的类型。在任何时候，同时只能有一个
+goroutine 访问通道进行发送和获取数据。goroutine 间通过通道就可以通信。</p>
+<p>通道像一个传送带或者队列，总是遵循先入先出（First In First
+Out）的规则，保证收发数据的顺序。</p>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id12">8.3.2. 声明通道类型</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>通道本身需要一个类型进行修饰，就像切片类型需要标识元素类型。通道的元素类型就是在其内部传输的数据类型，声明如下：
+
+var 通道变量 chan 通道类型
+
+·通道类型：通道内的数据类型。
+·通道变量：保存通道的变量。
+
+chan 类型的空值是 nil，声明后需要配合 make 后才能使用。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id13">8.3.3. 创建通道</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>通道是引用类型，需要使用 make 进行创建，格式如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>通道实例 := make(chan 数据类型)
+
+· 数据类型：通道内传输的元素类型。
+· 通道实例：通过make创建的通道句柄。
+</pre></div>
+</div>
+<p>例子：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">ch1</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="n">chan</span> <span class="nb">int</span><span class="p">)</span>
+    <span class="n">ch2</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="n">chan</span> <span class="n">interface</span><span class="p">{})</span>
+
+    <span class="nb">type</span> <span class="n">Equip</span> <span class="n">struct</span><span class="p">{</span>
+        <span class="n">name</span> <span class="n">string</span>
+        <span class="n">age</span> <span class="nb">int</span>
+    <span class="p">}</span>
+    <span class="n">ch3</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="n">chan</span> <span class="o">*</span><span class="n">Equip</span><span class="p">)</span>
+
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%#v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">ch1</span><span class="p">)</span> <span class="o">//</span><span class="p">(</span><span class="n">chan</span> <span class="nb">int</span><span class="p">)(</span><span class="mh">0xc000012180</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%#v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">ch2</span><span class="p">)</span> <span class="o">//</span><span class="p">(</span><span class="n">chan</span> <span class="n">interface</span> <span class="p">{})(</span><span class="mh">0xc0000121e0</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%#v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">ch3</span><span class="p">)</span> <span class="o">//</span><span class="p">(</span><span class="n">chan</span> <span class="o">*</span><span class="n">main</span><span class="o">.</span><span class="n">Equip</span><span class="p">)(</span><span class="mh">0xc000012240</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id14">8.3.4. 使用通道发送数据</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>通道创建后，就可以使用通道进行发送和接收操作。</p>
+<ol class="arabic simple">
+<li>通道发送数据的格式
+通道的发送使用特殊的操作符&lt;-，将数据通过通道发送的格式为：</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span>通道变量 &lt;- 值
+
+· 通道变量：通过make创建好的通道实例。
+· 值：可以是变量、常量、表达式或者函数返回值等。值的类型必须与ch通道的元素类型一致。
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>通过通道发送数据的例子</li>
+</ol>
+<p>使用 make 创建一个通道后，就可以使用&lt;-向通道发送数据，代码如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">创建一个空接口通道</span>
+<span class="n">ch</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="n">chan</span> <span class="n">interface</span><span class="p">{})</span>
+
+<span class="o">//</span> <span class="n">将0放入通道中</span>
+<span class="n">ch</span> <span class="o">&lt;-</span> <span class="mi">0</span>
+<span class="o">//</span> <span class="n">将hello字符串放入通道中</span>
+<span class="n">ch</span> <span class="o">&lt;-</span> <span class="s2">&quot;hello&quot;</span>
+</pre></div>
+</div>
+<p>3)发送将持续阻塞，直到数据被接收</p>
+<p>把数据往通道中发送时，如果接收方一直都没有接收，那么发送操作将持续阻塞。Go
+程序运行时能智能地发现一些永远无法发送成功的语句并做出提示，</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+// 通过通道发送数据的例子
+
+func main() {
+    // 创建一个整型通道
+    ch := make(chan int)
+
+    // 尝试将0通过通道发送
+    ch &lt;- 0
+}
+
+/*
+fatal error: all goroutines are asleep - deadlock!
+ */
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id15">8.3.5. 使用通道接收数据</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>通道接收同样使用&lt;-操作符，通道接收有如下特性：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>① 通道的收发操作在不同的两个 goroutine 间进行。
+
+由于通道的数据在没有接收方处理时，数据发送方会持续阻塞，因此通道的接收必定在另外一个 goroutine 中进行。
+
+② 接收将持续阻塞直到发送方发送数据。
+
+如果接收方接收时，通道中没有发送方发送数据，接收方也会发生阻塞，直到发送方发送数据为止。
+
+③ 每次接收一个元素。
+通道一次只能接收一个数据元素。
+</pre></div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id16">使用通道做并发同步的写法如下：</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+// 通过通道发送、接收数据的例子
+
+/*
+通道的数据接收一共有以下 4 种写法
+1.阻塞接收数据
+    data := &lt;-ch
+
+2.非阻塞接收数据
+    data, ok := &lt;-ch
+    · data：表示接收到的数据。未接收到数据时，data 为通道类型的零值。
+    · ok：表示是否接收到数据。
+
+3.接收任意数据，忽略接收的数据
+    &lt;-ch
+
+4. 循环接收
+    for data := range ch {
+    }
+ */
+
+func main() {
+    // 构建一个通道
+    ch :=make(chan int)
+
+    // 开启一个并发匿名函数
+    go func() {
+        fmt.Println(&quot;start gorutine&quot;)
+
+        // 通过通道通知main的goroutine
+        ch &lt;- 0
+
+        fmt.Println(&quot;exit goroutine&quot;)
+    }()
+
+    fmt.Println(&quot;wait goroutine&quot;)
+    // 等待匿名goroutine
+    &lt;-ch
+
+    fmt.Println(&quot;all done&quot;)
+}
+
+/*
+wait goroutine
+start gorutine
+exit goroutine
+all done
+ */
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id17">遍历通道数据的例子请参考下面的代码。</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;time&quot;
+)
+
+func main() {
+    // 构建一个通道
+    ch := make(chan int)
+
+    // 开启一个并发匿名函数
+    go func() {
+        //从3循环到0
+        for i := 3; i &gt;= 0; i-- {
+            // 发送3到0之间的数值
+            ch &lt;- i
+            // 每次发送完时等待
+            time.Sleep(time.Second)
+        }
+    }()
+
+    // 遍历接收通道数据
+    for data := range ch {
+        //打印通道数据
+        fmt.Println(data)
+        //当遇到数据0时，退出接收循环
+        if data == 0 {
+            break
+        }
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id18">示例：并发打印</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+func printer(c chan int) {
+    // 开始无限循环等待数据
+    for {
+        // 从channel中获取一个数据
+        data := &lt;-c
+        // 将0视为数据结束
+        if data == 0 {
+            break
+        }
+        // 打印数据
+        fmt.Println(data)
+    }
+    // 通知main已经结束循环 (我搞定了！)
+    c &lt;- 0
+
+}
+
+func main() {
+    // 创建一个channel
+    c := make(chan int)
+
+    // 并发执行printer，传入channel
+    go printer(c)
+    for i := 1; i &lt;= 10; i++ {
+        //将数据通过channel投送给printer
+        c &lt;- i
+    }
+
+    // 通知并发的printer结束循环（没有数据啦！）
+    c &lt;- 0
+    //等待printer结束（搞定喊我！）
+    &lt;-c
+
+}
+
+/*
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+ */
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id19">示例，同时发送和接收(不带缓冲的通道)</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;time&quot;
+)
+
+/*
+使用make来建立一个通道：
+var channel chan int = make(chan int)
+ // 或
+channel := make(chan int)
+
+ // 定义接收的channel
+receive_only := make (&lt;-chan int)
+ // 定义发送的channel
+send_only := make (chan&lt;- int)
+
+// 可同时发送接收
+send_receive := make (chan int)
+
+
+· chan&lt;- 表示数据进入通道，要把数据写进通道，对于调用者就是发送。
+· &lt;-chan 表示数据从通道出来，对于调用者就是得到通道的数据，当然就是接收。
+
+定义只发送或只接收的channel意义不大，一般用于在参数传递中：
+*/
+
+func main() {
+    c := make(chan int) // 不使用带缓冲区的channel
+    go send(c)
+    go recv(c)
+    time.Sleep(3 * time.Second)
+    close(c)
+}
+
+// 只能向chan里send数据
+func send(c chan&lt;- int) {
+    for i := 0; i &lt; 10; i++ {
+        fmt.Println(&quot;send readey&quot;, i)
+        c &lt;- i
+        fmt.Println(&quot;send&quot;, i)
+    }
+}
+
+// 只能接收channel中的数据
+func recv(c &lt;-chan int) {
+    for i := range c{
+        fmt.Println(&quot;received&quot;, i)
+    }
+}
+
+/*
+send readey 0
+send 0
+send readey 1
+received 0
+received 1
+send 1
+.....
+....
+ */
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="04.Go语言无缓冲的通道.html" class="btn btn-neutral float-right" title="8.4. 04.Go语言无缓冲的通道" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="02.goroutine和coroutine的区别.html" class="btn btn-neutral float-left" title="8.2. 02.goroutine和coroutine的区别" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

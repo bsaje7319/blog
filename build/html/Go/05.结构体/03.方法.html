@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.3. 03.方法 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="5.4. 04.接收器-方法作用的目标" href="04.接收器.html" />
+    <link rel="prev" title="5.2. 02.构造函数-结构体和类型的一系列初始化操作的函数封装" href="02.构造函数.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">5. 05.结构体</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.结构体.html">5.1. 结构体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.构造函数.html">5.2. 02.构造函数-结构体和类型的一系列初始化操作的函数封装</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.3. 03.方法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">5.3.1. 为结构体添加方法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="04.接收器.html">5.4. 04.接收器-方法作用的目标</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.类型内嵌和结构体内嵌.html">5.5. 05.类型内嵌和结构体内嵌</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">5. 05.结构体</a> &raquo;</li>
+        
+      <li>5.3. 03.方法</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/05.结构体/03.方法.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id3">03.方法</a><ul>
+<li><a class="reference internal" href="#id2" id="id4">为结构体添加方法</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id3">5.3. 03.方法</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Go语言中的方法(Method)是一种作用于特定类型变量的函数。这种特定类型变量叫做接收器(Receiver)。</p>
+<p>如果把结构体理解为类，那么接收器就是this或者self
+在Go语言中，接收器的类型可以是任何类型，不仅仅是结构体，任何类型都可以拥有方法。</p>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id4">5.3.1. 为结构体添加方法</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>1.面向过程的实现方法</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+type Bag struct {
+    // 这个结构体包含一个整型切片类型的items的成员
+    items []int
+}
+
+// 将一个物品放入背包的过程，这个函数有2个参数，一个是背包指针（*Bag）一个是itemid
+func Insert(b *Bag, itemid int) {
+    b.items = append(b.items, itemid)
+}
+
+func main() {
+    bag := new(Bag)
+    Insert(bag,1001)
+    fmt.Println(bag.items)  //[1001]
+}
+</pre></div>
+</div>
+<p>2.Go语言的结构体方法</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+// 一个背包的结构体，里面有一个整数切片
+type Bag1 struct {
+    items [] int
+}
+
+// b *Bag1表示接收器，即Insert作用的对象实例
+func (b *Bag1) Insert(itemid int) {
+    b.items = append(b.items, itemid)
+}
+
+func main() {
+    b := new(Bag1)
+    b.Insert(1002)
+    fmt.Println(b.items)    //[1002]
+}
+</pre></div>
+</div>
+<p>每个方法只能有一个接收器。Insert转换为方法后，就能用面向对象的方法调用Insert了。
+<img alt="image0" src="../../_images/go_method_jieshouqi.png" /></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="04.接收器.html" class="btn btn-neutral float-right" title="5.4. 04.接收器-方法作用的目标" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="02.构造函数.html" class="btn btn-neutral float-left" title="5.2. 02.构造函数-结构体和类型的一系列初始化操作的函数封装" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+.. contents::
+   :depth: 3
+..
+
+02.反射机制
+===========
+
+反射概念
+--------
+
+官方对此有个非常简明的介绍，两句话耐人寻味：
+
+::
+
+   ·反射提供一种让程序检查自身结构的能力
+   ·反射是困惑的源泉
+
+::
+
+   第1条，再精确点的描述是“反射是一种检查interface变量的底层类型和值的机制”。 
+   第2条，很有喜感的自嘲，不过往后看就笑不出来了，因为你很可能产生困惑.
+
+反射三定律
+----------
+
+反射第一定律：反射可以将interface类型变量转换成反射对象
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+   package main
+
+   import (
+       "fmt"
+       "reflect"
+   )
+
+   func main() {
+       var x float64 = 3.4
+       t := reflect.TypeOf(x)
+       fmt.Println("type:", t)     //type: float64
+
+       v := reflect.ValueOf(x)
+       fmt.Println("value:", v)    //value: 3.4
+   }
+
+反射第二定律：反射可以将反射对象还原成interface对象
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+之所以叫’反射’，反射对象与interface对象是可以互相转化的。
+
+::
+
+   package main
+
+   import (
+       "fmt"
+       "reflect"
+   )
+
+   func main() {
+       var x float64 = 3.4
+       v := reflect.ValueOf(x)
+
+       var y float64 = v.Interface().(float64)
+       //interface对象通过.(float64)类型断言获取float64类型的值。
+       fmt.Println("value:", y)        //value: 3.4
+   }
+
+反射第三定律：反射对象可修改，value值必须是可设置的
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+   package main
+
+   import (
+       "fmt"
+       "reflect"
+   )
+
+
+   func main() {
+       var x float64 = 3.4
+       v := reflect.ValueOf(&x)
+       v.Elem().SetFloat(7.1)
+       fmt.Println("x :", v.Elem().Interface())    //x : 7.1
+   }
+
+举例
+^^^^
+
+::
+
+   package main
+
+   import (
+       "fmt"
+       "reflect"
+   )
+
+   /*
+   通过反射可以修改原对象
+   d.CanAddr()方法：判断它是否可被取地址
+   d.CanSet()方法：判断它是否可被取地址并可被修改
+   通过一个settable的Value反射对象来访问、修改其对应的变量值：
+   */
+   type Student struct {
+       name string
+       Age  int `json:"years"`
+   }
+
+   func main() {
+       var a int = 50
+       v := reflect.ValueOf(a)                                           //返回Value类型对象，值为50
+       t := reflect.TypeOf(a)                                            //返回Type类型对象，值为int
+       fmt.Println(v, t, v.Type(), t.Kind(), reflect.ValueOf(&a).Elem()) //50 int int int 50
+       seta := reflect.ValueOf(&a).Elem()                                //这样才能让seta保存a的值
+       fmt.Println(seta, seta.CanSet())                                  //50 true
+       seta.SetInt(1000)
+
+       var Pupil Student = Student{
+           name: "Joke",
+           Age:  18,
+       }
+       SetStudent := reflect.ValueOf(&Pupil).Elem()
+       sSAge, _ := SetStudent.Type().FieldByName("Age")
+       fmt.Println(sSAge.Tag.Get("json"))                          //years
+
+   }

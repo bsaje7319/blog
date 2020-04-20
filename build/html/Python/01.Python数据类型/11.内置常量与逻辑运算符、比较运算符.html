@@ -1,0 +1,448 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1.11. 内置常量与逻辑运算符、比较运算符 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="1.13. 建立大型数据结构" href="12.建立大型数据结构.html" />
+    <link rel="prev" title="1.10. 列表实现堆和队列" href="10.列表实现堆和队列.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">1. Python数据类型</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.字符编码处理.html">1.1. 字符编码处理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.代码注释.html">1.2. 代码注释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.字符串数据类型.html">1.3. 字符串数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.列表数据类型.html">1.4. 列表 List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.元祖数据类型.html">1.5. 元祖 Tuple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.字典数据结构.html">1.6. 字典 Dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.集合数据类型.html">1.7. 集合 Set()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.数据类型转换.html">1.8. Python数据类型转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.关于深浅拷贝.html">1.9. 深浅拷贝</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.列表实现堆和队列.html">1.10. 列表实现堆和队列</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1.11. 内置常量与逻辑运算符、比较运算符</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.11.1. 内置常量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python">1.11.2. python中的逻辑运算符</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.11.3. python中的比较运算符</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-is-not">1.11.4. is 和 is not</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#in-not-in">1.12. in 和not in</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.12.1. 赋值运算符</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="12.建立大型数据结构.html">1.13. 建立大型数据结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Python常用IDE集成环境.html">1.14. Python常用IDE集成环境</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">1. Python数据类型</a> &raquo;</li>
+        
+      <li>1.11. 内置常量与逻辑运算符、比较运算符</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/01.Python数据类型/11.内置常量与逻辑运算符、比较运算符.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id5">内置常量与逻辑运算符、比较运算符</a><ul>
+<li><a class="reference internal" href="#id2" id="id6">内置常量</a></li>
+<li><a class="reference internal" href="#python" id="id7">python中的逻辑运算符</a><ul>
+<li><a class="reference internal" href="#or" id="id8">or运算符的操作</a></li>
+<li><a class="reference internal" href="#and" id="id9">and运算操作符</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3" id="id10">python中的比较运算符</a></li>
+<li><a class="reference internal" href="#is-is-not" id="id11">is 和 is not</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#in-not-in" id="id12">in 和not in</a><ul>
+<li><a class="reference internal" href="#id4" id="id13">赋值运算符</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id5">1.11. 内置常量与逻辑运算符、比较运算符</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id6">1.11.1. 内置常量</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>None 的意义是”无“，常用来表示没有值的对象
+
+python中逻辑假包括：False、None、0、空字符串、（）空元祖、[]空列表、和{}空字典，其余的任何值都视为真
+布尔             False
+null 类型        None
+整型             0
+浮点型           0.0
+空字符串         &#39;&#39;
+空列表           []
+空元组           ()
+空字典           {}
+空集合           set()
+</pre></div>
+</div>
+<p>代码示例</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="k">if</span> <span class="mi">0</span><span class="p">:</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+   <span class="o">...</span><span class="p">:</span> <span class="k">else</span><span class="p">:</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+   <span class="o">...</span><span class="p">:</span>
+<span class="kc">True</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="k">if</span> <span class="p">{}:</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+   <span class="o">...</span><span class="p">:</span> <span class="k">else</span><span class="p">:</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;true&quot;</span><span class="p">)</span>
+   <span class="o">...</span><span class="p">:</span>
+<span class="n">true</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="k">if</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+    <span class="o">...</span><span class="p">:</span> <span class="k">else</span><span class="p">:</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+    <span class="o">...</span><span class="p">:</span>
+<span class="kc">True</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="k">if</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+    <span class="o">...</span><span class="p">:</span> <span class="k">else</span><span class="p">:</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+    <span class="o">...</span><span class="p">:</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="python">
+<h2><a class="toc-backref" href="#id7">1.11.2. python中的逻辑运算符</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../../_images/lj-ysf.png" /></p>
+<div class="section" id="or">
+<h3><a class="toc-backref" href="#id8">or运算符的操作</a><a class="headerlink" href="#or" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="ow">or</span> <span class="mi">0</span>         <span class="c1">#第一个操作为真，结果为真</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>         <span class="c1">#第一个操作为假，直接返回第二个操作数，即(1,2)，结果为真</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="p">[]</span> <span class="ow">or</span> <span class="p">()</span>           <span class="c1">#第一个操作为假，直接返回第二个操作数，() 空元祖</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="and">
+<h3><a class="toc-backref" href="#id9">and运算操作符</a><a class="headerlink" href="#and" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="ow">and</span> <span class="mi">3</span>        <span class="c1">#第一个操作为真，直接返回第二个操作，结果为真</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="mi">3</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="p">[]</span> <span class="ow">and</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>       <span class="c1">#第一个操作为假，直接返回[]，结果为假</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="p">[]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="p">[]</span> <span class="ow">and</span> <span class="p">()</span>          <span class="c1"># 第一个操作为假，直接返回[]，结果为假</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="p">[]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="mi">1</span> <span class="ow">and</span> <span class="mi">0</span>             <span class="c1">#第一个操作为真，直接返回第二个操作 0 ，结果为假</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="mi">0</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="mi">0</span> <span class="ow">and</span> <span class="kc">True</span>         <span class="c1">## 第一个操作为假，直接返回 0 ，结果为假</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id10">1.11.3. python中的比较运算符</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Python 中的比较操作符见下表。
+相等       ==
+不等于     !=
+小于       &lt;
+不大于     &lt;=
+大于       &gt;
+不小于     &gt;=
+属于      in...
+</pre></div>
+</div>
+<p><img alt="image1" src="../../_images/eq-ysf.png" /></p>
+</div>
+<div class="section" id="is-is-not">
+<h2><a class="toc-backref" href="#id11">1.11.4. is 和 is not</a><a class="headerlink" href="#is-is-not" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">x</span><span class="o">=</span><span class="mf">3.14</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">y</span><span class="o">=</span><span class="n">x</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">x</span> <span class="ow">is</span> <span class="n">y</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="kc">True</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">y</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="kc">False</span>
+
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="kc">False</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">28</span><span class="p">]:</span> <span class="n">x</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="in-not-in">
+<h1><a class="toc-backref" href="#id12">1.12. in 和not in</a><a class="headerlink" href="#in-not-in" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">hujianli</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">hujianli2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">34</span><span class="p">]:</span> <span class="n">hujianli</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">34</span><span class="p">]:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">35</span><span class="p">]:</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">hujianli</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">35</span><span class="p">]:</span> <span class="kc">True</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">hujianli2</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="kc">False</span>
+
+
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="n">hujianli2</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="kc">True</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="n">hujianli3</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">40</span><span class="p">]:</span> <span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="n">hujianli3</span>           <span class="c1">#检查&#39;a&#39;是否在字典的键中，返回为True。in只检测字典的键</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">40</span><span class="p">]:</span> <span class="kc">True</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">41</span><span class="p">]:</span> <span class="mi">1</span> <span class="ow">in</span>  <span class="n">hujianli3</span>            <span class="c1">#值不检测，返回False</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">41</span><span class="p">]:</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id13">1.12.1. 赋值运算符</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image2" src="../../_images/python_ysf.png" /></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="12.建立大型数据结构.html" class="btn btn-neutral float-right" title="1.13. 建立大型数据结构" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="10.列表实现堆和队列.html" class="btn btn-neutral float-left" title="1.10. 列表实现堆和队列" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1.4. 变量声明周期 - 变量能够使用的代码范围 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="1.5. 字符串应用" href="05.字符串应用.html" />
+    <link rel="prev" title="1.3. 指针" href="03.指针.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">1. 01.Go语言基本语法与使用</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.声明变量.html">1.1. 声明变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.数据类型.html">1.2. 数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.指针.html">1.3. 指针</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1.4. 变量声明周期 - 变量能够使用的代码范围</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.4.1. 什么是栈</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.4.2. 变量和栈有什么关系</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.4.3. 声明是堆</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#escape-analysis">1.4.4. 变量逃逸（Escape Analysis） - 自动决定变量分配方式，提高运行效率</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="05.字符串应用.html">1.5. 字符串应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.常量.html">1.6. 常量–恒定不变的值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.类型别名.html">1.7. 类型别名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.编译与工具.html">1.8. 编译与工具</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">1. 01.Go语言基本语法与使用</a> &raquo;</li>
+        
+      <li>1.4. 变量声明周期 - 变量能够使用的代码范围</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/01.Go语言基本语法与使用/04.变量声明周期.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id7">变量声明周期 - 变量能够使用的代码范围</a><ul>
+<li><a class="reference internal" href="#id2" id="id8">什么是栈</a></li>
+<li><a class="reference internal" href="#id3" id="id9">变量和栈有什么关系</a></li>
+<li><a class="reference internal" href="#id4" id="id10">声明是堆</a></li>
+<li><a class="reference internal" href="#escape-analysis" id="id11">变量逃逸（Escape Analysis） - 自动决定变量分配方式，提高运行效率</a><ul>
+<li><a class="reference internal" href="#id5" id="id12">1.逃逸分析</a></li>
+<li><a class="reference internal" href="#id6" id="id13">2.取地址发生逃逸</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id7">1.4. 变量声明周期 - 变量能够使用的代码范围</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id8">1.4.1. 什么是栈</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>入栈，后进先出（LIFO） Last In First Out顺序</p>
+<p><img alt="image0" src="../../_images/go_stack0001.png" /></p>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id9">1.4.2. 变量和栈有什么关系</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>栈可以用于内存分配，栈的分配和回收速度非常快。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+func calc(a, b int) int {
+    var c int           // 声明c整型变量，运行时，给c分配一段内存存储c的数值
+    c = a * b
+    var x int           // 声明x整型变量，运行时，给x分配一段内存存储x的数值
+    x = c * 10
+    return x            // 返回x的值
+}
+
+func main() {
+    result := calc(6, 7)
+    fmt.Println(result)         //420
+}
+</pre></div>
+</div>
+<p>上面的代码在没有任何优化的情况下，会进行c和x变量的分配过程，Go语言默认情况下，
+会将c和x分配在栈上，这两个变量在calc()函数退出时就不再使用，函数结束时，保存c和x的栈内存将被释放。
+整个分配内存的过程通过栈的分配和回收都非常迅速。</p>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id10">1.4.3. 声明是堆</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>堆在内存分配中类似于往一个房间里摆放各种家具,家具的尺寸有大有小。
+分配内存时，需要找一块足够装下家具的空间再摆放家具。经过反复摆放和腾空家具后,房间里的空间会变得乱七八糟,
+此时再往空间里摆放家具会存在虽然有足够的空间,但各空间分布在不同的区域,无法有一段连续的空间来摆放家具的问题。
+此时,内存分配器就需要对这些空间进行调整优化， 如图</p>
+<p><img alt="image1" src="../../_images/go_dui0001.png" /></p>
+<p>堆分配内存和栈分配内存相比，堆适合不可预知大小的内存分配，但是为此付出的代价是分配速度较慢，而且会形成内存碎片。</p>
+</div>
+<div class="section" id="escape-analysis">
+<h2><a class="toc-backref" href="#id11">1.4.4. 变量逃逸（Escape Analysis） - 自动决定变量分配方式，提高运行效率</a><a class="headerlink" href="#escape-analysis" title="Permalink to this headline">¶</a></h2>
+<p>堆和栈各有优缺点， 该怎么在编程中处理这个问题呢？ 在C++语言中，
+需要开发者自己学习如何进行内存分配，
+选用怎样的内存分配方式来适应不同的算法需求。比如， 函</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>数局部变量尽量使用栈；
+全局变量、结构体成员使用堆分配等。
+</pre></div>
+</div>
+<p>程序员不得不花费很多年的时间在不同的项目中学习、记忆这些概念并加以实践和使用。</p>
+<p>Go 语言将这个过程整合到编译器中， 命名为“ 变量逃逸分析”
+。这个技术由编译器分析代码的特征和代码生命期，
+决定应该如何堆还是栈进行内存分配，
+即使程序员使用Go语言完成了整个工程后也不会感受到这个过程。</p>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id12">1.逃逸分析</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+func dummy(b int) int {
+    // 声明一个c赋值进入参数并返回
+    var c int
+    c = b
+    return c
+}
+
+//空函数，什么也不做
+func void() {
+
+}
+
+func main() {
+    // 声明a变量并打印
+    var a int
+    void() // 调用void()函数
+    fmt.Println(a, dummy(0))
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id13">2.取地址发生逃逸</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="o">//</span> <span class="n">声明结构体逃逸情况</span>
+<span class="nb">type</span> <span class="n">Data</span> <span class="n">struct</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">dummy</span><span class="p">()</span> <span class="o">*</span><span class="n">Data</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">实例化c为Data类型</span>
+    <span class="n">var</span> <span class="n">c</span> <span class="n">Data</span>
+    <span class="o">//</span> <span class="n">返回函数局部变量地址</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="n">c</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">dummy</span><span class="p">())</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>原则：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    使用Go语言进行编译时，Go语言的设计者不希望开发者将精力放在内存应该分配在栈还是堆上的问题，编译器会自动帮助开发者
+完成这个纠结的选择，但变量逃逸分析也是需要了解的一个编译器技术，这个技术不仅用于GO，在Java等语言的编译器优化上也使用了类似的技术
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="05.字符串应用.html" class="btn btn-neutral float-right" title="1.5. 字符串应用" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="03.指针.html" class="btn btn-neutral float-left" title="1.3. 指针" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

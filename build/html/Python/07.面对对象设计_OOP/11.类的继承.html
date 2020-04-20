@@ -1,0 +1,870 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.11. 类的继承 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="7.12. 枚举类" href="12.枚举类.html" />
+    <link rel="prev" title="7.10. python的根类" href="10.python的根类.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">7. 面对对象设计_OOP</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.什么是面对对象设计.html">7.1. 什么是面对对象设计</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.类的方法.html">7.2. 类的方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.类中的__init__方法.html">7.3. 类中的__init__方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04一个基础有属性和方法的类.html">7.4. 一个基础有方法和属性的类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.类中可调用自己方法和外部函数.html">7.5. 类中调用自身方法和函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.类属性和实例属性.html">7.6. 类属性和实例属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.类方法、实例方法、静态方法.html">7.7. 类方法、静态方法、实例方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.property装饰器，将方法转为属性,动态属性.html">7.8. property装饰器，将方法转为属性,动态属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.子类继承父类后进行方法重写.html">7.9. 子类继承父类后方法重写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.python的根类.html">7.10. python的根类</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">7.11. 类的继承</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">7.11.1. 类继承的顺序</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python3">7.11.2. Python3 默认广度优先-新式类</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">7.11.3. 类的多重继承，同时继承多个类的顺序</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">7.11.4. 钻石类</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">7.11.5. 类的继承和方法的重写</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">7.11.6. 类型检查</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="12.枚举类.html">7.12. 枚举类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.方法的动态特性.html">7.13. 方法的动态特性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.面对对象之封装.html">7.14. 面对对象之封装特性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.类的高级特性.html">7.15. 类的高级特性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.一些魔法方法.html">7.16. 一些魔法方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="17.类的反射，设置、删除、检测.html">7.17. 类的检测、判断、设置、删除、获取</a></li>
+<li class="toctree-l3"><a class="reference internal" href="18.多态-鸭子类型.html">7.18. 多态-鸭子类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="19.类属性描述符.html">7.19. 类属性描述符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="20.一个简单的类示例.html">7.20. 一个简单的类的例子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="21.人开枪射击子弹_OOP.html">7.21. 人开枪射击子弹_OOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="22.组合.html">7.22. 组合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="23.扩展列表、字典.html">7.23. 扩展列表、字典</a></li>
+<li class="toctree-l3"><a class="reference internal" href="24.工厂方法.html">7.24. 工厂方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">7. 面对对象设计_OOP</a> &raquo;</li>
+        
+      <li>7.11. 类的继承</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/07.面对对象设计_OOP/11.类的继承.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id12">类的继承</a><ul>
+<li><a class="reference internal" href="#id2" id="id13">类继承的顺序</a></li>
+<li><a class="reference internal" href="#python3" id="id14">Python3 默认广度优先-新式类</a><ul>
+<li><a class="reference internal" href="#id3" id="id15">代码示例 1</a></li>
+<li><a class="reference internal" href="#id4" id="id16">代码示例 2</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5" id="id17">类的多重继承，同时继承多个类的顺序</a><ul>
+<li><a class="reference internal" href="#id6" id="id18">示例代码</a></li>
+<li><a class="reference internal" href="#id7" id="id19">代码示例 2</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9" id="id20">钻石类</a></li>
+<li><a class="reference internal" href="#id10" id="id21">类的继承和方法的重写</a></li>
+<li><a class="reference internal" href="#id11" id="id22">类型检查</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id12">7.11. 类的继承</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id13">7.11.1. 类继承的顺序</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">经典类</span><span class="p">:</span><span class="n">深度优先</span>
+<span class="n">新式类</span><span class="p">:</span><span class="n">广度优先</span>
+</pre></div>
+</div>
+<p><img alt="image0" src="../../_images/class12.png" /></p>
+</div>
+<div class="section" id="python3">
+<h2><a class="toc-backref" href="#id14">7.11.2. Python3 默认广度优先-新式类</a><a class="headerlink" href="#python3" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="mi">2</span>
+
+
+<span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">attr</span><span class="p">)</span>       <span class="c1"># 2</span>
+
+
+<span class="c1">#明确解决冲突</span>
+<span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="mi">2</span>
+
+
+<span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">attr</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">attr</span><span class="p">)</span>  <span class="c1">#  1</span>
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id15">代码示例 1</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="k">class</span> <span class="nc">Ant</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">):</span>  <span class="c1">#定义构造方法，将实例属性和参数一一绑定</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+
+    <span class="k">def</span> <span class="nf">crawl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;爬行....&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;当前位置(</span><span class="si">{}</span><span class="s2">，</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s1">&#39;模拟攻击&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;用嘴咬&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">FlyAnt</span><span class="p">(</span><span class="n">Ant</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    定义FlyAnt类，继承Ant类</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s1">&#39;修改行为，攻击方法不同&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;用尾针..！&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;飞行.....&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">flyant</span> <span class="o">=</span> <span class="n">FlyAnt</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>   <span class="c1">#实例化类</span>
+<span class="n">flyant</span><span class="o">.</span><span class="n">crawl</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>              <span class="c1">#模拟爬行</span>
+<span class="n">flyant</span><span class="o">.</span><span class="n">fly</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>              <span class="c1">#模拟飞行</span>
+<span class="n">flyant</span><span class="o">.</span><span class="n">attack</span><span class="p">()</span>                <span class="c1">#模拟攻击</span>
+</pre></div>
+</div>
+<p>输出信息</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>爬行....
+当前位置(3，5)
+飞行.....
+当前位置(20，30)
+用尾针..！
+</pre></div>
+</div>
+<p>eg</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/6/22 9:21</span>
+<span class="c1"># filename: 类的继承4.py</span>
+<span class="kn">import</span> <span class="nn">types</span>
+
+
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s1">&#39;man&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setAge</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setSex</span><span class="p">(</span><span class="n">sex</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">setName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;名字必须是字符串&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">setAge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">age</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;年龄必须是整数&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span> <span class="nf">setSex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sex</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">sex</span> <span class="o">!=</span> <span class="s2">&quot;男&quot;</span> <span class="ow">and</span> <span class="n">sex</span> <span class="o">!=</span> <span class="s2">&quot;女&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;性别输入错误&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__sex</span> <span class="o">=</span> <span class="n">sex</span>
+
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;姓名：</span><span class="si">{0}</span><span class="s2">  性别：</span><span class="si">{1}</span><span class="s2">  年龄：</span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sex</span><span class="p">))</span>
+
+
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="n">schoolyear</span><span class="o">=</span><span class="mi">2018</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Student</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setSchoolyear</span><span class="p">(</span><span class="n">schoolyear</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">setSchoolyear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schoolyear</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">schoolyear</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;输入入学年份错误&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__schoolyear</span> <span class="o">=</span> <span class="n">schoolyear</span>
+
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">Person</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;入学年份：</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__schoolyear</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">zhangsan</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s2">&quot;张三&quot;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s2">&quot;男&quot;</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">zhangsan</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="n">lisi</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s2">&quot;李四&quot;</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="s2">&quot;男&quot;</span><span class="p">,</span> <span class="mi">2019</span><span class="p">)</span>
+    <span class="n">lisi</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">lisi</span><span class="o">.</span><span class="n">setAge</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">lisi</span><span class="o">.</span><span class="n">setSchoolyear</span><span class="p">(</span><span class="mi">2015</span><span class="p">)</span>
+    <span class="n">lisi</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>输出信息:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>姓名：张三  性别：18  年龄：男
+姓名：李四  性别：21  年龄：男
+入学年份：2019
+姓名：李四  性别：20  年龄：男
+入学年份：2015
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id16">代码示例 2</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/6/13 22:47</span>
+<span class="c1"># filename: 类的继承性2.py</span>
+<span class="k">class</span> <span class="nc">Fruit</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;实例方法&#39;&#39;&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我是一个水果！重</span><span class="si">{}</span><span class="s2">克&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">))</span>
+
+
+<span class="k">class</span> <span class="nc">Food</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">taste</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;实例方法&#39;&#39;&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;不同食物的口感不同&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># 定义Apple类，继承了Fruit类和Food类</span>
+<span class="k">class</span> <span class="nc">Apple</span><span class="p">(</span><span class="n">Fruit</span><span class="p">,</span> <span class="n">Food</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># 创建Apple对象</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="mf">5.6</span>
+<span class="c1">#调用Apple类的info()方法</span>
+<span class="n">a</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="c1">#调用Apple类的teste()方法</span>
+<span class="n">a</span><span class="o">.</span><span class="n">taste</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>输出信息</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>我是一个水果！重5.6克
+不同食物的口感不同
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id17">7.11.3. 类的多重继承，同时继承多个类的顺序</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>当一个子类有多个父类时，该子类会继承所有父类的方法，如果父类中包含多个同名的方法时，排在前面的父类
+中的方法会“遮蔽”排在后面父类中同名的方法
+</pre></div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id18">示例代码</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/6/13 23:00</span>
+<span class="c1"># filename: 多重继承2.py</span>
+<span class="k">class</span> <span class="nc">Item</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Item中方法：&quot;</span><span class="p">,</span> <span class="s2">&quot;这是一个商品&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Product</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Product中方法：&quot;</span><span class="p">,</span> <span class="s2">&quot;这是一个工业商品&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># 开始多继承1</span>
+<span class="k">class</span> <span class="nc">Mouse_I</span><span class="p">(</span><span class="n">Item</span><span class="p">,</span> <span class="n">Product</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># 开始多继承2</span>
+<span class="k">class</span> <span class="nc">Mouse_P</span><span class="p">(</span><span class="n">Product</span><span class="p">,</span> <span class="n">Item</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="n">hu</span> <span class="o">=</span> <span class="n">Mouse_I</span><span class="p">()</span>
+<span class="n">hu</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>       <span class="c1">#Item中方法： 这是一个商品</span>
+
+<span class="n">hu2</span> <span class="o">=</span> <span class="n">Mouse_P</span><span class="p">()</span>
+<span class="n">hu2</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>      <span class="c1">#Product中方法： 这是一个工业商品</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<span id="id8"></span><h3><a class="toc-backref" href="#id19">代码示例 2</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">经典类:深度优先</span>
+<span class="sd">新式类:广度优先</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">PrntA</span><span class="p">:</span>
+    <span class="n">namea</span> <span class="o">=</span> <span class="s1">&#39;PrntA&#39;</span>
+    <span class="k">def</span> <span class="nf">set_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+
+    <span class="k">def</span> <span class="nf">set_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">namea</span><span class="p">):</span>
+        <span class="n">PrntA</span><span class="o">.</span><span class="n">namea</span> <span class="o">=</span> <span class="n">namea</span>
+
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PrntA：</span><span class="si">{}</span><span class="s2">，</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">PrntA</span><span class="o">.</span><span class="n">namea</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">))</span>
+
+<span class="k">class</span> <span class="nc">PrntB</span><span class="p">:</span>
+    <span class="n">nameb</span> <span class="o">=</span> <span class="s2">&quot;PrntB&quot;</span>
+    <span class="k">def</span> <span class="nf">set_nameb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nameb</span><span class="p">):</span>
+        <span class="n">PrntB</span><span class="o">.</span><span class="n">nameb</span> <span class="o">=</span> <span class="n">nameb</span>
+
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PrntB:</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">PrntB</span><span class="o">.</span><span class="n">nameb</span><span class="p">))</span>
+
+<span class="k">class</span> <span class="nc">Sub</span><span class="p">(</span><span class="n">PrntA</span><span class="p">,</span><span class="n">PrntB</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Sub2</span><span class="p">(</span><span class="n">PrntB</span><span class="p">,</span><span class="n">PrntA</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Sub3</span><span class="p">(</span><span class="n">PrntA</span><span class="p">,</span><span class="n">PrntB</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">PrntA</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">PrntB</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;使用第一个子类：&quot;</span><span class="p">)</span>
+<span class="n">sub</span> <span class="o">=</span> <span class="n">Sub</span><span class="p">()</span>
+<span class="n">sub</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;aaaaa&quot;</span><span class="p">)</span>
+<span class="n">sub</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">sub</span><span class="o">.</span><span class="n">set_nameb</span><span class="p">(</span><span class="s2">&quot;BBBB&quot;</span><span class="p">)</span>
+<span class="n">sub</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;使用第二个子类：&quot;</span><span class="p">)</span>
+<span class="n">sub2</span> <span class="o">=</span> <span class="n">Sub2</span><span class="p">()</span>               <span class="c1">#实例化类Sub2</span>
+<span class="n">sub2</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;aaaa&quot;</span><span class="p">)</span>
+<span class="n">sub2</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">sub2</span><span class="o">.</span><span class="n">set_nameb</span><span class="p">(</span><span class="s2">&quot;BBBBB&quot;</span><span class="p">)</span>
+<span class="n">sub2</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;使用第三个子类：&quot;</span><span class="p">)</span>
+<span class="n">sub3</span> <span class="o">=</span> <span class="n">Sub3</span><span class="p">()</span>               <span class="c1">#实例化类Sub2</span>
+<span class="n">sub3</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;aaaa&quot;</span><span class="p">)</span>
+<span class="n">sub</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">sub3</span><span class="o">.</span><span class="n">set_nameb</span><span class="p">(</span><span class="s2">&quot;BBBB&quot;</span><span class="p">)</span>
+<span class="n">sub</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>输出信息</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>使用第一个子类：
+PrntA：PrntA，aaaaa
+PrntA：PrntA，aaaaa
+
+使用第二个子类：
+PrntB:BBBB
+PrntB:BBBBB
+
+使用第三个子类：
+PrntA：PrntA，aaaaa
+PrntA：PrntA，aaaaa
+</pre></div>
+</div>
+<ul class="simple">
+<li>多继承先找左边，再找右边</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/4/20 16:36</span>
+<span class="c1"># filename: 继承中self的使用.py</span>
+
+<span class="k">class</span> <span class="nc">Base1</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Base1:f1&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Base1:f2&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Base2</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Base2:f1&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Base2:f2&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">f3</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Base2:f3&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f1</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="n">Base1</span><span class="p">,</span> <span class="n">Base2</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">f0</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Foo:f0&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f3</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">f0</span><span class="p">()</span>
+
+<span class="c1">#遵循原则，多继承先找左边</span>
+<span class="c1"># self是实例化的实例，先从实例后的实例里面开始找</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id20">7.11.4. 钻石类</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="mi">2</span>
+
+
+<span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">attr</span><span class="p">)</span>
+
+
+
+
+<span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="mi">2</span>
+
+
+<span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">attr</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">attr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id21">7.11.5. 类的继承和方法的重写</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/5/18 7:51</span>
+<span class="c1"># filename: 继承性1.py</span>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;Person [name=</span><span class="si">{0}</span><span class="s2">,age=</span><span class="si">{1}</span><span class="s2">]&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">school</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">school</span> <span class="o">=</span> <span class="n">school</span>  <span class="c1"># 所在学校</span>
+
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        方法重写</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;Person [name=</span><span class="si">{0}</span><span class="s2">,age=</span><span class="si">{1}</span><span class="s2">,school=</span><span class="si">{2}</span><span class="s2">]&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">school</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">hujianli1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s2">&quot;胡建力&quot;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hujianli1</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+
+    <span class="n">hujianli2</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s2">&quot;胡建力&quot;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s2">&quot;西电大&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hujianli2</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>eg</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/5/10 17:53</span>
+<span class="c1"># filename: 类的继承2.py</span>
+<span class="k">class</span> <span class="nc">Employee</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">salary</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span>
+
+    <span class="k">def</span> <span class="nf">work</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;普通员工正在写代码,工资是：&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Customer</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">favorite</span><span class="p">,</span><span class="n">address</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">favorite</span> <span class="o">=</span> <span class="n">favorite</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">address</span>
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我是一个顾客，我的爱好是：</span><span class="si">{}</span><span class="s2">,地址是：</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">favorite</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">))</span>
+
+
+<span class="k">class</span> <span class="nc">Manager</span><span class="p">(</span><span class="n">Employee</span><span class="p">,</span><span class="n">Customer</span><span class="p">):</span>
+    <span class="c1">#重写父类的构造方法</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">salary</span><span class="p">,</span><span class="n">favorite</span><span class="p">,</span><span class="n">address</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------Manager的构造方法------------&quot;</span><span class="p">)</span>
+        <span class="c1">#通过super()函数调用父类的构造方法</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Manager</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+        <span class="c1">#同上面的效果一样</span>
+        <span class="c1"># super().__init__(salary)</span>
+        <span class="n">Customer</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">favorite</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">(</span><span class="mi">25000</span><span class="p">,</span><span class="s2">&quot;IT产品&quot;</span><span class="p">,</span><span class="s2">&quot;深圳&quot;</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">work</span><span class="p">()</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2><a class="toc-backref" href="#id22">7.11.6. 类型检查</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/6/6 14:42</span>
+<span class="c1"># filename: 类型检查.py</span>
+
+<span class="c1"># 几何图形</span>
+<span class="k">class</span> <span class="nc">Figure</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;绘制Figure.......&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># 椭圆形</span>
+<span class="k">class</span> <span class="nc">Ellipse</span><span class="p">(</span><span class="n">Figure</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;绘制Ellipse.......&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># 三角形</span>
+<span class="k">class</span> <span class="nc">Triangle</span><span class="p">(</span><span class="n">Figure</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;绘制Trangle.........&quot;</span><span class="p">)</span>
+
+
+<span class="n">f1</span> <span class="o">=</span> <span class="n">Figure</span><span class="p">()</span>  <span class="c1"># 没有发生多态</span>
+<span class="n">f1</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="n">f2</span> <span class="o">=</span> <span class="n">Ellipse</span><span class="p">()</span>  <span class="c1"># 发生多态</span>
+<span class="n">f2</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="n">f3</span> <span class="o">=</span> <span class="n">Triangle</span><span class="p">()</span>  <span class="c1"># 发生多态</span>
+<span class="n">f3</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">Triangle</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">Triangle</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="n">Triangle</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">Figure</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>输出结果：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">绘制Figure</span><span class="o">.......</span>
+<span class="n">绘制Ellipse</span><span class="o">.......</span>
+<span class="n">绘制Trangle</span><span class="o">.........</span>
+<span class="kc">False</span>
+<span class="kc">False</span>
+<span class="kc">True</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="12.枚举类.html" class="btn btn-neutral float-right" title="7.12. 枚举类" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="10.python的根类.html" class="btn btn-neutral float-left" title="7.10. python的根类" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

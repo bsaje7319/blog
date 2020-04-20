@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.8. property装饰器，将方法转为属性,动态属性 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="7.9. 子类继承父类后方法重写" href="09.子类继承父类后进行方法重写.html" />
+    <link rel="prev" title="7.7. 类方法、静态方法、实例方法" href="07.类方法、实例方法、静态方法.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">7. 面对对象设计_OOP</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.什么是面对对象设计.html">7.1. 什么是面对对象设计</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.类的方法.html">7.2. 类的方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.类中的__init__方法.html">7.3. 类中的__init__方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04一个基础有属性和方法的类.html">7.4. 一个基础有方法和属性的类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.类中可调用自己方法和外部函数.html">7.5. 类中调用自身方法和函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.类属性和实例属性.html">7.6. 类属性和实例属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.类方法、实例方法、静态方法.html">7.7. 类方法、静态方法、实例方法</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">7.8. property装饰器，将方法转为属性,动态属性</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">7.8.1. 访问方式和之前略有区别,用属性的方式访问</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">7.8.2. &#64;property 实现只读属性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">7.8.3. 使用property函数调用私有属性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">7.8.4. 实现一个分页打印的类的代码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">7.8.5. 属性(property)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="09.子类继承父类后进行方法重写.html">7.9. 子类继承父类后方法重写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.python的根类.html">7.10. python的根类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.类的继承.html">7.11. 类的继承</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.枚举类.html">7.12. 枚举类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.方法的动态特性.html">7.13. 方法的动态特性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.面对对象之封装.html">7.14. 面对对象之封装特性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.类的高级特性.html">7.15. 类的高级特性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.一些魔法方法.html">7.16. 一些魔法方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="17.类的反射，设置、删除、检测.html">7.17. 类的检测、判断、设置、删除、获取</a></li>
+<li class="toctree-l3"><a class="reference internal" href="18.多态-鸭子类型.html">7.18. 多态-鸭子类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="19.类属性描述符.html">7.19. 类属性描述符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="20.一个简单的类示例.html">7.20. 一个简单的类的例子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="21.人开枪射击子弹_OOP.html">7.21. 人开枪射击子弹_OOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="22.组合.html">7.22. 组合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="23.扩展列表、字典.html">7.23. 扩展列表、字典</a></li>
+<li class="toctree-l3"><a class="reference internal" href="24.工厂方法.html">7.24. 工厂方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">7. 面对对象设计_OOP</a> &raquo;</li>
+        
+      <li>7.8. property装饰器，将方法转为属性,动态属性</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/07.面对对象设计_OOP/08.property装饰器，将方法转为属性,动态属性.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#property" id="id9">property装饰器，将方法转为属性,动态属性</a><ul>
+<li><a class="reference internal" href="#id1" id="id10">访问方式和之前略有区别,用属性的方式访问</a><ul>
+<li><a class="reference internal" href="#id2" id="id11">代码示例 1</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3" id="id12">&#64;property 实现只读属性</a><ul>
+<li><a class="reference internal" href="#id4" id="id13">用代码来理解 2</a></li>
+<li><a class="reference internal" href="#id5" id="id14">代码示例 3</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6" id="id15">使用property函数调用私有属性</a></li>
+<li><a class="reference internal" href="#id7" id="id16">实现一个分页打印的类的代码</a></li>
+<li><a class="reference internal" href="#id8" id="id17">属性(property)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="property">
+<h1><a class="toc-backref" href="#id9">7.8. property装饰器，将方法转为属性,动态属性</a><a class="headerlink" href="#property" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/6/13 17:54</span>
+<span class="c1"># filename: property2.py</span>
+<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">:</span>
+    <span class="c1"># 定义构造方法</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+    <span class="c1"># 定义setsize()函数</span>
+    <span class="k">def</span> <span class="nf">setsize</span> <span class="p">(</span><span class="bp">self</span> <span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">size</span>
+    <span class="c1"># 定义getsize()函数</span>
+    <span class="k">def</span> <span class="nf">getsize</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+     <span class="c1"># 定义delsize()函数</span>
+    <span class="k">def</span> <span class="nf">delsize</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="c1"># 使用property定义属性</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">getsize</span><span class="p">,</span> <span class="n">setsize</span><span class="p">,</span> <span class="n">delsize</span><span class="p">,</span> <span class="s1">&#39;用于描述矩形大小的属性&#39;</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Rectangle</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">__doc__</span><span class="p">)</span>
+
+<span class="c1"># print(help(Rectangle.size))</span>
+<span class="n">rect</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">rect</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">rect</span><span class="o">.</span><span class="n">size</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id10">7.8.1. 访问方式和之前略有区别,用属性的方式访问</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id11">代码示例 1</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+
+<span class="c1">#通过装饰器方法来获取私有属性</span>
+<span class="k">class</span> <span class="nc">TVShow</span><span class="p">:</span>       <span class="c1">#电视节目类</span>
+    <span class="n">list_film</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;战狼2&quot;</span><span class="p">,</span> <span class="s2">&quot;红海行动&quot;</span><span class="p">,</span> <span class="s2">&quot;西游记女儿国&quot;</span><span class="p">,</span> <span class="s2">&quot;熊出没变形记&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__show</span> <span class="o">=</span> <span class="n">show</span>      <span class="c1">## 私有的实例属性</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :return:私有属性</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__show</span>      <span class="c1">#返回类的实例</span>
+
+
+    <span class="nd">@show</span><span class="o">.</span><span class="n">setter</span>                <span class="c1">#让属性可以进行修改</span>
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">TVShow</span><span class="o">.</span><span class="n">list_film</span><span class="p">:</span>       <span class="c1">#判断值是否在列表中</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__show</span> <span class="o">=</span> <span class="s1">&#39;您选择了《&#39;</span><span class="o">+</span> <span class="n">value</span> <span class="o">+</span> <span class="s2">&quot;》,稍后将播放&quot;</span>    <span class="c1">#修改返回值</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__show</span> <span class="o">=</span> <span class="s2">&quot;您点播的电影不存在&quot;</span>
+
+
+<span class="n">tvshow</span> <span class="o">=</span> <span class="n">TVShow</span><span class="p">(</span><span class="s2">&quot;战狼2&quot;</span><span class="p">)</span>  <span class="c1">#创建类的实例</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正在播放:《&quot;</span><span class="p">,</span> <span class="n">tvshow</span><span class="o">.</span><span class="n">show</span><span class="p">,</span> <span class="s2">&quot;》&quot;</span><span class="p">)</span>     <span class="c1">#获取属性值</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;您可以从&quot;</span><span class="p">,</span> <span class="n">TVShow</span><span class="o">.</span><span class="n">list_film</span><span class="p">,</span> <span class="s2">&quot;中选择台点播的电影&quot;</span><span class="p">)</span>
+
+<span class="n">tvshow</span><span class="o">.</span><span class="n">show</span> <span class="o">=</span> <span class="s1">&#39;红海行动&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tvshow</span><span class="o">.</span><span class="n">show</span><span class="p">)</span>      <span class="c1">#获取属性值</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id12">7.8.2. &#64;property 实现只读属性</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>@property 可以实现一个只读属性， 为属性添加了安全保护的机制。
+注意：
+@property 所装饰的方法变成属性之后，为只读的属性
+    不能通过 实例.xxx=  的方式进行修改。
+</pre></div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id13">用代码来理解 2</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>新式类中的属性有三种访问方式，</p>
+<p>并分别对应了三个被&#64;property、&#64;方法名.setter、&#64;方法名.deleter修饰的方法</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="k">class</span> <span class="nc">Rect</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">weight</span><span class="p">,</span><span class="n">height</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__weight</span> <span class="o">=</span> <span class="n">weight</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__height</span> <span class="o">=</span> <span class="n">height</span>
+
+    <span class="nd">@property</span>                       <span class="c1">#将方法转为属性</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__weight</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__height</span>
+
+    <span class="nd">@area</span><span class="o">.</span><span class="n">setter</span>                    <span class="c1">#设置属性的值</span>
+    <span class="k">def</span> <span class="nf">set_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="nb">int</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__weight</span> <span class="o">+=</span> <span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span>
+
+    <span class="nd">@area</span><span class="o">.</span><span class="n">deleter</span>
+    <span class="k">def</span> <span class="nf">delete_are</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;删除属性.......&quot;</span><span class="p">)</span>
+
+<span class="n">hu</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hu</span><span class="o">.</span><span class="n">area</span><span class="p">)</span>
+
+<span class="c1">#不能进行重新赋值，会报错</span>
+<span class="n">hu</span><span class="o">.</span><span class="n">set_area</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hu</span><span class="o">.</span><span class="n">area</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">hu</span><span class="o">.</span><span class="n">delete_are</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id14">代码示例 3</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span><span class="p">,</span><span class="n">date</span>
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">birthday</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">birthday</span> <span class="o">=</span> <span class="n">birthday</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_age</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">birthday</span><span class="o">.</span><span class="n">year</span>
+
+    <span class="nd">@age</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_age</span> <span class="o">=</span> <span class="n">value</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s2">&quot;derek&quot;</span><span class="p">,</span><span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">1994</span><span class="p">,</span><span class="n">month</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span><span class="n">day</span><span class="o">=</span><span class="mi">11</span><span class="p">))</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">23</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">_age</span><span class="p">)</span>   <span class="c1"># 23,setter设置的</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>    <span class="c1"># 24 ,动态计算出来的</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id15">7.8.3. 使用property函数调用私有属性</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>使用方式如图所示： <img alt="image0" src="../../_images/shuxing.PNG" /></p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># coding=utf-8</span>
+
+<span class="n">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
+
+<span class="k">class</span> <span class="nc">ProtectMe</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">me</span> <span class="o">=</span> <span class="s2">&quot;qiwsir&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="s2">&quot;kivi&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">ProtectMe</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>定义时，在普通方法的基础上添加 @property 装饰器；
+定义时，属性仅有一个self参数
+调用时，无需无括号
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id16">7.8.4. 实现一个分页打印的类的代码</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/4/21 10:32</span>
+<span class="c1"># filename: 分页的类.py</span>
+
+<span class="k">class</span> <span class="nc">Pagination</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    分页相关的代码</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_list</span><span class="p">,</span> <span class="n">page</span><span class="p">,</span> <span class="n">per_page</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param data_list: 数据的列表</span>
+<span class="sd">        :param page: 当前查看的页面</span>
+<span class="sd">        :param per_page: 每页默认要显示的行数</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_list</span> <span class="o">=</span> <span class="n">data_list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">=</span> <span class="n">page</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">per_page</span> <span class="o">=</span> <span class="n">per_page</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        计算索引的起始位置</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">per_page</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        计算分页的结束位置</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">per_page</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">check_show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">per_page</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_list</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------已为您打开最后一页-------------&quot;</span><span class="p">)</span>
+            <span class="n">last_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_list</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">per_page</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">=</span> <span class="n">last_index</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_list</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_list</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="c1"># 模拟所有数据写入到一个list里面</span>
+    <span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">901</span><span class="p">):</span>
+        <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;hujianli-blog-</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+    <span class="c1"># 循环查看页面页数</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入要查看的页数:&quot;</span><span class="p">))</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">Pagination</span><span class="p">(</span><span class="n">data_list</span><span class="p">,</span> <span class="n">page</span><span class="p">)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">check_show</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id17">7.8.5. 属性(property)</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">##不推荐</span>
+<span class="k">class</span> <span class="nc">Clock</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__hour</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">def</span> <span class="nf">setHour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hour</span><span class="p">):</span>
+    <span class="k">if</span> <span class="mi">25</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">hour</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hour</span> <span class="o">=</span> <span class="n">hour</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="n">BadHourException</span>
+  <span class="k">def</span> <span class="nf">getHour</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hour</span>
+
+<span class="c1">##推荐</span>
+<span class="k">class</span> <span class="nc">Clock</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__hour</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">def</span> <span class="nf">__setHour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hour</span><span class="p">):</span>
+    <span class="k">if</span> <span class="mi">25</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">hour</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hour</span> <span class="o">=</span> <span class="n">hour</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="n">BadHourException</span>
+  <span class="k">def</span> <span class="nf">__getHour</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hour</span>
+  <span class="n">hour</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">__getHour</span><span class="p">,</span> <span class="n">__setHour</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="09.子类继承父类后进行方法重写.html" class="btn btn-neutral float-right" title="7.9. 子类继承父类后方法重写" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="07.类方法、实例方法、静态方法.html" class="btn btn-neutral float-left" title="7.7. 类方法、静态方法、实例方法" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

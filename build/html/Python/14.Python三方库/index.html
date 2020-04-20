@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>14. Python 三方库学习 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="14.1. psutil模块" href="01.psutil模块.html" />
+    <link rel="prev" title="13.10. 使用ORM工具操作mongoDB数据库" href="../13.Python操作数据库/10.使用ORM工具操作mongoDB.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">14. Python 三方库学习</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.psutil模块.html">14.1. psutil模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html">14.2. paramiko模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.IPy模块.html">14.3. IPy模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.dnspython模块.html">14.4. DNS处理模块dnspython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.difflib文本比较模块.html">14.5. difflib文本比较模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.pycurl探测web服务各项指标.html">14.6. pycurl探测web服务状态</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html">14.7. Excel操作XlsxWriter模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.使用PyInstaller生成可执行程序.html">14.8. 使用PyInstaller生成可执行程序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.用py2exe生成可执行程序.html">14.9. 用py2exe生成可执行程序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.用cx_freeze生成可执行文件.html">14.10. 用cx_freeze生成可执行文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.使用python定时执行任务.html">14.11. 使用python定时执行任务</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.Python3读写Excel文件.html">14.12. Python3读写Excel文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Python操作Rabbitmq详解.html">14.13. Python操作Rabbitmq详解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.打包和发布.html">14.14. 打包和发布</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html">14.15. Jinja2模板</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+      <li>14. Python 三方库学习</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/14.Python三方库/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python">
+<h1>14. Python 三方库学习<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.psutil模块.html">14.1. psutil模块</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.psutil模块.html#id1">14.1.1. 源码下载地址</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.psutil模块.html#id2">14.1.2. 安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.psutil模块.html#cpu">14.1.3. CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.psutil模块.html#id3">14.1.4. 内存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.psutil模块.html#id4">14.1.5. 磁盘</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.psutil模块.html#id5">14.1.6. 网络</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.psutil模块.html#id6">14.1.7. 其他信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.psutil模块.html#id7">14.1.8. 系统进程管理方法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html">14.2. paramiko模块</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html#id1">14.2.1. 安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html#id2">14.2.2. paramiko实例(账号密码登录执行命令)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html#id3">14.2.3. 代码示例2:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html#id4">14.2.4. 代码示例2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html#id6">14.2.5. paramiko实例(传送文件)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html#id7">14.2.6. paramiko实例(密钥执行命令)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html#ssh-pool">14.2.7. ssh并发(Pool控制最大并发)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html#ssh">14.2.8. ssh并发(取文件状态并发送邮件)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03.IPy模块.html">14.3. IPy模块</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03.IPy模块.html#iv4ipv6">14.3.1. 区分Iv4和IPv6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.IPy模块.html#id1">14.3.2. 列出网段内的主机数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.IPy模块.html#id2">常见的方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.IPy模块.html#id3">多网络计算方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04.dnspython模块.html">14.4. DNS处理模块dnspython</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04.dnspython模块.html#id1">14.4.1. 源码安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.dnspython模块.html#pip">14.4.2. pip安装</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05.difflib文本比较模块.html">14.5. difflib文本比较模块</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05.difflib文本比较模块.html#html">14.5.1. 生成美观对比HTML格式文档</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05.difflib文本比较模块.html#nginx">对比Nginx配置文件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="06.pycurl探测web服务各项指标.html">14.6. pycurl探测web服务状态</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="06.pycurl探测web服务各项指标.html#id1">14.6.1. 源码安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.pycurl探测web服务各项指标.html#pip">14.6.2. pip安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.pycurl探测web服务各项指标.html#id2">14.6.3. 代码示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="06.pycurl探测web服务各项指标.html#id3">输出信息</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html">14.7. Excel操作XlsxWriter模块</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html#xlsxwriter">14.7.1. XlsxWriter安装</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html#pip">pip安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html#id1">源码安装方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html#id2">使用示例1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html#id3">方法使用参考文献</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html#id4">使用示例2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html#excel">14.7.2. Excel写入文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html#id5">创建excel并写入数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html#id6">读取Excel数据</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="07.Excel操作XlsxWriter模块.html#openpyxl">14.7.3. openpyxl三方库</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="08.使用PyInstaller生成可执行程序.html">14.8. 使用PyInstaller生成可执行程序</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="08.使用PyInstaller生成可执行程序.html#id1">14.8.1. 安装PyInstaller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.使用PyInstaller生成可执行程序.html#id2">14.8.2. 生成可执行程序</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="08.使用PyInstaller生成可执行程序.html#id3">打包一个大型项目</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="09.用py2exe生成可执行程序.html">14.9. 用py2exe生成可执行程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10.用cx_freeze生成可执行文件.html">14.10. 用cx_freeze生成可执行文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11.使用python定时执行任务.html">14.11. 使用python定时执行任务</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="11.使用python定时执行任务.html#timesleep">14.11.1. 方式一 <code class="docutils literal"><span class="pre">使用time模块的sleep休眠功能</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.使用python定时执行任务.html#sched">14.11.2. 方式二 <code class="docutils literal"><span class="pre">使用sched模块来定时执行任务</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.使用python定时执行任务.html#id1">14.11.3. 暂停直至特定日期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.使用python定时执行任务.html#apscheduler">14.11.4. APScheduler实现秒级定时任务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.使用python定时执行任务.html#apschedulercron">14.11.5. 使用APScheduler实现cron计划任务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.使用python定时执行任务.html#schedule">14.11.6. schedule三方库实现定时任务</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="12.Python3读写Excel文件.html">14.12. Python3读写Excel文件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="12.Python3读写Excel文件.html#python-python3excel">14.12.1. Python开发 之 Python3读写Excel文件（较全）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12.Python3读写Excel文件.html#pythonexcel">14.12.2. Python读写Excel文件第三方库汇总，你想要的都在这儿！</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="13.Python操作Rabbitmq详解.html">14.13. Python操作Rabbitmq详解</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="13.Python操作Rabbitmq详解.html#id1">14.13.1. python操作rabbitmq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.Python操作Rabbitmq详解.html#id2">14.13.2. 技术亮点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.Python操作Rabbitmq详解.html#rabbitmq">14.13.3. RabbitMQ 消息队列介绍</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="13.Python操作Rabbitmq详解.html#id3">几个概念说明：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Python操作Rabbitmq详解.html#id4">1.RabbitMq生产和消费简单示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="13.Python操作Rabbitmq详解.html#id5">14.13.4. 2.RabbitMq 持久化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.Python操作Rabbitmq详解.html#id6">14.13.5. 3.消息公平分发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.Python操作Rabbitmq详解.html#id7">14.13.6. 4.RabbitMq 发布与订阅</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="13.Python操作Rabbitmq详解.html#fanoutall">模式一:fanout纯广播、all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Python操作Rabbitmq详解.html#direct">模式二:direct有选择的接收消息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Python操作Rabbitmq详解.html#topic">模式三:topic更细致的过滤</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Python操作Rabbitmq详解.html#rpc-remote-procedure-call">RPC(Remote procedure call)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="14.打包和发布.html">14.14. 打包和发布</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="14.打包和发布.html#zipapp">14.14.1. zipapp模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.打包和发布.html#id2">14.14.2. 使用zipapp模块</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="14.打包和发布.html#python">生成可执行的Python档案包</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="14.打包和发布.html#id3">14.14.3. 创建独立应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.打包和发布.html#pythonpypiwhl">14.14.4. 将python包发布到PyPI和制作whl文件方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.打包和发布.html#setuptools">14.14.5. Setuptools基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.打包和发布.html#id4">14.14.6. 打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.打包和发布.html#python-entry-pointspython">14.14.7. Python编程：entry_points将Python模块转变为命令行工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.打包和发布.html#id5">14.14.8. 打包且成为命令行模式的示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.打包和发布.html#id6">14.14.9. 小结</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="15.Jinja2模板.html">14.15. Jinja2模板</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="15.Jinja2模板.html#id1">14.15.1. 模板介绍</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html#python">Python标准库中自带的简单模板</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html#id2">1.语法块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html#id3">2.变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html#id4">3.Jinja2中的过滤器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html#id5">4.Jinja2中的控制结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html#jinja2for">5.Jinja2的for循环</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html#id6">Jinja2实战</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html#id7">案例1 基本功能演示</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html#jinja2htmlxml">案例2 使用Jinja2生成HTML表格和XML配置文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html#jinja2xml">使用Jinja2生成XML配置文件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01.psutil模块.html" class="btn btn-neutral float-right" title="14.1. psutil模块" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../13.Python操作数据库/10.使用ORM工具操作mongoDB.html" class="btn btn-neutral float-left" title="13.10. 使用ORM工具操作mongoDB数据库" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

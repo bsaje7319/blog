@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>10. Go标准库 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="10.1. 文件IO的操作" href="01.文件IO的操作.html" />
+    <link rel="prev" title="9.2. 02.反射机制" href="../09.Go语言基础之反射/02.反射机制.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. Go语言基础之反射</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10. Go标准库</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.文件IO的操作.html">10.1. 文件IO的操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.fmt包.html">10.2. fmt包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Socket网络.html">10.3. Socket网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.模板.html">10.4. 模板</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.net_http包.html">10.5. net_http包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html">10.6. Go语言操作MySQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html">10.7. Json序列化和反序列化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.Go语言常用资料及工具详细汇总.html">10.8. Go语言常用资料及工具详细汇总</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+      <li>10. Go标准库</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/10.Go标准库/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="go">
+<h1>10. Go标准库<a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.文件IO的操作.html">10.1. 文件IO的操作</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.文件IO的操作.html#id1">10.1.1. 文件系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.文件IO的操作.html#id2">10.1.2. 三种读取文件方式的比较</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.文件IO的操作.html#id3">10.1.3. 文件操作实战</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.fmt包.html">10.2. fmt包</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.fmt包.html#verb">10.2.1. 格式化verb应用</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03.Socket网络.html">10.3. Socket网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04.模板.html">10.4. 模板</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04.模板.html#text-template">10.4.1. text/template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.模板.html#html-template">10.4.2. html/template</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05.net_http包.html">10.5. net_http包</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05.net_http包.html#gohttp">10.5.1. Go最简单的http服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.net_http包.html#get">10.5.2. GET请求示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.net_http包.html#id1">10.5.3. 带参数的GET请求示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.net_http包.html#post">10.5.4. Post请求示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.net_http包.html#id2">10.5.5. 静态站点</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="06.Go语言操作MySQL.html">10.6. Go语言操作MySQL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="06.Go语言操作MySQL.html#id1">10.6.1. Go操作MySQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id2">连接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id3">下载依赖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#mysql">使用MySQL驱动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id4">Mysql数据库操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id5">插入数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id6">删除数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id7">修改数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id8">查询数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id11">事务处理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="07.Json序列化和反序列化.html">10.7. Json序列化和反序列化</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="07.Json序列化和反序列化.html#id1">10.7.1. Json序列化</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html#id2">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html#id3">应用案例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html#id4">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="07.Json序列化和反序列化.html#id5">10.7.2. Json反序列化</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html#id6">基本介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html#id7">应用案例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="08.Go语言常用资料及工具详细汇总.html">10.8. Go语言常用资料及工具详细汇总</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01.文件IO的操作.html" class="btn btn-neutral float-right" title="10.1. 文件IO的操作" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../09.Go语言基础之反射/02.反射机制.html" class="btn btn-neutral float-left" title="9.2. 02.反射机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

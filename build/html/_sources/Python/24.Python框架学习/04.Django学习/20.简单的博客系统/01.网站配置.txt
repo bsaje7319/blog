@@ -1,0 +1,37 @@
+.. contents::
+   :depth: 3
+..
+
+网站配置
+========
+
+文件\ ``./mysite/settings.py``
+
+::
+
+   DEBUG: 其值为True或者False。在开发过程中，需要设置成True，在测试功能时，Django能够显示详细的报错信息--这是“开发模式”。
+   如果将项目部署到真正要对外发布的服务器上，我们称为“生成环境”。必须将其值修改为False。从而你面暴露项目的的内部信息。
+
+   ALLOWED_HOSTS: 在DEBUG为True时，其值可以为空。当部署到生产环境中时，要把主域名写到这里，才能通过域名访问到本网站。
+
+
+   INSTALLED_APPS: 这是一个非常重要的配置项 ，所有的应用只有写到这里才能生效。默认情况下，已经有了
+   一些应用。比如django.contrib.admin就是针对项目后台管理的应用。现在需要把刚刚建立的应用名称填写到这里。
+   如下：
+   INSTALLED_APPS = [
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'django.contrib.staticfiles',
+       'blog',             ①
+   ]
+
+   DATABASES: 在这里可以配置数据库，Django能支持多种数据库，比如常见的MySQL、Oracle等，默认配置是SQLite，
+   因为这个数据库小巧灵活，还是Python标准库所支持的。所以，本书种就是要这个数据库，便于读者是要和迁移代码。
+
+
+   LANGUAGE_CODE：设置项目的语言，如果非用汉语，则设置为LANGUAGE_CODE='zh-hans'(注意不是‘zh-cn’)
+
+   TIME_ZONE: 设置时区，常用使用东八区，设置为"Asia/Shanghai"。

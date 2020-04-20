@@ -1,0 +1,519 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.4. 04.接收器-方法作用的目标 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="5.5. 05.类型内嵌和结构体内嵌" href="05.类型内嵌和结构体内嵌.html" />
+    <link rel="prev" title="5.3. 03.方法" href="03.方法.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">5. 05.结构体</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.结构体.html">5.1. 结构体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.构造函数.html">5.2. 02.构造函数-结构体和类型的一系列初始化操作的函数封装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.方法.html">5.3. 03.方法</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.4. 04.接收器-方法作用的目标</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">5.4.1. 1.指针类型的接收器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">5.4.2. 2.理解非指针类型的接收器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">5.4.3. 3.指针和非指针接收器的使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">5.4.4. 为类型添加方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">5.4.5. 示例：使用事件系统实现事件的响应和处理</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="05.类型内嵌和结构体内嵌.html">5.5. 05.类型内嵌和结构体内嵌</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">5. 05.结构体</a> &raquo;</li>
+        
+      <li>5.4. 04.接收器-方法作用的目标</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/05.结构体/04.接收器.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id8">04.接收器-方法作用的目标</a><ul>
+<li><a class="reference internal" href="#id2" id="id9">1.指针类型的接收器</a></li>
+<li><a class="reference internal" href="#id3" id="id10">2.理解非指针类型的接收器</a></li>
+<li><a class="reference internal" href="#id4" id="id11">3.指针和非指针接收器的使用</a></li>
+<li><a class="reference internal" href="#id5" id="id12">为类型添加方法</a><ul>
+<li><a class="reference internal" href="#id6" id="id13">1.为基本类型添加方法</a></li>
+<li><a class="reference internal" href="#http" id="id14">2.http包中的类型方法</a></li>
+<li><a class="reference internal" href="#time" id="id15">3.time包中的类型方法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7" id="id16">示例：使用事件系统实现事件的响应和处理</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id8">5.4. 04.接收器-方法作用的目标</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>接收器的格式如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="p">(</span><span class="n">接收器变量</span> <span class="n">接收器类型</span><span class="p">)</span> <span class="n">方法名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)(</span><span class="n">返回参数</span><span class="p">){</span>
+<span class="n">函数体</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>· 接收器变量：官方建议使用接收器类型名第一个小写字母。</p>
+<p>· 接收器类型：接收器类型和参数类似，可以是指针类型和非指针类型</p>
+<p>· 方法名、参数列表、返回参数：格式与函数定义一致。</p>
+<p>接收器根据接收器的类型可以分为指针接收器、非指针接收器，两种接收器在使用时会产生不同的效果。</p>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id9">5.4.1. 1.指针类型的接收器</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="o">//</span> <span class="n">定义属性结构</span>
+<span class="nb">type</span> <span class="n">Property</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">value</span> <span class="nb">int</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">设置属性值</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">p</span> <span class="o">*</span><span class="n">Property</span><span class="p">)</span> <span class="n">SetValue</span><span class="p">(</span><span class="n">v</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">修改p的成员变量</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">v</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">获取属性值</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">p</span> <span class="o">*</span><span class="n">Property</span><span class="p">)</span> <span class="n">Value</span><span class="p">()</span> <span class="nb">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="n">value</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">实例化属性</span>
+    <span class="n">p</span> <span class="p">:</span><span class="o">=</span> <span class="n">new</span><span class="p">(</span><span class="n">Property</span><span class="p">)</span>
+    <span class="o">//</span> <span class="n">设置值</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="o">//</span> <span class="n">打印值</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">Value</span><span class="p">())</span>  <span class="o">//</span><span class="mi">100</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id10">5.4.2. 2.理解非指针类型的接收器</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>当方法作用于非指针接收器时，Go语言会在代码运行时将接收器的值复制一份，在非指针接收器的方法中可以获取接收器的成员值，
+但修改后无效。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="o">//</span> <span class="n">定义点结构</span>
+<span class="nb">type</span> <span class="n">Point</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">X</span> <span class="nb">int</span>
+    <span class="n">Y</span> <span class="nb">int</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">非指针接收器的加方法</span>
+<span class="n">func</span> <span class="p">(</span><span class="n">p</span> <span class="n">Point</span><span class="p">)</span> <span class="n">Add</span><span class="p">(</span><span class="n">other</span> <span class="n">Point</span><span class="p">)</span> <span class="n">Point</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">成员值与参数相加后返回新的结构</span>
+    <span class="k">return</span> <span class="n">Point</span><span class="p">{</span><span class="n">p</span><span class="o">.</span><span class="n">X</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">Y</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">Y</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">初始化点</span>
+    <span class="n">p</span> <span class="p">:</span><span class="o">=</span> <span class="n">Point</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="n">p2</span> <span class="p">:</span><span class="o">=</span> <span class="n">Point</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+    <span class="o">//</span> <span class="n">与另外一个点相加</span>
+    <span class="n">result</span> <span class="p">:</span><span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+    <span class="o">//</span> <span class="n">输出结果</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">//</span><span class="p">{</span><span class="mi">3</span> <span class="mi">3</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id11">5.4.3. 3.指针和非指针接收器的使用</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>· 小对象由于值复制时的速度较快，所以适合使用非指针接收器。</p>
+<p>·
+大对象因为复制性能较低，适合使用指针接收器，在接收器和参数间传递时不进行复制，只是传递指针。</p>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id12">5.4.4. 为类型添加方法</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id13">1.为基本类型添加方法</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>判断一个值是否为0</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">v</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;v = 0&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果v当做整型对象，那么就可以增加一个IsZero()方法。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+// 将int定义为MyInt,将int定义为自定义的MyInt类型
+type MyInt int
+
+// 为MyInt添加IsZero()方法，该方法使用了非指针接收器，数值类型没有必要使用指针接收器
+func (m MyInt) IsZero() bool {
+    return m == 0
+}
+
+//为MyInt添加Add()方法，将m从MyInt类型转换为int类型后再计算
+func (m MyInt) Add(other int) int {
+    return other + int(m)
+}
+func main() {
+    var b MyInt
+    fmt.Println(b.IsZero())         //true
+    b = 1
+    fmt.Println(b.Add(2))       //3
+
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="http">
+<h3><a class="toc-backref" href="#id14">2.http包中的类型方法</a><a class="headerlink" href="#http" title="Permalink to this headline">¶</a></h3>
+<p>Go语言提供的http包里也大量使用了类型方法</p>
+<p>代码示例：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s2">&quot;fmt&quot;</span>
+    <span class="s2">&quot;io/ioutil&quot;</span>
+    <span class="s2">&quot;net/http&quot;</span>
+    <span class="s2">&quot;os&quot;</span>
+    <span class="s2">&quot;strings&quot;</span>
+<span class="p">)</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">client</span> <span class="p">:</span><span class="o">=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
+    <span class="o">//</span> <span class="n">创建一个http请求</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err1</span> <span class="p">:</span><span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="s2">&quot;http://www.163.com/&quot;</span><span class="p">,</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s2">&quot;key=value&quot;</span><span class="p">))</span>
+
+    <span class="o">//</span><span class="n">发现错误就打印并退出</span>
+    <span class="k">if</span> <span class="n">err1</span> <span class="o">!=</span> <span class="n">nil</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err1</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="o">//</span> <span class="n">为标头添加信息</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">,</span> <span class="s2">&quot;myClient&quot;</span><span class="p">)</span>
+    <span class="o">//</span><span class="n">开始请求</span>
+    <span class="n">resp</span><span class="p">,</span> <span class="n">err2</span> <span class="p">:</span><span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="o">//</span> <span class="n">处理请求的错误</span>
+    <span class="k">if</span> <span class="n">err2</span> <span class="o">!=</span> <span class="n">nil</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err2</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="o">//</span> <span class="n">读取服务器返回的内容</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">err3</span> <span class="p">:</span><span class="o">=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err3</span> <span class="o">!=</span> <span class="n">nil</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err2</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">string</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+    <span class="o">//</span> <span class="n">最后调用defer</span><span class="p">,</span><span class="n">关闭上下文</span>
+    <span class="n">defer</span> <span class="n">req</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>http.Header
+就是典型的自定义类型，并拥有自己的方法。http.Header的部分定义如下：</p>
+<p>添加一个Header非指针接收器，Add()方法需要传入2个string的值</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="p">(</span><span class="n">h</span> <span class="n">Header</span><span class="p">)</span> <span class="n">Add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="n">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">textproto</span><span class="o">.</span><span class="n">MIMEHeader</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="n">func</span> <span class="p">(</span><span class="n">h</span> <span class="n">Header</span><span class="p">)</span> <span class="n">Set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="n">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">textproto</span><span class="o">.</span><span class="n">MIMEHeader</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="p">(</span><span class="n">h</span> <span class="n">Header</span><span class="p">)</span> <span class="n">Get</span><span class="p">(</span><span class="n">key</span> <span class="n">string</span><span class="p">)</span> <span class="n">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">textproto</span><span class="o">.</span><span class="n">MIMEHeader</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="time">
+<h3><a class="toc-backref" href="#id15">3.time包中的类型方法</a><a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s2">&quot;fmt&quot;</span>
+    <span class="s2">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="o">.</span><span class="n">String</span><span class="p">())</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>time.Second是一个常量，源码如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="p">(</span>
+    <span class="n">Nanosecond</span>  <span class="n">Duration</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">Microsecond</span>          <span class="o">=</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">Nanosecond</span>
+    <span class="n">Millisecond</span>          <span class="o">=</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">Microsecond</span>
+    <span class="n">Second</span>               <span class="o">=</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">Millisecond</span>
+    <span class="n">Minute</span>               <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="n">Second</span>
+    <span class="n">Hour</span>                 <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="n">Minute</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id16">5.4.5. 示例：使用事件系统实现事件的响应和处理</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>1.方法和函数的统一调用</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+// 声明一个结构体
+type class struct {
+}
+
+// 给结构体添加Do方法,参数为整型，打印和输入参数值
+func (c *class) Do(v int) {
+    fmt.Println(&quot;call method do:&quot;, v)
+}
+
+// 普通函数的Do方法，参数也是整型，打印和输入参数值
+func funcDo(v int) {
+    fmt.Println(&quot;call function do:&quot;, v)
+}
+func main() {
+    // 声明一个函数回调
+    var delegate func(int)
+
+    // 创建结构体的实例
+    c := new(class)
+    // 将回调函数设为c的Do方法
+    delegate = c.Do
+    // 调用
+    delegate(100)       //call method do: 100
+
+    // 将回调设为普通函数
+    delegate = funcDo
+    // 调用
+    delegate(100)       //call function do: 100
+}
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="05.类型内嵌和结构体内嵌.html" class="btn btn-neutral float-right" title="5.5. 05.类型内嵌和结构体内嵌" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="03.方法.html" class="btn btn-neutral float-left" title="5.3. 03.方法" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

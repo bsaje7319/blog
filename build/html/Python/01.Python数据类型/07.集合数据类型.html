@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1.7. 集合 Set() &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="1.8. Python数据类型转换" href="08.数据类型转换.html" />
+    <link rel="prev" title="1.6. 字典 Dict" href="06.字典数据结构.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">1. Python数据类型</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.字符编码处理.html">1.1. 字符编码处理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.代码注释.html">1.2. 代码注释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.字符串数据类型.html">1.3. 字符串数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.列表数据类型.html">1.4. 列表 List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.元祖数据类型.html">1.5. 元祖 Tuple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.字典数据结构.html">1.6. 字典 Dict</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1.7. 集合 Set()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">1.7.1. 可以用于去重复数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.7.2. 集合的方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.7.3. 交集、并集、差集、对称差集</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.7.4. 集合的修改和删除</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">1.7.5. 不可变集合</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">1.7.6. 列表、元祖、字典、集合的区别</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="08.数据类型转换.html">1.8. Python数据类型转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.关于深浅拷贝.html">1.9. 深浅拷贝</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.列表实现堆和队列.html">1.10. 列表实现堆和队列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html">1.11. 内置常量与逻辑运算符、比较运算符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html#in-not-in">1.12. in 和not in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.建立大型数据结构.html">1.13. 建立大型数据结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Python常用IDE集成环境.html">1.14. Python常用IDE集成环境</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">1. Python数据类型</a> &raquo;</li>
+        
+      <li>1.7. 集合 Set()</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/01.Python数据类型/07.集合数据类型.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#set" id="id10">集合 Set()</a><ul>
+<li><a class="reference internal" href="#id1" id="id11">可以用于去重复数据</a></li>
+<li><a class="reference internal" href="#id2" id="id12">集合的方法</a></li>
+<li><a class="reference internal" href="#id3" id="id13">交集、并集、差集、对称差集</a><ul>
+<li><a class="reference internal" href="#id4" id="id14">代码示例1</a></li>
+<li><a class="reference internal" href="#id5" id="id15">代码示例2</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6" id="id16">集合的修改和删除</a><ul>
+<li><a class="reference internal" href="#id7" id="id17">代码示例3</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8" id="id18">不可变集合</a></li>
+<li><a class="reference internal" href="#id9" id="id19">列表、元祖、字典、集合的区别</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="set">
+<h1><a class="toc-backref" href="#id10">1.7. 集合 Set()</a><a class="headerlink" href="#set" title="Permalink to this headline">¶</a></h1>
+<p>set()函数可以将列表转换为集合</p>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id11">1.7.1. 可以用于去重复数据</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id12">1.7.2. 集合的方法</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>                         <span class="c1"># 用t中的元素修改s,s现在包含s或t的成员   s |= t</span>
+<span class="n">s</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>            <span class="c1"># s中的成员是共用属于s和t的元素          s &amp;= t</span>
+<span class="n">s</span><span class="o">.</span><span class="n">difference_update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>              <span class="c1"># s中的成员是属于s但不包含在t中的元素    s -= t</span>
+<span class="n">s</span><span class="o">.</span><span class="n">symmetric_difference_update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>    <span class="c1"># s中的成员更新为那些包含在s或t中,但不是s和t共有的元素  s ^= t</span>
+<span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>                          <span class="c1"># 在集合s中添加对象obj</span>
+<span class="n">s</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>                       <span class="c1"># 从集合s中删除对象obj;如果obj不是集合s中的元素(obj not in s),将引发KeyError错误</span>
+<span class="n">s</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>                      <span class="c1"># 如果obj是集合s中的元素,从集合s中删除对象obj</span>
+<span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>                             <span class="c1"># 删除集合s中的任意一个对象,并返回它</span>
+<span class="n">s</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>                           <span class="c1"># 删除集合s中的所有元素</span>
+<span class="n">s</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>                       <span class="c1"># 如果s是t的子集,则返回True   s &lt;= t</span>
+<span class="n">s</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>                     <span class="c1"># 如果t是s的超集,则返回True   s &gt;= t</span>
+<span class="n">s</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>                          <span class="c1"># 合并操作;返回一个新集合,该集合是s和t的并集   s | t</span>
+<span class="n">s</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>                   <span class="c1"># 交集操作;返回一个新集合,该集合是s和t的交集   s &amp; t</span>
+<span class="n">s</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>                     <span class="c1"># 返回一个新集合,改集合是s的成员,但不是t的成员  s - t</span>
+<span class="n">s</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>           <span class="c1"># 返回一个新集合,该集合是s或t的成员,但不是s和t共有的成员   s ^ t</span>
+<span class="n">s</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>                            <span class="c1"># 返回一个新集合,它是集合s的浅复制</span>
+<span class="n">obj</span> <span class="ow">in</span> <span class="n">s</span>                            <span class="c1"># 成员测试;obj是s中的元素 返回True</span>
+<span class="n">obj</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span>                        <span class="c1"># 非成员测试:obj不是s中元素 返回True</span>
+<span class="n">s</span> <span class="o">==</span> <span class="n">t</span>                              <span class="c1"># 等价测试 是否具有相同元素</span>
+<span class="n">s</span> <span class="o">!=</span> <span class="n">t</span>                              <span class="c1"># 不等价测试</span>
+<span class="n">s</span> <span class="o">&lt;</span> <span class="n">t</span>                               <span class="c1"># 子集测试;s!=t且s中所有元素都是t的成员</span>
+<span class="n">s</span> <span class="o">&gt;</span> <span class="n">t</span>                               <span class="c1"># 超集测试;s!=t且t中所有元素都是s的成员</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id13">1.7.3. 交集、并集、差集、对称差集</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id14">代码示例1</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#集合的创建</span>
+<span class="n">set1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;水瓶座&quot;</span><span class="p">,</span><span class="s2">&quot;射手座&quot;</span><span class="p">,</span><span class="s2">&quot;双鱼座&quot;</span><span class="p">,</span><span class="s2">&quot;双子座&quot;</span><span class="p">}</span>    <span class="c1">#定义了一个集合，集合和字典一样，是无序的</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">set1</span><span class="p">)</span>                                     <span class="c1">#因为是无序的，所以无法通过索引来获取</span>
+
+<span class="n">set2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;水瓶座&quot;</span><span class="p">,</span><span class="s2">&quot;射手座&quot;</span><span class="p">,</span><span class="s2">&quot;双鱼座&quot;</span><span class="p">,</span><span class="s2">&quot;双子座&quot;</span><span class="p">,</span><span class="s2">&quot;水瓶座&quot;</span><span class="p">}</span>  <span class="c1">#去重复了</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+
+
+<span class="n">python</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;hujianli1&quot;</span><span class="p">,</span><span class="s2">&quot;hujianli2&quot;</span><span class="p">,</span><span class="s2">&quot;hujianli3&quot;</span><span class="p">,</span><span class="s2">&quot;hujianli4&quot;</span><span class="p">,</span><span class="s2">&quot;xiaojian1&quot;</span><span class="p">}</span>
+<span class="n">C</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;xiaojian1&quot;</span><span class="p">,</span><span class="s2">&quot;xiaojian2&quot;</span><span class="p">,</span><span class="s2">&quot;xiaojian3&quot;</span><span class="p">,</span><span class="s2">&quot;xiaojian4&quot;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">python</span> <span class="o">|</span> <span class="n">C</span><span class="p">)</span>   <span class="c1">#求并集</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">python</span> <span class="o">&amp;</span> <span class="n">C</span><span class="p">)</span>   <span class="c1">#求交集</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id15">代码示例2</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">交集      &amp;</span>
+<span class="sd">并集      |</span>
+<span class="sd">差集      -</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">python</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;hujianli1&quot;</span><span class="p">,</span><span class="s2">&quot;hujianli2&quot;</span><span class="p">,</span><span class="s1">&#39;hujianli3&#39;</span><span class="p">,</span><span class="s1">&#39;hujianli4&#39;</span><span class="p">,</span><span class="s1">&#39;jianli4&#39;</span><span class="p">])</span>
+<span class="n">C</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;hujianli1&#39;</span><span class="p">,</span><span class="s1">&#39;jianli1&#39;</span><span class="p">,</span><span class="s1">&#39;jianli2&#39;</span><span class="p">,</span><span class="s1">&#39;jianli3&#39;</span><span class="p">,</span><span class="s1">&#39;jianli4&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;选择python学生名字:&quot;</span><span class="p">,</span> <span class="n">python</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;选择C学生的名字:&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;交集运算：&quot;</span><span class="p">,</span><span class="n">python</span> <span class="o">&amp;</span> <span class="n">C</span><span class="p">)</span>       <span class="c1">#既选择python语言又选择C语言</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;并集运算:&quot;</span><span class="p">,</span><span class="n">python</span> <span class="o">|</span> <span class="n">C</span><span class="p">)</span>       <span class="c1">#参与选课的全部学生名字</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;差集运算:&quot;</span><span class="p">,</span><span class="n">python</span> <span class="o">-</span> <span class="n">C</span><span class="p">)</span>       <span class="c1">#python语言和C语言的差集</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id16">1.7.4. 集合的修改和删除</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id17">代码示例3</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="n">mr</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;零基础学JAVA&#39;</span><span class="p">,</span><span class="s1">&#39;零基础学Android&#39;</span><span class="p">,</span><span class="s2">&quot;零基础学PHP&quot;</span><span class="p">,</span><span class="s1">&#39;零基础学C语言&#39;</span><span class="p">])</span>    <span class="c1">#定义一个集合</span>
+<span class="n">mr</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;零基础学python&quot;</span><span class="p">)</span>        <span class="c1">#向集合当中添加元素，会自动删除重复的元素</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mr</span><span class="p">)</span>
+
+<span class="n">mr</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>    <span class="c1">#随机删除元素</span>
+<span class="c1">#print(mr)</span>
+
+
+<span class="k">if</span> <span class="s2">&quot;零基础学JAVA&quot;</span> <span class="ow">in</span> <span class="n">mr</span><span class="p">:</span>
+    <span class="n">mr</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;零基础学JAVA&quot;</span><span class="p">)</span>   <span class="c1">#移除集合的元素</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mr</span><span class="p">)</span>
+
+
+<span class="n">mr</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>                      <span class="c1">#清空整个集合</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mr</span><span class="p">)</span>
+
+
+<span class="c1"># del mr                        #删除整个集合</span>
+<span class="c1"># print(mr)</span>
+
+
+<span class="c1">#-------------------------------------------------</span>
+<span class="c1"># python新增jianli3，C减去jianli3</span>
+<span class="c1">#--------------------------------------------------</span>
+<span class="n">python</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;hujianli&quot;</span><span class="p">,</span><span class="s2">&quot;xiaojian&quot;</span><span class="p">,</span><span class="s2">&quot;xiaojian2&quot;</span><span class="p">,</span><span class="s2">&quot;xiaojian3&quot;</span><span class="p">])</span>
+<span class="n">C</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;jianli1&quot;</span><span class="p">,</span><span class="s2">&quot;jianli2&quot;</span><span class="p">,</span><span class="s2">&quot;jianli3&quot;</span><span class="p">,</span><span class="s2">&quot;jianli4&quot;</span><span class="p">])</span>
+<span class="n">python</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;jianli3&quot;</span><span class="p">)</span>
+<span class="n">C</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;jianli3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">python</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id18">1.7.5. 不可变集合</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/5/17 23:08</span>
+<span class="c1"># filename: 不可变集合.py</span>
+<span class="n">student_set</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;张三&quot;</span><span class="p">,</span> <span class="s2">&quot;李四&quot;</span><span class="p">,</span> <span class="s2">&quot;王五&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">student_set</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">student_set</span><span class="p">))</span>
+
+<span class="c1"># 报错，不能被修改</span>
+<span class="c1"># print(student_set.add(&quot;胡六&quot;))</span>
+
+<span class="c1"># 不可变报错</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">student_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;懂事&quot;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">seta</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seta</span><span class="p">)</span>     <span class="c1">#frozenset({12, 13, 14, 15})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id19">1.7.6. 列表、元祖、字典、集合的区别</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nb">tuple</span> <span class="o">=</span> <span class="p">()</span>
+<span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nb">set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+
+<span class="c1">#是否可变</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">列表、字典、集合可变</span>
+<span class="sd">元祖不可变</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+<span class="c1">#是否重复</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">可重复：列表、元祖、字典</span>
+<span class="sd">不可重复：集合</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+
+
+<span class="c1">#是否有序</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">列表、元祖 有序</span>
+<span class="sd">字典、集合 无序</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="08.数据类型转换.html" class="btn btn-neutral float-right" title="1.8. Python数据类型转换" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="06.字典数据结构.html" class="btn btn-neutral float-left" title="1.6. 字典 Dict" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8.5. 05.Go语言带缓冲的通道 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="8.6. 06.Go语言channel超时机制" href="06.Go语言channel超时机制.html" />
+    <link rel="prev" title="8.4. 04.Go语言无缓冲的通道" href="04.Go语言无缓冲的通道.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">8. 08.并发</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html">8.1. 01.轻量级线程(goroutine)-根据需要随时创建“线程“</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.goroutine和coroutine的区别.html">8.2. 02.goroutine和coroutine的区别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html">8.3. 03.通道(channel)-在多个goroutine间通信的管道</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Go语言无缓冲的通道.html">8.4. 04.Go语言无缓冲的通道</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">8.5. 05.Go语言带缓冲的通道</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">8.5.1. 创建带缓冲的通道</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">8.5.2. 阻塞条件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">8.5.3. 示例，同时接收和发送(带缓冲)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言channel超时机制.html">8.6. 06.Go语言channel超时机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据.html">8.7. 07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.Go语言RPC(模拟远程过程调用).html">8.8. 08.Go语言RPC(模拟远程过程调用)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.Go语言关闭通道后继续使用通道.html">8.9. 09.Go语言关闭通道后继续使用通道</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.Go语言多核并行化.html">8.10. 10.Go语言多核并行化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html">8.11. 11.Go语言Telnet回音服务器-TCP服务器的基本结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.同步-保证并发环境下数据访问的正确性.html">8.12. 12.同步-保证并发环境下数据访问的正确性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.html">8.13. 互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.Go语言等待组（sync.WaitGroup).html">8.14. 14.Go语言等待组（sync.WaitGroup)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">8. 08.并发</a> &raquo;</li>
+        
+      <li>8.5. 05.Go语言带缓冲的通道</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/08.并发/05.Go语言带缓冲的通道.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#go" id="id4">05.Go语言带缓冲的通道</a><ul>
+<li><a class="reference internal" href="#id1" id="id5">创建带缓冲的通道</a></li>
+<li><a class="reference internal" href="#id2" id="id6">阻塞条件</a></li>
+<li><a class="reference internal" href="#id3" id="id7">示例，同时接收和发送(带缓冲)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="go">
+<h1><a class="toc-backref" href="#id4">8.5. 05.Go语言带缓冲的通道</a><a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h1>
+<p>Go语言中有缓冲的通道（buffered
+channel）是一种在被接收前能存储一个或者多个值的通道。这种类型的通道并不强制要求
+goroutine
+之间必须同时完成发送和接收。通道会阻塞发送和接收动作的条件也会不同。只有在通道中没有要接收的值时，接收动作才会阻塞。只有在通道没有可用缓冲区容纳被发送的值时，发送动作才会阻塞。</p>
+<p>这导致有缓冲的通道和无缓冲的通道之间的一个很大的不同：无缓冲的通道保证进行发送和接收的
+goroutine 会在同一时间进行数据交换；有缓冲的通道没有这种保证。</p>
+<p>在无缓冲通道的基础上，为通道增加一个有限大小的存储空间形成带缓冲通道。带缓冲通道在发送时无需等待接收方接收即可完成发送过程，并且不会发生阻塞，只有当存储空间满时才会发生阻塞。同理，如果缓冲通道中有数据，接收时将不会发生阻塞，直到通道中没有数据可读时，通道将会再度阻塞。</p>
+<p>无缓冲通道保证收发过程同步。无缓冲收发过程类似于快递员给你电话让你下楼取快递，整个递交快递的过程是同步发生的，你和快递员不见不散。但这样做快递员就必须等待所有人下楼完成操作后才能完成所有投递工作。如果快递员将快递放入快递柜中，并通知用户来取，快递员和用户就成了异步收发过程，效率可以有明显的提升。带缓冲的通道就是这样的一个“快递柜”。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>·有缓冲的通道（buffered channel）是一种在被接收前能存储一个或者多个值的通道。
+
+这种类型的通道并不强制要求 goroutine 之间必须同时完成发送和接收。通道会阻塞发送和接收动
+作的条件也会不同。只有在通道中没有要接收的值时，接收动作才会阻塞。只有在通道没有可用缓冲区
+容纳被发送的值时，发送动作才会阻塞。
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id5">8.5.1. 创建带缓冲的通道</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>如何创建带缓冲的通道呢？参见如下代码：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>通道实例:=make(chan 通道类型,缓冲大小)
+
+· 通道类型：和无缓冲通道用法一致，影响通道发送和接收的数据类型
+· 缓冲大小： 决定通道最多可以保存的元素数量。
+· 通道实例：被创建出的通道实例。
+</pre></div>
+</div>
+<p>下面通过一个例子中来理解带缓冲通道的用法，参见下面代码：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">创建一个3个元素缓冲大小的整型通道</span>
+    <span class="n">ch</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="n">chan</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="o">//</span> <span class="n">查看当前通道的大小</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ch</span><span class="p">))</span> <span class="o">//</span><span class="mi">0</span>
+
+    <span class="o">//</span> <span class="n">发送3个整型元素到通道</span>
+    <span class="n">ch</span> <span class="o">&lt;-</span> <span class="mi">1</span>
+    <span class="n">ch</span> <span class="o">&lt;-</span> <span class="mi">2</span>
+    <span class="n">ch</span> <span class="o">&lt;-</span> <span class="mi">3</span>
+
+    <span class="o">//</span><span class="n">查看当前通道的大小</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ch</span><span class="p">))</span> <span class="o">//</span><span class="mi">3</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id6">8.5.2. 阻塞条件</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>带缓冲通道在很多特性上和无缓冲通道是类似的。无缓冲通道可以看作是长度永远为
+0
+的带缓冲通道。因此根据这个特性，带缓冲通道在下面列举的情况下依然会发生阻塞：</p>
+<p>· 带缓冲通道被填满时，尝试再次发送数据时发生阻塞。</p>
+<p>· 带缓冲通道为空时，尝试接收数据时发生阻塞。</p>
+<p>为什么Go语言对通道要限制长度而不提供无限长度的通道？</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>我们知道通道（channel）是在两个 goroutine 间通信的桥梁。
+使用 goroutine 的代码必然有一方提供数据，一方消费数据。
+当提供数据一方的数据供给速度大于消费方的数据处理速度时，如果通道不限制长度，那么内存将不断膨胀直到应用崩溃。因此，限制通道的长度有利于约束数据提供方的供给速度，供给数据量必须在消费方处理量+通道长度的范围内，才能正常地处理数据。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id7">8.5.3. 示例，同时接收和发送(带缓冲)</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s2">&quot;fmt&quot;</span>
+    <span class="s2">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="o">/*</span>
+<span class="n">可以建立带缓冲区的</span> <span class="n">channel</span>
+<span class="n">c</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="n">chan</span> <span class="nb">int</span><span class="p">,</span><span class="mi">1024</span><span class="p">)</span>
+<span class="o">*/</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">c</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="n">chan</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">//</span> <span class="n">使用带缓冲区的channel</span>
+    <span class="n">go</span> <span class="n">send</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="n">go</span> <span class="n">recv</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">Sleep</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">)</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">只能向chan里send数据</span>
+<span class="n">func</span> <span class="n">send</span><span class="p">(</span><span class="n">c</span> <span class="n">chan</span><span class="o">&lt;-</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="p">:</span><span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;send readey&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">&lt;-</span> <span class="n">i</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;send&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">只能接收channel中的数据</span>
+<span class="n">func</span> <span class="n">recv</span><span class="p">(</span><span class="n">c</span> <span class="o">&lt;-</span><span class="n">chan</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="n">c</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;received&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;--------------------------------------------------&quot;</span><span class="p">)</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;The remaining data in the channel is </span><span class="si">%d</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;--------------------------------------------------&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="06.Go语言channel超时机制.html" class="btn btn-neutral float-right" title="8.6. 06.Go语言channel超时机制" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="04.Go语言无缓冲的通道.html" class="btn btn-neutral float-left" title="8.4. 04.Go语言无缓冲的通道" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

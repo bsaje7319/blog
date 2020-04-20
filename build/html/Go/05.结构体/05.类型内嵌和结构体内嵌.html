@@ -1,0 +1,665 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.5. 05.类型内嵌和结构体内嵌 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="6. 06.接口" href="../06.接口/index.html" />
+    <link rel="prev" title="5.4. 04.接收器-方法作用的目标" href="04.接收器.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">5. 05.结构体</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.结构体.html">5.1. 结构体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.构造函数.html">5.2. 02.构造函数-结构体和类型的一系列初始化操作的函数封装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.方法.html">5.3. 03.方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.接收器.html">5.4. 04.接收器-方法作用的目标</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.5. 05.类型内嵌和结构体内嵌</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">5.5.1. 声明结构体内嵌</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">5.5.2. 结构内嵌特性：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">5.5.3. 使用组合思想描述对象特性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">5.5.4. 初始化结构体内嵌</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">5.5.5. 初始化内嵌匿名结构体</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">5.5.6. 用外层结构体引用内嵌接口的实例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#json">5.5.7. 示例：使用匿名结构体分离JSON数据</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">5. 05.结构体</a> &raquo;</li>
+        
+      <li>5.5. 05.类型内嵌和结构体内嵌</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/05.结构体/05.类型内嵌和结构体内嵌.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id9">05.类型内嵌和结构体内嵌</a><ul>
+<li><a class="reference internal" href="#id2" id="id10">声明结构体内嵌</a></li>
+<li><a class="reference internal" href="#id3" id="id11">结构内嵌特性：</a></li>
+<li><a class="reference internal" href="#id4" id="id12">使用组合思想描述对象特性</a></li>
+<li><a class="reference internal" href="#id5" id="id13">初始化结构体内嵌</a></li>
+<li><a class="reference internal" href="#id6" id="id14">初始化内嵌匿名结构体</a><ul>
+<li><a class="reference internal" href="#id7" id="id15">成员名字冲突</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8" id="id16">用外层结构体引用内嵌接口的实例</a></li>
+<li><a class="reference internal" href="#json" id="id17">示例：使用匿名结构体分离JSON数据</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id9">5.5. 05.类型内嵌和结构体内嵌</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>结构体允许其成员字段在声明时没有字段名而只有类型，这种形式的字段被称为类型内嵌或匿名字段。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="o">//</span> <span class="n">创建结构体</span>
+<span class="nb">type</span> <span class="n">Data</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="nb">int</span>
+    <span class="n">float32</span>
+    <span class="nb">bool</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">实例化结构体并赋初值</span>
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">ins</span> <span class="p">:</span><span class="o">=&amp;</span><span class="n">Data</span><span class="p">{</span>
+        <span class="nb">int</span><span class="p">:</span>     <span class="mi">10</span><span class="p">,</span>
+        <span class="n">float32</span><span class="p">:</span> <span class="mf">3.14</span><span class="p">,</span>
+        <span class="nb">bool</span><span class="p">:</span>    <span class="n">true</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">ins</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">ins</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">ins</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id10">5.5.1. 声明结构体内嵌</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="o">//</span> <span class="n">基础颜色</span>
+<span class="nb">type</span> <span class="n">BasicColor</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">颜色</span>
+    <span class="n">R</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">B</span> <span class="n">float32</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">完整颜色</span>
+<span class="nb">type</span> <span class="n">Color</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">将基本颜色作为成员</span>
+    <span class="n">Basic</span> <span class="n">BasicColor</span>
+    <span class="o">//</span> <span class="n">透明度</span>
+    <span class="n">Alpha</span> <span class="n">float32</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">实例化Color结构体</span>
+    <span class="n">var</span> <span class="n">c</span> <span class="n">Color</span>
+    <span class="o">//</span> <span class="n">设置基本颜色分量</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">Basic</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">Basic</span><span class="o">.</span><span class="n">G</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">Basic</span><span class="o">.</span><span class="n">B</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="o">//</span> <span class="n">设置透明度</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">Alpha</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="o">//</span> <span class="n">显示整个结构体的内容</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%+v&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>            <span class="o">//</span><span class="p">{</span><span class="n">Basic</span><span class="p">:{</span><span class="n">R</span><span class="p">:</span><span class="mi">1</span> <span class="n">G</span><span class="p">:</span><span class="mi">2</span> <span class="n">B</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span> <span class="n">Alpha</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>使用Go语言的结构体内嵌写法重新调整代码如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="o">//</span> <span class="n">基础颜色</span>
+<span class="nb">type</span> <span class="n">BasicColor</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">颜色</span>
+    <span class="n">R</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">B</span> <span class="n">float32</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">完整颜色</span>
+<span class="nb">type</span> <span class="n">Color</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">将基本颜色作为成员</span>
+    <span class="n">BasicColor</span>
+    <span class="o">//</span> <span class="n">透明度</span>
+    <span class="n">Alpha</span> <span class="n">float32</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">实例化Color结构体</span>
+    <span class="n">var</span> <span class="n">c</span> <span class="n">Color</span>
+    <span class="o">//</span> <span class="n">设置基本颜色分量</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">B</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">G</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="o">//</span> <span class="n">设置透明度</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">Alpha</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="o">//</span> <span class="n">显示整个结构体的内容</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%+v&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>            <span class="o">//</span><span class="p">{</span><span class="n">Basic</span><span class="p">:{</span><span class="n">R</span><span class="p">:</span><span class="mi">1</span> <span class="n">G</span><span class="p">:</span><span class="mi">2</span> <span class="n">B</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span> <span class="n">Alpha</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id11">5.5.2. 结构内嵌特性：</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Go语言的结构体内嵌有如下特性。</p>
+<p>1.内嵌的结构体可以直接访问其成员变量</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>例如：ins.a.b.c 的访问可以简化为 ins.C。
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>内嵌结构体的字段名是它的类型名</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span>内嵌结构体字段仍然可以使用详细的字段进行一层层访问，内嵌结构体的字段名就是它的类型名，代码如下：
+
+var c Color
+c.BasicColor,R =1
+c.BasicColor,G =1
+c.BasicColor,B =1
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id12">5.5.3. 使用组合思想描述对象特性</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>面对对象的设计原则中，建议对象最好不要使用多重继承。Java和C#就默认禁止了。
+组合特性可以快速构建对象的不同特性。比如：人和鸟的特性中，都有行走。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+// 可飞行的,声明飞行结构
+type Flying struct{}
+
+// 指针接收器，为飞行结构添加Fly方法
+func (f *Flying) Fly() {
+    fmt.Println(&quot;can fly&quot;)
+}
+
+// 可行走的,声明行走结构
+type Walkable struct{}
+
+// 指针接收器，为行走结构添加Walk方法
+func (w *Walkable) Walk() {
+    fmt.Println(&quot;can calk&quot;)
+}
+
+// 声明人类结构
+type Human struct {
+    Walkable // 人类能行走
+}
+
+// 声明鸟类结构
+type Bird struct {
+    Flying
+    Walkable // 鸟类既能飞行也能行走
+}
+
+func main() {
+    // 实例化鸟类
+    b := new(Bird)
+    fmt.Println(&quot;Bird: &quot;)
+    // 调用鸟类的Fly()方法
+    b.Fly()
+    b.Walk()
+
+    // 实例化人类
+    h :=new(Human)
+    fmt.Println(&quot;Human：&quot;)
+    //调用人类的walk方法
+    h.Walk()
+
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id13">5.5.4. 初始化结构体内嵌</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>结构体内嵌初始化时，将结构体内嵌的类型作为字段名像普通结构体一样进行初始化。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="o">//</span> <span class="n">车轮</span>
+<span class="nb">type</span> <span class="n">Wheel</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">Size</span> <span class="nb">int</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">引擎</span>
+<span class="nb">type</span> <span class="n">Engine</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">Power</span> <span class="nb">int</span>    <span class="o">//</span> <span class="n">功率</span>
+    <span class="n">Type</span>  <span class="n">string</span> <span class="o">//</span> <span class="n">类型</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">车</span>
+<span class="nb">type</span> <span class="n">Car</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">Wheel</span>
+    <span class="n">Engine</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">c</span> <span class="p">:</span><span class="o">=</span> <span class="n">Car</span><span class="p">{</span>
+        <span class="o">//</span> <span class="n">初始化轮子</span>
+        <span class="n">Wheel</span><span class="p">:</span> <span class="n">Wheel</span><span class="p">{</span>
+            <span class="n">Size</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="o">//</span> <span class="n">初始化引擎</span>
+        <span class="n">Engine</span><span class="p">:</span> <span class="n">Engine</span><span class="p">{</span>
+            <span class="n">Power</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="n">Type</span><span class="p">:</span>  <span class="s2">&quot;1.4T&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%+v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="o">//</span><span class="p">{</span><span class="n">Wheel</span><span class="p">:{</span><span class="n">Size</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span> <span class="n">Engine</span><span class="p">:{</span><span class="n">Power</span><span class="p">:</span><span class="mi">100</span> <span class="n">Type</span><span class="p">:</span><span class="mf">1.4</span><span class="n">T</span><span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id14">5.5.5. 初始化内嵌匿名结构体</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="o">//</span> <span class="n">车轮</span>
+<span class="nb">type</span> <span class="n">Wheel</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">Size</span> <span class="nb">int</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">车</span>
+<span class="nb">type</span> <span class="n">Car</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">Wheel</span>
+    <span class="o">//</span> <span class="n">引擎</span>
+    <span class="n">Engine</span> <span class="n">struct</span> <span class="p">{</span>
+        <span class="n">Power</span> <span class="nb">int</span>    <span class="o">//</span> <span class="n">功率</span>
+        <span class="n">Type</span>  <span class="n">string</span> <span class="o">//</span> <span class="n">类型</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">c</span> <span class="p">:</span><span class="o">=</span> <span class="n">Car</span><span class="p">{</span>
+        <span class="o">//</span> <span class="n">初始化轮子</span>
+        <span class="n">Wheel</span><span class="p">:</span> <span class="n">Wheel</span><span class="p">{</span>
+            <span class="n">Size</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="o">//</span> <span class="n">初始化引擎</span>
+        <span class="n">Engine</span><span class="p">:</span> <span class="n">struct</span> <span class="p">{</span>
+            <span class="n">Power</span> <span class="nb">int</span>
+            <span class="n">Type</span>  <span class="n">string</span>
+        <span class="p">}{</span><span class="n">Power</span><span class="p">:</span> <span class="mi">143</span><span class="p">,</span> <span class="n">Type</span><span class="p">:</span> <span class="s2">&quot;1.4T&quot;</span><span class="p">},</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%+v</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="o">//</span><span class="p">{</span><span class="n">Wheel</span><span class="p">:{</span><span class="n">Size</span><span class="p">:</span><span class="mi">18</span><span class="p">}</span> <span class="n">Engine</span><span class="p">:{</span><span class="n">Power</span><span class="p">:</span><span class="mi">100</span> <span class="n">Type</span><span class="p">:</span><span class="mf">1.4</span><span class="n">T</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>原来的Engine结构体被直接定义在Car的结构体中，这种嵌入的写法就是将原来的结构体类型转换为struct{…}</p>
+<p>对Car的Engine开始初始化的时候，由于Engine字段的类型没有被单独定义，因此在初始化其字段时需要先填写struct{…}声明其类型。</p>
+<p>填充匿名结构体的数据，按&#8221;“键：值”格式填充。</p>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id15">成员名字冲突</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+type A struct {
+    a int
+}
+
+type B struct {
+    a int
+}
+
+type C struct {
+    A
+    B
+}
+
+func main() {
+    // 实例化c结构体
+    c :=&amp;C{}
+    //c.a = 1       //会报错，因为A结构和B结构中都有一个相同的a。编译器无法区分
+    c.A.a = 1
+    c.B.a = 2
+    fmt.Println(c)  //&amp;{{1} {2}}
+
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id16">5.5.6. 用外层结构体引用内嵌接口的实例</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="nb">type</span> <span class="n">Printer</span> <span class="n">interface</span> <span class="p">{</span>
+    <span class="n">Print</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="nb">type</span> <span class="n">CanonPrinter</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">Printname</span> <span class="n">string</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="p">(</span><span class="n">printer</span> <span class="n">CanonPrinter</span><span class="p">)</span> <span class="n">Print</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;this is cannoprinter printing now&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nb">type</span> <span class="n">PrintWorker</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">Printer</span>
+    <span class="n">name</span> <span class="n">string</span>
+    <span class="n">age</span> <span class="nb">int</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">canon</span> <span class="p">:</span><span class="o">=</span> <span class="n">CanonPrinter</span><span class="p">{</span><span class="s2">&quot;canoprint_num1&quot;</span><span class="p">}</span>
+    <span class="n">printworker</span> <span class="p">:</span><span class="o">=</span> <span class="n">PrintWorker</span><span class="p">{</span>
+        <span class="n">Printer</span><span class="p">:</span> <span class="n">canon</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span>    <span class="s2">&quot;hujiangli&quot;</span><span class="p">,</span>
+        <span class="n">age</span><span class="p">:</span>     <span class="mi">26</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">printworker</span><span class="o">.</span><span class="n">Print</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="json">
+<h2><a class="toc-backref" href="#id17">5.5.7. 示例：使用匿名结构体分离JSON数据</a><a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import (
+    &quot;encoding/json&quot;
+    &quot;fmt&quot;
+)
+
+// 定义手机屏幕
+type Screen struct {
+    Size       float32 // 屏幕尺寸
+    ResX, RexY int     // 屏幕水平分辨率
+}
+
+type Battery struct {
+    Capacity int // 容量
+}
+
+/*生成json数据*/
+func genJsonData() []byte {
+    // 完整数据结构
+    /*
+        定义一个匿名结构体，内嵌了Screen和Battery结构体，同时加入了HasTouchID字段
+    */
+    raw := &amp;struct {
+        Screen
+        Battery
+        HasTouchID bool
+    }{
+        //屏幕参数， 为声明的匿名结构体填充数据
+        Screen: Screen{
+            Size: 6.6,
+            ResX: 3,
+            RexY: 2,
+        },
+        // 电池参数
+        Battery: Battery{
+            2020,
+        },
+        // 是否有指纹识别
+        HasTouchID: true,
+    }
+    // 将数据序列化为JSON
+    jsonData, _ := json.Marshal(raw)
+    return jsonData
+}
+
+func main() {
+    // 生成一段json数据
+    jsonDatat := genJsonData()
+    fmt.Println(string(jsonDatat))      //{&quot;Size&quot;:6.6,&quot;ResX&quot;:3,&quot;RexY&quot;:2,&quot;Capacity&quot;:2020,&quot;HasTouchID&quot;:true}
+
+    // 只要屏幕和指纹识别信息的结构和实例
+    screenAndTOuch := struct {
+        Screen
+        HasTouchID bool
+    }{}
+    // 反序列到screenAndTOuch中
+    json.Unmarshal(jsonDatat, &amp;screenAndTOuch)
+    // 输出screenAndTOuch的详细结构
+    fmt.Printf(&quot;%+v\n&quot;, screenAndTOuch) //{Screen:{Size:6.6 ResX:3 RexY:2} HasTouchID:true}
+
+    // 只需要电池和指纹的结构和实例
+    batteryAndTOuch := struct {
+        Battery
+        HasTouchID bool
+    }{}
+    // 反序列到batteryAndTOuch中
+    json.Unmarshal(jsonDatat, &amp;batteryAndTOuch)
+    // 输出screenAndTOuch的详细结构
+    fmt.Printf(&quot;%+v\n&quot;, batteryAndTOuch)        //{Battery:{Capacity:2020} HasTouchID:true}
+}
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../06.接口/index.html" class="btn btn-neutral float-right" title="6. 06.接口" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="04.接收器.html" class="btn btn-neutral float-left" title="5.4. 04.接收器-方法作用的目标" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,533 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.2. 02.构建循环（for） &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="3.3. 03.分支选择(switch)-拥有多个条件分支的判断" href="03.分支选择(switch)-拥有多个条件分支的判断.html" />
+    <link rel="prev" title="3.1. 条件判断if" href="01.条件判断if.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">3. 03.流程控制</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.条件判断if.html">3.1. 条件判断if</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.2. 02.构建循环（for）</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">3.2.1. for中的初始语句-开始循环时执行的语句</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">3.2.2. for中的条件表达式-控制是否循环的开关</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-range">3.2.3. 键值循环（for range）-直接获得对象的索引和数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#range">3.2.4. “range”语句中更新引用元素的值</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="03.分支选择(switch)-拥有多个条件分支的判断.html">3.3. 03.分支选择(switch)-拥有多个条件分支的判断</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.跳出指定循环（break）-可以跳出多层循环.html">3.4. 04.跳出指定循环（break）-可以跳出多层循环</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.继续下一次循环(continue).html">3.5. 继续下一次循环（continue）</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">3. 03.流程控制</a> &raquo;</li>
+        
+      <li>3.2. 02.构建循环（for）</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/03.流程控制/02.构建循环（for）.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#for" id="id9">02.构建循环（for）</a><ul>
+<li><a class="reference internal" href="#id1" id="id10">for中的初始语句-开始循环时执行的语句</a></li>
+<li><a class="reference internal" href="#id2" id="id11">for中的条件表达式-控制是否循环的开关</a><ul>
+<li><a class="reference internal" href="#id3" id="id12">1.结束循环时带可执行语句的无限循环</a></li>
+<li><a class="reference internal" href="#id4" id="id13">2.无限循环</a></li>
+<li><a class="reference internal" href="#id5" id="id14">3.for中的结束语句</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#for-range" id="id15">键值循环（for range）-直接获得对象的索引和数据</a><ul>
+<li><a class="reference internal" href="#id6" id="id16">遍历数组、切片 - 获得索引和元素</a></li>
+<li><a class="reference internal" href="#id7" id="id17">遍历字符串-获得字符</a></li>
+<li><a class="reference internal" href="#map-map" id="id18">遍历map-获得map的键和值</a></li>
+<li><a class="reference internal" href="#channel" id="id19">遍历通道（channel） - 接收通道数据</a></li>
+<li><a class="reference internal" href="#id8" id="id20">在遍历中选择希望获得的变量</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#range" id="id21">“range”语句中更新引用元素的值</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="for">
+<h1><a class="toc-backref" href="#id9">3.2. 02.构建循环（for）</a><a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id10">3.2.1. for中的初始语句-开始循环时执行的语句</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">step</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span>
+    <span class="k">for</span> <span class="p">;</span><span class="n">step</span><span class="o">&gt;</span><span class="mi">0</span> <span class="p">;</span><span class="n">step</span><span class="o">--</span>  <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">//</span><span class="mi">2</span>
+<span class="o">//</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id11">3.2.2. for中的条件表达式-控制是否循环的开关</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id12">1.结束循环时带可执行语句的无限循环</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">i</span> <span class="nb">int</span>
+    <span class="o">//</span> <span class="n">无限循环语句</span>
+    <span class="k">for</span> <span class="p">;</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="p">{</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id13">2.无限循环</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>美观的无限循环写法</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">i</span> <span class="nb">int</span>
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="p">{</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+        <span class="n">i</span><span class="o">++</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>在上面代码的基础上进一步简化代码，将if判断整合到for中，变为下面的代码：
+#### 只有一个条件的循环</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">i</span> <span class="nb">int</span>
+<span class="k">for</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">{</span>
+    <span class="n">i</span><span class="o">++</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id14">3.for中的结束语句</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>在结束每次循环前执行的语句，如果循环被break、goto、return、panic等语句强制退出，结束语句不会被执行。</p>
+<p>打印一个99乘法表</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="p">:</span><span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="p">:</span><span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span> <span class="p">{</span>
+            <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">*</span><span class="si">%d</span><span class="s2">=</span><span class="si">%d</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">()</span> <span class="o">//</span> <span class="n">添加一个换行符</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="o">/*</span><span class="mi">1</span><span class="o">*</span><span class="mi">1</span><span class="o">=</span><span class="mi">1</span>
+<span class="mi">2</span><span class="o">*</span><span class="mi">1</span><span class="o">=</span><span class="mi">2</span> <span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="o">=</span><span class="mi">4</span>
+<span class="mi">3</span><span class="o">*</span><span class="mi">1</span><span class="o">=</span><span class="mi">3</span> <span class="mi">3</span><span class="o">*</span><span class="mi">2</span><span class="o">=</span><span class="mi">6</span> <span class="mi">3</span><span class="o">*</span><span class="mi">3</span><span class="o">=</span><span class="mi">9</span>
+<span class="mi">4</span><span class="o">*</span><span class="mi">1</span><span class="o">=</span><span class="mi">4</span> <span class="mi">4</span><span class="o">*</span><span class="mi">2</span><span class="o">=</span><span class="mi">8</span> <span class="mi">4</span><span class="o">*</span><span class="mi">3</span><span class="o">=</span><span class="mi">12</span> <span class="mi">4</span><span class="o">*</span><span class="mi">4</span><span class="o">=</span><span class="mi">16</span>
+<span class="mi">5</span><span class="o">*</span><span class="mi">1</span><span class="o">=</span><span class="mi">5</span> <span class="mi">5</span><span class="o">*</span><span class="mi">2</span><span class="o">=</span><span class="mi">10</span> <span class="mi">5</span><span class="o">*</span><span class="mi">3</span><span class="o">=</span><span class="mi">15</span> <span class="mi">5</span><span class="o">*</span><span class="mi">4</span><span class="o">=</span><span class="mi">20</span> <span class="mi">5</span><span class="o">*</span><span class="mi">5</span><span class="o">=</span><span class="mi">25</span>
+<span class="mi">6</span><span class="o">*</span><span class="mi">1</span><span class="o">=</span><span class="mi">6</span> <span class="mi">6</span><span class="o">*</span><span class="mi">2</span><span class="o">=</span><span class="mi">12</span> <span class="mi">6</span><span class="o">*</span><span class="mi">3</span><span class="o">=</span><span class="mi">18</span> <span class="mi">6</span><span class="o">*</span><span class="mi">4</span><span class="o">=</span><span class="mi">24</span> <span class="mi">6</span><span class="o">*</span><span class="mi">5</span><span class="o">=</span><span class="mi">30</span> <span class="mi">6</span><span class="o">*</span><span class="mi">6</span><span class="o">=</span><span class="mi">36</span>
+<span class="mi">7</span><span class="o">*</span><span class="mi">1</span><span class="o">=</span><span class="mi">7</span> <span class="mi">7</span><span class="o">*</span><span class="mi">2</span><span class="o">=</span><span class="mi">14</span> <span class="mi">7</span><span class="o">*</span><span class="mi">3</span><span class="o">=</span><span class="mi">21</span> <span class="mi">7</span><span class="o">*</span><span class="mi">4</span><span class="o">=</span><span class="mi">28</span> <span class="mi">7</span><span class="o">*</span><span class="mi">5</span><span class="o">=</span><span class="mi">35</span> <span class="mi">7</span><span class="o">*</span><span class="mi">6</span><span class="o">=</span><span class="mi">42</span> <span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="o">=</span><span class="mi">49</span>
+<span class="mi">8</span><span class="o">*</span><span class="mi">1</span><span class="o">=</span><span class="mi">8</span> <span class="mi">8</span><span class="o">*</span><span class="mi">2</span><span class="o">=</span><span class="mi">16</span> <span class="mi">8</span><span class="o">*</span><span class="mi">3</span><span class="o">=</span><span class="mi">24</span> <span class="mi">8</span><span class="o">*</span><span class="mi">4</span><span class="o">=</span><span class="mi">32</span> <span class="mi">8</span><span class="o">*</span><span class="mi">5</span><span class="o">=</span><span class="mi">40</span> <span class="mi">8</span><span class="o">*</span><span class="mi">6</span><span class="o">=</span><span class="mi">48</span> <span class="mi">8</span><span class="o">*</span><span class="mi">7</span><span class="o">=</span><span class="mi">56</span> <span class="mi">8</span><span class="o">*</span><span class="mi">8</span><span class="o">=</span><span class="mi">64</span>
+<span class="mi">9</span><span class="o">*</span><span class="mi">1</span><span class="o">=</span><span class="mi">9</span> <span class="mi">9</span><span class="o">*</span><span class="mi">2</span><span class="o">=</span><span class="mi">18</span> <span class="mi">9</span><span class="o">*</span><span class="mi">3</span><span class="o">=</span><span class="mi">27</span> <span class="mi">9</span><span class="o">*</span><span class="mi">4</span><span class="o">=</span><span class="mi">36</span> <span class="mi">9</span><span class="o">*</span><span class="mi">5</span><span class="o">=</span><span class="mi">45</span> <span class="mi">9</span><span class="o">*</span><span class="mi">6</span><span class="o">=</span><span class="mi">54</span> <span class="mi">9</span><span class="o">*</span><span class="mi">7</span><span class="o">=</span><span class="mi">63</span> <span class="mi">9</span><span class="o">*</span><span class="mi">8</span><span class="o">=</span><span class="mi">72</span> <span class="mi">9</span><span class="o">*</span><span class="mi">9</span><span class="o">=</span><span class="mi">81</span> <span class="o">*/</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="for-range">
+<h2><a class="toc-backref" href="#id15">3.2.3. 键值循环（for range）-直接获得对象的索引和数据</a><a class="headerlink" href="#for-range" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id16">遍历数组、切片 - 获得索引和元素</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>在遍历代码中，key和value分别代表切片的下标及下标对应的值。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">i2</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="p">[]</span><span class="nb">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">}</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;key:</span><span class="si">%d</span><span class="s2"> value:</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i2</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">/*</span><span class="n">key</span><span class="p">:</span><span class="mi">0</span> <span class="n">value</span><span class="p">:</span><span class="mi">1</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">1</span> <span class="n">value</span><span class="p">:</span><span class="mi">2</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">2</span> <span class="n">value</span><span class="p">:</span><span class="mi">3</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">3</span> <span class="n">value</span><span class="p">:</span><span class="mi">4</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">4</span> <span class="n">value</span><span class="p">:</span><span class="mi">5</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">5</span> <span class="n">value</span><span class="p">:</span><span class="mi">6</span><span class="o">*/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id17">遍历字符串-获得字符</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;hello 你好&quot;</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">i2</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="nb">str</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;key:</span><span class="si">%d</span><span class="s2"> value:0x</span><span class="si">%x</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i2</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">0</span> <span class="n">value</span><span class="p">:</span><span class="mh">0x68</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">1</span> <span class="n">value</span><span class="p">:</span><span class="mh">0x65</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">2</span> <span class="n">value</span><span class="p">:</span><span class="mh">0x6c</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">3</span> <span class="n">value</span><span class="p">:</span><span class="mh">0x6c</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">4</span> <span class="n">value</span><span class="p">:</span><span class="mh">0x6f</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">5</span> <span class="n">value</span><span class="p">:</span><span class="mh">0x20</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">6</span> <span class="n">value</span><span class="p">:</span><span class="mh">0x4f60</span>
+<span class="n">key</span><span class="p">:</span><span class="mi">9</span> <span class="n">value</span><span class="p">:</span><span class="mh">0x597d</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="map-map">
+<h3><a class="toc-backref" href="#id18">遍历map-获得map的键和值</a><a class="headerlink" href="#map-map" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">m</span> <span class="p">:</span><span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">string</span><span class="p">]</span><span class="nb">int</span><span class="p">{</span>
+        <span class="s2">&quot;num1&quot;</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span>
+        <span class="s2">&quot;num2&quot;</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span>
+        <span class="s2">&quot;num3&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">i2</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="n">m</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;key:</span><span class="si">%s</span><span class="s2"> value:</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i2</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">/*</span><span class="n">key</span><span class="p">:</span><span class="n">num3</span> <span class="n">value</span><span class="p">:</span><span class="mi">14</span>
+<span class="n">key</span><span class="p">:</span><span class="n">num1</span> <span class="n">value</span><span class="p">:</span><span class="mi">12</span>
+<span class="n">key</span><span class="p">:</span><span class="n">num2</span> <span class="n">value</span><span class="p">:</span><span class="mi">13</span><span class="o">*/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="channel">
+<h3><a class="toc-backref" href="#id19">遍历通道（channel） - 接收通道数据</a><a class="headerlink" href="#channel" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    c := make(chan int)     // 创建了一个整型类型的通道
+    /*
+    往通道里面推送 1 2 3，然后关闭通道
+     */
+    go func() {
+        c &lt;- 1
+        c &lt;- 2
+        c &lt;- 3
+        close(c)
+    }()
+    // 不断地从通道中取数据，直到通道被关闭
+    for v := range c {
+        fmt.Println(v)
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id20">在遍历中选择希望获得的变量</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>在使用for
+range循环遍历某个对象时，一般不会同时需要key或者value，这个时候可以采用一些技巧。
+让代码变得简单。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">m</span> <span class="p">:</span><span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">string</span><span class="p">]</span><span class="nb">int</span><span class="p">{</span>
+        <span class="s2">&quot;num1&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+        <span class="s2">&quot;num2&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span>
+        <span class="s2">&quot;num3&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">value</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="n">m</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">/*</span><span class="mi">12</span>
+<span class="mi">13</span>
+<span class="mi">14</span><span class="o">*/</span>
+</pre></div>
+</div>
+<p>一个匿名变量的例子</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+<span class="o">//</span> <span class="n">匿名变量</span>
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="p">[]</span><span class="nb">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;key:</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="range">
+<h2><a class="toc-backref" href="#id21">3.2.4. “range”语句中更新引用元素的值</a><a class="headerlink" href="#range" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+/*
+在”range”语句中生成的数据的值是真实集合元素的拷贝。它们不是原有元素的引用。
+这意味着更新这些值将不会修改原来的数据。
+
+同时也意味着使用这些值的地址将不会得到原有数据的指针。
+*/
+func main() {
+    hujianlislice := []int{12, 13, 14}
+    for _, i2 := range hujianlislice {
+        i2 *= 10
+    }
+    fmt.Println(hujianlislice)  //[12 13 14]
+
+    // 如果你需要更新原有集合中的数据，使用索引操作符来获得数据
+    for i, _ := range hujianlislice {
+        hujianlislice[i] *= 10
+    }
+    fmt.Println(hujianlislice)  //[120 130 140]
+}
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="03.分支选择(switch)-拥有多个条件分支的判断.html" class="btn btn-neutral float-right" title="3.3. 03.分支选择(switch)-拥有多个条件分支的判断" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="01.条件判断if.html" class="btn btn-neutral float-left" title="3.1. 条件判断if" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

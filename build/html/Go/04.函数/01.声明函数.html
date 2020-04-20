@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.1. 声明函数 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="4.2. 匿名函数" href="02.匿名函数.html" />
+    <link rel="prev" title="4. 04.函数" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">4. 04.函数</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">4.1. 声明函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">4.1.1. 普通函数的声明形式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">4.1.2. 参数类型的简写</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">4.1.3. 函数的返回值</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="02.匿名函数.html">4.2. 匿名函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.闭包.html">4.3. 闭包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.可变参数-参数数量不固定的函数形式.html">4.4. 可变参数-参数数量不固定的函数形式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.延迟执行语句(defer).html">4.5. 延迟执行语句(defer)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.处理运行时发生的错误.html">4.6. 处理运行时发生的错误</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.宕机(panic)-程序终止运行.html">4.7. 07.宕机(panic)-程序终止运行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.宕机恢复(recover)-防止程序崩溃.html">4.8. 08 宕机恢复(recover)-防止程序崩溃</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">4. 04.函数</a> &raquo;</li>
+        
+      <li>4.1. 声明函数</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/04.函数/01.声明函数.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id11">声明函数</a><ul>
+<li><a class="reference internal" href="#id2" id="id12">普通函数的声明形式</a></li>
+<li><a class="reference internal" href="#id3" id="id13">参数类型的简写</a></li>
+<li><a class="reference internal" href="#id4" id="id14">函数的返回值</a><ul>
+<li><a class="reference internal" href="#id5" id="id15">1. 同一种类型返回值</a></li>
+<li><a class="reference internal" href="#id6" id="id16">2.带有变量名的返回值</a></li>
+<li><a class="reference internal" href="#id7" id="id17">3.调用函数</a></li>
+<li><a class="reference internal" href="#id8" id="id18">4.函数变量-把函数作为值保存到变量中</a></li>
+<li><a class="reference internal" href="#id9" id="id19">递归与回调</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id11">4.1. 声明函数</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id12">4.1.1. 普通函数的声明形式</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Go语言的函数声明以func标识，后面紧接着函数名、参数列表、返回参数列表及函数体，
+具体形式如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>func 函数名（参数列表）（返回参数列表）{
+    函数体
+ }
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>· 函数名：由字母、数字、下划线组成。其中，函数名的第一个字母不能为数字。在同一个包内，函数名称不能重名。
+· 参数列表： 一个参数由参数变量和参数类型组成。其中参数列表中的变量作为函数的局部变量而存在。
+· 返回参数列表：可以是返回值类型列表，也可以是类似参数列表中变量名和类型名的组合。函数在声明有返回值时，必须在函数体中使用return语句提供返回值列表。
+· 函数体： 能够被重复调用的代码片段
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id13">4.1.2. 参数类型的简写</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>在参数列表中，如有多个参数变量，则以逗号分割；如果相邻变量是同类型，则可以将类型省略。
+例如：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">func1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="nb">int</span><span class="p">)</span> <span class="nb">int</span><span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="p">}</span>
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">sum_num</span> <span class="p">:</span><span class="o">=</span> <span class="n">func1</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">sum_num</span><span class="p">)</span>    <span class="o">//</span><span class="mi">5</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id14">4.1.3. 函数的返回值</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Go
+语言支持多返回值，多返回值方便地获得函数执行后的多个返回参数，Go语言经常使用多返回值中的最后一个返回参数
+返回函数执行中可能发生的错误。示例代码如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>conn,err := connectToNetwork()
+
+这段代码中,connectToNetwork返回两个参数，conn表示连接对象，err返回错误。
+</pre></div>
+</div>
+<p>Go语言既支持安全指针，也支持多返回值，因此在使用函数进行逻辑编写时更为方便。</p>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id15">1. 同一种类型返回值</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+/*
+纯类型的返回值对于代码可读性不是很友好，特别是在同类型的返回值出现时，无法区分每个返回参数的意义
+ */
+func typeTwoValues() (int, int) {
+    return 1, 2
+}
+
+func main() {
+    a, b := typeTwoValues()
+    fmt.Println(a, b)   // 1 2
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id16">2.带有变量名的返回值</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">namedRetValues</span><span class="p">()</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>注意：
+同一种类型返回值和命名返回值两种形式只能二选一，混用时将会发生编译错误，例如下面的代码：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">namedRetValuse</span><span class="p">()</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id17">3.调用函数</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>Go语言中函数调用格式如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>返回值变量列表 = 函数名（参数列表）
+· 函数名： 需要调用的函数名
+· 参数列表： 参数变量以逗号分隔，尾部无需以逗号结尾
+· 返回值变量列表： 多个返回值使用逗号分隔
+</pre></div>
+</div>
+<p>例如，加法函数调用样式如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="p">:</span><span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>一个将秒解析为时间的多返回值函数</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">const</span> <span class="p">(</span>
+    <span class="o">//</span><span class="n">分钟</span>
+    <span class="n">SecondsPermiute</span> <span class="o">=</span> <span class="mi">60</span>
+    <span class="o">//</span><span class="n">小时</span>
+    <span class="n">SecondSPerHour</span> <span class="o">=</span> <span class="n">SecondsPermiute</span> <span class="o">*</span> <span class="mi">60</span>
+    <span class="o">//</span><span class="n">天</span>
+    <span class="n">SecondSPerDay</span> <span class="o">=</span> <span class="n">SecondSPerHour</span> <span class="o">*</span> <span class="mi">24</span>
+<span class="p">)</span>
+
+<span class="n">func</span> <span class="n">resolveTime</span><span class="p">(</span><span class="n">seconds</span> <span class="nb">int</span><span class="p">)</span> <span class="p">(</span><span class="n">day</span> <span class="nb">int</span><span class="p">,</span> <span class="n">hour</span> <span class="nb">int</span><span class="p">,</span> <span class="n">minute</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="n">seconds</span> <span class="o">/</span> <span class="n">SecondSPerDay</span>
+    <span class="n">hour</span> <span class="o">=</span> <span class="n">seconds</span> <span class="o">/</span> <span class="n">SecondSPerHour</span>
+    <span class="n">minute</span> <span class="o">=</span> <span class="n">seconds</span> <span class="o">/</span> <span class="n">SecondsPermiute</span>
+    <span class="k">return</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">打印所有返回值</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">resolveTime</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>      <span class="o">//</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">16</span>
+
+    <span class="o">//</span> <span class="n">打印小时和分钟</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minue</span> <span class="p">:</span><span class="o">=</span> <span class="n">resolveTime</span><span class="p">(</span><span class="mi">18000</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span> <span class="n">minue</span><span class="p">)</span>                <span class="o">//</span> <span class="mi">5</span> <span class="mi">300</span>
+    <span class="o">//</span> <span class="n">只获取天数</span>
+    <span class="n">day</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="p">:</span><span class="o">=</span> <span class="n">resolveTime</span><span class="p">(</span><span class="mi">90000</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">day</span><span class="p">)</span>                        <span class="o">//</span><span class="mi">1</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>函数中参数传递效果测试</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+/*
+Data声明为结构体类型
+ */
+type Data struct {
+    complax  [] int     // 测试切片在参数传递中的效果
+    instance InnerData  //示例分配的innerData
+    ptr      *InnerData // 将ptr声明为InnerData的指针类型
+}
+
+/*
+内嵌的结构
+ */
+type InnerData struct {
+    a int
+}
+
+/*
+值传递测试函数
+*/
+func passByvalue(inFunc Data) Data {
+    //输出参数的成员情况
+    fmt.Printf(&quot;inFunc value: %+v\n&quot;, inFunc)
+    // 打印inFunc的指针
+    fmt.Printf(&quot;inFunc ptr: %p\n&quot;, &amp;inFunc)
+    return inFunc
+}
+
+func main() {
+    // 准备传入函数的结构
+    in := Data{
+        complax:  []int{1, 2, 3},
+        instance: InnerData{5,},
+        ptr:      &amp;InnerData{1},
+    }
+    // 输出结构的成员情况
+    fmt.Printf(&quot;in value: %+v\n&quot;, in)
+    // 输出结构的指针地址
+    fmt.Printf(&quot;in ptr: %p\n&quot;, &amp;in)
+    // 传入结构体，返回同类型的结构体
+    out := passByvalue(in)
+    // 输出结构的指针地址
+    fmt.Printf(&quot;pput ptr: %p\n&quot;, &amp;out)
+
+}
+
+/*
+in value: {complax:[1 2 3] instance:{a:5} ptr:0xc00000a0b8}
+in ptr: 0xc00005c330
+inFunc value: {complax:[1 2 3] instance:{a:5} ptr:0xc00000a0b8}
+inFunc ptr: 0xc00005c3c0
+pput ptr: 0xc00005c390
+
+所有的Data结构的指针发生了变化，意味着所有的结构都是一块新的内存，无论是将Data结构传入函数内部，
+还是通过函数返回传回Data都发生了复制行为。
+
+所有Data结构中的成员值没有发生变化，原样传递，意味着所有的参数都是值传递
+
+Data结构中的ptr成员在传递过程中保持一致，指针在函数参数值传递中传递的只是指针值，不会复制指针指向的部分。
+*/
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id18">4.函数变量-把函数作为值保存到变量中</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">fire</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;fire&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span><span class="n">var</span> <span class="n">f</span> <span class="n">func</span><span class="p">()</span>
+    <span class="o">//</span><span class="n">var</span> <span class="n">f</span> <span class="o">=</span> <span class="n">fire</span>      <span class="o">//</span> <span class="n">将函数fire的值赋值给f</span>
+    <span class="n">f</span> <span class="p">:</span><span class="o">=</span> <span class="n">fire</span>
+    <span class="n">f</span><span class="p">()</span> <span class="o">//</span> <span class="n">调用函数</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id19">递归与回调</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Go 语言中也可以使用相互调用的递归函数：多个函数之间相互调用形成闭环。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">callback</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Add</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">Add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;The sum of </span><span class="si">%d</span><span class="s2"> and </span><span class="si">%d</span><span class="s2"> is: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">callback</span><span class="p">(</span><span class="n">y</span> <span class="nb">int</span><span class="p">,</span> <span class="n">f</span> <span class="n">func</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">f</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="id10">
+<h4>字符串的链式处理-操作与数据分离的设计技巧<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;strings&quot;
+)
+
+/*
+字符串处理函数，传入字符串切片，和字符串切片处理链
+*/
+func StringProcess(list []string, chain []func(string) string) {
+    // 遍历每一个字符串
+    for index, str := range list {
+        // 第一个要处理的字符串
+        result := str
+        // 遍历每一个处理链
+        for _, proc := range chain {
+            //输入一个字符串进行处理，返回数据作为下一个处理链的输入
+            result = proc(result)
+        }
+        // 将结果放回到切片
+        list[index] = result
+    }
+}
+
+/*
+自定义处理函数，自定义移除前缀的处理函数，移除字符串指定的前缀
+*/
+func removePrefix(str string) string {
+    return strings.TrimPrefix(str, &quot;go&quot;)
+}
+
+/*
+字符串处理主流程
+*/
+
+func main() {
+    // 待处理的字符串列表
+    list := []string{
+        &quot;go huajinli1&quot;,
+        &quot;go huajinli2&quot;,
+        &quot;go huajinli3&quot;,
+        &quot;go huajinli4&quot;,
+        &quot;go huajinli5&quot;,
+    }
+
+    // 处理链函数
+    chain := []func(string) string{
+        removePrefix,
+        strings.TrimSpace,
+        strings.ToUpper,
+    }
+    // 处理字符串
+    StringProcess(list, chain)
+
+    // 输出处理好的字符串
+    for _, str := range list {
+        fmt.Println(str)
+    }
+
+}
+
+/*
+HUAJINLI1
+HUAJINLI2
+HUAJINLI3
+HUAJINLI4
+HUAJINLI5
+*/
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="02.匿名函数.html" class="btn btn-neutral float-right" title="4.2. 匿名函数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="4. 04.函数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.1. 数组-固定大小的连续空间 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="2.2. 切片-动态分配大小的连续空间" href="02.切片-动态分配大小的连续空间.html" />
+    <link rel="prev" title="2. 02.容器-存储与组织数据的方式" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">2. 02.容器-存储与组织数据的方式</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">2.1. 数组-固定大小的连续空间</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2.1.1. 声明数组</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.1.2. 初始化数组，可以在声明时直接进行初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for">2.1.3. 使用for循环遍历数组,两种方式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="02.切片-动态分配大小的连续空间.html">2.2. 切片-动态分配大小的连续空间</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.映射（map）-建立事务关联的容器.html">2.3. 02.映射（map）-建立事务关联的容器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.列表-可以快速增删的非连续空间的容器.html">2.4. 列表-可以快速增删的非连续空间的容器</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">2. 02.容器-存储与组织数据的方式</a> &raquo;</li>
+        
+      <li>2.1. 数组-固定大小的连续空间</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/02.容器-存储与组织数据的方式/01.数组-固定大小的连续空间.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id4">数组-固定大小的连续空间</a><ul>
+<li><a class="reference internal" href="#id2" id="id5">声明数组</a></li>
+<li><a class="reference internal" href="#id3" id="id6">初始化数组，可以在声明时直接进行初始化</a></li>
+<li><a class="reference internal" href="#for" id="id7">使用for循环遍历数组,两种方式</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id4">2.1. 数组-固定大小的连续空间</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>在Go语言中，可以定义一维数组或者多维数组。</p>
+<p>一维数组声明以及初始化常见方式如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>var arrAge  = [5]int{18, 20, 15, 22, 16}
+var arrName = [5]string{3: &quot;Chris&quot;, 4: &quot;Ron&quot;} //指定索引位置初始化
+// {&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;Chris&quot;,&quot;Ron&quot;}
+var arrCount = [4]int{500, 2: 100} //指定索引位置初始化 {500,0,100,0}
+var arrLazy = [...]int{5, 6, 7, 8, 22} //数组长度初始化时根据元素多少确定
+var arrPack = [...]int{10, 5: 100} //指定索引位置初始化，数组长度与此有关 {10,0,0,0,0,100}
+var arrRoom [20]int
+var arrBed = new([20]int)
+</pre></div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id5">2.1.1. 声明数组</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>数组的写法如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">数组变量名</span> <span class="p">[</span><span class="n">元素数量</span><span class="p">]</span><span class="n">T</span>
+</pre></div>
+</div>
+<p>声明数组的例子</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">team</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="n">string</span>
+    <span class="n">team</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;hujianli1&quot;</span>
+    <span class="n">team</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;hujianli2&quot;</span>
+    <span class="n">team</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;hujianli3&quot;</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">team</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="o">//</span><span class="p">[</span><span class="n">hujianli1</span> <span class="n">hujianli2</span> <span class="n">hujianli3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id6">2.1.2. 初始化数组，可以在声明时直接进行初始化</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">name_list</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="n">string</span><span class="p">{</span><span class="s2">&quot;xiaojian01&quot;</span><span class="p">,</span><span class="s2">&quot;xiaojian02&quot;</span><span class="p">,</span><span class="s2">&quot;xiaojian03&quot;</span><span class="p">}</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">--</span><span class="si">%s</span><span class="s2">--</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">name_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">name_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">name_list</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="o">//</span><span class="n">xiaojian01</span><span class="o">--</span><span class="n">xiaojian02</span><span class="o">--</span><span class="n">xiaojian03</span>
+
+<span class="o">//</span> <span class="o">...</span><span class="n">让编译器确定数组的大小</span>
+ <span class="n">var</span> <span class="n">array_list</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="n">string</span><span class="p">{</span><span class="s2">&quot;var1&quot;</span><span class="p">,</span><span class="s2">&quot;var2&quot;</span><span class="p">,</span><span class="s2">&quot;var3&quot;</span><span class="p">,</span><span class="s2">&quot;var4&quot;</span><span class="p">}</span>
+ <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">array_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">//</span><span class="n">var1</span>
+ <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">array_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">//</span><span class="n">var2</span>
+ <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">array_list</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+ <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">array_list</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="for">
+<h2><a class="toc-backref" href="#id7">2.1.3. 使用for循环遍历数组,两种方式</a><a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h2>
+<p>访问每一个数组元素</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">var</span> <span class="n">arrAge</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="nb">int</span><span class="p">{</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">}</span>
+<span class="n">var</span> <span class="n">arrLazy</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="nb">int</span><span class="p">{</span><span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">26</span><span class="p">}</span>
+<span class="n">var</span> <span class="n">arrKeyValue</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="n">string</span><span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;hujian&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;xiaojian&quot;</span><span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">遍历方法1</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">i2</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="n">arrAge</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">i2</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;----------------------------&quot;</span><span class="p">)</span>
+    <span class="o">//</span> <span class="n">遍历方法2</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="p">:</span><span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">arrAge</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">arrAge</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="02.切片-动态分配大小的连续空间.html" class="btn btn-neutral float-right" title="2.2. 切片-动态分配大小的连续空间" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="2. 02.容器-存储与组织数据的方式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

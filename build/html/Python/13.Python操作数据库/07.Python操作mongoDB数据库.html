@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>13.7. Python操作mongoDB数据库 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="13.8. 封装MongoDB的类" href="08.封装mongoDB的类.html" />
+    <link rel="prev" title="13.6. 数据库模块化" href="06.数据库模块化.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">13. Python对数据库的操作</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.Python操作NoSQL数据存储.html">13.1. Python操作NoSQL数据存储</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Python操作SQLite数据库.html">13.2. Python 操作SQLite数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Python操作mysql数据库.html">13.3. python操作mysql数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Python封装mysql数据库.html">13.4. python操作mysql数据库封装类和方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.mysql介绍和安装.html">13.5. Mysql介绍和安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.数据库模块化.html">13.6. 数据库模块化</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">13.7. Python操作mongoDB数据库</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mongodb">13.7.1. MongoDB数据库简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">13.7.2. 建立mongoDB数据库操作环境</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">13.7.3. MongoDB数据库基础</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">13.7.4. python操作mongoDB的方式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="08.封装mongoDB的类.html">13.8. 封装MongoDB的类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.Pyhton操作Redis数据库.html">13.9. Python操作Redis数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.使用ORM工具操作mongoDB.html">13.10. 使用ORM工具操作mongoDB数据库</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">13. Python对数据库的操作</a> &raquo;</li>
+        
+      <li>13.7. Python操作mongoDB数据库</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/13.Python操作数据库/07.Python操作mongoDB数据库.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#pythonmongodb" id="id5">Python操作mongoDB数据库</a><ul>
+<li><a class="reference internal" href="#mongodb" id="id6">MongoDB数据库简介</a></li>
+<li><a class="reference internal" href="#id1" id="id7">建立mongoDB数据库操作环境</a></li>
+<li><a class="reference internal" href="#id2" id="id8">MongoDB数据库基础</a></li>
+<li><a class="reference internal" href="#id3" id="id9">python操作mongoDB的方式</a><ul>
+<li><a class="reference internal" href="#id4" id="id10">python操作mongodb 封装</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="pythonmongodb">
+<h1><a class="toc-backref" href="#id5">13.7. Python操作mongoDB数据库</a><a class="headerlink" href="#pythonmongodb" title="Permalink to this headline">¶</a></h1>
+<p>MongoDB是一种noSQL（not only SQL）非关系型数据库</p>
+<div class="section" id="mongodb">
+<h2><a class="toc-backref" href="#id6">13.7.1. MongoDB数据库简介</a><a class="headerlink" href="#mongodb" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>MongoDB是一种强大、灵活、可扩展的数据存储方式，它扩展了关系型数据库大量有用的功能，主要特点有：
+    MongoDB数据库数据存储没有模式：对于关系型数据库来说，只要建立一个关系，即一张表，那么其中的数据类型基本上就已经定格了，
+    MongoDB数据存储基本单元是“文档”，每个文档的模式可以不同，不仅数据类型可以不同，其结构也可以不同。
+
+    MongoDB具有很强的可扩展性，采用文档数据模型可以自动在服务器之间分割数据，而且服务器可以集群可以平衡服务器的压力，
+    集群服务器可以自动切换到备份服务器，还可以自动集成和配置新节点。
+
+    MongDB支持高并发读写：MongoDB可以通过集群来提高读写性能， 甚至可以建立读写分享的集群服务器。
+
+    MongoDB支持海量存储：内置GridFS，支持大容量的存储，GridFS是出色的分布式文件系统，可以支持海量的数据存储，
+    内置GridFS了MongoDB，能够满足对大数据集的快速范围查询。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id7">13.7.2. 建立mongoDB数据库操作环境</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">https://www.runoob.com/mongodb/mongodb-window-install.html</span></code></p>
+<p>mongodb的开启和关闭</p>
+<p>在D:，输入命令启动MongoDB服务：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mongod</span> <span class="o">-</span><span class="n">dbpath</span> <span class="n">D</span><span class="p">:</span>\<span class="n">mongodb</span>\<span class="n">data</span>\<span class="n">db</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>启动：mongod --dbpath=/application/mongodb/data --logpath=/application/mongodb/log/mongodb.log --port=27017 --logappend --fork
+
+关闭：mongod --shutdown  --dbpath=/application/mongodb/data --logpath=/application/mongodb/log/mongodb.log --port=27017 --logappend --fork
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id8">13.7.3. MongoDB数据库基础</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../../_images/python-mongoDB0002.png" /></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="n">use</span> <span class="n">tese</span>                  <span class="c1">#切换到test数据库</span>
+<span class="n">switched</span> <span class="n">to</span> <span class="n">db</span> <span class="n">tese</span>
+
+<span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">stu</span><span class="o">.</span><span class="n">insert</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s2">&quot;liumei&quot;</span><span class="p">,</span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;grade&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>       <span class="c1"># 插入一个稳定到集合stu中</span>
+<span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">stu</span><span class="o">.</span><span class="n">insert</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;hanxuan&quot;</span><span class="p">,</span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;grade&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
+
+
+
+<span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">stu</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;grade&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">}))</span>                 <span class="c1"># 列出集合set中grada键值为2的文档</span>
+
+
+<span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">stu</span><span class="o">.</span><span class="n">findOne</span><span class="p">({</span><span class="s2">&quot;grade&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>               <span class="c1"># 列出集合set中grada键值为2的第一个文档</span>
+
+<span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">stu</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;hanxuan&quot;</span><span class="p">},{</span><span class="s2">&quot;$set&quot;</span><span class="p">:{</span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="mi">17</span><span class="p">}})</span>     <span class="c1"># 修改集合stu中name为hanxuan的age为17</span>
+
+<span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">stu</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;grade&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
+
+<span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">stu</span><span class="o">.</span><span class="n">remove</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;liumei&quot;</span><span class="p">})</span>          <span class="c1"># 删除集合stu中name为liumei的文档</span>
+
+<span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">stu</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;grade&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
+<span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s2">&quot;5d11c1a9b854e82b2ac65dee&quot;</span><span class="p">),</span> <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;hanxuan&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span> <span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s2">&quot;grade&quot;</span> <span class="p">:</span> <span class="mi">2</span> <span class="p">}</span>
+
+<span class="o">&gt;</span> <span class="n">show</span> <span class="n">dbs</span>                      <span class="c1">#显示所有数据库的名称</span>
+<span class="n">admin</span>   <span class="mf">0.000</span><span class="n">GB</span>
+<span class="n">config</span>  <span class="mf">0.000</span><span class="n">GB</span>
+<span class="n">local</span>   <span class="mf">0.000</span><span class="n">GB</span>
+<span class="n">tese</span>    <span class="mf">0.000</span><span class="n">GB</span>
+
+<span class="o">&gt;</span> <span class="n">show</span> <span class="n">collections</span>          <span class="c1">#显示当前数据库中所有集合名称</span>
+<span class="n">stu</span>
+
+<span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">stu</span><span class="o">.</span><span class="n">drop</span><span class="p">()</span>             <span class="c1"># 删除集合stu</span>
+<span class="n">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id9">13.7.4. python操作mongoDB的方式</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>安装pymongo三方库</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pymongo</span>
+</pre></div>
+</div>
+<p><img alt="image1" src="../../_images/python-mongo0002.png" /></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/6/25 14:48</span>
+<span class="c1"># filename: 操作1.py</span>
+<span class="kn">from</span> <span class="nn">pymongo</span> <span class="k">import</span> <span class="n">MongoClient</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">src</span> <span class="o">=</span> <span class="s2">&quot;abcdefghijklmnopqrstuvwxyz&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">get_str</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; 生成随机数，x~y之间的随机字母字符串&quot;&quot;&quot;</span>
+    <span class="n">str_sum</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># 产生x,y之间一个随机整数</span>
+    <span class="n">astr</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">str_sum</span><span class="p">):</span>
+        <span class="n">astr</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">astr</span>
+
+
+<span class="k">def</span> <span class="nf">get_data_list</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">get_str</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="s2">&quot;passwd&quot;</span><span class="p">:</span> <span class="n">get_str</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">)})</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;建立连接...................&quot;</span><span class="p">)</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    db = MongoClient()</span>
+<span class="sd">    db_test = db.test</span>
+<span class="sd">    stus = db_test.stu</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">stus</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">()</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">stu</span>  <span class="c1"># 一条语句实现连接到集合</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;插入一条记录.................&quot;</span><span class="p">)</span>
+    <span class="n">stus</span><span class="o">.</span><span class="n">insert</span><span class="p">({</span><span class="s2">&quot;name:&quot;</span><span class="p">:</span> <span class="n">get_str</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="s2">&quot;passwd&quot;</span><span class="p">:</span> <span class="n">get_str</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">)})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;显示所有记录...................&quot;</span><span class="p">)</span>
+    <span class="n">stu</span> <span class="o">=</span> <span class="n">stus</span><span class="o">.</span><span class="n">find</span><span class="p">()</span>  <span class="c1"># 显示刚才插入的一个文档</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">stu</span><span class="p">)</span>
+
+    <span class="c1"># 批量插入多条记录</span>
+    <span class="n">stus</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">get_data_list</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+    <span class="c1"># 显示所有记录</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;显示所有记录................&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">stu</span> <span class="ow">in</span> <span class="n">stus</span><span class="o">.</span><span class="n">find</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">stu</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;更新一条记录..........&quot;</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入记录的name: &quot;</span><span class="p">)</span>
+    <span class="n">stus</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;$set&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;aaaa&quot;</span><span class="p">}})</span>  <span class="c1"># 更新</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;显示所有记录&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">stu</span> <span class="ow">in</span> <span class="n">stus</span><span class="o">.</span><span class="n">find</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">stu</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;删除一条记录.........&quot;</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入记录的name:&quot;</span><span class="p">)</span>
+    <span class="n">stus</span><span class="o">.</span><span class="n">remove</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;显示所有记录................&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">stu</span> <span class="ow">in</span> <span class="n">stus</span><span class="o">.</span><span class="n">find</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">stu</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出信息</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">建立连接</span><span class="o">...................</span>
+<span class="n">插入一条记录</span><span class="o">.................</span>
+<span class="n">显示所有记录</span><span class="o">...................</span>
+<span class="o">&lt;</span><span class="n">pymongo</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">Cursor</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x000001E06CEED748</span><span class="o">&gt;</span>
+<span class="n">显示所有记录</span><span class="o">................</span>
+<span class="p">{</span><span class="s1">&#39;name:&#39;</span><span class="p">:</span> <span class="s1">&#39;vy&#39;</span><span class="p">,</span> <span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;odpanxhy&#39;</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s1">&#39;5d11c68b685a2ca91221a3a2&#39;</span><span class="p">)}</span>
+<span class="p">{</span><span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;ktixfujzsmhw&#39;</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s1">&#39;5d11c68b685a2ca91221a3a3&#39;</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;zd&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;emikpgew&#39;</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s1">&#39;5d11c68b685a2ca91221a3a4&#39;</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;shqq&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;cpntpjfzzeah&#39;</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s1">&#39;5d11c68b685a2ca91221a3a5&#39;</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;csb&#39;</span><span class="p">}</span>
+<span class="n">更新一条记录</span><span class="o">..........</span>
+<span class="n">请输入记录的name</span><span class="p">:</span> <span class="n">huijianli</span>
+<span class="n">显示所有记录</span>
+<span class="p">{</span><span class="s1">&#39;name:&#39;</span><span class="p">:</span> <span class="s1">&#39;vy&#39;</span><span class="p">,</span> <span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;odpanxhy&#39;</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s1">&#39;5d11c68b685a2ca91221a3a2&#39;</span><span class="p">)}</span>
+<span class="p">{</span><span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;ktixfujzsmhw&#39;</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s1">&#39;5d11c68b685a2ca91221a3a3&#39;</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;zd&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;emikpgew&#39;</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s1">&#39;5d11c68b685a2ca91221a3a4&#39;</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;shqq&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;cpntpjfzzeah&#39;</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s1">&#39;5d11c68b685a2ca91221a3a5&#39;</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;csb&#39;</span><span class="p">}</span>
+<span class="n">删除一条记录</span><span class="o">.........</span>
+<span class="n">请输入记录的name</span><span class="p">:</span><span class="n">hujianli</span>
+<span class="n">显示所有记录</span><span class="o">................</span>
+<span class="p">{</span><span class="s1">&#39;name:&#39;</span><span class="p">:</span> <span class="s1">&#39;vy&#39;</span><span class="p">,</span> <span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;odpanxhy&#39;</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s1">&#39;5d11c68b685a2ca91221a3a2&#39;</span><span class="p">)}</span>
+<span class="p">{</span><span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;ktixfujzsmhw&#39;</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s1">&#39;5d11c68b685a2ca91221a3a3&#39;</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;zd&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;emikpgew&#39;</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s1">&#39;5d11c68b685a2ca91221a3a4&#39;</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;shqq&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;cpntpjfzzeah&#39;</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s1">&#39;5d11c68b685a2ca91221a3a5&#39;</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;csb&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>mongoDB自带导出工具，可以在bin文件夹下打开命令行窗口，输入下面命令即可完成集合向CSV文件的导出。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mongoexport</span> <span class="o">-</span><span class="n">d</span> <span class="n">mydb</span> <span class="o">-</span><span class="n">c</span> <span class="n">test</span> <span class="o">--</span><span class="n">csv</span> <span class="o">-</span><span class="n">f</span> <span class="n">name</span><span class="p">,</span><span class="n">sex</span><span class="p">,</span><span class="n">grade</span> <span class="o">-</span><span class="n">o</span> <span class="n">test</span><span class="o">.</span><span class="n">csv</span>
+
+<span class="o">-</span><span class="n">d</span> <span class="n">数据库</span>
+<span class="o">-</span><span class="n">c</span> <span class="n">表数据</span>
+<span class="o">-</span><span class="n">d</span> <span class="n">表示要导出的字段</span>
+</pre></div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id10">python操作mongodb 封装</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>参考资料</p>
+<p><a class="reference external" href="https://blog.csdn.net/xufive/article/details/84104174">https://blog.csdn.net/xufive/article/details/84104174</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="08.封装mongoDB的类.html" class="btn btn-neutral float-right" title="13.8. 封装MongoDB的类" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="06.数据库模块化.html" class="btn btn-neutral float-left" title="13.6. 数据库模块化" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

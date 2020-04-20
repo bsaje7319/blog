@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. Go语言基本语法与使用 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="1.1. 声明变量" href="01.声明变量.html" />
+    <link rel="prev" title="Go语言学习" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Go语言基本语法与使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.声明变量.html">1.1. 声明变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.数据类型.html">1.2. 数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.指针.html">1.3. 指针</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.变量声明周期.html">1.4. 变量声明周期 - 变量能够使用的代码范围</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.字符串应用.html">1.5. 字符串应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.常量.html">1.6. 常量–恒定不变的值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.类型别名.html">1.7. 类型别名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.编译与工具.html">1.8. 编译与工具</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+      <li>1. Go语言基本语法与使用</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/01.Go语言基本语法与使用/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="go">
+<h1>1. Go语言基本语法与使用<a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.声明变量.html">1.1. 声明变量</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.声明变量.html#id2">1.1.1. 初始化变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.声明变量.html#id3">1.1.2. 标准格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.声明变量.html#id4">1.1.3. 编译器自己推导类型的格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.声明变量.html#id5">1.1.4. 短变量声明并初始化</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.声明变量.html#id6">多个变量同时赋值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.声明变量.html#id7">匿名变量-没有名字的变量</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.数据类型.html">1.2. 数据类型</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.数据类型.html#id2">1.2.1. 整型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.数据类型.html#id3">1.2.2. 浮点型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.数据类型.html#id4">1.2.3. 布尔型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.数据类型.html#id5">1.2.4. 字符串</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.数据类型.html#id6">定义多行字符串</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.数据类型.html#id7">1.2.5. 字符</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.数据类型.html#utf-8unicode">UTF-8和Unicode 有何区别？</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.数据类型.html#id8">1.2.6. 切片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.数据类型.html#id9">1.2.7. 转换不同的数据类型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03.指针.html">1.3. 指针</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03.指针.html#id2">1.3.1. 值的传递和引用的传递</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.指针.html#go">1.3.2. 指针概念在Go语言中被拆分为两个核心概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.指针.html#id3">1.3.3. 指针地址和指针类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.指针.html#id4">1.3.4. 从指针获取指针指向的值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.指针.html#id5">1.3.5. 使用指针修改值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.指针.html#id6">1.3.6. 示例：使用指针变量获取命令行的输入信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.指针.html#new">1.3.7. 创建指针的另一种方法-new()函数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04.变量声明周期.html">1.4. 变量声明周期 - 变量能够使用的代码范围</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04.变量声明周期.html#id2">1.4.1. 什么是栈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.变量声明周期.html#id3">1.4.2. 变量和栈有什么关系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.变量声明周期.html#id4">1.4.3. 声明是堆</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.变量声明周期.html#escape-analysis">1.4.4. 变量逃逸（Escape Analysis） - 自动决定变量分配方式，提高运行效率</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.变量声明周期.html#id5">1.逃逸分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.变量声明周期.html#id6">2.取地址发生逃逸</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05.字符串应用.html">1.5. 字符串应用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05.字符串应用.html#id2">1.5.1. 字符串拼接</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.字符串应用.html#string">1.5.2. 有关string的处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.字符串应用.html#id3">1.5.3. 计算字符串长度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.字符串应用.html#id4">1.5.4. 遍历字符串-获取每一个字符串元素</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05.字符串应用.html#ascii">遍历每一个ASCII字符</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05.字符串应用.html#unicode">1.5.5. 按Unicode字符遍历字符串</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05.字符串应用.html#id5">获取字符串的某一段字符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.字符串应用.html#id6">修改字符串</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.字符串应用.html#id7">连接字符串</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.字符串应用.html#id8">格式化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.字符串应用.html#base64">Base64解码-电子邮件的基础解码格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.字符串应用.html#ini">从INI配置文件中查询需要的值</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="06.常量.html">1.6. 常量–恒定不变的值</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="06.常量.html#id2">1.6.1. 枚举 — 一组常量值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.常量.html#id3">1.6.2. 将枚举值转换为字符串</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="07.类型别名.html">1.7. 类型别名</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="07.类型别名.html#id2">1.7.1. 区分类型别名与类型定义</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="08.编译与工具.html">1.8. 编译与工具</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="08.编译与工具.html#go">1.8.1. Go常用的编译方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="08.编译与工具.html#go-build">1.编译(go build)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.编译与工具.html#go-run">2.编译后运行(go run)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.编译与工具.html#go-install">3.编译并安装(go install)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.编译与工具.html#go-get">4.一键获取代码、编译并安装(go get)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.编译与工具.html#go-test">5.测试(go test)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01.声明变量.html" class="btn btn-neutral float-right" title="1.1. 声明变量" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Go语言学习" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

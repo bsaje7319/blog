@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.8. 08.空接口类型(interface{})-能保存所有值的类型 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="6.9. 09.类型分支-批量判断空接口中变量的类型" href="09.类型分支-批量判断空接口中变量的类型.html" />
+    <link rel="prev" title="6.7. 07.在接口和类型间转换" href="07.在接口和类型间转换.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6. 06.接口</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.声明接口.html">6.1. 01.声明接口</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.实现接口的条件.html">6.2. 02.实现接口的条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.理解类型与接口的关系.html">6.3. 03.理解类型与接口的关系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.常见的类型的便捷排序.html">6.4. 04.常见的类型的便捷排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.对结构体数据进行排序.html">6.5. 05.对结构体数据进行排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.接口的嵌套组合-将多个接口放在一个接口内.html">6.6. 06.接口的嵌套组合-将多个接口放在一个接口内</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.在接口和类型间转换.html">6.7. 07.在接口和类型间转换</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.8. 08.空接口类型(interface{})-能保存所有值的类型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">6.8.1. 1.将值保存到空接口</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.8.2. 2.从空接口获取值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">6.8.3. 3.空接口的值比较</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">6.8.4. 示例：使用空接口实现可以保存任意值的字典</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="09.类型分支-批量判断空接口中变量的类型.html">6.9. 09.类型分支-批量判断空接口中变量的类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.Go语言实现有限状态机(FSM).html">6.10. 10.Go语言实现有限状态机(FSM)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">6. 06.接口</a> &raquo;</li>
+        
+      <li>6.8. 08.空接口类型(interface{})-能保存所有值的类型</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/06.接口/08.空接口类型(interface{})-能保存所有值的类型.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#interface" id="id12">08.空接口类型(interface{})-能保存所有值的类型</a><ul>
+<li><a class="reference internal" href="#id1" id="id13">1.将值保存到空接口</a></li>
+<li><a class="reference internal" href="#id2" id="id14">2.从空接口获取值</a></li>
+<li><a class="reference internal" href="#id3" id="id15">3.空接口的值比较</a><ul>
+<li><a class="reference internal" href="#id4" id="id16">1.类型不同的空接口间的比较结果不相同</a></li>
+<li><a class="reference internal" href="#id5" id="id17">2.不能比较空接口中的动态值</a></li>
+<li><a class="reference internal" href="#id6" id="id18">类型的可比较性</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7" id="id19">示例：使用空接口实现可以保存任意值的字典</a><ul>
+<li><a class="reference internal" href="#id8" id="id20">1.值设置和获取</a></li>
+<li><a class="reference internal" href="#id9" id="id21">2.遍历字段的索引键值关联数据</a></li>
+<li><a class="reference internal" href="#id10" id="id22">3.初始化和清除</a></li>
+<li><a class="reference internal" href="#id11" id="id23">4.使用字典</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="interface">
+<h1><a class="toc-backref" href="#id12">6.8. 08.空接口类型(interface{})-能保存所有值的类型</a><a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h1>
+<p>空接口是接口类型的特殊形式，空接口没有任何方法，因此任何类型都无须实现空接口。</p>
+<p>从实现的角度看，任何值都满足这个接口的需求。因此空接口可以保存任何值，也可以从空接口中取出原值。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>使用空接口保存一个数据的过程会比直接使用数据对应类型的变量保存稍慢，因此在开发中，应在需要的地方使用空接口，
+而不是在所有地方使用空接口。
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id13">6.8.1. 1.将值保存到空接口</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+//声明 any 为 interface{} 类型的变量。
+var any interface{}
+
+func main() {
+    any = 1
+    fmt.Println(any)        //1
+
+    any = &quot;hello&quot;
+    fmt.Println(any)        //hello
+
+    any = false
+    fmt.Println(any)        //false
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id14">6.8.2. 2.从空接口获取值</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    var a = 1
+    // 声明i变量，类型为interface{},初始值为a，此时i的变量为1
+    var i interface{} = a
+    fmt.Println(i)          //1
+    // 使用类型断言,b可以获得i变量保存的a变量的值: 1
+    var b int = i.(int)
+    fmt.Println(b)          //1
+
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id15">6.8.3. 3.空接口的值比较</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id16">1.类型不同的空接口间的比较结果不相同</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">a保存整型</span>
+    <span class="n">var</span> <span class="n">a</span> <span class="n">interface</span><span class="p">{}</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="o">//</span> <span class="n">b保存字符串</span>
+    <span class="n">var</span> <span class="n">b</span> <span class="n">interface</span><span class="p">{}</span> <span class="o">=</span> <span class="s2">&quot;str&quot;</span>
+
+    <span class="o">//</span> <span class="n">两个接口不相等</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>     <span class="o">//</span><span class="n">fals</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id17">2.不能比较空接口中的动态值</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>当接口中保存有动态类型的值时，运行时将触发错误，代码如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">a1</span> <span class="n">interface</span><span class="p">{}</span> <span class="o">=</span> <span class="p">[]</span><span class="nb">int</span><span class="p">{</span><span class="mi">10</span><span class="p">}</span>
+<span class="n">var</span> <span class="n">a2</span> <span class="n">interface</span><span class="p">{}</span> <span class="o">=</span> <span class="p">[]</span><span class="nb">int</span><span class="p">{</span><span class="mi">20</span><span class="p">}</span>
+<span class="o">//</span><span class="n">这里会发生崩溃</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">a1</span> <span class="o">==</span> <span class="n">a2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id18">类型的可比较性</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>类型的可比较性</p>
+<p>可选参数： <img alt="image0" src="../../_images/go_interface001.png" /></p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id19">6.8.4. 示例：使用空接口实现可以保存任意值的字典</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>空接口可以保存任何类型这个特性可以方便地用于容器的设计。 下面例子：</p>
+<p><code class="docutils literal"><span class="pre">使用map和interface{}实现一个字典。字典在其他语言中的功能和map类型，可以将任意的值做成键值对保存，</span> <span class="pre">然后进行找回、遍历操作。</span></code></p>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id20">1.值设置和获取</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+//字典结构
+type Dictionary struct {
+    data map[interface{}]interface{} //键值都为interface{}类型
+}
+
+//根据键获取值,类方法为Get，返回值为一个接口
+func (d *Dictionary) Get(key interface{}) interface{} {
+    return d.data[key]          // 通过map直接获取值，如果键不存在，将返回nill。
+}
+
+// 设置键值
+func (d *Dictionary) Set(key interface{}, value interface{}) {
+    d.data[key] = value         // 通过map设置键值。
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id21">2.遍历字段的索引键值关联数据</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>每个容器都有遍历操作，遍历时，需要提供一个回调返回需要遍历的数据。
+为了方便在必要时终止遍历操作，可以将回调的返回值设置为bool类型。外部逻辑在回调中不需要遍历时直接返回false即可终止遍历。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>// 定义回调函数，func(k, v interface{}) bool 意思是返回键值数据(k,v)
+func (d *Dictionary) Visit(callback func(k, v interface{}) bool) {
+    if callback == nil {
+        return
+    }
+    //遍历字典结构的 data 成员，也就是遍历 map 的所有元素。
+    for k, v := range d.data {
+        if !callback(k, v) {
+            //根据 callback 的返回值，决定是否继续遍历
+            return
+        }
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id22">3.初始化和清除</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>// 清空所有的数据，map没有独立的复位内部元素的操作，需要复位元素时，使用 make 创建新的实例。
+func (d *Dictionary) Clear() {
+    d.data = make(map[interface{}]interface{})
+
+}
+
+// 创建一个字典
+func NewDictionary() *Dictionary {
+    d := &amp;Dictionary{}
+
+    //初始化map,在初始化时调用 Clear 进行 map 初始化操作
+    d.Clear()
+    return d
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3><a class="toc-backref" href="#id23">4.使用字典</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>func main() {
+    // 创建字典实例
+    dict := NewDictionary()
+    dict.Set(&quot;hujianli1&quot;, 100)
+    dict.Set(&quot;hujianli2&quot;, 110)
+    dict.Set(&quot;hujianli3&quot;, 120)
+
+    // 获取值并打印
+    favorite := dict.Get(&quot;hujianli2&quot;)
+    fmt.Println(&quot;favorite: &quot;, favorite)
+
+    // 遍历所有的字典元素
+    dict.Visit(func(k, v interface{}) bool {
+        // 将值转为int型，判断大小
+        if v.(int) &gt; 100 {
+            // 输出&quot;很贵&quot;
+            fmt.Println(k, &quot;is expensive&quot;)
+            return true
+        }
+        // 默认输出 &quot;很便宜&quot;
+        fmt.Println(k,&quot;is cheap&quot;)
+        return true
+    })
+
+}
+
+/*
+favorite:  110
+hujianli3 is expensive
+hujianli1 is cheap
+hujianli2 is expensive
+ */
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="09.类型分支-批量判断空接口中变量的类型.html" class="btn btn-neutral float-right" title="6.9. 09.类型分支-批量判断空接口中变量的类型" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="07.在接口和类型间转换.html" class="btn btn-neutral float-left" title="6.7. 07.在接口和类型间转换" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

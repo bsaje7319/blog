@@ -1,0 +1,487 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7. 面对对象设计_OOP &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="7.1. 什么是面对对象设计" href="01.什么是面对对象设计.html" />
+    <link rel="prev" title="6.4. 装饰器" href="../06.迭代器_生成器_装饰器/04.装饰器.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7. 面对对象设计_OOP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.什么是面对对象设计.html">7.1. 什么是面对对象设计</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.类的方法.html">7.2. 类的方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.类中的__init__方法.html">7.3. 类中的__init__方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04一个基础有属性和方法的类.html">7.4. 一个基础有方法和属性的类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.类中可调用自己方法和外部函数.html">7.5. 类中调用自身方法和函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.类属性和实例属性.html">7.6. 类属性和实例属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.类方法、实例方法、静态方法.html">7.7. 类方法、静态方法、实例方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.property装饰器，将方法转为属性,动态属性.html">7.8. property装饰器，将方法转为属性,动态属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.子类继承父类后进行方法重写.html">7.9. 子类继承父类后方法重写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.python的根类.html">7.10. python的根类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.类的继承.html">7.11. 类的继承</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.枚举类.html">7.12. 枚举类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.方法的动态特性.html">7.13. 方法的动态特性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.面对对象之封装.html">7.14. 面对对象之封装特性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.类的高级特性.html">7.15. 类的高级特性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.一些魔法方法.html">7.16. 一些魔法方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="17.类的反射，设置、删除、检测.html">7.17. 类的检测、判断、设置、删除、获取</a></li>
+<li class="toctree-l3"><a class="reference internal" href="18.多态-鸭子类型.html">7.18. 多态-鸭子类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="19.类属性描述符.html">7.19. 类属性描述符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="20.一个简单的类示例.html">7.20. 一个简单的类的例子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="21.人开枪射击子弹_OOP.html">7.21. 人开枪射击子弹_OOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="22.组合.html">7.22. 组合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="23.扩展列表、字典.html">7.23. 扩展列表、字典</a></li>
+<li class="toctree-l3"><a class="reference internal" href="24.工厂方法.html">7.24. 工厂方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+      <li>7. 面对对象设计_OOP</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/07.面对对象设计_OOP/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oop">
+<h1>7. 面对对象设计_OOP<a class="headerlink" href="#oop" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.什么是面对对象设计.html">7.1. 什么是面对对象设计</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.什么是面对对象设计.html#id2">7.1.1. 面对对象编程的三要素</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.什么是面对对象设计.html#id3">7.1.2. 万物皆对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.什么是面对对象设计.html#id4">7.1.3. 创建第一个类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.什么是面对对象设计.html#id5">7.1.4. 请牢记这张图</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.类的方法.html">7.2. 类的方法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.类的方法.html#id2">7.2.1. 定义方法、并进行实例化</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.类的方法.html#id3">代码示例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03.类中的__init__方法.html">7.3. 类中的__init__方法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03.类中的__init__方法.html#init-init">7.3.1. __init__方法又称构造方法， 在实例化类的时候，自动加载里面定义的属性 实例化的时候传入的参数必须要和__init__中的参数保持一致， 传入的参数将被自动加载到类中，变为实例属性</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.类中的__init__方法.html#id1">代码示例1：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04一个基础有属性和方法的类.html">7.4. 一个基础有方法和属性的类</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04一个基础有属性和方法的类.html#id2">7.4.1. 类成员</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04一个基础有属性和方法的类.html#id3">7.4.2. 方法和属性</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04一个基础有属性和方法的类.html#id4">代码示例 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04一个基础有属性和方法的类.html#id5">代码示例 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05.类中可调用自己方法和外部函数.html">7.5. 类中调用自身方法和函数</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05.类中可调用自己方法和外部函数.html#id2">7.5.1. 类中调用自身</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05.类中可调用自己方法和外部函数.html#id3">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05.类中可调用自己方法和外部函数.html#id4">7.5.2. 类中定义内部类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.类中可调用自己方法和外部函数.html#python">7.5.3. python的垃圾回收机制</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="06.类属性和实例属性.html">7.6. 类属性和实例属性</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="06.类属性和实例属性.html#id2">7.6.1. 实例属性</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="06.类属性和实例属性.html#id3">类属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.类属性和实例属性.html#id4">类属性共享数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.类属性和实例属性.html#id5">用代码来理解</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="07.类方法、实例方法、静态方法.html">7.7. 类方法、静态方法、实例方法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="07.类方法、实例方法、静态方法.html#id2">7.7.1. 用代码来理解</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="07.类方法、实例方法、静态方法.html#id3">代码示例 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.类方法、实例方法、静态方法.html#id4">代码示例 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="08.property装饰器，将方法转为属性,动态属性.html">7.8. property装饰器，将方法转为属性,动态属性</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="08.property装饰器，将方法转为属性,动态属性.html#id1">7.8.1. 访问方式和之前略有区别,用属性的方式访问</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="08.property装饰器，将方法转为属性,动态属性.html#id2">代码示例 1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="08.property装饰器，将方法转为属性,动态属性.html#id3">7.8.2. &#64;property 实现只读属性</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="08.property装饰器，将方法转为属性,动态属性.html#id4">用代码来理解 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.property装饰器，将方法转为属性,动态属性.html#id5">代码示例 3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="08.property装饰器，将方法转为属性,动态属性.html#id6">7.8.3. 使用property函数调用私有属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.property装饰器，将方法转为属性,动态属性.html#id7">7.8.4. 实现一个分页打印的类的代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.property装饰器，将方法转为属性,动态属性.html#id8">7.8.5. 属性(property)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="09.子类继承父类后进行方法重写.html">7.9. 子类继承父类后方法重写</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="09.子类继承父类后进行方法重写.html#id2">7.9.1. 用代码来理解</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="09.子类继承父类后进行方法重写.html#id3">代码示例 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.子类继承父类后进行方法重写.html#id4">代码示例 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="09.子类继承父类后进行方法重写.html#id5">7.9.2. 使用未绑定的方法调用被重写的方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="09.子类继承父类后进行方法重写.html#id6">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="09.子类继承父类后进行方法重写.html#super">7.9.3. 使用super()函数进行修改重写父类的方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="09.子类继承父类后进行方法重写.html#id7">代码示例 1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="09.子类继承父类后进行方法重写.html#id9">7.9.4. 使用super函数调用父类的构造方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09.子类继承父类后进行方法重写.html#id10">7.9.5. 类中的私有方法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="10.python的根类.html">7.10. python的根类</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="10.python的根类.html#str">7.10.1. __str__()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10.python的根类.html#eq">7.10.2. __eq__()</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="11.类的继承.html">7.11. 类的继承</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="11.类的继承.html#id2">7.11.1. 类继承的顺序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.类的继承.html#python3">7.11.2. Python3 默认广度优先-新式类</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="11.类的继承.html#id3">代码示例 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.类的继承.html#id4">代码示例 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="11.类的继承.html#id5">7.11.3. 类的多重继承，同时继承多个类的顺序</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="11.类的继承.html#id6">示例代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.类的继承.html#id7">代码示例 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="11.类的继承.html#id9">7.11.4. 钻石类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.类的继承.html#id10">7.11.5. 类的继承和方法的重写</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.类的继承.html#id11">7.11.6. 类型检查</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="12.枚举类.html">7.12. 枚举类</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="12.枚举类.html#id2">7.12.1. 限制枚举类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12.枚举类.html#id3">7.12.2. 枚举类的使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="12.枚举类.html#id4">举例 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.枚举类.html#id5">举例2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="13.方法的动态特性.html">7.13. 方法的动态特性</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="13.方法的动态特性.html#id2">7.13.1. 可以将外部函数 动态的添加到类中</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="13.方法的动态特性.html#id3">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="13.方法的动态特性.html#type">7.13.2. 使用type函数动态创建类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.方法的动态特性.html#metaclass">7.13.3. 使用metaclass 定义统一特性方法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="14.面对对象之封装.html">7.14. 面对对象之封装特性</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="14.面对对象之封装.html#id2">7.14.1. 为属性添加限制，访问限制（隐藏和封装）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="14.面对对象之封装.html#id3">私有属性设置说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.面对对象之封装.html#id6">私有属性的保护和设置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.面对对象之封装.html#id7">代码示例2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="15.类的高级特性.html">7.15. 类的高级特性</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="15.类的高级特性.html#super">7.15.1. super函数的执行顺序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.类的高级特性.html#id2">7.15.2. super()函数的使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.类的高级特性.html#id3">7.15.3. 对象的 自省 功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.类的高级特性.html#id4">7.15.4. 类中实例属性的查找顺序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.类的高级特性.html#isinstance">7.15.5. isinstance()的用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.类的高级特性.html#id5">7.15.6. 抽象基类</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="15.类的高级特性.html#id6">代码示例 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.类的高级特性.html#id7">代码示例 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="15.类的高级特性.html#id8">7.15.7. 元类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.类的高级特性.html#type">7.15.8. 通过type来创建类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.类的高级特性.html#id9">7.15.9. 通过传入的字符串动态的创建不同的类</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="16.一些魔法方法.html">7.16. 一些魔法方法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#call">7.16.1. __call__方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#doc">7.16.2. __doc__方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#getitem">7.16.3. __getitem__方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#init-new">7.16.4. __init__方法和__new__方法的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#slots">7.16.5. __slots__限制实例的变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#str-repr">7.16.6. __str__和__repr__的使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#del">7.16.7. 构造方法和__del__析构方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#dir">7.16.8. __dir__()方法，列出所有属性和方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#add">7.16.9. 运算符重载_<em>add_</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#is">7.16.10. is 判断对象是否属于相同的对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#id2">7.16.11. 其他一些魔法方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#getattr-getattribute">7.16.12. __getattr__和__getattribute__的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.一些魔法方法.html#setattr-getattr-getattribute-delattr">7.16.13. __setattr__、__getattr<strong>、__getattribute</strong>、__delattr__ 方法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="17.类的反射，设置、删除、检测.html">7.17. 类的检测、判断、设置、删除、获取</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="17.类的反射，设置、删除、检测.html#id2">7.17.1. 用代码来理解</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="17.类的反射，设置、删除、检测.html#id3">代码示例 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="17.类的反射，设置、删除、检测.html#id4">代码示例 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="18.多态-鸭子类型.html">7.18. 多态-鸭子类型</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="18.多态-鸭子类型.html#id2">7.18.1. 用代码来理解</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="18.多态-鸭子类型.html#id3">多态</a></li>
+<li class="toctree-l3"><a class="reference internal" href="18.多态-鸭子类型.html#id4">鸭子类型代码示例1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="18.多态-鸭子类型.html#id5">鸭子类型代码示例2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="19.类属性描述符.html">7.19. 类属性描述符</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="19.类属性描述符.html#id2">7.19.1. 用代码来理解</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="19.类属性描述符.html#id3">代码示例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="20.一个简单的类示例.html">7.20. 一个简单的类的例子</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="20.一个简单的类示例.html#id2">7.20.1. 用代码来理解</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="20.一个简单的类示例.html#id3">代码示例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="21.人开枪射击子弹_OOP.html">7.21. 人开枪射击子弹_OOP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="21.人开枪射击子弹_OOP.html#id1">7.21.1. 分析</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="22.组合.html">7.22. 组合</a></li>
+<li class="toctree-l1"><a class="reference internal" href="23.扩展列表、字典.html">7.23. 扩展列表、字典</a></li>
+<li class="toctree-l1"><a class="reference internal" href="24.工厂方法.html">7.24. 工厂方法</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01.什么是面对对象设计.html" class="btn btn-neutral float-right" title="7.1. 什么是面对对象设计" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../06.迭代器_生成器_装饰器/04.装饰器.html" class="btn btn-neutral float-left" title="6.4. 装饰器" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

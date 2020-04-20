@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8.10. 10.Go语言多核并行化 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="8.11. 11.Go语言Telnet回音服务器-TCP服务器的基本结构" href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html" />
+    <link rel="prev" title="8.9. 09.Go语言关闭通道后继续使用通道" href="09.Go语言关闭通道后继续使用通道.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">8. 08.并发</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html">8.1. 01.轻量级线程(goroutine)-根据需要随时创建“线程“</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.goroutine和coroutine的区别.html">8.2. 02.goroutine和coroutine的区别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html">8.3. 03.通道(channel)-在多个goroutine间通信的管道</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Go语言无缓冲的通道.html">8.4. 04.Go语言无缓冲的通道</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.Go语言带缓冲的通道.html">8.5. 05.Go语言带缓冲的通道</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言channel超时机制.html">8.6. 06.Go语言channel超时机制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据.html">8.7. 07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.Go语言RPC(模拟远程过程调用).html">8.8. 08.Go语言RPC(模拟远程过程调用)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.Go语言关闭通道后继续使用通道.html">8.9. 09.Go语言关闭通道后继续使用通道</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">8.10. 10.Go语言多核并行化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html">8.11. 11.Go语言Telnet回音服务器-TCP服务器的基本结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.同步-保证并发环境下数据访问的正确性.html">8.12. 12.同步-保证并发环境下数据访问的正确性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.html">8.13. 互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.Go语言等待组（sync.WaitGroup).html">8.14. 14.Go语言等待组（sync.WaitGroup)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">8. 08.并发</a> &raquo;</li>
+        
+      <li>8.10. 10.Go语言多核并行化</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/08.并发/10.Go语言多核并行化.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#go" id="id1">10.Go语言多核并行化</a></li>
+</ul>
+</div>
+<div class="section" id="go">
+<h1><a class="toc-backref" href="#id1">8.10. 10.Go语言多核并行化</a><a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h1>
+<p>Go语言具有支持高并发的特性，可以很方便地实现多线程运算，充分利用多核心
+cpu 的性能。</p>
+<p>众所周知服务器的处理器大都是单核频率较低而核心数较多，对于支持高并发的程序语言，可以充分利用服务器的多核优势，从而降低单核压力，减少性能浪费。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="p">:</span><span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="n">go</span> <span class="n">AsyncFunc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">AsyncFunc</span><span class="p">(</span><span class="n">i</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">sum</span> <span class="p">:</span><span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="p">:</span><span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nb">sum</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="11.Go语言Telnet回音服务器-TCP服务器的基本结构.html" class="btn btn-neutral float-right" title="8.11. 11.Go语言Telnet回音服务器-TCP服务器的基本结构" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="09.Go语言关闭通道后继续使用通道.html" class="btn btn-neutral float-left" title="8.9. 09.Go语言关闭通道后继续使用通道" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

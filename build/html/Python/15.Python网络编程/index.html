@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>15. Python 网络编程 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="15.1. TCP/IP协议" href="01.python网络编程基础.html" />
+    <link rel="prev" title="14.15. Jinja2模板" href="../14.Python三方库/15.Jinja2模板.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">15. Python 网络编程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.python网络编程基础.html">15.1. TCP/IP协议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.socket编程.html">15.2. socket编程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.socketserver编程.html">15.3. socketserver编程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.python收发邮件学习.html">15.4. Python发送邮件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.python实现通用的NTP时间服务器.html">15.5. python实现通用的NTP时间服务器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.使用Python实现一个geek邮件客户端.html">15.6. 使用Python实现一个geek邮件客户端</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.创建一个简单的REST接口.html">15.7. 07.创建一个简单的REST接口</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+      <li>15. Python 网络编程</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/15.Python网络编程/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python">
+<h1>15. Python 网络编程<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.python网络编程基础.html">15.1. TCP/IP协议</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.python网络编程基础.html#osi">15.1.1. OSI七层网络模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.python网络编程基础.html#ositcp-ip">15.1.2. OSI七层模型和TCP/IP四层模型 对应的网络协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.python网络编程基础.html#id1">15.1.3. TCP/IP协议中，其各层之间的通信机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.python网络编程基础.html#socket">15.1.4. 什么是socket套接字？</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.socket编程.html">15.2. socket编程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.socket编程.html#pythonsocket">15.2.1. Python中的socket通信逻辑如下图所示（图片来自网络）：</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.socket编程.html#socket-socket">15.2.2. socket.socket()方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.socket编程.html#id1">15.2.3. socket编程思路：</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.socket编程.html#tcp">15.2.4. TCP编程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.socket编程.html#id2">服务端</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.socket编程.html#id3">一个简易的聊天系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.socket编程.html#id4">客户端</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.socket编程.html#c-1-s-1">代码示例 C-1—&gt;S-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.socket编程.html#c-2-s-2">客户端 代码示例 2 C-2—&gt;S-2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.socket编程.html#tcp-socket">15.2.5. TCP Socket文件上传工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.socket编程.html#udp-socket">15.2.6. UDP Socket文件上传工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.socket编程.html#udp">15.2.7. UDP编程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.socket编程.html#id5">服务端</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.socket编程.html#id7">客户端</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.socket编程.html#id9">15.2.8. socket模块创建多线程服务器</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.socket编程.html#id10">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02.socket编程.html#id11">15.2.9. 一个TCP的聊天程序</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02.socket编程.html#id12">执行如下</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03.socketserver编程.html">15.3. socketserver编程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03.socketserver编程.html#threadingtcpserver">15.3.1. 使用ThreadingTCPServer的要点:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.socketserver编程.html#id1">15.3.2. ThreadingTCPServer 示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.socketserver编程.html#id2">服务端 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.socketserver编程.html#id3">服务器 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.socketserver编程.html#id4">客户端</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03.socketserver编程.html#id5">15.3.3. 服务器端的代码，核心要点</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04.python收发邮件学习.html">15.4. Python发送邮件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#test">15.4.1. 发送一个简单的test邮件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.python收发邮件学习.html#id1">代码如下</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#id2">15.4.2. 完整的发送邮件代码</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.python收发邮件学习.html#id3">代码示例 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.python收发邮件学习.html#id4">代码示例 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.python收发邮件学习.html#id5">代码示例 3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#html">15.4.3. 发送HTML的邮件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#html2">15.4.4. 发送html邮件示例2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#id6">15.4.5. 发送代码示例3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#id7">15.4.6. 发送带附件的邮件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.python收发邮件学习.html#mimeapplication">代码示例2(使用 MIMEApplication,传输文件中文文件会乱码，暂时无解决办法)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#smtp">15.4.7. 加密SMTP邮件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#id8">15.4.8. Python 发送图片到邮件正文</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.python收发邮件学习.html#id9">发送图片作为附件如下</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.python收发邮件学习.html#id10">带图片及附件的邮件</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#htmlplain">15.4.9. 同时支持HTML和Plain格式的邮件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#id11">15.4.10. 加密SMTP协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#pop3">15.4.11. POP3下载查阅邮件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#id12">15.4.12. 封装一个发送邮件的函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#id13">15.4.13. 封装一个发邮件的类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.python收发邮件学习.html#id14">15.4.14. 封装一个发邮件的类2,</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05.python实现通用的NTP时间服务器.html">15.5. python实现通用的NTP时间服务器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06.使用Python实现一个geek邮件客户端.html">15.6. 使用Python实现一个geek邮件客户端</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="06.使用Python实现一个geek邮件客户端.html#yagmail">15.6.1. 开源yagmail发送邮件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="06.使用Python实现一个geek邮件客户端.html#id1">使用示例：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.使用Python实现一个geek邮件客户端.html#emcli">emcli的功能实现</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="07.创建一个简单的REST接口.html">15.7. 07.创建一个简单的REST接口</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="07.创建一个简单的REST接口.html#id1">15.7.1. 问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07.创建一个简单的REST接口.html#id2">15.7.2. 解决方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07.创建一个简单的REST接口.html#id3">15.7.3. 参考资料</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01.python网络编程基础.html" class="btn btn-neutral float-right" title="15.1. TCP/IP协议" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../14.Python三方库/15.Jinja2模板.html" class="btn btn-neutral float-left" title="14.15. Jinja2模板" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

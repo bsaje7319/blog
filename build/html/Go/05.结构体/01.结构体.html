@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.1. 结构体 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="5.2. 02.构造函数-结构体和类型的一系列初始化操作的函数封装" href="02.构造函数.html" />
+    <link rel="prev" title="5. 05.结构体" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. 01.Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">5. 05.结构体</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.1. 结构体</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">5.1.1. 1.定义结构体</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">5.1.2. 2.实例化结构体-为结构体分配内存并初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">5.1.3. 3.初始化结构体的成员变量</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="02.构造函数.html">5.2. 02.构造函数-结构体和类型的一系列初始化操作的函数封装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.方法.html">5.3. 03.方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.接收器.html">5.4. 04.接收器-方法作用的目标</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.类型内嵌和结构体内嵌.html">5.5. 05.类型内嵌和结构体内嵌</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">5. 05.结构体</a> &raquo;</li>
+        
+      <li>5.1. 结构体</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/05.结构体/01.结构体.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id14">结构体</a><ul>
+<li><a class="reference internal" href="#id2" id="id15">1.定义结构体</a></li>
+<li><a class="reference internal" href="#id3" id="id16">2.实例化结构体-为结构体分配内存并初始化</a><ul>
+<li><a class="reference internal" href="#id4" id="id17">2.1 基本的实例化形式</a></li>
+<li><a class="reference internal" href="#id5" id="id18">2.2创建指针类型的结构体</a></li>
+<li><a class="reference internal" href="#id6" id="id19">2.3取结构体的地址实例化</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7" id="id20">3.初始化结构体的成员变量</a><ul>
+<li><a class="reference internal" href="#id8" id="id21">使用“键值对”初始化结构体</a></li>
+<li><a class="reference internal" href="#id10" id="id22">使用多个值的列表初始化结构体</a></li>
+<li><a class="reference internal" href="#id12" id="id23">初始化匿名结构体</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id14">5.1. 结构体</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Go语言通过自定义的方式形成新的类型，结构体是类型中带有成员的复合类型。
+Go语言使用结构体和结构体成员来描述真实世界的实体和实体对应的各种属性。</p>
+<p>Go语言中的类型可以被实例化，使用new或“&amp;”构造的类型示例的类型是类型的指针。</p>
+<p>结构体中由一系列成员变量组成，这些成员变量也被称为“字段”。字段有以下特征：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>· 字段用于自己的类型和值
+· 字段名必须唯一
+· 字段的类型也可以是结构体，甚至字段所在结构体的类型。
+</pre></div>
+</div>
+<p>Go语言中没有“类”的概念，也不支持“类”的继承等面向对象的概念。</p>
+<p>Go语言不仅任务结构体能拥有方法，且每种自定义类型也可以拥有自己的方法。</p>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id15">5.1.1. 1.定义结构体</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Go语言的关键字type可以将各种基本类型定义为自定义类型，基本类型包括：整型、字符串、布尔等。
+结构体是一种复合的基本类型，通过type定义为自定义类型后，使结构体更便于使用。</p>
+<p>结构体的定义格式如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">类型名</span> <span class="n">struct</span> <span class="p">{</span>
+<span class="n">字段1</span> <span class="n">字段1</span> <span class="n">类型</span>
+<span class="n">字段2</span> <span class="n">字段2</span> <span class="n">类型</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>· 类型名： 标识自定义结构体的名称，在同一个包内不能重复
+
+· struct{} ：表示结构体类型，type类型名struct{}可以理解将struct{}结构体定义为类型名的类型。
+
+· 字段1、字段2···： 表示结构体字段名。结构体中的字段名必须唯一。
+
+· 字段1类型、字段2类型···：表示结构体字段的类型。
+</pre></div>
+</div>
+<p>表示一个包含X和Y整型分量的点结构</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">Point</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">X</span> <span class="nb">int</span>
+    <span class="n">Y</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>同类型的变量可以写在一行</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">Color</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span> <span class="n">byte</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id16">5.1.2. 2.实例化结构体-为结构体分配内存并初始化</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id17">2.1 基本的实例化形式</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>基本实例化格式如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">ins</span> <span class="n">T</span>
+</pre></div>
+</div>
+<p>· ins 为结构体实例</p>
+<p>· T 为结构体类型</p>
+<p>实例化结构体 Point，如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">p</span> <span class="n">Point</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="mi">19</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">Y</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">Y</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>使用“.”来访问结构体的成员变量。如p.X何p.Y等，结构体成员变量的赋值方法与普通变量一致。</p>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id18">2.2创建指针类型的结构体</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Go语言中，还可以使用new关键字对类型进行实例化，结构体在实例化后会形成指针类型的结构体。</p>
+<p>使用new格式如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ins</span> <span class="p">:</span><span class="o">=</span><span class="n">new</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>· T 为类型，可以是结构体、整型、字符串等</p>
+<p>· ins： T类型被实例化后保存到ins变量中，ins的类型为*T，属于指针。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+type Player struct {
+    Name        string
+    HealthPoint int
+    MagicPoint  int
+}
+
+func main() {
+    tank := new(Player)
+    tank.Name = &quot;Hujianli01&quot;
+    tank.HealthPoint = 300
+    // 通过new实例化的结构体实例在成员赋值上与基本实例化的写法一致
+}
+
+Go语言为了方便开发者访问结构体指针的成员变量，使用了语法糖（Syntacticsugar）技术，将ins.Name形式转换为(*ins).Name。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id19">2.3取结构体的地址实例化</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>ins :=&amp;T{}
+
+· T表示结构体类型
+· ins为结构体的实例，类型为*T，是指针类型
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="nb">type</span> <span class="n">Command</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">Name</span>    <span class="n">string</span> <span class="o">//</span><span class="n">指令的名称</span>
+    <span class="n">Var</span>     <span class="o">*</span><span class="nb">int</span>   <span class="o">//</span> <span class="n">指令绑定的变量</span>
+    <span class="n">Comment</span> <span class="n">string</span> <span class="o">//</span> <span class="n">指令的注释</span>
+<span class="p">}</span>
+
+<span class="n">var</span> <span class="n">version</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">func</span> <span class="n">newCommand</span><span class="p">(</span><span class="n">name</span> <span class="n">string</span><span class="p">,</span> <span class="n">varref</span> <span class="o">*</span><span class="nb">int</span><span class="p">,</span> <span class="n">comment</span> <span class="n">string</span><span class="p">)</span> <span class="o">*</span><span class="n">Command</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="n">Command</span><span class="p">{</span>
+        <span class="n">Name</span><span class="p">:</span>    <span class="s2">&quot;version&quot;</span><span class="p">,</span>
+        <span class="n">Var</span><span class="p">:</span>     <span class="n">nil</span><span class="p">,</span>
+        <span class="n">Comment</span><span class="p">:</span> <span class="s2">&quot;show version&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span><span class="n">cmd</span> <span class="p">:</span><span class="o">=</span> <span class="o">&amp;</span><span class="n">Command</span><span class="p">{}</span>
+    <span class="o">//</span><span class="n">cmd</span><span class="o">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;hujianli722&quot;</span>
+    <span class="o">//</span><span class="n">cmd</span><span class="o">.</span><span class="n">Var</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">version</span>
+    <span class="o">//</span><span class="n">cmd</span><span class="o">.</span><span class="n">Comment</span> <span class="o">=</span> <span class="s2">&quot;show version&quot;</span>
+    <span class="n">cmd</span> <span class="p">:</span><span class="o">=</span> <span class="n">newCommand</span><span class="p">(</span><span class="s2">&quot;version&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">version</span><span class="p">,</span> <span class="s2">&quot;show version&quot;</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id20">5.1.3. 3.初始化结构体的成员变量</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>初始化有两种形式： · 一种是字段“键值对”形式</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">键值对形式的初始化适合选择性填充字段较多的结构体</span>
+</pre></div>
+</div>
+<p>· 多个值的列表形式。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">多个值的列表形式适合填充字段较少的结构体</span>
+</pre></div>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id21">使用“键值对”初始化结构体</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>键值对初始化结构体的格式：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>ins := 结构体类型名 {
+    字段1：字段1的值
+    字段2：字段2的值
+}
+</pre></div>
+</div>
+<div class="section" id="id9">
+<h4>1.使用键值对填充结构的例子<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+type People struct {
+    name string
+    // 结构体的结构体指针字段，类型是*People
+    child *People
+}
+
+func main() {
+    // People取地址后，锡恩超类型为*People的实例
+    relation := &amp;People{
+        name: &quot;爷爷&quot;,
+        // 使用取地址初始化一个People。结构体成员中只能包含结构体的指针类型。
+        child: &amp;People{
+            name: &quot;爸爸&quot;,
+            child: &amp;People{
+                name: &quot;我&quot;,
+            },
+        },
+    }
+    fmt.Println(relation.name)          //爷爷
+    fmt.Println(relation.child.name)    //爸爸
+    fmt.Println(relation.child.child.name)  //我
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id22">使用多个值的列表初始化结构体</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>多个值列表初始化结构体的书写格式</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>ins := 结构体类型名{
+    字段1的值，
+    字段2的值，
+}
+</pre></div>
+</div>
+<div class="section" id="id11">
+<h4>2.多个值列表初始化的例子<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="nb">type</span> <span class="n">Address</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">Province</span>    <span class="n">string</span>
+    <span class="n">City</span>        <span class="n">string</span>
+    <span class="n">ZipCode</span>     <span class="nb">int</span>
+    <span class="n">PhoneNumber</span> <span class="n">string</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">addr</span> <span class="p">:</span><span class="o">=</span> <span class="n">Address</span><span class="p">{</span>
+        <span class="s2">&quot;四川&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;成都&quot;</span><span class="p">,</span>
+        <span class="mi">61000000</span><span class="p">,</span>
+        <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3><a class="toc-backref" href="#id23">初始化匿名结构体</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>匿名结构体没有类型名称，无须通过type关键字定义就可以直接使用。</p>
+<p>匿名结构体定义格式和初始化写法</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>ins := struct{
+    // 匿名结构体字段定义
+    字段1 字段类型1
+    字段2 字段类型2
+    ......
+
+}{
+    // 字段值初始化
+    初始化字段1： 字段1的值
+    初始化字段2： 字段2的值
+    ......
+}
+</pre></div>
+</div>
+<p>键值对初始化部分是可选的，不初始化成员时，匿名结构体的格式变为：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ins</span> <span class="p">:</span><span class="o">=</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">字段1</span> <span class="n">字段类型1</span>
+    <span class="n">字段2</span> <span class="n">字段类型2</span>
+    <span class="o">.....</span>
+<span class="p">}</span> <span class="p">{</span> <span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="id13">
+<h4>3.使用匿名结构体的例子<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+// 打印消息类型，传入匿名结构体
+func printMsgType(msg *struct {
+    id   int
+    data string
+}) {
+    // 使用动词%T打印msg的类型
+    fmt.Printf(&quot;%T\n&quot;, msg)
+    fmt.Println(msg.data)
+    fmt.Println(msg.id)
+}
+
+func main() {
+    // 实例化一个匿名结构体
+    msg := &amp;struct {        //定义部分
+        id int
+        data string
+    }{                      //值初始化部分
+        1024,
+        &quot;hello&quot;,
+    }
+    printMsgType(msg)
+
+}
+
+//*struct { id int; data string }
+//hello
+//1024
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="02.构造函数.html" class="btn btn-neutral float-right" title="5.2. 02.构造函数-结构体和类型的一系列初始化操作的函数封装" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="5. 05.结构体" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

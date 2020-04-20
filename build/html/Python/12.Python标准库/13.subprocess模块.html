@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>12.13. subprocess模块 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="12.14. collections模块" href="14.collections模块.html" />
+    <link rel="prev" title="12.12. zipfile、tarfile模块学习" href="12.zipfile、tarfile模块学习.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">12. Python 标准库学习</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.csv模块文件读写.html">12.1. csv模块文件读写</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.json、pickle、shelve模块.html">12.2. Json和Pickle序列化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.shutil模块.html">12.3. shutil模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.time、datetime模块.html">12.4. time、datetime模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.randome模块.html">12.5. randome模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.os(系统模块).html">12.6. os模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.sys(系统操作模块).html">12.7. sys系统操作模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.configparser模块.html">12.8. configparser模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.hashlib模块.html">12.9. hashlib算法库模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.re模块.html">12.10. re模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.logging模块.html">12.11. logging模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.zipfile、tarfile模块学习.html">12.12. zipfile、tarfile模块学习</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">12.13. subprocess模块</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#call">12.13.1. call()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-call">12.13.2. check_call()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-output">12.13.3. check_output()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#callcheck-callcheck-output">12.13.4. call、check_call、check_output代码示例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subprocess-popen">12.13.5. subprocess.Popen()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">12.13.6. subprocess.Popen()实例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">12.13.7. 上交花束小测试</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="14.collections模块.html">12.14. collections模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.Redis模块.html">12.15. Python标准库系列之Redis模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.urlib模块.html">12.16. urllib模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="17.Stringw文本常量和模块.html">12.17. Stringw文本常量和模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="18.math模块.html">12.18. math模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="19.tempfile模块.html">12.19. tempfile模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="20.argparse解析命令行参数.html">12.20. argparse解析命令行参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="21.解析XML文档.html">12.21. 解析XML文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="22.getopt模块.html">12.22. getopt模块</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">12. Python 标准库学习</a> &raquo;</li>
+        
+      <li>12.13. subprocess模块</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/12.Python标准库/13.subprocess模块.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#subprocess" id="id3">subprocess模块</a><ul>
+<li><a class="reference internal" href="#call" id="id4">call()</a></li>
+<li><a class="reference internal" href="#check-call" id="id5">check_call()</a></li>
+<li><a class="reference internal" href="#check-output" id="id6">check_output()</a></li>
+<li><a class="reference internal" href="#callcheck-callcheck-output" id="id7">call、check_call、check_output代码示例</a></li>
+<li><a class="reference internal" href="#subprocess-popen" id="id8">subprocess.Popen()</a></li>
+<li><a class="reference internal" href="#id1" id="id9">subprocess.Popen()实例</a></li>
+<li><a class="reference internal" href="#id2" id="id10">上交花束小测试</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="subprocess">
+<h1><a class="toc-backref" href="#id3">12.13. subprocess模块</a><a class="headerlink" href="#subprocess" title="Permalink to this headline">¶</a></h1>
+<p><strong>常用方法实例</strong></p>
+<div class="section" id="call">
+<h2><a class="toc-backref" href="#id4">12.13.1. call()</a><a class="headerlink" href="#call" title="Permalink to this headline">¶</a></h2>
+<p>执行命令，并返回状态码，状态码0代表命令执行成功，其他的都表示命令执行不成功</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s2">&quot;ls&quot;</span><span class="p">,</span> <span class="s2">&quot;-l&quot;</span><span class="p">],</span> <span class="n">shell</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">total 4</span>
+<span class="go">-rw-r--r-- 1 root root 172 May 25 21:21 file.conf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span>
+<span class="go">0</span>
+
+<span class="go">另一种执行方式</span>
+<span class="go"># shell=True表示调用原生的shell命令去执行</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;ls -l&quot;</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">total 4</span>
+<span class="go">-rw-r--r-- 1 root root 172 May 25 21:21 file.conf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-call">
+<h2><a class="toc-backref" href="#id5">12.13.2. check_call()</a><a class="headerlink" href="#check-call" title="Permalink to this headline">¶</a></h2>
+<p>执行命令，如果执行状态码是0，则返回0，否则抛异常</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 执行一个正确的命令就会返回执行结果和状态码</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="s2">&quot;ls&quot;</span><span class="p">,</span> <span class="s2">&quot;-l&quot;</span><span class="p">])</span>
+<span class="n">total</span> <span class="mi">4</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">172</span> <span class="n">May</span> <span class="mi">25</span> <span class="mi">21</span><span class="p">:</span><span class="mi">21</span> <span class="n">file</span><span class="o">.</span><span class="n">conf</span>
+<span class="mi">0</span>
+<span class="c1"># 如果执行的是一个错误的命令，那么就会返回错误信息</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="s2">&quot;ls&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">])</span>
+<span class="n">ls</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">access</span> <span class="n">a</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib64/python2.6/subprocess.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">505</span><span class="p">,</span> <span class="ow">in</span> <span class="n">check_call</span>
+    <span class="k">raise</span> <span class="n">CalledProcessError</span><span class="p">(</span><span class="n">retcode</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span> <span class="n">Command</span> <span class="s1">&#39;[&#39;</span><span class="n">ls</span><span class="s1">&#39;, &#39;</span><span class="n">a</span><span class="s1">&#39;]&#39;</span> <span class="n">returned</span> <span class="n">non</span><span class="o">-</span><span class="n">zero</span> <span class="n">exit</span> <span class="n">status</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-output">
+<h2><a class="toc-backref" href="#id6">12.13.3. check_output()</a><a class="headerlink" href="#check-output" title="Permalink to this headline">¶</a></h2>
+<p>执行命令，如果状态码是0，则返回执行结果，否则抛异常</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># 执行成功就把执行的结果赋值给变量V
+&gt;&gt;&gt; V = subprocess.check_output(&quot;python -V&quot;, shell=True)
+# 执行错误的命令就会输出异常
+&gt;&gt;&gt; subprocess.check_output(&quot;pasas&quot;, shell=True)
+&#39;pasas&#39; 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;C:\Python35\lib\subprocess.py&quot;, line 629, in check_output
+    **kwargs).stdout
+  File &quot;C:\Python35\lib\subprocess.py&quot;, line 711, in run
+    output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command &#39;pasas&#39; returned non-zero exit status 1
+</pre></div>
+</div>
+<ul class="simple">
+<li>以上的三种执行方式在执行命令的时候，shell默认等于True，等于True的时候，
+括号内的命令是一行的，如果shell等于False，那么[]内的字符串就是命令的一个元素，
+执行的时候会把[]内的字符串拼接起来执行。</li>
+</ul>
+</div>
+<div class="section" id="callcheck-callcheck-output">
+<h2><a class="toc-backref" href="#id7">12.13.4. call、check_call、check_output代码示例</a><a class="headerlink" href="#callcheck-callcheck-output" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">protest.py</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;call() test:&#39;</span><span class="p">,</span><span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="s1">&#39;protest.py&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;check_call() test:&#39;</span><span class="p">,</span><span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="s1">&#39;protest.py&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;getstatusoutput() test:&#39;</span><span class="p">,</span><span class="n">subprocess</span><span class="o">.</span><span class="n">getstatusoutput</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="s1">&#39;protest.py&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;getoutput() test:&#39;</span><span class="p">,</span><span class="n">subprocess</span><span class="o">.</span><span class="n">getoutput</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="s1">&#39;protest.py&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;check_output() test:&#39;</span><span class="p">,</span><span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="s1">&#39;protest.py&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>输出结果：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Hello World!
+call() test: 0
+
+Hello World!
+check_call() test: 0
+
+getstatusoutput() test: (0, &#39;Hello World!&#39;)
+
+getoutput() test: Hello World!
+
+check_output() test: b&#39;Hello World!\r\n&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="subprocess-popen">
+<h2><a class="toc-backref" href="#id8">12.13.5. subprocess.Popen()</a><a class="headerlink" href="#subprocess-popen" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>call()、check_call()、check_output()默认内部调用的都是subprocess.Popen()，而subprocess.Popen()则用于执行更复杂的系统命令。</li>
+</ul>
+<p>参数</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>stdin</td>
+<td>标准输入</td>
+</tr>
+<tr class="row-odd"><td>stdout</td>
+<td>标准输出</td>
+</tr>
+<tr class="row-even"><td>stderr</td>
+<td>错误句柄</td>
+</tr>
+<tr class="row-odd"><td>cwd</td>
+<td>用于设置子进程的当前目录</td>
+</tr>
+<tr class="row-even"><td>env</td>
+<td>用于指定子进程的环境变量</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>执行普通命令</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="s2">&quot;Python -V&quot;</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&lt;subprocess.Popen object at 0x0000025C97233C88&gt;</span>
+<span class="go"># Python 3.5.1是输出出来的结果</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>执行命令分为两种：</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span>输入即可得到输出，如：ifconfig
+输入进行某交互式环境，依赖再输入，如：python
+&gt;&gt;&gt; import subprocess
+# 先进入&#39;/tmp&#39;目录，然后在创建subprocess文件夹，shell=True可有可无
+&gt;&gt;&gt; subprocess.Popen(&quot;mkdir subprocess&quot;, shell=True, cwd=&#39;/tmp&#39;,)
+&lt;subprocess.Popen object at 0x7f267cc3d390&gt;
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; os.system(&quot;ls /tmp&quot;)
+subprocess
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id9">12.13.6. subprocess.Popen()实例</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 导入subprocess模块</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="c1"># 执行python命令，进入python解释器，stdin标准输入、stdout标准输出、stderr错误输出，universal_newlines=True自动输入换行符</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;python&quot;</span><span class="p">],</span> <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 执行标准输入，write后面是输入的命令</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;print(1)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;print(2)&quot;</span><span class="p">)</span>
+<span class="c1"># 输入之后关闭</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># 读取标准输出的内容，赋值给cmd_out对象</span>
+<span class="n">cmd_out</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="c1"># 关闭标准输出</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># 读取错误输出的内容，赋值给cmd_error对象</span>
+<span class="n">cmd_error</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># 关闭错误输出</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># 输出内容</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cmd_out</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cmd_error</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 导入subprocess模块</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="c1"># 执行python命令，进入python解释器，stdin标准输入、stdout标准输出、stderr错误输出，universal_newlines=True自动输入换行符</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;python&quot;</span><span class="p">],</span> <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 执行两条命令</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;print(1)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;print(2)&quot;</span><span class="p">)</span>
+
+<span class="c1"># communicate把错误输出或者标准输出的内容赋值给out_error_list对象，如果有错误就赋值错误输出，否则就复制标准输出</span>
+<span class="n">out_error_list</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+
+<span class="c1"># 输出out_error_list对象的内容</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out_error_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 导入subprocess模块</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="c1"># 执行python命令，进入python解释器，stdin标准输入、stdout标准输出、stderr错误输出，universal_newlines=True自动输入换行符</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;python&quot;</span><span class="p">],</span> <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="c1"># 直接执行print(&quot;hello&quot;)命令，然后把错误或者正确的结果赋值给out_error_list对象</span>
+<span class="n">out_error_list</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="s1">&#39;print(&quot;hello&quot;)&#39;</span><span class="p">)</span>
+
+<span class="c1"># 输出out_error_list对象的内容</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out_error_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="n">s</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="s1">&#39;sleep 20&#39;</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> \
+        <span class="n">stdin</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdout</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+<span class="nb">print</span> <span class="o">.</span><span class="n">wait</span><span class="p">()</span>         <span class="c1"># 阻塞等待子进程完成并返回状态码 shell 0为正确  但管道内容过多会造成死锁可以用 communicate()</span>
+<span class="nb">print</span> <span class="n">s</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span> <span class="n">s</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="nb">print</span> <span class="n">s</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>     <span class="c1"># 返回元组 (stdout, stderr)  会阻塞等待进程完成 推荐使用</span>
+<span class="nb">print</span> <span class="n">s</span><span class="o">.</span><span class="n">returncode</span>        <span class="c1"># 返回执行状态</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="n">prcs</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="s1">&#39;test.py&#39;</span><span class="p">],</span>
+                        <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                        <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                        <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                        <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">prcs</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="s2">&quot;These strings are from stdin.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;subprcess pid: .&quot;</span><span class="p">,</span> <span class="n">prcs</span><span class="o">.</span><span class="n">pid</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">STDOUT: &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">prcs</span><span class="o">.</span><span class="n">communicate</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;STDERR: &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">prcs</span><span class="o">.</span><span class="n">communicate</span><span class="p">()[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>输出信息:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>subprcess pid: . 1492
+
+STDOUT:
+hello world
+this is subprocess test....!
+
+STDERR:
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id10">12.13.7. 上交花束小测试</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>实现进程之间传输数据。</p>
+<p>进程之间互相通信。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/6/26 11:37</span>
+<span class="c1"># filename: subprocess上交花束.py</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="n">processes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">psum</span> <span class="o">=</span><span class="mi">5</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">psum</span><span class="p">):</span>
+    <span class="n">processes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;protest9.py&#39;</span><span class="p">],</span>
+                                      <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                                      <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                                      <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                      <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="n">processes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="s1">&#39;0 bouquet of flowers!&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">before</span><span class="p">,</span><span class="n">after</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">processes</span><span class="p">[:</span><span class="n">psum</span><span class="p">],</span><span class="n">processes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+    <span class="n">after</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="n">before</span><span class="o">.</span><span class="n">communicate</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Sum of Processes: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">psum</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">processes</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">communicate</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>protest9.py</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/6/26 11:41</span>
+<span class="c1"># filename: protest9.py</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>输出结果</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> Sum of Processes: 5
+
+1 bouquet of flowers!
+
+2 bouquet of flowers!
+
+3 bouquet of flowers!
+
+4 bouquet of flowers!
+
+5 bouquet of flowers!
+</pre></div>
+</div>
+<p>subprocess模块执行外部命令</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">execute_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="n">prcs</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span>
+                            <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                            <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                            <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+    <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">prcs</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">prcs</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">prcs</span><span class="o">.</span><span class="n">returncode</span><span class="p">,</span> <span class="n">stderr</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">prcs</span><span class="o">.</span><span class="n">returncode</span><span class="p">,</span> <span class="n">prcs</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exec_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Execute arbitrary commands as sub-processes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span>
+                            <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                            <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                            <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                            <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">proc</span><span class="o">.</span><span class="n">returncode</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="14.collections模块.html" class="btn btn-neutral float-right" title="12.14. collections模块" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="12.zipfile、tarfile模块学习.html" class="btn btn-neutral float-left" title="12.12. zipfile、tarfile模块学习" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

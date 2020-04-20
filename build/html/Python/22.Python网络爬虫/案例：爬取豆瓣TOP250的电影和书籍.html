@@ -1,0 +1,479 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>20.23. 案例：爬取豆瓣TOP250的电影和书籍 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="20.24. 案例：爬取起点中文网数据存到excel中" href="案例：爬取起点中文网数据存到excel中.html" />
+    <link rel="prev" title="20.22. 案例：爬取股票网站数据转为json" href="案例：爬取股票网站数据转为json.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">20. Python网络爬虫</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.基础语法复习.html">20.1. 基础语法复习</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01_1.python的网络请求.html">20.2. python的网络请求</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.爬虫原理和网页结构.html">20.3. 爬虫原理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.我的第一个爬虫程序.html">20.4. 我的第一个爬虫程序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.正则表达式.html">20.5. 正则表达式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.re模块的常用方法.html">20.6. re模块的常用方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Lxml库和Xpath语法.html">20.7. Lxml库和Xpath语法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.三种爬虫模式性能对比.html">20.8. 3种爬虫模式性能对比</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.使用API.html">20.9. 使用API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.数据的存储.html">20.10. 数据的存储</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.多进程爬虫.html">20.11. 多进程爬虫</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.异步加载.html">20.12. 异步加载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.表单交互与模拟登录.html">20.13. 表单交互与模拟登陆</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Selenium模拟浏览器.html">20.14. Selenium模拟浏览器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="14.手写Python爬虫.html">20.15. 手写python爬虫</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取中国天气网图片.html">20.16. 案例：爬取中国天气网图片</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取小说.html">20.17. 案例：爬取小说</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取猫眼电影TOP100排行.html">20.18. 案例：爬取猫眼电影TOP100排行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：使用BeautifulSoup爬取租房信息.html">20.19. 使用BeautifulSoup爬取租房信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取糗事百科内容.html">20.20. 爬取糗事百科内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取纳斯达克股票数据.html">20.21. 案例：爬取纳斯达克股票数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取股票网站数据转为json.html">20.22. 案例：爬取股票网站数据转为json</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">20.23. 案例：爬取豆瓣TOP250的电影和书籍</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">20.23.1. 案例1：爬取豆瓣TOP250的书籍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">20.23.2. 案例2：爬取豆瓣TOP250的影评</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取起点中文网数据存到excel中.html">20.24. 案例：爬取起点中文网数据存到excel中</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取酷狗TOP500的数据.html">20.25. 爬取酷狗TOP500的数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="案例：爬取今日头条信息(Ajax).html">20.26. 案例：爬取今日头条信息(Ajax)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">20. Python网络爬虫</a> &raquo;</li>
+        
+      <li>20.23. 案例：爬取豆瓣TOP250的电影和书籍</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/22.Python网络爬虫/案例：爬取豆瓣TOP250的电影和书籍.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#top250" id="id5">案例：爬取豆瓣TOP250的电影和书籍</a><ul>
+<li><a class="reference internal" href="#id1" id="id6">案例1：爬取豆瓣TOP250的书籍</a><ul>
+<li><a class="reference internal" href="#id2" id="id7">思路</a></li>
+<li><a class="reference internal" href="#book-out-csv" id="id8">把评分为9.0的书籍保存到book_out.csv文件中</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4" id="id9">案例2：爬取豆瓣TOP250的影评</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="top250">
+<h1><a class="toc-backref" href="#id5">20.23. 案例：爬取豆瓣TOP250的电影和书籍</a><a class="headerlink" href="#top250" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id6">20.23.1. 案例1：爬取豆瓣TOP250的书籍</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id7">思路</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>使用了xpath的方法。读取xml、html文件特征</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>手动浏览，查看翻页的规律，找到翻页的标志字段
+
+https://book.douban.com/top250?start=0
+https://book.douban.com/top250?start=25
+https://book.douban.com/top250?start=50
+......
+只有10页，每一页25个书籍列表
+</pre></div>
+</div>
+<ul class="simple">
+<li>爬取的信息有：书名、作者、出版社、出版时间、价格、评分，导语</li>
+<li>爬出的信息保存到csv文件中</li>
+</ul>
+<div class="section" id="id3">
+<h4>代码示例<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>          <span class="c1">#导入3个库:lxml、csv、requests</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="c1"># &lt;p class=&quot;pl&quot;&gt;[美] 卡勒德·胡赛尼 / 李继宏 / 上海人民出版社 / 2006-5 / 29.00元&lt;/p&gt;</span>
+<span class="c1">#//*[@id=&quot;content&quot;]/div/div[1]/div/table[1]/tbody/tr/td[2]/div[2]</span>
+
+<span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;douban.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+<span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">((</span><span class="s2">&quot;书名&quot;</span><span class="p">,</span> <span class="s2">&quot;链接&quot;</span><span class="p">,</span> <span class="s2">&quot;作者&quot;</span><span class="p">,</span> <span class="s2">&quot;出版社&quot;</span><span class="p">,</span> <span class="s2">&quot;出版时间&quot;</span><span class="p">,</span> <span class="s2">&quot;价格&quot;</span><span class="p">,</span> <span class="s2">&quot;评分&quot;</span><span class="p">,</span> <span class="s2">&quot;导语&quot;</span><span class="p">))</span>
+<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://book.douban.com/top250?start=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">250</span><span class="p">)]</span>
+<span class="c1">#加入请求头部</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36&quot;</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">selector</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">infos</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//tr[@class=&quot;item&quot;]&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">infos</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;td[2]/div[1]/a/@title&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;td[2]/div[1]/a/@href&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">book_infos</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;td[2]/p/text()&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">author</span> <span class="o">=</span> <span class="n">book_infos</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">publisher</span> <span class="o">=</span> <span class="n">book_infos</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">book_infos</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">price</span> <span class="o">=</span> <span class="n">book_infos</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">rate</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;td[2]/div[2]/span[2]/text()&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">comments</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;td[2]/p[2]/span/text()&quot;</span><span class="p">)</span>
+        <span class="n">comment</span> <span class="o">=</span> <span class="n">comments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">comments</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;空&quot;</span>
+
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">((</span><span class="n">name</span><span class="p">,</span><span class="n">url</span><span class="p">,</span><span class="n">author</span><span class="p">,</span><span class="n">publisher</span><span class="p">,</span><span class="n">date</span><span class="p">,</span><span class="n">price</span><span class="p">,</span><span class="n">rate</span><span class="p">,</span><span class="n">comment</span><span class="p">))</span>
+<span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>截图如下：</li>
+</ul>
+<p>CSV获取的数据</p>
+<p><img alt="image0" src="../../_images/douban_book.PNG" /></p>
+</div>
+</div>
+<div class="section" id="book-out-csv">
+<h3><a class="toc-backref" href="#id8">把评分为9.0的书籍保存到book_out.csv文件中</a><a class="headerlink" href="#book-out-csv" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 打开的时候必须用encoding=&#39;utf-8&#39;，否则报错</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;douban-Top250.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rf</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">rf</span><span class="p">)</span>
+    <span class="c1"># 读取头部</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;books_out_9.0.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">wf</span><span class="p">:</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">wf</span><span class="p">)</span>
+        <span class="c1"># 把头部信息写进去</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+            <span class="c1"># 获取评分</span>
+            <span class="n">score</span> <span class="o">=</span> <span class="n">book</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+            <span class="c1"># 把评分大于9.0的过滤出来</span>
+            <span class="k">if</span> <span class="n">score</span> <span class="ow">and</span> <span class="nb">float</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">9.0</span><span class="p">:</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id9">20.23.2. 案例2：爬取豆瓣TOP250的影评</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>代码示例</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/9/18 14:09</span>
+<span class="c1"># filename: 爬取豆瓣TOP250影评.py</span>
+<span class="kn">from</span> <span class="nn">urllib</span> <span class="k">import</span> <span class="n">request</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">翻页查看</span>
+<span class="sd">https://movie.douban.com/top250?start=0&amp;filter=</span>
+<span class="sd">https://movie.douban.com/top250?start=25&amp;filter=</span>
+<span class="sd">https://movie.douban.com/top250?start=50&amp;filter=</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">MovieTop</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="s1">&#39;&amp;filter=&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36&quot;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">move_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;./movie_spider.txt&quot;</span>
+
+    <span class="k">def</span> <span class="nf">get_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        获取页数</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://movie.douban.com/top250?start=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+            <span class="n">req</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+            <span class="n">page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+            <span class="n">page_num</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="mi">25</span><span class="p">)</span> <span class="o">//</span> <span class="mi">25</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正则抓取</span><span class="si">{}</span><span class="s2">页数据....&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">page_num</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">+=</span> <span class="mi">25</span>
+            <span class="k">return</span> <span class="n">page</span>
+        <span class="k">except</span> <span class="n">request</span><span class="o">.</span><span class="n">URLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">&#39;reason&#39;</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;抓取失败，失败原因:</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">get_movie_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+            <span class="s1">&#39;&lt;div class=&quot;item&quot;&gt;.*?&lt;span class=&quot;title&quot;&gt;(.*?)&lt;/span&gt;.*?&lt;span class=&quot;other&quot;&gt;&amp;nbsp;/&amp;nbsp;(.*?)&lt;/span&gt;.*?&lt;span class=&quot;playable&quot;&gt;(.*?)&lt;/span&gt;.*?&lt;p class=&quot;&quot;&gt;(.*?)&lt;/p&gt;.*?&lt;span class=&quot;rating_num&quot; property=&quot;v:average&quot;&gt;(.*?)&lt;/span&gt;.*?&lt;span&gt;(.*?)&lt;/span&gt;.*?&lt;span class=&quot;inq&quot;&gt;(.*?)&lt;/span&gt;&#39;</span><span class="p">,</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">&lt;=</span> <span class="mi">225</span><span class="p">:</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_page</span><span class="p">()</span>
+            <span class="n">moves_info</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">html</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">moves_info</span><span class="p">:</span>
+                <span class="n">Movie_name</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">Keyword</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">isPlay</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">info_yanyuan</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">score</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                <span class="n">number_of_People</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                <span class="n">Summary</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">move_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">Movie_name</span><span class="p">,</span> <span class="n">Keyword</span><span class="p">,</span> <span class="n">isPlay</span><span class="p">,</span> <span class="n">info_yanyuan</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">number_of_People</span><span class="p">,</span> <span class="n">Summary</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">write_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;开始向文件写入数据....................&quot;</span><span class="p">)</span>
+        <span class="n">File_top</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">movie</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">move_list</span><span class="p">:</span>
+                <span class="n">File_top</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;电影名称：&quot;</span> <span class="o">+</span> <span class="n">movie</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">File_top</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;电影关键词：&quot;</span> <span class="o">+</span> <span class="n">movie</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">File_top</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;是否可播放：&quot;</span> <span class="o">+</span> <span class="n">movie</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">File_top</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;导演/演员信息：&quot;</span> <span class="o">+</span> <span class="n">movie</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">File_top</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;电影评分：&quot;</span> <span class="o">+</span> <span class="n">movie</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">File_top</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;评论人数：&quot;</span> <span class="o">+</span> <span class="n">movie</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">File_top</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;电影精髓：&quot;</span> <span class="o">+</span> <span class="n">movie</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;抓取结果写入文件成功.........&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">File_top</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;开始从豆瓣电影抓取数据....................&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_movie_info</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_text</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;数据抓取完毕.............&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">MovieTop</span><span class="p">()</span>
+    <span class="n">t1</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="案例：爬取起点中文网数据存到excel中.html" class="btn btn-neutral float-right" title="20.24. 案例：爬取起点中文网数据存到excel中" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="案例：爬取股票网站数据转为json.html" class="btn btn-neutral float-left" title="20.22. 案例：爬取股票网站数据转为json" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

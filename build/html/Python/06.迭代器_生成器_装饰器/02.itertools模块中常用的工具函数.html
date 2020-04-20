@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.2. 导入 itertools模块 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="6.3. 生成器" href="03.生成器.html" />
+    <link rel="prev" title="6.1. 迭代器" href="01.迭代器.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6. 生成器、迭代器、装饰器</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.迭代器.html">6.1. 迭代器</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.2. 导入 itertools模块</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#itertools-count">6.2.1. itertools.count() 设置步长</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itertools-cycle-a-b">6.2.2. itertools.cycle([‘a’,‘b’])</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itertools-repeat-hu-10">6.2.3. itertools.repeat(“hu”,10)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itertools-chain-1-3-2-3">6.2.4. itertools.chain([1,3],[2,3])</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itertools-compress-1-2-3-4-1-true-3">6.2.5. itertools.compress([1,2,3,4],[1,[],True,3])</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itertools-dropwhile-lambda-x-x-6-8-9-1-2-8-9">6.2.6. itertools.dropwhile(lambda x:x&gt;6,[8,9,1,2,8,9]))</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itertools-takewhile-lambda-x-x-10-18-19-1-21-8-9">6.2.7. itertools.takewhile(lambda x:x&gt;10,[18,19,1,21,8,9])</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">6.2.8. itertools其他工具函数用法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6.2.9. itertools模块代码举例</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="03.生成器.html">6.3. 生成器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.装饰器.html">6.4. 装饰器</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">6. 生成器、迭代器、装饰器</a> &raquo;</li>
+        
+      <li>6.2. 导入 itertools模块</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/06.迭代器_生成器_装饰器/02.itertools模块中常用的工具函数.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#itertools" id="id3">导入 itertools模块</a><ul>
+<li><a class="reference internal" href="#itertools-count" id="id4">itertools.count() 设置步长</a></li>
+<li><a class="reference internal" href="#itertools-cycle-a-b" id="id5">itertools.cycle([‘a’,‘b’])</a></li>
+<li><a class="reference internal" href="#itertools-repeat-hu-10" id="id6">itertools.repeat(“hu”,10)</a></li>
+<li><a class="reference internal" href="#itertools-chain-1-3-2-3" id="id7">itertools.chain([1,3],[2,3])</a></li>
+<li><a class="reference internal" href="#itertools-compress-1-2-3-4-1-true-3" id="id8">itertools.compress([1,2,3,4],[1,[],True,3])</a></li>
+<li><a class="reference internal" href="#itertools-dropwhile-lambda-x-x-6-8-9-1-2-8-9" id="id9">itertools.dropwhile(lambda x:x&gt;6,[8,9,1,2,8,9]))</a></li>
+<li><a class="reference internal" href="#itertools-takewhile-lambda-x-x-10-18-19-1-21-8-9" id="id10">itertools.takewhile(lambda x:x&gt;10,[18,19,1,21,8,9])</a></li>
+<li><a class="reference internal" href="#id1" id="id11">itertools其他工具函数用法</a></li>
+<li><a class="reference internal" href="#id2" id="id12">itertools模块代码举例</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="itertools">
+<h1><a class="toc-backref" href="#id3">6.2. 导入 itertools模块</a><a class="headerlink" href="#itertools" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
+</pre></div>
+</div>
+<div class="section" id="itertools-count">
+<h2><a class="toc-backref" href="#id4">6.2.1. itertools.count() 设置步长</a><a class="headerlink" href="#itertools-count" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="c1">#从1开始，步长为3</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="itertools-cycle-a-b">
+<h2><a class="toc-backref" href="#id5">6.2.2. itertools.cycle([‘a’,‘b’])</a><a class="headerlink" href="#itertools-cycle-a-b" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">cycle</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]):</span>
+    <span class="c1">#无限循环seq</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="itertools-repeat-hu-10">
+<h2><a class="toc-backref" href="#id6">6.2.3. itertools.repeat(“hu”,10)</a><a class="headerlink" href="#itertools-repeat-hu-10" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s2">&quot;hu&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">)))</span>
+<span class="c1">#循环迭代hu，循环10次</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="itertools-chain-1-3-2-3">
+<h2><a class="toc-backref" href="#id7">6.2.4. itertools.chain([1,3],[2,3])</a><a class="headerlink" href="#itertools-chain-1-3-2-3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])))</span>
+<span class="c1">#链接迭代，将2个seq连接起来迭代</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="itertools-compress-1-2-3-4-1-true-3">
+<h2><a class="toc-backref" href="#id8">6.2.5. itertools.compress([1,2,3,4],[1,[],True,3])</a><a class="headerlink" href="#itertools-compress-1-2-3-4-1-true-3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">itertools</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">compress</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">1</span><span class="p">,[],</span><span class="kc">True</span><span class="p">,</span><span class="mi">3</span><span class="p">])))</span>
+<span class="go">[1, 3, 4]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="itertools-dropwhile-lambda-x-x-6-8-9-1-2-8-9">
+<h2><a class="toc-backref" href="#id9">6.2.6. itertools.dropwhile(lambda x:x&gt;6,[8,9,1,2,8,9]))</a><a class="headerlink" href="#itertools-dropwhile-lambda-x-x-6-8-9-1-2-8-9" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">dropwhile</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">7</span><span class="p">,[</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])))</span>
+<span class="go">[1, 2, 8, 9]</span>
+<span class="go">#当不满足lambda中情形，为假时，循环后面的seq</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="itertools-takewhile-lambda-x-x-10-18-19-1-21-8-9">
+<h2><a class="toc-backref" href="#id10">6.2.7. itertools.takewhile(lambda x:x&gt;10,[18,19,1,21,8,9])</a><a class="headerlink" href="#itertools-takewhile-lambda-x-x-10-18-19-1-21-8-9" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">takewhile</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">10</span><span class="p">,[</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])))</span>
+<span class="go">[18, 19]</span>
+<span class="go">#与dropwhile相反</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id11">6.2.8. itertools其他工具函数用法</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">its</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">tee</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">4</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">its</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">permutations</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
+<span class="c1">#迭代序列中3个元素的排列</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="s1">&#39;abcd&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
+<span class="c1">#迭代序列中3个元素的组合</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id12">6.2.9. itertools模块代码举例</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/6/17 14:00</span>
+<span class="c1"># filename: itertools模块.py</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="nb">print</span><span class="p">([</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">itertools</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)])</span>
+
+<span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">it</span>
+
+<span class="c1"># 使用count(10,3)生成13、16、19....的迭代器</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">it</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">e</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------&quot;</span><span class="p">)</span>
+
+<span class="n">my_counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># cycle用于对序列生成无限循环的迭代器</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">it</span><span class="o">.</span><span class="n">cycle</span><span class="p">([</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;kotlin&quot;</span><span class="p">,</span> <span class="s2">&quot;Swift&quot;</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="c1"># 用于跳出无限循环</span>
+    <span class="n">my_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">my_counter</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------&quot;</span><span class="p">)</span>
+
+<span class="c1"># repeat用于生成n个元素重复的迭代器</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">it</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>输出信息</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;accumulate&#39;</span><span class="p">,</span> <span class="s1">&#39;chain&#39;</span><span class="p">,</span> <span class="s1">&#39;combinations&#39;</span><span class="p">,</span> <span class="s1">&#39;combinations_with_replacement&#39;</span><span class="p">,</span> <span class="s1">&#39;compress&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;cycle&#39;</span><span class="p">,</span> <span class="s1">&#39;dropwhile&#39;</span><span class="p">,</span> <span class="s1">&#39;filterfalse&#39;</span><span class="p">,</span> <span class="s1">&#39;groupby&#39;</span><span class="p">,</span> <span class="s1">&#39;islice&#39;</span><span class="p">,</span> <span class="s1">&#39;permutations&#39;</span><span class="p">,</span> <span class="s1">&#39;product&#39;</span><span class="p">,</span> <span class="s1">&#39;repeat&#39;</span><span class="p">,</span> <span class="s1">&#39;starmap&#39;</span><span class="p">,</span> <span class="s1">&#39;takewhile&#39;</span><span class="p">,</span> <span class="s1">&#39;tee&#39;</span><span class="p">,</span> <span class="s1">&#39;zip_longest&#39;</span><span class="p">]</span>
+<span class="mi">10</span>
+<span class="o">---------------------</span>
+<span class="mi">13</span>
+<span class="o">---------------------</span>
+<span class="mi">16</span>
+<span class="o">---------------------</span>
+<span class="mi">19</span>
+<span class="o">---------------------</span>
+<span class="mi">22</span>
+<span class="n">python</span>
+<span class="n">kotlin</span>
+<span class="n">Swift</span>
+<span class="n">python</span>
+<span class="n">kotlin</span>
+<span class="n">Swift</span>
+<span class="n">python</span>
+<span class="n">kotlin</span>
+<span class="o">--------------------------</span>
+<span class="n">python</span>
+<span class="n">python</span>
+<span class="n">python</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="03.生成器.html" class="btn btn-neutral float-right" title="6.3. 生成器" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="01.迭代器.html" class="btn btn-neutral float-left" title="6.1. 迭代器" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. Python数据类型 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="1.1. 字符编码处理" href="01.字符编码处理.html" />
+    <link rel="prev" title="Python自动化运维" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Python数据类型</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.字符编码处理.html">1.1. 字符编码处理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.代码注释.html">1.2. 代码注释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.字符串数据类型.html">1.3. 字符串数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.列表数据类型.html">1.4. 列表 List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.元祖数据类型.html">1.5. 元祖 Tuple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.字典数据结构.html">1.6. 字典 Dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.集合数据类型.html">1.7. 集合 Set()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.数据类型转换.html">1.8. Python数据类型转换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.关于深浅拷贝.html">1.9. 深浅拷贝</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.列表实现堆和队列.html">1.10. 列表实现堆和队列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html">1.11. 内置常量与逻辑运算符、比较运算符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html#in-not-in">1.12. in 和not in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.建立大型数据结构.html">1.13. 建立大型数据结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.Python常用IDE集成环境.html">1.14. Python常用IDE集成环境</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+      <li>1. Python数据类型</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/01.Python数据类型/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python">
+<h1>1. Python数据类型<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.字符编码处理.html">1.1. 字符编码处理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.字符编码处理.html#id2">1.1.1. 入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.字符编码处理.html#id3">1.1.2. 记忆方法参考下图：</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.字符编码处理.html#id4">1.1.3. 指定字符编码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.字符编码处理.html#pychrm">1.1.4. Pychrm设置文件头模板</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.字符编码处理.html#python">1.1.5. Python中的保留字</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.代码注释.html">1.2. 代码注释</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.代码注释.html#id2">1.2.1. 单行注释</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.代码注释.html#id3">1.2.2. 多行注释</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03.字符串数据类型.html">1.3. 字符串数据类型</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03.字符串数据类型.html#id2">1.3.1. 标准的字符转义码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.字符串数据类型.html#id3">1.3.2. 字符串内建方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.字符串数据类型.html#id4">操作字符串示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.字符串数据类型.html#id5">代码示例：</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03.字符串数据类型.html#id6">1.3.3. 字符串的拼接</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.字符串数据类型.html#id7">1.3.4. 将其他类型数据转为字符串</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.字符串数据类型.html#id8">使用反斜线进行转义</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03.字符串数据类型.html#format">1.3.5. 字符串格式化(%和format的使用)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.字符串数据类型.html#id9">1.3.6. 打印浮点数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.字符串数据类型.html#id10">format格式化字符串</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.字符串数据类型.html#id16">指定占位符宽度</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03.字符串数据类型.html#id17">1.3.7. 字符串的修改和替换</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.字符串数据类型.html#id18">代码示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.字符串数据类型.html#id20">字符串格式化输出</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03.字符串数据类型.html#id24">1.3.8. 字符串的反转</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.字符串数据类型.html#id25">1.3.9. 字符串操作技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.字符串数据类型.html#id26">1.3.10. 字符串切片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.字符串数据类型.html#id27">1.3.11. 字符串拼接</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.字符串数据类型.html#id28">1.3.12. 文本输入的变量插入.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04.列表数据类型.html">1.4. 列表 List</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04.列表数据类型.html#id1">1.4.1. 列表类型内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.列表数据类型.html#del">1.4.2. del</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.列表数据类型.html#in">1.4.3. in</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.列表数据类型.html#id2">代码示例1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04.列表数据类型.html#id3">1.4.4. 列表的切片</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.列表数据类型.html#id4">代码示例2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04.列表数据类型.html#id5">1.4.5. 序列的内置操作</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04.列表数据类型.html#id6">列表的高级特性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.列表数据类型.html#any-all">使用any/all函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.列表数据类型.html#id8">列表的查找、排序、反转</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05.元祖数据类型.html">1.5. 元祖 Tuple</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05.元祖数据类型.html#id1">1.5.1. 代码示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.元祖数据类型.html#id2">1.5.2. 元祖特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.元祖数据类型.html#id3">1.5.3. 元祖一口气赋值(解包)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.元祖数据类型.html#id4">1.5.4. 元祖</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05.元祖数据类型.html#zip">zip()函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.元祖数据类型.html#id5">列表和元祖的区别</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="06.字典数据结构.html">1.6. 字典 Dict</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="06.字典数据结构.html#id1">1.6.1. 查询表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.字典数据结构.html#id2">1.6.2. 字典的内置方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="06.字典数据结构.html#id3">代码示例1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="06.字典数据结构.html#id4">1.6.3. 添加/修改/删除字典元素</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="06.字典数据结构.html#id5">代码示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="06.字典数据结构.html#id6">1.6.4. 字典推导式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.字典数据结构.html#id7">1.6.5. 字典的重访嵌套</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="06.字典数据结构.html#id8">使用字典格式化字符串</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="06.字典数据结构.html#id9">1.6.6. 用字典分支构建程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.字典数据结构.html#id10">1.6.7. 字典键值判断</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.字典数据结构.html#getsetdefault">1.6.8. 字典get和setdefault方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.字典数据结构.html#ordereddict">1.6.9. OrderedDict</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="07.集合数据类型.html">1.7. 集合 Set()</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="07.集合数据类型.html#id1">1.7.1. 可以用于去重复数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07.集合数据类型.html#id2">1.7.2. 集合的方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07.集合数据类型.html#id3">1.7.3. 交集、并集、差集、对称差集</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="07.集合数据类型.html#id4">代码示例1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.集合数据类型.html#id5">代码示例2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="07.集合数据类型.html#id6">1.7.4. 集合的修改和删除</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="07.集合数据类型.html#id7">代码示例3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="07.集合数据类型.html#id8">1.7.5. 不可变集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07.集合数据类型.html#id9">1.7.6. 列表、元祖、字典、集合的区别</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="08.数据类型转换.html">1.8. Python数据类型转换</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="08.数据类型转换.html#id1">1.8.1. 转换示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.数据类型转换.html#id2">1.8.2. 整数、浮点数、字符串之间的转换</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="08.数据类型转换.html#id3">代码示例1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="08.数据类型转换.html#id4">1.8.3. 字符串转列表 /列表转字符串</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="08.数据类型转换.html#id5">字符串–&gt;列表 示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.数据类型转换.html#id6">列表–&gt;字符串 示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="08.数据类型转换.html#id7">1.8.4. 列表转元祖/元祖转列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.数据类型转换.html#id8">1.8.5. 字典格式字符串—&gt; 字典</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.数据类型转换.html#bytes">1.8.6. 二进制bytes与字符串的互转</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="09.关于深浅拷贝.html">1.9. 深浅拷贝</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="09.关于深浅拷贝.html#id2">1.9.1. 什么是可变类型和不可变类型</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="09.关于深浅拷贝.html#id3">不可变数据类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.关于深浅拷贝.html#id4">可变数据类型</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="09.关于深浅拷贝.html#id5">1.9.2. 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09.关于深浅拷贝.html#id6">1.9.3. 浅拷贝</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09.关于深浅拷贝.html#id7">1.9.4. 深拷贝</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="09.关于深浅拷贝.html#id8">举例说明：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="10.列表实现堆和队列.html">1.10. 列表实现堆和队列</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="10.列表实现堆和队列.html#id2">1.10.1. 堆栈是指最先进入堆栈的元素最后才输出 — “后进后出”的顺序。</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10.列表实现堆和队列.html#id3">1.10.2. 队列是指最先进入队列的元素最先输出— “先进先出”的顺序，排队处理流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10.列表实现堆和队列.html#id4">1.10.3. 队列代码示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10.列表实现堆和队列.html#rotate">1.10.4. 队列的rotate()方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10.列表实现堆和队列.html#id5">1.10.5. 双端队列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10.列表实现堆和队列.html#id6">1.10.6. 堆的使用</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html">1.11. 内置常量与逻辑运算符、比较运算符</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html#id2">1.11.1. 内置常量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html#python">1.11.2. python中的逻辑运算符</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html#or">or运算符的操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html#and">and运算操作符</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html#id3">1.11.3. python中的比较运算符</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html#is-is-not">1.11.4. is 和 is not</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html#in-not-in">1.12. in 和not in</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="11.内置常量与逻辑运算符、比较运算符.html#id4">1.12.1. 赋值运算符</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="12.建立大型数据结构.html">1.13. 建立大型数据结构</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="12.建立大型数据结构.html#id2">1.13.1. 元祖里面嵌套列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12.建立大型数据结构.html#id3">1.13.2. 列表里面嵌套列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12.建立大型数据结构.html#id4">1.13.3. 字典里面嵌套列表</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="13.Python常用IDE集成环境.html">1.14. Python常用IDE集成环境</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="13.Python常用IDE集成环境.html#pip">1.14.1. 安装pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.Python常用IDE集成环境.html#pythonpythonpip">1.14.2. Python开发之Python离线安装项目所需所有pip包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.Python常用IDE集成环境.html#ipython">1.14.3. 安装ipython</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.Python常用IDE集成环境.html#id1">1.14.4. 下载安装第三方库一般有以下几种方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="13.Python常用IDE集成环境.html#pip-timeout">设置pip timeout超时时间</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="13.Python常用IDE集成环境.html#id2">1.14.5. 常用三方库的网站</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.Python常用IDE集成环境.html#jupyter">1.14.6. jupyter的使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="13.Python常用IDE集成环境.html#jupyter-notebook">为Jupyter Notebook添加目录</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="13.Python常用IDE集成环境.html#anaconda">1.14.7. 安装Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.Python常用IDE集成环境.html#ide">1.14.8. 使用较多的IDE</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01.字符编码处理.html" class="btn btn-neutral float-right" title="1.1. 字符编码处理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Python自动化运维" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

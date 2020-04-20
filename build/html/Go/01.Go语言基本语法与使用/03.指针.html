@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1.3. 指针 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="1.4. 变量声明周期 - 变量能够使用的代码范围" href="04.变量声明周期.html" />
+    <link rel="prev" title="1.2. 数据类型" href="02.数据类型.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">1. 01.Go语言基本语法与使用</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.声明变量.html">1.1. 声明变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.数据类型.html">1.2. 数据类型</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1.3. 指针</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.3.1. 值的传递和引用的传递</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#go">1.3.2. 指针概念在Go语言中被拆分为两个核心概念</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.3.3. 指针地址和指针类型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.3.4. 从指针获取指针指向的值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">1.3.5. 使用指针修改值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.3.6. 示例：使用指针变量获取命令行的输入信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#new">1.3.7. 创建指针的另一种方法-new()函数</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="04.变量声明周期.html">1.4. 变量声明周期 - 变量能够使用的代码范围</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.字符串应用.html">1.5. 字符串应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.常量.html">1.6. 常量–恒定不变的值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.类型别名.html">1.7. 类型别名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.编译与工具.html">1.8. 编译与工具</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 02.容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 03.流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 04.函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 05.结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 06.接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 07.包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 08.并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. 09.Go语言基础之反射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Go标准库/index.html">10. 10.Go标准库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">1. 01.Go语言基本语法与使用</a> &raquo;</li>
+        
+      <li>1.3. 指针</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/01.Go语言基本语法与使用/03.指针.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id7">指针</a><ul>
+<li><a class="reference internal" href="#id2" id="id8">值的传递和引用的传递</a></li>
+<li><a class="reference internal" href="#go" id="id9">指针概念在Go语言中被拆分为两个核心概念</a></li>
+<li><a class="reference internal" href="#id3" id="id10">指针地址和指针类型</a></li>
+<li><a class="reference internal" href="#id4" id="id11">从指针获取指针指向的值</a></li>
+<li><a class="reference internal" href="#id5" id="id12">使用指针修改值</a></li>
+<li><a class="reference internal" href="#id6" id="id13">示例：使用指针变量获取命令行的输入信息</a></li>
+<li><a class="reference internal" href="#new" id="id14">创建指针的另一种方法-new()函数</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id7">1.3. 指针</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id8">1.3.1. 值的传递和引用的传递</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+/*值传递：传递的是值的一个拷贝
+引用传递：传递的是引用指向的内存地址,会在原值的基础上改变值*/
+func test03(n1 *int) {
+    *n1 = *n1 + 10
+    fmt.Println(&quot;test03() n1= &quot;, *n1) //test03() n1=  30
+}
+
+func test04(n1 int) {
+    n1 = n1 + 20
+    fmt.Println(&quot;test04 n1= &quot;, n1)  //test04 n1=  50
+}
+
+func main() {
+    num := 20
+    test03(&amp;num)
+    fmt.Println(&quot;main() num= &quot;, num) //main() num=  30
+
+    num2 := 30
+    test04(num2)
+    fmt.Println(&quot;main() num2= &quot;, num2)  //main() num2=  30
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="go">
+<h2><a class="toc-backref" href="#id9">1.3.2. 指针概念在Go语言中被拆分为两个核心概念</a><a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h2>
+<p>·
+类型指针,允许对这个指针类型的数据进行修改，传递数据使用指针，而无须拷贝数据，类型指针不能进行偏移和运算。</p>
+<p>· 切片，由指向其实元素的原始指针、元素数量和容量组成。</p>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id10">1.3.3. 指针地址和指针类型</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>每个变量运行时都拥有一个地址，这个地址代表变量在内存中的位置，Go语言中使用“&amp;”操作符放在变量前面对变量进行“取地址”操作。</p>
+<p>格式如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pstr</span> <span class="p">:</span><span class="o">=</span> <span class="o">&amp;</span><span class="n">v</span>    <span class="o">//</span> <span class="n">v的类型为T</span>
+</pre></div>
+</div>
+<p>指针实际用法：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">cat</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>         <span class="o">//</span> <span class="n">声明整型变量</span>
+    <span class="n">var</span> <span class="nb">str</span> <span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;banaba&quot;</span>       <span class="o">//</span><span class="n">声明字符串变量</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%p %p&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cat</span><span class="p">,</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="o">//</span><span class="mh">0xc000062090</span> <span class="mh">0xc00004a1e0</span>     <span class="o">//</span><span class="n">输出变量取值地址后的指针值</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id11">1.3.4. 从指针获取指针指向的值</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    // 准备一个字符串类型
+    var house = &quot;Malibu Point 10880, 90265&quot;
+
+    // 对字符串取地址，ptr类型为*string
+    ptr := &amp;house
+
+    // 打印ptr的类型
+    fmt.Printf(&quot;address: %T\n&quot;, ptr)        //address: *string
+    // 打印ptr的指针地址
+    fmt.Printf(&quot;address: %p\n&quot;, ptr)        //address: 0xc00004a1e0
+
+    // 对指针进行取值操作
+    value := *ptr
+
+    // 取值后的类型
+    fmt.Printf(&quot;value type: %T\n&quot;, value)   //value type: string
+    // 指针取值后就是指向变量的值
+    fmt.Printf(&quot;value : %s\n&quot;, value)       //value : Malibu Point 10880, 90265
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id12">1.3.5. 使用指针修改值</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>· 通过指针不仅可以取值，也可以修改值。</p>
+<p>指针实现数值交换代码示例:</p>
+<p>“*”操作符作为右值时，意义是取指针的值；作为左值时，表示a指向的变量。</p>
+<p>其实归纳起来“*”操作符的根本意义就是操作指针指向的变量。</p>
+<p><code class="docutils literal"><span class="pre">当操作在右值时，</span> <span class="pre">就是取指向变量的值；</span></code></p>
+<p><code class="docutils literal"><span class="pre">当操作在左值时，</span> <span class="pre">就是将值设置给指向的变量</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+// 交换函数
+func swap(a, b *int) {                      //定义一个交换函数，参数为a,b.类型都为*int，都是指针类型
+    // 取a指针的值，赋给临时变量t
+    t := *a                                  // 将a指针的取值，把int类型赋值给t变量。t此时也是int类型
+    // 取b指针的值，赋给a指针指向的变量
+    *a = *b                                 // 取b指针值，赋给a变量指向的变量。
+    // 将a指针的值赋给b指针指向的变量
+    *b = t                                  // 将t的值赋给b指向的变量
+}
+
+func main() {
+    // 准备2个变量，赋值1和2
+    x, y := 1, 2
+    // 交换变量的值
+    swap(&amp;x, &amp;y)
+    fmt.Println(x, y)
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id13">1.3.6. 示例：使用指针变量获取命令行的输入信息</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s2">&quot;flag&quot;</span>
+    <span class="s2">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="o">//</span> <span class="n">定义命令行参数</span>
+<span class="n">var</span> <span class="n">mode</span>  <span class="o">=</span> <span class="n">flag</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;process mode&quot;</span><span class="p">)</span>
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="o">//</span> <span class="n">解析命令行参数</span>
+    <span class="n">flag</span><span class="o">.</span><span class="n">Parse</span><span class="p">()</span>
+
+    <span class="o">//</span> <span class="n">输出命令行参数</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="o">*</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="p">}</span>
+
+<span class="o">/*</span>
+<span class="n">D</span><span class="p">:</span>\<span class="n">go_studay</span>\<span class="n">day3</span><span class="o">&gt;</span><span class="n">go</span> <span class="n">run</span> <span class="n">canshu01</span><span class="o">.</span><span class="n">go</span> <span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="n">fast</span>
+<span class="n">fast</span>
+<span class="o">*/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="new">
+<h2><a class="toc-backref" href="#id14">1.3.7. 创建指针的另一种方法-new()函数</a><a class="headerlink" href="#new" title="Permalink to this headline">¶</a></h2>
+<p>Go语言还提供了另外一种方法来创建指针变量，格式如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">new</span><span class="p">(</span><span class="n">类型</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">str</span> <span class="p">:</span><span class="o">=</span> <span class="n">new</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="o">*</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;hujianli&quot;</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="o">*</span><span class="nb">str</span><span class="p">)</span>   <span class="o">//</span><span class="n">hujianli</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="04.变量声明周期.html" class="btn btn-neutral float-right" title="1.4. 变量声明周期 - 变量能够使用的代码范围" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="02.数据类型.html" class="btn btn-neutral float-left" title="1.2. 数据类型" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+.. contents::
+   :depth: 3
+..
+
+条件判断if
+==========
+
+if..else..语句
+--------------
+
+::
+
+   package main
+
+   import "fmt"
+
+   func main() {
+       var ten int = 11        // 定义一个整型变量为11
+       if ten > 10{
+           fmt.Println(">10")
+       }else {
+           fmt.Println("<=10")
+       }
+   }
+
+特殊写法
+--------
+
+可以在if表达式之前添加一个执行语句，再根据变量的值进行判断，代码如下：
+
+::
+
+   package main
+
+   import "fmt"
+
+   func main() {
+       if err:= Connect();err != nil {     
+       //Connect 是一个带有返回值的函数，先将函数执行结果保存到err变量中，且结果！=nil
+           fmt.Println(err)
+           return
+       }
+   }

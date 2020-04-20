@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>22.3.10. 数据库：SQLite篇 &mdash; 系统化的学习Linux、Python、Shell、Java运维开发</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="22.3.11. 数据库：MySQL篇" href="11.数据库：MySQL篇.html" />
+    <link rel="prev" title="22.3.9. Cookies登录" href="09.Cookies登录.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask_Web框架/index.html">22.2. Flask_Web框架</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">22.3. Scrapy爬虫框架</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="01.Scrapy爬虫框架.html">22.3.1. Scrapy爬虫框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02.MongoDB的常用操作与导出.html">22.3.2. MongoDB的常用操作与导出</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03.Scrapy框架深入学习.html">22.3.3. Scrapy框架深入学习</a></li>
+<li class="toctree-l4"><a class="reference internal" href="04.Scrapy下载文件和图片.html">22.3.4. Scrapy下载文件和图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="05.项目实战：爬取matplotlib源码文件.html">22.3.5. 项目实战：爬取matplotlib源码文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06.项目实战：下载360图片.html">22.3.6. 项目实战:下载360图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="07.模拟登陆webscraping.com网站.html">22.3.7. 模拟登陆webscraping.com网站</a></li>
+<li class="toctree-l4"><a class="reference internal" href="08.识别验证码.html">22.3.8. 识别验证码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="09.Cookies登录.html">22.3.9. Cookies登录</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">22.3.10. 数据库：SQLite篇</a></li>
+<li class="toctree-l4"><a class="reference internal" href="11.数据库：MySQL篇.html">22.3.11. 数据库：MySQL篇</a></li>
+<li class="toctree-l4"><a class="reference internal" href="12.数据库：MongoDB篇.html">22.3.12. 数据库：MongoDB篇</a></li>
+<li class="toctree-l4"><a class="reference internal" href="13.数据库：Redis篇.html">22.3.13. 数据库：Redis篇</a></li>
+<li class="toctree-l4"><a class="reference internal" href="14.Fiddler学习.html">22.3.14. Fiddler学习</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="../index.html">22. Python框架学习</a> &raquo;</li>
+        
+          <li><a href="index.html">22.3. Scrapy爬虫框架</a> &raquo;</li>
+        
+      <li>22.3.10. 数据库：SQLite篇</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/Python/24.Python框架学习/03.Scrapy爬虫框架/10.数据库：SQLite篇.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#sqlite" id="id1">数据库：SQLite篇</a></li>
+</ul>
+</div>
+<div class="section" id="sqlite">
+<h1><a class="toc-backref" href="#id1">22.3.10. 数据库：SQLite篇</a><a class="headerlink" href="#sqlite" title="Permalink to this headline">¶</a></h1>
+<p>①创建scrapy 爬虫项目</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">startproject</span> <span class="n">books</span>
+<span class="n">cd</span> <span class="n">books</span>
+
+<span class="c1">#利用模板生成spider文件</span>
+<span class="n">scrapy</span> <span class="n">genspider</span> <span class="n">booksspider</span> <span class="n">booksspider</span><span class="o">.</span><span class="n">toscrape</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>②创建SQLite数据库</p>
+<p><code class="docutils literal"><span class="pre">createDB.py</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/8/13 9:43</span>
+<span class="c1"># filename: createDB.py</span>
+
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="c1">#连接数据库，得到Connection对象</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;scrapy.db&#39;</span><span class="p">)</span>
+<span class="c1">#print(type(conn))</span>
+
+<span class="c1">#创建Cursor对象，用于执行SQL语句</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="c1">#print(type(cur))</span>
+
+<span class="c1">#创建数据表</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39; CREATE TABLE books(</span>
+<span class="s1"> upc CHAR(16) NOT NULL PRIMARY KEY,</span>
+<span class="s1"> name VARCHAR(256) NOT NULL,</span>
+<span class="s1"> price VARCHAR(16) NOT NULL,</span>
+<span class="s1"> review_rating INT,</span>
+<span class="s1"> review_num INT,</span>
+<span class="s1"> stock INT</span>
+<span class="s1"> );&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1">#插入一条数据</span>
+<span class="c1"># cur.execute(&#39;INSERT INTO person VALUES(?,?,?)&#39;,(&#39;李小龙&#39;,23,&#39;M&#39;))</span>
+
+<span class="c1">#保存变更，commit后数据才会实际写入数据库</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="c1">#关闭连接</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="image0" src="../../../_images/scrapy-sqlite0001.png" /></p>
+<p><code class="docutils literal"><span class="pre">booksspider.py</span></code> 蜘蛛文件内容如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">from</span> <span class="nn">books.items</span> <span class="k">import</span> <span class="n">BooksItem</span>
+<span class="kn">from</span> <span class="nn">scrapy.linkextractors</span> <span class="k">import</span> <span class="n">LinkExtractor</span>
+
+
+<span class="k">class</span> <span class="nc">BooksspiderSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;booksspider&#39;</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;books.toscrape.com&#39;</span><span class="p">]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://books.toscrape.com/&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="c1">##提取每本书的链接</span>
+        <span class="n">le</span> <span class="o">=</span> <span class="n">LinkExtractor</span><span class="p">(</span><span class="n">restrict_xpaths</span><span class="o">=</span><span class="s1">&#39;//article[@class=&quot;product_pod&quot;]&#39;</span><span class="p">)</span>  <span class="c1">##具体位置在//article/div/a的标签中</span>
+        <span class="n">detail_urls</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">extract_links</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">detail_url</span> <span class="ow">in</span> <span class="n">detail_urls</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">detail_url</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_book</span><span class="p">)</span>  <span class="c1">##记得使用.url提取出extract_links里面的链接。</span>
+
+        <span class="c1">##提取下一页的链接</span>
+        <span class="n">le2</span> <span class="o">=</span> <span class="n">LinkExtractor</span><span class="p">(</span><span class="n">restrict_xpaths</span><span class="o">=</span><span class="s1">&#39;//li[@class=&quot;next&quot;]&#39;</span><span class="p">)</span>
+        <span class="n">next_url</span> <span class="o">=</span> <span class="n">le2</span><span class="o">.</span><span class="n">extract_links</span><span class="p">(</span><span class="n">response</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">url</span>
+        <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">next_url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse_book</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="c1">##提取每本书的具体信息</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">BooksItem</span><span class="p">()</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[contains(@class,&quot;product_main&quot;)]&#39;</span><span class="p">)</span>
+        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;h1/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;p/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;review_rating&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;p[3]/@class&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">re</span><span class="p">(</span><span class="s1">&#39;star-rating (\w+)&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">info2</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//table[contains(@class,&quot;table&quot;)]&#39;</span><span class="p">)</span>
+        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;upc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">info2</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//tr[1]/td/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;stock&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">info2</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//tr[6]/td/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">re_first</span><span class="p">(</span><span class="s1">&#39;\d+&#39;</span><span class="p">)</span>
+        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;review_num&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">info2</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//tr[7]/td/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+        <span class="k">yield</span> <span class="n">item</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">pipelines.py</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 爬取到的数据写入到SQLite数据库</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="k">class</span> <span class="nc">SQLitePipeline</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="c1"># 打开数据库</span>
+    <span class="k">def</span> <span class="nf">open_spider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">spider</span><span class="p">):</span>
+        <span class="n">db_name</span> <span class="o">=</span> <span class="n">spider</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SQLITE_DB_NAME&#39;</span><span class="p">,</span><span class="s1">&#39;scrapy.db&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_cur</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db_conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="c1"># 关闭数据库</span>
+    <span class="k">def</span> <span class="nf">close_spider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">spider</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># 对数据进行处理</span>
+    <span class="k">def</span> <span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">item</span><span class="p">,</span><span class="n">spider</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">insert_db</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">item</span>
+
+    <span class="c1"># 插入数据</span>
+    <span class="k">def</span> <span class="nf">insert_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">item</span><span class="p">[</span><span class="s1">&#39;upc&#39;</span><span class="p">],</span>
+            <span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+            <span class="n">item</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span>
+            <span class="n">item</span><span class="p">[</span><span class="s1">&#39;review_rating&#39;</span><span class="p">],</span>
+            <span class="n">item</span><span class="p">[</span><span class="s1">&#39;review_num&#39;</span><span class="p">],</span>
+            <span class="n">item</span><span class="p">[</span><span class="s1">&#39;stock&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="n">sql</span> <span class="o">=</span> <span class="s1">&#39;INSERT INTO books VALUES(?,?,?,?,?,?)&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span><span class="n">values</span><span class="p">)</span>
+
+<span class="c1">##处理review_rating的pipeline</span>
+<span class="k">class</span> <span class="nc">BooksPipeline</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">review_rating_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;One&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;Two&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;Three&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
+        <span class="s1">&#39;Four&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+        <span class="s1">&#39;Five&#39;</span><span class="p">:</span><span class="mi">5</span>
+    <span class="p">}</span>
+
+
+    <span class="k">def</span> <span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+        <span class="c1"># rating = item.get(&#39;review_rating&#39;)  #获取review_rating的数据</span>
+        <span class="n">rating</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;review_rating&#39;</span><span class="p">]</span>  <span class="c1">#与上面的语句等价</span>
+        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;review_rating&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">review_rating_map</span><span class="p">[</span><span class="n">rating</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">item</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">settings.py:</span> <span class="pre">启用SQLitePipeline</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SQLITE_DB_NAME</span> <span class="o">=</span> <span class="s1">&#39;scrapy.db&#39;</span>
+
+<span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s1">&#39;books.pipelines.BooksPipeline&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>    <span class="c1">#原有的pipeline</span>
+    <span class="s1">&#39;books.pipelines.SQLitePipeline&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>  <span class="c1">#SQL的pipeline</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">items.py</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+<span class="k">class</span> <span class="nc">BooksItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>            <span class="c1">#书名</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>           <span class="c1">#价格</span>
+    <span class="n">review_rating</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>   <span class="c1">#评价等级（1-5星）</span>
+    <span class="n">review_num</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>      <span class="c1">#评价数量</span>
+    <span class="n">upc</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>             <span class="c1">#产品编码</span>
+    <span class="n">stock</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>           <span class="c1">#库存量</span>
+</pre></div>
+</div>
+<p>运行cmd命令：scrapy crawl booksspider</p>
+<p>或者写成<code class="docutils literal"><span class="pre">main.py</span></code>入口程序，如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/8/13 10:17</span>
+<span class="c1"># filename: main.py</span>
+
+<span class="kn">from</span> <span class="nn">scrapy</span> <span class="k">import</span> <span class="n">cmdline</span>
+<span class="n">cmdline</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;scrapy crawl booksspider&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>执行爬虫程序后，查看结果如下： <img alt="image1" src="../../../_images/scrapy-book-sqlite0001.png" /></p>
+<p><img alt="image2" src="../../../_images/scrapy-book-sqlite0002.png" /></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="11.数据库：MySQL篇.html" class="btn btn-neutral float-right" title="22.3.11. 数据库：MySQL篇" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="09.Cookies登录.html" class="btn btn-neutral float-left" title="22.3.9. Cookies登录" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
