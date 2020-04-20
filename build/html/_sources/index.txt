@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Devops学院小健【Python|Go】专栏
+Devops学院【Python|Go】专栏一
 ================================================
 
 *笔记*
