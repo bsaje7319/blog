@@ -23,3 +23,11 @@ Go vs Python
     14.Defer(退出处理)
     15.Panic_Recover(异常捕获)
     16.Mutables(可变项)
+    17.Structs(类)
+    18.Methods(方法)
+    19.Goroutines(并发)
+    20.Args
+    21.Import-Alias(导入模块别名)
+    22.Sprintf(格式化字符串)
+    23.Uniqify(去重)
+    24.Dotdict

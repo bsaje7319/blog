@@ -101,11 +101,11 @@
 <li class="toctree-l3"><a class="reference internal" href="01.声明变量.html">1.1. 声明变量</a></li>
 <li class="toctree-l3"><a class="reference internal" href="02.数据类型.html">1.2. 数据类型</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">1.3. 指针</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">1.3.1. 值的传递和引用的传递</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#go">1.3.2. 指针概念在Go语言中被拆分为两个核心概念</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">1.3.3. 指针地址和指针类型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">1.3.4. 从指针获取指针指向的值</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">1.3.5. 使用指针修改值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#go">1.3.1. 指针概念在Go语言中被拆分称为两个核心概念</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.3.2. 认识指针地址和指针类型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.3.3. 从指针获取指针指向的值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.3.4. 使用指针修改值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">1.3.5. 值的传递和引用的传递</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">1.3.6. 示例：使用指针变量获取命令行的输入信息</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#new">1.3.7. 创建指针的另一种方法-new()函数</a></li>
 </ul>
@@ -203,11 +203,11 @@
 <p class="topic-title first">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#id1" id="id7">指针</a><ul>
-<li><a class="reference internal" href="#id2" id="id8">值的传递和引用的传递</a></li>
-<li><a class="reference internal" href="#go" id="id9">指针概念在Go语言中被拆分为两个核心概念</a></li>
-<li><a class="reference internal" href="#id3" id="id10">指针地址和指针类型</a></li>
-<li><a class="reference internal" href="#id4" id="id11">从指针获取指针指向的值</a></li>
-<li><a class="reference internal" href="#id5" id="id12">使用指针修改值</a></li>
+<li><a class="reference internal" href="#go" id="id8">指针概念在Go语言中被拆分称为两个核心概念</a></li>
+<li><a class="reference internal" href="#id2" id="id9">认识指针地址和指针类型</a></li>
+<li><a class="reference internal" href="#id3" id="id10">从指针获取指针指向的值</a></li>
+<li><a class="reference internal" href="#id4" id="id11">使用指针修改值</a></li>
+<li><a class="reference internal" href="#id5" id="id12">值的传递和引用的传递</a></li>
 <li><a class="reference internal" href="#id6" id="id13">示例：使用指针变量获取命令行的输入信息</a></li>
 <li><a class="reference internal" href="#new" id="id14">创建指针的另一种方法-new()函数</a></li>
 </ul>
@@ -216,65 +216,57 @@
 </div>
 <div class="section" id="id1">
 <h1><a class="toc-backref" href="#id7">1.3. 指针</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
-<h2><a class="toc-backref" href="#id8">1.3.1. 值的传递和引用的传递</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
-
-import &quot;fmt&quot;
-
-/*值传递：传递的是值的一个拷贝
-引用传递：传递的是引用指向的内存地址,会在原值的基础上改变值*/
-func test03(n1 *int) {
-    *n1 = *n1 + 10
-    fmt.Println(&quot;test03() n1= &quot;, *n1) //test03() n1=  30
-}
-
-func test04(n1 int) {
-    n1 = n1 + 20
-    fmt.Println(&quot;test04 n1= &quot;, n1)  //test04 n1=  50
-}
-
-func main() {
-    num := 20
-    test03(&amp;num)
-    fmt.Println(&quot;main() num= &quot;, num) //main() num=  30
-
-    num2 := 30
-    test04(num2)
-    fmt.Println(&quot;main() num2= &quot;, num2)  //main() num2=  30
-}
-</pre></div>
-</div>
-</div>
 <div class="section" id="go">
-<h2><a class="toc-backref" href="#id9">1.3.2. 指针概念在Go语言中被拆分为两个核心概念</a><a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h2>
-<p>·
-类型指针,允许对这个指针类型的数据进行修改，传递数据使用指针，而无须拷贝数据，类型指针不能进行偏移和运算。</p>
-<p>· 切片，由指向其实元素的原始指针、元素数量和容量组成。</p>
+<h2><a class="toc-backref" href="#id8">1.3.1. 指针概念在Go语言中被拆分称为两个核心概念</a><a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">类型指针，允许这个指针类型的数据进行修改。传递数据使用指针，而无需拷贝数据。类型指针不能进行偏移和运算。</p>
+</li>
+<li><p class="first">切片，由指向起始元素的原始指针、元素数量和容量组成。</p>
+<p>​
+受益于这样的约束和拆分，Go语言的指针类型变量拥有指针的高效访问，但又不会发送指针偏移，从而避免非法修改关键性数据问题。同时，垃圾回收也必将容易对不会发送偏移的指针进行检索和回收。</p>
+<p>​
+切片比原始指针具备更强大的特性，更为安全。切片发生越界时，运行时会报出宕机，并打出堆栈，而原始指针只会崩溃。</p>
+</li>
+</ul>
+<p>要明白指针，需要知道几个概念：</p>
+<p><strong>指针地址、指针类型、指针取值</strong></p>
 </div>
-<div class="section" id="id3">
-<h2><a class="toc-backref" href="#id10">1.3.3. 指针地址和指针类型</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id9">1.3.2. 认识指针地址和指针类型</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>每个变量运行时都拥有一个地址，这个地址代表变量在内存中的位置，Go语言中使用“&amp;”操作符放在变量前面对变量进行“取地址”操作。</p>
 <p>格式如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pstr</span> <span class="p">:</span><span class="o">=</span> <span class="o">&amp;</span><span class="n">v</span>    <span class="o">//</span> <span class="n">v的类型为T</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>pstr := &amp;v    // v的类型为T
+
+其中v代表被取地址的变量，被取地址的v使用ptr变量进行接收，ptr的类型就为“*T”,称做T的指针类型。“*”代表指针。
 </pre></div>
 </div>
-<p>指针实际用法：</p>
+<p>指针实际用法，示例代码：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
 <span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">var</span> <span class="n">cat</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>         <span class="o">//</span> <span class="n">声明整型变量</span>
-    <span class="n">var</span> <span class="nb">str</span> <span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;banaba&quot;</span>       <span class="o">//</span><span class="n">声明字符串变量</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%p %p&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cat</span><span class="p">,</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="o">//</span><span class="mh">0xc000062090</span> <span class="mh">0xc00004a1e0</span>     <span class="o">//</span><span class="n">输出变量取值地址后的指针值</span>
+    <span class="n">var</span> <span class="n">cat</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>         <span class="o">//</span> <span class="n">声明整型变量cat</span>
+    <span class="n">var</span> <span class="nb">str</span> <span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;banaba&quot;</span>       <span class="o">//</span><span class="n">声明字符串str变量</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%p %p&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cat</span><span class="p">,</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="o">//</span><span class="mh">0xc000062090</span> <span class="mh">0xc00004a1e0</span>     <span class="o">//</span><span class="n">输出变量cat和变量str取值地址后的指针值</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h2><a class="toc-backref" href="#id11">1.3.4. 从指针获取指针指向的值</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id10">1.3.3. 从指针获取指针指向的值</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>在对普通变量使用<code class="docutils literal"><span class="pre">&quot;&amp;&quot;</span></code>操作符取地址获得这个变量的指针后，可以对指针使用<code class="docutils literal"><span class="pre">&quot;*&quot;</span></code>操作，进行指针的取值。</p>
+<p>这么记：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ptr</span> <span class="p">:</span><span class="o">=</span> <span class="o">&amp;</span><span class="n">house</span>       <span class="o">//</span> <span class="n">取址赋给ptr</span>
+<span class="n">value</span> <span class="p">:</span><span class="o">=</span> <span class="o">*</span><span class="n">ptr</span>       <span class="o">//</span> <span class="n">根据地址取值赋给value</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&amp;</span>   <span class="n">取址</span>
+<span class="o">*</span>   <span class="n">根据地址取值</span>
+</pre></div>
+</div>
+<p>示例代码如下：</p>
+<div class="code go highlight-default"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -301,14 +293,10 @@ func main() {
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h2><a class="toc-backref" href="#id12">1.3.5. 使用指针修改值</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id11">1.3.4. 使用指针修改值</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>· 通过指针不仅可以取值，也可以修改值。</p>
 <p>指针实现数值交换代码示例:</p>
-<p>“*”操作符作为右值时，意义是取指针的值；作为左值时，表示a指向的变量。</p>
-<p>其实归纳起来“*”操作符的根本意义就是操作指针指向的变量。</p>
-<p><code class="docutils literal"><span class="pre">当操作在右值时，</span> <span class="pre">就是取指向变量的值；</span></code></p>
-<p><code class="docutils literal"><span class="pre">当操作在左值时，</span> <span class="pre">就是将值设置给指向的变量</span></code></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
@@ -329,6 +317,43 @@ func main() {
     // 交换变量的值
     swap(&amp;x, &amp;y)
     fmt.Println(x, y)
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>``“*”操作符作为右值时，意义是取指针的值；``</strong></li>
+<li><strong>``“*”操作符作为左值时，表示a指向的变量。``</strong></li>
+</ul>
+<p>其实归纳起来“*”操作符的根本意义就是操作指针指向的变量。</p>
+<p><code class="docutils literal"><span class="pre">当操作在右值时，</span> <span class="pre">就是取指向变量的值；</span></code></p>
+<p><code class="docutils literal"><span class="pre">当操作在左值时，</span> <span class="pre">就是将值设置给指向的变量；</span></code></p>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id12">1.3.5. 值的传递和引用的传递</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+/*值传递：传递的是值的一个拷贝
+引用传递：传递的是引用指向的内存地址,会在原值的基础上改变值*/
+func test03(n1 *int) {
+    *n1 = *n1 + 10
+    fmt.Println(&quot;test03() n1= &quot;, *n1) //test03() n1=  30
+}
+
+func test04(n1 int) {
+    n1 = n1 + 20
+    fmt.Println(&quot;test04 n1= &quot;, n1)  //test04 n1=  50
+}
+
+func main() {
+    num := 20
+    test03(&amp;num)
+    fmt.Println(&quot;main() num= &quot;, num) //main() num=  30
+
+    num2 := 30
+    test04(num2)
+    fmt.Println(&quot;main() num2= &quot;, num2)  //main() num2=  30
 }
 </pre></div>
 </div>
@@ -372,6 +397,7 @@ func main() {
 <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="o">*</span><span class="nb">str</span><span class="p">)</span>   <span class="o">//</span><span class="n">hujianli</span>
 </pre></div>
 </div>
+<p>new()函数可以创建一个对应类型的指针，创建过程会分配内存。被创建的指针指向的值为默认值。</p>
 </div>
 </div>
 
