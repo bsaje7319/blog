@@ -287,6 +287,7 @@ urllib.robotparser 模块：分析robots.txt 文件
 其中最核心的是urllib.request 模块
 </pre></div>
 </div>
+<p>​</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>在urllib.request 模块中访问互联网资源
 主要使用urllib.request.urlopen() 函数和
 urllib.request.Request 对象，
@@ -571,6 +572,61 @@ python2X  中 import urllib2.urlencode ------ python3X 使用 import urllib.pars
     <span class="s2">&quot;cat.jpg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>函数原型如下：</p>
+<hr class="docutils" />
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reporthook</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>以天堂图片网为例（<a class="reference external" href="http://www.ivsky.com/tupian/ziranfengguang/">http://www.ivsky.com/tupian/ziranfengguang/</a>
+），提取当前网址中的图片链接，并将图片下载到当前目录下。代码如下：</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/5/6 13:19</span>
+<span class="c1"># filename: sample01.py</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">urllib</span> <span class="k">import</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">Base_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">__file__</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;/photo&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">mkdir_dir</span><span class="p">(</span><span class="n">pathname</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pathname</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">pathname</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">Schedule</span><span class="p">(</span><span class="n">blocknum</span><span class="p">,</span> <span class="n">blocksize</span><span class="p">,</span> <span class="n">totalsize</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;&#39;&#39;</span>
+<span class="sd">    blocknum:已经下载的数据块</span>
+<span class="sd">    blocksize:数据块的大小</span>
+<span class="sd">    totalsize:远程文件的大小</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">per</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">blocknum</span> <span class="o">*</span> <span class="n">blocksize</span> <span class="o">/</span> <span class="n">totalsize</span>
+    <span class="k">if</span> <span class="n">per</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">per</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;当前下载进度：</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">per</span><span class="p">)</span>
+
+
+<span class="n">user_agent</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="n">user_agent</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.ivsky.com/tupian/ziranfengguang/&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="c1"># 使用lxml解析网页</span>
+<span class="n">html</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">img_urls</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;.// img/@src&#39;</span><span class="p">)</span>  <span class="c1"># 先找到所有的img</span>
+
+<span class="n">mkdir_dir</span><span class="p">(</span><span class="n">Base_path</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">img_url</span> <span class="ow">in</span> <span class="n">img_urls</span><span class="p">:</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="s2">&quot;https:&quot;</span> <span class="o">+</span> <span class="n">img_url</span>
+    <span class="n">image_name</span> <span class="o">=</span> <span class="s1">&#39;img&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.jpg&#39;</span>
+    <span class="c1"># print(images)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">Base_path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">image_name</span><span class="p">,</span> <span class="n">Schedule</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 方式2</span>
 <span class="c1"># filename: 02.图片下载到本地-方式2.py</span>
 <span class="kn">from</span> <span class="nn">urllib</span> <span class="k">import</span> <span class="n">request</span>
@@ -641,7 +697,6 @@ python2X  中 import urllib2.urlencode ------ python3X 使用 import urllib.pars
 <div class="section" id="requests">
 <h2><a class="toc-backref" href="#id21">20.2.5. requests</a><a class="headerlink" href="#requests" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>  <span class="c1"># 导入网络请求模块</span>
-
 <span class="c1">#表单参数</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;word&quot;</span><span class="p">:</span><span class="s2">&quot;hello&quot;</span><span class="p">}</span>
 <span class="c1"># 发送网络请求</span>
@@ -667,6 +722,65 @@ python2X  中 import urllib2.urlencode ------ python3X 使用 import urllib.pars
 <span class="c1"># print(&quot;encoding----&gt;&quot;, response.encoding)</span>
 <span class="c1"># # 打印字节流源码</span>
 <span class="c1"># print(&quot;打印字节码源码&quot;, response.content)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/5/6 10:35</span>
+<span class="c1"># filename: sample01.py</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># 以GET请求为例，最简单的形式如下：</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.baidu.com&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># 演示一下POST请求，同样是非常简短，更加具有Python风格</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">postdata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;https://www.douban.com/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">postdata</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># 请求头headers处理</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">user_agent</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="n">user_agent</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.baidu.com&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># Cookie处理</span>
+
+<span class="c1"># 如果响应中包含Cookie的值，可以如下方式获取Cookie字段的值，示例如下：</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">user_agent</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="n">user_agent</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.baidu.com&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="c1"># 遍历出所有的cookie字段的值</span>
+<span class="k">for</span> <span class="n">cookie</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cookie</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cookie</span><span class="p">))</span>
+
+<span class="c1"># 重定向与历史信息</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://github.com&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">history</span><span class="p">)</span>
+
+<span class="c1"># 超时设置</span>
+<span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://github.com&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 代理设置</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">proxies</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;http&quot;</span><span class="p">:</span> <span class="s2">&quot;http://0.10.1.10:3128&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https&quot;</span><span class="p">:</span> <span class="s2">&quot;http://10.10.1.10:1080&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://example.org&quot;</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

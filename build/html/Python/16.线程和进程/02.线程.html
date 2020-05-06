@@ -690,7 +690,7 @@
 </div>
 <div class="section" id="id9">
 <h2><a class="toc-backref" href="#id30">16.2.6. 线程安全</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/6/23 15:12</span>
@@ -798,15 +798,22 @@
 <div class="section" id="id10">
 <h2><a class="toc-backref" href="#id31">16.2.7. 什么是互斥锁</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p>示例1</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># threading.Lock()</span>
 <span class="c1"># 使用互斥锁可以防止多个线程同时读取内存的某一个区域,互斥锁保证了每个线程同一时间只有一个在使用内存资源</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">从系统的角度来看。锁的作用其实是将多线程变回到单线程，这是以牺牲性能，来换取程序的准确性。</span>
+
 <span class="sd">在代码设计中，应该最大化地避免使用锁。即使加了锁，也要让被保护的区域尽量地少，在满足准确性的同时实现性能最大化。</span>
 <span class="sd">在代码中，有“加锁”操作，就一定要有与之对应的“解锁”操作，否则代码失去多线程的优势。</span>
+
+<span class="sd">在Python中，使用threading.RLock类来创建锁。threading.RLock类有两个方法--acquire与release</span>
+
+<span class="sd">* acquire负责开始对代码进行保护，在acquire之后的代码，都将只允许一个线程进行执行。</span>
+
+<span class="sd">* release方法用于停止保护（即释放锁资源）。在release之后的代码又恢复到原来的样子，可以被多线程交叉执行。</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Thread</span><span class="p">,</span> <span class="n">Lock</span>
@@ -825,77 +832,94 @@
 <span class="sd">mutex.release()</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="c1"># 计数器，总票数</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">20</span>
 
 
-<span class="k">def</span> <span class="nf">task</span><span class="p">():</span>
-    <span class="k">global</span> <span class="n">num</span>
-    <span class="n">mutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>     <span class="c1">#锁定线程，只有1个线程可以抢用</span>
+<span class="k">def</span> <span class="nf">task</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">num</span>       <span class="c1"># 使用全局变量</span>
+    <span class="n">mutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>  <span class="c1"># 锁定线程，只有1个线程可以抢用</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="n">num</span> <span class="o">-=</span> <span class="mi">1</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;购买成功，剩余</span><span class="si">{}</span><span class="s2">张电影票&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
-    <span class="n">mutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>     <span class="c1">#释放，其他线程可以进行操作</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">号用户【线程】，购买成功，剩余</span><span class="si">{}</span><span class="s2">张电影票&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">num</span><span class="p">))</span>
+    <span class="n">mutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>  <span class="c1"># 释放，其他线程可以进行操作</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">mutex</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>      <span class="c1"># 创建锁</span>
+    <span class="n">mutex</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>  <span class="c1"># 创建锁</span>
     <span class="n">t_l</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">task</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">task</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,))</span>
         <span class="n">t_l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
         <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_l</span><span class="p">:</span>
         <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;main thread end..!&quot;</span><span class="p">)</span>
+
+<span class="c1"># 0号用户【线程】，购买成功，剩余19张电影票</span>
+<span class="c1"># 1号用户【线程】，购买成功，剩余18张电影票</span>
+<span class="c1"># 2号用户【线程】，购买成功，剩余17张电影票</span>
+<span class="c1"># 3号用户【线程】，购买成功，剩余16张电影票</span>
+<span class="c1"># 4号用户【线程】，购买成功，剩余15张电影票</span>
+<span class="c1"># 5号用户【线程】，购买成功，剩余14张电影票</span>
+<span class="c1"># 6号用户【线程】，购买成功，剩余13张电影票</span>
+<span class="c1"># 7号用户【线程】，购买成功，剩余12张电影票</span>
+<span class="c1"># 8号用户【线程】，购买成功，剩余11张电影票</span>
+<span class="c1"># 9号用户【线程】，购买成功，剩余10张电影票</span>
+<span class="c1"># main thread end..!</span>
 </pre></div>
 </div>
 <p>示例2</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>import threading
-import time
-
-# 继承threading子类
-class myThread(threading.Thread):
-    def run(self):
-        global x
-        # 锁定
-        lock.acquire()
-        for i in range(3):
-            x += 10
-        time.sleep(1)
-        print(x)
-        # 释放锁
-        lock.release()
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
 
-x = 0
-# 创建锁
-lock = threading.RLock()
+<span class="k">class</span> <span class="nc">myTread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">global</span> <span class="n">x</span>
+        <span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="mi">10</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> result = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="n">getName</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">x</span><span class="p">))</span>
+        <span class="n">lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 
 
-def main():
-    # 创建5个线程同时启动
-    thrs = []
-    for item in range(5):
-        thrs.append(myThread())
-    for item in thrs:
-        item.start()
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">RLock</span><span class="p">()</span>
 
 
-if __name__ == &quot;__main__&quot;:
-    main()
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">thrs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">thrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">myTread</span><span class="p">())</span>
 
-输出信息：
-30
-60
-90
-120
-150
-....
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">thrs</span><span class="p">:</span>
+        <span class="n">item</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">自定义一个带锁访问全局变量x的线程类myThread，在main()函数中初始化了5个线程来修改变量x，</span>
+<span class="sd">但同一时刻只能由一个线程对x操作</span>
+
+<span class="sd">Thread-1 result = 30</span>
+<span class="sd">Thread-2 result = 60</span>
+<span class="sd">Thread-3 result = 90</span>
+<span class="sd">Thread-4 result = 120</span>
+<span class="sd">Thread-5 result = 150</span>
+<span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <div class="section" id="id11">
 <h3><a class="toc-backref" href="#id32">互斥锁航空机票示例</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/6/23 15:42</span>
@@ -1091,7 +1115,7 @@ if __name__ == &quot;__main__&quot;:
 <div class="section" id="id13">
 <h2><a class="toc-backref" href="#id33">16.2.8. 使用信号量同步多线程之间的执行顺序</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <p>1.纯粹的信号量（Semphore）</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/12/21 18:40</span>
@@ -1158,7 +1182,7 @@ if __name__ == &quot;__main__&quot;:
 </pre></div>
 </div>
 <p>2.带有边界的信号量(BoundedSemaphore)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>将上述代码中的semaphore = threading.Semaphore(0)改为
+<div class="code python highlight-default"><div class="highlight"><pre><span></span>将上述代码中的semaphore = threading.Semaphore(0)改为
 semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候item就有2个，消费者的可以消费的item有2个，
 对item的取值进行判断，过滤掉初始值
 
@@ -1170,7 +1194,7 @@ semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候
 </div>
 <div class="section" id="id14">
 <h2><a class="toc-backref" href="#id34">16.2.9. 创建定时触发程序</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/12/21 19:12</span>
@@ -1201,7 +1225,7 @@ semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候
 </div>
 <div class="section" id="id15">
 <h2><a class="toc-backref" href="#id35">16.2.10. 循环定时触发程序</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/12/21 19:12</span>
@@ -1235,7 +1259,7 @@ semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候
 </div>
 <div class="section" id="id16">
 <h2><a class="toc-backref" href="#id36">16.2.11. 设置定时间隔和结束定时器</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/12/21 19:12</span>
@@ -1279,7 +1303,7 @@ semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候
 </div>
 <div class="section" id="id17">
 <h2><a class="toc-backref" href="#id37">16.2.12. 使用线程池提升运行效率</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/12/21 19:29</span>
@@ -1297,8 +1321,11 @@ semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候
 <span class="sd">实现线程池</span>
 <span class="sd">Python中，使用conncurrent.futures 模块下的ThreadPoolExecutor 类来实现线程池。在实例化时， 会将需要的线程个数传入。</span>
 <span class="sd">系统就会为该线程池初始化相应个数的线程。线程池的使用有两种方式。</span>
+
 <span class="sd">    * 抢占式： 线程池中的线程执行顺序不固定。该方式使用ThreadPooIExecutor 的submit方法实现。</span>
+
 <span class="sd">    * 非抢占式： 线程将按照调用的顺序执行。此方式使用ThreadPoolExecutor 的map方法来实现。</span>
+
 <span class="sd">从使用角度来看： 抢占式更灵活； 非抢占式更严格。</span>
 
 
@@ -1337,7 +1364,7 @@ semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候
 </pre></div>
 </div>
 <p>实现抢占线程池</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">start2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">start2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">person</span><span class="p">:</span>
         <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">printperson</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
@@ -1353,7 +1380,7 @@ semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候
 </pre></div>
 </div>
 <p>实现非抢占线程池</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">start3</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">start3</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">as</span> <span class="n">executorl</span><span class="p">:</span>
     <span class="n">executorl</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">printperson</span><span class="p">,</span> <span class="n">person</span><span class="p">)</span>
 <span class="n">end3</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -1367,7 +1394,7 @@ semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候
 </pre></div>
 </div>
 <p>代码示例</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="k">import</span> <span class="n">ThreadPoolExecutor</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="k">import</span> <span class="n">ThreadPoolExecutor</span>
 <span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Thread</span><span class="p">,</span> <span class="n">currentThread</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
 
@@ -1384,7 +1411,7 @@ semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候
 </pre></div>
 </div>
 <p>抢占模式+回调函数</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/14 22:19</span>
@@ -1422,7 +1449,7 @@ semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候
 </pre></div>
 </div>
 <p>使用map()方法启动线程，并收集线程任务的返回值。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/14 22:19</span>
@@ -1454,6 +1481,7 @@ semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候
 <p><a class="reference external" href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c12/p08_perform_simple_parallel_programming.html">https://python3-cookbook.readthedocs.io/zh_CN/latest/c12/p08_perform_simple_parallel_programming.html</a></p>
 <p><a class="reference external" href="https://docs.python.org/zh-cn/3.8/library/concurrent.futures.html">Python标准库 concurrent.futures —
 启动并行任务</a></p>
+<p><a class="reference external" href="https://www.cnblogs.com/nickchen121/p/11141751.html">Python程序中的线程操作-concurrent模块</a></p>
 <p>需要创建多少个线程才算合理</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>多线程的并发机制， 虽然可以提升程序效率， 但线程个数也不是越多越好。如要找到更优
 的线程数量， 可以使用如下方法：

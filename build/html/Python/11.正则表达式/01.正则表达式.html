@@ -111,7 +111,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">11. Python正则表达式</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">11.1. 正则表达式</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">11.1.1. 正则表达式语法</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id17">11.1.2. 正则表达式匹配模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">11.1.2. 正则表达式匹配模式</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="02.匹配字符串示例.html">11.2. 匹配字符串示例</a></li>
@@ -213,38 +213,37 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id18">正则表达式</a><ul>
-<li><a class="reference internal" href="#id2" id="id19">正则表达式语法</a><ul>
-<li><a class="reference internal" href="#id3" id="id20">正则表达式查询表</a></li>
-<li><a class="reference internal" href="#id4" id="id21">行定位符</a></li>
-<li><a class="reference internal" href="#id5" id="id22">元字符</a></li>
-<li><a class="reference internal" href="#id6" id="id23">限定符</a></li>
-<li><a class="reference internal" href="#id7" id="id24">字符类匹配</a></li>
-<li><a class="reference internal" href="#id8" id="id25">排除字符</a></li>
-<li><a class="reference internal" href="#id9" id="id26">选择字符</a></li>
-<li><a class="reference internal" href="#id10" id="id27">转义字符</a></li>
-<li><a class="reference internal" href="#id11" id="id28">分组</a></li>
-<li><a class="reference internal" href="#id12" id="id29">预定义匹配字符集</a></li>
-<li><a class="reference internal" href="#id13" id="id30">重复匹配</a></li>
-<li><a class="reference internal" href="#id14" id="id31">位置匹配</a></li>
-<li><a class="reference internal" href="#id15" id="id32">贪婪与非贪婪模式</a></li>
+<li><a class="reference internal" href="#id1" id="id17">正则表达式</a><ul>
+<li><a class="reference internal" href="#id2" id="id18">正则表达式语法</a><ul>
+<li><a class="reference internal" href="#id3" id="id19">正则表达式查询表</a></li>
+<li><a class="reference internal" href="#id4" id="id20">行定位符</a></li>
+<li><a class="reference internal" href="#id5" id="id21">元字符</a></li>
+<li><a class="reference internal" href="#id6" id="id22">限定符</a></li>
+<li><a class="reference internal" href="#id7" id="id23">字符类匹配</a></li>
+<li><a class="reference internal" href="#id8" id="id24">选择字符</a></li>
+<li><a class="reference internal" href="#id9" id="id25">转义字符</a></li>
+<li><a class="reference internal" href="#id10" id="id26">分组</a></li>
+<li><a class="reference internal" href="#id11" id="id27">预定义匹配字符集</a></li>
+<li><a class="reference internal" href="#id12" id="id28">重复匹配</a></li>
+<li><a class="reference internal" href="#id13" id="id29">位置匹配</a></li>
+<li><a class="reference internal" href="#id14" id="id30">贪婪与非贪婪模式</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id17" id="id33">正则表达式匹配模式</a></li>
+<li><a class="reference internal" href="#id16" id="id31">正则表达式匹配模式</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id18">11.1. 正则表达式</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id17">11.1. 正则表达式</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id19">11.1.1. 正则表达式语法</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">11.1.1. 正则表达式语法</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3><a class="toc-backref" href="#id20">正则表达式查询表</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id19">正则表达式查询表</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p><img alt="image0" src="../../_images/re94.PNG" /></p>
 </div>
 <div class="section" id="id4">
-<h3><a class="toc-backref" href="#id21">行定位符</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id20">行定位符</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>字母、数字、汉字、下划线、以及没有特殊定义的符号，都是&quot;普通字符&quot;。正则表达式中的普通字符，在匹配的时候，只匹配与自身相同的一个字符。
 例如：表达式c，在匹配字符串abcde时，匹配结果是：成功；匹配到的内容是c；匹配到的位置开始于2，结束于3。（注：下标从0开始还是从1开始，因当前编程语言的不同而可能不同）
 
@@ -255,7 +254,7 @@
 </div>
 </div>
 <div class="section" id="id5">
-<h3><a class="toc-backref" href="#id22">元字符</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id21">元字符</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>表达式 匹配
 .       小数点可以匹配除了换行符\n以外的任意一个字符
 |       逻辑或操作符
@@ -279,7 +278,7 @@ a.c匹配abc
 <p><img alt="image1" src="../../_images/yuanzifu_re.png" /></p>
 </div>
 <div class="section" id="id6">
-<h3><a class="toc-backref" href="#id23">限定符</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id22">限定符</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>使用()匹配任意数量的字母或数字，如果要匹配特定数量的数字，匹配8位QQ号可以使用如下表达式</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>^\d{8}$
 </pre></div>
@@ -288,7 +287,7 @@ a.c匹配abc
 <p><img alt="image3" src="../../_images/python-re-xiandingfu0002.png" /></p>
 </div>
 <div class="section" id="id7">
-<h3><a class="toc-backref" href="#id24">字符类匹配</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id23">字符类匹配</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>[aeiou]     #匹配任何一个英文元音字母
 [.?!]       #匹配标点符号&quot;.&quot;、“？”、“！”
 [0-9]       #与\d完全一致
@@ -297,15 +296,16 @@ a.c匹配abc
 [\u4e00-\u9fa5]+    #匹配字符串中连续多个汉字
 </pre></div>
 </div>
+<div class="line-block">
+<div class="line">​</div>
+<div class="line">### 排除字符</div>
 </div>
-<div class="section" id="id8">
-<h3><a class="toc-backref" href="#id25">排除字符</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">^</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z</span><span class="p">]</span>       <span class="c1">#匹配一个不是字母的字符</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id9">
-<h3><a class="toc-backref" href="#id26">选择字符</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id24">选择字符</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>包含着条件选择的逻辑，需要使用选择字符(|)来实现。该字符可以理解为“或”
 
 (^\d{15}$)|(^\d{18}$)|(^\d{17})(\d|X|x)$
@@ -313,8 +313,8 @@ a.c匹配abc
 </pre></div>
 </div>
 </div>
-<div class="section" id="id10">
-<h3><a class="toc-backref" href="#id27">转义字符</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id25">转义字符</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>表达式 匹配
 \r, \n  匹配回车和换行符
 \t  匹配制表符
@@ -325,8 +325,8 @@ a.c匹配abc
 </pre></div>
 </div>
 </div>
-<div class="section" id="id11">
-<h3><a class="toc-backref" href="#id28">分组</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id26">分组</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>小括号的作用</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>①改变限定符的作用范围，如“|”、“*”、“^”
 (six|four)th
@@ -336,9 +336,10 @@ a.c匹配abc
 (\.[0-9]{1..3}{3})      #对(\.[0-9]{1..3})进行重复操作
 </pre></div>
 </div>
+<p>​</p>
 </div>
-<div class="section" id="id12">
-<h3><a class="toc-backref" href="#id29">预定义匹配字符集</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3><a class="toc-backref" href="#id27">预定义匹配字符集</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>表达式 匹配
 \d      任意一个数字，0~9 中的任意一个
 \w      任意一个字母或数字或下划线，也就是 A~Z,a~z,0~9,_ 中的任意一个
@@ -353,8 +354,8 @@ a.c匹配abc
 <p>更多字符集匹配的详细内容可以参考 正则表达式速查表 常用的正则表达式
 python正则表达式操作指南</p>
 </div>
-<div class="section" id="id13">
-<h3><a class="toc-backref" href="#id30">重复匹配</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3><a class="toc-backref" href="#id28">重复匹配</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>表达式 匹配
 {n}     表达式重复n次，比如\d{2}相当于\d\d,a{3}相当于aaa
 {m,n}   表达式至少重复m次，最多重复n次。比如ab{1,3}可以匹配ab或abb或abbb
@@ -369,8 +370,8 @@ python正则表达式操作指南</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id14">
-<h3><a class="toc-backref" href="#id31">位置匹配</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3><a class="toc-backref" href="#id29">位置匹配</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>表达式 匹配
 ^   在字符串开始的地方匹配，符号本身不匹配任何字符
 $   在字符串结束的地方匹配，符号本身不匹配任何字符
@@ -379,14 +380,14 @@ $   在字符串结束的地方匹配，符号本身不匹配任何字符
 </pre></div>
 </div>
 </div>
-<div class="section" id="id15">
-<h3><a class="toc-backref" href="#id32">贪婪与非贪婪模式</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3><a class="toc-backref" href="#id30">贪婪与非贪婪模式</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>在重复匹配时，正则表达式默认总是尽可能多的匹配，这被称为贪婪模式。
 比如，针对文本dxxxdxxxd，表达式(d)(\w+)(d)中的\w+将匹配第一个d和最后一个d之间的所有字符xxxdxxx。
 </pre></div>
 </div>
-<div class="section" id="id16">
-<h4>举例说明<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id15">
+<h4>举例说明<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&lt;table&gt;</span>
 <span class="s1">    &lt;tr&gt;</span>
 <span class="s1">        &lt;td&gt;电视机&lt;/td&gt;</span>
@@ -435,11 +436,40 @@ $   在字符串结束的地方匹配，符号本身不匹配任何字符
 <span class="mi">87654</span>
 </pre></div>
 </div>
+<p>懒惰限定符的使用方式</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">语法</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>*？</td>
+<td>重复任意次，但尽可能少重复</td>
+</tr>
+<tr class="row-odd"><td>+？</td>
+<td>重复1次或更多次，但尽可能少重复</td>
+</tr>
+<tr class="row-even"><td>？？</td>
+<td>重复0次或1次，但尽可能少重复</td>
+</tr>
+<tr class="row-odd"><td>(n,m)?</td>
+<td>重复n到m次，但尽可能少重复</td>
+</tr>
+<tr class="row-even"><td>(n.)?</td>
+<td>重复n次以上，但尽可能少重复</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
-<div class="section" id="id17">
-<h2><a class="toc-backref" href="#id33">11.1.2. 正则表达式匹配模式</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id16">
+<h2><a class="toc-backref" href="#id31">11.1.2. 正则表达式匹配模式</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 <p><img alt="image4" src="../../_images/re_moudle002.png" /></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>方法                                  描述                                          返回值
 compile(pattern[, flags])   根据包含正则表达式的字符串创建模式对象                     re对象

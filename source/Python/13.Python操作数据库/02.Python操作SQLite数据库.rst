@@ -256,7 +256,7 @@ DELETE 操作
 Pyhton操作SQLite数据库案例
 --------------------------
 
-::
+.. code:: shell
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -386,6 +386,14 @@ Pyhton操作SQLite数据库案例
    #创建连接对象
    conn = sqlite3.connect('mrsoft.db')
 
+不仅可以在硬盘上创建数据库文件，还可以在内存中创建。
+
+--------------
+
+::
+
+        conn = sqlite3.connect(':memory:')
+
 3.创建游标对象
 
 ::
@@ -397,18 +405,18 @@ Pyhton操作SQLite数据库案例
 
 ::
 
-   cur.execute(sql)                            #执行SQL语句
-   cur.execute(sql,parameters)                 #执行带参数的SQL语句
-   cur.executemany(sql,sql_of_parameters)      #根据参数执行多次SQL语句
-   cur.executesript(sql_script)                #执行SQL脚本
+   cur.execute(sql)                     #执行SQL语句
+   cur.execute(sql,parameters)          #执行带参数的SQL语句
+   cur.executemany(sql,sql_of_parameters) #根据参数执行多次SQL语句
+   cur.executesript(sql_script)           #执行SQL脚本
 
 5.获取游标的查询结果集
 
 ::
 
-   cur.fetchone()    #返回结果集的下一行（Row对象）;无数据时返回None
-   cur.fetchall()    #返回结果集的剩余行（Row对象列表）;无数据时返回空List
-   cur.fetchmany()    #返回结果集的多行（Row对象列表）;无数据时返回空List
+   cur.fetchone() #返回结果集的下一行（Row对象）;无数据时返回None
+   cur.fetchall() #返回结果集的剩余行（Row对象列表）;无数据时返回空List
+   cur.fetchmany() #返回结果集的多行（Row对象列表）;无数据时返回空List
 
 6.数据库的提交和回滚
 
@@ -423,8 +431,8 @@ Pyhton操作SQLite数据库案例
 ::
 
    最后需要关闭打开的Cursor对象和Connection对象
-   cur.close()         #关闭Cursor对象
-   con.close()         #关闭Connection对象
+   cur.close()    #关闭Cursor对象
+   con.close()    #关闭Connection对象
 
 Python操作SQLite代码示例
 ------------------------

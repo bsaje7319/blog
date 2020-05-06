@@ -623,7 +623,6 @@ format格式化字符串
                      'amount': "$%0.2f" % 1000.0})
    print(info2)
 
-
 .. |image0| image:: ../../_static/python_zhuanyi001.png
 .. |image1| image:: ../../_static/string1.png
 .. |image2| image:: ../../_static/format.png

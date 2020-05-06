@@ -460,7 +460,7 @@
 线程安全
 --------
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -572,7 +572,7 @@
 
 示例1
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -581,8 +581,15 @@
 
    """
    从系统的角度来看。锁的作用其实是将多线程变回到单线程，这是以牺牲性能，来换取程序的准确性。
+
    在代码设计中，应该最大化地避免使用锁。即使加了锁，也要让被保护的区域尽量地少，在满足准确性的同时实现性能最大化。
    在代码中，有“加锁”操作，就一定要有与之对应的“解锁”操作，否则代码失去多线程的优势。
+
+   在Python中，使用threading.RLock类来创建锁。threading.RLock类有两个方法--acquire与release
+
+   * acquire负责开始对代码进行保护，在acquire之后的代码，都将只允许一个线程进行执行。
+
+   * release方法用于停止保护（即释放锁资源）。在release之后的代码又恢复到原来的样子，可以被多线程交叉执行。
    """
 
    from threading import Thread, Lock
@@ -601,79 +608,96 @@
    mutex.release()
 
    '''
-   num = 100
+   # 计数器，总票数
+   num = 20
 
 
-   def task():
-       global num
-       mutex.acquire()     #锁定线程，只有1个线程可以抢用
+   def task(arg):
+       global num       # 使用全局变量
+       mutex.acquire()  # 锁定线程，只有1个线程可以抢用
        time.sleep(0.5)
        num -= 1
-       print("购买成功，剩余{}张电影票".format(num))
-       mutex.release()     #释放，其他线程可以进行操作
+       print("{}号用户【线程】，购买成功，剩余{}张电影票".format(arg, num))
+       mutex.release()  # 释放，其他线程可以进行操作
 
 
    if __name__ == '__main__':
-       mutex = Lock()      # 创建锁
+       mutex = Lock()  # 创建锁
        t_l = []
        for i in range(10):
-           t = Thread(target=task)
+           t = Thread(target=task, args=(i,))
            t_l.append(t)
            t.start()
 
        for t in t_l:
            t.join()
 
+   print("main thread end..!")
+
+   # 0号用户【线程】，购买成功，剩余19张电影票
+   # 1号用户【线程】，购买成功，剩余18张电影票
+   # 2号用户【线程】，购买成功，剩余17张电影票
+   # 3号用户【线程】，购买成功，剩余16张电影票
+   # 4号用户【线程】，购买成功，剩余15张电影票
+   # 5号用户【线程】，购买成功，剩余14张电影票
+   # 6号用户【线程】，购买成功，剩余13张电影票
+   # 7号用户【线程】，购买成功，剩余12张电影票
+   # 8号用户【线程】，购买成功，剩余11张电影票
+   # 9号用户【线程】，购买成功，剩余10张电影票
+   # main thread end..!
+
 示例2
 
-::
+.. code:: python
 
+   #!/usr/bin/env python
+   # -*- coding:utf8 -*-
    import threading
    import time
 
-   # 继承threading子类
-   class myThread(threading.Thread):
+
+   class myTread(threading.Thread):
        def run(self):
            global x
-           # 锁定
            lock.acquire()
            for i in range(3):
                x += 10
            time.sleep(1)
-           print(x)
-           # 释放锁
+           print("{} result = {}".format(threading.Thread.getName(self), x))
            lock.release()
 
 
    x = 0
-   # 创建锁
    lock = threading.RLock()
 
 
    def main():
-       # 创建5个线程同时启动
        thrs = []
        for item in range(5):
-           thrs.append(myThread())
+           thrs.append(myTread())
+
        for item in thrs:
            item.start()
 
 
-   if __name__ == "__main__":
+   if __name__ == '__main__':
        main()
-       
-   输出信息：
-   30
-   60
-   90
-   120
-   150
-   ....
+
+   """
+   自定义一个带锁访问全局变量x的线程类myThread，在main()函数中初始化了5个线程来修改变量x，
+   但同一时刻只能由一个线程对x操作
+
+   Thread-1 result = 30
+   Thread-2 result = 60
+   Thread-3 result = 90
+   Thread-4 result = 120
+   Thread-5 result = 150
+   """
 
 互斥锁航空机票示例
 ~~~~~~~~~~~~~~~~~~
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -873,7 +897,7 @@
 
 1.纯粹的信号量（Semphore）
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -942,7 +966,7 @@
 
 2.带有边界的信号量(BoundedSemaphore)
 
-::
+.. code:: python
 
    将上述代码中的semaphore = threading.Semaphore(0)改为
    semaphore = threading.BoundedSemaphore(2)  # 创建信号量为2.初始的时候item就有2个，消费者的可以消费的item有2个，
@@ -955,7 +979,7 @@
 创建定时触发程序
 ----------------
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -987,7 +1011,7 @@
 循环定时触发程序
 ----------------
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -1022,7 +1046,7 @@
 设置定时间隔和结束定时器
 ------------------------
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -1067,7 +1091,7 @@
 使用线程池提升运行效率
 ----------------------
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -1087,8 +1111,11 @@
    实现线程池
    Python中，使用conncurrent.futures 模块下的ThreadPoolExecutor 类来实现线程池。在实例化时， 会将需要的线程个数传入。
    系统就会为该线程池初始化相应个数的线程。线程池的使用有两种方式。
+
        * 抢占式： 线程池中的线程执行顺序不固定。该方式使用ThreadPooIExecutor 的submit方法实现。
+       
        * 非抢占式： 线程将按照调用的顺序执行。此方式使用ThreadPoolExecutor 的map方法来实现。
+       
    从使用角度来看： 抢占式更灵活； 非抢占式更严格。
 
 
@@ -1127,7 +1154,7 @@
 
 实现抢占线程池
 
-::
+.. code:: python
 
    start2 = time.time()
    with ThreadPoolExecutor(3) as executor:
@@ -1145,7 +1172,7 @@
 
 实现非抢占线程池
 
-::
+.. code:: python
 
    start3 = time.time()
    with ThreadPoolExecutor(3) as executorl:
@@ -1161,7 +1188,7 @@
 
 代码示例
 
-::
+.. code:: python
 
    from concurrent.futures import ThreadPoolExecutor
    from threading import Thread, currentThread
@@ -1180,7 +1207,7 @@
 
 抢占模式+回调函数
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -1220,7 +1247,7 @@
 
 使用map()方法启动线程，并收集线程任务的返回值。
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -1255,6 +1282,8 @@ https://python3-cookbook.readthedocs.io/zh_CN/latest/c12/p08_perform_simple_para
 
 `Python标准库 concurrent.futures —
 启动并行任务 <https://docs.python.org/zh-cn/3.8/library/concurrent.futures.html>`__
+
+`Python程序中的线程操作-concurrent模块 <https://www.cnblogs.com/nickchen121/p/11141751.html>`__
 
 需要创建多少个线程才算合理
 

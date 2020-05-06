@@ -61,9 +61,34 @@
    if __name__ == '__main__':
        main("netstat -an", 60)
 
-``execute_command函数首先执行了指定的命令，然后调用schedule的enter方法继续进入下一个定时周期``
+execute_command函数首先执行了指定的命令，然后调用schedule的enter方法继续进入下一个定时周期
 
 ``main函数中，将execute_command函数放入需要定时执行的队列中，并调用run方法来启动调度机制``
+
+sched模块实现定时器方法
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: python
+
+   # 定时执行器.间隔10s执行程序
+   class MonitorSchedule:
+
+       def __init__(self, monitor_time):
+           self.schedule = sched.scheduler(time.time, time.sleep)
+           self.monitor_time = monitor_time
+
+       def func(self):
+           # 执行的程序
+           os.system("netstat -tunpl")
+           self.schedule.enter(monitor_time, 0, self.func, ())
+
+       def start(self):
+           self.schedule.enter(0, 0, self.func, ())
+           self.schedule.run()
+           
+   if __name__ == '__main__':
+       server = MonitorSchedule(10)
+       server.start()
 
 暂停直至特定日期
 ----------------

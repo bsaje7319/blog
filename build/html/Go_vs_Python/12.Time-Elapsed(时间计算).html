@@ -119,6 +119,14 @@
 <li class="toctree-l2"><a class="reference internal" href="14.Defer(退出处理).html">14. Defer(退出处理)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="15.Panic_Recover(异常捕获).html">15. Panic_Recover(异常捕获)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="16.Mutables(可变项).html">16. Mutables(可变项)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17.Structs(类).html">17. Structs(类)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18.Methods(方法).html">18. Methods(方法)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="19.Goroutines(并发).html">19. Goroutines(并发)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.Args.html">20. Args</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21.Import-Alias(导入模块别名).html">21. Import-Alias(导入模块别名)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.Sprintf(格式化字符串).html">22. Sprintf（格式化字符串）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23.Uniqify(去重).html">23. Uniqify(去重)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="24.Dotdict.html">24. Dotdict</a></li>
 </ul>
 </li>
 </ul>
@@ -224,6 +232,38 @@
     <span class="n">time</span><span class="o">.</span><span class="n">Sleep</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">)</span>
     <span class="n">elapsed</span> <span class="p">:</span><span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">Since</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Took </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">elapsed</span><span class="p">)</span>      <span class="o">//</span><span class="n">Took</span> <span class="mf">1.0005267</span><span class="n">s</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="code go highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s2">&quot;time&quot;</span>
+    <span class="s2">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+        <span class="n">start</span> <span class="p">:</span><span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span><span class="o">.</span><span class="n">Unix</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="p">:</span><span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">num</span> <span class="o">&lt;=</span> <span class="mi">80000</span><span class="p">;</span> <span class="n">num</span><span class="o">++</span> <span class="p">{</span>
+
+            <span class="n">flag</span> <span class="p">:</span><span class="o">=</span> <span class="n">true</span> <span class="o">//</span><span class="n">假设是素数</span>
+            <span class="o">//</span><span class="n">判断num是不是素数</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="p">:</span><span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span><span class="o">//</span><span class="n">说明该num不是素数</span>
+                    <span class="n">flag</span> <span class="o">=</span> <span class="n">false</span>
+                    <span class="k">break</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="n">flag</span> <span class="p">{</span>
+                <span class="o">//</span><span class="n">将这个数就放入到primeChan</span>
+                <span class="o">//</span><span class="n">primeChan</span><span class="o">&lt;-</span> <span class="n">num</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+        <span class="n">end</span> <span class="p">:</span><span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span><span class="o">.</span><span class="n">Unix</span><span class="p">()</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;普通的方法耗时=&quot;</span><span class="p">,</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+
 <span class="p">}</span>
 </pre></div>
 </div>
