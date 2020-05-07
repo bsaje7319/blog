@@ -17,3 +17,4 @@ Python对数据库的操作
     08.封装mongoDB的类
     09.Pyhton操作Redis数据库
     10.使用ORM工具操作mongoDB
+    11.封装SQLite的类

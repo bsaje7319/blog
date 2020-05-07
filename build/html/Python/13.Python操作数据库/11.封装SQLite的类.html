@@ -1,0 +1,612 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>13.11. 封装SQLite的类 &mdash; 运维开发修炼之路</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="next" title="14. Python 三方库学习" href="../14.Python三方库/index.html" />
+    <link rel="prev" title="13.10. 使用ORM工具操作mongoDB数据库" href="10.使用ORM工具操作mongoDB.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">13. Python对数据库的操作</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.Python操作NoSQL数据存储.html">13.1. Python操作NoSQL数据存储</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Python操作SQLite数据库.html">13.2. Python 操作SQLite数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Python操作mysql数据库.html">13.3. python操作mysql数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Python封装mysql数据库.html">13.4. python操作mysql数据库封装类和方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.mysql介绍和安装.html">13.5. Mysql介绍和安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.数据库模块化.html">13.6. 数据库模块化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Python操作mongoDB数据库.html">13.7. Python操作mongoDB数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.封装mongoDB的类.html">13.8. 封装MongoDB的类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.Pyhton操作Redis数据库.html">13.9. Python操作Redis数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.使用ORM工具操作mongoDB.html">13.10. 使用ORM工具操作mongoDB数据库</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">13.11. 封装SQLite的类</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Go_vs_Python/index.html">Go vs Python</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">13. Python对数据库的操作</a> &raquo;</li>
+        
+      <li>13.11. 封装SQLite的类</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/13.Python操作数据库/11.封装SQLite的类.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#sqlite" id="id1">封装SQLite的类</a></li>
+</ul>
+</div>
+<div class="section" id="sqlite">
+<h1><a class="toc-backref" href="#id1">13.11. 封装SQLite的类</a><a class="headerlink" href="#sqlite" title="Permalink to this headline">¶</a></h1>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+ <span class="c1">#定义数据库操作类</span>
+<span class="k">class</span> <span class="nc">MySqliteDb</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sqlite3 Db Class&quot;&quot;&quot;</span>
+
+    <span class="c1">#构造方法（传入数据库名）</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dbname</span><span class="o">=</span><span class="s2">&quot;mys.db&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dbname</span> <span class="o">=</span> <span class="n">dbname</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curs</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1">#定义获取数据连接的游标</span>
+    <span class="k">def</span> <span class="nf">getCursor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dbname</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">curs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="c1">#定义关闭数据库连接</span>
+    <span class="k">def</span> <span class="nf">closeDb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">curs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">curs</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1">#上下文管理器协议方法</span>
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">getCursor</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">curs</span>
+
+
+    <span class="c1">#上下文管理器协议方法</span>
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">exc_val</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exception has generate: &quot;</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sqlite3 execute error!&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">closeDb</span><span class="p">()</span>
+
+
+<span class="c1">#定义初始化数据库方法（创建表）</span>
+<span class="k">def</span> <span class="nf">initDb</span><span class="p">(</span><span class="n">db</span><span class="p">):</span>
+     <span class="c1">#创建所有表的SQL语句</span>
+    <span class="n">crtSql</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        create table stu_sbjct</span>
+<span class="sd">        (id integer primary key autoincrement not null,</span>
+<span class="sd">        title varchar(500) not null,</span>
+<span class="sd">        qstn text,</span>
+<span class="sd">        openothr integer default 0)</span>
+<span class="sd">        &#39;&#39;&#39;</span><span class="p">,</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        create table stu_answrs(</span>
+<span class="sd">        id integer primary key autoincrement not null,</span>
+<span class="sd">        sbjct_id integer,</span>
+<span class="sd">        stu_id integer,</span>
+<span class="sd">        answr text,</span>
+<span class="sd">        answr_time timestamp default current_timestamp</span>
+<span class="sd">            )</span>
+<span class="sd">        &#39;&#39;&#39;</span><span class="p">,</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        create table stds</span>
+<span class="sd">        (</span>
+<span class="sd">        id integer primary key autoincrement not null,</span>
+<span class="sd">        name varchar(8),</span>
+<span class="sd">        psswd varchar(256),</span>
+<span class="sd">        usertype integer,</span>
+<span class="sd">        ipaddr varchar(20)</span>
+<span class="sd">            )</span>
+<span class="sd">        &#39;&#39;&#39;</span><span class="p">,</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        create table ask_hlps</span>
+<span class="sd">        (</span>
+<span class="sd">        id integer primary key autoincrement not null,</span>
+<span class="sd">        stu_id integer,</span>
+<span class="sd">        qstn text,</span>
+<span class="sd">        ask_time  timestamp default current_timestamp</span>
+<span class="sd">            )</span>
+<span class="sd">        &#39;&#39;&#39;</span><span class="p">,</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        create table hlp_answrs</span>
+<span class="sd">        (</span>
+<span class="sd">        id integer primary key autoincrement not null,</span>
+<span class="sd">        ask_id integer,</span>
+<span class="sd">        hlper_id integer,</span>
+<span class="sd">        answr text,</span>
+<span class="sd">        answr_time  timestamp default current_timestamp</span>
+<span class="sd">            )</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+    <span class="p">)</span>
+    <span class="c1">#循环执行SQL语句以创建表</span>
+    <span class="k">for</span> <span class="n">sql</span> <span class="ow">in</span> <span class="n">crtSql</span><span class="p">:</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">AskHelps</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stu_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">qstn</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stu_id</span> <span class="o">=</span> <span class="n">stu_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qstn</span> <span class="o">=</span> <span class="n">qstn</span>
+
+    <span class="k">def</span> <span class="nf">getLastQstns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">totals</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                <span class="s2">&quot;select ask_hlps.id,ask_hlps.stu_id,ask_hlps.qstn,ask_hlps.ask_time,stds.name from ask_hlps,stds where stds.id=ask_hlps.stu_id order by ask_time desc limit ?&quot;</span><span class="p">,</span>
+                <span class="p">(</span><span class="n">totals</span><span class="p">,))</span>
+            <span class="n">re</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">re</span>
+
+    <span class="k">def</span> <span class="nf">delAskHlps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;delete from ask_hlps&quot;</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;delete from hlp_answrs&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">re</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stu_id</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">qstn</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;insert into ask_hlps (stu_id,qstn) values (?,?)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stu_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">qstn</span><span class="p">))</span>
+                <span class="n">re</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">rowcount</span>
+        <span class="k">return</span> <span class="n">re</span>
+
+
+<span class="k">class</span> <span class="nc">HlpAnswrs</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ask_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">hlper_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">answr</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ask_id</span> <span class="o">=</span> <span class="n">ask_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hlper_id</span> <span class="o">=</span> <span class="n">hlper_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">answr</span> <span class="o">=</span> <span class="n">answr</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">re</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ask_id</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">hlper_id</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">answr</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;insert into hlp_answrs (ask_id,hlper_id,answr) values (?,?,?)&quot;</span><span class="p">,</span>
+                                 <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ask_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hlper_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">answr</span><span class="p">))</span>
+                <span class="n">re</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">rowcount</span>
+        <span class="k">return</span> <span class="n">re</span>
+
+    <span class="k">def</span> <span class="nf">getAnswrs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ask_id</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                select hlp_answrs.id,hlp_answrs.answr,stds.name from hlp_answrs,stds</span>
+<span class="sd">                where hlp_answrs.ask_id=? and hlp_answrs.hlper_id=stds.id</span>
+<span class="sd">                order by hlp_answrs.answr_time</span>
+<span class="sd">                &#39;&#39;&#39;</span><span class="p">,</span>
+                <span class="p">(</span><span class="n">ask_id</span><span class="p">,)</span>
+            <span class="p">)</span>
+            <span class="n">re</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">re</span>
+
+
+<span class="k">class</span> <span class="nc">StuSbjct</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;学习主题 stu_sbjct&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">qstn</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qstn</span> <span class="o">=</span> <span class="n">qstn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">qstn</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="s2">&quot;insert into stu_sbjct (title,qstn) values (?,?)&quot;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">qstn</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">getSbjcts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select * from stu_sbjct&quot;</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">setOpenOthr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sbjct_id</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select * from stu_sbjct where id=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">sbjct_id</span><span class="p">,))</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+            <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">res</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">else</span> <span class="mi">1</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;update stu_sbjct set openothr=? where id=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="n">sbjct_id</span><span class="p">))</span>
+            <span class="n">re</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">rowcount</span>
+        <span class="k">return</span> <span class="n">re</span>
+
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sbjct_id</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;delete from stu_sbjct where id=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">sbjct_id</span><span class="p">,))</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sbjct_id</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">qstn</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">sbjct_id</span> <span class="ow">and</span> <span class="n">title</span> <span class="ow">and</span> <span class="n">qstn</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;update stu_sbjct set title=? where id=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">sbjct_id</span><span class="p">))</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;update stu_sbjct set qstn=? where id=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">qstn</span><span class="p">,</span> <span class="n">sbjct_id</span><span class="p">))</span>
+
+
+<span class="k">class</span> <span class="nc">StuAnswr</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;学生回答 StuAnswrs&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sbjct_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stu_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">answr</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sbjct_id</span> <span class="o">=</span> <span class="n">sbjct_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stu_id</span> <span class="o">=</span> <span class="n">stu_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">answr</span> <span class="o">=</span> <span class="n">answr</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sbjct_id</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">stu_id</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">answr</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="s2">&quot;insert into stu_answrs (sbjct_id,stu_id,answr) values (?,?,?)&quot;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sbjct_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stu_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">answr</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">getAnswrs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sbjct_id</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                <span class="s2">&quot;select stu_answrs.id,stu_answrs.sbjct_id,stds.name,stu_answrs.answr,stu_answrs.answr_time from stu_answrs,stds where stu_answrs.sbjct_id=? and stu_answrs.stu_id=stds.id order by answr_time&quot;</span><span class="p">,</span>
+                <span class="p">(</span><span class="n">sbjct_id</span><span class="p">,))</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">getSelfAnswr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sbjct_id</span><span class="p">,</span> <span class="n">stu_id</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                <span class="s2">&quot;select stu_answrs.id,stu_answrs.sbjct_id,stds.name,stu_answrs.answr,stu_answrs.answr_time from stu_answrs,stds where stu_answrs.sbjct_id=? and stu_answrs.stu_id=? and stu_answrs.stu_id=stds.id order by answr_time&quot;</span><span class="p">,</span>
+                <span class="p">(</span><span class="n">sbjct_id</span><span class="p">,</span> <span class="n">stu_id</span><span class="p">))</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">isAnswred</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stu_id</span><span class="p">,</span> <span class="n">sbjct_id</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select * from stu_answrs where stu_id=? and sbjct_id=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">stu_id</span><span class="p">,</span> <span class="n">sbjct_id</span><span class="p">))</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+<span class="c1">#定义用户数据操作类</span>
+<span class="k">class</span> <span class="nc">Stu</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;class for stds&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">psswd</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">usertype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ipaddr</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">psswd</span> <span class="o">=</span> <span class="n">psswd</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usertype</span> <span class="o">=</span> <span class="n">usertype</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ipaddr</span> <span class="o">=</span> <span class="n">ipaddr</span>
+
+     <span class="c1">#持久化类数据方法</span>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">psswd</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="s2">&quot;insert into stds (name,psswd,usertype,ipaddr) values (?,?,?,?)&quot;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">psswd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">usertype</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ipaddr</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1">#验证登录的方法</span>
+    <span class="k">def</span> <span class="nf">isRgstr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                <span class="s2">&quot;select * from stds where name=? and psswd=?&quot;</span><span class="p">,</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">psswd</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+            <span class="n">res_ip</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                <span class="s2">&quot;select * from stds where ipaddr=? and name != ?&quot;</span><span class="p">,</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ipaddr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">res_ip</span> <span class="o">=</span> <span class="n">res_ip</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">res_ip</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;update stds set ipaddr=? where name=? and psswd=?&quot;</span><span class="p">,</span>
+                           <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ipaddr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">psswd</span><span class="p">)</span>
+                           <span class="p">)</span>
+            <span class="k">return</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+     <span class="c1">#根据用户id获取用户名方法</span>
+    <span class="k">def</span> <span class="nf">getStuName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stu_id</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                <span class="s2">&quot;select * from stds where id=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">stu_id</span><span class="p">,)</span>
+            <span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+   <span class="c1">#查询数据表中指定用户名是否注册过</span>
+    <span class="k">def</span> <span class="nf">had_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select * from stds where name=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,))</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">setupDb</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;mys.db&#39;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+            <span class="n">initDb</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sqlite3 Db initialize success!&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">initIpaddr</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;update stds set ipaddr=&#39;&#39;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ip address initialize success!&#39;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+        <span class="c1"># initDb(db)</span>
+        <span class="c1"># print(&#39;Sqlite3 Db initialize success!&#39;)</span>
+        <span class="c1"># db.execute(&quot;delete from ask_hlps;&quot;)</span>
+        <span class="c1"># db.execute(&quot;insert into stds (name,psswd) values (?,?)&quot;,(&#39;aaa&#39;,&#39;bbbbb&#39;))</span>
+        <span class="c1"># res = db.execute(&quot;select * from stu_sbjct&quot;)</span>
+        <span class="c1"># print(res.fetchall())</span>
+        <span class="c1"># res = db.execute(&quot;select * from hlp_answrs&quot;)</span>
+        <span class="c1"># print(res.fetchall())</span>
+        <span class="c1"># db.execute(&quot;alter table stds add column usertype integer default 0&quot;)</span>
+        <span class="c1"># db.execute(&quot;alter table stds add column ipaddr varchar(20)&quot;)</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;delete from hlp_answrs&quot;</span><span class="p">)</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;delete from ask_hlps&quot;</span><span class="p">)</span>
+
+        <span class="c1"># pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sqlite3 testing success!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../14.Python三方库/index.html" class="btn btn-neutral float-right" title="14. Python 三方库学习" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="10.使用ORM工具操作mongoDB.html" class="btn btn-neutral float-left" title="13.10. 使用ORM工具操作mongoDB数据库" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
