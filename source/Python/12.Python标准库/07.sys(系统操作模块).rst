@@ -28,6 +28,16 @@ sys系统操作模块
        sys.stdout.write("a") # 屏幕输出a
        sys.path.insert(1, os.path.join(sys.path[0], '/opt/script/'))     # 将/opt/script/目录加入环境变量，可导入相应模块
 
+模块查找
+--------
+
+::
+
+   #模块的查找路径在Python中可以通过sys模块来进行操纵（查看、增加和删除），代码如下：
+   import sys                   #导入sys模块
+   print(sys.path)             #输出当前模块查找路径（列表形式）
+   sys.path.append(Apath)      #添加Apath为模块查找路径
+
 举例1
 -----
 
@@ -78,7 +88,7 @@ sys系统操作模块
    print(test.hello)
 
 举例2
-~~~~~
+-----
 
 ::
 

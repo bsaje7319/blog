@@ -2,96 +2,178 @@
    :depth: 3
 ..
 
+itertools模块中常用工具函数
+===========================
+
 导入 itertools模块
-==================
+------------------
 
 ::
 
    import itertools
 
-itertools.count() 设置步长
---------------------------
+itertools模块中提供了近二十个迭代器工具函数，主要有三类，常用的主要有：
+
+无限迭代器：
+------------
 
 ::
 
-   for i in itertools.count(1,3):
-       #从1开始，步长为3
+   　　count (start, [step])                 #从start开始，以step为步进行计数迭代
+   　　cycle (seq)                           #无限循环迭代seq
+   　　repeat (elem, [n])                    #循环迭代elem
+
+迭代短序列：
+------------
+
+::
+
+   　　chain (p, q, ...)                     #链接迭代（将p,q连接起来迭代，就像从一个序列中迭代）
+   　　compress (data, selectors)            #依据selectors中的值选择迭代data序列中的值
+   　　dropwhile (pred, seq)                 #当pred对序列元素处理结果为假时开始迭代seq后所有值
+   　　filterfalse (pred, seq)               #当pred处理为假的元素
+   　　
+   　　takewhile (pred, seq)                 #与dropwhile相反
+   　　tee (it, n)                           #将it重复n次进行迭代
+   　　zip_longest (p,q,...)
+
+组合迭代序列
+------------
+
+::
+
+   　　product (p, q,...[, n])               #迭代排列出所有的排列
+   　　permutations (p, r)                   #迭代序列中r个元素的排列
+   　　combinations (p, r)                   #迭代序列中r个元素的组合
+
+代码示例
+~~~~~~~~
+
+``count (start, [step])``
+
+::
+
+   #!/usr/bin/env python
+   # -*- coding:utf8 -*-
+   # auther; 18793
+   # Date：2020/5/10 21:32
+   # filename: sample1.py
+   import itertools
+
+   for i in itertools.count(1, 3):
        print(i)
        if i >= 10:
            break
 
-itertools.cycle([‘a’,‘b’])
---------------------------
+   """
+   1
+   4
+   7
+   10
+   """
+
+``cycle (seq)``
 
 ::
 
-   for i in itertools.cycle(['a','b']):
-       #无限循环seq
+   import itertools
+
+   x = 0
+   for i in itertools.cycle(['a', 'b']):
        print(i)
        x += 1
-       if x >= 6:
+       if x > 6:
            break
 
-itertools.repeat(“hu”,10)
--------------------------
+   """
+   a
+   b
+   a
+   b
+   a
+   b
+   a
+   """
+
+``repeat (elem, [n])``
 
 ::
 
-   print(list(itertools.repeat("hu",10)))
-   #循环迭代hu，循环10次
+   import itertools
 
-itertools.chain([1,3],[2,3])
-----------------------------
+   print(list(itertools.repeat(3, 3)))
 
-::
+   #[3, 3, 3]
 
-   print(list(itertools.chain([1,3],[2,3])))
-   #链接迭代，将2个seq连接起来迭代
-
-itertools.compress([1,2,3,4],[1,[],True,3])
--------------------------------------------
+``chain (p, q, ...)``
 
 ::
 
-   >>> import itertools
-   >>> print(list(itertools.compress([1,2,3,4],[1,[],True,3])))
-   [1, 3, 4]
+   print(list(itertools.chain([1, 3], [2, 3])))
 
-itertools.dropwhile(lambda x:x>6,[8,9,1,2,8,9]))
-------------------------------------------------
+   #[1, 3, 2, 3]
 
-::
-
-   >>> print(list(itertools.dropwhile(lambda x:x>7,[8,9,1,2,8,9])))
-   [1, 2, 8, 9]
-   #当不满足lambda中情形，为假时，循环后面的seq
-
-itertools.takewhile(lambda x:x>10,[18,19,1,21,8,9])
----------------------------------------------------
+``compress (data, selectors)``
 
 ::
 
-   >>> print(list(itertools.takewhile(lambda x:x>10,[18,19,1,21,8,9])))
-   [18, 19]
-   #与dropwhile相反
+   print(list(itertools.compress([1, 2, 3, 4], [1, [], True, 3])))
 
-itertools其他工具函数用法
--------------------------
+``dropwhile (pred, seq)``
 
 ::
 
-   for its in itertools.tee([0,1],4):
+   print(list(itertools.dropwhile(lambda x: x > 6, [8, 9, 1, 2, 8, 9])))
+   # [1, 2, 8, 9]
+
+``filterfalse (pred, seq)``
+
+::
+
+   print(list(itertools.takewhile(lambda x: x > 10, [18, 19, 1, 21, 8, 9])))
+   # [18, 19]
+
+``tee (it, n)``
+
+::
+
+   import itertools
+
+   for its in itertools.tee([0, 1], 2):
        for it in its:
            print(it)
 
-   print(list(itertools.permutations("abc",3)))
-   #迭代序列中3个元素的排列
+   '''
+   0
+   1
+   0
+   1
+   '''
 
-   print(list(itertools.combinations('abcd',3)))
-   #迭代序列中3个元素的组合
+``permutations (p, r)``
+
+::
+
+   import itertools
+
+   print(list(itertools.permutations('abc', 2)))
+   # [('a', 'b'), ('a', 'c'), ('b', 'a'), ('b', 'c'), ('c', 'a'), ('c', 'b')]
+
+``combinations (p, r)``
+
+::
+
+   print(list(itertools.combinations('abc', 2)))
+   # [('a', 'b'), ('a', 'c'), ('b', 'c')]
+
+--------------
+
+使用无限迭代器时，必须有迭代退出的条件，否则会导致死循环。
+
+--------------
 
 itertools模块代码举例
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
