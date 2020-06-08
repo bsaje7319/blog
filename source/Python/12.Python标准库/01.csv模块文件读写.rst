@@ -310,3 +310,44 @@ csv操作函数
 
        except Exception as e:
            print("Write an CSV file to path: %s, Case: %s" % (path, e))
+
+CSV格式转换成JSON格式
+---------------------
+
+.. code:: python
+
+   #!/usr/bin/env python
+   # -*- coding:utf8 -*-
+   # @auther:   18793
+   # @Date：    2020/6/8 9:44
+   # @filename: sample01.py
+   # @Email:    1879324764@qq.com
+   # @Software: PyCharm
+
+   import sys
+   import json
+
+
+   # reload(sys)
+
+   def list_name(keyname, value1, dict1=None):
+       dict1 = dict(zip(keyname, value1))
+       return dict1
+
+
+   with open("address.csv", 'r') as f:
+       for line in f:
+           if line == []:
+               line = ""
+           else:
+               if line[-1] == "\n":
+                   line = line[:-1]
+                   if line[-1] == "\r":
+                       line = line[:-1]
+
+               akk = [y for y in line.split(" ")]
+               key1 = ['street', 'namefirst', 'address']
+               a1 = {}
+               arr = list_name(key1, akk, a1)
+               arr = json.dumps(arr)
+               print(arr)

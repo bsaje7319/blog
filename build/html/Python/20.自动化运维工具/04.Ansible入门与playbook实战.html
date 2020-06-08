@@ -125,25 +125,24 @@
 <li class="toctree-l4"><a class="reference internal" href="#id1">18.4.3. Ansible常用的核心模块</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">18.4.4. 远程命令模块</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#command">18.4.5. command模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#copy">18.4.6. copy模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#stat">18.4.7. stat模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#get-url">18.4.8. get_url模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#yum">18.4.9. yum模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cron">18.4.10. cron模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mount">18.4.11. mount模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#service">18.4.12. service模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sysctl">18.4.13. sysctl包管理模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#user">18.4.14. user模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#group">18.4.15. group模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#file">18.4.16. file模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#setup">18.4.17. setup模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ansibleyaml">18.4.18. ansible配合YAML使用</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tomcat">18.4.19. 示例：安装tomcat软件</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#playbooks-includes">18.4.20. playbooks Includes使用技巧</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#roles">18.4.21. Roles介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rolesfilestemplates">18.4.22. Roles中Files和Templates的区别</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#jinja2">18.4.23. Jinja2模板可以实现高度自定义</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">18.4.24. 创建roles时的注意事项：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stat">18.4.6. stat模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-url">18.4.7. get_url模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yum">18.4.8. yum模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cron">18.4.9. cron模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mount">18.4.10. mount模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service">18.4.11. service模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sysctl">18.4.12. sysctl包管理模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user">18.4.13. user模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group">18.4.14. group模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file">18.4.15. file模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup">18.4.16. setup模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ansibleyaml">18.4.17. ansible配合YAML使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tomcat">18.4.18. 示例：安装tomcat软件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#playbooks-includes">18.4.19. playbooks Includes使用技巧</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roles">18.4.20. Roles介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rolesfilestemplates">18.4.21. Roles中Files和Templates的区别</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jinja2">18.4.22. Jinja2模板可以实现高度自定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">18.4.23. 创建roles时的注意事项：</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="05.Saltstack安装使用入门.html">18.5. Saltstack安装使用入门（自己总结）</a></li>
@@ -240,33 +239,32 @@
 <li><a class="reference internal" href="#id1" id="id10">Ansible常用的核心模块</a></li>
 <li><a class="reference internal" href="#id2" id="id11">远程命令模块</a></li>
 <li><a class="reference internal" href="#command" id="id12">command模块</a></li>
-<li><a class="reference internal" href="#copy" id="id13">copy模块</a></li>
-<li><a class="reference internal" href="#stat" id="id14">stat模块</a></li>
-<li><a class="reference internal" href="#get-url" id="id15">get_url模块</a></li>
-<li><a class="reference internal" href="#yum" id="id16">yum模块</a></li>
-<li><a class="reference internal" href="#cron" id="id17">cron模块</a></li>
-<li><a class="reference internal" href="#mount" id="id18">mount模块</a></li>
-<li><a class="reference internal" href="#service" id="id19">service模块</a></li>
-<li><a class="reference internal" href="#sysctl" id="id20">sysctl包管理模块</a></li>
-<li><a class="reference internal" href="#user" id="id21">user模块</a></li>
-<li><a class="reference internal" href="#group" id="id22">group模块</a></li>
-<li><a class="reference internal" href="#file" id="id23">file模块</a></li>
-<li><a class="reference internal" href="#setup" id="id24">setup模块</a></li>
-<li><a class="reference internal" href="#ansibleyaml" id="id25">ansible配合YAML使用</a></li>
-<li><a class="reference internal" href="#tomcat" id="id26">示例：安装tomcat软件</a><ul>
-<li><a class="reference internal" href="#block" id="id27">Block块</a></li>
-<li><a class="reference internal" href="#includes" id="id28">动态Includes</a></li>
+<li><a class="reference internal" href="#stat" id="id13">stat模块</a></li>
+<li><a class="reference internal" href="#get-url" id="id14">get_url模块</a></li>
+<li><a class="reference internal" href="#yum" id="id15">yum模块</a></li>
+<li><a class="reference internal" href="#cron" id="id16">cron模块</a></li>
+<li><a class="reference internal" href="#mount" id="id17">mount模块</a></li>
+<li><a class="reference internal" href="#service" id="id18">service模块</a></li>
+<li><a class="reference internal" href="#sysctl" id="id19">sysctl包管理模块</a></li>
+<li><a class="reference internal" href="#user" id="id20">user模块</a></li>
+<li><a class="reference internal" href="#group" id="id21">group模块</a></li>
+<li><a class="reference internal" href="#file" id="id22">file模块</a></li>
+<li><a class="reference internal" href="#setup" id="id23">setup模块</a></li>
+<li><a class="reference internal" href="#ansibleyaml" id="id24">ansible配合YAML使用</a></li>
+<li><a class="reference internal" href="#tomcat" id="id25">示例：安装tomcat软件</a><ul>
+<li><a class="reference internal" href="#block" id="id26">Block块</a></li>
+<li><a class="reference internal" href="#includes" id="id27">动态Includes</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#playbooks-includes" id="id29">playbooks Includes使用技巧</a></li>
-<li><a class="reference internal" href="#roles" id="id30">Roles介绍</a></li>
-<li><a class="reference internal" href="#rolesfilestemplates" id="id31">Roles中Files和Templates的区别</a></li>
-<li><a class="reference internal" href="#jinja2" id="id32">Jinja2模板可以实现高度自定义</a></li>
-<li><a class="reference internal" href="#id3" id="id33">创建roles时的注意事项：</a><ul>
-<li><a class="reference internal" href="#id4" id="id34">参考文献：</a></li>
-<li><a class="reference internal" href="#id5" id="id35">Ansible 部署示例大全：</a></li>
-<li><a class="reference internal" href="#ansible-galaxy" id="id36">Ansible 的Galaxy</a></li>
-<li><a class="reference internal" href="#id6" id="id37">Ansible中文权威指南</a></li>
+<li><a class="reference internal" href="#playbooks-includes" id="id28">playbooks Includes使用技巧</a></li>
+<li><a class="reference internal" href="#roles" id="id29">Roles介绍</a></li>
+<li><a class="reference internal" href="#rolesfilestemplates" id="id30">Roles中Files和Templates的区别</a></li>
+<li><a class="reference internal" href="#jinja2" id="id31">Jinja2模板可以实现高度自定义</a></li>
+<li><a class="reference internal" href="#id3" id="id32">创建roles时的注意事项：</a><ul>
+<li><a class="reference internal" href="#id4" id="id33">参考文献：</a></li>
+<li><a class="reference internal" href="#id5" id="id34">Ansible 部署示例大全：</a></li>
+<li><a class="reference internal" href="#ansible-galaxy" id="id35">Ansible 的Galaxy</a></li>
+<li><a class="reference internal" href="#id6" id="id36">Ansible中文权威指南</a></li>
 </ul>
 </li>
 </ul>
@@ -567,9 +565,11 @@ done
 <span class="p">[</span><span class="n">root</span><span class="nd">@hujianli</span><span class="o">-</span><span class="n">linux</span> <span class="n">ansible</span><span class="p">]</span><span class="c1"># ansible all -a &#39;tail -l /etc/passwd&#39;</span>
 </pre></div>
 </div>
+<div class="line-block">
+<div class="line">​</div>
+<div class="line">​</div>
+<div class="line">## copy模块</div>
 </div>
-<div class="section" id="copy">
-<h2><a class="toc-backref" href="#id13">18.4.6. copy模块</a><a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>（1）功能
 实现主控端向目标主机拷贝文件，类似于scp的功能。
 
@@ -590,7 +590,7 @@ ansible dbservers -m copy -a &#39;src=/etc/fstab dest=/tmp/fstab.ansible owner=r
 </div>
 </div>
 <div class="section" id="stat">
-<h2><a class="toc-backref" href="#id14">18.4.7. stat模块</a><a class="headerlink" href="#stat" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">18.4.6. stat模块</a><a class="headerlink" href="#stat" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>（1）功能
 获取远程文件状态信息，包括atime、ctime、mtime、md5、uid、gid等信息
 （2）例子
@@ -599,7 +599,7 @@ ansible webservers -m stat -a &quot;path=/etc/sysctl.conf&quot;
 </div>
 </div>
 <div class="section" id="get-url">
-<h2><a class="toc-backref" href="#id15">18.4.8. get_url模块</a><a class="headerlink" href="#get-url" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">18.4.7. get_url模块</a><a class="headerlink" href="#get-url" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>（1）功能
 实现在远程主机下载指定URL到本地，支持sha256sum文件校验
 （2）例子
@@ -608,7 +608,7 @@ ansible webservers -m get_url -a &quot;url=http://www.baidu.com dest=/tmp/index.
 </div>
 </div>
 <div class="section" id="yum">
-<h2><a class="toc-backref" href="#id16">18.4.9. yum模块</a><a class="headerlink" href="#yum" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">18.4.8. yum模块</a><a class="headerlink" href="#yum" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>#Ansible中的yum模块负责在被管理的主机数安装与卸载软件包，前提是在每个节点配置自己的YUM仓库，name指定要安装的软件包
 #带上软件包的版本号，state指定安装软件包的状态，present、latest用来表示安装，absent表示卸载
 [root@hujianli-linux ~]# ansible-doc -s yum
@@ -631,7 +631,7 @@ ansible webservers -m yum -a &quot;name=curl state=latest&quot;
 </div>
 </div>
 <div class="section" id="cron">
-<h2><a class="toc-backref" href="#id17">18.4.10. cron模块</a><a class="headerlink" href="#cron" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">18.4.9. cron模块</a><a class="headerlink" href="#cron" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>(1)功能
 #Ansible中的cron模块用于定义任务计划，其中有两种状态，(state):present表示添加(省略状态时默认使用),absent表示移除。
 [root@hujianli-linux ansible]# ansible-doc -s cron      #查看cron模块的描述信息和操作动作
@@ -667,7 +667,7 @@ ansible webservers -m cron -a &#39;name=&quot;ntpdate&quot; job=&quot;/usr/sbin/
 </div>
 </div>
 <div class="section" id="mount">
-<h2><a class="toc-backref" href="#id18">18.4.11. mount模块</a><a class="headerlink" href="#mount" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">18.4.10. mount模块</a><a class="headerlink" href="#mount" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>（1）功能
 远程主机分区挂载
 
@@ -677,7 +677,7 @@ ansible webservers -m mount -a &quot;name=/mnt/data src=/dev/sd0 fstype=ext3 opt
 </div>
 </div>
 <div class="section" id="service">
-<h2><a class="toc-backref" href="#id19">18.4.12. service模块</a><a class="headerlink" href="#service" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">18.4.11. service模块</a><a class="headerlink" href="#service" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>（1）功能
 远程主机系统服务管理。
 [root@hujianli-linux ~]# ansible-doc -s service #查看service模块的描述
@@ -706,7 +706,7 @@ ansible webservers -m service -a &quot;name=nginx state=reloaded&quot;
 </div>
 </div>
 <div class="section" id="sysctl">
-<h2><a class="toc-backref" href="#id20">18.4.13. sysctl包管理模块</a><a class="headerlink" href="#sysctl" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id19">18.4.12. sysctl包管理模块</a><a class="headerlink" href="#sysctl" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>（1）功能
 远程Linux主机sysctl配置。
 
@@ -743,7 +743,7 @@ state=present reload=yes sysctl_file=/usr/lib/sysctl.d/50-default.conf&quot;
 </div>
 </div>
 <div class="section" id="user">
-<h2><a class="toc-backref" href="#id21">18.4.14. user模块</a><a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">18.4.13. user模块</a><a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>(1)功能
 #Ansible中的user模块用于创建新用户和更改、删除已存在的用户。其中name选项用来这么创建的用户名称。
 远程主机系统用户管理。
@@ -757,7 +757,7 @@ state=present reload=yes sysctl_file=/usr/lib/sysctl.d/50-default.conf&quot;
 </div>
 </div>
 <div class="section" id="group">
-<h2><a class="toc-backref" href="#id22">18.4.15. group模块</a><a class="headerlink" href="#group" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">18.4.14. group模块</a><a class="headerlink" href="#group" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>(1)功能
 #Ansible中的group模块用于对用户组进行管理
 
@@ -784,7 +784,7 @@ state=present reload=yes sysctl_file=/usr/lib/sysctl.d/50-default.conf&quot;
 </div>
 </div>
 <div class="section" id="file">
-<h2><a class="toc-backref" href="#id23">18.4.16. file模块</a><a class="headerlink" href="#file" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id22">18.4.15. file模块</a><a class="headerlink" href="#file" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="n">功能</span>
 <span class="c1">#Ansible中使用file模块来设置文件属性，path指定文件路径，sec指定源文件路径，使用name或dest来替换创建文件的符号链接</span>
 <span class="n">ansible</span><span class="o">-</span><span class="n">doc</span> <span class="o">-</span><span class="n">s</span> <span class="n">file</span>
@@ -806,7 +806,7 @@ state=present reload=yes sysctl_file=/usr/lib/sysctl.d/50-default.conf&quot;
 </div>
 </div>
 <div class="section" id="setup">
-<h2><a class="toc-backref" href="#id24">18.4.17. setup模块</a><a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id23">18.4.16. setup模块</a><a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>(1)功能
 在 Ansible中使用setup模块收集、查看被管理主机的facts，每个被管理主机在接收并允许管理命令之前，都会将自己的
 相关信息（操作系统版本、IP地址等）发送给控制主机
@@ -820,7 +820,7 @@ state=present reload=yes sysctl_file=/usr/lib/sysctl.d/50-default.conf&quot;
 <p><a class="reference external" href="https://www.cnblogs.com/yuncong/p/10533209.html">ansible常用模块</a></p>
 </div>
 <div class="section" id="ansibleyaml">
-<h2><a class="toc-backref" href="#id25">18.4.18. ansible配合YAML使用</a><a class="headerlink" href="#ansibleyaml" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id24">18.4.17. ansible配合YAML使用</a><a class="headerlink" href="#ansibleyaml" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>1、playbook的核心元素
 hosts : playbook配置文件作用的主机
 tasks: 任务列表
@@ -1015,7 +1015,7 @@ task:
 </div>
 </div>
 <div class="section" id="tomcat">
-<h2><a class="toc-backref" href="#id26">18.4.19. 示例：安装tomcat软件</a><a class="headerlink" href="#tomcat" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id25">18.4.18. 示例：安装tomcat软件</a><a class="headerlink" href="#tomcat" title="Permalink to this headline">¶</a></h2>
 <p>创建vars.yml文件和tomcat.yml文件，在统计目录下 vars.yml</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">---</span>
 <span class="c1">#软件包下载路径</span>
@@ -1079,7 +1079,7 @@ task:
 </pre></div>
 </div>
 <div class="section" id="block">
-<h3><a class="toc-backref" href="#id27">Block块</a><a class="headerlink" href="#block" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id26">Block块</a><a class="headerlink" href="#block" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">---</span>
 <span class="o">-</span> <span class="n">hosts</span><span class="p">:</span> <span class="n">web</span>
   <span class="n">tasks</span><span class="p">:</span>
@@ -1118,7 +1118,7 @@ task:
 </div>
 </div>
 <div class="section" id="includes">
-<h3><a class="toc-backref" href="#id28">动态Includes</a><a class="headerlink" href="#includes" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id27">动态Includes</a><a class="headerlink" href="#includes" title="Permalink to this headline">¶</a></h3>
 <p>tasks/tasks01.yml</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">---</span>
 <span class="o">-</span> <span class="n">hosts</span><span class="p">:</span> <span class="n">web</span>
@@ -1140,7 +1140,7 @@ task:
 </div>
 </div>
 <div class="section" id="playbooks-includes">
-<h2><a class="toc-backref" href="#id29">18.4.20. playbooks Includes使用技巧</a><a class="headerlink" href="#playbooks-includes" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id28">18.4.19. playbooks Includes使用技巧</a><a class="headerlink" href="#playbooks-includes" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">host</span><span class="p">:</span> <span class="nb">all</span>
   <span class="n">remote_user</span><span class="p">:</span> <span class="n">root</span>
 
@@ -1154,7 +1154,7 @@ task:
 <p>好处：如果需要执行全部命令时，只要通过一条命令执行主playbook文件即可。如果针对某个功能变更，只需要修改或执行对应的playbook文件</p>
 </div>
 <div class="section" id="roles">
-<h2><a class="toc-backref" href="#id30">18.4.21. Roles介绍</a><a class="headerlink" href="#roles" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id29">18.4.20. Roles介绍</a><a class="headerlink" href="#roles" title="Permalink to this headline">¶</a></h2>
 <p>层次化，结构化地组织Playbook，使用角色（roles），可以根据层次结构自动装载变量文件，tasks以及handlers等
 roles就是将变量、文件、任务、模块及处理器设置于单独的目录中，便捷地使用它们</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="n">ansible_playbooks</span><span class="o">/</span><span class="n">roles</span><span class="o">/</span><span class="p">{</span><span class="n">websrvs</span><span class="p">,</span><span class="n">dbsrvs</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">tasks</span><span class="p">,</span><span class="n">files</span><span class="p">,</span><span class="n">templates</span><span class="p">,</span><span class="n">meta</span><span class="p">,</span><span class="n">handlers</span><span class="p">,</span><span class="nb">vars</span><span class="p">}</span>
@@ -1190,13 +1190,13 @@ ansible_playbooks/
 <p><img alt="image0" src="../../_images/ansible00001.jpg" /></p>
 </div>
 <div class="section" id="rolesfilestemplates">
-<h2><a class="toc-backref" href="#id31">18.4.22. Roles中Files和Templates的区别</a><a class="headerlink" href="#rolesfilestemplates" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id30">18.4.21. Roles中Files和Templates的区别</a><a class="headerlink" href="#rolesfilestemplates" title="Permalink to this headline">¶</a></h2>
 <p>Files：用于文件处理，文件无需写绝对路径即可将文件传输至远程主机
 Templates目录下文件以Jinja2渲染，且传输文件至远程主机的同时支持预定义变量替换。通常引用替换变量的的格式为
 {{variable}}</p>
 </div>
 <div class="section" id="jinja2">
-<h2><a class="toc-backref" href="#id32">18.4.23. Jinja2模板可以实现高度自定义</a><a class="headerlink" href="#jinja2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id31">18.4.22. Jinja2模板可以实现高度自定义</a><a class="headerlink" href="#jinja2" title="Permalink to this headline">¶</a></h2>
 <p>语法不进行扩展，语法和shell语法类似</p>
 <ul class="simple">
 <li><ul class="first">
@@ -1218,7 +1218,7 @@ Templates目录下文件以Jinja2渲染，且传输文件至远程主机的同�
 </ul>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id33">18.4.24. 创建roles时的注意事项：</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id32">18.4.23. 创建roles时的注意事项：</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>（1） 目录名同角色名的定义
 （2） 目录结构有固定格式
        1）files: 静态文件；
@@ -1231,17 +1231,18 @@ Templates目录下文件以Jinja2渲染，且传输文件至远程主机的同�
 </pre></div>
 </div>
 <div class="section" id="id4">
-<h3><a class="toc-backref" href="#id34">参考文献：</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id33">参考文献：</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://blog.csdn.net/monster_warm/article/details/103220614">playbook部署zabbix–角色</a></p>
 </div>
 <div class="section" id="id5">
-<h3><a class="toc-backref" href="#id35">Ansible 部署示例大全：</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>https://galaxy.ansible.com/search?deprecated=false&amp;keywords=redis&amp;order_by=-relevance&amp;page=1
+<h3><a class="toc-backref" href="#id34">Ansible 部署示例大全：</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://galaxy.ansible.com">https://galaxy.ansible.com</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">galaxy</span><span class="o">.</span><span class="n">ansible</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ansible-galaxy">
-<h3><a class="toc-backref" href="#id36">Ansible 的Galaxy</a><a class="headerlink" href="#ansible-galaxy" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id35">Ansible 的Galaxy</a><a class="headerlink" href="#ansible-galaxy" title="Permalink to this headline">¶</a></h3>
 <p>Ansible的官方Role分享平台</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">galaxy</span><span class="o">.</span><span class="n">ansible</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
 </pre></div>
@@ -1252,7 +1253,7 @@ Templates目录下文件以Jinja2渲染，且传输文件至远程主机的同�
 </div>
 </div>
 <div class="section" id="id6">
-<h3><a class="toc-backref" href="#id37">Ansible中文权威指南</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id36">Ansible中文权威指南</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://www.ansible.com.cn/index.html">http://www.ansible.com.cn/index.html</a></p>
 </div>
 </div>

@@ -8,9 +8,13 @@ Python内建函数
 内建数学函数
 ------------
 
-|image0| |image1|
+|image0|
+
+|image1|
 
 |image2|
+
+|image3|
 
 map()函数
 ---------
@@ -65,7 +69,7 @@ random随机数函数
 
    import random
 
-|image3|
+|image4|
 
 filter()函数
 ------------
@@ -352,7 +356,8 @@ isinstance(object,int)
 
    测试对象类型 int
 
-.. |image0| image:: ../../_static/number_func.PNG
-.. |image1| image:: ../../_static/neijianfunction.PNG
-.. |image2| image:: ../../_static/neizhi-function.png
-.. |image3| image:: ../../_static/random1.PNG
+.. |image0| image:: ../../_static/python_neizhifunc.png
+.. |image1| image:: ../../_static/number_func.PNG
+.. |image2| image:: ../../_static/neijianfunction.PNG
+.. |image3| image:: ../../_static/neizhi-function.png
+.. |image4| image:: ../../_static/random1.PNG

@@ -318,8 +318,9 @@ command模块
    #若省略-m 选项，默认运行command模块
    [root@hujianli-linux ansible]# ansible all -a 'tail -l /etc/passwd'
 
-copy模块
---------
+| ​
+| ​
+| ## copy模块
 
 ::
 
@@ -1034,9 +1035,11 @@ Jinja2模板可以实现高度自定义
 Ansible 部署示例大全：
 ~~~~~~~~~~~~~~~~~~~~~~
 
+https://galaxy.ansible.com
+
 ::
 
-   https://galaxy.ansible.com/search?deprecated=false&keywords=redis&order_by=-relevance&page=1
+   https://galaxy.ansible.com/
 
 Ansible 的Galaxy
 ~~~~~~~~~~~~~~~~
