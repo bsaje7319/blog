@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>23. Python开发环境部署 &mdash; 运维开发修炼之路</title>
+  <title>23.8. 08.nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器 &mdash; 运维开发修炼之路</title>
   
 
   
@@ -43,8 +43,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="next" title="23.1. Notpad++和Python实现远程开发" href="01.Notpad++和Python远程开发.html" />
-    <link rel="prev" title="22.5.5. URL转向与静态文件资源" href="../24.Python框架学习/05.Tornado-Web框架及其应用/05.URL转向与静态文件资源.html" /> 
+    <link rel="next" title="23.9. centos7安装uwsgi、发布网站" href="09.centos7安装uwsgi、发布网站.html" />
+    <link rel="prev" title="23.7. IntelliJ IDEA使用教程" href="07.IntelliJ-IDEA使用教程.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -120,7 +120,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">23. Python开发环境部署</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">23. Python开发环境部署</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01.Notpad++和Python远程开发.html">23.1. Notpad++和Python实现远程开发</a></li>
 <li class="toctree-l3"><a class="reference internal" href="02.PyCharm+python云主机远程调试开发.html">23.2. PyCharm+python远程云主机调试开发</a></li>
 <li class="toctree-l3"><a class="reference internal" href="03.Pycharm中使用GitHub.html">23.3. Pycharm中使用GitHub</a></li>
@@ -128,7 +128,10 @@
 <li class="toctree-l3"><a class="reference internal" href="05.Pycham中的技巧.html">23.5. Pychram中的技巧</a></li>
 <li class="toctree-l3"><a class="reference internal" href="06.Anaconda使用总结.html">23.6. Anaconda使用总结</a></li>
 <li class="toctree-l3"><a class="reference internal" href="07.IntelliJ-IDEA使用教程.html">23.7. IntelliJ IDEA使用教程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="08.nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器.html">23.8. 08.nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">23.8. 08.nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pythonweb-5-centos7nginx-uwsgi-django-virtualenvwrapper-supervisorweb">23.8.1. 部署基于python的web发布环境（第四篇）：环境部署5：centos7发布网站示例nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="09.centos7安装uwsgi、发布网站.html">23.9. centos7安装uwsgi、发布网站</a></li>
 </ul>
 </li>
@@ -186,13 +189,15 @@
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
-      <li>23. Python开发环境部署</li>
+          <li><a href="index.html">23. Python开发环境部署</a> &raquo;</li>
+        
+      <li>23.8. 08.nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/25.Python开发环境部署/index.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/25.Python开发环境部署/08.nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -205,40 +210,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="python">
-<h1>23. Python开发环境部署<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="01.Notpad++和Python远程开发.html">23.1. Notpad++和Python实现远程开发</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="01.Notpad++和Python远程开发.html#python-3-6-2">23.1.1. 安装 Python 3.6.2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01.Notpad++和Python远程开发.html#mysql">23.1.2. 安装 MySQL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01.Notpad++和Python远程开发.html#tornado">23.1.3. 安装 Tornado</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01.Notpad++和Python远程开发.html#sqlalchemy">23.1.4. 安装 SQLAlchemy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01.Notpad++和Python远程开发.html#notepad">23.1.5. 配置 Notepad++</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="02.PyCharm+python云主机远程调试开发.html">23.2. PyCharm+python远程云主机调试开发</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="02.PyCharm+python云主机远程调试开发.html#ssh">23.2.1. 开启SSH远程云主机</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="03.Pycharm中使用GitHub.html">23.3. Pycharm中使用GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04.windows10下mysql8.0下载及安装配置教程.html">23.4. windows10下mysql 8.0下载及安装配置教程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05.Pycham中的技巧.html">23.5. Pychram中的技巧</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="05.Pycham中的技巧.html#pycharm">23.5.1. Pycharm中一些不为人知的技巧(不断更新)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05.Pycham中的技巧.html#id1">23.5.2. PyCharm主题，插件推荐</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="06.Anaconda使用总结.html">23.6. Anaconda使用总结</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07.IntelliJ-IDEA使用教程.html">23.7. IntelliJ IDEA使用教程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08.nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器.html">23.8. 08.nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="08.nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器.html#pythonweb-5-centos7nginx-uwsgi-django-virtualenvwrapper-supervisorweb">23.8.1. 部署基于python的web发布环境（第四篇）：环境部署5：centos7发布网站示例nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="09.centos7安装uwsgi、发布网站.html">23.9. centos7安装uwsgi、发布网站</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="09.centos7安装uwsgi、发布网站.html#centos7uwsgi-1">23.9.1. centos7安装uwsgi、发布网站</a></li>
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#nginx-uwsgi-django-virtualenvwrapper-supervisorweb" id="id1">08.nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器</a><ul>
+<li><a class="reference internal" href="#pythonweb-5-centos7nginx-uwsgi-django-virtualenvwrapper-supervisorweb" id="id2">部署基于python的web发布环境（第四篇）：环境部署5：centos7发布网站示例nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器</a></li>
 </ul>
 </li>
 </ul>
+</div>
+<div class="section" id="nginx-uwsgi-django-virtualenvwrapper-supervisorweb">
+<h1><a class="toc-backref" href="#id1">23.8. 08.nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器</a><a class="headerlink" href="#nginx-uwsgi-django-virtualenvwrapper-supervisorweb" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pythonweb-5-centos7nginx-uwsgi-django-virtualenvwrapper-supervisorweb">
+<h2>23.8.1. <a class="reference external" href="https://www.cnblogs.com/Nicholas0707/p/12403630.html">部署基于python的web发布环境（第四篇）：环境部署5：centos7发布网站示例nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器</a><a class="headerlink" href="#pythonweb-5-centos7nginx-uwsgi-django-virtualenvwrapper-supervisorweb" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -250,10 +234,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="01.Notpad++和Python远程开发.html" class="btn btn-neutral float-right" title="23.1. Notpad++和Python实现远程开发" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="09.centos7安装uwsgi、发布网站.html" class="btn btn-neutral float-right" title="23.9. centos7安装uwsgi、发布网站" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../24.Python框架学习/05.Tornado-Web框架及其应用/05.URL转向与静态文件资源.html" class="btn btn-neutral float-left" title="22.5.5. URL转向与静态文件资源" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="07.IntelliJ-IDEA使用教程.html" class="btn btn-neutral float-left" title="23.7. IntelliJ IDEA使用教程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

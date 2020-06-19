@@ -219,7 +219,7 @@
 <h2><a class="toc-backref" href="#id12">4.1.1. 普通函数的声明形式</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Go语言的函数声明以func标识，后面紧接着函数名、参数列表、返回参数列表及函数体，
 具体形式如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>func 函数名（参数列表）（返回参数列表）{
+<div class="code go highlight-default"><div class="highlight"><pre><span></span>func 函数名（参数列表）（返回参数列表）{
     函数体
  }
 </pre></div>
@@ -263,7 +263,7 @@
 <p>Go语言既支持安全指针，也支持多返回值，因此在使用函数进行逻辑编写时更为方便。</p>
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id15">1. 同一种类型返回值</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 /*
@@ -282,7 +282,7 @@ func main() {
 </div>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id16">2.带有变量名的返回值</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">namedRetValues</span><span class="p">()</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
+<div class="code go highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">namedRetValues</span><span class="p">()</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="mi">2</span>
 <span class="p">}</span>
@@ -347,7 +347,7 @@ func main() {
 <ul class="simple">
 <li>函数中参数传递效果测试</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 /*
@@ -414,7 +414,7 @@ Data结构中的ptr成员在传递过程中保持一致，指针在函数参数�
 </div>
 <div class="section" id="id8">
 <h3><a class="toc-backref" href="#id18">4.函数变量-把函数作为值保存到变量中</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="code go highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -434,7 +434,7 @@ Data结构中的ptr成员在传递过程中保持一致，指针在函数参数�
 <div class="section" id="id9">
 <h3><a class="toc-backref" href="#id19">递归与回调</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>Go 语言中也可以使用相互调用的递归函数：多个函数之间相互调用形成闭环。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="code go highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -453,7 +453,7 @@ Data结构中的ptr成员在传递过程中保持一致，指针在函数参数�
 </div>
 <div class="section" id="id10">
 <h4>字符串的链式处理-操作与数据分离的设计技巧<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default"><div class="highlight"><pre><span></span>package main
 
 import (
     &quot;fmt&quot;
@@ -522,6 +522,53 @@ HUAJINLI3
 HUAJINLI4
 HUAJINLI5
 */
+</pre></div>
+</div>
+<div class="code go highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    slice := []int{1, 2, 3, 4, 5, 7}
+    fmt.Println(&quot;slice = &quot;, slice)
+    odd := filter(slice, isOdd) //函数当做值来传递
+    fmt.Println(&quot;奇数元素：&quot;, odd)
+    even := filter(slice, isEven) //函数当做值来传递
+    fmt.Println(&quot;偶数元素:&quot;, even)
+}
+
+type processFunc func(int) bool // 声明一个函数类型
+
+// 判断元素是否是偶数
+func isEven(integer int) bool {
+    if integer%2 == 0 {
+        return true
+    }
+    return false
+}
+
+// 判断元素是否是奇数
+func isOdd(integer int) bool {
+    if integer%2 == 0 {
+        return false
+    }
+    return true
+}
+
+//根据奇偶来处理切片，组成新的切片
+func filter(slice []int, f processFunc) []int {
+    var result []int
+    for _, value := range slice {
+        if f(value) {
+            result = append(result, value)
+        }
+    }
+    return result
+}
+
+/*slice =  [1 2 3 4 5 7]
+奇数元素： [1 3 5 7]
+偶数元素: [2 4]*/
 </pre></div>
 </div>
 </div>

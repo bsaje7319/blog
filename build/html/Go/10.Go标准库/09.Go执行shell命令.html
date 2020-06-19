@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10. Go标准库 &mdash; 运维开发修炼之路</title>
+  <title>10.9. Go执行shell命令 &mdash; 运维开发修炼之路</title>
   
 
   
@@ -43,8 +43,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="next" title="10.1. 文件IO的操作" href="01.文件IO的操作.html" />
-    <link rel="prev" title="9.2. 02.反射机制" href="../09.Go语言基础之反射/02.反射机制.html" /> 
+    <link rel="next" title="11. 项目代码" href="../11.项目代码/index.html" />
+    <link rel="prev" title="10.8. Go语言常用资料及工具详细汇总" href="08.Go语言常用资料及工具详细汇总.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -106,7 +106,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 并发</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. Go语言基础之反射</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">10. Go标准库</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">10. Go标准库</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01.文件IO的操作.html">10.1. 文件IO的操作</a></li>
 <li class="toctree-l3"><a class="reference internal" href="02.fmt包.html">10.2. fmt包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="03.Socket网络.html">10.3. Socket网络</a></li>
@@ -115,7 +115,7 @@
 <li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html">10.6. Go语言操作MySQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html">10.7. Json序列化和反序列化</a></li>
 <li class="toctree-l3"><a class="reference internal" href="08.Go语言常用资料及工具详细汇总.html">10.8. Go语言常用资料及工具详细汇总</a></li>
-<li class="toctree-l3"><a class="reference internal" href="09.Go执行shell命令.html">10.9. Go执行shell命令</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.9. Go执行shell命令</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
@@ -170,13 +170,15 @@
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
-      <li>10. Go标准库</li>
+          <li><a href="index.html">10. Go标准库</a> &raquo;</li>
+        
+      <li>10.9. Go执行shell命令</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/10.Go标准库/index.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/10.Go标准库/09.Go执行shell命令.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -189,66 +191,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="go">
-<h1>10. Go标准库<a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="01.文件IO的操作.html">10.1. 文件IO的操作</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="01.文件IO的操作.html#id1">10.1.1. 文件系统</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01.文件IO的操作.html#id2">10.1.2. 三种读取文件方式的比较</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01.文件IO的操作.html#id3">10.1.3. 文件操作实战</a></li>
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#goshell" id="id1">Go执行shell命令</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="02.fmt包.html">10.2. fmt包</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="02.fmt包.html#verb">10.2.1. 格式化verb应用</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="03.Socket网络.html">10.3. Socket网络</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04.模板.html">10.4. 模板</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="04.模板.html#text-template">10.4.1. text/template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04.模板.html#html-template">10.4.2. html/template</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="05.net_http包.html">10.5. net_http包</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="05.net_http包.html#gohttp">10.5.1. Go最简单的http服务器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05.net_http包.html#get">10.5.2. GET请求示例</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05.net_http包.html#id1">10.5.3. 带参数的GET请求示例</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05.net_http包.html#post">10.5.4. Post请求示例</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05.net_http包.html#id2">10.5.5. 静态站点</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="06.Go语言操作MySQL.html">10.6. Go语言操作MySQL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="06.Go语言操作MySQL.html#id1">10.6.1. Go操作MySQL</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id2">连接</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id3">下载依赖</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#mysql">使用MySQL驱动</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id4">Mysql数据库操作</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id5">插入数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id6">删除数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id7">修改数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id8">查询数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html#id11">事务处理</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="07.Json序列化和反序列化.html">10.7. Json序列化和反序列化</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="07.Json序列化和反序列化.html#id1">10.7.1. Json序列化</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html#id2">简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html#id3">应用案例</a></li>
-<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html#id4">代码示例</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="07.Json序列化和反序列化.html#id5">10.7.2. Json反序列化</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html#id6">基本介绍</a></li>
-<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html#id7">应用案例</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="08.Go语言常用资料及工具详细汇总.html">10.8. Go语言常用资料及工具详细汇总</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09.Go执行shell命令.html">10.9. Go执行shell命令</a></li>
-</ul>
+</div>
+<div class="section" id="goshell">
+<h1><a class="toc-backref" href="#id1">10.9. Go执行shell命令</a><a class="headerlink" href="#goshell" title="Permalink to this headline">¶</a></h1>
+<div class="code go highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s2">&quot;bytes&quot;</span>
+    <span class="s2">&quot;fmt&quot;</span>
+    <span class="s2">&quot;log&quot;</span>
+    <span class="s2">&quot;os/exec&quot;</span>
+    <span class="s2">&quot;strings&quot;</span>
+<span class="p">)</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cmd</span> <span class="p">:</span><span class="o">=</span> <span class="n">exec</span><span class="o">.</span><span class="n">Command</span><span class="p">(</span><span class="s2">&quot;tr&quot;</span><span class="p">,</span> <span class="s2">&quot;a-z&quot;</span><span class="p">,</span> <span class="s2">&quot;A-Z&quot;</span><span class="p">)</span>
+    <span class="n">cmd</span><span class="o">.</span><span class="n">Stdin</span> <span class="o">=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s2">&quot;some input&quot;</span><span class="p">)</span>
+    <span class="n">var</span> <span class="n">out</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">Buffer</span>
+    <span class="n">cmd</span><span class="o">.</span><span class="n">Stdout</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">out</span>
+    <span class="n">err</span> <span class="p">:</span><span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="n">nil</span> <span class="p">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">Fatal</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;in all caps: %q</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">String</span><span class="p">())</span>
+
+
+    <span class="n">cmd2</span> <span class="p">:</span><span class="o">=</span><span class="n">exec</span><span class="o">.</span><span class="n">Command</span><span class="p">(</span><span class="s2">&quot;uptime&quot;</span><span class="p">)</span>
+    <span class="n">cmd3</span> <span class="p">:</span><span class="o">=</span><span class="n">exec</span><span class="o">.</span><span class="n">Command</span><span class="p">(</span><span class="s2">&quot;pwd&quot;</span><span class="p">)</span>
+    <span class="n">var</span> <span class="n">out1</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">Buffer</span>
+    <span class="n">var</span> <span class="n">out2</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">Buffer</span>
+    <span class="n">cmd2</span><span class="o">.</span><span class="n">Stdout</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">out1</span>
+    <span class="n">cmd3</span><span class="o">.</span><span class="n">Stdout</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">out2</span>
+    <span class="n">err2</span> <span class="p">:</span><span class="o">=</span><span class="n">cmd2</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+    <span class="n">err3</span> <span class="p">:</span><span class="o">=</span><span class="n">cmd3</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">err2</span> <span class="o">!=</span> <span class="n">nil</span> <span class="p">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">Fatal</span><span class="p">(</span><span class="n">err2</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">err3</span> <span class="o">!=</span><span class="n">nil</span><span class="p">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">Fatal</span><span class="p">(</span><span class="n">err3</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">out1</span><span class="o">.</span><span class="n">String</span><span class="p">())</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">out2</span><span class="o">.</span><span class="n">String</span><span class="p">())</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
 
@@ -260,10 +250,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="01.文件IO的操作.html" class="btn btn-neutral float-right" title="10.1. 文件IO的操作" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../11.项目代码/index.html" class="btn btn-neutral float-right" title="11. 项目代码" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../09.Go语言基础之反射/02.反射机制.html" class="btn btn-neutral float-left" title="9.2. 02.反射机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="08.Go语言常用资料及工具详细汇总.html" class="btn btn-neutral float-left" title="10.8. Go语言常用资料及工具详细汇总" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -14,3 +14,5 @@ Python开发环境部署
     05.Pycham中的技巧
     06.Anaconda使用总结
     07.IntelliJ-IDEA使用教程
+    08.nginx+uWSGI+django+virtualenvwrapper+supervisor发布web服务器
+    09.centos7安装uwsgi、发布网站

@@ -208,13 +208,19 @@ Setuptools和较旧的Distutils都是用于发布Python包的工具包，让你�
 
 举例脚本程序 ``hello.py``
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
    # auther; 18793
    # Date：2020/2/3 16:21
    # filename: hello.py
+
+   def add(a, b):
+       if a > 0 and b > 0:
+           return a + b
+       else:
+           return 0
 
    def hello1():
        print("hello world1")
@@ -225,7 +231,7 @@ Setuptools和较旧的Distutils都是用于发布Python包的工具包，让你�
 
 ``简单的Setuptools安装脚本``
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -235,13 +241,18 @@ Setuptools和较旧的Distutils都是用于发布Python包的工具包，让你�
    """
    简单的Setuptools安装脚本
    """
+
    from setuptools import setup
 
-   setup(name="Hello",
-         version="1.0",
-         description='A simple example',
-         author='Magnus Lie Hetland',
-         py_modules=['hello'])
+   setup(
+       name="add_module",
+       version="1.0.0",
+       description="My test add_module ",
+       author="hujianli",
+       url="http://xxxx.com",
+       py_modules=['add_module'],
+       # packages=['add_module']
+   )
 
 ::
 
@@ -293,7 +304,7 @@ Setuptools创建了一个名为build的目录，其中包含子目录lib。
 
 将hello.py作为包放置到\ ``anaconda3\lib\site-packages``\ 中，可以直接当做包进行import导入
 
-::
+.. code:: python
 
    import hello
    hello.hello1()
@@ -302,6 +313,7 @@ Setuptools创建了一个名为build的目录，其中包含子目录lib。
 ::
 
    这就是用于安装Python模块、包和扩展的标准机制。你只需提供一个小小的安装脚本即可。
+
    如你所见，在安装过程中，Setuptools创建了一个.egg文件，这是一个独立的Python包。
 
 打包
@@ -314,7 +326,7 @@ Setuptools创建了一个名为build的目录，其中包含子目录lib。
 
 · 打包创建tar.gz文件
 
-::
+.. code:: shell
 
    python setup.py sdist
    running sdist
@@ -326,19 +338,20 @@ Setuptools创建了一个名为build的目录，其中包含子目录lib。
    writing manifest file 'Hello.egg-info\SOURCES.txt'
    warning: sdist: standard file not found: should have one of README, README.rst, README.txt, README.md
 
-现在，除目录build外，应该还有一个名为dist的目录。在这个目录中，有一个名为Hello-1.0.tar.gz
-的文件。你可将其分发给他人，而对方可将其解压缩，再使用脚本setup.py进行安装。
+现在，除目录build外，应该还有一个名为dist的目录。在这个目录中，有一个名为Hello-1.0.tar.gz的文件。你可将其分发给他人，而对方可将其解压缩，再使用脚本setup.py进行安装。
 
 · 打包创建wheel文件.
 
-::
+.. code:: shell
 
    python setup.py bdist_wheel
 
 Python编程：entry_points将Python模块转变为命令行工具
 ----------------------------------------------------
 
-将模块变\ ``“/usr/bin/”``\ 目录下的命令行工具 参考文献：
+将模块变\ ``“/usr/bin/”``\ 目录下的命令行工具
+
+参考文献：
 
 https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
 
@@ -376,7 +389,7 @@ https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distrib
 打包且成为命令行模式的示例
 --------------------------
 
-::
+.. code:: shell
 
    [root@keepalived-master python01]# tree
    .
@@ -388,7 +401,7 @@ https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distrib
 
 ``cat pyHello/hello.py``
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    #-*- coding:utf8 -*-
@@ -413,7 +426,7 @@ https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distrib
 
 ``cat pyHello/__main__.py``
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    #-*- coding:utf8 -*-
@@ -427,7 +440,7 @@ https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distrib
 
 ``setup.py``
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    #-*- coding:utf8 -*-
@@ -474,7 +487,7 @@ https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distrib
 
 ``deploy.sh``
 
-::
+.. code:: shell
 
    rm -rf dist build *.egg-info
 
@@ -489,10 +502,8 @@ https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distrib
 小结
 ----
 
-·
-Setuptools：Setuptools工具包让你能够编写安装脚本。根据约定，这种安装脚本被命名
-为setup.py。使用这种脚本，可安装模块、包和扩展。
+::
 
-·
-Setuptools的命令:可使用多个命令来运行setup.py脚本，如build、build_ext、install、sdist和bdist
-。
+   · Setuptools：Setuptools工具包让你能够编写安装脚本。根据约定，这种安装脚本被命名为setup.py。使用这种脚本，可安装模块、包和扩展。
+
+   · Setuptools的命令:可使用多个命令来运行setup.py脚本，如build、build_ext、install、sdist和bdist。
