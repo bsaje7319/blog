@@ -71,5 +71,5 @@ def Delete_picturelink(pathname):
 if __name__ == '__main__':
     # 遍历文件找到标记信息加入列表
     trav_walk(CurrentDirectory)
-    # 比对列表进行删除操作
-    Delete_picturelink(Static_Path)
+    # # 比对列表进行删除操作
+    # Delete_picturelink(Static_Path)

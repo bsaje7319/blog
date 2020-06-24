@@ -5,6 +5,28 @@
 Go执行shell命令
 ===============
 
+go执行shell示例1：
+
+.. code:: shell
+
+   package main
+
+   import (
+       "fmt"
+       "log"
+       "os/exec"
+   )
+
+   func main() {
+       out, err := exec.Command("date","+%F").Output()
+       if err != nil {
+           log.Fatal(err)
+       }
+       fmt.Printf("The date is %s\n", out)
+   }
+
+go执行shell示例2：
+
 .. code:: go
 
    package main

@@ -8,6 +8,29 @@ StringIO和BytesIO用法
 StringIO
 --------
 
+StringIO提供了一种像操作文本磁盘文件一样对内存缓存区数据操作的方法，
+
+.. code:: python
+
+   #!/usr/bin/env python
+   # -*- coding:utf8 -*-
+   # @auther:   18793
+   # @Date：    2020/6/22 11:05
+   # @filename: sample01.py
+   # @Email:    1879324764@qq.com
+   # @Software: PyCharm
+   from io import StringIO
+
+   f = StringIO()
+   for x in ["aa", 123, "file1", "ddd"]:
+       if type(x) == str:
+           f.write(x)
+   f.seek(0)
+   xx = f.read()
+   print("xx = %s " % xx)
+   yy = f.getvalue()
+   print("yy = %s " % yy)
+
 代码示例 1
 ~~~~~~~~~~
 
@@ -37,7 +60,7 @@ StringIO
 
 代码示例
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -63,11 +86,37 @@ StringIO
 BytesIO
 -------
 
--  BytesIO实现了在内存中读写bytes，我们创建一个BytesIO，然后写入一些bytes：
+-  BytesIO实现了在内存中读写bytes，我们创建一个BytesIO，然后写入一些bytes
+-  读写BytesIOBytesIO提供了一种像操作二进制磁盘文件一样对内存缓存区数据操作的方法
 
 代码示例
 
-::
+.. code:: shell
+
+   #!/usr/bin/env python
+   # -*- coding:utf8 -*-
+   # @auther:   18793
+   # @Date：    2020/6/22 11:11
+   # @filename: sample01.py
+   # @Email:    1879324764@qq.com
+   # @Software: PyCharm
+   import pickle
+   from io import BytesIO
+
+   f = BytesIO()
+   for x in ["aa", 123, "file", "dddd", True]:
+       pickle.dump(x, f)
+
+   f.seek(0)
+
+   while True:
+       try:
+           xx = pickle.load(f)
+           print("xx = ", xx)
+       except EOFError:
+           break
+
+.. code:: python
 
    In [22]: from io import BytesIO
    In [23]: f = BytesIO(0

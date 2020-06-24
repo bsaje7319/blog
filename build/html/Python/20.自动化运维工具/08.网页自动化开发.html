@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>网页自动化开发 &mdash; 运维开发修炼之路</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Python自动化运维</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Go_vs_Python/index.html">Go vs Python</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>网页自动化开发</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/20.自动化运维工具/08.网页自动化开发.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id2">网页自动化开发</a><ul>
+<li><a class="reference internal" href="#selenium" id="id3">安装Selenium</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id2">网页自动化开发</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Python中使用Selenium实现网页自动化开发，主要介绍Selenium的概念、开发环境搭建、Selenium模拟用户打开浏览器并实现自动操控浏览器的网页，如单击、鼠标拖拉和文本输入等操作。</p>
+<p>Selenium主要支持IE、Mozilla Firefox、Safari、Google
+Chrome和Opera等主流浏览器。</p>
+<p>Selenium发展至今，不仅在自动化测试和自动化流程开发的领域上占据着重要的位置，而且在网络爬虫上也被广泛使用。</p>
+<div class="section" id="selenium">
+<h2><a class="toc-backref" href="#id3">安装Selenium</a><a class="headerlink" href="#selenium" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">selenium</span>
+</pre></div>
+</div>
+<p>Selenium安装完成后，我们在CMD环境下验证Selenium是否安装成功。在CMD里输入“python”并按回车，就会进入Python的交互模式。在交互模式下依次输入以下代码：</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">selenium</span>
+<span class="n">selenium</span><span class="o">.</span><span class="n">__version__</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>
+<span class="s1">&#39;3.141.0&#39;</span>
+</pre></div>
+</div>
+<p>在浏览器上访问http://npm.taobao.org/mirrors/chromedriver/并找到v2.40所在位置，进入v2.40并单击chromedriver_win32.zip的下载链接。把下载的chromedriver_win32.zip进行解压，然后双击运行<code class="docutils literal"><span class="pre">chromedriver.exe</span></code>，查看chromedriver的版本信息.</p>
+<p><code class="docutils literal"><span class="pre">注意一定要根据Chrome的版本选择chromedriver.exe文件</span></code></p>
+<p><img alt="image0" src="../../_images/chromedriver001.png" /></p>
+<p>写以下代码来验证Selenium是否能自动启动并控制Google Chrome。</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># @auther:   18793</span>
+<span class="c1"># @Date：    2020/6/22 22:00</span>
+<span class="c1"># @filename: chapter01.py</span>
+<span class="c1"># @Email:    1879324764@qq.com</span>
+<span class="c1"># @Software: PyCharm</span>
+
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+
+<span class="c1"># 设置变量url,用于浏览器访问</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.baidu.com/&quot;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">r&#39;C:\Users\18793\Anaconda3\Scripts\chromedriver.exe&#39;</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+<span class="c1"># 打开浏览器并访问百度网址</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>安装三大浏览器驱动driver</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>1.chromedriver 下载地址：https://code.google.com/p/chromedriver/downloads/list
+
+2.Firefox的驱动geckodriver 下载地址：https://github.com/mozilla/geckodriver/releases/
+
+3.IE的驱动IEdriver 下载地址：http://www.nuget.org/packages/Selenium.WebDriver.IEDriver/
+</pre></div>
+</div>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># @auther:   18793</span>
+<span class="c1"># @Date：    2020/6/22 22:10</span>
+<span class="c1"># @filename: chapter02.py</span>
+<span class="c1"># @Email:    1879324764@qq.com</span>
+<span class="c1"># @Software: PyCharm</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+
+<span class="c1"># 开启火狐浏览器</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">r&#39;C:\Users\18793\Anaconda3\Scripts\geckodriver.exe&#39;</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://www.baidu.com/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>IEDriverServer的版本号和Selenium的版本号一定要一致</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s1">r&#39;C:\Users\18793\Anaconda3\Scripts\IEDriverServer.exe&#39;</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Ie</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.baidu.com/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

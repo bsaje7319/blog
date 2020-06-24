@@ -247,6 +247,82 @@ isinstance()的用法
 
    redis_cache = RedisCache()
 
+抽象类与接口
+
+.. code:: python
+
+
+   #!/usr/bin/env python
+   # -*- coding:utf8 -*-
+   # @auther:   18793
+   # @Date：    2020/6/19 14:09
+   # @filename: sample.py
+   # @Email:    1879324764@qq.com
+   # @Software: PyCharm
+   import abc
+
+
+   class All_file(metaclass=abc.ABCMeta):
+       all_type = "file"
+
+       @abc.abstractmethod  # 定义抽象方法，无需实现功能
+       def read(self):
+           """ 子类必须定义读功能"""
+           pass
+
+       @abc.abstractmethod
+       def write(self):
+           """ 子类必须定义写功能"""
+           pass
+
+
+   # class Txt(All_file):
+   #     pass
+   #
+   # t1 = Txt()
+
+   class Txt(All_file):  # 子类继承抽象类，必须定义read和write方法
+       def read(self):
+           print("读文本数据...............")
+
+       def write(self):
+           print("写文本数据...............")
+
+
+   class Sata(All_file):  # 子类继承抽象类，必须定义read和write方法
+       def read(self):
+           print("硬盘数据的读方式..........")
+
+       def write(self):
+           print("硬盘数据的写方式..........")
+
+
+   class Process(All_file):  # 子类继承抽象类，必须定义read和write方法
+       def read(self):
+           print("进程数据的读方式..........")
+
+       def write(self):
+           print("进程数据的写方式..........")
+
+
+   wenben = Txt()
+   yingpan = Sata()
+   jingcheng = Process()
+
+   wenben.read()
+   yingpan.write()
+   jingcheng.read()
+
+   print(wenben.all_type)
+   print(yingpan.all_type)
+   print(jingcheng.all_type)
+
+抽象类本质上还是类，它指的是一组类的相似性，
+包括数据属性（如all_type）和函数属性（如read、write），
+而接口只强调函数属性的相似性。
+
+抽象类是一个介于类和接口之间的一个概念，同时具备类和接口的部分特性，可以用来实现归一化设计。
+
 元类
 ----
 

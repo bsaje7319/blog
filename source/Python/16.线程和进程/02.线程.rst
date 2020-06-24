@@ -570,6 +570,9 @@
 什么是互斥锁
 ------------
 
+Lock
+~~~~
+
 示例1
 
 .. code:: python
@@ -694,8 +697,45 @@
    Thread-5 result = 150
    """
 
+代码示例
+
+.. code:: python
+
+   #!/usr/bin/env python
+   # -*- coding:utf8 -*-
+   # @auther:   18793
+   # @Date：    2020/6/23 13:44
+   # @filename: sample03_lock.py
+   # @Email:    1879324764@qq.com
+   # @Software: PyCharm
+
+   import threading
+   import time
+
+   data = 0
+   lock = threading.Lock()
+
+
+   def func():
+       global data
+       print("{} acquire lock ...".format(threading.currentThread().getName()))
+       if lock.acquire():
+           print("{} get the lock".format(threading.currentThread().getName()))
+           data += 1
+           time.sleep(2)
+           print("{} release lock".format(threading.currentThread().getName()))
+           lock.release()
+
+
+   t1 = threading.Thread(target=func)
+   t2 = threading.Thread(target=func)
+   t3 = threading.Thread(target=func)
+   t1.start()
+   t2.start()
+   t3.start()
+
 互斥锁航空机票示例
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 .. code:: python
 
@@ -829,7 +869,7 @@
    而线程print负责从前往后读取列表并输出。
 
 代码示例
-^^^^^^^^
+''''''''
 
 .. code:: python
 
@@ -891,6 +931,58 @@
        threadLock = threading.Lock()
        threads = []
        main()
+
+RLock
+~~~~~
+
+RLockRLock（可重入锁）是一个可以被同一个线程请求多次的同步指令。RLock使用了“拥有的线程”和“递归等级”的概念，处于锁定状态时，RLock被某个线程拥有。拥有RLock的线程可以再次调用acquire()，释放锁时需要调用release()相同次数。
+
+可以认为RLock包含一个锁定池和一个初始值为0的计数器，每次成功调用acquire()/release()，计数器将+1/-1，为0时锁处于未锁定状态。
+
+.. code:: python
+
+   #!/usr/bin/env python
+   # -*- coding:utf8 -*-
+   # @auther:   18793
+   # @Date：    2020/6/23 13:44
+   # @filename: sample03_lock.py
+   # @Email:    1879324764@qq.com
+   # @Software: PyCharm
+
+   import threading
+   import time
+
+   lock = threading.RLock()
+
+
+   def func():
+       # 第一次请求锁
+       print("{} acquire lock ...".format(threading.currentThread().getName()))
+       if lock.acquire():
+           print("{} get the lock".format(threading.currentThread().getName()))
+           time.sleep(2)
+
+           #  第二次请求锁
+           print("{} acquire lock agin...".format(threading.currentThread().getName()))
+           if lock.acquire():
+               print("{} get the lock".format(threading.currentThread().getName()))
+               time.sleep(2)
+           # 第一次释放锁
+           print("{} release lock ....".format(threading.currentThread().getName()))
+           lock.release()
+           time.sleep(2)
+
+           # 第二次释放锁
+           print("{} release lock agin ....".format(threading.currentThread().getName()))
+           lock.release()
+
+
+   t1 = threading.Thread(target=func)
+   t2 = threading.Thread(target=func)
+   t3 = threading.Thread(target=func)
+   t1.start()
+   t2.start()
+   t3.start()
 
 使用信号量同步多线程之间的执行顺序
 ----------------------------------
@@ -1091,6 +1183,46 @@
 使用线程池提升运行效率
 ----------------------
 
+线程池实现主机端口扫描实例
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+本例使用的多线程模块需要用命令“pip3 install threadpool”进行安装。
+
+.. code:: python
+
+   #!/usr/bin/env python
+   # -*- coding:utf8 -*-
+   # @auther:   18793
+   # @Date：    2020/6/22 11:27
+   # @filename: sample01.py
+   # @Email:    1879324764@qq.com
+   # @Software: PyCharm
+   import threadpool
+   import os
+   import socket
+
+
+   def scan_port(num):
+       s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+       s.settimeout(1)
+       ports = num * 4096
+       thread_name = 'thread' + str(num)
+       for port in range(ports, ports + 4096):
+           result = s.connect_ex((ip, port))
+           if result == 0:
+               print("I am %s,port %d is openned!" % (thread_name, port))
+       s.close()
+
+
+   ip = "127.0.0.1"
+   p = threadpool.ThreadPool(16)
+   num_list = list(range(16))
+   tasks = threadpool.makeRequests(scan_port, num_list)
+   for task in tasks:
+       p.putRequest(task)
+   p.wait()
+   print("All subprocesses had finished!")
+
 .. code:: python
 
    #!/usr/bin/env python
@@ -1217,7 +1349,6 @@
    from concurrent.futures import ThreadPoolExecutor
    import threading
    import time
-
 
    def action(max):
        my_sum = 0

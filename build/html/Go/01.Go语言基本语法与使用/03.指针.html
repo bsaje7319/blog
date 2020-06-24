@@ -202,22 +202,25 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id7">指针</a><ul>
-<li><a class="reference internal" href="#go" id="id8">指针概念在Go语言中被拆分称为两个核心概念</a></li>
-<li><a class="reference internal" href="#id2" id="id9">认识指针地址和指针类型</a></li>
-<li><a class="reference internal" href="#id3" id="id10">从指针获取指针指向的值</a></li>
-<li><a class="reference internal" href="#id4" id="id11">使用指针修改值</a></li>
-<li><a class="reference internal" href="#id5" id="id12">值的传递和引用的传递</a></li>
-<li><a class="reference internal" href="#id6" id="id13">示例：使用指针变量获取命令行的输入信息</a></li>
-<li><a class="reference internal" href="#new" id="id14">创建指针的另一种方法-new()函数</a></li>
+<li><a class="reference internal" href="#id1" id="id8">指针</a><ul>
+<li><a class="reference internal" href="#go" id="id9">指针概念在Go语言中被拆分称为两个核心概念</a></li>
+<li><a class="reference internal" href="#id2" id="id10">认识指针地址和指针类型</a></li>
+<li><a class="reference internal" href="#id3" id="id11">从指针获取指针指向的值</a></li>
+<li><a class="reference internal" href="#id4" id="id12">使用指针修改值</a></li>
+<li><a class="reference internal" href="#id5" id="id13">值的传递和引用的传递</a></li>
+<li><a class="reference internal" href="#id6" id="id14">示例：使用指针变量获取命令行的输入信息</a></li>
+<li><a class="reference internal" href="#new" id="id15">创建指针的另一种方法-new()函数</a><ul>
+<li><a class="reference internal" href="#id7" id="id16">传值和传引用</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id7">1.3. 指针</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id8">1.3. 指针</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="go">
-<h2><a class="toc-backref" href="#id8">1.3.1. 指针概念在Go语言中被拆分称为两个核心概念</a><a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">1.3.1. 指针概念在Go语言中被拆分称为两个核心概念</a><a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">类型指针，允许这个指针类型的数据进行修改。传递数据使用指针，而无需拷贝数据。类型指针不能进行偏移和运算。</p>
 </li>
@@ -232,7 +235,7 @@
 <p><strong>指针地址、指针类型、指针取值</strong></p>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id9">1.3.2. 认识指针地址和指针类型</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">1.3.2. 认识指针地址和指针类型</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>每个变量运行时都拥有一个地址，这个地址代表变量在内存中的位置，Go语言中使用“&amp;”操作符放在变量前面对变量进行“取地址”操作。</p>
 <p>格式如下：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>pstr := &amp;v    // v的类型为T
@@ -254,7 +257,7 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id10">1.3.3. 从指针获取指针指向的值</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">1.3.3. 从指针获取指针指向的值</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>在对普通变量使用<code class="docutils literal"><span class="pre">&quot;&amp;&quot;</span></code>操作符取地址获得这个变量的指针后，可以对指针使用<code class="docutils literal"><span class="pre">&quot;*&quot;</span></code>操作，进行指针的取值。</p>
 <p>这么记：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ptr</span> <span class="p">:</span><span class="o">=</span> <span class="o">&amp;</span><span class="n">house</span>       <span class="o">//</span> <span class="n">取址赋给ptr</span>
@@ -294,7 +297,7 @@ func main() {
 </div>
 </div>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id11">1.3.4. 使用指针修改值</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">1.3.4. 使用指针修改值</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>· 通过指针不仅可以取值，也可以修改值。</p>
 <p>指针实现数值交换代码示例:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>package main
@@ -329,7 +332,7 @@ func main() {
 <p><code class="docutils literal"><span class="pre">当操作在左值时，</span> <span class="pre">就是将值设置给指向的变量；</span></code></p>
 </div>
 <div class="section" id="id5">
-<h2><a class="toc-backref" href="#id12">1.3.5. 值的传递和引用的传递</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">1.3.5. 值的传递和引用的传递</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
@@ -359,7 +362,7 @@ func main() {
 </div>
 </div>
 <div class="section" id="id6">
-<h2><a class="toc-backref" href="#id13">1.3.6. 示例：使用指针变量获取命令行的输入信息</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">1.3.6. 示例：使用指针变量获取命令行的输入信息</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
@@ -387,7 +390,7 @@ func main() {
 </div>
 </div>
 <div class="section" id="new">
-<h2><a class="toc-backref" href="#id14">1.3.7. 创建指针的另一种方法-new()函数</a><a class="headerlink" href="#new" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">1.3.7. 创建指针的另一种方法-new()函数</a><a class="headerlink" href="#new" title="Permalink to this headline">¶</a></h2>
 <p>Go语言还提供了另外一种方法来创建指针变量，格式如下：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">new</span><span class="p">(</span><span class="n">类型</span><span class="p">)</span>
 </pre></div>
@@ -398,6 +401,47 @@ func main() {
 </pre></div>
 </div>
 <p>new()函数可以创建一个对应类型的指针，创建过程会分配内存。被创建的指针指向的值为默认值。</p>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id16">传值和传引用</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="code go highlight-default"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+// 传值
+func changeIntVal(a int) {
+    fmt.Printf(&quot;--------changeIntVal函数内：值参数a的内存地址：%p，值为：%v \n &quot;, &amp;a, a)
+    a = 90
+}
+
+//传引用
+func changeIntPtr(a *int) {
+    fmt.Printf(&quot;--------changeIntPtr函数内：指针参数a的内存地址：%p，值为：%v \n &quot;, &amp;a, a)
+    *a = 50
+}
+
+func main() {
+    a := 10
+    fmt.Printf(&quot;1.变量a的内存地址：%p，值为：%v \n\n&quot;, &amp;a, a)
+    fmt.Printf(&quot;=========int型变量a的内存地址：%p \n\n&quot;, a)
+    changeIntVal(a)
+    fmt.Printf(&quot;2.changgeIntVal函数调用之后，变量a的内存地址：%p，值为：%v \n\n&quot;, &amp;a, a)
+    changeIntPtr(&amp;a)
+    fmt.Printf(&quot;3.changgeIntPtr函数调用之后，变量a的内存地址：%p，值为：%v \n\n&quot;, &amp;a, a)
+
+}
+
+/*1.变量a的内存地址：0xc00000a0b8，值为：10
+
+=========int型变量a的内存地址：%!p(int=10)
+
+--------changeIntVal函数内：值参数a的内存地址：0xc00000a0f0，值为：10
+2.changgeIntVal函数调用之后，变量a的内存地址：0xc00000a0b8，值为：10
+
+--------changeIntPtr函数内：指针参数a的内存地址：0xc000006030，值为：0xc00000a0b8
+3.changgeIntPtr函数调用之后，变量a的内存地址：0xc00000a0b8，值为：50 */
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 

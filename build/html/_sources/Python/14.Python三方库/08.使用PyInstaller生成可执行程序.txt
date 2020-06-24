@@ -16,6 +16,12 @@
 
    pip install pyinstaller
 
+​ 或者
+
+::
+
+   pip install -upgrade pyinstaller
+
 生成可执行程序
 --------------
 
@@ -192,6 +198,16 @@ app_main.exe
 
 `python打包exe能运行但是没有结果解决方案 <http://www.xz577.com/j/24847.html>`__
 
+打包exe的命令如下：
+
+.. code:: python
+
+   pyinstaller -F k:/exedemo1/geometric.py --distpath k:/exedemo1 --icon k:/exedemo1/b1.ico
+
+``--distpath k:/exedemo1``\ 用于指定.exe的存储路径
+
+``--icon k:/exedemo1/b1.ico``\ 用于指定.exe文件的图标，即不使用默认图标。
+
 参考文献：
 
 https://shazhenyu.blog.csdn.net/article/details/104054250
@@ -209,6 +225,11 @@ https://blog.csdn.net/qq_40587575/article/details/85076934
 https://blog.csdn.net/wolencoder/article/details/80557311
 
 https://blog.csdn.net/qq_27197395/article/details/83411114
+
+| ​
+| ​
+| ​
+| ​
 
 .. |image0| image:: ../../_static/pyinstaller001.png
 .. |image1| image:: ../../_static/pyinstaller0003.png

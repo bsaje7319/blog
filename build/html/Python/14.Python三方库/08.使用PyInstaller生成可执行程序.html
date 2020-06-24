@@ -237,6 +237,10 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyinstaller</span>
 </pre></div>
 </div>
+<p>​ 或者</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">upgrade</span> <span class="n">pyinstaller</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id6">14.8.2. 生成可执行程序</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
@@ -382,6 +386,12 @@ app_main.exe</p>
 <p><img alt="image5" src="../../_images/pyinstaller00001.png" /></p>
 <p><img alt="image6" src="../../_images/pyinstaller00002.png" /></p>
 <p><a class="reference external" href="http://www.xz577.com/j/24847.html">python打包exe能运行但是没有结果解决方案</a></p>
+<p>打包exe的命令如下：</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">pyinstaller</span> <span class="o">-</span><span class="n">F</span> <span class="n">k</span><span class="p">:</span><span class="o">/</span><span class="n">exedemo1</span><span class="o">/</span><span class="n">geometric</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">distpath</span> <span class="n">k</span><span class="p">:</span><span class="o">/</span><span class="n">exedemo1</span> <span class="o">--</span><span class="n">icon</span> <span class="n">k</span><span class="p">:</span><span class="o">/</span><span class="n">exedemo1</span><span class="o">/</span><span class="n">b1</span><span class="o">.</span><span class="n">ico</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">--distpath</span> <span class="pre">k:/exedemo1</span></code>用于指定.exe的存储路径</p>
+<p><code class="docutils literal"><span class="pre">--icon</span> <span class="pre">k:/exedemo1/b1.ico</span></code>用于指定.exe文件的图标，即不使用默认图标。</p>
 <p>参考文献：</p>
 <p><a class="reference external" href="https://shazhenyu.blog.csdn.net/article/details/104054250">https://shazhenyu.blog.csdn.net/article/details/104054250</a></p>
 <p><a class="reference external" href="http://blog.itpub.net/26736162/viewspace-2644904/">http://blog.itpub.net/26736162/viewspace-2644904/</a></p>
@@ -391,6 +401,12 @@ app_main.exe</p>
 <p><a class="reference external" href="https://blog.csdn.net/qq_40587575/article/details/85076934">https://blog.csdn.net/qq_40587575/article/details/85076934</a></p>
 <p><a class="reference external" href="https://blog.csdn.net/wolencoder/article/details/80557311">https://blog.csdn.net/wolencoder/article/details/80557311</a></p>
 <p><a class="reference external" href="https://blog.csdn.net/qq_27197395/article/details/83411114">https://blog.csdn.net/qq_27197395/article/details/83411114</a></p>
+<div class="line-block">
+<div class="line">​</div>
+<div class="line">​</div>
+<div class="line">​</div>
+<div class="line">​</div>
+</div>
 </div>
 </div>
 </div>

@@ -105,10 +105,10 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">4.1. Python内建函数</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">4.1.1. 内建数学函数</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#map">4.1.2. map()函数</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#random">4.1.3. random随机数函数</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#filter">4.1.4. filter()函数</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reduce">4.1.5. reduce()函数</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#evalexeccompile">4.1.6. eval、exec、compile函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filter">4.1.3. filter()函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reduce">4.1.4. reduce()函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#evalexeccompile">4.1.5. eval、exec、compile函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#random">4.1.6. random随机数函数</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#evalexec">4.1.7. eval与exec的区别</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">4.1.8. eval和exec的使用经验</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#reversed">4.1.9. reversed()</a></li>
@@ -225,10 +225,10 @@
 <li><a class="reference internal" href="#python" id="id3">Python内建函数</a><ul>
 <li><a class="reference internal" href="#id1" id="id4">内建数学函数</a></li>
 <li><a class="reference internal" href="#map" id="id5">map()函数</a></li>
-<li><a class="reference internal" href="#random" id="id6">random随机数函数</a></li>
-<li><a class="reference internal" href="#filter" id="id7">filter()函数</a></li>
-<li><a class="reference internal" href="#reduce" id="id8">reduce()函数</a></li>
-<li><a class="reference internal" href="#evalexeccompile" id="id9">eval、exec、compile函数</a></li>
+<li><a class="reference internal" href="#filter" id="id6">filter()函数</a></li>
+<li><a class="reference internal" href="#reduce" id="id7">reduce()函数</a></li>
+<li><a class="reference internal" href="#evalexeccompile" id="id8">eval、exec、compile函数</a></li>
+<li><a class="reference internal" href="#random" id="id9">random随机数函数</a></li>
 <li><a class="reference internal" href="#evalexec" id="id10">eval与exec的区别</a></li>
 <li><a class="reference internal" href="#id2" id="id11">eval和exec的使用经验</a></li>
 <li><a class="reference internal" href="#reversed" id="id12">reversed()</a></li>
@@ -255,6 +255,7 @@
 </div>
 <div class="section" id="map">
 <h2><a class="toc-backref" href="#id5">4.1.2. map()函数</a><a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">map()函数用于对容器中的元素进行映射（或变换）</span></code></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">map</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">seq1</span><span class="p">[,</span><span class="n">seq2</span><span class="p">])</span>
 <span class="n">将函数func作用于给定序列</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="n">的每个元素</span><span class="p">,</span><span class="n">并用一个列表来提供返回值</span><span class="p">;</span><span class="n">如果func为None</span><span class="p">,</span><span class="n">func表现为一个身份函数</span><span class="p">,</span><span class="n">返回一个含有每个序列中元素集合的n个元组的列表</span>
 </pre></div>
@@ -292,15 +293,9 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="random">
-<h2><a class="toc-backref" href="#id6">4.1.3. random随机数函数</a><a class="headerlink" href="#random" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-</pre></div>
-</div>
-<p><img alt="image4" src="../../_images/random1.PNG" /></p>
-</div>
 <div class="section" id="filter">
-<h2><a class="toc-backref" href="#id7">4.1.4. filter()函数</a><a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">4.1.3. filter()函数</a><a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">filter()函数用于对容器中的元素进行过滤处理。</span></code></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">filter</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">seq</span><span class="p">)</span>
 <span class="n">调用一个布尔函数func来迭代遍历每个seq中的元素</span><span class="p">;</span><span class="n">返回一个使func返回值为true的元素的序列</span>
 </pre></div>
@@ -350,7 +345,7 @@ print(list_hu)
 </div>
 </div>
 <div class="section" id="reduce">
-<h2><a class="toc-backref" href="#id8">4.1.5. reduce()函数</a><a class="headerlink" href="#reduce" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">4.1.4. reduce()函数</a><a class="headerlink" href="#reduce" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">reduce</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">seq</span><span class="p">[,</span><span class="n">init</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -400,7 +395,7 @@ print(list_hu)
 </div>
 </div>
 <div class="section" id="evalexeccompile">
-<h2><a class="toc-backref" href="#id9">4.1.6. eval、exec、compile函数</a><a class="headerlink" href="#evalexeccompile" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">4.1.5. eval、exec、compile函数</a><a class="headerlink" href="#evalexeccompile" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="n">hu</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;3+4&#39;</span><span class="p">)</span>         <span class="c1"># 将字符串当表达式求值 得到7</span>
@@ -423,6 +418,13 @@ print(list_hu)
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="random">
+<h2><a class="toc-backref" href="#id9">4.1.6. random随机数函数</a><a class="headerlink" href="#random" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+<p><img alt="image4" src="../../_images/random1.PNG" /></p>
 </div>
 <div class="section" id="evalexec">
 <h2><a class="toc-backref" href="#id10">4.1.7. eval与exec的区别</a><a class="headerlink" href="#evalexec" title="Permalink to this headline">¶</a></h2>

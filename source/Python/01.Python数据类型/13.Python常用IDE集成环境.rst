@@ -179,8 +179,13 @@ https://shazhenyu.blog.csdn.net/article/details/84943889
    使用镜像来替代原来的官网，方法如下：（推荐这种方法）
 
    1. pip install redis -i https://pypi.douban.com/simple
+   -i：指定镜像地址
+   　
+   2.配置好环境变量后cmd输入
+   python -m pip --default-timeout=100 install 库名称 -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 
-   　-i：指定镜像地址
+   3.python.exe改名版
+   python3 -m pip --default-timeout=100 install 库名称 -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 
 ::
 
@@ -226,8 +231,8 @@ https://shazhenyu.blog.csdn.net/article/details/84943889
 
    https://pypi.python.org
    还可以在此网站中搜索想要的第三方库。也可以通过搜索引擎来搜索相关的第三方库来下载安装。
-   或者
-   https://www.lfd.uci.edu/~gohlke/pythonlibs/  # 这个网站
+
+   或者从网络上下载安装包，在浏览器中输入安装包的下载地址https://www.lfd.uci.edu/～gohlke/pythonlibs/，找到与系统相对应的模块信息
 
 
    https://pypi.org/
@@ -235,8 +240,9 @@ https://shazhenyu.blog.csdn.net/article/details/84943889
 
    pip install pyC8-0.14.4-py2.py3-none-any.whl
 
-jupyter的使用
--------------
+| ​
+| ​
+| ## jupyter的使用
 
 ::
 
@@ -319,6 +325,16 @@ jupyter的使用
 ::
 
    IDLE是IDE中的一种，也是最简单、最基础的一种IDE。当然了，IDE中有很多种IDLE，例如Visual Studio（VS）、PyCharm、Xcode、Spyder、Jupyter Notebook等
+
+| ​
+| ​
+| ​
+| ​
+| ​
+| ​
+| ​
+| ​
+| ​
 
 .. |image0| image:: ../../_static/jupyter-python.png
 .. |image1| image:: ../../_static/Ancona00001.png

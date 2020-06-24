@@ -19,6 +19,8 @@ Python内建函数
 map()函数
 ---------
 
+``map()函数用于对容器中的元素进行映射（或变换）``
+
 ::
 
    map(func,seq1[,seq2])
@@ -62,17 +64,10 @@ eg
    ['tony', 'tom', 'ben', 'alex']
    ['tony', 'tom']
 
-random随机数函数
-----------------
-
-::
-
-   import random
-
-|image4|
-
 filter()函数
 ------------
+
+``filter()函数用于对容器中的元素进行过滤处理。``
 
 ::
 
@@ -213,6 +208,15 @@ eval、exec、compile函数
    c2 = compile(s2, '', 'eval')
    result = eval(c2)
    print(result)
+
+random随机数函数
+----------------
+
+::
+
+   import random
+
+|image4|
 
 eval与exec的区别
 ----------------
@@ -360,4 +364,4 @@ isinstance(object,int)
 .. |image1| image:: ../../_static/number_func.PNG
 .. |image2| image:: ../../_static/neijianfunction.PNG
 .. |image3| image:: ../../_static/neizhi-function.png
-.. |image4| image:: ../../_static/random1.PNG
+.. |image4| image:: ../../_static\random1.PNG
