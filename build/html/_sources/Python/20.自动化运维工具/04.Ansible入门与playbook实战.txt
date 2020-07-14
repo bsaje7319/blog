@@ -5,10 +5,12 @@
 Ansible入门与playbook实战
 =========================
 
--  参考文献
+-  *参考文献*
 
 `Ansible入门与playbook实战 <https://yq.aliyun.com/articles/493215?spm=a2c4e.11153940.blogcont307685.17.4e655529C63dwk>`__
-## 关于Ansible
+
+关于Ansible
+-----------
 
 ::
 
@@ -24,7 +26,7 @@ Ansible入门与playbook实战
 安装Ansible
 -----------
 
-::
+.. code:: shell
 
    安装⽅法有多种，可以下载源码后编译安装，可以从git上获取资源安装，也可以rpm包安装。rpm安装需要配置
    epel源。
@@ -41,9 +43,11 @@ Ansible入门与playbook实战
 
 或者
 
-::
+.. code:: shell
 
-   rpm -Uvh http://ftp.linux.ncsu.edu/pub/epel/epel-release-latest-7.noarch.rpm
+   修改yum源:
+       wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+       wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 
 登陆并修改/etc/ssh/sshd_config
 
@@ -51,7 +55,7 @@ Ansible入门与playbook实战
 
    PasswordAuthentication no改为PasswordAuthentication yes并保存
 
-::
+.. code:: shell
 
    yum list ansible
    yum install ansible -y
@@ -99,7 +103,8 @@ Ansible入门与playbook实战
 
    '
    '
-   [root@hujianli-linux ansible]# ssh-copy-id -i /root/.ssh/id_rsa.pub root@192.168.1.108
+   [root@hujianli-linux ansible]# for i in 172.16.72.28 172.16.72.29 172.16.72.4;do ssh-copy-id -i /root/.ssh/id_rsa.pub root@$i;done
+
    /bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/root/.ssh/id_rsa.pub"
    The authenticity of host '192.168.1.108 (192.168.1.108)' can't be established.
    ECDSA key fingerprint is SHA256:x59MUt+6/V3qTtFlLreCBghCF/BWgqWucIE6JvcIPDI.
@@ -116,7 +121,7 @@ Ansible入门与playbook实战
 ::
 
    # 先备份Ansible的host文件
-   cp -r /etc/ansible/hosts{._bak}
+   cp -r /etc/ansible/hosts{,._bak}
    cat >/etc/ansible/hosts <<-EOF
    ## green.example.com
    ## blue.example.com
@@ -1060,5 +1065,13 @@ Ansible中文权威指南
 ~~~~~~~~~~~~~~~~~~~
 
 http://www.ansible.com.cn/index.html
+
+`Ansible管理windows实践 <https://www.cnblogs.com/kingleft/p/6391652.html>`__
+----------------------------------------------------------------------------
+
+https://www.cnblogs.com/Dev0ps/p/10026908.html
+
+`Ansible 批量管理Windows Server服务器 <https://www.cnblogs.com/bigdevilking/p/10670170.html>`__
+-----------------------------------------------------------------------------------------------
 
 .. |image0| image:: ../../_static/ansible00001.jpg

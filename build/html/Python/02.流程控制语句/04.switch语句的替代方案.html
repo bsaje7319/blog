@@ -228,7 +228,7 @@
 <h1><a class="toc-backref" href="#id5">2.5. switch语句替代方案</a><a class="headerlink" href="#switch" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id6">2.5.1. 代码示例1：</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
 
@@ -273,7 +273,7 @@
 <h2><a class="toc-backref" href="#id7">2.5.2. 类来实现switch 调度方法</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id8">代码例子1:</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="k">class</span> <span class="nc">Switcher</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">numbers_to_methods_to_strings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
@@ -303,7 +303,7 @@
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id9">代码例子2</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 
 <span class="k">class</span> <span class="nc">switch</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -349,6 +349,44 @@
     <span class="k">if</span> <span class="n">case</span><span class="p">():</span>      <span class="c1">#do nothing</span>
         <span class="nb">print</span><span class="p">()</span>
         <span class="k">break</span>
+</pre></div>
+</div>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># @auther:   18793</span>
+<span class="c1"># @Date：    2020/7/6 17:38</span>
+<span class="c1"># @filename: switch语句.py</span>
+<span class="c1"># @Email:    1879324764@qq.com</span>
+<span class="c1"># @Software: PyCharm</span>
+
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">grrting</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello awcloud&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">say_goodbye</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Goodbye, awcloud&quot;</span>
+
+
+<span class="n">OPERATION</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;hello&quot;</span><span class="p">:</span> <span class="n">hello</span><span class="p">,</span>
+    <span class="s2">&quot;greeting&quot;</span><span class="p">:</span> <span class="n">grrting</span><span class="p">,</span>
+    <span class="s2">&quot;say_goodbye&quot;</span><span class="p">:</span> <span class="n">say_goodbye</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">switch_function</span><span class="p">(</span><span class="n">operation</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">OPERATION</span><span class="p">[</span><span class="n">operation</span><span class="p">](</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">h1</span> <span class="o">=</span> <span class="n">switch_function</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">h1</span><span class="p">)</span>
+    <span class="n">h2</span> <span class="o">=</span> <span class="n">switch_function</span><span class="p">(</span><span class="s2">&quot;greeting&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">h2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

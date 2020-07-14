@@ -8,7 +8,7 @@ switch语句替代方案
 代码示例1：
 -----------
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    #-*- coding:utf8 -*-
@@ -55,7 +55,7 @@ switch语句替代方案
 代码例子1:
 ~~~~~~~~~~
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    #-*- coding:utf8 -*-
@@ -86,7 +86,7 @@ switch语句替代方案
 代码例子2
 ~~~~~~~~~
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    #-*- coding:utf8 -*-
@@ -134,3 +134,42 @@ switch语句替代方案
        if case():      #do nothing
            print()
            break
+
+.. code:: python
+
+   #!/usr/bin/env python
+   # -*- coding:utf8 -*-
+   # @auther:   18793
+   # @Date：    2020/7/6 17:38
+   # @filename: switch语句.py
+   # @Email:    1879324764@qq.com
+   # @Software: PyCharm
+
+   def hello():
+       return "Hello"
+
+
+   def grrting():
+       return "Hello awcloud"
+
+
+   def say_goodbye():
+       return "Goodbye, awcloud"
+
+
+   OPERATION = {
+       "hello": hello,
+       "greeting": grrting,
+       "say_goodbye": say_goodbye
+   }
+
+
+   def switch_function(operation, *args, **kwargs):
+       return OPERATION[operation](*args, **kwargs)
+
+
+   if __name__ == '__main__':
+       h1 = switch_function("hello")
+       print(h1)
+       h2 = switch_function("greeting")
+       print(h2)

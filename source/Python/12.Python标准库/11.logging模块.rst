@@ -530,7 +530,7 @@ logger.conf
 
 使用代码示例：
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    #-*- coding:utf8 -*-
@@ -566,6 +566,51 @@ logger.conf
    2019-12-23 22:55:44,532 - simpleExample - CRITICAL - critical message
 
    '''
+
+一个\ ``logging``\ 的方法。
+
+.. code:: python
+
+       def configure_logging(self):
+               """
+               Configure logging to log to std output as well as to log file
+               """
+               log_level = logging.DEBUG
+
+               log_filename = datetime.now().strftime('%Y-%m-%d') + '.log'
+               sp_logger = logging.getLogger('sp_logger')
+               sp_logger.setLevel(log_level)
+               formatter = logging.Formatter('%(asctime)s : %(levelname)s : %(message)s')
+
+               fh = logging.FileHandler(filename=self.log_dir + log_filename)
+               fh.setLevel(log_level)
+               fh.setFormatter(formatter)
+               sp_logger.addHandler(fh)
+
+               sh = logging.StreamHandler(sys.stdout)
+               sh.setLevel(log_level)
+               sh.setFormatter(formatter)
+               sp_logger.addHandler(sh)
+               self.logger = sp_logger
+               return self.logger
+
+       def __repr__(self):
+           return "{}()".format(self.__class__.__name__)
+
+       def debug(self, *args, **kwargs):
+           self.logger.debug(*args, **kwargs)
+
+       def info(self, *args, **kwargs):
+           self.logger.info(*args, **kwargs)
+
+       def warn(self, *args, **kwargs):
+           self.logger.warn(*args, **kwargs)
+
+       def error(self, *args, **kwargs):
+           self.logger.error(*args, **kwargs)
+
+       def critical(self, *args, **kwargs):
+           self.logger.critical(*args, **kwargs)
 
 参考资料：
 

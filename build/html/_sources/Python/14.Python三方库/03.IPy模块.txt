@@ -9,10 +9,19 @@ IPy模块
 
    IPy - 用于处理IPv4和IPv6地址和网络的类和工具。
 
+以下是IPy模块的安装，这里采用源码的安装方式：
+
+.. code:: shell
+
+   # wget https://pypi.python.org/packages/source/I/IPy/IPy-0.81.tar.gz --no-check-certificate
+   # tar -zxvf IPy-0.81.tar.gz
+   # cd IPy-0.81
+   # python setup.py install
+
 区分Iv4和IPv6
 -------------
 
-::
+.. code:: shell
 
    In [17]: IP('192.168.0.0/24').version()
    Out[17]: 4

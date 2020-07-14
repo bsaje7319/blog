@@ -13,7 +13,7 @@
 定义类
 ~~~~~~
 
-::
+.. code:: python
 
    class Person:
        """
@@ -32,7 +32,7 @@
 对象的产生和使用
 ~~~~~~~~~~~~~~~~
 
-::
+.. code:: python
 
    p = Person()
    print(p.name, p.age)                    #Charlie 8
@@ -43,7 +43,7 @@
 对象动态的增加和删除
 ~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code:: python
 
    p = Person()
    # 为p对象新增一个skills实例变量
@@ -58,7 +58,7 @@
 
 · 动态增加方法
 
-::
+.. code:: python
 
    p = Person()
    def info(self):
@@ -78,7 +78,7 @@
 实例方法和自动绑定self
 ~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code:: python
 
    class Dog:
 
@@ -93,7 +93,7 @@
 
 把self参数当成实例方法的返回值。
 
-::
+.. code:: python
 
    class ReturnSelf:
        def grow(self):
@@ -117,7 +117,7 @@
 类也能调用实例方法
 ~~~~~~~~~~~~~~~~~~
 
-::
+.. code:: python
 
    class User:
        def walk(self):
@@ -132,7 +132,7 @@
 类方法与静态方法
 ~~~~~~~~~~~~~~~~
 
-::
+.. code:: python
 
    class Bird:
        # 类方法
@@ -159,7 +159,7 @@
 @函数装饰器
 ~~~~~~~~~~~
 
-::
+.. code:: python
 
    def funA(fn):
        print("A")
@@ -182,7 +182,7 @@
 
 复杂一点的函数装饰器
 
-::
+.. code:: python
 
    def foo(fn):
        def bar(*args):
@@ -210,7 +210,7 @@
 也可以在目标方法抛出异常时进行一些修复操作…..
 这种改变不需要修改被修饰函数的代码，只要增加一个修饰即可。
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -242,7 +242,7 @@
 在论命名空间
 ~~~~~~~~~~~~
 
-::
+.. code:: python
 
    global_fn = lambda p: print("执行lambda表达式,p参数：", p)
 
@@ -262,7 +262,7 @@
 成员变量
 --------
 
-::
+.. code:: python
 
    class Record:
        item = "鼠标"
@@ -282,7 +282,7 @@
    rc.date = "2020-03-20"
    rc.info()
 
-::
+.. code:: python
 
    class Inverntory:
        item = "鼠标"
@@ -316,7 +316,7 @@
 
 如果Python类定义了getter、setter等访问器方法，则可以使用property()函数将它们定义成属性(相当于实例变量)
 
-::
+.. code:: python
 
    class Rectangle:
        # 定义构造方法
@@ -355,7 +355,7 @@
 
 还可以使用@property装饰器来修饰方法，使之成为属性。
 
-::
+.. code:: python
 
    class Cell:
        # 使用@property修饰方法，相当于为该属性设置getter方法
@@ -390,7 +390,7 @@ Python并没有提供类似于其他语言的private等修饰符，因此Python�
 
 Python的封装机制
 
-::
+.. code:: python
 
    class User :
        def __hide(self):
@@ -434,7 +434,7 @@ Python的封装机制
 继承的语法
 ~~~~~~~~~~
 
-::
+.. code:: python
 
    class Fruit:
        def info(self):
@@ -469,7 +469,7 @@ Python 虽然在语法上明确支持多继承，但是通推荐:
    如果不是很有必要，则尽量不要使用多继承，而是使用单继承，这样可以保证
    编程思路更清晰，而且可以避免很多麻烦。
 
-::
+.. code:: python
 
    class Item:
        def info(self):
@@ -493,7 +493,7 @@ Python优先到Item父类中搜寻方法，一旦在Item父类中搜寻到目标
 重写父类的方法
 ~~~~~~~~~~~~~~
 
-::
+.. code:: python
 
    class Bird: 
        # Bird类的fly()方法
@@ -518,7 +518,7 @@ Python优先到Item父类中搜寻方法，一旦在Item父类中搜寻到目标
 ``在通过类名调用实例方法时，Python不会为实例方法的第一个参数self自动绑定参数值，而是需要程序显式绑定第一个参数self。``
 这种机制被称为未绑定方法。
 
-::
+.. code:: python
 
    class BaseClass:
        def foo(self):
@@ -550,7 +550,7 @@ Python优先到Item父类中搜寻方法，一旦在Item父类中搜寻到目标
 使用super函数调用父类的构造方法
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code:: python
 
 
    class Employee:
@@ -591,7 +591,7 @@ Python优先到Item父类中搜寻方法，一旦在Item父类中搜寻到目标
 Python多态的意义和灵活性
 ------------------------
 
-::
+.. code:: python
 
    class Bird:
        def move(self, field):
@@ -637,7 +637,7 @@ Python多态的意义和灵活性
 类型检查的相关函数和属性
 ------------------------
 
-::
+.. code:: python
 
    # 定义一个字符串
    hello = "Hello";
@@ -674,7 +674,7 @@ Python多态的意义和灵活性
 枚举类的用法
 ------------
 
-::
+.. code:: python
 
    import enum
    # 定义Season枚举类
@@ -720,7 +720,7 @@ Python多态的意义和灵活性
 枚举类及其构造器
 ----------------
 
-::
+.. code:: python
 
    import enum
    class Gender(enum.Enum):

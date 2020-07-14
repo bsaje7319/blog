@@ -14,3 +14,4 @@
     05.Saltstack安装使用入门
     06.业务服务监控详解
     07.Supervisor在Devops工作中的应用
+    08.网页自动化开发

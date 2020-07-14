@@ -89,14 +89,13 @@ eg
            file.write(d.make_file(text1_lines, text2_lines))
    else:
        print(html_file + "is exists....")
-       
 
 |image0|
 
 对比Nginx配置文件
 ~~~~~~~~~~~~~~~~~
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    #-*- coding:utf8 -*-

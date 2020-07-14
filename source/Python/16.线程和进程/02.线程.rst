@@ -17,7 +17,7 @@
 线程初探
 --------
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    #-*- coding:utf8 -*-
@@ -57,7 +57,7 @@
 代码示例1
 ~~~~~~~~~
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -86,7 +86,7 @@
 代码示例2
 ~~~~~~~~~
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-

@@ -252,6 +252,14 @@
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id10">14.1.2. 安装</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>psutil的源码安装步骤如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#wget https://pypi.python.org/packages/source/p/psutil/psutil-2.0.0.tar.gz --no-check-certificate</span>
+<span class="c1"># tar -xzvf psutil-2.0.0.tar.gz</span>
+<span class="c1"># cd psutil-2.0.0</span>
+<span class="c1"># python setup.py install</span>
+</pre></div>
+</div>
+<p>pip安装：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">psutil</span>                     <span class="c1"># 安装</span>
 
 <span class="kn">import</span> <span class="nn">psutil</span>
@@ -304,7 +312,6 @@ psutil.disk_io_counters（）获取
 <span class="n">sdiskusage</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">42139451392</span><span class="p">,</span> <span class="n">used</span><span class="o">=</span><span class="mi">1964945408</span><span class="p">,</span> <span class="n">free</span><span class="o">=</span><span class="mi">38010351616</span><span class="p">,</span> <span class="n">percent</span><span class="o">=</span><span class="mf">4.9</span><span class="p">)</span>
 
 <span class="n">psutil</span><span class="o">.</span><span class="n">disk_io_counters</span><span class="p">()</span>              <span class="c1"># 磁盘IO信息</span>
-<span class="n">psutil</span><span class="o">.</span><span class="n">net_io_counters</span><span class="p">()</span>               <span class="c1"># 获取网络IO信息</span>
 </pre></div>
 </div>
 </div>

@@ -16,7 +16,7 @@ pip安装
 
 ::
 
-   #wget https：//github.com/pexpect/pexpect/releases/download/3.0/pexpect-3.0.tar.gz -O pexpect-3.0.tar.gz
+   #wget https://github.com/pexpect/pexpect/releases/download/3.0/pexpect-3.0.tar.gz -O pexpect-3.0.tar.gz
    #tar -zxvf pexpect-3.0.tar.gz
    #cd pexpect-3.0
    #python setup.py install

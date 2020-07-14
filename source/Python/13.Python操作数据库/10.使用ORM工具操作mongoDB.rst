@@ -83,7 +83,7 @@
 
 代码示例2：
 
-::
+.. code:: python
 
    from mongoengine import *
 

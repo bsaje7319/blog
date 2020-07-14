@@ -245,14 +245,14 @@ Fabric在paramiko的基础上做了更高一层的封装，操作起来会更加
 <ul class="simple">
 <li>pip安装</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">fabric</span><span class="o">==</span><span class="mf">1.14</span><span class="o">.</span><span class="mi">0</span>
+<div class="code shell highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">fabric</span><span class="o">==</span><span class="mf">1.14</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">easy_install</span> <span class="n">fabric</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>源码安装</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span>
+<div class="code shell highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span>
 <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">F</span><span class="o">/</span><span class="n">Fabric</span><span class="o">/</span><span class="n">Fabric</span><span class="o">-</span><span class="mf">1.8</span><span class="o">.</span><span class="mf">2.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">check</span><span class="o">-</span><span class="n">certificate</span>
 <span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">Fabric</span><span class="o">-</span><span class="mf">1.8</span><span class="o">.</span><span class="mf">2.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">cd</span> <span class="n">Fabric</span><span class="o">-</span><span class="mf">1.8</span><span class="o">.</span><span class="mi">2</span>
@@ -260,7 +260,7 @@ Fabric在paramiko的基础上做了更高一层的封装，操作起来会更加
 </pre></div>
 </div>
 <p>eg:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code shell highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="kn">from</span> <span class="nn">fabric.api</span> <span class="k">import</span> <span class="n">run</span>
 
 <span class="k">def</span> <span class="nf">host_type</span><span class="p">():</span>

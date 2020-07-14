@@ -280,7 +280,7 @@ global 局部变量提升为全局变量
 内部函数的局部变量互访 nonlocal关键字
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
