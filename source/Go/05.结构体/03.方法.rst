@@ -64,4 +64,135 @@ Go语言中的方法(Method)是一种作用于特定类型变量的函数。这�
 每个方法只能有一个接收器。Insert转换为方法后，就能用面向对象的方法调用Insert了。
 |image0|
 
+结构体中方法
+------------
+
+非指针类型的接收者
+~~~~~~~~~~~~~~~~~~
+
+.. code:: go
+
+   package main
+
+   import "fmt"
+
+   // 创建结构体
+   type Person struct {
+       name string
+       age  int8
+   }
+
+   // 构造函数
+   func NewPerson(name string, age int8) *Person {
+       return &Person{
+           name: name,
+           age:  age,
+       }
+   }
+
+   // 非指针类型的接收者.类方法定义
+   func (p Person) Dream() {
+       fmt.Printf("%s 最近在学习Go语言\n", p.name)
+   }
+
+   func main() {
+       p1 := Person{
+           name: "hujianli",
+           age:  0,
+       }
+       p1.Dream()
+
+       p2 := Person{
+           name: "hu",
+           age:  18,
+       }
+       p2.SetAge(19)
+       fmt.Printf("%s 的年龄是%d", p2.name, p2.age)
+   }
+
+指针类型的接收者
+~~~~~~~~~~~~~~~~
+
+.. code:: go
+
+   // 指针类型的接收者，类方法定义
+   // 重新设置年龄
+   func (p *Person) SetAge(age int8) {
+       p.age = age
+   }
+
+
+   func main() {
+       p2 := Person{
+           name: "hu",
+           age:  18,
+       }
+       p2.SetAge(19)
+       fmt.Printf("%s 的年龄是%d", p2.name, p2.age)
+   }
+
+什么时候应该使用指针类型接收者
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. ``需要修改接收者中的值``
+2. ``接收者是拷贝代价比较大的大对象``
+3. ``保证一致性，如果有某个方法使用了指针接收者，那么其他的方法也应该使用指针接收者。``
+
+结构体的匿名字段
+----------------
+
+.. code:: go
+
+   package main
+
+   import "fmt"
+
+   //Person 结构体Person类型
+   type Person struct {
+       string
+       int
+   }
+   func main() {
+       p1 := Person{
+           "pprof.cn",
+           18,
+       }
+       fmt.Printf("%#v\n", p1)        //main.Person{string:"pprof.cn", int:18}
+       fmt.Println(p1.string, p1.int) //pprof.cn 18
+   }
+
+## 嵌套结构体
+
+一个结构体中可以嵌套包含另一个结构体或结构体指针。
+
+.. code:: go
+
+   //Address 地址结构体
+   type Address struct {
+       Province string
+       City     string
+   }
+   //User 用户结构体
+   type User struct {
+       Name    string
+       Gender  string
+       Address Address
+   }
+   func main() {
+       user1 := User{
+           Name:   "pprof",
+           Gender: "女",
+           Address: Address{
+               Province: "黑龙江",
+               City:     "哈尔滨",
+           },
+       }
+       fmt.Printf("user1=%#v\n", user1)//user1=main.User{Name:"pprof", Gender:"女", Address:main.Address{Province:"黑龙江", City:"哈尔滨"}}
+   }
+
+结构体字段的可见性
+------------------
+
+结构体中字段大写开头表示可公开访问，小写表示私有（仅在定义当前结构体的包中可访问）。
+
 .. |image0| image:: ../../_static/go_method_jieshouqi.png

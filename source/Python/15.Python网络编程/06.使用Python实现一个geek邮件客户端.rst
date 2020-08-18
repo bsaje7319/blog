@@ -27,7 +27,7 @@
 
    import yagmail
 
-   yag = yagmail.SMTP(user='1879324764@qq.com', password="tpuvxqftwjujeaja", host='smtp.qq.com', port=25)
+   yag = yagmail.SMTP(user='1879324764@qq.com', password="xxxxxxxxx", host='smtp.qq.com', port=25)
 
    content = ['This is the body , and here is just text',
               'You can find an image file adn a pdf file attached.',

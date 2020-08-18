@@ -50,6 +50,22 @@ for中的条件表达式-控制是否循环的开关
 2.无限循环
 ~~~~~~~~~~
 
+.. code:: go
+
+   package main
+
+   import (
+       "fmt"
+       "time"
+   )
+
+   func main() {
+       for {
+           fmt.Printf("loop ......\n")
+           time.Sleep(time.Millisecond * 1000)
+       }
+   }
+
 美观的无限循环写法
 
 ::
@@ -221,7 +237,7 @@ for中的条件表达式-控制是否循环的开关
 range循环遍历某个对象时，一般不会同时需要key或者value，这个时候可以采用一些技巧。
 让代码变得简单。
 
-::
+.. code:: go
 
    package main
 
@@ -244,7 +260,7 @@ range循环遍历某个对象时，一般不会同时需要key或者value，这�
 
 一个匿名变量的例子
 
-::
+.. code:: go
 
    package main
 
@@ -259,7 +275,7 @@ range循环遍历某个对象时，一般不会同时需要key或者value，这�
 “range”语句中更新引用元素的值
 -----------------------------
 
-::
+.. code:: go
 
    package main
 
@@ -283,4 +299,35 @@ range循环遍历某个对象时，一般不会同时需要key或者value，这�
            hujianlislice[i] *= 10
        }
        fmt.Println(hujianlislice)  //[120 130 140]
+   }
+
+for循环的常见写法
+-----------------
+
+.. code:: go
+
+   package main
+
+   import "fmt"
+
+   func main() {
+       var b int = 15
+       var a int
+       numbers := [6]int{1, 2, 3, 5}
+
+       /* for 循环 */
+       for a := 0; a < 100; a++ {
+           fmt.Printf("a的值为: %d\n",a)
+       }
+
+       for a<b  {
+           fmt.Printf("a的值为: %d\n",a)
+           a++
+
+       }
+
+       for index, num := range numbers {
+           fmt.Printf("%d : %d\n",index,num)
+       }
+
    }
