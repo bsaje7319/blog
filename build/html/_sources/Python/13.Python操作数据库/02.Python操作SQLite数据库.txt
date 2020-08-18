@@ -486,3 +486,80 @@ Python操作SQLite代码示例
 
    # 关闭数据库连接
    conn.close()
+
+操作SQLite的封装类
+------------------
+
+.. code:: python
+
+   #!/usr/bin/env python
+   # -*- coding:utf8 -*-
+   # @auther:   18793
+   # @Date：    2020/7/17 15:31
+   # @filename: 操作SQLite.py
+   # @Email:    1879324764@qq.com
+   # @Software: PyCharm
+   import sqlite3
+
+
+   class MySqliteDb(object):
+       """Sqlite3 Db Class"""
+
+       def __init__(self, dbname="mys.db"):
+           self.dbname = dbname
+           self.con = None
+           self.curs = None
+
+       def getCursor(self):
+           self.con = sqlite3.connect(self.dbname)
+           if self.con:
+               self.curs = self.con.cursor()
+
+       def closeDb(self):
+           if self.curs:
+               self.curs.close()
+           if self.con:
+               self.con.commit()
+               self.con.close()
+
+       def __enter__(self):
+           self.getCursor()
+           return self.curs
+
+       def __exit__(self, exc_type, exc_val, exc_tb):
+           if exc_val:
+               print("Exception has generate: ", exc_val)
+               print("Sqlite3 execute error!")
+           self.closeDb()
+
+
+   if __name__ == '__main__':
+       # 建立一个表
+       with MySqliteDb() as db:
+           sql = "Create TABLE demo(num int,str varchar(20))"
+           db.execute(sql)
+
+       # 插入一些数据记录
+       sqls = ("insert into demo values (%d,\"%s\")" % (1, "aaa"),
+               "insert into demo values (%d,\"%s\")" % (2, "bbb"),
+               "insert into demo values (%d,\"%s\")" % (3, "ccc"),
+               )
+
+       with MySqliteDb() as db:
+           for sql in sqls:
+               db.execute(sql)
+
+       # 更新一条记录
+       with MySqliteDb() as db:
+           sql = "update demo set str='%s' where num= %d" % ('ddd', 3)
+           db.execute(sql)
+
+       # 查询
+       with MySqliteDb() as db:
+           sql = "select * from demo;"
+           db.execute(sql)
+           rows = db.fetchall()
+           print("number of records: ", len(rows))
+
+           for row in rows:
+               print(row)

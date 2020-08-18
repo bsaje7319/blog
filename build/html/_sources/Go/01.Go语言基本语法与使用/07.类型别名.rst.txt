@@ -1,0 +1,56 @@
+.. contents::
+   :depth: 3
+..
+
+类型别名
+========
+
+类型别名是Go 1.9
+版本添加的新功能，主要用于代码升级、迁移中类型的兼容性问题。
+
+在C/C++
+语言中，代码重构升级可以使用宏快速定义新的一段代码。Go语言中没有选择加入宏，
+而是将解决重构中最麻烦的类型名变更问题。
+
+Go 1.9版本之前的内建类型定义代码是这样写的：
+
+::
+
+   type byte uint8
+   type rune int32
+
+而在Go 1.9版本之后变为：
+
+::
+
+   type byte = uint8
+   type rune = int32
+
+区分类型别名与类型定义
+----------------------
+
+类型别名的写法为：
+
+::
+
+   type TypeAlias = Type
+
+::
+
+   package main
+
+   import "fmt"
+   // 将NewInt定义为int类型
+   type NewInt int
+   // 给int取一个IntAlias的别名
+   type IntAlias = int
+
+   func main() {
+       var a NewInt
+       var a2 IntAlias
+       fmt.Printf("a type : %T\n", a)
+       fmt.Printf("a2 type : %T\n", a2)
+   }
+
+   //a type : main.NewInt
+   //a2 type : int

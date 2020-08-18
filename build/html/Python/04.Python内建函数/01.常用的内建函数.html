@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="4.2. 偏函数" href="02.偏函数.html" />
     <link rel="prev" title="4. Python内建函数" href="index.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -138,7 +142,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -156,6 +160,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -194,7 +199,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -206,7 +211,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/04.Python内建函数/01.常用的内建函数.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/04.Python内建函数/01.常用的内建函数.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -255,12 +260,12 @@
 </div>
 <div class="section" id="map">
 <h2><a class="toc-backref" href="#id5">4.1.2. map()函数</a><a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">map()函数用于对容器中的元素进行映射（或变换）</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">map</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">seq1</span><span class="p">[,</span><span class="n">seq2</span><span class="p">])</span>
+<p><code class="docutils literal notranslate"><span class="pre">map()函数用于对容器中的元素进行映射（或变换）</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">seq1</span><span class="p">[,</span><span class="n">seq2</span><span class="p">])</span>
 <span class="n">将函数func作用于给定序列</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="n">的每个元素</span><span class="p">,</span><span class="n">并用一个列表来提供返回值</span><span class="p">;</span><span class="n">如果func为None</span><span class="p">,</span><span class="n">func表现为一个身份函数</span><span class="p">,</span><span class="n">返回一个含有每个序列中元素集合的n个元组的列表</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">alst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span><span class="n">alst</span><span class="p">)))</span>        <span class="c1">#map配合lambda函数一起使用，将列表中的元素扩大两倍</span>
 <span class="c1"># map 通过函数对列表进行处理得到新的列表</span>
 <span class="k">def</span> <span class="nf">cube</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -270,7 +275,7 @@
 </pre></div>
 </div>
 <p>eg</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/17 23:46</span>
@@ -288,19 +293,19 @@
 </pre></div>
 </div>
 <p>输出结果</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;tony&#39;</span><span class="p">,</span> <span class="s1">&#39;tom&#39;</span><span class="p">,</span> <span class="s1">&#39;ben&#39;</span><span class="p">,</span> <span class="s1">&#39;alex&#39;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;tony&#39;</span><span class="p">,</span> <span class="s1">&#39;tom&#39;</span><span class="p">,</span> <span class="s1">&#39;ben&#39;</span><span class="p">,</span> <span class="s1">&#39;alex&#39;</span><span class="p">]</span>
 <span class="p">[</span><span class="s1">&#39;tony&#39;</span><span class="p">,</span> <span class="s1">&#39;tom&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="filter">
 <h2><a class="toc-backref" href="#id6">4.1.3. filter()函数</a><a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">filter()函数用于对容器中的元素进行过滤处理。</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">filter</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">seq</span><span class="p">)</span>
+<p><code class="docutils literal notranslate"><span class="pre">filter()函数用于对容器中的元素进行过滤处理。</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">seq</span><span class="p">)</span>
 <span class="n">调用一个布尔函数func来迭代遍历每个seq中的元素</span><span class="p">;</span><span class="n">返回一个使func返回值为true的元素的序列</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">,</span><span class="n">alst</span><span class="p">)))</span>   <span class="c1">#去重复，filter可以去掉列表中的重复元素</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">,</span><span class="n">alst</span><span class="p">)))</span>   <span class="c1">#去重复，filter可以去掉列表中的重复元素</span>
 <span class="c1"># filter 即通过函数方法只保留结果为真的值组成列表</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -319,17 +324,17 @@
 </pre></div>
 </div>
 <p>eg1</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tony&quot;</span><span class="p">,</span> <span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="s2">&quot;Alex&quot;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tony&quot;</span><span class="p">,</span> <span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="s2">&quot;Alex&quot;</span><span class="p">]</span>
 <span class="n">users_list</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">),</span><span class="n">users</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">users_list</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>输出结果</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;Tony&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;Tony&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>eg2</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>number_list = range(1, 11)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>number_list = range(1, 11)
 number_filter = filter(lambda it: it % 2 == 0,number_list)
 print(list(number_filter))
 
@@ -340,20 +345,20 @@ print(list_hu)
 </pre></div>
 </div>
 <p>输出结果</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="reduce">
 <h2><a class="toc-backref" href="#id7">4.1.4. reduce()函数</a><a class="headerlink" href="#reduce" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">reduce</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">seq</span><span class="p">[,</span><span class="n">init</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reduce</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">seq</span><span class="p">[,</span><span class="n">init</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>将二元函数作用于seq序列的元素,
 每次携带一堆(先前的结果以及下一个序列元素),
 连续地将现有的结果和下一个值作用在获得的随后的结果上,最后减少我们的序列为一个单一的返回值;如果初始值init给定,
 第一个比较会是init和第一个序列元素而不是序列的头两个元素。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">reduce</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">reduce</span>
 <span class="n">alst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span><span class="n">alst</span><span class="p">)</span>            <span class="c1">#reduce()对list的每个元素反复调用函数f，并返回最终结果值</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -374,7 +379,7 @@ print(list_hu)
 </pre></div>
 </div>
 <p>eg</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/17 23:51</span>
@@ -389,14 +394,14 @@ print(list_hu)
 </pre></div>
 </div>
 <p>输出</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">10</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span>
 <span class="mi">12</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="evalexeccompile">
 <h2><a class="toc-backref" href="#id8">4.1.5. eval、exec、compile函数</a><a class="headerlink" href="#evalexeccompile" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="n">hu</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;3+4&#39;</span><span class="p">)</span>         <span class="c1"># 将字符串当表达式求值 得到7</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">hu</span><span class="p">)</span>
@@ -421,7 +426,7 @@ print(list_hu)
 </div>
 <div class="section" id="random">
 <h2><a class="toc-backref" href="#id9">4.1.6. random随机数函数</a><a class="headerlink" href="#random" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 </pre></div>
 </div>
 <p><img alt="image4" src="../../_images/random1.PNG" /></p>
@@ -429,7 +434,7 @@ print(list_hu)
 <div class="section" id="evalexec">
 <h2><a class="toc-backref" href="#id10">4.1.7. eval与exec的区别</a><a class="headerlink" href="#evalexec" title="Permalink to this headline">¶</a></h2>
 <p>exec中最适合放置运行后没有结果的语句,而eval中适合放置有结果返回</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/9/20 23:29</span>
@@ -453,20 +458,20 @@ print(list_hu)
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id11">4.1.8. eval和exec的使用经验</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>使用exec和eval时一定要记住：</p>
-<p><code class="docutils literal"><span class="pre">里面的第一个参数是字符串,而字符串的内容一定要是可执行的代码。</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">里面的第一个参数是字符串,而字符串的内容一定要是可执行的代码。</span></code></p>
 <p>repr函数在exec与eval函数中的作用</p>
 <p>repr可以将元素转为 ’xxx’的字符串值</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">evel</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">s</span><span class="p">)))</span>            <span class="c1">#使用函数repr进行转化，输出hello</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="reversed">
 <h2><a class="toc-backref" href="#id12">4.1.9. reversed()</a><a class="headerlink" href="#reversed" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">函数倒序排序</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">函数倒序排序</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">]</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">list2</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
@@ -479,10 +484,10 @@ print(list_hu)
 </div>
 <div class="section" id="sorted">
 <h2><a class="toc-backref" href="#id13">4.1.10. sorted()函数正向排列:</a><a class="headerlink" href="#sorted" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>不改变原值，在内存中新开辟一个空间
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>不改变原值，在内存中新开辟一个空间
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">list2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">list2</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">]</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">]</span>
@@ -493,7 +498,7 @@ print(list_hu)
 </div>
 <div class="section" id="enumerate">
 <h2><a class="toc-backref" href="#id14">4.1.11. enumerate()</a><a class="headerlink" href="#enumerate" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>enumerate()函数的调用形式如下：
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enumerate()函数的调用形式如下：
 
 enumerate(iterable, [start=0])
 enumerate()函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。
@@ -507,10 +512,10 @@ enumerate()函数用于将一个可遍历的数据对象(如列表、元组或�
 </div>
 <div class="section" id="zip-s-t">
 <h2><a class="toc-backref" href="#id15">4.1.12. zip(s,t)</a><a class="headerlink" href="#zip-s-t" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">返回一个合并后的列表</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">返回一个合并后的列表</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;11&#39;</span><span class="p">,</span><span class="s1">&#39;22&#39;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;11&#39;</span><span class="p">,</span><span class="s1">&#39;22&#39;</span><span class="p">]</span>
 <span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span><span class="s1">&#39;bb&#39;</span><span class="p">]</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">))</span>
@@ -520,31 +525,31 @@ enumerate()函数用于将一个可遍历的数据对象(如列表、元组或�
 </div>
 <div class="section" id="cmp-x-y">
 <h2><a class="toc-backref" href="#id16">4.1.13. cmp(x,y)</a><a class="headerlink" href="#cmp-x-y" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>比较两个对象,根据比较结果返回一个整数，如果x&lt;y，则返回-1；如果x&gt;y，则返回1,如果x==y则返回0
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>比较两个对象,根据比较结果返回一个整数，如果x&lt;y，则返回-1；如果x&gt;y，则返回1,如果x==y则返回0
 </pre></div>
 </div>
 </div>
 <div class="section" id="round-x-n">
 <h2><a class="toc-backref" href="#id17">4.1.14. round(x[,n])</a><a class="headerlink" href="#round-x-n" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>函数返回浮点数x的四舍五入值，如给出n值，则代表舍入到小数点后的位数
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>函数返回浮点数x的四舍五入值，如给出n值，则代表舍入到小数点后的位数
 </pre></div>
 </div>
 </div>
 <div class="section" id="dir-sys">
 <h2><a class="toc-backref" href="#id18">4.1.15. dir(sys)</a><a class="headerlink" href="#dir-sys" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">显示对象的属性</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">显示对象的属性</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="abs">
 <h2><a class="toc-backref" href="#id19">4.1.16. abs()</a><a class="headerlink" href="#abs" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">求绝对值的函数</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">求绝对值的函数</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="isinstance-object-int">
 <h2><a class="toc-backref" href="#id20">4.1.17. isinstance(object,int)</a><a class="headerlink" href="#isinstance-object-int" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">测试对象类型</span> <span class="nb">int</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">测试对象类型</span> <span class="nb">int</span>
 </pre></div>
 </div>
 </div>
@@ -570,11 +575,19 @@ enumerate()函数用于将一个可遍历的数据对象(如列表、元组或�
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -585,7 +598,6 @@ enumerate()函数用于将一个可遍历的数据对象(如列表、元组或�
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

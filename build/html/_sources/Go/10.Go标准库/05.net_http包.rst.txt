@@ -1,0 +1,219 @@
+.. contents::
+   :depth: 3
+..
+
+net_http包
+==========
+
+Go最简单的http服务器
+--------------------
+
+::
+
+   package main
+
+   import (
+       "fmt"
+       "net/http"
+   )
+
+   func myfunc(w http.ResponseWriter, r *http.Request) {
+       fmt.Fprintf(w, "<h1>hi<h1>")
+   }
+
+   func main() {
+       http.HandleFunc("/", myfunc)
+       http.ListenAndServe(":8080", nil)
+   }
+
+访问 ``http://localhost:8080/`` , 我们可以看到网页输出”hi”
+
+GET请求示例
+-----------
+
+使用net/http包编写一个简单的发送HTTP请求的Client端，代码如下：
+
+::
+
+   package main
+
+   import (
+       "fmt"
+       "io/ioutil"
+       "net/http"
+   )
+
+   func main() {
+       resp, err1 := http.Get("https://www.liwenzhou.com/")
+       if err1 != nil {
+           fmt.Println("get failed, err:", err1)
+           return
+       }
+       defer resp.Body.Close()
+       body, err2 := ioutil.ReadAll(resp.Body)
+       if err2 != nil {
+           fmt.Println("read from resp.Body failed,err:", err2)
+           return
+       }
+       fmt.Print(string(body))
+   }
+
+带参数的GET请求示例
+-------------------
+
+关于GET请求的参数需要使用Go语言内置的net/url这个标准库来处理。
+
+本地server端HandlerFunc如下： ``server01.go``
+
+::
+
+   package main
+
+   import (
+       "fmt"
+       "net/http"
+   )
+
+
+   func getHandler(w http.ResponseWriter, r *http.Request) {
+       defer r.Body.Close()
+       data := r.URL.Query()
+       fmt.Println(data.Get("name"))
+       fmt.Println(data.Get("age"))
+       answer := `{"status": "ok"}`
+       w.Write([]byte(answer))
+   }
+
+   func main() {
+       http.HandleFunc("/", getHandler)
+       http.ListenAndServe(":9090", nil)
+   }
+
+``client01.go``
+
+::
+
+   package main
+
+   import (
+       "fmt"
+       "io/ioutil"
+       "net/http"
+       "net/url"
+   )
+
+   func main() {
+       apiUrl := "http://127.0.0.1:9090/get"
+       // URL param
+       data := url.Values{}
+       data.Set("name", "小王子")
+       data.Set("age", "18")
+       u, err1 := url.ParseRequestURI(apiUrl)
+       if err1 != nil {
+           fmt.Printf("parse url requestUrl failed,err:%v\n", err1)
+       }
+       u.RawQuery = data.Encode() // URL encode
+       fmt.Println(u.String())
+       resp, err2 := http.Get(u.String())
+       if err2 != nil {
+           fmt.Println("post failed, err:%v\n", err2)
+           return
+       }
+       defer resp.Body.Close()
+       b, err3 := ioutil.ReadAll(resp.Body)
+       if err3 != nil {
+           fmt.Println("get resp failed,err:%v\n", err3)
+           return
+       }
+       fmt.Println(string(b))
+   }
+
+Post请求示例
+------------
+
+上面演示了使用net/http包发送GET请求的示例，发送POST请求的示例代码如下：
+
+``server02.go``
+
+::
+
+   package main
+
+   import (
+       "fmt"
+       "io/ioutil"
+       "net/http"
+   )
+
+   func getHandler(w http.ResponseWriter, r *http.Request) {
+       defer r.Body.Close()
+       // 1. 请求类型是application/x-www-form-urlencoded时解析form数据
+       r.ParseForm()
+       fmt.Println(r.PostForm) //打印form数据
+       fmt.Println(r.PostForm.Get("name"), r.PostForm.Get("age"))
+       // 2. 请求类型是application/json时从r.Body读取数据
+       b, err := ioutil.ReadAll(r.Body)
+       if err != nil {
+           fmt.Println("read request.Body fauled, err:%v\n", err)
+           return
+       }
+       fmt.Println(string((b)))
+       answer := `{"status": "ok"}`
+       w.Write([]byte(answer))
+   }
+
+   func main() {
+       http.HandleFunc("/", getHandler)
+       http.ListenAndServe(":9090", nil)
+   }
+
+``client02.go``
+
+::
+
+   package main
+
+   import (
+       "fmt"
+       "io/ioutil"
+       "net/http"
+       "strings"
+   )
+
+   func main() {
+       url := "http://127.0.0.1:9090/post"
+       // 表单数据
+       //contentType := "application/x-www-form-urlencoded"
+       //data := "name=小王子&age=18"
+       // json
+       contentType := "application/json"
+       data := `{"name":"小王子","age":18}`
+       resp, err1 := http.Post(url, contentType, strings.NewReader(data))
+       if err1 != nil {
+           fmt.Println("post failed, err:%v\n", err1)
+           return
+       }
+       defer resp.Body.Close()
+       b, err2 := ioutil.ReadAll(resp.Body)
+       if err2 != nil {
+           fmt.Println("get resp failed,err:%v\n", err2)
+           return
+       }
+       fmt.Println(string(b))
+   }
+
+静态站点
+--------
+
+下面代码通过指定目录，作为静态站点
+
+::
+
+   package main
+
+   import "net/http"
+
+   func main() {
+       http.Handle("/", http.FileServer(http.Dir("D:\\my_blog\\build\\html")))
+       http.ListenAndServe(":8080", nil)
+   }

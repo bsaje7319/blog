@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="7.16. 一些魔法方法" href="16.一些魔法方法.html" />
     <link rel="prev" title="7.14. 面对对象之封装特性" href="14.面对对象之封装.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -152,7 +156,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -170,6 +174,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -208,7 +213,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -220,7 +225,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/07.面对对象设计_OOP/15.类的高级特性.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/07.面对对象设计_OOP/15.类的高级特性.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -258,7 +263,7 @@
 <h1><a class="toc-backref" href="#id10">7.15. 类的高级特性</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="super">
 <h2><a class="toc-backref" href="#id11">7.15.1. super函数的执行顺序</a><a class="headerlink" href="#super" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -267,29 +272,29 @@
 <span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
 
 <span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
 
 <span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">__mro__</span><span class="p">)</span>          <span class="c1">#(&lt;class &#39;__main__.D&#39;&gt;, &lt;class &#39;__main__.B&#39;&gt;, &lt;class &#39;__main__.C&#39;&gt;, &lt;class &#39;__main__.A&#39;&gt;, &lt;class &#39;object&#39;&gt;)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>          <span class="c1">#(&lt;class &#39;__main__.D&#39;&gt;, &lt;class &#39;__main__.B&#39;&gt;, &lt;class &#39;__main__.C&#39;&gt;, &lt;class &#39;__main__.A&#39;&gt;, &lt;class &#39;object&#39;&gt;)</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id12">7.15.2. super()函数的使用</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/10 17:53</span>
@@ -314,13 +319,13 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">salary</span><span class="p">,</span><span class="n">favorite</span><span class="p">,</span><span class="n">address</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------Manager的构造方法------------&quot;</span><span class="p">)</span>
         <span class="c1">#通过super()函数调用父类的构造方法</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Manager</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Manager</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
         <span class="c1">#同上面的效果一样</span>
         <span class="c1"># super().__init__(salary)</span>
 
-        <span class="n">Customer</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">favorite</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+        <span class="n">Customer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">favorite</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">(</span><span class="mi">25000</span><span class="p">,</span><span class="s2">&quot;IT产品&quot;</span><span class="p">,</span><span class="s2">&quot;深圳&quot;</span><span class="p">)</span>
     <span class="n">m</span><span class="o">.</span><span class="n">work</span><span class="p">()</span>
     <span class="n">m</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
@@ -329,7 +334,7 @@
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id13">7.15.3. 对象的 自省 功能</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -343,21 +348,21 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">school</span> <span class="o">=</span> <span class="n">school_name</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s2">&quot;仙剑&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>        <span class="c1">#查看类属性，自省</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">Person</span><span class="o">.</span><span class="n">__doc__</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">Person</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
-    <span class="n">user</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="s2">&quot;school_addr&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;北京&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>        <span class="c1">#查看类属性，自省</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Person</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Person</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+    <span class="n">user</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;school_addr&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;北京&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">user</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
 <h2><a class="toc-backref" href="#id14">7.15.4. 类中实例属性的查找顺序</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="k">class</span> <span class="nc">D</span><span class="p">:</span>
     <span class="k">pass</span>
@@ -376,7 +381,7 @@
 
 <span class="c1">#顺序：A,B,D,C,E</span>
 <span class="c1">#__mro__,类的属性查找顺序</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">__mro__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
 
 <span class="c1">#(&lt;class &#39;__main__.A&#39;&gt;, &lt;class &#39;__main__.B&#39;&gt;, &lt;class &#39;__main__.D&#39;&gt;, &lt;class &#39;__main__.C&#39;&gt;, &lt;class &#39;__main__.E&#39;&gt;, &lt;class &#39;object&#39;&gt;)</span>
 </pre></div>
@@ -384,7 +389,7 @@
 </div>
 <div class="section" id="isinstance">
 <h2><a class="toc-backref" href="#id15">7.15.5. isinstance()的用法</a><a class="headerlink" href="#isinstance" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">语法：</span>
@@ -428,7 +433,7 @@
 <h2><a class="toc-backref" href="#id16">7.15.6. 抽象基类</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id17">代码示例 1</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1">#判断类是否有某种属性</span>
 
@@ -460,7 +465,7 @@
 </div>
 <div class="section" id="id7">
 <h3><a class="toc-backref" href="#id18">代码示例 2</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1">#模拟一个抽象基类</span>
 
@@ -490,7 +495,7 @@
 </pre></div>
 </div>
 <p>抽象类与接口</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># @auther:   18793</span>
 <span class="c1"># @Date：    2020/6/19 14:09</span>
@@ -564,13 +569,13 @@
 </div>
 <div class="section" id="id8">
 <h2><a class="toc-backref" href="#id19">7.15.7. 元类</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># 把User类创建的过程委托给元类去做，这样代码的分离性比较好</span>
 
 <span class="k">class</span> <span class="nc">MetaClass</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">MetaClass</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
@@ -579,7 +584,7 @@
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;test&quot;</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="c1">#python中类的实例化过程，会首先寻找metaclass，通过metaclass去创建User类</span>
     <span class="n">my_obj</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;derek&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">my_obj</span><span class="p">)</span>    <span class="c1">#test</span>
@@ -588,7 +593,7 @@
 </div>
 <div class="section" id="type">
 <h2><a class="toc-backref" href="#id20">7.15.8. 通过type来创建类</a><a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;一个简单type创建类的例子&quot;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">))</span>
@@ -622,7 +627,7 @@
 <span class="c1">#type里面有三个参数，第一个类名，第二个基类名，第三个是属性</span>
 <span class="n">User</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;User&quot;</span><span class="p">,(</span><span class="n">BaseClass</span><span class="p">,),{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;derek&quot;</span><span class="p">,</span><span class="s2">&quot;say&quot;</span><span class="p">:</span><span class="n">say</span><span class="p">})</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 
     <span class="n">my_obj</span> <span class="o">=</span> <span class="n">User</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">my_obj</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>          <span class="c1">#d erek</span>
@@ -633,7 +638,7 @@
 </div>
 <div class="section" id="id9">
 <h2><a class="toc-backref" href="#id21">7.15.9. 通过传入的字符串动态的创建不同的类</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="k">def</span> <span class="nf">create_class</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;user&#39;</span><span class="p">:</span>
@@ -648,7 +653,7 @@
                 <span class="k">return</span> <span class="s2">&quot;company&quot;</span>
         <span class="k">return</span> <span class="n">Company</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">Myclass</span> <span class="o">=</span> <span class="n">create_class</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">)</span>
     <span class="n">my_obj</span> <span class="o">=</span> <span class="n">Myclass</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">my_obj</span><span class="p">)</span>    <span class="c1">#user</span>
@@ -678,11 +683,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -693,7 +706,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>18.9. Supervisor在Devops工作中的应用 &mdash; 运维开发修炼之路</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="18.10. 网页自动化开发" href="08.网页自动化开发.html" />
+    <link rel="prev" title="18.8. 业务服务监控详解" href="06.业务服务监控详解.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">18. Python自动化运维最佳实践</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.系统基础信息模块详解.html">18.1. 系统基础信息模块详解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.系统批量运维管理器pexpect.html">18.2. 系统批量运维管理器pexpect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.业务服务监控详解.html">18.3. 业务服务监控详解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.系统批量运维管理器paramiko.html">18.4. 系统批量运维管理器paramiko</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.批量运维管理器Fabric.html">18.5. 批量运维管理器Fabric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Ansible入门与playbook实战.html">18.6. Ansible入门与playbook实战</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.Saltstack安装使用入门.html">18.7. Saltstack安装使用入门（自己总结）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.业务服务监控详解.html">18.8. 业务服务监控详解</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">18.9. Supervisor在Devops工作中的应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#supervisor">18.9.1. 1.Supervisor的安装</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">18.9.2. Supervisor配置文件说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dockersupervisor">18.9.3. Docker中利用Supervisor管理多进程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">18.9.4. 参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="08.网页自动化开发.html">18.10. 网页自动化开发</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Go_vs_Python/index.html">Go vs Python</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">18. Python自动化运维最佳实践</a> &raquo;</li>
+        
+      <li>18.9. Supervisor在Devops工作中的应用</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/20.Python自动化运维最佳实践/07.Supervisor在Devops工作中的应用.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#supervisordevops" id="id3">Supervisor在Devops工作中的应用</a><ul>
+<li><a class="reference internal" href="#supervisor" id="id4">1.Supervisor的安装</a></li>
+<li><a class="reference internal" href="#id1" id="id5">Supervisor配置文件说明</a></li>
+<li><a class="reference internal" href="#dockersupervisor" id="id6">Docker中利用Supervisor管理多进程</a></li>
+<li><a class="reference internal" href="#id2" id="id7">参考文献</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="supervisordevops">
+<h1><a class="toc-backref" href="#id3">18.9. Supervisor在Devops工作中的应用</a><a class="headerlink" href="#supervisordevops" title="Permalink to this headline">¶</a></h1>
+<p>Supervisor简单来说就是Python编写的一个简单的多进程管理工具，虽然在shell下面我们可以用nohup命令的方式
+将程序放在后台执行，一个或几个可能还比较方便，但是如果很多重要的进程需要管理的话，
+那就不方便了，此时，我们可以用Supervisor进行进程的批量管理。</p>
+<div class="section" id="supervisor">
+<h2><a class="toc-backref" href="#id4">18.9.1. 1.Supervisor的安装</a><a class="headerlink" href="#supervisor" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 提前安装epel源</span>
+<span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">epel</span><span class="o">*</span>
+
+<span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">supervisor</span>
+</pre></div>
+</div>
+<p>启动Supervisor的命令也很简单，代码如下所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>supervisord -c /etc/supervisord.conf
+
+[root@172-16-74-11 centos]# ps aux |grep supervisor
+root     19537  0.0  0.0 219264 11804 ?        Ss   06:19   0:00 /usr/bin/python /bin/supervisord -c /etc/supervisord.conf
+root     24225  0.0  0.0 112712   980 pts/0    S+   06:20   0:00 grep --color=auto supervisor
+</pre></div>
+</div>
+<p>Supervisor的配置文件为/etc/supersord.conf,比较简单，其配置文件文档可以参考官方文档。</p>
+<p>我们可以根据需要修改里面的配置。比如说，这里每个不同的项目，都使用了一个单独的配置的文件，
+放置在/etc/supervisor/下面，于是修改/etc/supervisord.conf,加上如下内容：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">include</span><span class="p">]</span>
+<span class="n">files</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">supervisor</span><span class="o">/*.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>这样做的好处就是如果有很多进程需要管理，可以进行批量管理，这是一种方法；
+或者直接在/etc/supervisor.conf文件里添加多个进程管理，这也是可以的。</p>
+<p>使用cat查看supervisord.conf文件，命令如下所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[root@172-16-74-11 centos]# cat /etc/supervisord.conf |grep -v &quot;^;&quot;
+
+[unix_http_server]
+file=/var/run/supervisor/supervisor.sock   ; (the path to the socket file)
+
+
+[supervisord]
+logfile=/var/log/supervisor/supervisord.log  ; (main log file;default $CWD/supervisord.log)
+logfile_maxbytes=50MB       ; (max main logfile bytes b4 rotation;default 50MB)
+logfile_backups=10          ; (num of main logfile rotation backups;default 10)
+loglevel=info               ; (log level;default info; others: debug,warn,trace)
+pidfile=/var/run/supervisord.pid ; (supervisord pidfile;default supervisord.pid)
+nodaemon=false              ; (start in foreground if true;default false)
+minfds=1024                 ; (min. avail startup file descriptors;default 1024)
+minprocs=200                ; (min. avail process descriptors;default 200)
+
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
+
+[supervisorctl]
+serverurl=unix:///var/run/supervisor/supervisor.sock ; use a unix:// URL  for a unix socket
+
+
+
+
+
+
+
+
+[include]
+files = /etc/supervisor/*.conf
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id5">18.9.2. Supervisor配置文件说明</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Supervisor日志文件路径</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logfile</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">supervisor</span><span class="o">/</span><span class="n">supervisord</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+<p>Supervisor日志文件大小，超出会rotate：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logfile_maxbytes</span><span class="o">=</span><span class="mi">50</span><span class="n">MB</span>
+</pre></div>
+</div>
+<p>日志文件保留备份数量，默认值为10</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logfile_backups</span><span class="o">=</span><span class="mi">10</span>
+</pre></div>
+</div>
+<p>Supervisor日志级别，这里为info</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loglevel</span><span class="o">=</span><span class="n">info</span>
+</pre></div>
+</div>
+<p>Supervisor的pid文件路径：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pidfile</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">supervisord</span><span class="o">.</span><span class="n">pid</span>
+</pre></div>
+</div>
+<p>Supervisor以daemon的方式运行:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nodaemon</span><span class="o">=</span><span class="n">false</span>
+</pre></div>
+</div>
+<p>可以打开文件描述符的最小值，这里为1024：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minfds</span><span class="o">=</span><span class="mi">1024</span>
+</pre></div>
+</div>
+<p>可以打开进程数的最小值，这里为200</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minprocs</span><span class="o">=</span><span class="mi">200</span>
+</pre></div>
+</div>
+<p>通过unix socket连接Supervisor：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">supervisorctl</span><span class="p">]</span>
+<span class="n">serverurl</span><span class="o">=</span><span class="n">unix</span><span class="p">:</span><span class="o">///</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">supervisor</span><span class="o">/</span><span class="n">supervisor</span><span class="o">.</span><span class="n">sock</span> <span class="p">;</span>
+</pre></div>
+</div>
+<p>Supervisor配置文件至少需要一个<code class="docutils literal notranslate"><span class="pre">[program:x]</span></code>部分的配置，来告诉Supervisor需要管理哪个进程。
+<code class="docutils literal notranslate"><span class="pre">[program:x]</span></code>语法中的x表示程序的名字，将会显示在客户端(supervisorctl界面)，supervisorctl通过
+这个值来对程序进行start、restart、stop等操作，示例代码如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[program:xx]是被管理的进程配置参数，xx是进程的名称
+[program:xx]
+command=/opt/apache-tomcat-8.0.35/bin/catalina.sh run ; 程序启动命令
+autostart=true    ; 在supervisord启动的时候也自动启动
+startsecs=10     ; 启动10秒后没有异常退出，就表示进程正常启动了，默认为1秒
+autorestart=true   ; 程序退出后自动重启,可选值：[unexpected,true,false]，默认为unexpected，表示进程意外杀死后才重启
+startretries=3    ; 启动失败自动重试次数，默认是3
+user=tomcat     ; 用哪个用户启动进程，默认是root
+priority=999     ; 进程启动优先级，默认999，值小的优先启动
+redirect_stderr=true ; 把stderr重定向到stdout，默认false
+stdout_logfile_maxbytes=20MB ; stdout 日志文件大小，默认50MB
+stdout_logfile_backups = 20  ; stdout 日志文件备份数，默认是10
+;stdout 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）
+stdout_logfile=/opt/apache-tomcat-8.0.35/logs/catalina.out
+stopasgroup=false   ;默认为false,进程被杀死时，是否向这个进程组发送stop信号，包括子进程
+killasgroup=false   ;默认为false，向进程组发送kill信号，包括子进程
+</pre></div>
+</div>
+<p>可以输入supervisorctl命令进入supervisorctl的Shell界面，然后就可以执行不同的命令了。显示结果如下所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">74</span><span class="o">-</span><span class="mi">11</span> <span class="n">centos</span><span class="p">]</span><span class="c1"># supervisorctl</span>
+<span class="n">supervisor</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>supervisorctl命令及用途如下表所示 <img alt="image0" src="../../_images/supervisor00001.png" /></p>
+<p>分享线上的<code class="docutils literal notranslate"><span class="pre">supervisord.conf</span></code>配置文件，我们用其管理4个redis实例。配置如下所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">program</span><span class="p">:</span><span class="n">redis_6376</span><span class="p">]</span>
+<span class="n">command</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">server</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">redis_6376</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">stdout_logfile</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">supervisor</span><span class="o">/%</span><span class="p">(</span><span class="n">program_name</span><span class="p">)</span><span class="n">s</span><span class="o">.</span><span class="n">log</span>
+<span class="n">stderr_logfile</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">supervisor</span><span class="o">/%</span><span class="p">(</span><span class="n">program_name</span><span class="p">)</span><span class="n">s</span><span class="o">.</span><span class="n">log</span>
+<span class="n">process_name</span><span class="o">=%</span><span class="p">(</span><span class="n">program_name</span><span class="p">)</span><span class="n">s</span>
+<span class="n">numprocs</span><span class="o">=</span><span class="n">l</span>
+<span class="n">directory</span><span class="o">=/</span><span class="n">tmp</span>
+<span class="n">umask</span><span class="o">=</span><span class="mi">022</span>
+<span class="n">priority</span><span class="o">=</span><span class="mi">999</span>
+<span class="n">autostart</span><span class="o">=</span><span class="n">true</span>
+<span class="n">autorestart</span><span class="o">=</span><span class="n">true</span>
+
+<span class="p">[</span><span class="n">program</span><span class="p">:</span><span class="n">redis_6377</span><span class="p">]</span>
+<span class="n">command</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">server</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">redis_6377</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">stdout_logfile</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">supervisor</span><span class="o">/%</span><span class="p">(</span><span class="n">program_name</span><span class="p">)</span><span class="n">s</span><span class="o">.</span><span class="n">log</span>
+<span class="n">stderr_logfile</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">supervisor</span><span class="o">/%</span><span class="p">(</span><span class="n">program_name</span><span class="p">)</span><span class="n">s</span><span class="o">.</span><span class="n">log</span>
+<span class="n">process_name</span><span class="o">=%</span><span class="p">(</span><span class="n">program_name</span><span class="p">)</span><span class="n">s</span>
+<span class="n">numprocs</span><span class="o">=</span><span class="n">l</span>
+<span class="n">directory</span><span class="o">=/</span><span class="n">tmp</span>
+<span class="n">umask</span><span class="o">=</span><span class="mi">022</span>
+<span class="n">priority</span><span class="o">=</span><span class="mi">999</span>
+<span class="n">autostart</span><span class="o">=</span><span class="n">true</span>
+<span class="n">autorestart</span><span class="o">=</span><span class="n">true</span>
+
+
+<span class="p">[</span><span class="n">program</span><span class="p">:</span><span class="n">redis_6378</span><span class="p">]</span>
+<span class="n">command</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">server</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">redis_6378</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">stdout_logfile</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">supervisor</span><span class="o">/%</span><span class="p">(</span><span class="n">program_name</span><span class="p">)</span><span class="n">s</span><span class="o">.</span><span class="n">log</span>
+<span class="n">stderr_logfile</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">supervisor</span><span class="o">/%</span><span class="p">(</span><span class="n">program_name</span><span class="p">)</span><span class="n">s</span><span class="o">.</span><span class="n">log</span>
+<span class="n">process_name</span><span class="o">=%</span><span class="p">(</span><span class="n">program_name</span><span class="p">)</span><span class="n">s</span>
+<span class="n">numprocs</span><span class="o">=</span><span class="n">l</span>
+<span class="n">directory</span><span class="o">=/</span><span class="n">tmp</span>
+<span class="n">umask</span><span class="o">=</span><span class="mi">022</span>
+<span class="n">priority</span><span class="o">=</span><span class="mi">999</span>
+<span class="n">autostart</span><span class="o">=</span><span class="n">true</span>
+<span class="n">autorestart</span><span class="o">=</span><span class="n">true</span>
+
+<span class="p">[</span><span class="n">program</span><span class="p">:</span><span class="n">redis_6379</span><span class="p">]</span>
+<span class="n">command</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">server</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">redis_6379</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">stdout_logfile</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">supervisor</span><span class="o">/%</span><span class="p">(</span><span class="n">program_name</span><span class="p">)</span><span class="n">s</span><span class="o">.</span><span class="n">log</span>
+<span class="n">stderr_logfile</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">supervisor</span><span class="o">/%</span><span class="p">(</span><span class="n">program_name</span><span class="p">)</span><span class="n">s</span><span class="o">.</span><span class="n">log</span>
+<span class="n">process_name</span><span class="o">=%</span><span class="p">(</span><span class="n">program_name</span><span class="p">)</span><span class="n">s</span>
+<span class="n">numprocs</span><span class="o">=</span><span class="n">l</span>
+<span class="n">directory</span><span class="o">=/</span><span class="n">tmp</span>
+<span class="n">umask</span><span class="o">=</span><span class="mi">022</span>
+<span class="n">priority</span><span class="o">=</span><span class="mi">999</span>
+<span class="n">autostart</span><span class="o">=</span><span class="n">true</span>
+<span class="n">autorestart</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dockersupervisor">
+<h2><a class="toc-backref" href="#id6">18.9.3. Docker中利用Supervisor管理多进程</a><a class="headerlink" href="#dockersupervisor" title="Permalink to this headline">¶</a></h2>
+<p>Docker容器在启动的时候一般是开启单个进程，例如,一个SSH或者Apache的Daemon服务，但我们在工作中，经常要在一个机器上开启多个服务。
+做到这一点可以有很多方法，最简单的一个方法就是把多个启动命令放到一个启动脚本里面，启动时直接启动这个脚本即可。</p>
+<p>还有一种方式就是利用Supervisor来管理容器中的多个进程。使用Supervisor，我们可以更好地控制、管理、重启我们希望运行的进程。</p>
+<p>这里演示一下如何同时使用SSH和Nginx服务</p>
+<p><code class="docutils literal notranslate"><span class="pre">supervisord.conf</span></code>文件内容如下所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">program</span><span class="p">:</span><span class="n">sshd</span><span class="p">]</span>
+<span class="n">command</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">sshd</span> <span class="o">-</span><span class="n">D</span>
+<span class="p">[</span><span class="n">program</span><span class="p">:</span><span class="n">nginx</span><span class="p">]</span>
+<span class="n">command</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nginx</span> <span class="o">-</span><span class="n">g</span> <span class="s2">&quot;daemon off;&quot;</span>
+<span class="n">priority</span><span class="o">=</span><span class="mi">900</span>
+<span class="n">stdout_logfile</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">stdout</span>
+<span class="n">stdout_logfile_maxbytes</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">stderr_logfile</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">stderr</span>
+<span class="n">stderr_logfile_maxbytes</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">autorestart</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+<p>Dokerfile文件内容如下所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FROM</span> <span class="n">ubuntu</span><span class="p">:</span><span class="mf">16.04</span>
+
+<span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">openssh</span><span class="o">-</span><span class="n">server</span> <span class="n">nginx</span> <span class="n">supervisor</span>
+<span class="n">RUN</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">lists</span><span class="o">/*</span>
+<span class="n">RUN</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">supervisor</span>
+
+<span class="n">COPY</span> <span class="n">supervisord</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">supervisor</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">supervisord</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">CMD</span> <span class="p">[</span><span class="s2">&quot;/usr/bin/supervisord&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>具体的镜像打包命令和启动容器的方法这里暂且略过。</p>
+<p>熟练使用Supervisor可以极大地提升工作效率。</p>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id7">18.9.4. 参考文献</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.cnblogs.com/LC161616/p/8947382.html">https://www.cnblogs.com/LC161616/p/8947382.html</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="08.网页自动化开发.html" class="btn btn-neutral float-right" title="18.10. 网页自动化开发" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="06.业务服务监控详解.html" class="btn btn-neutral float-left" title="18.8. 业务服务监控详解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

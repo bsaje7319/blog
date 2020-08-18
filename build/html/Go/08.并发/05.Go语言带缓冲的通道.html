@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="8.6. 06.Go语言channel超时机制" href="06.Go语言channel超时机制.html" />
     <link rel="prev" title="8.4. 04.Go语言无缓冲的通道" href="04.Go语言无缓冲的通道.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -138,6 +142,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -176,7 +181,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -188,7 +193,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/08.并发/05.Go语言带缓冲的通道.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/08.并发/05.Go语言带缓冲的通道.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -222,7 +227,7 @@ goroutine
 goroutine 会在同一时间进行数据交换；有缓冲的通道没有这种保证。</p>
 <p>在无缓冲通道的基础上，为通道增加一个有限大小的存储空间形成带缓冲通道。带缓冲通道在发送时无需等待接收方接收即可完成发送过程，并且不会发生阻塞，只有当存储空间满时才会发生阻塞。同理，如果缓冲通道中有数据，接收时将不会发生阻塞，直到通道中没有数据可读时，通道将会再度阻塞。</p>
 <p>无缓冲通道保证收发过程同步。无缓冲收发过程类似于快递员给你电话让你下楼取快递，整个递交快递的过程是同步发生的，你和快递员不见不散。但这样做快递员就必须等待所有人下楼完成操作后才能完成所有投递工作。如果快递员将快递放入快递柜中，并通知用户来取，快递员和用户就成了异步收发过程，效率可以有明显的提升。带缓冲的通道就是这样的一个“快递柜”。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>·有缓冲的通道（buffered channel）是一种在被接收前能存储一个或者多个值的通道。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>·有缓冲的通道（buffered channel）是一种在被接收前能存储一个或者多个值的通道。
 
 这种类型的通道并不强制要求 goroutine 之间必须同时完成发送和接收。通道会阻塞发送和接收动
 作的条件也会不同。只有在通道中没有要接收的值时，接收动作才会阻塞。只有在通道没有可用缓冲区
@@ -232,7 +237,7 @@ goroutine 会在同一时间进行数据交换；有缓冲的通道没有这种�
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id5">8.5.1. 创建带缓冲的通道</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>如何创建带缓冲的通道呢？参见如下代码：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>通道实例:=make(chan 通道类型,缓冲大小)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>通道实例:=make(chan 通道类型,缓冲大小)
 
 · 通道类型：和无缓冲通道用法一致，影响通道发送和接收的数据类型
 · 缓冲大小： 决定通道最多可以保存的元素数量。
@@ -240,7 +245,7 @@ goroutine 会在同一时间进行数据交换；有缓冲的通道没有这种�
 </pre></div>
 </div>
 <p>下面通过一个例子中来理解带缓冲通道的用法，参见下面代码：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -270,7 +275,7 @@ goroutine 会在同一时间进行数据交换；有缓冲的通道没有这种�
 <p>· 带缓冲通道被填满时，尝试再次发送数据时发生阻塞。</p>
 <p>· 带缓冲通道为空时，尝试接收数据时发生阻塞。</p>
 <p>为什么Go语言对通道要限制长度而不提供无限长度的通道？</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>我们知道通道（channel）是在两个 goroutine 间通信的桥梁。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>我们知道通道（channel）是在两个 goroutine 间通信的桥梁。
 使用 goroutine 的代码必然有一方提供数据，一方消费数据。
 当提供数据一方的数据供给速度大于消费方的数据处理速度时，如果通道不限制长度，那么内存将不断膨胀直到应用崩溃。因此，限制通道的长度有利于约束数据提供方的供给速度，供给数据量必须在消费方处理量+通道长度的范围内，才能正常地处理数据。
 </pre></div>
@@ -278,7 +283,7 @@ goroutine 会在同一时间进行数据交换；有缓冲的通道没有这种�
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id7">8.5.3. 示例，同时接收和发送(带缓冲)</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;fmt&quot;</span>
@@ -341,11 +346,19 @@ goroutine 会在同一时间进行数据交换；有缓冲的通道没有这种�
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -356,7 +369,6 @@ goroutine 会在同一时间进行数据交换；有缓冲的通道没有这种�
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

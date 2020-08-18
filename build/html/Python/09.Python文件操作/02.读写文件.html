@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="9.3. 使用with语句读写文件" href="03.使用with语句读写文件.html" />
     <link rel="prev" title="9.1. Open()函数介绍" href="01.open()函数介绍.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -146,7 +150,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -164,6 +168,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -202,7 +207,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -214,7 +219,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/09.Python文件操作/02.读写文件.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/09.Python文件操作/02.读写文件.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -326,7 +331,7 @@
 </div>
 <div class="section" id="python">
 <h2><a class="toc-backref" href="#id28">9.2.2. Python文件读取方式</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>read([size])    读取文件全部内容，如果设置了size，那么就读取size字节
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>read([size])    读取文件全部内容，如果设置了size，那么就读取size字节
 readline([size])    一行一行的读取
 readlines() 读取到的每一行内容作为列表中的一个元素
 open()函数默认为&#39;r&#39;读模式
@@ -336,7 +341,7 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
 <p><img alt="image0" src="../../_images/read_write.PNG" /></p>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id29">代码示例 1</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;蚂蚁庄园&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="s1">&#39;=&#39;</span><span class="p">))</span>
@@ -350,7 +355,7 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id30">代码示例 2</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#读文件 1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#读文件 1</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">file</span><span class="p">(</span><span class="s1">&#39;/etc/passwd&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>        <span class="c1"># 读取为一个大字符串，并去掉最后一个换行符</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">):</span>     <span class="c1"># 用换行符切割字符串得到列表循环每行</span>
@@ -359,7 +364,7 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
 </pre></div>
 </div>
 <p>循环读文件的行</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;with语句.py&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;with语句.py&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
@@ -369,7 +374,7 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#读文件 2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#读文件 2</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">file</span><span class="p">(</span><span class="s1">&#39;/etc/passwd&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>    <span class="c1"># 返回一行</span>
@@ -382,14 +387,14 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#读文件 3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#读文件 3</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;b.txt&#39;</span><span class="p">):</span>   <span class="c1"># 直接读取也可迭代,并有利于大文件读取,但不可反复读取</span>
     <span class="nb">print</span> <span class="n">i</span>
 </pre></div>
 </div>
 <p>由于文件操作可能会出现IO异常，一旦出现IO异常，后面的close()方法就不会调用，为了保证程序的健壮性，
-我们需要使用<code class="docutils literal"><span class="pre">try...finally</span></code>来实现</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+我们需要使用<code class="docutils literal notranslate"><span class="pre">try...finally</span></code>来实现</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/27 10:05</span>
@@ -403,7 +408,7 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
         <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">##一行一行的读取文件</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##一行一行的读取文件</span>
 <span class="c1">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
@@ -424,7 +429,7 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
 </pre></div>
 </div>
 <p>Python提供了一种简单的写法，使用with语句来替代try…finally代码块和close（）方法，</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">r&#39;c:\text\qiye.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fileReader</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;c:\text\qiye.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fileReader</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">fileReader</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -434,10 +439,10 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
 <h2><a class="toc-backref" href="#id31">9.2.3. 逐行读取文件</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id32">代码示例</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 
-<span class="n">path</span> <span class="o">=</span> <span class="s2">r&quot;写入文件内容.py&quot;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;写入文件内容.py&quot;</span>
 <span class="c1">#传入要读的文件路径</span>
 
 <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span><span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
@@ -461,7 +466,7 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
 <h2><a class="toc-backref" href="#id33">9.2.4. 读取大文件时，建议采用while循环来逐行进行读取</a><a class="headerlink" href="#while" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id7">
 <span id="id8"></span><h3><a class="toc-backref" href="#id34">代码示例</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;message.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f1</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;message.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f1</span><span class="p">:</span>
     <span class="n">number</span> <span class="o">=</span><span class="mi">0</span>   <span class="c1">#标识符为0开始</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">number</span> <span class="o">+=</span><span class="mi">1</span>
@@ -484,7 +489,7 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
 </div>
 <div class="section" id="id9">
 <span id="id10"></span><h3><a class="toc-backref" href="#id35">代码示例</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">r&#39;c:\text\qiye.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fileReader</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;c:\text\qiye.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fileReader</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fileReader</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
 </pre></div>
@@ -492,7 +497,7 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
 </div>
 <div class="section" id="id11">
 <h3><a class="toc-backref" href="#id36">将文件中的所有单词首字母大写</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">inf</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;out.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outf</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">inf</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;out.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outf</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inf</span><span class="p">:</span>
         <span class="n">outf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">word</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()]))</span>
         <span class="n">outf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -504,7 +509,7 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
 <h2><a class="toc-backref" href="#id37">9.2.5. 追加日志</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id13">
 <span id="id14"></span><h3><a class="toc-backref" href="#id38">代码示例</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">追加日志</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">追加日志</span>
 <span class="n">log</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/home/peterli/xuesong&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="p">,</span><span class="n">file</span><span class="o">=</span><span class="n">hu</span><span class="o">.</span><span class="n">txt</span><span class="p">)</span>
 </pre></div>
@@ -515,18 +520,18 @@ open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=N
 <h2><a class="toc-backref" href="#id39">9.2.6. 二进制读取“rb”</a><a class="headerlink" href="#rb" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id15">
 <span id="id16"></span><h3><a class="toc-backref" href="#id40">代码示例</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#rb  二进制模式读取</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#rb  二进制模式读取</span>
 <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;libai&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span>  <span class="c1">#主要用于网络传输</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
 
-<span class="n">b</span><span class="s1">&#39;</span><span class="se">\xe5\xba\x8a\x98\xaf\xe5\x9c\xb0\xe4\xb8\x8a\xe9\x9c\x9c\r\n</span><span class="s1">&#39;</span>
+<span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xe5\xba\x8a\x98\xaf\xe5\x9c\xb0\xe4\xb8\x8a\xe9\x9c\x9c\r\n</span><span class="s1">&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="id17">
 <h2><a class="toc-backref" href="#id41">9.2.7. Python文件写入方式</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>    方法                                  说明
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    方法                                  说明
 
 write(str)                          将字符串写入文件
 writelines(sequence or strings)   写多行到文件，参数可以是一个可迭代的对象，列表、元组等 |
@@ -534,7 +539,7 @@ writelines(sequence or strings)   写多行到文件，参数可以是一个可�
 </div>
 <div class="section" id="id18">
 <h3><a class="toc-backref" href="#id42">代码示例1</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">print(&#39;\n&#39;,&#39;=&#39;*10,&#39;蚂蚁庄园动态&#39;,&#39;=&#39;*10)</span>
@@ -555,7 +560,7 @@ writelines(sequence or strings)   写多行到文件，参数可以是一个可�
 </div>
 <div class="section" id="id19">
 <h2><a class="toc-backref" href="#id43">9.2.8. 代码示例2</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">写文件</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">写文件</span>
 <span class="n">i</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ddd&#39;</span><span class="p">:</span><span class="s1">&#39;ccc&#39;</span><span class="p">}</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">file</span><span class="p">(</span><span class="s1">&#39;poem.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">)</span>
@@ -565,7 +570,7 @@ writelines(sequence or strings)   写多行到文件，参数可以是一个可�
 </pre></div>
 </div>
 <p>使用with上下文管理器，写入文件。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">r&#39;c:\text\qiye.txt&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fileWriter</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;c:\text\qiye.txt&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fileWriter</span><span class="p">:</span>
     <span class="n">fileWriter</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;qiye&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -574,7 +579,7 @@ writelines(sequence or strings)   写多行到文件，参数可以是一个可�
 <h2><a class="toc-backref" href="#id44">9.2.9. 二进制写“wb”</a><a class="headerlink" href="#wb" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id20">
 <span id="id21"></span><h3><a class="toc-backref" href="#id45">代码示例</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;libai&#39;</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;libai&#39;</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span>
 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;中文&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -582,7 +587,7 @@ writelines(sequence or strings)   写多行到文件，参数可以是一个可�
 </div>
 <div class="section" id="id22">
 <h2><a class="toc-backref" href="#id46">9.2.10. Python文件操作所提供的方法</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>close(self):
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>close(self):
 关闭已经打开的文件
 fileno(self):
 文件描述符
@@ -603,7 +608,7 @@ readlines(self, hint=-1):
 <h2><a class="toc-backref" href="#id47">9.2.11. 文件随机读写</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id24">
 <span id="id25"></span><h3><a class="toc-backref" href="#id48">代码示例</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 文件本没有换行,一切都是字符,文件也没有插入功能</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 文件本没有换行,一切都是字符,文件也没有插入功能</span>
 <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>       <span class="c1"># 当前读写位置</span>
 <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>      <span class="c1"># 读取5个字符并改变指针</span>
 <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>      <span class="c1"># 改变用户态读写指针偏移位置,可做随机写</span>
@@ -617,7 +622,7 @@ readlines(self, hint=-1):
 </pre></div>
 </div>
 <p>eg</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#调用open()方法打开指定的文本文件</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#调用open()方法打开指定的文本文件</span>
 <span class="n">fb</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;introduct.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
 <span class="c1">#将文件指针移到文件的起始处</span>
 <span class="n">fb</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -659,11 +664,19 @@ readlines(self, hint=-1):
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -674,7 +687,6 @@ readlines(self, hint=-1):
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,22 +33,20 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="next" title="22.2. Flask_Web框架" href="../02.Flask_Web框架/index.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="22.2. Flask-Web框架及其应用" href="../02.Flask-Web框架及其应用/index.html" />
     <link rel="prev" title="22.1.3. Qt框架初探" href="3.Qt框架初探.html" /> 
 </head>
 
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
@@ -127,9 +131,10 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">22.1.4. TkinterGUI模块</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../02.Flask_Web框架/index.html">22.2. Flask_Web框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
@@ -145,6 +150,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -183,7 +189,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -197,7 +203,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/01.常用的GUI框架/4.TkinterGUI模块.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/01.常用的GUI框架/4.TkinterGUI模块.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -245,7 +251,7 @@
 </div>
 <div class="section" id="gui">
 <h2><a class="toc-backref" href="#id18">创建GUI程序第一步</a><a class="headerlink" href="#gui" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/22 13:31</span>
@@ -258,7 +264,7 @@
 </div>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id19">创建具有标签和按钮组件的主窗口</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/22 13:35</span>
@@ -278,7 +284,7 @@
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id20">在主窗口中创建各种不同的按钮</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/22 14:43</span>
@@ -319,8 +325,8 @@
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id21">文本框</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">文本框参数表</span></code> <img alt="image3" src="../../../_images/wenbenkuang-args001.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p><code class="docutils literal notranslate"><span class="pre">文本框参数表</span></code> <img alt="image3" src="../../../_images/wenbenkuang-args001.png" /></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/22 14:53</span>
@@ -364,9 +370,9 @@
 </div>
 <div class="section" id="id4">
 <h2><a class="toc-backref" href="#id22">标签</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">标签控制参数表</span></code> <img alt="image5" src="../../../_images/biaoqian00001.PNG" /></p>
-<p><code class="docutils literal"><span class="pre">演示在主窗口中显示创建的各种不同类型的标签组件</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p><code class="docutils literal notranslate"><span class="pre">标签控制参数表</span></code> <img alt="image5" src="../../../_images/biaoqian00001.PNG" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">演示在主窗口中显示创建的各种不同类型的标签组件</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/22 23:26</span>
@@ -413,8 +419,8 @@
 </div>
 <div class="section" id="id5">
 <h2><a class="toc-backref" href="#id23">菜单</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">在tkinter中，菜单组件的添加与其他的组件有所不同。菜单要使用创建的主窗口的config方法添加到窗口中。</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p><code class="docutils literal notranslate"><span class="pre">在tkinter中，菜单组件的添加与其他的组件有所不同。菜单要使用创建的主窗口的config方法添加到窗口中。</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/22 23:34</span>
@@ -448,7 +454,7 @@
 <p><img alt="image7" src="../../../_images/caidan00001.PNG" /></p>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id24">添加弹出式菜单</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/22 23:45</span>
@@ -475,7 +481,7 @@
 <div class="section" id="id7">
 <h3><a class="toc-backref" href="#id25">单选框和复选框</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p><img alt="image8" src="../../../_images/danxuan-fuxuan-args0002.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/24 18:14</span>
@@ -525,8 +531,8 @@
 </div>
 <p>运行输出 <img alt="image9" src="../../../_images/tkinter-danxuan-fuxuan001.png" /></p>
 <p>当indicatoron参数传递值为0时，组件将被绘制成按钮的形式。被选中的组件处于按下状态
-<code class="docutils literal"><span class="pre">indicatoron=0</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<code class="docutils literal notranslate"><span class="pre">indicatoron=0</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/24 19:43</span>
@@ -583,8 +589,8 @@
 </div>
 <div class="section" id="id8">
 <h2><a class="toc-backref" href="#id26">绘制图形</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">参数可以查阅《21天学通Python》</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p><code class="docutils literal notranslate"><span class="pre">参数可以查阅《21天学通Python》</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/24 19:50</span>
@@ -631,8 +637,8 @@
 </div>
 <div class="section" id="id9">
 <h2><a class="toc-backref" href="#id27">响应操作事件</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">创建一个简单的绘图实例</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p><code class="docutils literal notranslate"><span class="pre">创建一个简单的绘图实例</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/8/5 17:56</span>
@@ -780,7 +786,7 @@
 </div>
 <div class="section" id="id10">
 <h2><a class="toc-backref" href="#id28">对话框</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/8/5 18:42</span>
@@ -827,7 +833,7 @@
 </div>
 <div class="section" id="id11">
 <h2><a class="toc-backref" href="#id29">3种简单的输入对话框的实例</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/8/5 21:40</span>
@@ -876,7 +882,7 @@
 </div>
 <div class="section" id="id12">
 <h2><a class="toc-backref" href="#id30">创建文件打开和保存对话框的实例</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/8/5 21:53</span>
@@ -895,7 +901,7 @@
 
 <span class="k">def</span> <span class="nf">FileSave</span><span class="p">():</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">filedialog</span><span class="o">.</span><span class="n">asksaveasfilename</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Python tkinter&#39;</span><span class="p">,</span>  <span class="c1"># 创建保存文件对话框</span>
-                                             <span class="n">initialdir</span><span class="o">=</span><span class="s1">r&#39;D:\GitHub&#39;</span><span class="p">,</span>  <span class="c1"># 指定初始化目录</span>
+                                             <span class="n">initialdir</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;D:\GitHub&#39;</span><span class="p">,</span>  <span class="c1"># 指定初始化目录</span>
                                              <span class="n">initialfile</span><span class="o">=</span><span class="s1">&#39;test2.py&#39;</span><span class="p">,</span>
                                              <span class="p">)</span>   <span class="c1"># 指定初始化文件</span>
 
@@ -917,7 +923,7 @@
 </div>
 <div class="section" id="id13">
 <h2><a class="toc-backref" href="#id31">创建图片、文字实例</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#绘制图像</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#绘制图像</span>
 <span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
 <span class="n">root</span><span class="o">=</span><span class="n">Tk</span><span class="p">()</span>
 <span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;三国名人录&quot;</span><span class="p">)</span>
@@ -977,7 +983,7 @@
 </div>
 <div class="section" id="id14">
 <h2><a class="toc-backref" href="#id32">创建颜色选择对话框实例</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/8/6 8:26</span>
@@ -1002,7 +1008,7 @@
 </div>
 <div class="section" id="id15">
 <h2><a class="toc-backref" href="#id33">自定义对话框</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/8/6 8:56</span>
@@ -1067,7 +1073,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../02.Flask_Web框架/index.html" class="btn btn-neutral float-right" title="22.2. Flask_Web框架" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../02.Flask-Web框架及其应用/index.html" class="btn btn-neutral float-right" title="22.2. Flask-Web框架及其应用" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="3.Qt框架初探.html" class="btn btn-neutral float-left" title="22.1.3. Qt框架初探" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -1079,11 +1085,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1094,7 +1108,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

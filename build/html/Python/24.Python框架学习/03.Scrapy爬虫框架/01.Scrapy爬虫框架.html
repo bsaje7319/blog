@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="22.3.2. MongoDB的常用操作与导出" href="02.MongoDB的常用操作与导出.html" />
     <link rel="prev" title="22.3. Scrapy爬虫框架" href="index.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,13 +119,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../02.Flask_Web框架/index.html">22.2. Flask_Web框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">22.3. Scrapy爬虫框架</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">22.3.1. Scrapy爬虫框架</a></li>
 <li class="toctree-l4"><a class="reference internal" href="02.MongoDB的常用操作与导出.html">22.3.2. MongoDB的常用操作与导出</a></li>
@@ -140,6 +144,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
@@ -155,6 +160,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -193,7 +199,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -207,7 +213,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/03.Scrapy爬虫框架/01.Scrapy爬虫框架.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/03.Scrapy爬虫框架/01.Scrapy爬虫框架.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -244,15 +250,15 @@
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id9">Scrapy的安装</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>1.lxml库</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">lxml</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">lxml</span>
 </pre></div>
 </div>
 <p>2.zope.interface库</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">zope</span><span class="o">.</span><span class="n">interface</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">zope</span><span class="o">.</span><span class="n">interface</span>
 </pre></div>
 </div>
 <p>3.twisted库</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>下载地址：https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>下载地址：https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted
 
 下载后的包为：Twisted-19.2.1-cp35-cp35m-win_amd64.whl   本人使用的是python3.5，请下载与本机系统相对于的版本
 
@@ -262,26 +268,26 @@ pip3 install Twisted-19.2.1-cp35-cp35m-win_amd64.whl
 </div>
 <p><img alt="image0" src="../../../_images/Scrapy-Twisted002.png" /></p>
 <p>4.pyOpenSSL库安装</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">pyOpenSSL</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">pyOpenSSL</span>
 </pre></div>
 </div>
 <p>5.pywin32库</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>下载地址：https://www.lfd.uci.edu/~gohlke/pythonlibs/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>下载地址：https://www.lfd.uci.edu/~gohlke/pythonlibs/
 下载后安装。
 或者pip安装，pip安装失败就使用下载安装
 pip3 install pywin32
 </pre></div>
 </div>
-<p>安装后<code class="docutils literal"><span class="pre">import</span> <span class="pre">pywin32</span></code>会出错，就需要找到pywin32库，将其复制到
-<code class="docutils literal"><span class="pre">C:/windows/system32</span></code>目录中 <img alt="image1" src="../../../_images/scrapy-base0001.png" /></p>
+<p>安装后<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pywin32</span></code>会出错，就需要找到pywin32库，将其复制到
+<code class="docutils literal notranslate"><span class="pre">C:/windows/system32</span></code>目录中 <img alt="image1" src="../../../_images/scrapy-base0001.png" /></p>
 <p>6.Scrapy库</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">scrapy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">scrapy</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id10">明日学院里面给出的环境准备如下</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span># 搭建Scrapy爬虫框架
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 搭建Scrapy爬虫框架
 
 安装Twistedted模块
 (1) 打开(https://www.lfd.uci.edu/~gohlke/pythonlibs/)
@@ -306,11 +312,11 @@ pip3 install pywin32
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id11">小猪短租网的信息</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Scrapy爬虫框架：一个为了爬取网站信息，提取结构性数据而编写的应用爬虫框架，
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Scrapy爬虫框架：一个为了爬取网站信息，提取结构性数据而编写的应用爬虫框架，
 该框架集数据字段定义、网络请求和解析、数据获取和处理等为一体，极大地方便了爬虫的编写过程。
 </pre></div>
 </div>
-<p>①在CMD命令窗口中输入信息： <code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">xiaozhu</span></code>
+<p>①在CMD命令窗口中输入信息： <code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">xiaozhu</span></code>
 #建立爬虫项目，名为xiaozhu</p>
 <p><img alt="image2" src="../../../_images/scrapy0001.png" /></p>
 <p>②通过pycharm查看xiaozhu项目下的所有文件： <img alt="image3" src="../../../_images/scrapy0002.png" /></p>
@@ -318,7 +324,7 @@ pip3 install pywin32
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id12">2.Scrapy文件介绍</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>如上图，最顶层的xiaozhu文件夹为项目名，第二层由与项目同名的文件夹xiaozhu和scrapy.cfg组成，其中xiaozhu文件夹就是模块，通常叫包，所有的爬虫代码都在这个包中添加，scrapy是这个项目的设置文件，其中的内容如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Automatically created by: scrapy startproject</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Automatically created by: scrapy startproject</span>
 <span class="c1">#</span>
 <span class="c1"># For more information about the [deploy] section see:</span>
 <span class="c1"># https://scrapyd.readthedocs.io/en/latest/deploy.html</span>
@@ -341,7 +347,7 @@ pip3 install pywin32
 <p>middlewares.py是spiders的中间件，主要负责对Request对象和Response对象进行处理，属于可选件。</p>
 <p>-此处着重介绍其他3个Python文件items.py、pipelines.py、settings.py的使用：
 ①items.py文件：用于定义爬取的字段信息。自动生成的代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Define here the models for your scraped items</span>
 <span class="c1">#</span>
@@ -358,7 +364,7 @@ pip3 install pywin32
 </pre></div>
 </div>
 <p>②pipelines.py文件：用于爬虫数据的清洗和入库操作。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Define your item pipelines here</span>
 <span class="c1">#</span>
@@ -372,7 +378,7 @@ pip3 install pywin32
 </pre></div>
 </div>
 <p>③settings.py文件:用于对爬虫项目的一些设置，例如请求头的填写，设置pipelines.py爬取爬虫数据等。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Scrapy settings for xiaozhu project</span>
 <span class="c1">#</span>
@@ -467,7 +473,7 @@ pip3 install pywin32
 <p>第4层为spiders模块下的2个Python文件，init.py与前面所述一致，
 xiaozhuspider.py是前面新建的Python文件，用于爬虫代码的编写。</p>
 <p>综上所述，使用Scrapy爬虫框架相当于往里面填空，把scrapy项目中对应的文件代码补全即可实现爬虫。通常，我们设置以下4个文件即可完成爬虫任务。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>* items.py： 用于定义字段。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* items.py： 用于定义字段。
 * xiaozhuspider.py：用于爬虫数据的获取。
 * pipelines.py：用于爬虫数据的处理。
 * settings.py：用于爬虫的设置。
@@ -481,7 +487,7 @@ xiaozhuspider.py是前面新建的Python文件，用于爬虫代码的编写。<
 <h2><a class="toc-backref" href="#id13">开始爬取小猪租房网的信息</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p><img alt="image4" src="../../../_images/scripy-xiaozhu0001.png" /></p>
 <p>①items.py文件：文件开头的注释部分不需要修改，其他部分替换掉，即可完成爬虫的字段信息。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Define here the models for your scraped items</span>
 <span class="c1">#</span>
@@ -503,7 +509,7 @@ xiaozhuspider.py是前面新建的Python文件，用于爬虫代码的编写。<
 </pre></div>
 </div>
 <p>②xiaozhuspider.py文件：爬虫代码的编写。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/25 20:40</span>
@@ -538,7 +544,7 @@ xiaozhuspider.py是前面新建的Python文件，用于爬虫代码的编写。<
 </pre></div>
 </div>
 <p>③pipelines.py文件：将获取的item存入TXT文件中。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Define your item pipelines here</span>
 <span class="c1">#</span>
@@ -558,8 +564,8 @@ xiaozhuspider.py是前面新建的Python文件，用于爬虫代码的编写。<
         <span class="k">return</span> <span class="n">item</span>
 </pre></div>
 </div>
-<p>或者保存为<code class="docutils literal"><span class="pre">Json</span></code>格式文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<p>或者保存为<code class="docutils literal notranslate"><span class="pre">Json</span></code>格式文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Define your item pipelines here</span>
 <span class="c1">#</span>
@@ -595,8 +601,8 @@ xiaozhuspider.py是前面新建的Python文件，用于爬虫代码的编写。<
         <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>保存到<code class="docutils literal"><span class="pre">mydata1.json</span></code>中的数据为</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p>保存到<code class="docutils literal notranslate"><span class="pre">mydata1.json</span></code>中的数据为</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="s2">&quot;308&quot;</span><span class="p">,</span>
     <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;广东省广州市海珠区广州大道南962号翠馨华庭&quot;</span><span class="p">,</span>
     <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;【广州塔A3】泳池TIT珠江新城地铁客村长隆&quot;</span><span class="p">,</span>
@@ -607,7 +613,7 @@ xiaozhuspider.py是前面新建的Python文件，用于爬虫代码的编写。<
 </pre></div>
 </div>
 <p>④settings.py文件：在原有代码上恢复下述已经生成的代码，用于指定爬取的信息使用pipelines.py处理。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Configure item pipelines</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configure item pipelines</span>
 <span class="c1"># See https://docs.scrapy.org/en/latest/topics/item-pipeline.html</span>
 <span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span>
    <span class="s1">&#39;xiaozhu.pipelines.XiaozhuPipeline&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
@@ -615,13 +621,13 @@ xiaozhuspider.py是前面新建的Python文件，用于爬虫代码的编写。<
 </pre></div>
 </div>
 <p>4.Scrapy爬虫的运行 在xiaozhu文件夹中，输入以下命令：</p>
-<p><code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">xiaozhu</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">xiaozhu</span></code></p>
 <p><img alt="image5" src="../../../_images/scripy-xiaozhu00002.png" /></p>
-<p>查看<code class="docutils literal"><span class="pre">xiaozhu.txt</span></code>文件,内容如下：</p>
+<p>查看<code class="docutils literal notranslate"><span class="pre">xiaozhu.txt</span></code>文件,内容如下：</p>
 <p><img alt="image6" src="../../../_images/scripy-xiaozhu00003.png" /></p>
 <p>当然，也可以在xiaozhu文件夹中新建一个main.py的文件，这样直接运行main.py即可运行爬虫程序。
 代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/25 20:56</span>
@@ -635,7 +641,7 @@ xiaozhuspider.py是前面新建的Python文件，用于爬虫代码的编写。<
 </div>
 <div class="section" id="id6">
 <h2><a class="toc-backref" href="#id14">Scrapy实战-爬取简书网热门专题信息</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>爬取网址：https://www.jianshu.com/recommendations/collections?order_by=hot
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>爬取网址：https://www.jianshu.com/recommendations/collections?order_by=hot
 爬取内容：专题名称、专题介绍、收录文章、关注人数
 爬取方式：Scrapy框架
 储存方式：csv文件
@@ -643,17 +649,17 @@ xiaozhuspider.py是前面新建的Python文件，用于爬虫代码的编写。<
 </div>
 <p>使用F12，观察动态加载的URL，总共37页：</p>
 <p>格式为</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>https://www.jianshu.com/recommendations/collections?page=1&amp;order_by=hot
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.jianshu.com/recommendations/collections?page=1&amp;order_by=hot
 https://www.jianshu.com/recommendations/collections?page=2&amp;order_by=hot
 https://www.jianshu.com/recommendations/collections?page=3&amp;order_by=hot
 https://www.jianshu.com/recommendations/collections?page=4&amp;order_by=hot
 </pre></div>
 </div>
 <p><img alt="image8" src="../../../_images/scrapy-jianshu0001.png" /></p>
-<p>①在CMD命令窗口中输入信息： <code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">jianshu</span></code>
+<p>①在CMD命令窗口中输入信息： <code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">jianshu</span></code>
 #建立爬虫项目，名为jianshu</p>
 <p>1.items.py文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Define here the models for your scraped items</span>
 <span class="c1">#</span>
@@ -673,7 +679,7 @@ https://www.jianshu.com/recommendations/collections?page=4&amp;order_by=hot
 </pre></div>
 </div>
 <p>2.Jianshuspider.py文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/25 21:08</span>
@@ -717,7 +723,7 @@ https://www.jianshu.com/recommendations/collections?page=4&amp;order_by=hot
 </div>
 <p>3.settings.py文件： 此处使用Scrapy自带的存储功能（Feed
 exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span>
 <span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36&#39;</span>
 <span class="n">DOWNLOAD_DELAY</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># 休眠时间0.5s</span>
 
@@ -733,7 +739,7 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 </pre></div>
 </div>
 <p>4.main.py文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/25 21:28</span>
@@ -742,10 +748,10 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 <span class="n">cmdline</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;scrapy crawl Jianshu&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>运行main.py文件即可得到运行结果 <code class="docutils literal"><span class="pre">保存为csv格式</span></code> <img alt="image9" src="../../../_images/script-jianshu00005.png" />
-如果用EXCEL文件打开，为乱码，或者setting中设置<code class="docutils literal"><span class="pre">FEED_EXPORT_ENCODING</span> <span class="pre">=</span> <span class="pre">&quot;gb18030&quot;</span></code>参数
+<p>运行main.py文件即可得到运行结果 <code class="docutils literal notranslate"><span class="pre">保存为csv格式</span></code> <img alt="image9" src="../../../_images/script-jianshu00005.png" />
+如果用EXCEL文件打开，为乱码，或者setting中设置<code class="docutils literal notranslate"><span class="pre">FEED_EXPORT_ENCODING</span> <span class="pre">=</span> <span class="pre">&quot;gb18030&quot;</span></code>参数
 需要先在Notepad+中选择编码“以UTF-8格式编码”,并重新保存即可。</p>
-<p><code class="docutils literal"><span class="pre">保存为json格式</span></code> <img alt="image10" src="../../../_images/scrapy-jianshu-json001.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">保存为json格式</span></code> <img alt="image10" src="../../../_images/scrapy-jianshu-json001.png" /></p>
 </div>
 <div class="section" id="scrapy-mongodb">
 <h2><a class="toc-backref" href="#id15">Scrapy实战 - 简书热门专题之MongoDB</a><a class="headerlink" href="#scrapy-mongodb" title="Permalink to this headline">¶</a></h2>
@@ -753,7 +759,7 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 <p>1.items.py不变</p>
 <p>2.jianshu2spider.py：相关内容改成jianshu2。</p>
 <p>3.pipelines.py内容如下</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Define your item pipelines here</span>
 <span class="c1">#</span>
@@ -776,17 +782,17 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 </pre></div>
 </div>
 <p>4.setttings.py文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3294.6 Safari/537.36&#39;</span>     <span class="c1">#请求头</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3294.6 Safari/537.36&#39;</span>     <span class="c1">#请求头</span>
 <span class="n">DOWNLOAD_DELAY</span> <span class="o">=</span> <span class="mf">0.5</span>                 <span class="c1">#睡眠时间0.5秒</span>
 <span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span>
    <span class="s1">&#39;zhuanti2.pipelines.Zhuanti2Pipeline&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>其他不变，运行<code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">Jianshu2</span></code>即可在MongoDB中得到结果。</p>
+<p>其他不变，运行<code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">Jianshu2</span></code>即可在MongoDB中得到结果。</p>
 <p>或者</p>
-<p>5.新建<code class="docutils literal"><span class="pre">main.py</span></code>文件作为程序的入口文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p>5.新建<code class="docutils literal notranslate"><span class="pre">main.py</span></code>文件作为程序的入口文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/26 10:33</span>
@@ -804,7 +810,7 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 <p>1.items.py不变</p>
 <p>2.jianshu3spider.py：相关内容改成jianshu3。</p>
 <p>在SQLyog中建立数据表，然后选择“执行查询”命令进行代码的运行：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>CREATE TABLE `jianshu` (
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CREATE TABLE `jianshu` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` text,
   `content` text,
@@ -816,7 +822,7 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 </div>
 <p><img alt="image12" src="../../../_images/desc-scrapy-mysql0001.png" /></p>
 <p>4.pipelines.py内容如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Define your item pipelines here</span>
 <span class="c1">#</span>
@@ -843,15 +849,15 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 </pre></div>
 </div>
 <p>5.setttings.py文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36&quot;</span>
 <span class="n">DOWNLOAD_DELAY</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span>
    <span class="s1">&#39;jianshu3.pipelines.Jianshu3Pipeline&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>6.其他不变.新建<code class="docutils literal"><span class="pre">main.py</span></code>文件，作为程序的入口。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p>6.其他不变.新建<code class="docutils literal notranslate"><span class="pre">main.py</span></code>文件，作为程序的入口。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/26 10:33</span>
@@ -864,7 +870,7 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 </div>
 <div class="section" id="id7">
 <h2><a class="toc-backref" href="#id17">Scrapy实战 - 简书推荐信息(Mongodb存储)</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>爬取网址：https://www.jianshu.com/recommendations/users
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>爬取网址：https://www.jianshu.com/recommendations/users
 爬取内容：作者URL、最近更新文章；作者ID、“关注、粉丝、文章、字数、收获喜欢”
 爬取方式：Scrapy框架
 储存方式：mongodb
@@ -875,7 +881,7 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 <p><img alt="image15" src="../../../_images/scrapy-mongo000001.png" /></p>
 <p>页面规律比较简单，通过F12查看XHR，即可获取翻页信息。</p>
 <p>1.items.py文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Define here the models for your scraped items</span>
 <span class="c1">#</span>
@@ -899,7 +905,7 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 </pre></div>
 </div>
 <p>2.JianshumongodbItem.py文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/26 11:01</span>
@@ -975,7 +981,7 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 </pre></div>
 </div>
 <p>3.pipelines.py文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Define your item pipelines here</span>
 <span class="c1">#</span>
@@ -999,7 +1005,7 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 </pre></div>
 </div>
 <p>4.settings.py文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36&quot;</span>
 <span class="n">DOWNLOAD_DELAY</span> <span class="o">=</span> <span class="mf">0.5</span>
 
 <span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span>
@@ -1007,8 +1013,8 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>5.新建<code class="docutils literal"><span class="pre">main.py</span></code>文件，作为程序的入口。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p>5.新建<code class="docutils literal notranslate"><span class="pre">main.py</span></code>文件，作为程序的入口。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/26 12:46</span>
@@ -1042,11 +1048,19 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1057,7 +1071,6 @@ exports），所以不需要使用pipelines.py进行数据的处理存储。</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

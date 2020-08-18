@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="7.17. 类的检测、判断、设置、删除、获取" href="17.类的反射，设置、删除、检测.html" />
     <link rel="prev" title="7.15. 类的高级特性" href="15.类的高级特性.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -156,7 +160,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -174,6 +178,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -212,7 +217,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -224,7 +229,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/07.面对对象设计_OOP/16.一些魔法方法.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/07.面对对象设计_OOP/16.一些魔法方法.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -263,7 +268,7 @@
 <div class="section" id="call">
 <h2><a class="toc-backref" href="#id4">7.16.1. __call__方法</a><a class="headerlink" href="#call" title="Permalink to this headline">¶</a></h2>
 <p>eg:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="k">class</span> <span class="nc">DistanceFrom</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">orage</span><span class="p">):</span>
@@ -279,7 +284,7 @@
 </pre></div>
 </div>
 <p>eg:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="k">class</span> <span class="nc">Prod</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
@@ -297,7 +302,7 @@
 </div>
 <div class="section" id="doc">
 <h2><a class="toc-backref" href="#id5">7.16.2. __doc__方法</a><a class="headerlink" href="#doc" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="k">class</span> <span class="nc">Func</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -306,13 +311,13 @@
     <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">Func</span><span class="o">.</span><span class="n">__doc__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Func</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="getitem">
 <h2><a class="toc-backref" href="#id6">7.16.3. __getitem__方法</a><a class="headerlink" href="#getitem" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="k">class</span> <span class="nc">Company</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">employee_list</span><span class="p">):</span>
@@ -340,7 +345,7 @@
 </div>
 <div class="section" id="init-new">
 <h2><a class="toc-backref" href="#id7">7.16.4. __init__方法和__new__方法的区别</a><a class="headerlink" href="#init-new" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">__new__方法如果不返回对象，不会执行init方法</span>
@@ -363,11 +368,11 @@
 
 
 <span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in new&quot;</span><span class="p">)</span>         <span class="c1">#in new</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span>              <span class="c1">#cls是当前class对象    &lt;class &#39;__main__.User&#39;&gt;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">cls</span><span class="p">))</span>        <span class="c1">#&lt;class &#39;type&#39;&gt;</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span>   <span class="c1">#必须返回class对象，才会调用__init__方法</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>              <span class="c1">#cls是当前class对象    &lt;class &#39;__main__.User&#39;&gt;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span>        <span class="c1">#&lt;class &#39;type&#39;&gt;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>   <span class="c1">#必须返回class对象，才会调用__init__方法</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in init&quot;</span><span class="p">)</span>        <span class="c1">#in init</span>
@@ -378,7 +383,7 @@
 <span class="c1"># new是用用来控制对象的生成过程，在对象生成之前</span>
 <span class="c1"># init是用来完善对象的</span>
 <span class="c1"># 如果new方法不返回对象，则不会调用init函数</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;derek&quot;</span><span class="p">)</span>
 
 <span class="c1">#总结</span>
@@ -389,7 +394,7 @@
 </div>
 <div class="section" id="slots">
 <h2><a class="toc-backref" href="#id8">7.16.5. __slots__限制实例的变量</a><a class="headerlink" href="#slots" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">可以使用__slots__限制实例的变量，比如，只允许Foo的实例添加name和age属性</span>
@@ -398,7 +403,7 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;哈哈&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
-    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="s2">&quot;age&quot;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="s2">&quot;age&quot;</span><span class="p">)</span>
     <span class="k">pass</span>
 
 <span class="k">class</span> <span class="nc">AAA</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -418,12 +423,12 @@
 <span class="n">object2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1">#因为内部有__slots__限制实例的变量</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Foo</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Foo</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>节省内存空间，限制实例只能设置特定的属性，但不限制类来添加动态的属性</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
-    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;walk&quot;</span><span class="p">,</span> <span class="s2">&quot;walk2&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;walk&quot;</span><span class="p">,</span> <span class="s2">&quot;walk2&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
@@ -455,7 +460,7 @@
 </pre></div>
 </div>
 <p>输出结果：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>预先定义的hujianli方法
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>预先定义的hujianli方法
 【Snoopy】正在慢慢走向你
 这是lambda函数，Dog name is 【Snoopy】 传入参数：参数测试1
 
@@ -466,9 +471,9 @@
 </pre></div>
 </div>
 <p>__slots__属性指定的限制只对当前的类的实例起作用，对子类不起作用。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GunDog</span><span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GunDog</span><span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">GunDog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GunDog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">pass</span>
 
 
@@ -480,7 +485,7 @@
 </div>
 <div class="section" id="str-repr">
 <h2><a class="toc-backref" href="#id9">7.16.6. __str__和__repr__的使用</a><a class="headerlink" href="#str-repr" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">__str__()</span>
@@ -512,7 +517,7 @@
 </pre></div>
 </div>
 <p>eg</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/15 16:02</span>
@@ -531,7 +536,7 @@
         <span class="k">return</span> <span class="s2">&quot;Apple[color=&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">+</span> <span class="s2">&quot;, weight=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">hu</span> <span class="o">=</span> <span class="n">Apple</span><span class="p">(</span><span class="s2">&quot;红色&quot;</span><span class="p">,</span> <span class="mf">5.68</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">hu</span><span class="p">)</span>
 </pre></div>
@@ -539,7 +544,7 @@
 </div>
 <div class="section" id="del">
 <h2><a class="toc-backref" href="#id10">7.16.7. 构造方法和__del__析构方法</a><a class="headerlink" href="#del" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -552,7 +557,7 @@
 </pre></div>
 </div>
 <p>eg</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/15 16:08</span>
@@ -567,7 +572,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;del删除对象&quot;</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">im</span> <span class="o">=</span> <span class="n">Item</span><span class="p">(</span><span class="s2">&quot;鼠标&quot;</span><span class="p">,</span> <span class="mf">29.8</span><span class="p">)</span>
    <span class="c1"># x = im     #如果注释掉这里，将先打印---del删除对象--</span>
 
@@ -579,7 +584,7 @@
 </div>
 <div class="section" id="dir">
 <h2><a class="toc-backref" href="#id11">7.16.8. __dir__()方法，列出所有属性和方法</a><a class="headerlink" href="#dir" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/15 16:14</span>
@@ -596,16 +601,16 @@
         <span class="k">pass</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">im</span> <span class="o">=</span> <span class="n">Item</span><span class="p">(</span><span class="s2">&quot;鼠标&quot;</span><span class="p">,</span> <span class="mf">29.8</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">__dir__</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="fm">__dir__</span><span class="p">())</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">im</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="add">
 <h2><a class="toc-backref" href="#id12">7.16.9. 运算符重载_<em>add_</em></a><a class="headerlink" href="#add" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 
 <span class="k">class</span> <span class="nc">Complex</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -626,12 +631,12 @@
     <span class="k">def</span> <span class="nf">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">Complex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">-</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">imag</span> <span class="o">-</span> <span class="n">other</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">Complex</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 
 <span class="c1">#自定义类实现类的特别的运算方式</span>
@@ -648,7 +653,7 @@
     <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">booka</span> <span class="o">=</span> <span class="n">Book</span><span class="p">()</span>
     <span class="n">bookb</span> <span class="o">=</span> <span class="n">Book</span><span class="p">(</span><span class="s1">&#39;Java入门到精通&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;len(booka):&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">booka</span><span class="p">))</span>
@@ -659,7 +664,7 @@
 </div>
 <div class="section" id="is">
 <h2><a class="toc-backref" href="#id13">7.16.10. is 判断对象是否属于相同的对象</a><a class="headerlink" href="#is" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/6/10 23:07</span>
@@ -682,7 +687,7 @@
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id14">7.16.11. 其他一些魔法方法</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">和比较相关的魔术方法</span>
@@ -726,15 +731,15 @@
         <span class="k">return</span> <span class="s1">&#39;Word(&quot;self.text&quot;)&#39;</span>
 
 <span class="n">first</span> <span class="o">=</span> <span class="n">Word</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">first</span><span class="o">.</span><span class="n">__eq__</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">first</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
 
-<span class="n">add</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">__add__</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">add</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>eg</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/6/15 14:40</span>
@@ -799,7 +804,7 @@
 </pre></div>
 </div>
 <p>输出信息</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kc">True</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span>
 <span class="kc">False</span>
 <span class="kc">True</span>
 <span class="kc">True</span>
@@ -815,7 +820,7 @@
 </div>
 <div class="section" id="getattr-getattribute">
 <h2><a class="toc-backref" href="#id15">7.16.12. __getattr__和__getattribute__的区别</a><a class="headerlink" href="#getattr-getattribute" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">object.__getattr__(self, name)</span>
@@ -838,7 +843,7 @@
         <span class="k">return</span> <span class="s2">&quot;zhang_derek&quot;</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">info</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;derek&quot;</span><span class="p">,</span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="mi">24</span><span class="p">})</span>
     <span class="c1">#不管属性存不存在，都走__getattribute__</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>    <span class="c1">#zhang_derek     #即使属性存在也走__getattribute__</span>
@@ -855,7 +860,7 @@
 <li>__getattribute__（self，name）：当name被访问时自动被调用（注意：这个仅能用于新式类），无论name是否存在，都要被调用。</li>
 <li>__delattr__（self，name）：如果要删除name，这个方法就被调用。</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="k">class</span> <span class="nc">Bird</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">feather</span> <span class="o">=</span> <span class="kc">True</span>
@@ -875,7 +880,7 @@
             <span class="k">return</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">hu</span> <span class="o">=</span> <span class="n">chicken</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">hu</span><span class="o">.</span><span class="n">hujianli</span><span class="p">)</span>          <span class="c1">#True</span>
 
@@ -886,7 +891,7 @@
 </pre></div>
 </div>
 <p>eg</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/6/15 2:54</span>
@@ -900,17 +905,17 @@
         <span class="c1"># print(&quot;--------设置{}属性-----&quot;.format(key))</span>
         <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span>
             <span class="k">if</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">8</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;name 的长度必须在2~8之间&quot;</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span>
             <span class="k">if</span> <span class="mi">10</span> <span class="o">&lt;</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;age必须在10~60之间&quot;</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">hu</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="s2">&quot;huajianli&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">hu</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">hu</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
@@ -943,11 +948,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -958,7 +971,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

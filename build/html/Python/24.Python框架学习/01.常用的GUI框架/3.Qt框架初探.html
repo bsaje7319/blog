@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="22.1.4. TkinterGUI模块" href="4.TkinterGUI模块.html" />
     <link rel="prev" title="22.1.2. wxPython框架的使用" href="2.wxPython框架的使用.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
@@ -127,9 +131,10 @@
 <li class="toctree-l4"><a class="reference internal" href="4.TkinterGUI模块.html">22.1.4. TkinterGUI模块</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../02.Flask_Web框架/index.html">22.2. Flask_Web框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
@@ -145,6 +150,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -183,7 +189,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -197,7 +203,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/01.常用的GUI框架/3.Qt框架初探.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/01.常用的GUI框架/3.Qt框架初探.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -246,7 +252,7 @@
 的官方网站(<a class="reference external" href="https://wmv.nverbankcomputmg.com">https://wmv.nverbankcomputmg.com</a> ）
 中下载最新的源码进行编译安装， 另一种是使用pip install
 的方式进行在线安装， 使用pip install pyqt5 的安装方式</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyqt5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyqt5</span>
 </pre></div>
 </div>
 </div>
@@ -258,7 +264,7 @@
 <ul class="simple">
 <li>设置pychrm的开发环境，外部工具 <img alt="image0" src="../../../_images/Qt_Tools.png" /></li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1 ， 快速启动qt 设计工具(Designer）
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1 ， 快速启动qt 设计工具(Designer）
 （ 1 ） 工具名称（Qt Designer ）
 （ 2 ） Designer安装路径需要指定.exe文件
 （ 3 ） 指定顶目文件目录($ProjectFileDir$)
@@ -281,7 +287,7 @@
 Designer工具生成的py文件运行不会生成GUI界面，必须使用如下的方式，实例化调用才生效</li>
 </ul>
 <p><img alt="image1" src="../../../_images/Qt_shiyong.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="k">def</span> <span class="nf">show_MainWinow</span><span class="p">():</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>  <span class="c1"># 创建一个QApplication，也就是你要开发的软件app</span>
     <span class="n">MainWindow</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">()</span>    <span class="c1"># 创建一个QMainWindow，用来装载你需要的各种组件、控件</span>
@@ -290,7 +296,7 @@ Designer工具生成的py文件运行不会生成GUI界面，必须使用如下�
     <span class="n">MainWindow</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                       <span class="c1"># 执行QMainWindow的show()方法，显示这个QMainWindow</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>                   <span class="c1"># 退出窗体主循环</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">show_MainWinow</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -325,13 +331,13 @@ Designer工具生成的py文件运行不会生成GUI界面，必须使用如下�
 <p>clicked()为按钮的信号，,单击窗体中的按钮时发射clicked信号，
 该信号被主窗体的槽函数（方法）close()所捕获，并触发关闭主窗体的行为。</p>
 <p>关键代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">MainWindow</span><span class="o">.</span><span class="n">close</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">MainWindow</span><span class="o">.</span><span class="n">close</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="image12" src="../../../_images/button_Qt4.PNG" /></p>
 <div class="section" id="id7">
 <h3><a class="toc-backref" href="#id18">定义自己的槽函数</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>关键代码如下：
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>关键代码如下：
 self.pushButton.clicked.connect(self.set)
 
 自己编写的槽函数
@@ -374,11 +380,19 @@ self.pushButton.clicked.connect(self.set)
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -389,7 +403,6 @@ self.pushButton.clicked.connect(self.set)
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

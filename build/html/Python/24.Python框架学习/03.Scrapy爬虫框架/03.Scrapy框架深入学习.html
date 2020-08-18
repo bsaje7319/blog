@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="22.3.4. Scrapy下载文件和图片" href="04.Scrapy下载文件和图片.html" />
     <link rel="prev" title="22.3.2. MongoDB的常用操作与导出" href="02.MongoDB的常用操作与导出.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,13 +119,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../02.Flask_Web框架/index.html">22.2. Flask_Web框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">22.3. Scrapy爬虫框架</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="01.Scrapy爬虫框架.html">22.3.1. Scrapy爬虫框架</a></li>
 <li class="toctree-l4"><a class="reference internal" href="02.MongoDB的常用操作与导出.html">22.3.2. MongoDB的常用操作与导出</a></li>
@@ -140,6 +144,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
@@ -155,6 +160,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -193,7 +199,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -207,7 +213,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/03.Scrapy爬虫框架/03.Scrapy框架深入学习.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/03.Scrapy爬虫框架/03.Scrapy框架深入学习.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -251,12 +257,12 @@
 <h1><a class="toc-backref" href="#id11">22.3.3. Scrapy框架深入学习</a><a class="headerlink" href="#scrapy" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id12">最简单的Scrapy爬虫程序：</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>①在CMD命令窗口中输入信息： <code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">books</span></code> <img alt="image0" src="../../../_images/scrapy00001.png" /></p>
-<p>注意： 通过<code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">books</span></code>
-会输出很多日志信息，可以通过<code class="docutils literal"><span class="pre">--nolog</span></code>参数控制不显示日志信息</p>
-<p><code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">books</span> <span class="pre">--nolog</span></code></p>
-<p><code class="docutils literal"><span class="pre">bookspiders.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p>①在CMD命令窗口中输入信息： <code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">books</span></code> <img alt="image0" src="../../../_images/scrapy00001.png" /></p>
+<p>注意： 通过<code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">books</span></code>
+会输出很多日志信息，可以通过<code class="docutils literal notranslate"><span class="pre">--nolog</span></code>参数控制不显示日志信息</p>
+<p><code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">books</span> <span class="pre">--nolog</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">bookspiders.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/8/1 9:27</span>
@@ -277,11 +283,11 @@
             <span class="k">yield</span> <span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="n">price</span><span class="p">}</span>  <span class="c1"># 生成器返回数据信息</span>
 </pre></div>
 </div>
-<p>运行命令 <code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">books</span> <span class="pre">-o</span> <span class="pre">books.csv</span></code></p>
+<p>运行命令 <code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">books</span> <span class="pre">-o</span> <span class="pre">books.csv</span></code></p>
 <p>查看结果如下 <img alt="image1" src="../../../_images/scrapy_base00001.png" /></p>
 <p>当然，如果要爬取下一页的页面，共计50页，可以在parse()函数下添加以下代码，然后运行上述代码即可获取每页20条，</p>
 <p>共计1000条的图书标题以及价格信息：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">next_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//li[@class=&quot;next&quot;]/a/@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">next_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//li[@class=&quot;next&quot;]/a/@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="k">if</span> <span class="n">next_url</span><span class="p">:</span>
     <span class="n">next_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">next_url</span><span class="p">)</span>
     <span class="k">yield</span> <span class="n">Request</span><span class="p">(</span><span class="n">next_url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
@@ -290,10 +296,10 @@
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id13">新闻供稿爬虫的Scrapy实现</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">startproject</span> <span class="n">chinanews_crawler</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">startproject</span> <span class="n">chinanews_crawler</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ tree chinanews_crawler
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tree chinanews_crawler
 chinanews_crawler
 ├── chinanews_crawler
 │   ├── __init__.py      # 包定义
@@ -309,12 +315,12 @@ chinanews_crawler
 </pre></div>
 </div>
 <p>快速生成蜘蛛命令工具：</p>
-<p><code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">genspider</span> <span class="pre">chinanews</span> <span class="pre">chanews.com</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">genspider</span> <span class="pre">chinanews</span> <span class="pre">chanews.com</span></code></p>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id14">构建模型</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">items.py</span></code>
-构建模型的方式编写一个<code class="docutils literal"><span class="pre">ChinanewsCrawlerItem</span></code>类，用于承载爬取回来的数据内容。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<p><code class="docutils literal notranslate"><span class="pre">items.py</span></code>
+构建模型的方式编写一个<code class="docutils literal notranslate"><span class="pre">ChinanewsCrawlerItem</span></code>类，用于承载爬取回来的数据内容。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Define here the models for your scraped items</span>
 <span class="c1">#</span>
@@ -336,8 +342,8 @@ chinanews_crawler
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id15">编写爬虫程序</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">chinanews.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<p><code class="docutils literal notranslate"><span class="pre">chinanews.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">scrapy.spiders</span> <span class="k">import</span> <span class="n">Spider</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
 <span class="kn">from</span> <span class="nn">scrapy.http</span> <span class="k">import</span> <span class="n">Request</span>
@@ -375,7 +381,7 @@ chinanews_crawler
 <span class="c1"># 获取项目的设置信息</span>
 <span class="kn">from</span> <span class="nn">scrapy.utils.project</span> <span class="k">import</span> <span class="n">get_project_settings</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="c1"># 创建CrawlerProcess类对象，并将获取的设置信息传入</span>
     <span class="n">process</span> <span class="o">=</span> <span class="n">CrawlerProcess</span><span class="p">(</span><span class="n">get_project_settings</span><span class="p">())</span>
     <span class="c1"># 设置需要启动的爬虫名称</span>
@@ -384,8 +390,8 @@ chinanews_crawler
     <span class="n">process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>设置数据输出的保存格式，可以利用Scrapy的配置让Scrapy默认输出到JSON文件，配置<code class="docutils literal"><span class="pre">setting.py</span></code>文件如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.54 Safari/536.5&#39;</span>
+<p>设置数据输出的保存格式，可以利用Scrapy的配置让Scrapy默认输出到JSON文件，配置<code class="docutils literal notranslate"><span class="pre">setting.py</span></code>文件如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.54 Safari/536.5&#39;</span>
 <span class="n">DOWNLOAD_DELAY</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># 休眠时间0.5s</span>
 
 <span class="c1"># # csv格式存储</span>
@@ -403,18 +409,18 @@ chinanews_crawler
 </pre></div>
 </div>
 <p>然后启动爬虫</p>
-<p><code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">chinanews</span></code> 输出结果如下： <img alt="image2" src="../../../_images/scrapy-json00002.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">chinanews</span></code> 输出结果如下： <img alt="image2" src="../../../_images/scrapy-json00002.png" /></p>
 </div>
 <div class="section" id="crawlerprocess">
 <h3><a class="toc-backref" href="#id16">导入CrawlerProcess类</a><a class="headerlink" href="#crawlerprocess" title="Permalink to this headline">¶</a></h3>
-<p>在文件<code class="docutils literal"><span class="pre">chinanews.py</span></code>中导入CrawlerProcess类，可以直接以主程序的方式运行爬虫蜘蛛程序。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 导入CrawlerProcess类</span>
+<p>在文件<code class="docutils literal notranslate"><span class="pre">chinanews.py</span></code>中导入CrawlerProcess类，可以直接以主程序的方式运行爬虫蜘蛛程序。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入CrawlerProcess类</span>
 <span class="kn">from</span> <span class="nn">scrapy.crawler</span> <span class="k">import</span> <span class="n">CrawlerProcess</span>
 
 <span class="c1"># 获取项目的设置信息</span>
 <span class="kn">from</span> <span class="nn">scrapy.utils.project</span> <span class="k">import</span> <span class="n">get_project_settings</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="c1"># 创建CrawlerProcess类对象，并将获取的设置信息传入</span>
     <span class="n">process</span> <span class="o">=</span> <span class="n">CrawlerProcess</span><span class="p">(</span><span class="n">get_project_settings</span><span class="p">())</span>
     <span class="c1"># 设置需要启动的爬虫名称</span>
@@ -429,15 +435,15 @@ chinanews_crawler
 <h2><a class="toc-backref" href="#id17">Scrapy常用函数及方法</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>1.spider开发流程：</p>
 <p>最简单的Spider只需4个步骤：</p>
-<p><code class="docutils literal"><span class="pre">1).继承scrapy.Spider；</span></code></p>
-<p><code class="docutils literal"><span class="pre">2).为Spider取名；</span></code></p>
-<p><code class="docutils literal"><span class="pre">3).设置爬取的起始点；</span></code></p>
-<p><code class="docutils literal"><span class="pre">4).实现页面解析函数。</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">1).继承scrapy.Spider；</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">2).为Spider取名；</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">3).设置爬取的起始点；</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">4).实现页面解析函数。</span></code></p>
 <p>其中，Spider是一个基类，后面我们使用到的所有其他爬虫都需要继承这个Spider基类，</p>
 <p>例如：CrawlSpider，XMLFeedSpider，CSVFeedSpider，SitemapSpider等，这些类全部位于scrapy:raw-latex:<cite>spiders目录之下</cite>。</p>
 <p>实际上设置完爬取起始点后，默认由start_reqeusts()方法构建Request对象，然后默认指定由parse方法作为页面解析函数。如果我们希望为Request添加特定的请求头部或想为Request指定特定的页面解析函数，可以考虑在构建的Spider类中实现start_requests方法，即可覆盖基类Spider的start_requests方法。
 例如，在第一章的基础上进行修改：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 
 <span class="k">class</span> <span class="nc">Books</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;books&#39;</span>
@@ -470,7 +476,7 @@ chinanews_crawler
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id18">2.常用方法</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>1)提取常用方法</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>.extract() 对结果以列表的形式进行返回
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.extract() 对结果以列表的形式进行返回
 .extract_first() 对extract()返回的结果列表取第一个元素。
 .re() #对结果使用正则表达式进行再提取
 .re_first() #返回第一个re()结果。
@@ -478,7 +484,7 @@ chinanews_crawler
 </div>
 <p>2)调用selector的方法
 selector类的实现位于scrapy.selector模块，通过创建对象即可使用css或xpath解析方法。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy.selector</span> <span class="k">import</span> <span class="n">Selector</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy.selector</span> <span class="k">import</span> <span class="n">Selector</span>
 
 <span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
     <span class="o">...</span>
@@ -491,7 +497,7 @@ selector类的实现位于scrapy.selector模块，通过创建对象即可使用
 </div>
 <p>当然，实际开发中，我们无需创建Selector对象，因为当我们第一次访问Response对象的selector属性时，
 Response对象会自动创建Selector对象，同时在Response对象中内置了selector对象的css和xpath方法以供使用。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
     <span class="o">...</span>
 
     <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
@@ -508,7 +514,7 @@ Response对象会自动创建Selector对象，同时在Response对象中内置�
 <li>描述数据包含哪些字段的类：FIeld类</li>
 </ul>
 <p>在items.py中这样写：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy</span> <span class="k">import</span> <span class="n">Item</span><span class="p">,</span><span class="n">Field</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy</span> <span class="k">import</span> <span class="n">Item</span><span class="p">,</span><span class="n">Field</span>
 
 <span class="k">class</span> <span class="nc">BooksItem</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="n">Field</span><span class="p">()</span>
@@ -516,7 +522,7 @@ Response对象会自动创建Selector对象，同时在Response对象中内置�
 </pre></div>
 </div>
 <p>在project为books，spiders文件夹下的books.py下这样写：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">books.items</span> <span class="k">import</span> <span class="n">BooksItem</span>     <span class="c1">#引入items.py中创建的对象</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">books.items</span> <span class="k">import</span> <span class="n">BooksItem</span>     <span class="c1">#引入items.py中创建的对象</span>
 
     <span class="k">def</span> <span class="nf">parse_book</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
         <span class="n">infos</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//article&#39;</span><span class="p">)</span>
@@ -542,9 +548,9 @@ Pipeline不需要继承特定基类，只需要实现特定方法，例如：pro
 <p>②一个Item
 Pipeline必须实现一个process_item(item,spider)方法，该方法用来处理每一项由Spider爬取到的数据，其中两个参数：
 item: 爬取到的一项数据（Item或字典） spider:爬取此项数据的Spider对象</p>
-<p><code class="docutils literal"><span class="pre">例如将Sharp</span> <span class="pre">Objects,£47.82中的英镑转换成人民币Sharp</span> <span class="pre">Objects,¥406.47。</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">例如将Sharp</span> <span class="pre">Objects,£47.82中的英镑转换成人民币Sharp</span> <span class="pre">Objects,¥406.47。</span></code></p>
 <p>代码为：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PriceConverterPipeline</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PriceConverterPipeline</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="n">exchange_rate</span> <span class="o">=</span> <span class="mf">8.5</span>  <span class="c1">#英镑对人民币汇率</span>
 
@@ -556,7 +562,7 @@ item: 爬取到的一项数据（Item或字典） spider:爬取此项数据的Sp
 </pre></div>
 </div>
 <p>写入MongoDB的代码，方式一：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymongo</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymongo</span>
 
 <span class="k">class</span> <span class="nc">MongoDBPipeline</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -572,7 +578,7 @@ item: 爬取到的一项数据（Item或字典） spider:爬取此项数据的Sp
 </pre></div>
 </div>
 <p>写入MongoDB的代码，方式二：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymongo</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymongo</span>
 
 <span class="k">class</span> <span class="nc">MongoDBPipeline</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">DB_URI</span> <span class="o">=</span> <span class="s1">&#39;mongodb://localhost:27017/&#39;</span>
@@ -593,7 +599,7 @@ item: 爬取到的一项数据（Item或字典） spider:爬取此项数据的Sp
 </pre></div>
 </div>
 <p>过滤重复数据，这里以书名作为主键判断重复项，实际上应该以ISBN编号为主键，只是前面仅爬取了书名和价格。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy.exceptions</span> <span class="k">import</span> <span class="n">DropItem</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy.exceptions</span> <span class="k">import</span> <span class="n">DropItem</span>
 
 <span class="k">class</span> <span class="nc">DuplicatesPipeline</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -608,9 +614,9 @@ item: 爬取到的一项数据（Item或字典） spider:爬取此项数据的Sp
 </pre></div>
 </div>
 <p>由于Item Pipeline是可选的组件，想要启用某个Item
-Pipeline，需要在<code class="docutils literal"><span class="pre">settings.py</span></code>中可对<code class="docutils literal"><span class="pre">Item</span></code>
-<code class="docutils literal"><span class="pre">Pipeline</span></code>进行设置。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span>
+Pipeline，需要在<code class="docutils literal notranslate"><span class="pre">settings.py</span></code>中可对<code class="docutils literal notranslate"><span class="pre">Item</span></code>
+<code class="docutils literal notranslate"><span class="pre">Pipeline</span></code>进行设置。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span>
    <span class="s1">&#39;books.pipelines.PriceConverterPipeline&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
    <span class="s1">&#39;books.pipelines.MongoDBPipeline&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
    <span class="s1">&#39;books.pipelines.DuplicatesPipeline&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
@@ -624,7 +630,7 @@ Pipeline，需要在<code class="docutils literal"><span class="pre">settings.py
 <ul class="simple">
 <li>Selector()</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">next_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//li[@class=&quot;next&quot;]/a/@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">next_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//li[@class=&quot;next&quot;]/a/@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="k">if</span> <span class="n">next_url</span><span class="p">:</span>
     <span class="n">next_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">next_url</span><span class="p">)</span>
     <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">next_url</span><span class="p">,</span><span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
@@ -633,7 +639,7 @@ Pipeline，需要在<code class="docutils literal"><span class="pre">settings.py
 <ul class="simple">
 <li>LinkExtractor()</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy.linkextractors</span> <span class="k">import</span> <span class="n">LinkExtractor</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy.linkextractors</span> <span class="k">import</span> <span class="n">LinkExtractor</span>
 <span class="nb">next</span> <span class="o">=</span> <span class="n">LinkExtractor</span><span class="p">(</span><span class="n">restrict_xpaths</span><span class="o">=</span><span class="s1">&#39;//li[@class=&quot;next&quot;]&#39;</span><span class="p">)</span>  <span class="c1">#LinkExtractor中添加限制条件，如果为空会提取页面的所有链接</span>
 <span class="n">links</span> <span class="o">=</span> <span class="nb">next</span><span class="o">.</span><span class="n">extract_links</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>  <span class="c1">#返回一个Link对象的列表，里面包含链接。</span>
 
@@ -648,10 +654,10 @@ Pipeline，需要在<code class="docutils literal"><span class="pre">settings.py
 <li>通过配置文件指定</li>
 </ul>
 <p>命令行：</p>
-<p><code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">-o</span> <span class="pre">books.csv</span></code></p>
-<p><code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">-o</span> <span class="pre">books.csv</span> <span class="pre">-t</span> <span class="pre">csv</span></code> ## -t可以省略</p>
+<p><code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">-o</span> <span class="pre">books.csv</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">-o</span> <span class="pre">books.csv</span> <span class="pre">-t</span> <span class="pre">csv</span></code> ## -t可以省略</p>
 <p>配置文件：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>| 选项  |      含义      |  示例 |
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>| 选项  |      含义      |  示例 |
 |----------|:-------------:|------:|
 | FEED_URI |  导出文件路径 | FEED_URI = &#39;books.csv&#39; |
 | FEED_FORMAT|    导出数据格式   |   FEED_FORMAT = &#39;csv&#39; |
@@ -664,7 +670,7 @@ Pipeline，需要在<code class="docutils literal"><span class="pre">settings.py
 </div>
 <div class="section" id="id7">
 <h2><a class="toc-backref" href="#id19">Scrapy项目调试</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>爬取网址：http://books.toscrape.com/index.html
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>爬取网址：http://books.toscrape.com/index.html
 爬取信息：书名，价格，评价等级，产品编码，库存量，评价数量
 爬取方式：scrapy框架
 存储方式：csv文件
@@ -674,7 +680,7 @@ Pipeline，需要在<code class="docutils literal"><span class="pre">settings.py
 <li>除了可以使用Chrome的开发者工具，还可以使用scrapy
 shell命令，在交互式环境下调试。</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span>cd 03.Scrapy调试
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd 03.Scrapy调试
 scrapy shell
 
 
@@ -692,17 +698,17 @@ scrapy shell http://books.toscrape.com/index.html
 <ol class="arabic simple" start="2">
 <li>使用view(response)查看respone包含的页面：</li>
 </ol>
-<p><code class="docutils literal"><span class="pre">view(response)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">view(response)</span></code></p>
 <ul class="simple">
 <li>view函数是scrapy爬虫下载的页面，比直接打开浏览器下载的页面更靠谱，因为有时这两个页面是不同的，常规操作下有时还必须借助查看网页源代码来确认元素的位置。</li>
 </ul>
 <p>-由于response包含的页面也是用浏览器打开，接下来我们使用chrome进行元素审查。</p>
 <p><img alt="image4" src="../../../_images/scrapy_shell000003.png" /></p>
 <p>3.提取信息</p>
-<p>1）由于我们需要获取的信息都在详细页面里面，我们需要先<code class="docutils literal"><span class="pre">提取链接</span></code>，可以使用<code class="docutils literal"><span class="pre">LinkExtractor</span></code>：</p>
+<p>1）由于我们需要获取的信息都在详细页面里面，我们需要先<code class="docutils literal notranslate"><span class="pre">提取链接</span></code>，可以使用<code class="docutils literal notranslate"><span class="pre">LinkExtractor</span></code>：</p>
 <p>用三条语句就可以获取到链接信息了，而且使用LinkExtractor时不需要告诉链接的具体位置，只需要告诉链接所在的范围，非常方便。</p>
 <p>此处提取信息，以下几条命令提取出来的信息是一样的，请看：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">le</span> <span class="o">=</span> <span class="n">LinkExtractor</span><span class="p">(</span><span class="n">restrict_css</span><span class="o">=</span><span class="s1">&#39;article.product_pod&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">le</span> <span class="o">=</span> <span class="n">LinkExtractor</span><span class="p">(</span><span class="n">restrict_css</span><span class="o">=</span><span class="s1">&#39;article.product_pod&#39;</span><span class="p">)</span>
 <span class="n">le</span> <span class="o">=</span> <span class="n">LinkExtractor</span><span class="p">(</span><span class="n">restrict_css</span><span class="o">=</span><span class="s1">&#39;article.product_pod div a&#39;</span><span class="p">)</span>
 <span class="n">le</span> <span class="o">=</span> <span class="n">LinkExtractor</span><span class="p">(</span><span class="n">restrict_xpaths</span><span class="o">=</span><span class="s1">&#39;//article[@class=&quot;product_pod&quot;]&#39;</span><span class="p">)</span>
 <span class="n">le</span> <span class="o">=</span> <span class="n">LinkExtractor</span><span class="p">(</span><span class="n">restrict_xpaths</span><span class="o">=</span><span class="s1">&#39;//article[@class=&quot;product_pod&quot;]/div/a&#39;</span><span class="p">)</span>
@@ -711,7 +717,7 @@ scrapy shell http://books.toscrape.com/index.html
 <p>2)获取下一页的链接地址</p>
 <p>3)提取书的详细信息
 使用fetch()命令，然后用view(response)即可看到请求页面。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">61</span><span class="p">]:</span> <span class="n">fetch</span><span class="p">(</span><span class="s2">&quot;http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">61</span><span class="p">]:</span> <span class="n">fetch</span><span class="p">(</span><span class="s2">&quot;http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html&quot;</span><span class="p">)</span>
 <span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">04</span> <span class="p">[</span><span class="n">scrapy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">engine</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">Crawled</span> <span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">GET</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">books</span><span class="o">.</span><span class="n">toscrape</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">catalogue</span><span class="o">/</span><span class="n">a</span><span class="o">-</span><span class="n">light</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">the</span><span class="o">-</span><span class="n">attic_1000</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">referer</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">63</span><span class="p">]:</span> <span class="n">view</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
@@ -719,7 +725,7 @@ scrapy shell http://books.toscrape.com/index.html
 </pre></div>
 </div>
 <p><img alt="image5" src="../../../_images/scrapy_view00001.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">72</span><span class="p">]:</span> <span class="n">info</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//article/div[1]/div[2]/h1/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">72</span><span class="p">]:</span> <span class="n">info</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//article/div[1]/div[2]/h1/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">73</span><span class="p">]:</span> <span class="n">info</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">73</span><span class="p">]:</span> <span class="s1">&#39;A Light in the Attic&#39;</span>
@@ -732,7 +738,7 @@ scrapy shell http://books.toscrape.com/index.html
 </pre></div>
 </div>
 <p>当然，由于书名，价格，评价等级以及库存量均在一处，可以先找出大范围，然后再确定具体信息：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 先抓大再抓小</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先抓大再抓小</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">87</span><span class="p">]:</span> <span class="nb">all</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&quot;content_inner&quot;]/article&#39;</span><span class="p">)</span>
 
 
@@ -762,25 +768,25 @@ scrapy shell http://books.toscrape.com/index.html
 <span class="n">Out</span><span class="p">[</span><span class="mi">178</span><span class="p">]:</span> <span class="s1">&#39;Three&#39;</span>
 </pre></div>
 </div>
-<p>4)scrapy shell的退出：<code class="docutils literal"><span class="pre">exit()</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">exit</span><span class="p">()</span>
+<p>4)scrapy shell的退出：<code class="docutils literal notranslate"><span class="pre">exit()</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exit</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>4.编码实现</p>
 <p>1)创建项目</p>
-<p><code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">books</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">books</span></code></p>
 <ul class="simple">
-<li>新建项目<code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">books</span></code></li>
+<li>新建项目<code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">startproject</span> <span class="pre">books</span></code></li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span>  <span class="n">books</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span>  <span class="n">books</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>利用模板生成spider文件<code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">genspider</span> <span class="pre">booksspider</span> <span class="pre">books.toscrape.com</span></code></li>
+<li>利用模板生成spider文件<code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">genspider</span> <span class="pre">booksspider</span> <span class="pre">books.toscrape.com</span></code></li>
 </ul>
 <p><img alt="image6" src="../../../_images/spider_books00001.png" /></p>
 <p>上述生成的booksspider.py文件：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">scrapy</span>
 
 
@@ -794,7 +800,7 @@ scrapy shell http://books.toscrape.com/index.html
 </pre></div>
 </div>
 <p>2)items.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 
 <span class="k">class</span> <span class="nc">BooksItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>            <span class="c1">#书名</span>
@@ -806,7 +812,7 @@ scrapy shell http://books.toscrape.com/index.html
 </pre></div>
 </div>
 <p>3)booksspider.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">scrapy</span>
 <span class="kn">from</span> <span class="nn">books.items</span> <span class="k">import</span> <span class="n">BooksItem</span>
 <span class="kn">from</span> <span class="nn">scrapy.linkextractors</span> <span class="k">import</span> <span class="n">LinkExtractor</span>
@@ -846,11 +852,11 @@ scrapy shell http://books.toscrape.com/index.html
         <span class="k">yield</span> <span class="n">item</span>
 </pre></div>
 </div>
-<p>运行<code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">booksspider</span> <span class="pre">-o</span> <span class="pre">books.csv</span></code>，结果为：</p>
+<p>运行<code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">crawl</span> <span class="pre">booksspider</span> <span class="pre">-o</span> <span class="pre">books.csv</span></code>，结果为：</p>
 <p><img alt="image7" src="../../../_images/scrapy_debug0000003.png" /></p>
-<p>4)改进点 ①<code class="docutils literal"><span class="pre">指定各列的次序</span></code> 在settings.py中加入以下代码：</p>
+<p>4)改进点 ①<code class="docutils literal notranslate"><span class="pre">指定各列的次序</span></code> 在settings.py中加入以下代码：</p>
 <p>②将评价等级中的One，Two，Three转变成1,2,3 在pipelines.py中加入以下代码：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># Define your item pipelines here</span>
 <span class="c1">#</span>
@@ -876,15 +882,15 @@ scrapy shell http://books.toscrape.com/index.html
 </pre></div>
 </div>
 <p>在setttings.py中加入：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span>
    <span class="s1">&#39;books.pipelines.BooksPipeline&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>结果为： <img alt="image8" src="../../../_images/scrapy-debug000002.png" /></p>
-<p>修改为<code class="docutils literal"><span class="pre">main.py</span></code>文件的方式运行</p>
+<p>修改为<code class="docutils literal notranslate"><span class="pre">main.py</span></code>文件的方式运行</p>
 <p>main.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/8/1 19:35</span>
@@ -894,10 +900,10 @@ scrapy shell http://books.toscrape.com/index.html
 <span class="n">cmdline</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;scrapy crawl booksspider -o books.csv&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>直接执行<code class="docutils literal"><span class="pre">main.py</span></code>文件即可运行程序。</p>
-<p>[STRIKEOUT:修改<code class="docutils literal"><span class="pre">setting.py</span></code> 文件，修改存储格式为csv文件格式]</p>
+<p>直接执行<code class="docutils literal notranslate"><span class="pre">main.py</span></code>文件即可运行程序。</p>
+<p>[STRIKEOUT:修改<code class="docutils literal notranslate"><span class="pre">setting.py</span></code> 文件，修改存储格式为csv文件格式]</p>
 <p>[STRIKEOUT:setting.py]</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36&#39;</span>
 <span class="n">DOWNLOAD_DELAY</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># 休眠时间0.5s</span>
 
 <span class="c1">#csv格式存储</span>
@@ -906,14 +912,14 @@ scrapy shell http://books.toscrape.com/index.html
 <span class="n">FEED_EXPORT_ENCODING</span> <span class="o">=</span> <span class="s2">&quot;gb18030&quot;</span>    <span class="c1">#设置编码</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">setting.py</span></code> 文件 中的设置</p>
+<p><code class="docutils literal notranslate"><span class="pre">setting.py</span></code> 文件 中的设置</p>
 </div>
 <div class="section" id="cookie">
 <h2><a class="toc-backref" href="#id20">1.禁止Cookie</a><a class="headerlink" href="#cookie" title="Permalink to this headline">¶</a></h2>
-<p>若要禁用Cookie的代码，只需要把<code class="docutils literal"><span class="pre">#</span> <span class="pre">COOKIES_ENABLED</span> <span class="pre">=</span> <span class="pre">False</span></code>
-的注释去掉即可， 修改为 <code class="docutils literal"><span class="pre">COOKIES_ENABLED</span> <span class="pre">=</span> <span class="pre">False</span></code>
+<p>若要禁用Cookie的代码，只需要把<code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">COOKIES_ENABLED</span> <span class="pre">=</span> <span class="pre">False</span></code>
+的注释去掉即可， 修改为 <code class="docutils literal notranslate"><span class="pre">COOKIES_ENABLED</span> <span class="pre">=</span> <span class="pre">False</span></code>
 这样就可以禁用本地的Cookie，让那些通过用户的Cookie信息对用户进行识别和分析的网站无法识别我们，即无法禁止我们爬取。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Disable cookies (enabled by default)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable cookies (enabled by default)</span>
 <span class="c1"># COOKIES_ENABLED = False</span>
 
 <span class="n">COOKIES_ENABLED</span> <span class="o">=</span> <span class="kc">False</span>
@@ -922,15 +928,15 @@ scrapy shell http://books.toscrape.com/index.html
 </div>
 <div class="section" id="id8">
 <h2><a class="toc-backref" href="#id21">2.设置下载延迟</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">设置爬虫下载网页的时间间隔为0.5秒，将对于的值改为0.5即可。</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DOWNLOAD_DELAY</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># 休眠时间0.5s</span>
+<p><code class="docutils literal notranslate"><span class="pre">设置爬虫下载网页的时间间隔为0.5秒，将对于的值改为0.5即可。</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DOWNLOAD_DELAY</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># 休眠时间0.5s</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ip">
 <h2><a class="toc-backref" href="#id22">3.使用IP池</a><a class="headerlink" href="#ip" title="Permalink to this headline">¶</a></h2>
-<p>直接编辑爬虫项目中的<code class="docutils literal"><span class="pre">setting.py</span></code>文件并添加如下信息：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#(2)</span>
+<p>直接编辑爬虫项目中的<code class="docutils literal notranslate"><span class="pre">setting.py</span></code>文件并添加如下信息：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#(2)</span>
 <span class="c1">#IP池设置</span>
 <span class="n">IPPOOL</span><span class="o">=</span><span class="p">[</span>
     <span class="p">{</span><span class="s2">&quot;ipaddr&quot;</span><span class="p">:</span><span class="s2">&quot;121.33.226.167:3128&quot;</span><span class="p">},</span>
@@ -945,9 +951,9 @@ scrapy shell http://books.toscrape.com/index.html
 </div>
 <p>IPPOOL就是对于的代理服务器的IP池，外层通过列表的形式存储，里层通过字典的形式存储</p>
 <p>当网站对IP进行封禁的时候，我们可以使用代理IP。
-在项目核心目录下建立一个下载中间件，创建文件<code class="docutils literal"><span class="pre">middlewares.py</span></code>，可以将该文件作为下载中间件文件使用。</p>
-<p><code class="docutils literal"><span class="pre">middlewares.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#(3)</span>
+在项目核心目录下建立一个下载中间件，创建文件<code class="docutils literal notranslate"><span class="pre">middlewares.py</span></code>，可以将该文件作为下载中间件文件使用。</p>
+<p><code class="docutils literal notranslate"><span class="pre">middlewares.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#(3)</span>
 <span class="c1">#middlewares下载中间件</span>
 <span class="c1">#导入随机数模块，目的是随机挑选一个IP池中的ip</span>
 <span class="kn">import</span> <span class="nn">random</span>
@@ -971,9 +977,9 @@ scrapy shell http://books.toscrape.com/index.html
 </pre></div>
 </div>
 <p>编写好下载中间件之后，此时在Scrapy项目中，middlewares.py文件只是一个普通的python程序，并不会默认为下载中间件。
-如果想让middlewares.py文件作为项目的下载中间件文件，还需要在<code class="docutils literal"><span class="pre">setting.py</span></code>文件中，与下载中间件相关的配置信息默认如下：</p>
-<p><code class="docutils literal"><span class="pre">setting.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#(4)</span>
+如果想让middlewares.py文件作为项目的下载中间件文件，还需要在<code class="docutils literal notranslate"><span class="pre">setting.py</span></code>文件中，与下载中间件相关的配置信息默认如下：</p>
+<p><code class="docutils literal notranslate"><span class="pre">setting.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#(4)</span>
 <span class="n">DOWNLOADER_MIDDLEWARES</span> <span class="o">=</span> <span class="p">{</span>
     <span class="c1">#&#39;myfirstpjt.middlewares.MyCustomDownloaderMiddleware&#39;: 543,</span>
     <span class="s1">&#39;scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware&#39;</span><span class="p">:</span><span class="mi">123</span><span class="p">,</span>
@@ -982,7 +988,7 @@ scrapy shell http://books.toscrape.com/index.html
 </pre></div>
 </div>
 <p>随后我们可以运行该Scrapy项目下的爬虫文件了。
-<code class="docutils literal"><span class="pre">Scrapy</span> <span class="pre">crawl</span> <span class="pre">weisuen</span> <span class="pre">--nolog</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">Scrapy</span> <span class="pre">crawl</span> <span class="pre">weisuen</span> <span class="pre">--nolog</span></code></p>
 </div>
 <div class="section" id="id9">
 <h2><a class="toc-backref" href="#id23">4.使用用户代理池</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
@@ -990,10 +996,10 @@ scrapy shell http://books.toscrape.com/index.html
 <p>作为爬虫方，显然不希望这样被封禁，为了避免这一类的禁止，我们可以使用用户代理池进行处理。</p>
 <p>这一种处理方式与IP代理池的处理方式类似，我们可以收集多种浏览器的信息，以此建立一个用户代理池，然后建立一个下载中间件，
 在下载中间件中设置每次随机认识用户代理池中的一个用户代理进行爬行。</p>
-<p>IP代理池中使用的下载中间件类型为<code class="docutils literal"><span class="pre">HttpProxyMiddleware</span></code></p>
-<p>用户代理池中使用的下载中间件类型为<code class="docutils literal"><span class="pre">UserAgentMiddleware</span></code></p>
-<p>①需要在<code class="docutils literal"><span class="pre">setting.py</span></code>配置文件中设置好用户代理池。代理池名称可以自定义，如下所示：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#用户代理（user-agent）池设置</span>
+<p>IP代理池中使用的下载中间件类型为<code class="docutils literal notranslate"><span class="pre">HttpProxyMiddleware</span></code></p>
+<p>用户代理池中使用的下载中间件类型为<code class="docutils literal notranslate"><span class="pre">UserAgentMiddleware</span></code></p>
+<p>①需要在<code class="docutils literal notranslate"><span class="pre">setting.py</span></code>配置文件中设置好用户代理池。代理池名称可以自定义，如下所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#用户代理（user-agent）池设置</span>
 <span class="n">UAPOOL</span><span class="o">=</span><span class="p">[</span>
     <span class="s2">&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.22 Safari/537.36 SE 2.X MetaSr 1.0&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0&quot;</span><span class="p">,</span>
@@ -1001,8 +1007,8 @@ scrapy shell http://books.toscrape.com/index.html
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>②创建一个下载中间件文件<code class="docutils literal"><span class="pre">uamid.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#uamid下载中间件</span>
+<p>②创建一个下载中间件文件<code class="docutils literal notranslate"><span class="pre">uamid.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#uamid下载中间件</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">myfirstpjt.settings</span> <span class="k">import</span> <span class="n">UAPOOL</span>
 <span class="kn">from</span> <span class="nn">scrapy.contrib.downloadermiddleware.useragent</span> <span class="k">import</span> <span class="n">UserAgentMiddleware</span>
@@ -1017,9 +1023,9 @@ scrapy shell http://books.toscrape.com/index.html
 </pre></div>
 </div>
 <p>③
-需要在<code class="docutils literal"><span class="pre">setting.py</span></code>文件中将该Python文件设置为Scrapy中的下载中间件。打开<code class="docutils literal"><span class="pre">setting.py</span></code>文件，找到有关下载中间件设置的地方
+需要在<code class="docutils literal notranslate"><span class="pre">setting.py</span></code>文件中将该Python文件设置为Scrapy中的下载中间件。打开<code class="docutils literal notranslate"><span class="pre">setting.py</span></code>文件，找到有关下载中间件设置的地方
 (DOWNLOADER_MIDDLEWARES),修改为如下代码：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Enable or disable downloader middlewares</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable or disable downloader middlewares</span>
 <span class="c1"># See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html</span>
 <span class="n">DOWNLOADER_MIDDLEWARES</span> <span class="o">=</span> <span class="p">{</span>
     <span class="c1">#&#39;myfirstpjt.middlewares.MyCustomDownloaderMiddleware&#39;: 543,</span>
@@ -1029,17 +1035,17 @@ scrapy shell http://books.toscrape.com/index.html
 </pre></div>
 </div>
 <p>随后我们可以运行该Scrapy项目下的爬虫文件了。
-<code class="docutils literal"><span class="pre">Scrapy</span> <span class="pre">crawl</span> <span class="pre">weisuen</span> <span class="pre">--nolog</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">Scrapy</span> <span class="pre">crawl</span> <span class="pre">weisuen</span> <span class="pre">--nolog</span></code></p>
 <div class="section" id="id10">
 <h3><a class="toc-backref" href="#id24">注意！：</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<p>如果要对爬取的网站进行爬取，默认遵守<code class="docutils literal"><span class="pre">robots.txt</span></code>爬虫协议,需要爬取，则让爬虫项目不遵循<code class="docutils literal"><span class="pre">robots.txt</span></code>规则即可。</p>
-<p>打开爬虫项目下的<code class="docutils literal"><span class="pre">setting.py</span></code>文件，找到ROBOTSTXT部分的设置，默认设置如下所示：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Obey robots.txt rules</span>
+<p>如果要对爬取的网站进行爬取，默认遵守<code class="docutils literal notranslate"><span class="pre">robots.txt</span></code>爬虫协议,需要爬取，则让爬虫项目不遵循<code class="docutils literal notranslate"><span class="pre">robots.txt</span></code>规则即可。</p>
+<p>打开爬虫项目下的<code class="docutils literal notranslate"><span class="pre">setting.py</span></code>文件，找到ROBOTSTXT部分的设置，默认设置如下所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obey robots.txt rules</span>
 <span class="n">ROBOTSTXT_OBEY</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
 </div>
 <p>我们可以修改为：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Obey robots.txt rules</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obey robots.txt rules</span>
 <span class="n">ROBOTSTXT_OBEY</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
@@ -1067,11 +1073,19 @@ scrapy shell http://books.toscrape.com/index.html
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1082,7 +1096,6 @@ scrapy shell http://books.toscrape.com/index.html
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

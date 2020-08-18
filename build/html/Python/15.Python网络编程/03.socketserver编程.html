@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="15.4. Python发送邮件" href="04.python收发邮件学习.html" />
     <link rel="prev" title="15.2. socket编程" href="02.socket编程.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -129,7 +133,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -147,6 +151,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -185,7 +190,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -197,7 +202,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/15.Python网络编程/03.socketserver编程.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/15.Python网络编程/03.socketserver编程.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -228,7 +233,7 @@
 </div>
 <div class="section" id="socketserver">
 <h1><a class="toc-backref" href="#id6">15.3. socketserver编程</a><a class="headerlink" href="#socketserver" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default"><div class="highlight"><pre><span></span>socketserver在内部使用IO多路复用以及多线程/进程机制，实现了并发处理多个客户端请求的socket服务端。每个客户端请求连接到服务器时，socketserver服务端都会创建一个“线程”或者“进程” 专门负责处理当前客户端的所有请求。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>socketserver在内部使用IO多路复用以及多线程/进程机制，实现了并发处理多个客户端请求的socket服务端。每个客户端请求连接到服务器时，socketserver服务端都会创建一个“线程”或者“进程” 专门负责处理当前客户端的所有请求。
 socketserver模块中使用的服务器类主要有：
     TCPServer       #TCP协议的服务类
     UDPServer       #TCP协议的服务类
@@ -251,7 +256,7 @@ socketserver模块中使用的服务器类主要有：
 <h2><a class="toc-backref" href="#id8">15.3.2. ThreadingTCPServer 示例</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="#id9">服务端 1</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">socketserver</span>
@@ -275,7 +280,7 @@ socketserver模块中使用的服务器类主要有：
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;来自</span><span class="si">%s</span><span class="s2">的客户端向你发来信息：</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client_address</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span>
             <span class="n">conn</span><span class="o">.</span><span class="n">sendall</span><span class="p">((</span><span class="s1">&#39;已收到你的消息&lt;</span><span class="si">%s</span><span class="s1">&gt;&#39;</span> <span class="o">%</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="c1"># 创建一个多线程TCP服务器</span>
     <span class="n">server</span> <span class="o">=</span> <span class="n">socketserver</span><span class="o">.</span><span class="n">ThreadingTCPServer</span><span class="p">((</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">9999</span><span class="p">),</span> <span class="n">MyServer</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;启动socketserver服务器！&quot;</span><span class="p">)</span>
@@ -286,7 +291,7 @@ socketserver模块中使用的服务器类主要有：
 </div>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id10">服务器 2</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">TCPServer</span>
@@ -329,7 +334,7 @@ socketserver模块中使用的服务器类主要有：
 <ul class="simple">
 <li>客户端和socket一样，保持不变</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">客户端依然使用socket模块就可以了，不需要导入socketserver模块</span>
@@ -396,11 +401,19 @@ socketserver模块还提供了ThreadingUDPServer类，用于提供多线程的UD
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -411,7 +424,6 @@ socketserver模块还提供了ThreadingUDPServer类，用于提供多线程的UD
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

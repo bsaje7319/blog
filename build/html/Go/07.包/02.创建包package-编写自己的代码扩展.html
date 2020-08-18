@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="7.3. 03.导出标识符-让外部访问包的类型和值" href="03.导出标识符-让外部访问包的类型和值.html" />
     <link rel="prev" title="7.1. 包" href="01.包.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -124,6 +128,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -162,7 +167,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -174,7 +179,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/07.包/02.创建包package-编写自己的代码扩展.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/07.包/02.创建包package-编写自己的代码扩展.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -198,11 +203,11 @@
 <p>包(package)是多个Go源码的集合，是一种高级的代码复用方案，Go语言默认为我们提供了很多包，
 如：fmt、os、io包等，开发者可以根据自己的需要创建自己的包。</p>
 <p>包要求在同一个目录下的索引文件的第一行添加如下代码，以标记该文件归属的包：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">包名</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">包名</span>
 </pre></div>
 </div>
 <p>包的特性如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>· 一个目录下的同级文件归属一个包
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>· 一个目录下的同级文件归属一个包
 · 包名可以与其目录不同名
 · 包名为main的包为应用程序的入口，编译源码没有main包时，将无法编译输出可执行文件。
 </pre></div>
@@ -229,11 +234,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -244,7 +257,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

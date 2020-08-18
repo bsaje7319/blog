@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2.4. 列表-可以快速增删的非连续空间的容器" href="04.列表-可以快速增删的非连续空间的容器.html" />
     <link rel="prev" title="2.2. 切片-动态分配大小的连续空间" href="02.切片-动态分配大小的连续空间.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -130,6 +134,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -168,7 +173,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -180,7 +185,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/02.容器-存储与组织数据的方式/03.映射（map）-建立事务关联的容器.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/02.容器-存储与组织数据的方式/03.映射（map）-建立事务关联的容器.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -211,7 +216,7 @@
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id5">2.3.1. 添加关联到map并访问关联和数据</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Go语言中map的定义是这样的：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>map[keyType]ValueType
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>map[keyType]ValueType
 
 · KeyType为键类型
 · ValueType为键对应的值类型
@@ -219,7 +224,7 @@
 一个map的键和值总是成对出现的。
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -235,7 +240,7 @@
 </pre></div>
 </div>
 <p>另外一种声明map的方式</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="p">:</span><span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">string</span><span class="p">]</span><span class="n">string</span><span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="p">:</span><span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">string</span><span class="p">]</span><span class="n">string</span><span class="p">{</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span>   <span class="s2">&quot;hujianli&quot;</span><span class="p">,</span>
     <span class="s2">&quot;age&quot;</span><span class="p">:</span>    <span class="s2">&quot;22&quot;</span><span class="p">,</span>
     <span class="s2">&quot;sex&quot;</span><span class="p">:</span>    <span class="s2">&quot;man&quot;</span><span class="p">,</span>
@@ -248,7 +253,7 @@
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id6">2.3.2. 遍历map中的键值对– 访问关联关系</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="p">:</span><span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">string</span><span class="p">]</span><span class="n">string</span><span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="p">:</span><span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">string</span><span class="p">]</span><span class="n">string</span><span class="p">{</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span>   <span class="s2">&quot;hujianli&quot;</span><span class="p">,</span>
     <span class="s2">&quot;age&quot;</span><span class="p">:</span>    <span class="s2">&quot;22&quot;</span><span class="p">,</span>
     <span class="s2">&quot;sex&quot;</span><span class="p">:</span>    <span class="s2">&quot;man&quot;</span><span class="p">,</span>
@@ -259,7 +264,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">只遍历值</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">只遍历值</span>
 <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">i2</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="n">m</span> <span class="p">{</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i2</span><span class="p">)</span>
 <span class="p">}</span>
@@ -270,7 +275,7 @@
 </pre></div>
 </div>
 <p>如果要特定顺序的遍历结果。正确的做法是排序</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;fmt&quot;</span>
@@ -299,12 +304,12 @@
 <div class="section" id="delete-map">
 <h2><a class="toc-backref" href="#id7">2.3.3. 使用delete()函数从map中删除键值对</a><a class="headerlink" href="#delete-map" title="Permalink to this headline">¶</a></h2>
 <p>delete函数从map中删除一组键值对，delete函数的格式如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>delete(map,键)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>delete(map,键)
 · map为要删除的map实例
 · 键为要删除map键值对中的键
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -326,14 +331,14 @@
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id8">2.3.4. 清空map中的所有元素</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Go 语言中没有清空map的方法和函数。清空map的位于方法是重新make一个新的map。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Go 语言中没有清空map的方法和函数。清空map的位于方法是重新make一个新的map。
 Go中的并行垃圾回收效率比写一个清空函数高效多了。
 </pre></div>
 </div>
 </div>
 <div class="section" id="map-sync-map">
 <h2><a class="toc-backref" href="#id9">2.3.5. 能够在并发环境中使用的map-sync.Map</a><a class="headerlink" href="#map-sync-map" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;fmt&quot;</span>
@@ -386,11 +391,19 @@ Go中的并行垃圾回收效率比写一个清空函数高效多了。
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -401,7 +414,6 @@ Go中的并行垃圾回收效率比写一个清空函数高效多了。
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

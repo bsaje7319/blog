@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="22.3.7. 模拟登陆webscraping.com网站" href="07.模拟登陆webscraping.com网站.html" />
     <link rel="prev" title="22.3.5. 项目实战：爬取matplotlib源码文件" href="05.项目实战：爬取matplotlib源码文件.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,13 +119,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../02.Flask_Web框架/index.html">22.2. Flask_Web框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">22.3. Scrapy爬虫框架</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="01.Scrapy爬虫框架.html">22.3.1. Scrapy爬虫框架</a></li>
 <li class="toctree-l4"><a class="reference internal" href="02.MongoDB的常用操作与导出.html">22.3.2. MongoDB的常用操作与导出</a></li>
@@ -140,6 +144,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
@@ -155,6 +160,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -193,7 +199,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -207,7 +213,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/03.Scrapy爬虫框架/06.项目实战：下载360图片.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/03.Scrapy爬虫框架/06.项目实战：下载360图片.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -228,14 +234,14 @@
 </div>
 <div class="section" id="id1">
 <h1><a class="toc-backref" href="#id2">22.3.6. 项目实战:下载360图片</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default"><div class="highlight"><pre><span></span>爬取网址：http://image.so.com/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>爬取网址：http://image.so.com/
 爬取信息：爬取图片
 爬取方式：scrapy框架
 存储方式：ImagesPipeline
 </pre></div>
 </div>
 <p>1.图片加载规律：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>http://image.so.com/zj?ch=go&amp;t1=402&amp;sn=0&amp;listtype=new&amp;temp=1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://image.so.com/zj?ch=go&amp;t1=402&amp;sn=0&amp;listtype=new&amp;temp=1
 http://image.so.com/zj?ch=go&amp;t1=402&amp;sn=30&amp;listtype=new&amp;temp=1
 http://image.so.com/zj?ch=go&amp;t1=402&amp;sn=60&amp;listtype=new&amp;temp=1
 http://image.so.com/zj?ch=go&amp;t1=402&amp;sn=90&amp;listtype=new&amp;temp=1
@@ -245,8 +251,8 @@ http://image.so.com/zj?ch=go&amp;t1=402&amp;sn=90&amp;listtype=new&amp;temp=1
 <p>其中，ch为分类，sn为页数，图片加载采用JavaScript脚本完成，通过XHR项可以简单获取，
 另外网站使用jQuery发送请求，响应结果为json数据，下面使用json库可以解析结果。</p>
 <p>调用
-<code class="docutils literal"><span class="pre">scrapy</span> <span class="pre">shell</span> <span class="pre">http://image.so.com/zjl?ch=beauty&amp;sn=30&amp;listtype=new&amp;temp=1</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">json</span>
+<code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">shell</span> <span class="pre">http://image.so.com/zjl?ch=beauty&amp;sn=30&amp;listtype=new&amp;temp=1</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">r</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
 
@@ -268,20 +274,20 @@ http://image.so.com/zj?ch=go&amp;t1=402&amp;sn=90&amp;listtype=new&amp;temp=1
 </div>
 <p><img alt="image1" src="../../../_images/360-down00002.png" /></p>
 <p>编码实现</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span> (1）创建Scrapy项目，并使用scrapy  genspider命令创建Spider。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> (1）创建Scrapy项目，并使用scrapy  genspider命令创建Spider。
 （2）在配置文件中启用ImagesPipeline，并指定图片下载目录。
 （3）实现ImagesSpider。
 </pre></div>
 </div>
 <p>01　首先创建Scrapy项目，取名为so_image，再使用scrapy
 genspider命令创建Spider。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ scrapy startproject so_image
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ scrapy startproject so_image
 $ cd so_image
 $ scrapy genspider images image.so.com
 </pre></div>
 </div>
-<p>02 <code class="docutils literal"><span class="pre">settings.py</span></code>中启用ImagesPipeline</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Obey robots.txt rules</span>
+<p>02 <code class="docutils literal notranslate"><span class="pre">settings.py</span></code>中启用ImagesPipeline</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obey robots.txt rules</span>
 <span class="n">ROBOTSTXT_OBEY</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">{</span>
@@ -290,8 +296,8 @@ $ scrapy genspider images image.so.com
 <span class="n">IMAGES_STORE</span> <span class="o">=</span> <span class="s1">&#39;download_images&#39;</span>
 </pre></div>
 </div>
-<p>03.<code class="docutils literal"><span class="pre">image.py</span></code>中实现爬虫主程序</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<p>03.<code class="docutils literal notranslate"><span class="pre">image.py</span></code>中实现爬虫主程序</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">scrapy</span>
 <span class="kn">from</span> <span class="nn">scrapy</span> <span class="k">import</span> <span class="n">Request</span>
 <span class="kn">import</span> <span class="nn">json</span>
@@ -340,11 +346,19 @@ $ scrapy genspider images image.so.com
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -355,7 +369,6 @@ $ scrapy genspider images image.so.com
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

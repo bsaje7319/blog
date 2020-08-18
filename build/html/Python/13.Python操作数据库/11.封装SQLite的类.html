@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,22 +33,20 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="next" title="14. Python 三方库学习" href="../14.Python三方库/index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13.12. 数据库及ORM" href="12.数据库及ORM设计.html" />
     <link rel="prev" title="13.10. 使用ORM工具操作mongoDB数据库" href="10.使用ORM工具操作mongoDB.html" /> 
 </head>
 
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -122,13 +126,14 @@
 <li class="toctree-l3"><a class="reference internal" href="09.Pyhton操作Redis数据库.html">13.9. Python操作Redis数据库</a></li>
 <li class="toctree-l3"><a class="reference internal" href="10.使用ORM工具操作mongoDB.html">13.10. 使用ORM工具操作mongoDB数据库</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">13.11. 封装SQLite的类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.数据库及ORM设计.html">13.12. 数据库及ORM</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -146,6 +151,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -184,7 +190,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -196,7 +202,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/13.Python操作数据库/11.封装SQLite的类.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/13.Python操作数据库/11.封装SQLite的类.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -217,7 +223,7 @@
 </div>
 <div class="section" id="sqlite">
 <h1><a class="toc-backref" href="#id1">13.11. 封装SQLite的类</a><a class="headerlink" href="#sqlite" title="Permalink to this headline">¶</a></h1>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">sqlite3</span>
@@ -539,7 +545,7 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ip address initialize success!&#39;</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">with</span> <span class="n">MySqliteDb</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
         <span class="c1"># initDb(db)</span>
         <span class="c1"># print(&#39;Sqlite3 Db initialize success!&#39;)</span>
@@ -568,7 +574,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../14.Python三方库/index.html" class="btn btn-neutral float-right" title="14. Python 三方库学习" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="12.数据库及ORM设计.html" class="btn btn-neutral float-right" title="13.12. 数据库及ORM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="10.使用ORM工具操作mongoDB.html" class="btn btn-neutral float-left" title="13.10. 使用ORM工具操作mongoDB数据库" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -580,11 +586,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -595,7 +609,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="20.15. 手写python爬虫" href="14.手写Python爬虫.html" />
     <link rel="prev" title="20.13. 表单交互与模拟登陆" href="12.表单交互与模拟登录.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">20. Python网络爬虫</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01.基础语法复习.html">20.1. 基础语法复习</a></li>
@@ -132,8 +136,9 @@
 <li class="toctree-l3"><a class="reference internal" href="11.异步加载.html">20.12. 异步加载</a></li>
 <li class="toctree-l3"><a class="reference internal" href="12.表单交互与模拟登录.html">20.13. 表单交互与模拟登陆</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">20.14. Selenium模拟浏览器</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#selenium-phantomjs">20.14.1. Selenium + PhantomJS的配合使用</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">20.14.2. PhantomJS实例 - 淘宝商品搜索和翻页</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">20.14.1. Selenium网络爬虫的王者</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selenium-phantomjs">20.14.2. Selenium + PhantomJS的配合使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">20.14.3. PhantomJS实例 - 淘宝商品搜索和翻页</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="14.手写Python爬虫.html">20.15. 手写python爬虫</a></li>
@@ -165,6 +170,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -203,7 +209,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -215,7 +221,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/22.Python网络爬虫/13.Selenium模拟浏览器.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/22.Python网络爬虫/13.Selenium模拟浏览器.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -231,44 +237,252 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#selenium" id="id4">Selenium模拟浏览器</a><ul>
-<li><a class="reference internal" href="#selenium-phantomjs" id="id5">Selenium + PhantomJS的配合使用</a><ul>
-<li><a class="reference internal" href="#phantomjs" id="id6">1. PhantomJS的安装</a></li>
-<li><a class="reference internal" href="#id1" id="id7">2. PhantomJS的使用</a></li>
-<li><a class="reference internal" href="#id2" id="id8">3.以简书网的某篇文章为例，进行信息的爬取。</a></li>
+<li><a class="reference internal" href="#selenium" id="id12">Selenium模拟浏览器</a><ul>
+<li><a class="reference internal" href="#id1" id="id13">Selenium网络爬虫的王者</a><ul>
+<li><a class="reference internal" href="#id2" id="id14">顺利使用Selenium工具前的安装工作</a></li>
+<li><a class="reference internal" href="#id3" id="id15">1. 安装Selenium</a></li>
+<li><a class="reference internal" href="#id4" id="id16">2. 安装浏览器</a></li>
+<li><a class="reference internal" href="#id5" id="id17">3.驱动程序的安装</a></li>
+<li><a class="reference internal" href="#python" id="id18">用Python控制点选超链接</a></li>
+<li><a class="reference internal" href="#id6" id="id19">用Python填写窗体和送出</a></li>
+<li><a class="reference internal" href="#id7" id="id20">用Python处理使用网页的特殊按键</a></li>
+<li><a class="reference internal" href="#id8" id="id21">用Python处理浏览器运作</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id3" id="id9">PhantomJS实例 - 淘宝商品搜索和翻页</a></li>
+<li><a class="reference internal" href="#selenium-phantomjs" id="id22">Selenium + PhantomJS的配合使用</a><ul>
+<li><a class="reference internal" href="#phantomjs" id="id23">1. PhantomJS的安装</a></li>
+<li><a class="reference internal" href="#id9" id="id24">2. PhantomJS的使用</a></li>
+<li><a class="reference internal" href="#id10" id="id25">3.以简书网的某篇文章为例，进行信息的爬取。</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11" id="id26">PhantomJS实例 - 淘宝商品搜索和翻页</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="selenium">
-<h1><a class="toc-backref" href="#id4">20.14. Selenium模拟浏览器</a><a class="headerlink" href="#selenium" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id12">20.14. Selenium模拟浏览器</a><a class="headerlink" href="#selenium" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id13">20.14.1. Selenium网络爬虫的王者</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Selenium功能可以控制浏览器，所以当使用Selenium当爬虫工具时，网络服务器会认为来读取数据的是浏览器，所以不会有被阻挡无法读取网页HTML原始文件的问题。当然Selenium功能不仅如此，可以使用它单击链接，填写登录信息，甚至订票系统、抢购系统等。</p>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id14">顺利使用Selenium工具前的安装工作</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>如果想要在Windows系统内顺利使用Selenium执行工作，必须安装下列3项工具以及一个设定。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>① Selenium工具。
+
+②浏览器，使用Selenium市面上最常见是安装Firefox，也可以是Chrome或IE，本书将以Firefox为主要说明。另外，也会说明安装Chrome方式。
+
+③ 驱动程序，这是指Selenium驱动浏览器的程序，其实这部分信息很重要，但是目前极少文件有说明，因此常造成读者学习上的障碍。因为依照一般说明，结果是错误信息。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id15">1. 安装Selenium</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>pip方式安装</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">selenium</span>
+</pre></div>
+</div>
+<p>未来程序的导入稍微不一样，如下所示:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id16">2. 安装浏览器</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>这部分也相对单纯，可以至https://www.mozilla.org网页下载Firefox：</p>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id17">3.驱动程序的安装</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>驱动程序的安装分成下列步骤：</p>
+<p>①安装驱动程序与解压缩。</p>
+<p>②将驱动程序放在PATH路径内。</p>
+<p>③将驱动程序路径放在Python程序内。</p>
+<ul class="simple">
+<li>以Firefox为实例</li>
+</ul>
+<p>目前绝大部分的用户皆是使用Python +
+Selenium驱动Firefox浏览器，这时需要的驱动程序是<code class="docutils literal notranslate"><span class="pre">geckodriver.exe</span></code>，这个程序可以至<code class="docutils literal notranslate"><span class="pre">github.com</span></code>下载。</p>
+<p>解压缩之后的geckodriver.exe放在D:/geckodriver内，未来只要将这个文件路径配合参数设定放在webdriver.Firefox(
+)内，就可以正确执行了。</p>
+<ul class="simple">
+<li>以Chrome为实例</li>
+</ul>
+<p>如果要使用Python +
+Selenium驱动Chrome浏览器，这时需要的驱动程序是<code class="docutils literal notranslate"><span class="pre">chromedriver.exe</span></code>，这个程序可以至下列网址下载。</p>
+<p>这个文件下载后不用解压缩，解压缩之后的chromedriver.exe放在D:/gekodriver内，未来只要将这个文件路径配合参数设定放在webdriver.Chrome(
+)内，就可以正确执行了。</p>
+</div>
+<div class="section" id="python">
+<h3><a class="toc-backref" href="#id18">用Python控制点选超链接</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">driverPath</span> <span class="o">=</span> <span class="s2">&quot;D:\geckodriver\geckodriver.exe&quot;</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="n">driverPath</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.cnblogs.com/liangjingfu/p/9335762.html&quot;</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>        <span class="c1"># 网页下载至浏览器</span>
+
+<span class="n">eleLink</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_link_text</span><span class="p">(</span><span class="s2">&quot;首页&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">eleLink</span><span class="p">))</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">eleLink</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id19">用Python填写窗体和送出</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>使用Firefox模拟登陆豆瓣网站</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># @auther:   18793</span>
+<span class="c1"># @Date：    2020/7/29 23:38</span>
+<span class="c1"># @filename: example001.py</span>
+<span class="c1"># @Email:    1879324764@qq.com</span>
+<span class="c1"># @Software: PyCharm</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.douban.com&#39;</span>
+<span class="n">driverPath</span> <span class="o">=</span> <span class="s2">&quot;D:\geckodriver\geckodriver.exe&quot;</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="n">driverPath</span><span class="p">)</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">browser</span><span class="o">.</span><span class="n">implicitly_wait</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 重点1要先切换到子框架</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">browser</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># 重点2要先点击用账号密码登录的按钮，不然会找不到输入账号和密码的地方</span>
+<span class="n">bottom1</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div[1]/div[1]/ul[1]/li[2]&#39;</span><span class="p">)</span>
+<span class="n">bottom1</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+<span class="n">input1</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">)</span>
+<span class="n">input1</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">input1</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;13262662216&#39;</span><span class="p">)</span>
+
+<span class="n">input2</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
+<span class="n">input2</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">input2</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;xxxxxxxxxxx&#39;</span><span class="p">)</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># 手动输入验证码。。这个后面再弄</span>
+
+<span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s2">&quot;//div[@class=&#39;account-form-field-submit &#39;]/a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="c1"># bottom.click()</span>
+<span class="c1"># browser.quit()</span>
+</pre></div>
+</div>
+<p>参考文献：</p>
+<p><a class="reference external" href="https://blog.csdn.net/zhangcongyi420/article/details/103549890?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare">https://blog.csdn.net/zhangcongyi420/article/details/103549890?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare</a></p>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id20">用Python处理使用网页的特殊按键</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>经上述声明后未来可以用Keys调用相关属性，下列是常用属性内容。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ENTER/RETURN：相当于键盘的Enter和Return按键。
+
+PAGE_DOWN/PAGE_UP/HOME/END：相当于键盘的PAGE_DOWN、PAGE_UP、HOME、END。
+
+UP/DOWN/LEFT/RIGHT：相当于键盘的上、下、左、右箭头键。上述使用方式是在前方加上“Keys.”
+
+例如，Keys.HOME。
+</pre></div>
+</div>
+<p>代码示例</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="k">import</span> <span class="n">Keys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.jb51.net/web/list220_1.html&#39;</span>
+<span class="c1"># Goole浏览器</span>
+<span class="n">driverPath</span> <span class="o">=</span> <span class="s2">&quot;D:\chromedriver/chromedriver.exe&quot;</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="n">driverPath</span><span class="p">)</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># # Firefox浏览器</span>
+<span class="c1"># driverPath = &quot;D:\geckodriver\geckodriver.exe&quot;</span>
+<span class="c1"># browser = webdriver.Firefox(executable_path=driverPath)</span>
+<span class="c1"># browser.get(url)</span>
+
+<span class="n">ele</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_tag_name</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ele</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">PAGE_DOWN</span><span class="p">)</span>           <span class="c1"># 网页滚动到下一页</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ele</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>                 <span class="c1"># 网页滚动到最底部</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ele</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">PAGE_UP</span><span class="p">)</span>             <span class="c1"># 网页滚动到上一页</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ele</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">HOME</span><span class="p">)</span>                <span class="c1"># 网页滚动到最上面</span>
+</pre></div>
+</div>
+<p>执行结果 每次间隔3秒，可以观察页面内容的滚动。</p>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id21">用Python处理浏览器运作</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>常见的运作有下列方法：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>forward( )：往前一页。
+
+back( )：往回一页。
+
+refresh( )：更新网页。
+
+quit( )：关闭网页，相当于关闭浏览器。
+</pre></div>
+</div>
+<p>上述必须用Firefox浏览器对象启动，也就是我们本章的变量browser，例如，browser.refresh(
+)可更新网页，browser.quit( )可以关闭网页。</p>
+<p>代码示例</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="k">import</span> <span class="n">Keys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.broadview.com.cn/book?tab=ebook&#39;</span>
+<span class="c1"># Goole浏览器</span>
+<span class="n">driverPath</span> <span class="o">=</span> <span class="s2">&quot;D:\chromedriver/chromedriver.exe&quot;</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="n">driverPath</span><span class="p">)</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># # Firefox浏览器</span>
+<span class="c1"># driverPath = &quot;D:\geckodriver\geckodriver.exe&quot;</span>
+<span class="c1"># browser = webdriver.Firefox(executable_path=driverPath)</span>
+<span class="c1"># browser.get(url)</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>           <span class="c1"># 刷新网页</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>           <span class="c1"># 刷新网页</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>           <span class="c1"># 刷新网页</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>           <span class="c1"># 刷新网页</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>           <span class="c1"># 刷新网页</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>              <span class="c1"># 关闭网页</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="selenium-phantomjs">
-<h2><a class="toc-backref" href="#id5">20.14.1. Selenium + PhantomJS的配合使用</a><a class="headerlink" href="#selenium-phantomjs" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">Selenium</span></code>：用于模拟真实用户在浏览器中操作。对于一些采用异步加载技术的网页，如果难以用抓包来构造爬虫，可以通过Selenium让浏览器自动加载页面，从而获取所需的数据。</p>
-<p><code class="docutils literal"><span class="pre">PhantomJS</span></code>：无界面浏览器，相比Chrome，Firefox等浏览器，意味着开销小，速度快。</p>
-<p><code class="docutils literal"><span class="pre">可直接在官网上下载：http://phantomjs.org/</span></code></p>
+<h2><a class="toc-backref" href="#id22">20.14.2. Selenium + PhantomJS的配合使用</a><a class="headerlink" href="#selenium-phantomjs" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Selenium</span></code>：用于模拟真实用户在浏览器中操作。对于一些采用异步加载技术的网页，如果难以用抓包来构造爬虫，可以通过Selenium让浏览器自动加载页面，从而获取所需的数据。</p>
+<p><code class="docutils literal notranslate"><span class="pre">PhantomJS</span></code>：无界面浏览器，相比Chrome，Firefox等浏览器，意味着开销小，速度快。</p>
+<p><code class="docutils literal notranslate"><span class="pre">可直接在官网上下载：http://phantomjs.org/</span></code></p>
 <div class="section" id="phantomjs">
-<h3><a class="toc-backref" href="#id6">1. PhantomJS的安装</a><a class="headerlink" href="#phantomjs" title="Permalink to this headline">¶</a></h3>
-<p>①下载PhantomJS文件后，解压并将phantomjs.exe复制到系统路径中，例如：<code class="docutils literal"><span class="pre">C:\Python36。</span></code></p>
+<h3><a class="toc-backref" href="#id23">1. PhantomJS的安装</a><a class="headerlink" href="#phantomjs" title="Permalink to this headline">¶</a></h3>
+<p>①下载PhantomJS文件后，解压并将phantomjs.exe复制到系统路径中，例如：<code class="docutils literal notranslate"><span class="pre">C:\Python36。</span></code></p>
 <p>②运行下述代码无误，说明PhantomJS环境已经配置好。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
 <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">PhantomJS</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>3.使用selenium操作元素的常用方法有：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">elem</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;输入内容&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elem</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;输入内容&quot;</span><span class="p">)</span>
 <span class="n">elem</span><span class="o">.</span><span class="n">click</span><span class="p">()</span> <span class="c1">#鼠标单击元素</span>
 <span class="n">elem</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span> <span class="c1">#清除元素内容</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id1">
-<h3><a class="toc-backref" href="#id7">2. PhantomJS的使用</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">以豆瓣为例：</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id24">2. PhantomJS的使用</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">以豆瓣为例：</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/23 17:25</span>
@@ -313,13 +527,13 @@
 <p>对于不复杂的网页结构，可以使用class、name、id属性来定位元素。
 对于复杂的网页结构来说，使用Xpath更加合适。</p>
 </div>
-<div class="section" id="id2">
-<h3><a class="toc-backref" href="#id8">3.以简书网的某篇文章为例，进行信息的爬取。</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>爬取网址：https://www.jianshu.com/p/c80badcaa5bf
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id25">3.以简书网的某篇文章为例，进行信息的爬取。</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>爬取网址：https://www.jianshu.com/p/c80badcaa5bf
 爬取方式：selenium + phantomJS
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
 <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">PhantomJS</span><span class="p">()</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.jianshu.com/p/c80badcaa5bf&quot;</span><span class="p">)</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">implicitly_wait</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>                                       <span class="c1">#隐式等待20秒</span>
@@ -334,25 +548,25 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">author</span><span class="p">,</span><span class="n">date</span><span class="p">,</span><span class="n">word</span><span class="p">,</span><span class="n">view</span><span class="p">,</span><span class="n">comment</span><span class="p">,</span><span class="n">like</span><span class="p">,</span><span class="n">reward</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">代码</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">author1</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;//span[@class=&quot;name&quot;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<p><code class="docutils literal notranslate"><span class="pre">代码</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">author1</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;//span[@class=&quot;name&quot;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 </pre></div>
 </div>
 <p>看出，要想取得文本信息，要在末尾加上.text，而Xpath的语法是路径后加上/text()，就这一点不同需要注意。</p>
 </div>
 </div>
-<div class="section" id="id3">
-<h2><a class="toc-backref" href="#id9">20.14.2. PhantomJS实例 - 淘宝商品搜索和翻页</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>爬取网址：https://www.taobao.com/
+<div class="section" id="id11">
+<h2><a class="toc-backref" href="#id26">20.14.3. PhantomJS实例 - 淘宝商品搜索和翻页</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>爬取网址：https://www.taobao.com/
 爬取信息：商品价格，付款人数，商品名称、商家名称和地址
 存储方式：mongodb存储
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>淘宝的商品信息是采用Ajax动态加载的，所以使用PhantomJS能自动加载内容，省去了分析构造网页的步骤。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>淘宝的商品信息是采用Ajax动态加载的，所以使用PhantomJS能自动加载内容，省去了分析构造网页的步骤。
 </pre></div>
 </div>
 <p>代码信息：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/24 11:09</span>
@@ -443,7 +657,7 @@
     <span class="k">return</span> <span class="n">driver</span><span class="o">.</span><span class="n">current_url</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">PhantomJS</span><span class="p">()</span>
     <span class="c1"># driver = webdriver.Chrome()</span>
     <span class="n">driver</span><span class="o">.</span><span class="n">maximize_window</span><span class="p">()</span>
@@ -481,11 +695,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -496,7 +718,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="8.8. 08.Go语言RPC(模拟远程过程调用)" href="08.Go语言RPC(模拟远程过程调用).html" />
     <link rel="prev" title="8.6. 06.Go语言channel超时机制" href="06.Go语言channel超时机制.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -133,6 +137,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -171,7 +176,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -183,7 +188,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/08.并发/07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/08.并发/07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -215,7 +220,7 @@
 <p>在使用通道时，想同时接收多个通道的数据是一件困难的事情。</p>
 <p>通道在接收数据时，如果没有数据可以接收将会发生阻塞。</p>
 <p>虽然可以使用如下模式进行遍历，但运行性能会非常差。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>for{
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for{
     // 尝试接收ch1通道
     data, ok := &lt;-ch1
     // 尝试接收ch2通道
@@ -230,7 +235,7 @@
 每个选择条件由case语句来描述。</p>
 <p>与switch语句可以选择任何可使用相等比较的条件相比，select有比较多的限制，其中最大的一条限制就是每个case语句里必须是一个IO操作，
 大致结构如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>select{
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>select{
     case 操作1:
         响应操作1
     case 操作2:
@@ -269,7 +274,7 @@
 <p>· default：当没有任何操作时，默认执行 default 中的语句。</p>
 <p>可以看出，select不像switch，后面并不带判断条件，而是直接去查看case语句。每个case语句都必须是一个面向channel的操作。</p>
 <p>基于此功能，我们可以实现一个有趣的程序：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -309,11 +314,19 @@ func main() {
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -324,7 +337,6 @@ func main() {
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

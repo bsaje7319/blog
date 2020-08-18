@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="9.4. 高级文件操作" href="04.高级文件操作.html" />
     <link rel="prev" title="9.2. 读写文件" href="02.读写文件.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -148,7 +152,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -166,6 +170,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -204,7 +209,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -216,7 +221,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/09.Python文件操作/03.使用with语句读写文件.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/09.Python文件操作/03.使用with语句读写文件.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -261,19 +266,19 @@
 <h1><a class="toc-backref" href="#id14">9.3. 使用with语句读写文件</a><a class="headerlink" href="#with" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id15">9.3.1. with语句介绍</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>with语句为上下文管理器，__enter__ 和 __exit__两个方法实现，使用with操作文件会自动关闭文件句柄，无需额外进行file.close()
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>with语句为上下文管理器，__enter__ 和 __exit__两个方法实现，使用with操作文件会自动关闭文件句柄，无需额外进行file.close()
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id16">9.3.2. with工作原理</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>（１）紧跟with后面的语句被求值后，返回对象的“__enter__()”方法被调用，这个方法的返回值将被赋值给as后面的变量；
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>（１）紧跟with后面的语句被求值后，返回对象的“__enter__()”方法被调用，这个方法的返回值将被赋值给as后面的变量；
 （２）当with后面的代码块全部被执行完之后，将调用前面返回对象的“__exit__()”方法。
 </pre></div>
 </div>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id17">代码演示</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sample</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sample</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in __enter__&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="s2">&quot;Foo&quot;</span>
@@ -288,7 +293,7 @@
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id18">整个运行过程如下：</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>- （１）__enter__()方法被执行；
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>- （１）__enter__()方法被执行；
 - （２）__enter__()方法返回的值，在这个例子中是”Foo”，赋值给变量sample；
 - （３）执行代码块，打印sample变量的值为”Foo”；
 - （４）__exit__()方法被调用；
@@ -298,7 +303,7 @@
 </div>
 <div class="section" id="id5">
 <h2><a class="toc-backref" href="#id19">9.3.3. 使用 with 处理文件打开</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">##不推荐</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##不推荐</span>
 <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;some_file.txt&quot;</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
   <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -315,7 +320,7 @@
 </div>
 <div class="section" id="with-python-3">
 <h2><a class="toc-backref" href="#id20">9.3.4. 使用with忽视异常(仅限Python 3)</a><a class="headerlink" href="#with-python-3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">##不推荐</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##不推荐</span>
 <span class="k">try</span><span class="p">:</span>
   <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;somefile.txt&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
@@ -329,7 +334,7 @@
 </div>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id21">代码示例</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-、</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">with expression as target:</span>
@@ -346,14 +351,14 @@
 </div>
 <div class="section" id="id7">
 <h2><a class="toc-backref" href="#id22">9.3.5. 同时打开多个文件</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;log1&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">obj1</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;log2&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">obj2</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;log1&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">obj1</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;log2&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">obj2</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id8">
 <h2><a class="toc-backref" href="#id23">9.3.6. 使用with读取文件</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/6/28 12:51</span>
@@ -373,7 +378,7 @@
 </pre></div>
 </div>
 <p>输出信息</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">第1行的数据为</span><span class="p">:</span><span class="mi">1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">第1行的数据为</span><span class="p">:</span><span class="mi">1</span>
 <span class="n">第2行的数据为</span><span class="p">:</span><span class="mi">2</span>
 <span class="n">第3行的数据为</span><span class="p">:</span><span class="mi">3</span>
 <span class="n">第4行的数据为</span><span class="p">:</span><span class="mi">4</span>
@@ -394,7 +399,7 @@
 <div class="section" id="id9">
 <h2><a class="toc-backref" href="#id24">9.3.7. 同时开启2个文件修改后改名</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>代码示例</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="n">src_txt</span> <span class="o">=</span> <span class="s2">&quot;a.txt&quot;</span>
@@ -415,7 +420,7 @@
 </div>
 <div class="section" id="copy">
 <h2><a class="toc-backref" href="#id25">9.3.8. 模拟copy文件操作</a><a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/21 18:01</span>
@@ -434,7 +439,7 @@
 </div>
 <div class="section" id="id10">
 <h2><a class="toc-backref" href="#id26">9.3.9. 模拟copy二进制（图片、音影）文件操作</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/21 18:01</span>
@@ -454,11 +459,11 @@
 </div>
 <div class="section" id="id11">
 <h2><a class="toc-backref" href="#id27">9.3.10. 上下文管理器介绍</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>任何定义了__enter__()方法和__exit__()方法的对象都可以用于上下文管理器。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>任何定义了__enter__()方法和__exit__()方法的对象都可以用于上下文管理器。
 </pre></div>
 </div>
 <p>代码示例</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">任何定义了__enter__()方法和__exit__()方法的对象都可以用于上下文管理器。</span>
@@ -483,7 +488,7 @@
 <div class="section" id="open">
 <h2><a class="toc-backref" href="#id28">9.3.11. 定义一个类似open函数的上下文管理器</a><a class="headerlink" href="#open" title="Permalink to this headline">¶</a></h2>
 <p>代码示例</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
@@ -524,15 +529,15 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">create_file</span><span class="p">(</span><span class="n">file_info</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">FileMgr</span><span class="p">(</span><span class="n">file_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">将文件中所有的首字母改为大写.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p><code class="docutils literal notranslate"><span class="pre">将文件中所有的首字母改为大写.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/8/18 12:38</span>
@@ -547,7 +552,7 @@
 </div>
 <div class="section" id="id12">
 <h2><a class="toc-backref" href="#id29">9.3.12. 文件操作,读写实现用户注册登录</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/11/10 10:26</span>
@@ -605,7 +610,7 @@
         <span class="n">Flag</span> <span class="o">=</span> <span class="n">hu</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -615,7 +620,7 @@
 <p>实际上，在with后面的代码块抛出异常时，exit()方法被执行。开发库时，清理资源，关闭文件等操作，都可以放在exit()方法中。
 总之，with-as表达式极大的简化了每次写finally的工作，这对代码的优雅性是有极大帮助的。
 如果有多项，可以这样写：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;1.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f1</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2.txt&#39;</span><span class="p">)</span> <span class="k">as</span>  <span class="n">f2</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;1.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f1</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2.txt&#39;</span><span class="p">)</span> <span class="k">as</span>  <span class="n">f2</span><span class="p">:</span>
     <span class="c1">#do something</span>
 </pre></div>
 </div>
@@ -642,11 +647,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -657,7 +670,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>22.4.4. Django框架的使用 &mdash; 运维开发修炼之路</title>
+  <title>22.4.3. Django框架的使用 &mdash; 运维开发修炼之路</title>
   
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
 
   
   
@@ -17,7 +20,9 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,23 +33,21 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="next" title="22.4.5. Django流程跑通" href="03.Django流程跑通.html" />
-    <link rel="prev" title="22.4.3. 安装DjangoWeb框架" href="01.安装DjangoWeb框架.html" /> 
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="22.4.4. Django流程跑通" href="03.Django流程跑通.html" />
+    <link rel="prev" title="22.4.2. 安装DjangoWeb框架" href="01.安装DjangoWeb框架.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,24 +119,24 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../02.Flask_Web框架/index.html">22.2. Flask_Web框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">22.4. Django学习</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="10.Python高效开发实战-Django/index.html">22.4.1. Python高效开发实战-Django</a></li>
-<li class="toctree-l4"><a class="reference internal" href="20.简单的博客系统/index.html">22.4.2. 简单的博客系统</a></li>
-<li class="toctree-l4"><a class="reference internal" href="01.安装DjangoWeb框架.html">22.4.3. 安装DjangoWeb框架</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">22.4.4. Django框架的使用</a></li>
-<li class="toctree-l4"><a class="reference internal" href="03.Django流程跑通.html">22.4.5. Django流程跑通</a></li>
-<li class="toctree-l4"><a class="reference internal" href="07.实战演练-开发Django站点.html">22.4.6. 实战演练-开发Django站点</a></li>
-<li class="toctree-l4"><a class="reference internal" href="08.Django模型层.html">22.4.7. Django模型层</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01.安装DjangoWeb框架.html">22.4.2. 安装DjangoWeb框架</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">22.4.3. Django框架的使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03.Django流程跑通.html">22.4.4. Django流程跑通</a></li>
+<li class="toctree-l4"><a class="reference internal" href="07.实战演练-开发Django站点.html">22.4.5. 实战演练-开发Django站点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="08.Django模型层.html">22.4.6. Django模型层</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
@@ -148,6 +152,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -186,7 +191,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -194,13 +199,13 @@
         
           <li><a href="index.html">22.4. Django学习</a> &raquo;</li>
         
-      <li>22.4.4. Django框架的使用</li>
+      <li>22.4.3. Django框架的使用</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/04.Django学习/02.Django框架的使用.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/04.Django学习/02.Django框架的使用.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -228,14 +233,14 @@
 </ul>
 </div>
 <div class="section" id="django">
-<h1><a class="toc-backref" href="#id3">22.4.4. Django框架的使用</a><a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id3">22.4.3. Django框架的使用</a><a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id4">创建一个Django项目</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>项目存放目录为：<code class="docutils literal"><span class="pre">D:\GitHub\Webproject</span></code></li>
+<li>项目存放目录为：<code class="docutils literal notranslate"><span class="pre">D:\GitHub\Webproject</span></code></li>
 <li>1.创建environments目录用于放置虚拟环境</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="mi">18793</span><span class="o">&gt;</span> <span class="n">virtualenv</span> <span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span>\<span class="n">venv</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="mi">18793</span><span class="o">&gt;</span> <span class="n">virtualenv</span> <span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span>\<span class="n">venv</span>
 <span class="n">Using</span> <span class="n">base</span> <span class="n">prefix</span> <span class="s1">&#39;c:</span><span class="se">\\</span><span class="s1">users</span><span class="se">\\</span><span class="s1">18793</span><span class="se">\\</span><span class="s1">anaconda3&#39;</span>
   <span class="n">No</span> <span class="n">LICENSE</span><span class="o">.</span><span class="n">txt</span> <span class="o">/</span> <span class="n">LICENSE</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">source</span>
 <span class="n">New</span> <span class="n">python</span> <span class="n">executable</span> <span class="ow">in</span> <span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span>\<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span>
@@ -246,7 +251,7 @@
 <ul class="simple">
 <li>2.使用如下命令激活环境</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span>\<span class="n">venv</span><span class="o">&gt;</span><span class="n">d</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span>\<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">activate</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span>\<span class="n">venv</span><span class="o">&gt;</span><span class="n">d</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span>\<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">activate</span>
 
 <span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span>\<span class="n">venv</span><span class="o">&gt;</span><span class="n">cd</span> <span class="o">..</span>
 
@@ -256,7 +261,7 @@
 <ul class="simple">
 <li>3.使用“django-admin”命令创建一个项目</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span><span class="o">&gt;</span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">demo</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span><span class="o">&gt;</span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">demo</span>
 
 <span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span><span class="o">&gt;</span>
 <span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span><span class="o">&gt;</span><span class="n">cd</span> <span class="n">demo</span>
@@ -268,7 +273,7 @@
 <ul class="simple">
 <li>4.使用pychrm打开demo项目，查看目录结构 <img alt="image0" src="../../../_images/demo_django.PNG" /> <img alt="image1" src="../../../_images/django_tee.PNG" /></li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#运行项目</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#运行项目</span>
 <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
 
 
@@ -278,7 +283,7 @@
 </pre></div>
 </div>
 <p><img alt="image2" src="../../../_images/manager_db.PNG" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span>\<span class="n">demo</span><span class="o">&gt;</span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">Webproject</span>\<span class="n">demo</span><span class="o">&gt;</span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
 <span class="n">Username</span> <span class="p">(</span><span class="n">leave</span> <span class="n">blank</span> <span class="n">to</span> <span class="n">use</span> <span class="s1">&#39;18793&#39;</span><span class="p">):</span> <span class="n">hujianli</span>
 <span class="n">Email</span> <span class="n">address</span><span class="p">:</span> <span class="mi">1879324764</span><span class="nd">@qq</span><span class="o">.</span><span class="n">com</span>
 <span class="n">Password</span><span class="p">:</span>
@@ -286,13 +291,13 @@
 <span class="n">Superuser</span> <span class="n">created</span> <span class="n">successfully</span><span class="o">.</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">运行项目</span><span class="p">,</span><span class="n">并访问</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">运行项目</span><span class="p">,</span><span class="n">并访问</span>
 <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">admin</span><span class="o">/</span>
 </pre></div>
 </div>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="#id5">总结</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>创建一个Django 项目
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>创建一个Django 项目
 创建项目：
 django-admin startproject demo
 或者
@@ -310,7 +315,7 @@ python manage.py startapp blog
 <div class="section" id="app">
 <h2><a class="toc-backref" href="#id6">创建App</a><a class="headerlink" href="#app" title="Permalink to this headline">¶</a></h2>
 <p><img alt="image3" src="../../../_images/create_app.PNG" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>D:\GitHub\Webproject\demo&gt;python manage.py startapp app1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>D:\GitHub\Webproject\demo&gt;python manage.py startapp app1
 此时根目录下又多了一个&quot;app1&quot;的目录，如图：
 </pre></div>
 </div>
@@ -318,7 +323,7 @@ python manage.py startapp blog
 <ul class="simple">
 <li>将app1应用加入到项目中</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">修改setting文件</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">修改setting文件</span>
 <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
@@ -402,7 +407,7 @@ python manage.py startapp blog
 <div class="section" id="models">
 <h2><a class="toc-backref" href="#id7">数据模型（models）</a><a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
 <p>在app1的models.py中添加如下代码</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>  <span class="c1"># 引入django.db.models模块</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>  <span class="c1"># 引入django.db.models模块</span>
 
 
 <span class="k">class</span> <span class="nc">CreateUpdate</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>  <span class="c1"># 创建抽象数据模型，同样要继承于models.Model</span>
@@ -440,10 +445,10 @@ python manage.py startapp blog
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="03.Django流程跑通.html" class="btn btn-neutral float-right" title="22.4.5. Django流程跑通" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="03.Django流程跑通.html" class="btn btn-neutral float-right" title="22.4.4. Django流程跑通" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="01.安装DjangoWeb框架.html" class="btn btn-neutral float-left" title="22.4.3. 安装DjangoWeb框架" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="01.安装DjangoWeb框架.html" class="btn btn-neutral float-left" title="22.4.2. 安装DjangoWeb框架" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -452,11 +457,19 @@ python manage.py startapp blog
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -467,7 +480,6 @@ python manage.py startapp blog
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

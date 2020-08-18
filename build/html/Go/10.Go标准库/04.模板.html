@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="10.5. net_http包" href="05.net_http包.html" />
     <link rel="prev" title="10.3. Socket网络" href="03.Socket网络.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -119,6 +123,7 @@
 <li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html">10.6. Go语言操作MySQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html">10.7. Json序列化和反序列化</a></li>
 <li class="toctree-l3"><a class="reference internal" href="08.Go语言常用资料及工具详细汇总.html">10.8. Go语言常用资料及工具详细汇总</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.Go执行shell命令.html">10.9. Go执行shell命令</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
@@ -131,6 +136,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -169,7 +175,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -181,7 +187,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/10.Go标准库/04.模板.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/10.Go标准库/04.模板.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -207,21 +213,21 @@
 <div class="section" id="id1">
 <h1><a class="toc-backref" href="#id2">10.4. 模板</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>Printf也可以做到输出格式化，当然，对于简单的例子来说足够了，但是我们有时候还是需要复杂的
-输出格式，甚至需要将格式化代码分离开来。这时，可以使用<code class="docutils literal"><span class="pre">text/template</span></code>和<code class="docutils literal"><span class="pre">html/template</span></code>。</p>
-<p>Go 官方库提供了两个模板库：<code class="docutils literal"><span class="pre">text/template</span></code> 和 <code class="docutils literal"><span class="pre">html/template</span></code>
+输出格式，甚至需要将格式化代码分离开来。这时，可以使用<code class="docutils literal notranslate"><span class="pre">text/template</span></code>和<code class="docutils literal notranslate"><span class="pre">html/template</span></code>。</p>
+<p>Go 官方库提供了两个模板库：<code class="docutils literal notranslate"><span class="pre">text/template</span></code> 和 <code class="docutils literal notranslate"><span class="pre">html/template</span></code>
 。这两个库类似，当需要输 出html格式的代码时需要使用
-<code class="docutils literal"><span class="pre">html/template</span></code>。</p>
+<code class="docutils literal notranslate"><span class="pre">html/template</span></code>。</p>
 <div class="section" id="text-template">
 <h2><a class="toc-backref" href="#id3">10.4.1. text/template</a><a class="headerlink" href="#text-template" title="Permalink to this headline">¶</a></h2>
 <p>所谓模板引擎，则将模板和数据进行渲染的输出格式化后的字符程序。对于Go，执行这个流程大概需要
 三步。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>·创建模板对象
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>·创建模板对象
 ·加载模板
 ·执行渲染模板
 </pre></div>
 </div>
 <p>其中最后一步就是把加载的字符和数据进行格式化。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import (
     &quot;log&quot;
@@ -254,15 +260,15 @@ func main() {
 </pre></div>
 </div>
 <p>如果把模板的内容存在一个文本文件里tmp.txt</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="nb">range</span> <span class="o">.</span><span class="p">}}</span><span class="o">----------------------------------------</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="nb">range</span> <span class="o">.</span><span class="p">}}</span><span class="o">----------------------------------------</span>
 <span class="n">Name</span><span class="p">:</span> <span class="p">{{</span><span class="o">.</span><span class="n">Name</span><span class="p">}}</span>
 <span class="n">Price</span><span class="p">:</span> <span class="p">{{</span><span class="o">.</span><span class="n">Price</span> <span class="o">|</span><span class="n">printf</span> <span class="s2">&quot;</span><span class="si">%4s</span><span class="s2">&quot;</span><span class="p">}}</span>
 <span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
 </pre></div>
 </div>
 <p>处理文本文件示例：</p>
-<p><code class="docutils literal"><span class="pre">ParseFiles</span></code>接受一个字符串，字符串的内容是一个模板文件的路径。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<p><code class="docutils literal notranslate"><span class="pre">ParseFiles</span></code>接受一个字符串，字符串的内容是一个模板文件的路径。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;log&quot;</span>
@@ -287,8 +293,8 @@ func main() {
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">ParseGlob</span></code>是用正则的方式匹配多个文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>写成template.ParseGlob(“*.txt”) 即可。
+<p><code class="docutils literal notranslate"><span class="pre">ParseGlob</span></code>是用正则的方式匹配多个文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>写成template.ParseGlob(“*.txt”) 即可。
 
 var report = template.Must(template.ParseFiles(&quot;tmp.txt&quot;)
 </pre></div>
@@ -296,8 +302,8 @@ var report = template.Must(template.ParseFiles(&quot;tmp.txt&quot;)
 </div>
 <div class="section" id="html-template">
 <h2><a class="toc-backref" href="#id4">10.4.2. html/template</a><a class="headerlink" href="#html-template" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">index.html</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+<p><code class="docutils literal notranslate"><span class="pre">index.html</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -309,8 +315,8 @@ var report = template.Must(template.ParseFiles(&quot;tmp.txt&quot;)
 &lt;/html&gt;
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">sample.go</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<p><code class="docutils literal notranslate"><span class="pre">sample.go</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;html/template&quot;</span>
@@ -328,7 +334,7 @@ var report = template.Must(template.ParseFiles(&quot;tmp.txt&quot;)
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>运行程序，在浏览器打开：<code class="docutils literal"><span class="pre">http://localhost:8080/</span></code>会看到页面显示Hello
+<p>运行程序，在浏览器打开：<code class="docutils literal notranslate"><span class="pre">http://localhost:8080/</span></code>会看到页面显示Hello
 World!</p>
 </div>
 </div>
@@ -353,11 +359,19 @@ World!</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -368,7 +382,6 @@ World!</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

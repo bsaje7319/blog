@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="12.4. time、datetime模块" href="04.time、datetime模块.html" />
     <link rel="prev" title="12.2. Json和Pickle序列化" href="02.json、pickle、shelve模块.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -143,7 +147,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -161,6 +165,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -199,7 +204,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -211,7 +216,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/12.Python标准库/03.shutil模块.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/12.Python标准库/03.shutil模块.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -238,7 +243,7 @@
 <h1><a class="toc-backref" href="#id3">12.3. shutil模块</a><a class="headerlink" href="#shutil" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id4">12.3.1. 常用的方法</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="s1">&#39;data.db&#39;</span><span class="p">,</span> <span class="s1">&#39;archive.db&#39;</span><span class="p">)</span>             <span class="c1"># 拷贝文件</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s1">&#39;/build/executables&#39;</span><span class="p">,</span> <span class="s1">&#39;installdir&#39;</span><span class="p">)</span>      <span class="c1"># 移动文件或目录</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>              <span class="c1"># 从源src复制到dst中去。当然前提是目标地址是具备可写权限。抛出的异常信息为IOException. 如果当前的dst已存在的话就会被覆盖掉</span>
@@ -253,12 +258,12 @@
 </pre></div>
 </div>
 <p>注</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>       <span class="c1"># 函数将拷贝一个文件</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>       <span class="c1"># 函数将拷贝一个文件</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">()</span>   <span class="c1"># 将拷贝整个文件夹，以及它的所有内容。</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>       <span class="c1"># 函数用于重命名文件，以及文件移动</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 删除目录</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 删除目录</span>
 <span class="n">os</span><span class="o">.</span><span class="n">rmdir和os</span><span class="o">.</span><span class="n">removedirs</span>      <span class="c1">#要求删除从目录非空，不能进行强制删除</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>              <span class="c1"># 不管目录是否非空，都直接删除整个目录</span>
 
@@ -271,51 +276,51 @@
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id5">12.3.2. 文件和目录操作</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>shutil.copyfileobj(fsrc, fdst[, length])</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#将文件内容拷贝到另一个文件中</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#将文件内容拷贝到另一个文件中</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;pexpect_test.py&quot;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">),</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new.txt&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>shutil.copyfile(src, dst, *, follow_symlinks=True)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#拷贝整个文件，没有第二个文件就创建，有就覆盖</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#拷贝整个文件，没有第二个文件就创建，有就覆盖</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="s2">&quot;new.txt&quot;</span><span class="p">,</span><span class="s2">&quot;new2.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>shutil.copymode(src, dst, *, follow_symlinks=True)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#仅拷贝文件权限，文件的内容、组、用户均不变</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#仅拷贝文件权限，文件的内容、组、用户均不变</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">copymode</span><span class="p">(</span><span class="s1">&#39;old.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;new.txt&#39;</span><span class="p">)</span>
 <span class="c1"># 文件权限都变成644了</span>
 </pre></div>
 </div>
 <p>shutil.copystat(src, dst, *, follow_symlinks=True)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#拷贝文件状态的信息，文件必须存在，不copy改动时间</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#拷贝文件状态的信息，文件必须存在，不copy改动时间</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">copystat</span><span class="p">(</span><span class="s1">&#39;old.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;new.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>shutil.copy(src, dst, *, follow_symlinks=True)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#拷贝文件和状态信息，同样不copy改动时间</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#拷贝文件和状态信息，同样不copy改动时间</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">copy2</span><span class="p">(</span><span class="s1">&#39;old.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;new.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>shutil.copytree(src, dst, symlinks=False, ignore=None,
 copy_function=copy2, ignore_dangling_symlinks=False)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#递归的去拷贝文件夹</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#递归的去拷贝文件夹</span>
 <span class="c1">#folder2目录必须不存在，symlinks=True只copy链接文件，如果等于False就copy源文件，ignore等于不copy的文件或者目录</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="s1">&#39;folder1&#39;</span><span class="p">,</span> <span class="s1">&#39;folder2&#39;</span><span class="p">,</span> <span class="n">symlinks</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="n">shutil</span><span class="o">.</span><span class="n">ignore_patterns</span><span class="p">(</span><span class="s1">&#39;*.pyc&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp*&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>shutil.rmtree(path, ignore_errors=False, onerror=None)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#递归的去删除文件</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#递归的去删除文件</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="s1">&#39;folder2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>shutil.move(src, dst, copy_function=copy2)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 递归的去移动文件，它类似mv命令，其实就是重命名。</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 递归的去移动文件，它类似mv命令，其实就是重命名。</span>
 <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">copy_function</span><span class="o">=</span><span class="n">copy2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>shutil.make_archive(base_name, format[, root_dir[, base_dir[, verbose[,
 dry_run[, owner[, group[, logger]]]]]]])</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># /home/ansheng/folder3是保存的文件，gztar是后缀名，/home/folder3是要打包的路径</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># /home/ansheng/folder3是保存的文件，gztar是后缀名，/home/folder3是要打包的路径</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">shutil</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span><span class="s2">&quot;/home/ansheng/folder3&quot;</span><span class="p">,</span> <span class="s1">&#39;gztar&#39;</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="s1">&#39;/home/folder3&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -352,16 +357,16 @@ dry_run[, owner[, group[, logger]]]]]]])</p>
 <li>shutil对压缩包的处理是调用ZipFile和TarFile两个模块来进行的</li>
 </ul>
 <p>copy</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="s1">&#39;hello.py&#39;</span><span class="p">,</span> <span class="s1">&#39;welcome.py&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="s1">&#39;hello.py&#39;</span><span class="p">,</span> <span class="s1">&#39;welcome.py&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Copy Successful</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>move</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s1">&#39;/home/student/work/sample.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/student/Desktop&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s1">&#39;/home/student/work/sample.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/student/Desktop&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>rename</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s1">&#39;sample.bin&#39;</span><span class="p">,</span> <span class="s1">&#39;sample.txt&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s1">&#39;sample.bin&#39;</span><span class="p">,</span> <span class="s1">&#39;sample.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -387,11 +392,19 @@ dry_run[, owner[, group[, logger]]]]]]])</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -402,7 +415,6 @@ dry_run[, owner[, group[, logger]]]]]]])</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

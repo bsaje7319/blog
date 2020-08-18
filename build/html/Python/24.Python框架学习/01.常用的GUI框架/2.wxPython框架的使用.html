@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="22.1.3. Qt框架初探" href="3.Qt框架初探.html" />
     <link rel="prev" title="22.1.1. 常用的GUI框架工具包" href="1.常用的GUI框架工具包.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
@@ -127,9 +131,10 @@
 <li class="toctree-l4"><a class="reference internal" href="4.TkinterGUI模块.html">22.1.4. TkinterGUI模块</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../02.Flask_Web框架/index.html">22.2. Flask_Web框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
@@ -145,6 +150,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -183,7 +189,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -197,7 +203,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/01.常用的GUI框架/2.wxPython框架的使用.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/01.常用的GUI框架/2.wxPython框架的使用.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -235,10 +241,10 @@
 <h2><a class="toc-backref" href="#id5">1 安装wxPython</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>wxPython 是个成熟而且特性丰富的跨平台GUI工具包。 由Robin Dunn 和Ham
 Pasanen 开发</p>
-<p><code class="docutils literal"><span class="pre">官方网站：</span> <span class="pre">http://wxpython.org/</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">官方网站：</span> <span class="pre">http://wxpython.org/</span></code></p>
 <p>wxPython 的安装非常简单，</p>
 <p>使用pip 工具安装只需要一行命令：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#国外pip源，经常会出现超时的现象，-U更新模块</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#国外pip源，经常会出现超时的现象，-U更新模块</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">wxPython</span>
 
 <span class="c1"># 使用国内豆瓣pip源</span>
@@ -248,7 +254,7 @@ Pasanen 开发</p>
 </div>
 <div class="section" id="wx-app">
 <h2><a class="toc-backref" href="#id6">创建一个wx.App子类</a><a class="headerlink" href="#wx-app" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/4/16 13:22</span>
@@ -264,7 +270,7 @@ Pasanen 开发</p>
         <span class="n">frame</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>    <span class="c1">#显示窗口</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">App</span><span class="p">()</span>         <span class="c1">#实例化App类</span>
     <span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>      <span class="c1">#调用App类中的MainLoop()主循环方法</span>
 </pre></div>
@@ -272,7 +278,7 @@ Pasanen 开发</p>
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id7">直接使用wx.App类</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/4/16 13:28</span>
@@ -288,7 +294,7 @@ Pasanen 开发</p>
 <div class="section" id="wx-frame">
 <h2><a class="toc-backref" href="#id8">使用wx.Frame框架</a><a class="headerlink" href="#wx-frame" title="Permalink to this headline">¶</a></h2>
 <p><img alt="image0" src="../../../_images/wx.Frame.PNG" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/4/16 13:32</span>
@@ -298,11 +304,11 @@ Pasanen 开发</p>
 
 <span class="k">class</span> <span class="nc">MyFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">parent</span><span class="p">,</span><span class="nb">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;创建Frame&quot;</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">parent</span><span class="p">,</span><span class="nb">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;创建Frame&quot;</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
 
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>  <span class="c1"># 初始化应用</span>
     <span class="n">frame</span> <span class="o">=</span> <span class="n">MyFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">id</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 实例MyFrame类，并传递参数</span>
     <span class="n">frame</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>  <span class="c1"># 显示窗口</span>
@@ -315,7 +321,7 @@ Pasanen 开发</p>
 <div class="section" id="wx-statictext">
 <h3><a class="toc-backref" href="#id10">wx.StaticText类</a><a class="headerlink" href="#wx-statictext" title="Permalink to this headline">¶</a></h3>
 <p><img alt="image1" src="../../../_images/StaticText_file_class.PNG" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/4/16 13:56</span>
@@ -326,7 +332,7 @@ Pasanen 开发</p>
 
 <span class="k">class</span> <span class="nc">MyFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;创建StaticText 文本&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;创建StaticText 文本&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
         <span class="c1">#创建画板</span>
         <span class="n">panel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="c1"># 创建标题，并设置字体</span>
@@ -339,7 +345,7 @@ Pasanen 开发</p>
         <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simple is better than complex.&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">90</span><span class="p">))</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>  <span class="c1"># 初始化应用</span>
     <span class="n">frame</span> <span class="o">=</span> <span class="n">MyFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">id</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 实例MyFrame类，并传递参数</span>
     <span class="n">frame</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>  <span class="c1"># 显示窗口</span>
@@ -351,7 +357,7 @@ Pasanen 开发</p>
 </div>
 <div class="section" id="wx-textctrl">
 <h2><a class="toc-backref" href="#id11">使用wx.TextCtrl实现登录界面</a><a class="headerlink" href="#wx-textctrl" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/4/16 14:30</span>
@@ -362,7 +368,7 @@ Pasanen 开发</p>
 
 <span class="k">class</span> <span class="nc">MyFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;创建TextCtrl&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;创建TextCtrl&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
         <span class="c1"># 创建面板</span>
         <span class="n">panel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
@@ -374,7 +380,7 @@ Pasanen 开发</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">text_password</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">235</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TE_PASSWORD</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>  <span class="c1"># 初始化应用</span>
     <span class="n">frame</span> <span class="o">=</span> <span class="n">MyFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">id</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 实例MyFrame类，并传递参数</span>
     <span class="n">frame</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>  <span class="c1"># 显示窗口</span>
@@ -385,7 +391,7 @@ Pasanen 开发</p>
 <div class="section" id="button">
 <h2><a class="toc-backref" href="#id12">Button按钮类</a><a class="headerlink" href="#button" title="Permalink to this headline">¶</a></h2>
 <p><img alt="image3" src="../../../_images/Button.PNG" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/4/16 14:30</span>
@@ -396,7 +402,7 @@ Pasanen 开发</p>
 
 <span class="k">class</span> <span class="nc">MyFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;创建TextCtrl&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;创建TextCtrl&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
         <span class="c1"># 创建面板</span>
         <span class="n">panel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
@@ -412,7 +418,7 @@ Pasanen 开发</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">bt_confiirm</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;取消&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">195</span><span class="p">,</span> <span class="mi">130</span><span class="p">))</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>  <span class="c1"># 初始化应用</span>
     <span class="n">frame</span> <span class="o">=</span> <span class="n">MyFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">id</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 实例MyFrame类，并传递参数</span>
     <span class="n">frame</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>  <span class="c1"># 显示窗口</span>
@@ -425,12 +431,12 @@ Pasanen 开发</p>
 <ul class="simple">
 <li>实现一个简单的登录界面框</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding:utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding:utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">wx</span>
 
 <span class="k">class</span> <span class="nc">MyFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="s1">&#39;用户登录&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="s1">&#39;用户登录&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
         <span class="c1"># 创建面板</span>
         <span class="n">panel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
@@ -482,7 +488,7 @@ Pasanen 开发</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">text_password</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="c1"># 清空输入的密码</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>                      <span class="c1"># 初始化</span>
     <span class="n">frame</span> <span class="o">=</span> <span class="n">MyFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="nb">id</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 实例化MyFrame类，并传递参数</span>
     <span class="n">frame</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>                        <span class="c1"># 显示窗口</span>
@@ -512,11 +518,19 @@ Pasanen 开发</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -527,7 +541,6 @@ Pasanen 开发</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

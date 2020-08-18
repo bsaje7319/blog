@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="20.7. Lxml库和Xpath语法" href="06.Lxml库和Xpath语法.html" />
     <link rel="prev" title="20.5. 正则表达式" href="04.正则表达式.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">20. Python网络爬虫</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01.基础语法复习.html">20.1. 基础语法复习</a></li>
@@ -124,10 +128,10 @@
 <li class="toctree-l3"><a class="reference internal" href="03.我的第一个爬虫程序.html">20.4. 我的第一个爬虫程序</a></li>
 <li class="toctree-l3"><a class="reference internal" href="04.正则表达式.html">20.5. 正则表达式</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">20.6. re模块的常用方法</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#re-match">20.6.1. re.match()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#re-serch">20.6.2. re.serch()函数</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#re-sub">20.6.3. re.sub()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#re-findall">20.6.4. re.findall()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#re-match">20.6.1. re.match()方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#re-serch">20.6.2. re.serch()方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#re-sub">20.6.3. re.sub()方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#re-findall">20.6.4. re.findall()方法</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id1">20.6.5. re模块装饰符</a></li>
 </ul>
 </li>
@@ -168,6 +172,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -206,7 +211,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -218,7 +223,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/22.Python网络爬虫/05.re模块的常用方法.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/22.Python网络爬虫/05.re模块的常用方法.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -235,10 +240,10 @@
 <p class="topic-title first">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#re" id="id3">re模块的常用方法</a><ul>
-<li><a class="reference internal" href="#re-match" id="id4">re.match()</a></li>
-<li><a class="reference internal" href="#re-serch" id="id5">re.serch()函数</a></li>
-<li><a class="reference internal" href="#re-sub" id="id6">re.sub()</a></li>
-<li><a class="reference internal" href="#re-findall" id="id7">re.findall()</a></li>
+<li><a class="reference internal" href="#re-match" id="id4">re.match()方法</a></li>
+<li><a class="reference internal" href="#re-serch" id="id5">re.serch()方法</a></li>
+<li><a class="reference internal" href="#re-sub" id="id6">re.sub()方法</a></li>
+<li><a class="reference internal" href="#re-findall" id="id7">re.findall()方法</a></li>
 <li><a class="reference internal" href="#id1" id="id8">re模块装饰符</a><ul>
 <li><a class="reference internal" href="#id2" id="id9">示例</a></li>
 </ul>
@@ -252,8 +257,8 @@
 <p>参考文献</p>
 <p><a class="reference external" href="https://blog.csdn.net/zwq912318834/article/details/78083673">https://blog.csdn.net/zwq912318834/article/details/78083673</a></p>
 <div class="section" id="re-match">
-<h2><a class="toc-backref" href="#id4">20.6.1. re.match()</a><a class="headerlink" href="#re-match" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>##从字符串的第一个开始匹配
+<h2><a class="toc-backref" href="#id4">20.6.1. re.match()方法</a><a class="headerlink" href="#re-match" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>##从字符串的第一个开始匹配
 
 re.match(pattern, string, flags=0)
     1.pattern 为匹配的正则表达式
@@ -263,8 +268,8 @@ re.match(pattern, string, flags=0)
 </div>
 </div>
 <div class="section" id="re-serch">
-<h2><a class="toc-backref" href="#id5">20.6.2. re.serch()函数</a><a class="headerlink" href="#re-serch" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>##搜索整个字符串
+<h2><a class="toc-backref" href="#id5">20.6.2. re.serch()方法</a><a class="headerlink" href="#re-serch" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>##搜索整个字符串
 re.search(pattern, string, flags=0)
     1.pattern 为匹配的正则表达式
     2.string 为要匹配的字符串
@@ -272,7 +277,7 @@ re.search(pattern, string, flags=0)
 </pre></div>
 </div>
 <p>举例</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;one1tow2three3&quot;</span>
 <span class="n">infos</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">infos</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
@@ -280,8 +285,8 @@ re.search(pattern, string, flags=0)
 </div>
 </div>
 <div class="section" id="re-sub">
-<h2><a class="toc-backref" href="#id6">20.6.3. re.sub()</a><a class="headerlink" href="#re-sub" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>re.sub(pattern, repl, string, count=0, flags=0)
+<h2><a class="toc-backref" href="#id6">20.6.3. re.sub()方法</a><a class="headerlink" href="#re-sub" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>re.sub(pattern, repl, string, count=0, flags=0)
     1.pattern 为匹配的正则表达式
     2.repl为替换的字符串
     3.string要被查找替换的原始字符串
@@ -290,7 +295,7 @@ re.search(pattern, string, flags=0)
 </pre></div>
 </div>
 <p>举例</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="n">phone</span> <span class="o">=</span> <span class="s1">&#39;123-4567-1234&#39;</span>
 <span class="n">new_phone</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;\D&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">phone</span><span class="p">)</span>     <span class="c1">#将非数字-替换为空</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">new_phone</span><span class="p">)</span>
@@ -298,13 +303,13 @@ re.search(pattern, string, flags=0)
 </div>
 </div>
 <div class="section" id="re-findall">
-<h2><a class="toc-backref" href="#id7">20.6.4. re.findall()</a><a class="headerlink" href="#re-findall" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#匹配所有符合的内容，并以列表的形式返回</span>
+<h2><a class="toc-backref" href="#id7">20.6.4. re.findall()方法</a><a class="headerlink" href="#re-findall" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#匹配所有符合的内容，并以列表的形式返回</span>
 <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>举例</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;one1tow2three3&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;one1tow2three3&quot;</span>
 <span class="n">infos</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">infos</span><span class="p">)</span>
 </pre></div>
@@ -312,7 +317,7 @@ re.search(pattern, string, flags=0)
 </div>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id8">20.6.5. re模块装饰符</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">I</span>    <span class="c1">#使匹配大小写不敏感</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">I</span>    <span class="c1">#使匹配大小写不敏感</span>
 <span class="n">re</span><span class="o">.</span><span class="n">L</span>    <span class="c1">#做本地化识别匹配</span>
 <span class="n">re</span><span class="o">.</span><span class="n">M</span>    <span class="c1">#多行匹配，影响^和$</span>
 <span class="n">re</span><span class="o">.</span><span class="n">S</span>    <span class="c1">#匹配包括换行在内的所有字符</span>
@@ -323,7 +328,7 @@ re.search(pattern, string, flags=0)
 <p><img alt="image0" src="../../_images/re-biaozhifu-flag0002.png" /></p>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="#id9">示例</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#re.S    #匹配包括换行在内的所有字符</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#re.S    #匹配包括换行在内的所有字符</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&lt;div&gt;指数</span>
 <span class="s1">&lt;/div&gt;&#39;&#39;&#39;</span>
@@ -356,11 +361,19 @@ re.search(pattern, string, flags=0)
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -371,7 +384,6 @@ re.search(pattern, string, flags=0)
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

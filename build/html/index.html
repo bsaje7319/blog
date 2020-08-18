@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Go语言学习" href="Go/index.html" /> 
 </head>
 
@@ -57,7 +60,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="#" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -87,6 +90,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -103,6 +107,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -141,7 +146,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
       <li>Devops学院【Python|Go】专栏一</li>
     
@@ -149,7 +154,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -178,6 +183,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Go/01.Go语言基本语法与使用/01.声明变量.html#id3">1.1.2. 标准格式</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Go/01.Go语言基本语法与使用/01.声明变量.html#id4">1.1.3. 编译器自己推导类型的格式</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Go/01.Go语言基本语法与使用/01.声明变量.html#id5">1.1.4. 短变量声明并初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/01.Go语言基本语法与使用/01.声明变量.html#id8">1.1.5. 函数变量可见性</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Go/01.Go语言基本语法与使用/02.数据类型.html">1.2. 数据类型</a><ul>
@@ -198,6 +204,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Go/01.Go语言基本语法与使用/03.指针.html#id5">1.3.5. 值的传递和引用的传递</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Go/01.Go语言基本语法与使用/03.指针.html#id6">1.3.6. 示例：使用指针变量获取命令行的输入信息</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Go/01.Go语言基本语法与使用/03.指针.html#new">1.3.7. 创建指针的另一种方法-new()函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/01.Go语言基本语法与使用/03.指针.html#id8">1.3.8. 指针的核心要点</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Go/01.Go语言基本语法与使用/04.变量声明周期.html">1.4. 变量声明周期 - 变量能够使用的代码范围</a><ul>
@@ -213,6 +220,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Go/01.Go语言基本语法与使用/05.字符串应用.html#id3">1.5.3. 计算字符串长度</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Go/01.Go语言基本语法与使用/05.字符串应用.html#id4">1.5.4. 遍历字符串-获取每一个字符串元素</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Go/01.Go语言基本语法与使用/05.字符串应用.html#unicode">1.5.5. 按Unicode字符遍历字符串</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/01.Go语言基本语法与使用/05.字符串应用.html#id10">1.5.6. 字符串的常见操作</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Go/01.Go语言基本语法与使用/06.常量.html">1.6. 常量–恒定不变的值</a><ul>
@@ -456,7 +464,10 @@
 <li class="toctree-l4"><a class="reference internal" href="Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.html#golangcpu">8.1.6. 设置Golang运行的cpu数</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Go/08.并发/02.goroutine和coroutine的区别.html">8.2. 02.goroutine和coroutine的区别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Go/08.并发/02.goroutine和coroutine的区别.html">8.2. 02.goroutine和coroutine的区别</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Go/08.并发/02.goroutine和coroutine的区别.html#goroutine">8.2.1. 启动多个Goroutine</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.html">8.3. 03.通道(channel)-在多个goroutine间通信的管道</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.html#id1">8.3.1. 通道的特性</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.html#id2">8.3.2. 声明通道类型</a></li>
@@ -1209,28 +1220,29 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/11.正则表达式/02.匹配字符串示例.html">11.2. 匹配字符串示例</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/02.匹配字符串示例.html#re-match-pattern-string-flags">11.2.1. re.match(pattern，string，[flags]) <code class="docutils literal"><span class="pre">从字符串的第一个开始匹配</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/02.匹配字符串示例.html#re-search-pattern-string-flags">11.2.2. re.search(pattern，string，[flags]) <code class="docutils literal"><span class="pre">搜索整个字符串</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/02.匹配字符串示例.html#re-findll-pattern-string-flags">11.2.3. re.findll(pattern，string，[flags]) <code class="docutils literal"><span class="pre">在字符串中查找所有符合正则表达式的字符串，并返回字符串的列表</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/02.匹配字符串示例.html#re-match-pattern-string-flags">11.2.1. re.match(pattern，string，[flags]) <code class="docutils literal notranslate"><span class="pre">从字符串的第一个开始匹配</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/02.匹配字符串示例.html#re-search-pattern-string-flags">11.2.2. re.search(pattern，string，[flags]) <code class="docutils literal notranslate"><span class="pre">搜索整个字符串</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/02.匹配字符串示例.html#re-findll-pattern-string-flags">11.2.3. re.findll(pattern，string，[flags]) <code class="docutils literal notranslate"><span class="pre">在字符串中查找所有符合正则表达式的字符串，并返回字符串的列表</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/11.正则表达式/03.替换字符串示例.html">11.3. 替换字符串示例</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/03.替换字符串示例.html#re-sub-pattern-repl-string-count-flags">11.3.1. re.sub(pattern,repl,string,count,[flags]) <code class="docutils literal"><span class="pre">替换子字符串，返回替换后的字符串</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/03.替换字符串示例.html#re-subn-pattern-repl-string-count-flags-sub">11.3.2. re.subn(pattern,repl,string,count,[flags]) <code class="docutils literal"><span class="pre">作用与sub()相同返回一个二元元祖，第一个是匹配结果，第二个是匹配次数</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/03.替换字符串示例.html#re-sub-pattern-repl-string-count-flags">11.3.1. re.sub(pattern,repl,string,count,[flags]) <code class="docutils literal notranslate"><span class="pre">替换子字符串，返回替换后的字符串</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/03.替换字符串示例.html#re-subn-pattern-repl-string-count-flags-sub">11.3.2. re.subn(pattern,repl,string,count,[flags]) <code class="docutils literal notranslate"><span class="pre">作用与sub()相同返回一个二元元祖，第一个是匹配结果，第二个是匹配次数</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/11.正则表达式/04.分割字符串示例.html">11.4. 分割字符串示例</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/04.分割字符串示例.html#re-split-pattern-string-maxsplit-0-flags">11.4.1. re.split(pattern,string[,maxsplit=0],[flags]) <code class="docutils literal"><span class="pre">安装匹配的子字符串进行字符串分割，返回字符串列表对象</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/04.分割字符串示例.html#re-split-pattern-string-maxsplit-0-flags">11.4.1. re.split(pattern,string[,maxsplit=0],[flags]) <code class="docutils literal notranslate"><span class="pre">安装匹配的子字符串进行字符串分割，返回字符串列表对象</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html">11.5. 初始化正则表达式</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#re-compile-pattern-flags">11.5.1. re.compile(pattern[,flags]) <code class="docutils literal"><span class="pre">编译正则表达式，可以重复使用，减少正则表达式的解析和验证</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id2">11.5.2. 贪婪匹配和懒惰匹配</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id3">11.5.3. 正则的分组</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id5">11.5.4. 代码示例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id6">11.5.5. 匹配对象与索引的使用</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id7">11.5.6. 匹配对象与组的使用</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id8">11.5.7. 零宽断言</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#re-compile-pattern-flags">11.5.1. re.compile(pattern[,flags]) <code class="docutils literal notranslate"><span class="pre">编译正则表达式，可以重复使用，减少正则表达式的解析和验证</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id2">11.5.2. 搜寻时使用大括号设定比对次数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id3">11.5.3. 贪婪匹配和懒惰匹配</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id4">11.5.4. 正则的分组</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id6">11.5.5. 代码示例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id7">11.5.6. 匹配对象与索引的使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id8">11.5.7. 匹配对象与组的使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/11.正则表达式/05.初始化正则.html#id9">11.5.8. 零宽断言</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/11.正则表达式/06.正则表达式举例.html">11.6. 正则表达式举例</a><ul>
@@ -1338,8 +1350,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/12.Python标准库/12.zipfile、tarfile模块学习.html">12.12. zipfile、tarfile模块学习</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/12.Python标准库/12.zipfile、tarfile模块学习.html#zipfile">12.12.1. zipfile模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/12.Python标准库/12.zipfile、tarfile模块学习.html#tarfile">12.12.2. tarfile模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/12.Python标准库/12.zipfile、tarfile模块学习.html#zipfile">12.12.1. 1. zipfile模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/12.Python标准库/12.zipfile、tarfile模块学习.html#tarfile">12.12.2. 2. tarfile模块</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/12.Python标准库/13.subprocess模块.html">12.13. subprocess模块</a><ul>
@@ -1407,6 +1419,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Python/13.Python操作数据库/02.Python操作SQLite数据库.html#delete">13.2.6. DELETE 操作</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/13.Python操作数据库/02.Python操作SQLite数据库.html#pyhtonsqlite">13.2.7. Pyhton操作SQLite数据库案例</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/13.Python操作数据库/02.Python操作SQLite数据库.html#pythonsqlite">13.2.8. Python操作SQLite代码示例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/13.Python操作数据库/02.Python操作SQLite数据库.html#sqlite">13.2.9. 操作SQLite的封装类</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/13.Python操作数据库/03.Python操作mysql数据库.html">13.3. python操作mysql数据库</a><ul>
@@ -1452,6 +1465,13 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/13.Python操作数据库/10.使用ORM工具操作mongoDB.html">13.10. 使用ORM工具操作mongoDB数据库</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Python/13.Python操作数据库/11.封装SQLite的类.html">13.11. 封装SQLite的类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python/13.Python操作数据库/12.数据库及ORM设计.html">13.12. 数据库及ORM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Python/13.Python操作数据库/12.数据库及ORM设计.html#web">13.12.1. Web开发中的数据库</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/13.Python操作数据库/12.数据库及ORM设计.html#id1">13.12.2. 关系数据库建模</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/13.Python操作数据库/12.数据库及ORM设计.html#id4">13.12.3. 数据库建模举例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/13.Python操作数据库/12.数据库及ORM设计.html#er-md">13.12.4. 一款在线ER模型设计工具.md</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Python/14.Python三方库/index.html">14. Python 三方库学习</a><ul>
@@ -1466,15 +1486,14 @@
 <li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/01.psutil模块.html#id7">14.1.8. 系统进程管理方法</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Python/14.Python三方库/02.paramiko（ssh秘钥执行命令).html">14.2. paramiko模块</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko（ssh秘钥执行命令).html#id1">14.2.1. 安装</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko（ssh秘钥执行命令).html#id2">14.2.2. paramiko实例(账号密码登录执行命令)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko（ssh秘钥执行命令).html#id3">14.2.3. 代码示例2:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko（ssh秘钥执行命令).html#id4">14.2.4. 代码示例2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko（ssh秘钥执行命令).html#id6">14.2.5. paramiko实例(传送文件)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko（ssh秘钥执行命令).html#id7">14.2.6. paramiko实例(密钥执行命令)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko（ssh秘钥执行命令).html#ssh-pool">14.2.7. ssh并发(Pool控制最大并发)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko（ssh秘钥执行命令).html#ssh">14.2.8. ssh并发(取文件状态并发送邮件)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python/14.Python三方库/02.paramiko(ssh秘钥执行命令).html">14.2. paramiko(ssh秘钥执行命令)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko(ssh秘钥执行命令).html#id1">14.2.1. 安装</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko(ssh秘钥执行命令).html#paramiko">14.2.2. paramiko实例(账号密码登录执行命令)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko(ssh秘钥执行命令).html#id2">14.2.3. 代码示例2:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko(ssh秘钥执行命令).html#id3">14.2.4. paramiko实例(传送文件)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko(ssh秘钥执行命令).html#id4">14.2.5. paramiko实例(密钥执行命令)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko(ssh秘钥执行命令).html#ssh-pool">14.2.6. ssh并发(Pool控制最大并发)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/02.paramiko(ssh秘钥执行命令).html#ssh">14.2.7. ssh并发(取文件状态并发送邮件)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/14.Python三方库/03.IPy模块.html">14.3. IPy模块</a><ul>
@@ -1511,8 +1530,8 @@
 <li class="toctree-l3"><a class="reference internal" href="Python/14.Python三方库/09.用py2exe生成可执行程序.html">14.9. 用py2exe生成可执行程序</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Python/14.Python三方库/10.用cx_freeze生成可执行文件.html">14.10. 用cx_freeze生成可执行文件</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Python/14.Python三方库/11.使用python定时执行任务.html">14.11. 使用python定时执行任务</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/11.使用python定时执行任务.html#timesleep">14.11.1. 方式一 <code class="docutils literal"><span class="pre">使用time模块的sleep休眠功能</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/11.使用python定时执行任务.html#sched">14.11.2. 方式二 <code class="docutils literal"><span class="pre">使用sched模块来定时执行任务</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/11.使用python定时执行任务.html#timesleep">14.11.1. 方式一 <code class="docutils literal notranslate"><span class="pre">使用time模块的sleep休眠功能</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/11.使用python定时执行任务.html#sched">14.11.2. 方式二 <code class="docutils literal notranslate"><span class="pre">使用sched模块来定时执行任务</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/11.使用python定时执行任务.html#id2">14.11.3. 暂停直至特定日期</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/11.使用python定时执行任务.html#apscheduler">14.11.4. APScheduler实现秒级定时任务</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/11.使用python定时执行任务.html#apschedulercron">14.11.5. 使用APScheduler实现cron计划任务</a></li>
@@ -1549,6 +1568,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/15.Jinja2模板.html#id1">14.15.1. 模板介绍</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="Python/14.Python三方库/16.python第三方库request.html">14.16. Python第三方库requests学习笔记</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Python/15.Python网络编程/index.html">15. Python 网络编程</a><ul>
@@ -1663,106 +1683,119 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Python/20.自动化运维工具/index.html">18. 自动化运维工具</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Python/20.自动化运维工具/01.系统批量运维管理器pexpect.html">18.1. 系统批量运维管理器pexpect</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/01.系统批量运维管理器pexpect.html#id1">18.1.1. pexpect应用示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/01.系统基础信息模块详解.html">18.1. 系统基础信息模块详解</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/01.系统基础信息模块详解.html#psutil">18.1.1. 系统性能信息模块psutil</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/01.系统基础信息模块详解.html#ipipy">18.1.2. 实用的IP地址处理模块IPy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/01.系统基础信息模块详解.html#dnsdnspython">18.1.3. DNS处理模块dnspython</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Python/20.自动化运维工具/02.系统批量运维管理器paramiko.html">18.2. 系统批量运维管理器paramiko</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Python/20.自动化运维工具/03.批量运维管理器Fabric.html">18.3. 批量运维管理器Fabric</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/03.批量运维管理器Fabric.html#id1">18.3.1. 简介</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/03.批量运维管理器Fabric.html#id2">18.3.2. Fabric安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/01.系统批量运维管理器pexpect.html">18.2. 系统批量运维管理器pexpect</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/01.系统批量运维管理器pexpect.html#id1">18.2.1. pexpect应用示例</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html">18.4. Ansible入门与playbook实战</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#ansible">18.4.1. 关于Ansible</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#id1">18.4.2. 安装Ansible</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#expetssh-key">18.4.3. 使用expet来批量分发ssh-key</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#id2">18.4.4. Ansible常用的核心模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#id3">18.4.5. 远程命令模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#command">18.4.6. command模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#stat">18.4.7. stat模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#get-url">18.4.8. get_url模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#yum">18.4.9. yum模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#cron">18.4.10. cron模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#mount">18.4.11. mount模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#service">18.4.12. service模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#sysctl">18.4.13. sysctl包管理模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#user">18.4.14. user模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#group">18.4.15. group模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#file">18.4.16. file模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#setup">18.4.17. setup模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#ansibleyaml">18.4.18. ansible配合YAML使用</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#tomcat">18.4.19. 示例：安装tomcat软件</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#playbooks-includes">18.4.20. playbooks Includes使用技巧</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#roles">18.4.21. Roles介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#rolesfilestemplates">18.4.22. Roles中Files和Templates的区别</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#jinja2">18.4.23. Jinja2模板可以实现高度自定义</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#id4">18.4.24. 创建roles时的注意事项：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#ansiblewindows">18.4.25. Ansible管理windows实践</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/04.Ansible入门与playbook实战.html#ansible-windows-server">18.4.26. Ansible 批量管理Windows Server服务器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/02.业务服务监控详解.html">18.3. 业务服务监控详解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/02.系统批量运维管理器paramiko.html">18.4. 系统批量运维管理器paramiko</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/03.批量运维管理器Fabric.html">18.5. 批量运维管理器Fabric</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/03.批量运维管理器Fabric.html#id1">18.5.1. 简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/03.批量运维管理器Fabric.html#id2">18.5.2. Fabric安装</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html">18.5. Saltstack安装使用入门（自己总结）</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id1">18.5.1. 安装部署篇：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#saltstacksaltstack">18.5.2. 快速入门SaltStack快速入门SaltStack</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#centos67-yum">18.5.3. 默认以CentOS6、7为例，采用yum安装</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#epel">18.5.4. 安装EPEL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id2">18.5.5. 修改主机名和域名解析</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id3">18.5.6. 服务器端安装</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#centos-6-7">18.5.7. centos 6/7 启动/重启/停止命令</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id4">18.5.8. Saltstack防火墙配置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#minion">18.5.9. 客户端minion程序安装</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id5">18.5.10. 查看自动认证状况</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id6">18.5.11. 使用基础</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#salt-master">18.5.12. salt-master上常用的命令：</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id7">18.5.13. 所有主机查看系统</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id8">18.5.14. 查看所有节点名称</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#salt">18.5.15. 查询所有主机salt的版本号是多少？</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id9">18.5.16. 远程执行模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id15">18.5.17. 用户管理模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#cron">18.5.18. cron模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#cp">18.5.19. cp模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#dnsutil">18.5.20. dnsutil模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#file">18.5.21. file模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#iptables">18.5.22. iptables模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#netwrok">18.5.23. netwrok模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#pkg">18.5.24. pkg包管理模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#service">18.5.25. Service服务模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#grains">18.5.26. 被控端主机定制grains数据</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id18">18.5.27. 通过配置文件安装程序</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#httpd">18.5.28. 批量安装httpd服务</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id19">18.5.29. 批量安装常用命令</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#dns">18.5.30. 批量设置所有主机的DNS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#sysctl-conf">18.5.31. 批量设置所有主机的sysctl.conf</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/05.Saltstack安装使用入门.html#id20">18.5.32. 编写自己的模块代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html">18.6. Ansible入门与playbook实战</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#ansible">18.6.1. 关于Ansible</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#ansible-ssh">18.6.2. Ansible SSH工作机制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#id1">18.6.3. 安装Ansible</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#expetssh-key">18.6.4. 使用expet来批量分发ssh-key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#id3">18.6.5. Ansible与正则</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#ad-hocansible">18.6.6. 通过Ad-Hoc研究Ansible的并发特性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#id4">18.6.7. Ansible常用的核心模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#webserver">18.6.8. 列出webserver组的主机</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#id5">18.6.9. 远程命令模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#command">18.6.10. command模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#copy">18.6.11. copy模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#stat">18.6.12. stat模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#get-url">18.6.13. get_url模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#id6">18.6.14. yum模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#cron">18.6.15. cron模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#mount">18.6.16. mount模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#service">18.6.17. service模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#sysctl">18.6.18. sysctl包管理模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#user">18.6.19. user模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#group">18.6.20. group模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#file">18.6.21. file模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#setup">18.6.22. setup模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#ansibleyaml">18.6.23. ansible配合YAML使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#tomcat">18.6.24. 示例：安装tomcat软件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#playbooks-includes">18.6.25. playbooks Includes使用技巧</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#roles">18.6.26. Roles介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#rolesfilestemplates">18.6.27. Roles中Files和Templates的区别</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#jinja2">18.6.28. Jinja2模板可以实现高度自定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#id7">18.6.29. 创建roles时的注意事项：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#playbook1-ansibletomcat">18.6.30. Playbook实战1：Ansible部署Tomcat企业实战</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#ansiblewindows">18.6.31. Ansible管理windows实践</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html#ansible-windows-server">18.6.32. Ansible 批量管理Windows Server服务器</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html">18.6. 业务服务监控详解</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#id2">18.6.1. 文件内容差异对比方法</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#id4">18.6.2. 文件与目录差异对比</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#smtplib">18.6.3. 发送电子邮件模块smtplib</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#web">18.6.4. 探测Web服务质量</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#id9">18.6.5. 检测主机存活状态</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#id10">18.6.6. 检测主机存活状态示例1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#id11">18.6.7. 使用生产者消费者模型来减少线程数量</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#python">18.6.8. Python实现端口扫描</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#id13">18.6.9. 实现高效的端口扫描器</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#threadpoolexecutor">18.6.10. 使用进程池ThreadPoolExecutor抢占模式并发扫描</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#redis">18.6.11. Redis内存检测</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#glances">18.6.12. 交互式监控工具glances</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/06.业务服务监控详解.html#pythonlinux">18.6.13. 使用Python监控Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html">18.7. Saltstack安装使用入门（自己总结）</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id1">18.7.1. 安装部署篇：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#saltstacksaltstack">18.7.2. 快速入门SaltStack快速入门SaltStack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#centos67-yum">18.7.3. 默认以CentOS6、7为例，采用yum安装</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#epel">18.7.4. 安装EPEL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id2">18.7.5. 修改主机名和域名解析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id3">18.7.6. 服务器端安装</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#centos-6-7">18.7.7. centos 6/7 启动/重启/停止命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id4">18.7.8. Saltstack防火墙配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#minion">18.7.9. 客户端minion程序安装</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id5">18.7.10. 查看自动认证状况</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id6">18.7.11. 使用基础</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#salt-master">18.7.12. salt-master上常用的命令：</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id7">18.7.13. 所有主机查看系统</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id8">18.7.14. 查看所有节点名称</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#salt">18.7.15. 查询所有主机salt的版本号是多少？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id9">18.7.16. 远程执行模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id15">18.7.17. 用户管理模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#cron">18.7.18. cron模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#cp">18.7.19. cp模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#dnsutil">18.7.20. dnsutil模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#file">18.7.21. file模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#iptables">18.7.22. iptables模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#netwrok">18.7.23. netwrok模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#pkg">18.7.24. pkg包管理模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#service">18.7.25. Service服务模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#grains">18.7.26. 被控端主机定制grains数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id18">18.7.27. 通过配置文件安装程序</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#httpd">18.7.28. 批量安装httpd服务</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id19">18.7.29. 批量安装常用命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#dns">18.7.30. 批量设置所有主机的DNS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#sysctl-conf">18.7.31. 批量设置所有主机的sysctl.conf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/05.Saltstack安装使用入门.html#id20">18.7.32. 编写自己的模块代码</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Python/20.自动化运维工具/07.Supervisor在Devops工作中的应用.html">18.7. Supervisor在Devops工作中的应用</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/07.Supervisor在Devops工作中的应用.html#supervisor">18.7.1. 1.Supervisor的安装</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/07.Supervisor在Devops工作中的应用.html#id1">18.7.2. Supervisor配置文件说明</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/07.Supervisor在Devops工作中的应用.html#dockersupervisor">18.7.3. Docker中利用Supervisor管理多进程</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/07.Supervisor在Devops工作中的应用.html#id2">18.7.4. 参考文献</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html">18.8. 业务服务监控详解</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#id2">18.8.1. 文件内容差异对比方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#id4">18.8.2. 文件与目录差异对比</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#smtplib">18.8.3. 发送电子邮件模块smtplib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#web">18.8.4. 探测Web服务质量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#id9">18.8.5. 检测主机存活状态</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#id10">18.8.6. 检测主机存活状态示例1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#id11">18.8.7. 使用生产者消费者模型来减少线程数量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#python">18.8.8. Python实现端口扫描</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#id13">18.8.9. 实现高效的端口扫描器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#threadpoolexecutor">18.8.10. 使用进程池ThreadPoolExecutor抢占模式并发扫描</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#redis">18.8.11. Redis内存检测</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#glances">18.8.12. 交互式监控工具glances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/06.业务服务监控详解.html#pythonlinux">18.8.13. 使用Python监控Linux</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Python/20.自动化运维工具/08.网页自动化开发.html">18.8. 网页自动化开发</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/20.自动化运维工具/08.网页自动化开发.html#selenium">18.8.1. 安装Selenium</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/07.Supervisor在Devops工作中的应用.html">18.9. Supervisor在Devops工作中的应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/07.Supervisor在Devops工作中的应用.html#supervisor">18.9.1. 1.Supervisor的安装</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/07.Supervisor在Devops工作中的应用.html#id1">18.9.2. Supervisor配置文件说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/07.Supervisor在Devops工作中的应用.html#dockersupervisor">18.9.3. Docker中利用Supervisor管理多进程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/07.Supervisor在Devops工作中的应用.html#id2">18.9.4. 参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/08.网页自动化开发.html">18.10. 网页自动化开发</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/08.网页自动化开发.html#selenium">18.10.1. 安装Selenium</a></li>
 </ul>
 </li>
 </ul>
@@ -1846,15 +1879,15 @@
 <li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id3">20.2.3. 总结下载图片的几种方式</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#urllib3">20.2.4. urllib3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#requests">20.2.5. requests</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id4">20.2.6. 网络超时</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id7">20.2.6. 网络超时</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#ip">20.2.7. 代理IP</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#cookie">20.2.8. cookie处理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id5">20.2.9. 伪装成浏览器</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id6">20.2.10. 获取网页源码的函数</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id7">20.2.11. 几个图片爬取的示例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id9">20.2.12. 根据输入爬取百度图片</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id10">20.2.13. 图片爬虫</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id11">20.2.14. 链接爬虫</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id8">20.2.9. 伪装成浏览器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id9">20.2.10. 获取网页源码的函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id10">20.2.11. 几个图片爬取的示例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id12">20.2.12. 根据输入爬取百度图片</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id13">20.2.13. 图片爬虫</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/01_1.python的网络请求.html#id14">20.2.14. 链接爬虫</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/22.Python网络爬虫/02.爬虫原理和网页结构.html">20.3. 爬虫原理</a><ul>
@@ -1878,10 +1911,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/22.Python网络爬虫/05.re模块的常用方法.html">20.6. re模块的常用方法</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/05.re模块的常用方法.html#re-match">20.6.1. re.match()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/05.re模块的常用方法.html#re-serch">20.6.2. re.serch()函数</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/05.re模块的常用方法.html#re-sub">20.6.3. re.sub()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/05.re模块的常用方法.html#re-findall">20.6.4. re.findall()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/05.re模块的常用方法.html#re-match">20.6.1. re.match()方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/05.re模块的常用方法.html#re-serch">20.6.2. re.serch()方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/05.re模块的常用方法.html#re-sub">20.6.3. re.sub()方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/05.re模块的常用方法.html#re-findall">20.6.4. re.findall()方法</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/05.re模块的常用方法.html#id1">20.6.5. re模块装饰符</a></li>
 </ul>
 </li>
@@ -1940,8 +1973,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/22.Python网络爬虫/13.Selenium模拟浏览器.html">20.14. Selenium模拟浏览器</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/13.Selenium模拟浏览器.html#selenium-phantomjs">20.14.1. Selenium + PhantomJS的配合使用</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/13.Selenium模拟浏览器.html#id3">20.14.2. PhantomJS实例 - 淘宝商品搜索和翻页</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/13.Selenium模拟浏览器.html#id1">20.14.1. Selenium网络爬虫的王者</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/13.Selenium模拟浏览器.html#selenium-phantomjs">20.14.2. Selenium + PhantomJS的配合使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/22.Python网络爬虫/13.Selenium模拟浏览器.html#id11">20.14.3. PhantomJS实例 - 淘宝商品搜索和翻页</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/22.Python网络爬虫/14.手写Python爬虫.html">20.15. 手写python爬虫</a><ul>
@@ -2072,12 +2106,11 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/index.html">22.4. Django学习</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/10.Python高效开发实战-Django/index.html">22.4.1. Python高效开发实战-Django</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/20.简单的博客系统/index.html">22.4.2. 简单的博客系统</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/01.安装DjangoWeb框架.html">22.4.3. 安装DjangoWeb框架</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/02.Django框架的使用.html">22.4.4. Django框架的使用</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/03.Django流程跑通.html">22.4.5. Django流程跑通</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/07.实战演练-开发Django站点.html">22.4.6. 实战演练-开发Django站点</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/08.Django模型层.html">22.4.7. Django模型层</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/01.安装DjangoWeb框架.html">22.4.2. 安装DjangoWeb框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/02.Django框架的使用.html">22.4.3. Django框架的使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/03.Django流程跑通.html">22.4.4. Django流程跑通</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/07.实战演练-开发Django站点.html">22.4.5. 实战演练-开发Django站点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/04.Django学习/08.Django模型层.html">22.4.6. Django模型层</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/24.Python框架学习/05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a><ul>
@@ -2086,6 +2119,11 @@
 <li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/05.Tornado-Web框架及其应用/03.请求参数的获取.html">22.5.3. 请求参数的获取</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/05.Tornado-Web框架及其应用/04.用cookie与安全cookie跟踪客户.html">22.5.4. 用cookie与安全cookie跟踪客户</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/05.Tornado-Web框架及其应用/05.URL转向与静态文件资源.html">22.5.5. URL转向与静态文件资源</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/05.Tornado-Web框架及其应用/06.表单和模板操作.html">22.5.6. 表单和模板操作</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Python/24.Python框架学习/06.Python高效开发实战-Django、Flask/index.html">22.6. Python高效开发实战-Django、Flask</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Python/24.Python框架学习/06.Python高效开发实战-Django、Flask/01.Linux+Nginx+uWSGI.html">22.6.1. Linux+Nginx+uWSGI</a></li>
 </ul>
 </li>
 </ul>
@@ -2389,14 +2427,8 @@
 </div>
 <div class="section" id="id2">
 <h2>温馨提示：认真的学习，思考、系统的整理碎片化的知识<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>orem ipsum <a class="footnote-reference" href="#f1" id="id3">[1]</a> dolor sit amet ... <a class="footnote-reference" href="#f2" id="id4">[2]</a></p>
+<p>orem ipsum <a class="footnote-reference" href="#f1" id="id3">[1]</a> dolor sit amet … <a class="footnote-reference" href="#f2" id="id4">[2]</a></p>
 <p>Footnotes</p>
-<table class="docutils citation" frame="void" id="ref" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Ref]</td><td>参考文献《阿里云栖社区》等.</td></tr>
-</tbody>
-</table>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -2431,11 +2463,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -2446,7 +2486,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

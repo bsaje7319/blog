@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="13.2. Python 操作SQLite数据库" href="02.Python操作SQLite数据库.html" />
     <link rel="prev" title="13. Python对数据库的操作" href="index.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -126,13 +130,15 @@
 <li class="toctree-l3"><a class="reference internal" href="08.封装mongoDB的类.html">13.8. 封装MongoDB的类</a></li>
 <li class="toctree-l3"><a class="reference internal" href="09.Pyhton操作Redis数据库.html">13.9. Python操作Redis数据库</a></li>
 <li class="toctree-l3"><a class="reference internal" href="10.使用ORM工具操作mongoDB.html">13.10. 使用ORM工具操作mongoDB数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.封装SQLite的类.html">13.11. 封装SQLite的类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.数据库及ORM设计.html">13.12. 数据库及ORM</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -150,6 +156,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -188,7 +195,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -200,7 +207,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/13.Python操作数据库/01.Python操作NoSQL数据存储.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/13.Python操作数据库/01.Python操作NoSQL数据存储.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -230,12 +237,12 @@
 <h2><a class="toc-backref" href="#id4">13.1.1. dbm数据库的打开和关闭</a><a class="headerlink" href="#dbm" title="Permalink to this headline">¶</a></h2>
 <p>与关系型数据库类似，dbm 数据库使用前需要打开，
 使用完成需要关闭。打开数据库使用open() 函数， 它的语法如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>dbm.open (file, flag= &#39; r &#39; ）
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dbm.open (file, flag= &#39; r &#39; ）
 </pre></div>
 </div>
 <p>参数file 是数据库文件名， 包括路径； 参数flag 是文件打开方式， flag
 取值说明如下。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&#39;r&#39; ： 以只读方式打开现有数据库， 这是默认值。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&#39;r&#39; ： 以只读方式打开现有数据库， 这是默认值。
 &#39;w&#39; ： 以读写方式打开现有数据库。
 &#39;c&#39;： 以读写方式打开数据库， 如果数据库不存在则创建。
 &#39;n&#39; ： 始终创建一个新的空数据库， 打开方式为读写。
@@ -253,7 +260,7 @@ with dbm.open (DBNAME, &#39;c&#39;)  as db ：
 <h2><a class="toc-backref" href="#id5">13.1.2. dbm数据存储</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>dbm数据存储方式类似于字典数据结构，通过键写入或读取数据，但需要注意的是dbm数据库保存的数据是字符串类型或者是字节序列（bytes）类型。
 dbm数据存储相关的语句如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1）写入数据
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1）写入数据
 d[key] = data
 
 如果key不存在则创建key-data数据项，如果key已经存在则使用data覆盖旧数据
@@ -274,7 +281,7 @@ flag = key in d
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id6">13.1.3. 示例代码</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/22 12:27</span>
@@ -285,7 +292,7 @@ flag = key in d
     <span class="n">db</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;hujianli&#39;</span>  <span class="c1"># 更新数据</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>  <span class="c1"># 取出数据</span>
 
-    <span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">b</span><span class="s1">&#39;18&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>  <span class="c1"># 取出数据</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;18&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>  <span class="c1"># 取出数据</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="s1">&#39;age&#39;</span> <span class="ow">in</span> <span class="n">db</span><span class="p">:</span>  <span class="c1"># 判断是否存在age数据</span>
@@ -294,7 +301,7 @@ flag = key in d
     <span class="k">del</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>  <span class="c1"># 删除name数据</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>db[&#39;name&#39;]表达式取出的数据是字节序列，如果需要的是字符串则需要使用decode()方法将字节序列转换为字符串
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>db[&#39;name&#39;]表达式取出的数据是字节序列，如果需要的是字符串则需要使用decode()方法将字节序列转换为字符串
 表达式db.get(&#39;age&#39;, b&#39;18&#39;)中默认值为b&#39;18&#39;，b&#39;18&#39;是字节序列。
 </pre></div>
 </div>
@@ -321,11 +328,19 @@ flag = key in d
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -336,7 +351,6 @@ flag = key in d
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.2. 数据类型" href="02.数据类型.html" />
     <link rel="prev" title="1. Go语言基本语法与使用" href="index.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -103,6 +107,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id3">1.1.2. 标准格式</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">1.1.3. 编译器自己推导类型的格式</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">1.1.4. 短变量声明并初始化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">1.1.5. 函数变量可见性</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="02.数据类型.html">1.2. 数据类型</a></li>
@@ -133,6 +138,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -171,7 +177,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -183,7 +189,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/01.Go语言基本语法与使用/01.声明变量.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/01.Go语言基本语法与使用/01.声明变量.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -199,24 +205,24 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id8">声明变量</a><ul>
-<li><a class="reference internal" href="#id2" id="id9">初始化变量</a></li>
-<li><a class="reference internal" href="#id3" id="id10">标准格式</a></li>
-<li><a class="reference internal" href="#id4" id="id11">编译器自己推导类型的格式</a></li>
-<li><a class="reference internal" href="#id5" id="id12">短变量声明并初始化</a><ul>
-<li><a class="reference internal" href="#id6" id="id13">多个变量同时赋值</a></li>
-<li><a class="reference internal" href="#id7" id="id14">匿名变量-没有名字的变量</a></li>
+<li><a class="reference internal" href="#id1" id="id9">声明变量</a><ul>
+<li><a class="reference internal" href="#id2" id="id10">初始化变量</a></li>
+<li><a class="reference internal" href="#id3" id="id11">标准格式</a></li>
+<li><a class="reference internal" href="#id4" id="id12">编译器自己推导类型的格式</a></li>
+<li><a class="reference internal" href="#id5" id="id13">短变量声明并初始化</a><ul>
+<li><a class="reference internal" href="#id6" id="id14">多个变量同时赋值</a></li>
+<li><a class="reference internal" href="#id7" id="id15">匿名变量-没有名字的变量</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id8" id="id16">函数变量可见性</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id8">1.1. 声明变量</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>Go语言作为C语言家族的新派代表，在C语言的定义方法和类型上做了优化和调整，更加灵活易学，</p>
-<p>Go语言的每一个变量都拥有自己的类型，必须声明才能开始用。</p>
-<div class="code go highlight-default"><div class="highlight"><pre><span></span>package main
+<h1><a class="toc-backref" href="#id9">1.1. 声明变量</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Go语言作为C语言家族的新派代表，在C语言的定义方法和类型上做了优化和调整，更加灵活易学，Go语言的每一个变量都拥有自己的类型，必须声明才能开始用。</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 var a1 int              //声明一个整数类型的变量
 var b1 string           //声明一个字符串类型的变量
@@ -240,8 +246,8 @@ var (
 </pre></div>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id9">1.1.1. 初始化变量</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>/**
+<h2><a class="toc-backref" href="#id10">1.1.1. 初始化变量</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/**
 每个变量初始化类型都有一个默认值：
 
 1.整型和浮点型变量的默认值为0
@@ -253,8 +259,8 @@ var (
 </div>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id10">1.1.2. 标准格式</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/**</span>
+<h2><a class="toc-backref" href="#id11">1.1.2. 标准格式</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
 <span class="n">var</span> <span class="n">变量名</span> <span class="n">类型</span> <span class="n">表达式</span>
 <span class="o">*/</span>
 <span class="n">var</span> <span class="n">hp</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
@@ -262,9 +268,9 @@ var (
 </div>
 </div>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id11">1.1.3. 编译器自己推导类型的格式</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">1.1.3. 编译器自己推导类型的格式</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>编译器会尝试根据等号右边的表达式推导hu变量的类型</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>var hu = 200
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var hu = 200
 
 var num1 = 30
 var num2 = 20
@@ -280,15 +286,15 @@ func main() {
 </div>
 </div>
 <div class="section" id="id5">
-<h2><a class="toc-backref" href="#id12">1.1.4. 短变量声明并初始化</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>/**
+<h2><a class="toc-backref" href="#id13">1.1.4. 短变量声明并初始化</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/**
 hp :=100
 */
 
 省略var，注意：=左侧的变量不应该是已经声明过的，否则会导致编译错误。
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>/**
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/**
 net.Dial是提供按照指定协议和地址发起网络连接，这个函数有两个返回值，一个是连接对象，一个是err对象。
  */
 var conn net.Conn
@@ -298,9 +304,9 @@ conn1, err := net.Dial(&quot;tcp&quot;, &quot;127.0.0.1:8080&quot;)
 </pre></div>
 </div>
 <div class="section" id="id6">
-<h3><a class="toc-backref" href="#id13">多个变量同时赋值</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id14">多个变量同时赋值</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>编程最简单的算法之一，莫过于变量交换。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -315,8 +321,8 @@ conn1, err := net.Dial(&quot;tcp&quot;, &quot;127.0.0.1:8080&quot;)
 </div>
 </div>
 <div class="section" id="id7">
-<h3><a class="toc-backref" href="#id14">匿名变量-没有名字的变量</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>/**
+<h3><a class="toc-backref" href="#id15">匿名变量-没有名字的变量</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/**
 匿名变量
 
 匿名变量不占用命名空间，不会分配内存，匿名对象与匿名对象之间也不会因为多次声明而无法使用
@@ -333,6 +339,17 @@ func main() {
 }
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id16">1.1.5. 函数变量可见性</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>可见性：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1）声明在函数内部，是函数的本地值，类似private
+
+2）声明在函数外部，是对当前包可见(包内所有.go文件都可见)的全局值，类似protect
+
+3）声明在函数外部且首字母大写是所有包可见的全局值,类似public
+</pre></div>
 </div>
 </div>
 </div>
@@ -357,11 +374,19 @@ func main() {
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -372,7 +397,6 @@ func main() {
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Go vs Python" href="../../Go_vs_Python/index.html" />
     <link rel="prev" title="27.9. 模块和包" href="09.模块和包.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -155,6 +159,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -193,7 +198,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -205,7 +210,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/29.疯狂的Python讲义/10.常见模块.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/29.疯狂的Python讲义/10.常见模块.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -241,6 +246,7 @@
 <li><a class="reference internal" href="#collections" id="id19">8.Collections下的容器支持</a><ul>
 <li><a class="reference internal" href="#chainmap" id="id20">8.1 ChainMap对象</a></li>
 <li><a class="reference internal" href="#counter" id="id21">8.2 Counter对象</a></li>
+<li><a class="reference internal" href="#defaultdict" id="id22">8.3 defaultdict对象</a></li>
 </ul>
 </li>
 </ul>
@@ -252,8 +258,8 @@
 <div class="section" id="sys">
 <h2><a class="toc-backref" href="#id7">27.10.1. 1.sys</a><a class="headerlink" href="#sys" title="Permalink to this headline">¶</a></h2>
 <p>sys模块代表了Python解释器，主要获取和Python解释器相关的信息。</p>
-<p><code class="docutils literal"><span class="pre">sys_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<p><code class="docutils literal notranslate"><span class="pre">sys_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="c1"># 显示本地字节序的指示符。</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">byteorder</span><span class="p">)</span>
 <span class="c1"># 显示Python解释器有关的版权信息</span>
@@ -274,8 +280,8 @@
 </div>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="#id8">1.1 获取运行参数</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">argv_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sys</span> <span class="k">import</span> <span class="n">argv</span>
+<p><code class="docutils literal notranslate"><span class="pre">argv_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sys</span> <span class="k">import</span> <span class="n">argv</span>
 <span class="c1"># 输出argv列表的长度</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">argv</span><span class="p">))</span>
 <span class="c1"># 遍历argv列表的每个元素</span>
@@ -286,9 +292,9 @@
 </div>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id9">1.2 动态修改模块加载路径</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">sys_path_test.py</span></code></p>
-<p>使用PYTHONPATH环境变量来添加Python模块的加载路径，但这种方式必须预先设置好，如果需要在程序运行时动态改变Python模块的加载路径，则可以通过<code class="docutils literal"><span class="pre">sys.path</span></code>属性来实现。</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<p><code class="docutils literal notranslate"><span class="pre">sys_path_test.py</span></code></p>
+<p>使用PYTHONPATH环境变量来添加Python模块的加载路径，但这种方式必须预先设置好，如果需要在程序运行时动态改变Python模块的加载路径，则可以通过<code class="docutils literal notranslate"><span class="pre">sys.path</span></code>属性来实现。</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="c1"># 动态添加g:\fk_ext路径作为模块加载路径</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;g:</span><span class="se">\\</span><span class="s1">fk_ext&#39;</span><span class="p">)</span>
 <span class="c1"># 加载g:\fk_ext路径下的hello模块</span>
@@ -300,8 +306,8 @@
 <div class="section" id="os">
 <h2><a class="toc-backref" href="#id10">27.10.2. 2.os模块</a><a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h2>
 <p>os模块代表了程序所在的操作系统，主要用于获取程序运行所在操作系统的相关信息。</p>
-<p><code class="docutils literal"><span class="pre">os_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
+<p><code class="docutils literal notranslate"><span class="pre">os_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="c1"># 显示导入依赖模块的操作系统的名称</span>
@@ -326,8 +332,8 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">urandom</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">os_process_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<p><code class="docutils literal notranslate"><span class="pre">os_process_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="c1"># 运行平台上的cmd命令</span>
 <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;cmd&#39;</span><span class="p">)</span>
 <span class="c1"># 使用Excel打开g:\abc.xls文件</span>
@@ -343,8 +349,8 @@
 <div class="section" id="random">
 <h2><a class="toc-backref" href="#id11">27.10.3. 3.random</a><a class="headerlink" href="#random" title="Permalink to this headline">¶</a></h2>
 <p>random模块主要包含生成伪随机数的各种功能变量和函数。</p>
-<p><code class="docutils literal"><span class="pre">random_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p><code class="docutils literal notranslate"><span class="pre">random_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># @auther:   18793</span>
 <span class="c1"># @Date：    2020/7/8 11:01</span>
@@ -380,8 +386,8 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>     <span class="c1">#[50, 10, 40, 30]</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">random_test2.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<p><code class="docutils literal notranslate"><span class="pre">random_test2.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">collections</span>
 
 <span class="c1"># 指定随机抽取6个元素，各元素被抽取的权重（概率）不同</span>
@@ -400,7 +406,7 @@
 <div class="section" id="time">
 <h2><a class="toc-backref" href="#id12">27.10.4. 4.time</a><a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
 <p>time模块主要包含各种提供日期、时间功能的类和函数。</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="c1"># 将当前时间转换为时间字符串</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">())</span>
 <span class="c1"># 将指定时间转换时间字符串，时间元组的后面3个元素没有设置</span>
@@ -437,8 +443,8 @@
 <p>JSON是一种轻量级、跨平台、跨语言的数据交换格式，JSON格式被广泛应用于各种语言的数据交换中。</p>
 <p>JSON的全称是JavaScript Object
 Notation，即JavaScript对象符号，是一种轻量级的数据交换格式。</p>
-<p><code class="docutils literal"><span class="pre">encode_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<p><code class="docutils literal notranslate"><span class="pre">encode_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 <span class="c1"># 将Python对象转JSON字符串（元组会当成数组）</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="s1">&#39;yeeku&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;favorite&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;coding&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)}])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="c1"># [&quot;yeeku&quot;, {&quot;favorite&quot;: [&quot;coding&quot;, null, &quot;game&quot;, 25]}]</span>
@@ -467,8 +473,8 @@ Notation，即JavaScript对象符号，是一种轻量级的数据交换格式�
 <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">([</span><span class="s1">&#39;Kotlin&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Python&#39;</span><span class="p">:</span> <span class="s1">&#39;excellent&#39;</span><span class="p">}],</span> <span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">decode_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<p><code class="docutils literal notranslate"><span class="pre">decode_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 
 <span class="c1"># 将JSON字符串恢复成Python列表</span>
 <span class="n">result1</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;[&quot;yeeku&quot;, {&quot;favorite&quot;: [&quot;coding&quot;, null, &quot;game&quot;, 25]}]&#39;</span><span class="p">)</span>
@@ -498,7 +504,7 @@ Notation，即JavaScript对象符号，是一种轻量级的数据交换格式�
 </div>
 <p>Python支持很多JSON所不支持的类型，比如复数、矩阵等，如果直接使用dumps()或dump()函数进行转换，程序肯定会出问题。</p>
 <p>此时就需要开发者对JSONEncoder类进行扩展，通过这种扩展完成从Python特殊类型到JSON类型的转换。</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 
 
 <span class="c1"># 定义JSONEncoder的子类</span>
@@ -511,7 +517,7 @@ Notation，即JavaScript对象符号，是一种轻量级的数据交换格式�
         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
 
 
-<span class="n">s1</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="n">cls</span><span class="o">=</span><span class="n">ComplexEncoder</span><span class="p">)</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">ComplexEncoder</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>  <span class="c1"># &#39;{&quot;__complex__&quot;: &quot;true&quot;, &quot;real&quot;: 2.0, &quot;imag&quot;: 1.0}&#39;</span>
 
 <span class="n">s2</span> <span class="o">=</span> <span class="n">ComplexEncoder</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="p">)</span>
@@ -526,13 +532,13 @@ Notation，即JavaScript对象符号，是一种轻量级的数据交换格式�
 <h2><a class="toc-backref" href="#id14">27.10.6. 6.正则表达式</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>正则表达式（Regular
 Expression）用于描述一种字符串匹配的模式（Pattern），它可用于检查一个字符串是否包含某个子串，也可用于从字符串中提取匹配的子串，或者对字符串中匹配的子串执行替换操作。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">__all__</span>
 <span class="go">[&#39;match&#39;, &#39;fullmatch&#39;, &#39;search&#39;, &#39;sub&#39;, &#39;subn&#39;, &#39;split&#39;, &#39;findall&#39;, &#39;finditer&#39;, &#39;compile&#39;, &#39;purge&#39;, &#39;template&#39;, &#39;escape&#39;, &#39;error&#39;, &#39;Pattern&#39;, &#39;Match&#39;, &#39;A&#39;, &#39;I&#39;, &#39;L&#39;, &#39;M&#39;, &#39;S&#39;, &#39;X&#39;, &#39;U&#39;, &#39;ASCII&#39;, &#39;IGNORECASE&#39;, &#39;LOCALE&#39;, &#39;MULTILINE&#39;, &#39;DOTALL&#39;, &#39;VERBOSE&#39;, &#39;UNICODE&#39;]</span>
 </pre></div>
 </div>
 <p>常用函数：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>● re.compile(pattern, flags=0)：该函数用于将正则表达式字符串编译成_sre.SRE_Pattern对象，该对象代表了正则表达式编译之后在内存中的对象，它可以缓存并复用正则表达式字符串。如果程序需要多次使用同一个正则表达式字符串，则可考虑先编译它。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>● re.compile(pattern, flags=0)：该函数用于将正则表达式字符串编译成_sre.SRE_Pattern对象，该对象代表了正则表达式编译之后在内存中的对象，它可以缓存并复用正则表达式字符串。如果程序需要多次使用同一个正则表达式字符串，则可考虑先编译它。
 
 ● re.match(pattern, string, flags=0)：尝试从字符串的开始位置来匹配正则表达式，如果从开始位置匹配不成功，match()函数就返回None。其中pattern参数代表正则表达式；string代表被匹配的字符串；flags则代表正则表达式的匹配旗标。该函数返回_sre.SRE_Match对象，该对象包含的span(n)方法用于获取第n+1个组的匹配位置，group(n)方法用于获取第n+1个组所匹配的子串。
 
@@ -540,8 +546,8 @@ Expression）用于描述一种字符串匹配的模式（Pattern），它可用
 </pre></div>
 </div>
 <p>match()与search()的区别在于：match()必须从字符串开始处就匹配，但search()则可以所搜整个字符串。</p>
-<p><code class="docutils literal"><span class="pre">match_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<p><code class="docutils literal notranslate"><span class="pre">match_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="n">m1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;www&#39;</span><span class="p">,</span> <span class="s1">&#39;www.fkit.org&#39;</span><span class="p">)</span><span class="c1"># 开始位置可以匹配</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>  <span class="c1"># span返回匹配的位置</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">group</span><span class="p">())</span> <span class="c1"># group返回匹配的组</span>
@@ -559,8 +565,8 @@ flags=0)：扫描整个字符串，并返回字符串中所有匹配pattern的�
 <p>● re.finditer(pattern,
 string,flags=0)：扫描整个字符串，并返回字符串中所有匹配pattern的子串组成的迭代器，迭代器的元素是_sre.SRE_Match对象。</p>
 <p>findall()、finditer()和search()函数的区别：search()只返回字符串中第一处匹配pattern的子串，而findall()和finditer()则返回字符串中所有匹配pattern的子串。</p>
-<p><code class="docutils literal"><span class="pre">find_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<p><code class="docutils literal notranslate"><span class="pre">find_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="c1"># 返回所有匹配pattern的子串组成的列表, 忽略大小写</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;fkit&#39;</span><span class="p">,</span> <span class="s1">&#39;FkIt is very good , Fkit.org is my favorite&#39;</span> <span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">))</span>
 <span class="c1"># 返回所有匹配pattern的子串组成的迭代器, 忽略大小写</span>
@@ -571,7 +577,7 @@ string,flags=0)：扫描整个字符串，并返回字符串中所有匹配patte
 </div>
 <p>● re.fullmatch(pattern, string,
 flags=0)：该函数要求整个字符串匹配pattern，如果匹配则返回包含匹配信息的_sre.SRE_Match对象，否则返回None。</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="n">m1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="s1">&#39;www&#39;</span><span class="p">,</span> <span class="s1">&#39;www&#39;</span><span class="p">)</span><span class="c1"># 开始位置可以匹配</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
@@ -579,13 +585,13 @@ flags=0)：该函数要求整个字符串匹配pattern，如果匹配则返回�
 </div>
 <p>● re.sub(pattern, repl, string, count=0,
 flags=0)：该函数用于将string字符串中所有匹配pattern的内容替换成repl；repl即可是被替换的字符串，也可是一个函数。count参数控制最多替换多少次，如果指定count为0，则表示全部替换。</p>
-<p><code class="docutils literal"><span class="pre">sub_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<p><code class="docutils literal notranslate"><span class="pre">sub_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="n">my_date</span> <span class="o">=</span> <span class="s1">&#39;2008-08-18&#39;</span>
 <span class="c1"># 将my_date字符串里中画线替换成斜线</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span> <span class="p">,</span> <span class="n">my_date</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span> <span class="p">,</span> <span class="n">my_date</span><span class="p">))</span>
 <span class="c1"># 将my_date字符串里中画线替换成斜线，只替换一次</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span> <span class="p">,</span> <span class="n">my_date</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span> <span class="p">,</span> <span class="n">my_date</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 
 <span class="c1"># 在匹配的字符串前后添加内容</span>
 <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">matched</span><span class="p">):</span>
@@ -595,12 +601,12 @@ flags=0)：该函数用于将string字符串中所有匹配pattern的内容替�
 <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Python很好，Kotlin也很好&#39;</span>
 <span class="c1"># 将s里面的英文单词（用re.A旗标控制）进行替换</span>
 <span class="c1"># 使用fun函数指定替换的内容</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;(?P&lt;lang&gt;\w+)&#39;</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">A</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?P&lt;lang&gt;\w+)&#39;</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">A</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>● re.split(pattern, string, maxsplit=0,
 flags=0)：使用pattern对string进行分割，该函数返回分割得到的多个子串组成的列表。其中maxsplit参数控制最多分割多少次。</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="c1"># 使用逗号对字符串进行分割</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">,</span> <span class="s1">&#39;fkit, fkjava, crazyit&#39;</span><span class="p">))</span>
 <span class="c1"># 输出：[&#39;fkit&#39;, &#39;fkjava&#39;, &#39;crazyit&#39;]</span>
@@ -627,18 +633,18 @@ flags=0)：使用pattern对string进行分割，该函数返回分割得到的�
 <p>● re.purge()：清除正则表达式缓存。</p>
 <p>●
 re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之外的其他字符进行转义。</p>
-<p><code class="docutils literal"><span class="pre">escape_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<p><code class="docutils literal notranslate"><span class="pre">escape_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="c1"># 对模式中特殊字符进行转义</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="s1">r&#39;www.crazyit.org is good, i love it!&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;www.crazyit.org is good, i love it!&#39;</span><span class="p">))</span>
 <span class="c1"># 输出：www\.crazyit\.org\ is\ good\,\ i\ love\ it\!</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="s1">r&#39;A-Zand0-9?&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;A-Zand0-9?&#39;</span><span class="p">))</span>
 <span class="c1"># 输出：A\-Zand0\-9\?</span>
 </pre></div>
 </div>
 <p>search()、match()、fullmatch()、findall()、finditer()方法都可以额外指定pos和endpos两个参数，用于指定只处理目标字符串从pos开始到endpos结束之间的子串。</p>
 <p>_sre.SRE_Match对象包含了如下方法和属性：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>● match.group([group1,...])：获取该匹配对象中指定组所匹配的字符串。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>● match.group([group1,...])：获取该匹配对象中指定组所匹配的字符串。
 
 ● match.__getitem__(g)：这是match.group(g)的简化写法。由于match对象提供了__getitem__()方法，因此程序可使用match[g]来代替match.group(g)。
 
@@ -666,7 +672,7 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 </pre></div>
 </div>
 <p>旗标：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>● re.A或re.ASCII：该旗标控制\w,\W,\b,\B, \d, \D, \s和\S只匹配ASCII字符，而不匹配所有的Unicode字符。也可以在正则表达式中使用(?a)行内旗标来代表。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>● re.A或re.ASCII：该旗标控制\w,\W,\b,\B, \d, \D, \s和\S只匹配ASCII字符，而不匹配所有的Unicode字符。也可以在正则表达式中使用(?a)行内旗标来代表。
 
 ● re.DEBUG：显示编译正则表达式的Debug信息。没有行内旗标。
 
@@ -684,12 +690,12 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 </pre></div>
 </div>
 <p>多行模式书写正则表达式，例子</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 
-<span class="n">a</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;&quot;&quot;020          # 广州的区号</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&quot;&quot;020          # 广州的区号</span>
 <span class="s2">                    \-          # 中间的短横线</span>
 <span class="s2">                    \d</span><span class="si">{8}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>  <span class="c1"># 8个数值</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;020\-\d</span><span class="si">{8}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;020\-\d</span><span class="si">{8}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">hu_match</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;020-23123234&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">hu_match</span><span class="p">)</span>
@@ -704,7 +710,7 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 <p>正则匹配模式参考文献</p>
 <p><a class="reference external" href="https://www.cnblogs.com/nickchen121/p/10808645.html">https://www.cnblogs.com/nickchen121/p/10808645.html</a></p>
 <p>正则表达式的子表达式（组）支持如下用法：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>● (exp)：匹配exp表达式并捕获成一个自动命名的组，后面可通过“\1”引用第一个捕获组所匹配的子串，以此类推。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>● (exp)：匹配exp表达式并捕获成一个自动命名的组，后面可通过“\1”引用第一个捕获组所匹配的子串，以此类推。
 
 ● (?P&lt;name&gt;exp):匹配exp表达式并捕获成命名组，该组的名字为name。后面可以通过(?P=name)来引用前面捕获的组。
 
@@ -729,17 +735,17 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 </div>
 <p><strong>贪婪和非贪婪匹配</strong></p>
 <p>所谓贪婪模式，指的是表达式中的模式会尽可能多地匹配字符。</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 
-<span class="n">tanlan</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r&#39;@.+\.&#39;</span><span class="p">,</span> <span class="s1">&#39;hujianli@qq.com.cn&#39;</span><span class="p">)</span>
+<span class="n">tanlan</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;@.+\.&#39;</span><span class="p">,</span> <span class="s1">&#39;hujianli@qq.com.cn&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">tanlan</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>       <span class="c1">#@qq.com.</span>
 
-<span class="n">feitanlan</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r&#39;@.+?\.&#39;</span><span class="p">,</span> <span class="s1">&#39;hujianli@qq.com.cn&#39;</span><span class="p">)</span>
+<span class="n">feitanlan</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;@.+?\.&#39;</span><span class="p">,</span> <span class="s1">&#39;hujianli@qq.com.cn&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">feitanlan</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>    <span class="c1">#@qq.</span>
 </pre></div>
 </div>
-<p>正则表达式<code class="docutils literal"><span class="pre">r'&#64;.+\.'</span></code>
-,表示匹配&#64;符号和点号之间的全部内容。&#64;和点号之间用的是<code class="docutils literal"><span class="pre">.+</span></code>，其中<code class="docutils literal"><span class="pre">.</span></code>可代表任意字符，此时是贪婪模式。<code class="docutils literal"><span class="pre">.+</span></code>会尽可能多地进行匹配，只要它最后有一个“.”结尾即可。所以匹配到了<code class="docutils literal"><span class="pre">&#64;qq.com.</span></code></p>
+<p>正则表达式<code class="docutils literal notranslate"><span class="pre">r'&#64;.+\.'</span></code>
+,表示匹配&#64;符号和点号之间的全部内容。&#64;和点号之间用的是<code class="docutils literal notranslate"><span class="pre">.+</span></code>，其中<code class="docutils literal notranslate"><span class="pre">.</span></code>可代表任意字符，此时是贪婪模式。<code class="docutils literal notranslate"><span class="pre">.+</span></code>会尽可能多地进行匹配，只要它最后有一个“.”结尾即可。所以匹配到了<code class="docutils literal notranslate"><span class="pre">&#64;qq.com.</span></code></p>
 <p>只要添加一个英文问号，贪婪模式就变成了非贪婪模式。称为勉强模式，指的是尽可能少地匹配字符串。</p>
 </div>
 <div class="section" id="id5">
@@ -747,12 +753,12 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 <div class="section" id="setfrozenset">
 <h3><a class="toc-backref" href="#id16">7.1 set和frozenset</a><a class="headerlink" href="#setfrozenset" title="Permalink to this headline">¶</a></h3>
 <p>set集合两大特性：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">set不记录元素的添加顺序</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">set不记录元素的添加顺序</span>
 <span class="o">*</span> <span class="n">set元素不允许重复</span>
 </pre></div>
 </div>
 <p>set是可变容器，程序可以改变容器中的元素，frozenset是不可变版本，它的元素是不可变的。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">set1</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">set1</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">set1</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">[&#39;add&#39;, &#39;clear&#39;, &#39;copy&#39;, &#39;difference&#39;, &#39;difference_update&#39;, &#39;discard&#39;, &#39;intersection&#39;, &#39;intersection_update&#39;, &#39;isdisjoint&#39;, &#39;issubset&#39;, &#39;issuperset&#39;, &#39;pop&#39;, &#39;remove&#39;, &#39;symmetric_difference&#39;, &#39;symmetric_difference_update&#39;, &#39;union&#39;, &#39;update&#39;]</span>
@@ -760,7 +766,7 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 </pre></div>
 </div>
 <p>下面演示set集合的方法的用法</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 使用花括号构建set集合</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用花括号构建set集合</span>
 <span class="n">c</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;白骨精&#39;</span><span class="p">}</span>
 <span class="c1"># 添加元素</span>
 <span class="n">c</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;孙悟空&quot;</span><span class="p">)</span>
@@ -835,11 +841,11 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 </div>
 <p>frozenset的方法和set集合的同名方法的功能完全相同。</p>
 <p>frozenset的作用主要有两点。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>* 当集合元素不需要改变时，使用frozenset代替set更安全
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* 当集合元素不需要改变时，使用frozenset代替set更安全
 * 当某些API需要不可变对象时，必须用frozenset代替set。例如dict的key对象。set本身元素必须是不可变的。
 </pre></div>
 </div>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 <span class="n">frozen_s</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span><span class="s1">&#39;Kotlin&#39;</span><span class="p">)</span>
 <span class="c1"># 为set集合添加frozenset</span>
 <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">frozen_s</span><span class="p">)</span>
@@ -853,8 +859,8 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 <div class="section" id="deque">
 <h3><a class="toc-backref" href="#id17">7.2 双端队列（deque）</a><a class="headerlink" href="#deque" title="Permalink to this headline">¶</a></h3>
 <p>在队列的队头和队尾进行存取元素。</p>
-<p><code class="docutils literal"><span class="pre">deque_stack.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">deque</span>
+<p><code class="docutils literal notranslate"><span class="pre">deque_stack.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">deque</span>
 <span class="n">stack</span> <span class="o">=</span> <span class="n">deque</span><span class="p">((</span><span class="s1">&#39;Kotlin&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">))</span>
 <span class="c1"># 元素入栈</span>
 <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Erlang&#39;</span><span class="p">)</span>
@@ -870,8 +876,8 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 <div class="section" id="python">
 <h3><a class="toc-backref" href="#id18">7.3 Python的堆操作</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
 <p>python并没有提供“堆”这种数据类型，它是直接把列表当成堆处理的。python提供的heapq包中有一些函数，当程序用这些函数来操作列表时，该列表就会表现出“堆”的行为。</p>
-<p><code class="docutils literal"><span class="pre">heapq_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">heapq</span> <span class="k">import</span> <span class="o">*</span>
+<p><code class="docutils literal notranslate"><span class="pre">heapq_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">heapq</span> <span class="k">import</span> <span class="o">*</span>
 <span class="n">my_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 <span class="n">my_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="c1"># 此时my_data依然是一个list列表</span>
@@ -904,8 +910,8 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 <p>ChainMap使用链的方式将多个dict“链”在一起，从而允许程序可直接获取任意一个dict所包含的key对应的value。</p>
 <p>ChainMap相当于把多个dict合并成一个大的dict，但实际上底层并未真正合并这些dict，因此程序无须调用多个update()方法将多个dict进行合并。</p>
 <p>ChainMap允许有重复的key，排在链前面的dict中的key具有更高的优先级。</p>
-<p><code class="docutils literal"><span class="pre">ChainMap_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">ChainMap</span>
+<p><code class="docutils literal notranslate"><span class="pre">ChainMap_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">ChainMap</span>
 <span class="c1"># 定义3个dict对象</span>
 <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Kotlin&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">:</span> <span class="mi">86</span><span class="p">}</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Go&#39;</span><span class="p">:</span> <span class="mi">93</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">:</span> <span class="mi">92</span><span class="p">}</span>
@@ -921,8 +927,8 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 <span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="s1">&#39;Go&#39;</span><span class="p">])</span> <span class="c1"># 93</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">ChainMap_test2.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">ChainMap</span>
+<p><code class="docutils literal notranslate"><span class="pre">ChainMap_test2.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">ChainMap</span>
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">argparse</span>
 <span class="c1"># 定义默认参数</span>
 <span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;蓝色&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="s1">&#39;yeeku&#39;</span><span class="p">}</span>
@@ -945,7 +951,7 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 <span class="nb">print</span><span class="p">(</span><span class="n">combined</span><span class="p">[</span><span class="s1">&#39;PYTHONPATH&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">python</span> <span class="n">ChainMap_test3</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">c</span> <span class="n">red</span> <span class="o">-</span><span class="n">u</span> <span class="n">hujianli</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">python</span> <span class="n">ChainMap_test3</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">c</span> <span class="n">red</span> <span class="o">-</span><span class="n">u</span> <span class="n">hujianli</span>
 <span class="n">red</span>
 <span class="n">hujianli</span>
 
@@ -959,6 +965,87 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 <h3><a class="toc-backref" href="#id21">8.2 Counter对象</a><a class="headerlink" href="#counter" title="Permalink to this headline">¶</a></h3>
 <p>自动统计容器中各元素出现的次数。Counter的本质是一个特殊的dict，只不过它的key都是其所包含的元素，而它的value则记录了该key出现的次数。</p>
 <p>程序可通过任何可迭代对象参数来创建Counter对象，此时Counter将会自动统计各元素出现的次数，并以元素为Key，出现次数为value来构建Counter对象；程序也能以dict为参数来构建Counter对象；还能通过关键字参数来构建Counter对象。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Counter_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
+<span class="c1"># 创建空的Counter对象</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="c1"># 以可迭代对象创建Counter对象</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s1">&#39;hannah&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">])</span>
+<span class="c1"># 以可迭代对象创建Counter对象</span>
+<span class="n">c3</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">([</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Swift&#39;</span><span class="p">,</span> <span class="s1">&#39;Swift&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Kotlin&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c3</span><span class="p">)</span>
+<span class="c1"># 以dict来创建Counter对象</span>
+<span class="n">c4</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c4</span><span class="p">)</span>
+<span class="c1"># 使用关键字参数的语法创建Counter</span>
+<span class="n">c5</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">Python</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">Swift</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>事实上，Counter继承了dict类，因此它完全可调用dict所支持的方法，此外，Counter还提供了如下三个常用的方法。</p>
+<ul class="simple">
+<li>elements(): 该方法返回该Counter所包含的全部元素组成的迭代器。</li>
+<li>most_common([n]):该方法返回Counter中出现最多的n个元素</li>
+<li>subtract([iterable-or-mapping]):该方法计算Counter的减法，其实就是计算减去各元素出现的次数。</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Counter_test2.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
+
+<span class="c1"># 创建Counter对象</span>
+<span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="c1"># 访问并不存在的key，将输出该key的次数为0.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cnt</span><span class="p">[</span><span class="s1">&#39;Python&#39;</span><span class="p">])</span>  <span class="c1"># 0</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Swift&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Kotlin&#39;</span><span class="p">,</span> <span class="s1">&#39;Kotlin&#39;</span><span class="p">,</span> <span class="s1">&#39;Swift&#39;</span><span class="p">,</span> <span class="s1">&#39;Go&#39;</span><span class="p">]:</span>
+    <span class="n">cnt</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+<span class="c1"># 只访问Counter对象的元素</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">cnt</span><span class="o">.</span><span class="n">elements</span><span class="p">()))</span>
+<span class="c1"># 将字符串（迭代器）转换成Counter</span>
+<span class="n">chr_cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s1">&#39;abracadabra&#39;</span><span class="p">)</span>
+<span class="c1"># 获取出现最多的3个字母</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chr_cnt</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># [(&#39;a&#39;, 5), (&#39;b&#39;, 2), (&#39;r&#39;, 2)]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># 用Counter对象执行减法，其实就是减少各元素的出现次数</span>
+<span class="n">c</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># Counter({&#39;a&#39;: 3, &#39;b&#39;: 0, &#39;c&#39;: -3, &#39;d&#39;: -6})</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">4</span><span class="p">})</span>
+<span class="c1"># 调用del删除key-value对，会真正删除该key-value对</span>
+<span class="k">del</span> <span class="n">e</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="c1"># 访问&#39;w&#39;对应的value，&#39;w&#39;没有出现过，因此返回0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">])</span>  <span class="c1"># 0</span>
+<span class="c1"># 删除e[&#39;w&#39;]，删除该key-value对</span>
+<span class="k">del</span> <span class="n">e</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span>
+<span class="c1"># 再次访问&#39;w&#39;对应的value，&#39;w&#39;还是没有，因此返回0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">])</span>  <span class="c1"># 0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="defaultdict">
+<h3><a class="toc-backref" href="#id22">8.3 defaultdict对象</a><a class="headerlink" href="#defaultdict" title="Permalink to this headline">¶</a></h3>
+<p>defaultdict是dict的子类，因此defaultdict也可被当成dict来使用。它与dict最大的区别在于：如果程序试图根据不存在的key来访问dict中对应的value，则会引发KeyError异常，而default则可以提供一个default_factory属性，该属性所指定的函数负责为不存在的key来生成value。</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># @auther:   18793</span>
+<span class="c1"># @Date：    2020/8/11 14:37</span>
+<span class="c1"># @filename: charp01.py</span>
+<span class="c1"># @Email:    1879324764@qq.com</span>
+<span class="c1"># @Software: PyCharm</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
+
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1"># 使用int作为defaultdict的default_factory</span>
+<span class="c1"># 当key不存在时，将会返回int函数的返回值</span>
+<span class="n">my_defaultdict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_defaultdict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">])</span>  <span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_dict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">])</span>  <span class="c1"># KeyError异常</span>
+</pre></div>
+</div>
 <p>参考文献：</p>
 <p><a class="reference external" href="https://blog.csdn.net/zhouyong80/article/details/102637845">https://blog.csdn.net/zhouyong80/article/details/102637845</a></p>
 </div>
@@ -985,11 +1072,19 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1000,7 +1095,6 @@ re.escape(pattern)：对模式中除ASCII字符、数值、下划线（_）之�
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

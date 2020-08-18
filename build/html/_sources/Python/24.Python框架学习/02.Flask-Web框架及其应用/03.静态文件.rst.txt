@@ -1,0 +1,103 @@
+.. contents::
+   :depth: 3
+..
+
+静态文件
+========
+
+::
+
+   #!/usr/bin/env python
+   #-*- coding:utf8 -*-
+   # auther; 18793
+   # Date：2019/6/26 13:03
+   # filename: static_app.py
+   import flask
+
+
+   app = flask.Flask(__name__)
+
+   @app.route('/hello')
+   def hello():
+       return flask.render_template('index.html')
+       
+
+这样在html文件中可以使用get_url函数很快的找到css的路径，继而引入这个文件。
+
+加载静态图片
+------------
+
+我们在 static 文件夹的根目录下面放了一个 96440.jpg
+文件，下面的调用可以获取它的 URL
+
+在templates目录下新建index.html文件
+
+index.html
+
+::
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <title>Title</title>
+   </head>
+   <body>
+
+       <img src="{{ url_for('static',filename='96440.jpg') }}">
+   </body>
+   </html>
+
+实现效果如下： |image0|
+
+接收上传文件
+------------
+
+::
+
+   #!/usr/bin/env python
+   #-*- coding:utf8 -*-
+   # auther; 18793
+   # Date：2019/6/26 13:24
+   # filename: upload_file_flask.py
+   import flask
+
+   app = flask.Flask(__name__)
+
+   @app.route('/upload', methods=['GET', 'POST'])              # 请求的GET、POST映射同一函数
+   def upload():
+       if flask.request.method == "GET":
+           return flask.render_template("upload.html")            # 请求方法为POST时返回上传页面
+       else:
+           file = flask.request.files['file']                  # 获取文件对象
+           if file:
+               file.save(file.filename)                    #保存文件(以传来的文件名 )
+               return "上传成功"
+
+   if __name__ == '__main__':
+       app.run(debug=True)
+
+upload.html
+
+::
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <title>文件上传测试</title>
+   </head>
+   <body>
+   <h2> 请你选择一个文件上传</h2>
+   <form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+       <input type="submit" value="上传" />
+   </form>
+   </body>
+   </html>
+
+|image1| |image2|
+
+.. |image0| image:: ../../../_static/static_moudle.png
+.. |image1| image:: ../../../_static/flask_upload.png
+.. |image2| image:: ../../../_static/flask_upload02.png

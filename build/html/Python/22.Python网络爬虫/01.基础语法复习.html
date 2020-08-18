@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="20.2. python的网络请求" href="01_1.python的网络请求.html" />
     <link rel="prev" title="20. Python网络爬虫" href="index.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">20. Python网络爬虫</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">20.1. 基础语法复习</a><ul>
@@ -173,6 +177,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -211,7 +216,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -223,7 +228,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/22.Python网络爬虫/01.基础语法复习.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/22.Python网络爬虫/01.基础语法复习.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -279,7 +284,7 @@
 <h1><a class="toc-backref" href="#id19">20.1. 基础语法复习</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id20">20.1.1. 变量</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">a</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
@@ -293,7 +298,7 @@
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id21">20.1.2. 字符串的加法 和 乘法</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;I &quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;I &quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;love &quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;python &#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
@@ -308,7 +313,7 @@
 </div>
 <div class="section" id="id4">
 <h2><a class="toc-backref" href="#id22">20.1.3. 字符串的切片和索引</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;I love python&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;I love python&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">&#39;I&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>      <span class="c1"># 0`4个索引位置</span>
@@ -324,7 +329,7 @@
 <h2><a class="toc-backref" href="#id23">20.1.4. 字符串方法</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="split">
 <h3><a class="toc-backref" href="#id24">split()方法，根据分隔符将字符串切割为列表</a><a class="headerlink" href="#split" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;www.baidu.com&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;www.baidu.com&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
 <span class="go">[&#39;www&#39;, &#39;baidu&#39;, &#39;com&#39;]</span>
 </pre></div>
@@ -332,7 +337,7 @@
 </div>
 <div class="section" id="replace">
 <h3><a class="toc-backref" href="#id25">replace()方法，可以将字符串中的字符进行替换</a><a class="headerlink" href="#replace" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;there is apples&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;there is apples&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;is&quot;</span><span class="p">,</span><span class="s2">&quot;are&quot;</span><span class="p">)</span>
 <span class="go">&#39;there are apples&#39;</span>
 </pre></div>
@@ -340,7 +345,7 @@
 </div>
 <div class="section" id="strip">
 <h3><a class="toc-backref" href="#id26">strip()去掉字符串两边的空格，或者根据特定字符进行去除</a><a class="headerlink" href="#strip" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot; python is cool  &quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot; python is cool  &quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">&#39; python is cool  &#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -355,7 +360,7 @@
 </div>
 <div class="section" id="format">
 <h3><a class="toc-backref" href="#id27">format()字符串格式化</a><a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is my love&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is my love&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">&#39;python is my love&#39;</span>
 
@@ -370,7 +375,7 @@
 </div>
 <div class="section" id="id6">
 <h2><a class="toc-backref" href="#id28">20.1.5. 函数</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 对手机号码进行隐藏，隐藏第3位到第6位</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 对手机号码进行隐藏，隐藏第3位到第6位</span>
 <span class="k">def</span> <span class="nf">change_number</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
     <span class="n">hiding_number</span> <span class="o">=</span> <span class="n">number</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">],</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">hiding_number</span><span class="p">)</span>
@@ -382,7 +387,7 @@
 </div>
 <div class="section" id="id7">
 <h2><a class="toc-backref" href="#id29">20.1.6. 判断语句</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/usr/bin/env python
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/env python
 #-*- coding:utf8 -*-
 def count_login():
     passwd = input(&quot;请输入密码: &quot;)
@@ -406,7 +411,7 @@ count_login()
 <ul class="simple">
 <li>计算1~100的和</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
@@ -422,7 +427,7 @@ count_login()
 <h2><a class="toc-backref" href="#id31">20.1.8. Python数据结构</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id9">
 <h3><a class="toc-backref" href="#id32">列表</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;peter&quot;</span><span class="p">,</span><span class="s2">&quot;lilei&quot;</span><span class="p">,</span><span class="s2">&quot;wangwu&quot;</span><span class="p">,</span><span class="s2">&quot;xiaoming&quot;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;peter&quot;</span><span class="p">,</span><span class="s2">&quot;lilei&quot;</span><span class="p">,</span><span class="s2">&quot;wangwu&quot;</span><span class="p">,</span><span class="s2">&quot;xiaoming&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="go">&#39;lilei&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
@@ -468,7 +473,7 @@ count_login()
 </div>
 <div class="section" id="id10">
 <h3><a class="toc-backref" href="#id33">字典</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">user_info</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;hujianli&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">user_info</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;hujianli&quot;</span><span class="p">,</span>
    <span class="o">...</span><span class="p">:</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
    <span class="o">...</span><span class="p">:</span> <span class="s2">&quot;sex&quot;</span><span class="p">:</span><span class="s2">&quot;man&quot;</span><span class="p">}</span>
 
@@ -479,7 +484,7 @@ count_login()
 </div>
 <div class="section" id="id11">
 <h3><a class="toc-backref" href="#id34">元祖和集合</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 元祖不可变</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 元祖不可变</span>
 
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;xiaoming&quot;</span><span class="p">,</span><span class="s2">&quot;zhangyun&quot;</span><span class="p">,</span><span class="s2">&quot;xiaoming&quot;</span><span class="p">]</span>      <span class="c1">#集合可以去重</span>
@@ -493,7 +498,7 @@ count_login()
 <h2><a class="toc-backref" href="#id35">20.1.9. 文件操作</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id13">
 <h3><a class="toc-backref" href="#id36">写文件</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;hujianli.txt&quot;</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;hujianli.txt&quot;</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -503,7 +508,7 @@ count_login()
 </div>
 <div class="section" id="id14">
 <h3><a class="toc-backref" href="#id37">读文件</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;hujianli.txt&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;hujianli.txt&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="c1">#去掉字符串两端的空白</span>
@@ -518,7 +523,7 @@ count_login()
 <div class="section" id="id16">
 <h3><a class="toc-backref" href="#id39">类的初探</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <p><strong>实例属性</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- encoding -*-</span>
 <span class="k">class</span> <span class="nc">Bike</span><span class="p">:</span>
     <span class="n">compose</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">,</span><span class="s1">&#39;wheel&#39;</span><span class="p">,</span><span class="s1">&#39;pedal&#39;</span><span class="p">]</span>
@@ -535,7 +540,7 @@ count_login()
 </div>
 <div class="section" id="id17">
 <h3><a class="toc-backref" href="#id40">实例方法</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 
 <span class="k">class</span> <span class="nc">Cat</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -561,7 +566,7 @@ count_login()
 <div class="section" id="init">
 <h3><a class="toc-backref" href="#id41">魔法方法 构造函数__init__</a><a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h3>
 <p><strong>创建实例的时候自动执行</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Cat</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Cat</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">other</span> <span class="o">=</span> <span class="s2">&quot;hujianli_name&quot;</span>
     <span class="k">def</span> <span class="nf">jiao</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
@@ -574,7 +579,7 @@ count_login()
 </div>
 <div class="section" id="id18">
 <h3><a class="toc-backref" href="#id42">类的继承</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="k">class</span> <span class="nc">Bike</span><span class="p">:</span>
     <span class="n">compose</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">,</span><span class="s1">&#39;wheel&#39;</span><span class="p">,</span><span class="s1">&#39;pedal&#39;</span><span class="p">]</span>
@@ -620,11 +625,19 @@ count_login()
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -635,7 +648,6 @@ count_login()
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

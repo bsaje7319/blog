@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="20.14. Selenium模拟浏览器" href="13.Selenium模拟浏览器.html" />
     <link rel="prev" title="20.12. 异步加载" href="11.异步加载.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">20. Python网络爬虫</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01.基础语法复习.html">20.1. 基础语法复习</a></li>
@@ -167,6 +171,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -205,7 +210,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -217,7 +222,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/22.Python网络爬虫/12.表单交互与模拟登录.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/22.Python网络爬虫/12.表单交互与模拟登录.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -247,7 +252,7 @@
 <div class="section" id="cookie">
 <h2><a class="toc-backref" href="#id6">20.13.1. 模拟通过Cookie登录豆瓣</a><a class="headerlink" href="#cookie" title="Permalink to this headline">¶</a></h2>
 <p>1.表单交互：使用Requests库的POST使用方法，通过观察表单的网页源代码进行表单的提交，最后通过抓包获取表单提交的字段，进行表单交互</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1）POST方法
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1）POST方法
 2）查看网页源代码提交表单
 3）逆向工程提交表单
 </pre></div>
@@ -255,7 +260,7 @@
 <p>2.模拟登陆：Cookie是网站为了辨别用户身份，进行session跟踪而存储在用户本地终端上的数据。
 模拟登陆是利用查找到的Cookie信息进行模拟登陆。</p>
 <p>以豆瓣网为例，步骤如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>①：进入豆瓣网，打开Chrome的开发工具，选择Network选项
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>①：进入豆瓣网，打开Chrome的开发工具，选择Network选项
 ②：手工输入账户和密码进行登录，此时会发现Network中加载了很多文件。
 ③：选择www.douban.com,直接可以看到Cookie信息。(注：不要泄露了自己的Cookie信息)
 </pre></div>
@@ -263,7 +268,7 @@
 <p><img alt="image0" src="../../_images/cookie-info0001.png" /></p>
 <p>④ 在请求头上加入Cookie信息即可完成豆瓣网的模拟登录。</p>
 <p>格式为：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/21 13:29</span>
@@ -281,7 +286,7 @@
 </pre></div>
 </div>
 <p>⑤ 查看运行结果，是否出现了账号信息，登录成功后的界面如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;table style=&quot;clear:both&quot; width=&quot;100%&quot; align=&quot;center&quot; cellpadding=&quot;5&quot;&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;table style=&quot;clear:both&quot; width=&quot;100%&quot; align=&quot;center&quot; cellpadding=&quot;5&quot;&gt;
     &lt;tr&gt;
         &lt;td class=&quot;m&quot; valign=&quot;top&quot; align=&quot;right&quot;&gt;名　号: &lt;/td&gt;
         &lt;td valign=&quot;top&quot;&gt;
@@ -294,7 +299,7 @@
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id7">20.13.2. 爬取拉勾网招聘信息</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>爬取网址：https://www.lagou.com/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>爬取网址：https://www.lagou.com/
 爬取信息：工作岗位等信息
 爬取方式：json数据
 存储方式：MongoDB
@@ -302,19 +307,19 @@
 拉勾网采用了异步加载技术和提交表单，可通过逆向工程爬取招聘信息，并存储在MongoDB数据库中。
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">①拉勾网上关于Python的招聘信息如下：</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">①拉勾网上关于Python的招聘信息如下：</span></code></p>
 <p><img alt="image1" src="../../_images/Linux-lagou00001.png" /></p>
-<p><code class="docutils literal"><span class="pre">②通过“查看网页源代码”，可以看出网页元素不在网页源代码中，说明网页采用了Ajax技术。</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">②通过“查看网页源代码”，可以看出网页元素不在网页源代码中，说明网页采用了Ajax技术。</span></code>
 <img alt="image2" src="../../_images/lagou-pacong0002.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>③此时可打开Chrome的开发者工具，选择Network选项卡，选中XHR项，就可以看到加载招聘信息的文件。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>③此时可打开Chrome的开发者工具，选择Network选项卡，选中XHR项，就可以看到加载招聘信息的文件。
 在Headers中可以看到请求的网址，在Response中可以看到返回的信息，信息为Json格式。
 Json数据需要登录后才能访问，若未登录，看不到相关信息。`
 </pre></div>
 </div>
 <p><img alt="image3" src="../../_images/lagou-pacong00003.png" /></p>
 <p><img alt="image4" src="../../_images/lagoupacong00004.png" /></p>
-<p><code class="docutils literal"><span class="pre">通过观察json结构，可以很简单地获取相关信息：</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p><code class="docutils literal notranslate"><span class="pre">通过观察json结构，可以很简单地获取相关信息：</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/21 14:15</span>
@@ -380,7 +385,7 @@ Json数据需要登录后才能访问，若未登录，看不到相关信息。`
 </div>
 <p><img alt="image5" src="../../_images/pacong_lagou0001.png" /></p>
 <p>多页面，存放进MongoDB的代码：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/21 14:15</span>
@@ -452,7 +457,7 @@ Json数据需要登录后才能访问，若未登录，看不到相关信息。`
         <span class="c1"># lagouzhaopin_info.insert_one(info)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.lagou.com/jobs/positionAjax.json&quot;</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;first&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
@@ -468,7 +473,7 @@ Json数据需要登录后才能访问，若未登录，看不到相关信息。`
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id8">20.13.3. 词云制作</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>词云：对文本中出现频率较高的关键词进行视觉上的突出，形成关键词图片，从而过滤掉大量的文本信息，使读者对文本的主要内容有大概的了解。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>词云：对文本中出现频率较高的关键词进行视觉上的突出，形成关键词图片，从而过滤掉大量的文本信息，使读者对文本的主要内容有大概的了解。
 制作方法有两种：
 1.个人BDP
 ① 登陆个人BDP，网址为：https://me.bdp.cn/home.html
@@ -477,20 +482,20 @@ Json数据需要登录后才能访问，若未登录，看不到相关信息。`
 <p><img alt="image6" src="../../_images/ciyun-shangchuan00001.png" /></p>
 <p><img alt="image7" src="../../_images/ciyun-shangchuan0002.png" /></p>
 <p><img alt="image8" src="../../_images/ciyun00001.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>⑤点击界面左上方的“←”返回“仪表盘”，即可找到已经完成的词云，可将其导出为图片，图片格式为png，如下图所示。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>⑤点击界面左上方的“←”返回“仪表盘”，即可找到已经完成的词云，可将其导出为图片，图片格式为png，如下图所示。
 </pre></div>
 </div>
 <p><img alt="image9" src="../../_images/ciyun-00002.png" /></p>
 </div>
 <div class="section" id="id4">
 <h2><a class="toc-backref" href="#id9">20.13.4. 模拟登陆实战 - 爬取微博信息</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>爬取网址：http://m.weibo.cn→搜索→微博热搜榜
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>爬取网址：http://m.weibo.cn→搜索→微博热搜榜
 爬取信息：热搜榜内容
 爬取方式：json数据
 存储方式：txt文件，结果用词云来展现。
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/23 14:49</span>
@@ -524,7 +529,7 @@ Json数据需要登录后才能访问，若未登录，看不到相关信息。`
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text2</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">打印的部分结果为：</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">打印的部分结果为：</span></code></p>
 <p><img alt="image10" src="../../_images/weibo00001.png" /></p>
 </div>
 </div>
@@ -549,11 +554,19 @@ Json数据需要登录后才能访问，若未登录，看不到相关信息。`
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -564,7 +577,6 @@ Json数据需要登录后才能访问，若未登录，看不到相关信息。`
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

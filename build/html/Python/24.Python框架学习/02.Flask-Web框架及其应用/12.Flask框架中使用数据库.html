@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="22.3. Scrapy爬虫框架" href="../03.Scrapy爬虫框架/index.html" />
     <link rel="prev" title="22.2.12. Flask-SQLAlchemy" href="11.Flask-SQLAlchemy.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,13 +119,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">22.2. 02.Flask-Web框架及其应用</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">22.2. Flask-Web框架及其应用</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="01.安装Flask项目环境.html">22.2.1. 安装Flask项目环境</a></li>
 <li class="toctree-l4"><a class="reference internal" href="02.路由.html">22.2.2. 路由</a></li>
 <li class="toctree-l4"><a class="reference internal" href="03.静态文件.html">22.2.3. 静态文件</a></li>
@@ -155,6 +159,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -193,13 +198,13 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
           <li><a href="../index.html">22. Python框架学习</a> &raquo;</li>
         
-          <li><a href="index.html">22.2. 02.Flask-Web框架及其应用</a> &raquo;</li>
+          <li><a href="index.html">22.2. Flask-Web框架及其应用</a> &raquo;</li>
         
       <li>22.2.13. Flask框架中使用数据库</li>
     
@@ -207,7 +212,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/12.Flask框架中使用数据库.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/12.Flask框架中使用数据库.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -232,7 +237,7 @@
 </div>
 <div class="section" id="flask">
 <h1><a class="toc-backref" href="#id2">22.2.13. Flask框架中使用数据库</a><a class="headerlink" href="#flask" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default"><div class="highlight"><pre><span></span>在Flask 框架中提供了一种只需要定义一次连接和定义一次释放连接， 之后就可以在所有
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>在Flask 框架中提供了一种只需要定义一次连接和定义一次释放连接， 之后就可以在所有
 的业务函数中直接使用数据连接来查询数据库。这就需要使用FIask 框架中的两个装饰器和一个g 对象。
 
 两个装饰器分别是before-request()和teardown-request()，被before-request() 装饰的函数会
@@ -245,9 +250,9 @@ Flask 提供了特殊的g 对象， 这个对象与每一个请求是一一对�
 </pre></div>
 </div>
 <p>其基本使用代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">flask</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">flask</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">before_request</span>             <span class="c1">#应用装饰器每个请求开始时运行被装饰器函数</span>
 <span class="k">def</span> <span class="nf">before_request</span><span class="p">():</span>
@@ -264,7 +269,7 @@ Flask 提供了特殊的g 对象， 这个对象与每一个请求是一一对�
 </pre></div>
 </div>
 <p>在整个网站程序的请求处理方法中使用以下形式直接使用数据库连接：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cur</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>             <span class="c1">#获取数据库游标</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cur</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>             <span class="c1">#获取数据库游标</span>
 <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;sql语句字符串&quot;</span><span class="p">)</span>     <span class="c1">#查询数据库</span>
 <span class="n">cur</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>         <span class="c1">#提交事务</span>
 <span class="n">cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                     <span class="c1">#关闭游标</span>
@@ -300,11 +305,19 @@ Flask 提供了特殊的g 对象， 这个对象与每一个请求是一一对�
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -315,7 +328,6 @@ Flask 提供了特殊的g 对象， 这个对象与每一个请求是一一对�
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

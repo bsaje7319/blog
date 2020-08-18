@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.1. 声明变量" href="01.声明变量.html" />
     <link rel="prev" title="Go语言学习" href="../index.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -127,6 +131,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -165,7 +170,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -175,7 +180,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/01.Go语言基本语法与使用/index.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/01.Go语言基本语法与使用/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -201,6 +206,7 @@
 <li class="toctree-l3"><a class="reference internal" href="01.声明变量.html#id7">匿名变量-没有名字的变量</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="01.声明变量.html#id8">1.1.5. 函数变量可见性</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="02.数据类型.html">1.2. 数据类型</a><ul>
@@ -228,6 +234,11 @@
 <li class="toctree-l2"><a class="reference internal" href="03.指针.html#id6">1.3.6. 示例：使用指针变量获取命令行的输入信息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03.指针.html#new">1.3.7. 创建指针的另一种方法-new()函数</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="03.指针.html#id7">传值和传引用</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03.指针.html#id8">1.3.8. 指针的核心要点</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03.指针.html#id9">空指针</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.指针.html#id10">使用指针</a></li>
 </ul>
 </li>
 </ul>
@@ -260,6 +271,7 @@
 <li class="toctree-l3"><a class="reference internal" href="05.字符串应用.html#ini">从INI配置文件中查询需要的值</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="05.字符串应用.html#id10">1.5.6. 字符串的常见操作</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="06.常量.html">1.6. 常量–恒定不变的值</a><ul>
@@ -279,6 +291,7 @@
 <li class="toctree-l3"><a class="reference internal" href="08.编译与工具.html#go-install">3.编译并安装(go install)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="08.编译与工具.html#go-get">4.一键获取代码、编译并安装(go get)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="08.编译与工具.html#go-test">5.测试(go test)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.编译与工具.html#id13">6. 命令</a></li>
 </ul>
 </li>
 </ul>
@@ -307,11 +320,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -322,7 +343,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

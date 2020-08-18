@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="12.12. zipfile、tarfile模块学习" href="12.zipfile、tarfile模块学习.html" />
     <link rel="prev" title="12.10. re模块" href="10.re模块.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -143,7 +147,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -161,6 +165,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -199,7 +204,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -211,7 +216,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/12.Python标准库/11.logging模块.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/12.Python标准库/11.logging模块.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -246,22 +251,22 @@
 <ul class="simple">
 <li>python的logging模块提供了标准的日志接口，你可以通过它存储各种格式的日志.</li>
 <li>日志级别大小关系为:
-<code class="docutils literal"><span class="pre">critical</span> <span class="pre">&gt;</span> <span class="pre">error</span> <span class="pre">&gt;</span> <span class="pre">warning</span> <span class="pre">&gt;</span> <span class="pre">info</span> <span class="pre">&gt;</span> <span class="pre">debug</span> <span class="pre">&gt;</span> <span class="pre">notset</span></code>
+<code class="docutils literal notranslate"><span class="pre">critical</span> <span class="pre">&gt;</span> <span class="pre">error</span> <span class="pre">&gt;</span> <span class="pre">warning</span> <span class="pre">&gt;</span> <span class="pre">info</span> <span class="pre">&gt;</span> <span class="pre">debug</span> <span class="pre">&gt;</span> <span class="pre">notset</span></code>
 也可自定义日志级别</li>
 </ul>
 <p><img alt="image0" src="../../_images/logging-module0001.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>默认级别是WARNING，
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>默认级别是WARNING，
 表示只有WARING和比WARNING更严重的事件才会被记录到日志内，低级别的信息会被忽略。
 因此，默认情况下，DEBUG和INFO会被忽略，WARING、ERROR和CRITICAL会被记录。
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;debug&#39;</span><span class="p">)</span>                 <span class="c1"># 默认日志级别为 warning ,故debug日志不做打印</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;warning&#39;</span><span class="p">)</span>             <span class="c1"># 达到默认日志级别为WARNING,打印到屏幕 warning</span>
 </pre></div>
 </div>
 <p>eg1</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/21 16:16</span>
@@ -277,20 +282,20 @@
 </pre></div>
 </div>
 <p>输出结果</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ERROR</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">这是ERROR级别信息</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ERROR</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">这是ERROR级别信息</span>
 <span class="n">CRITICAL</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">这是CRITICAL级别信息</span>
 </pre></div>
 </div>
 <p>eg2</p>
 <p>getLogger()函数创建自己的日志器对象，本例中__name__是当前模块名。使用自定义日志器的示例代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/21 16:16</span>
 <span class="c1"># filename: logging日志模块.py</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>    <span class="c1">#设置日志级别为DEBUG</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;这是DEBUG级别信息&quot;</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;这是INFO级别信息&quot;</span><span class="p">)</span>
@@ -300,7 +305,7 @@
 </pre></div>
 </div>
 <p>输出结果</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DEBUG</span><span class="p">:</span><span class="n">__main__</span><span class="p">:</span><span class="n">这是DEBUG级别信息</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEBUG</span><span class="p">:</span><span class="n">__main__</span><span class="p">:</span><span class="n">这是DEBUG级别信息</span>
 <span class="n">INFO</span><span class="p">:</span><span class="n">__main__</span><span class="p">:</span><span class="n">这是INFO级别信息</span>
 <span class="n">WARNING</span><span class="p">:</span><span class="n">__main__</span><span class="p">:</span><span class="n">这是WARNING级别信息</span>
 <span class="n">ERROR</span><span class="p">:</span><span class="n">__main__</span><span class="p">:</span><span class="n">这是ERROR级别信息</span>
@@ -311,7 +316,7 @@
 <h2><a class="toc-backref" href="#id8">12.11.1. 日志信息格式化</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p><img alt="image1" src="../../_images/logging_format.png" /></p>
 <p>eg2</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/21 16:16</span>
@@ -321,7 +326,7 @@
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(threadName)s</span><span class="s1"> - </span><span class="si">%(name)s</span><span class="s1"> - </span><span class="si">%(funcName)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1">&#39;</span>
                                                <span class="s1">&#39;-</span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;这是DEBUG级别信息.&quot;</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;这是INFO级别信息.&quot;</span><span class="p">)</span>
@@ -339,7 +344,7 @@
 </pre></div>
 </div>
 <p>输出结果</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>2019-05-21 16:31:33,371 - MainThread - __main__ - &lt;module&gt; - INFO-这是INFO级别信息.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>2019-05-21 16:31:33,371 - MainThread - __main__ - &lt;module&gt; - INFO-这是INFO级别信息.
 2019-05-21 16:31:33,371 - MainThread - __main__ - &lt;module&gt; - WARNING-这是WARNING级别信息.
 2019-05-21 16:31:33,371 - MainThread - __main__ - &lt;module&gt; - ERROR-这是ERROR级别信息。
 2019-05-21 16:31:33,371 - MainThread - __main__ - &lt;module&gt; - CRITICAL-这是CRITICAL级别信息。
@@ -352,13 +357,13 @@
 <h2><a class="toc-backref" href="#id9">12.11.2. 日志重定位</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>将日志信息输出到test.log文件中</p>
 <p>eg</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 日志重定位</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 日志重定位</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(threadName)s</span><span class="s1"> - </span><span class="si">%(name)s</span><span class="s1"> - </span><span class="si">%(funcName)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1">&#39;</span>
                                                <span class="s1">&#39;-</span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;test.log&quot;</span><span class="p">)</span>
 
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;这是DEBUG级别信息.&quot;</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;这是INFO级别信息.&quot;</span><span class="p">)</span>
@@ -375,7 +380,7 @@
 <span class="n">funlog</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/7 14:13</span>
@@ -402,12 +407,12 @@
         <span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;critical message&#39;</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">tl</span> <span class="o">=</span> <span class="n">TestLogging</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>eg</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="n">LOG_FILENAME</span> <span class="o">=</span> <span class="s1">&#39;hello.py&#39;</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">LOG_FILENAME</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,)</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;This message should go to the log file&#39;</span><span class="p">)</span>
@@ -419,7 +424,7 @@
 </div>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id10">定义一个logging类</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/9/17 10:40</span>
@@ -472,7 +477,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">mylog</span> <span class="o">=</span> <span class="n">MyLog</span><span class="p">()</span>
     <span class="n">mylog</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;I&#39;m debug&quot;</span><span class="p">)</span>
     <span class="n">mylog</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;I&#39;m warn&quot;</span><span class="p">)</span>
@@ -481,7 +486,7 @@
 </pre></div>
 </div>
 <p>· 将loggingClass.py作为模块导入使用</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/9/17 12:27</span>
@@ -489,7 +494,7 @@
 
 <span class="kn">from</span> <span class="nn">loggingClass</span> <span class="k">import</span> <span class="n">MyLog</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">t1</span> <span class="o">=</span> <span class="n">MyLog</span><span class="p">()</span>
     <span class="n">t1</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is info&quot;</span><span class="p">)</span>
     <span class="n">t1</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;This is debug&quot;</span><span class="p">)</span>
@@ -502,7 +507,7 @@
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id11">使用配置文件</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>eg</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/21 16:37</span>
@@ -530,7 +535,7 @@
 </div>
 <p>logger.conf</p>
 <p>使用时注意要去掉 #注释的信息</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">loggers</span><span class="p">]</span>                       <span class="c1">#配置日志器</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">loggers</span><span class="p">]</span>                       <span class="c1">#配置日志器</span>
 <span class="n">keys</span><span class="o">=</span><span class="n">root</span><span class="p">,</span><span class="n">simpleExample</span>         <span class="c1">#日志器包含了root和simpleExample</span>
 
 <span class="p">[</span><span class="n">logger_root</span><span class="p">]</span>                   <span class="c1">#配置根日志器</span>
@@ -567,7 +572,7 @@
 </pre></div>
 </div>
 <p>执行之后，日志会记录到test.log中。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span>                    <span class="c1"># 通过logging.basicConfig函数对日志的输出格式及方式做相关配置</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span>                    <span class="c1"># 通过logging.basicConfig函数对日志的输出格式及方式做相关配置</span>
     <span class="c1"># basicConfig 相关参数帮助</span>
     <span class="n">filename</span>               <span class="c1"># 指定日志文件名</span>
     <span class="n">filemode</span>               <span class="c1"># 和file函数意义相同，指定日志文件的打开模式，&#39;w&#39;或&#39;a&#39;</span>
@@ -598,12 +603,12 @@
 </div>
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id12">读取配置文件,设置多个日志记录器</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">fileConfig</span><span class="p">(</span><span class="s2">&quot;logger.conf&quot;</span><span class="p">)</span>        <span class="c1"># 加载配置文件</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">fileConfig</span><span class="p">(</span><span class="s2">&quot;logger.conf&quot;</span><span class="p">)</span>        <span class="c1"># 加载配置文件</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;example02&quot;</span><span class="p">)</span>         <span class="c1"># 使用已定义的日志记录器</span>
 </pre></div>
 </div>
 <p>logger.conf</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">###############################################</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">###############################################</span>
 <span class="p">[</span><span class="n">loggers</span><span class="p">]</span>
 <span class="n">keys</span><span class="o">=</span><span class="n">root</span><span class="p">,</span><span class="n">example01</span><span class="p">,</span><span class="n">example02</span>    <span class="c1"># 设置三种日志记录器</span>
 <span class="p">[</span><span class="n">logger_root</span><span class="p">]</span>                    <span class="c1"># 针对单一种设置</span>
@@ -649,7 +654,7 @@
 </div>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id13">日志记录类的代码示例：</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">logging</span> <span class="k">import</span> <span class="n">handlers</span>
 
 
@@ -684,7 +689,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">th</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">log</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="s1">&#39;all.log&#39;</span><span class="p">,</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;debug&#39;</span><span class="p">)</span>
     <span class="n">log</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;debug&#39;</span><span class="p">)</span>
     <span class="n">log</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;info&#39;</span><span class="p">)</span>
@@ -698,11 +703,11 @@
 <div class="section" id="yaml">
 <h3><a class="toc-backref" href="#id14">基于YAML配置文件的日志</a><a class="headerlink" href="#yaml" title="Permalink to this headline">¶</a></h3>
 <p>这里要先通过pip安装yaml模块：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyyaml</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyyaml</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">logging.conf.yaml</span></code>配置文件内容如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="mi">1</span>
+<p><code class="docutils literal notranslate"><span class="pre">logging.conf.yaml</span></code>配置文件内容如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="mi">1</span>
 <span class="n">formatters</span><span class="p">:</span>
   <span class="n">simple</span><span class="p">:</span>
     <span class="nb">format</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(name)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span>
@@ -723,7 +728,7 @@
 </pre></div>
 </div>
 <p>使用代码示例：</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/12/23 22:55</span>
@@ -759,8 +764,8 @@
 <span class="sd">&#39;&#39;&#39;</span>
 </pre></div>
 </div>
-<p>一个<code class="docutils literal"><span class="pre">logging</span></code>的方法。</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">configure_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p>一个<code class="docutils literal notranslate"><span class="pre">logging</span></code>的方法。</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">configure_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Configure logging to log to std output as well as to log file</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -784,7 +789,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
 
 <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">()&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">()&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -804,7 +809,7 @@
 </div>
 <p>参考资料：</p>
 <p>重要的日志模块logging</p>
-<p><code class="docutils literal"><span class="pre">链接：http://www.cnblogs.com/wj-1314/p/8607515.html</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">链接：http://www.cnblogs.com/wj-1314/p/8607515.html</span></code></p>
 </div>
 </div>
 </div>
@@ -829,11 +834,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -844,7 +857,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

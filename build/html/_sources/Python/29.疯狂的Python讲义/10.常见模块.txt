@@ -819,6 +819,69 @@ ChainMap允许有重复的key，排在链前面的dict中的key具有更高的�
 
 程序可通过任何可迭代对象参数来创建Counter对象，此时Counter将会自动统计各元素出现的次数，并以元素为Key，出现次数为value来构建Counter对象；程序也能以dict为参数来构建Counter对象；还能通过关键字参数来构建Counter对象。
 
+``Counter_test.py``
+
+.. code:: python
+
+   from collections import Counter
+   # 创建空的Counter对象
+   c1 = Counter()
+   # 以可迭代对象创建Counter对象
+   c2 = Counter('hannah')
+   print(c2)
+   print(c2["h"])
+   print(c2["n"])
+   # 以可迭代对象创建Counter对象
+   c3 = Counter(['Python', 'Swift', 'Swift', 'Python', 'Kotlin', 'Python'])
+   print(c3)
+   # 以dict来创建Counter对象
+   c4 = Counter({'red': 4, 'blue': 2})
+   print(c4)
+   # 使用关键字参数的语法创建Counter
+   c5 = Counter(Python=4, Swift=8)
+   print(c5)
+
+事实上，Counter继承了dict类，因此它完全可调用dict所支持的方法，此外，Counter还提供了如下三个常用的方法。
+
+-  elements(): 该方法返回该Counter所包含的全部元素组成的迭代器。
+-  most_common([n]):该方法返回Counter中出现最多的n个元素
+-  subtract([iterable-or-mapping]):该方法计算Counter的减法，其实就是计算减去各元素出现的次数。
+
+``Counter_test2.py``
+
+.. code:: python
+
+   from collections import Counter
+
+   # 创建Counter对象
+   cnt = Counter()
+   # 访问并不存在的key，将输出该key的次数为0.
+   print(cnt['Python'])  # 0
+   for word in ['Swift', 'Python', 'Kotlin', 'Kotlin', 'Swift', 'Go']:
+       cnt[word] += 1
+   print(cnt)
+   # 只访问Counter对象的元素
+   print(list(cnt.elements()))
+   # 将字符串（迭代器）转换成Counter
+   chr_cnt = Counter('abracadabra')
+   # 获取出现最多的3个字母
+   print(chr_cnt.most_common(3))  # [('a', 5), ('b', 2), ('r', 2)]
+   c = Counter(a=4, b=2, c=0, d=-2)
+   d = Counter(a=1, b=2, c=3, d=4)
+   # 用Counter对象执行减法，其实就是减少各元素的出现次数
+   c.subtract(d)
+   print(c)  # Counter({'a': 3, 'b': 0, 'c': -3, 'd': -6})
+   e = Counter({'x': 2, 'y': 3, 'z': -4})
+   # 调用del删除key-value对，会真正删除该key-value对
+   del e['y']
+   print(e)
+   # 访问'w'对应的value，'w'没有出现过，因此返回0
+   print(e['w'])  # 0
+   # 删除e['w']，删除该key-value对
+   del e['w']
+   # 再次访问'w'对应的value，'w'还是没有，因此返回0
+   print(e['w'])  # 0
+
 参考文献：
 
 https://blog.csdn.net/zhouyong80/article/details/102637845

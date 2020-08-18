@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="4.3. 闭包" href="03.闭包.html" />
     <link rel="prev" title="4.1. 声明函数" href="01.声明函数.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -134,6 +138,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -172,7 +177,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -184,7 +189,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/04.函数/02.匿名函数.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/04.函数/02.匿名函数.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -222,7 +227,7 @@
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id10">4.2.1. 定义一个匿名函数</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>匿名函数的定义格式如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>func(参数列表)（返回参数列表）{
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>func(参数列表)（返回参数列表）{
 函数体
 }
 
@@ -232,7 +237,7 @@
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id11">4.2.2. 1，在定义时调用匿名函数</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -247,7 +252,7 @@
 </div>
 <div class="section" id="id4">
 <h2><a class="toc-backref" href="#id12">4.2.3. 2.匿名函数做回调函数</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -272,7 +277,7 @@ func main() {
 </div>
 <div class="section" id="id5">
 <h2><a class="toc-backref" href="#id13">4.2.4. 3.使用匿名函数实现操作封装</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import (
     &quot;flag&quot;
@@ -314,7 +319,7 @@ func main() {
 <p>函数和其他类型一样都属于“一等公民”，其他类型能够实现接口，函数也可以。</p>
 <div class="section" id="id7">
 <h3><a class="toc-backref" href="#id15">结构体实现接口</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -350,7 +355,7 @@ func main() {
 <h3><a class="toc-backref" href="#id16">函数体实现接口</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>函数的声明不能直接实现接口，需要将函数定义为类型后，使用类型实现结构体。
 当类型方法被调用时，还需要调用函数本体。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -407,11 +412,19 @@ func main() {
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -422,7 +435,6 @@ func main() {
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

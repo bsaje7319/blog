@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6.5. 05.对结构体数据进行排序" href="05.对结构体数据进行排序.html" />
     <link rel="prev" title="6.3. 03.理解类型与接口的关系" href="03.理解类型与接口的关系.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -134,6 +138,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -172,7 +177,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -184,7 +189,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/06.接口/04.常见的类型的便捷排序.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/06.接口/04.常见的类型的便捷排序.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -214,7 +219,7 @@
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id5">6.4.1. 1. 字符串切片的便捷排序</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>sort包中又一个StringSlice类型，定义如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">StringSlice</span> <span class="p">[]</span><span class="n">string</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">StringSlice</span> <span class="p">[]</span><span class="n">string</span>
 
 <span class="n">func</span> <span class="p">(</span><span class="n">p</span> <span class="n">StringSlice</span><span class="p">)</span> <span class="n">Len</span><span class="p">()</span> <span class="nb">int</span>           <span class="p">{</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">}</span>
 <span class="n">func</span> <span class="p">(</span><span class="n">p</span> <span class="n">StringSlice</span><span class="p">)</span> <span class="n">Less</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="nb">int</span><span class="p">)</span> <span class="nb">bool</span> <span class="p">{</span> <span class="k">return</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="p">}</span>
@@ -226,7 +231,7 @@
 </div>
 <p>sort包中农的StringSlice的代码与MyStringList的实现代码几乎一样，只需要使用sort包的StringSlice就可以更简单快速地
 进行字符串排序，简化后的代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;fmt&quot;</span>
@@ -261,7 +266,7 @@
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id6">6.4.2. 2. 对整型切片进行排序</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">IntSlice</span> <span class="p">[]</span><span class="nb">int</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">IntSlice</span> <span class="p">[]</span><span class="nb">int</span>
 
 <span class="n">func</span> <span class="p">(</span><span class="n">p</span> <span class="n">IntSlice</span><span class="p">)</span> <span class="n">Len</span><span class="p">()</span> <span class="nb">int</span>           <span class="p">{</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">}</span>
 <span class="n">func</span> <span class="p">(</span><span class="n">p</span> <span class="n">IntSlice</span><span class="p">)</span> <span class="n">Less</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="nb">int</span><span class="p">)</span> <span class="nb">bool</span> <span class="p">{</span> <span class="k">return</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="p">}</span>
@@ -272,7 +277,7 @@
 </pre></div>
 </div>
 <p>sort包在sort.Interface对各类型的封装上还有更进一步的简化。下面使用sort.Strings继续对代码简化：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">准备一个内容被打乱顺序的字符串切片</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">准备一个内容被打乱顺序的字符串切片</span>
 <span class="n">names</span> <span class="p">:</span><span class="o">=</span> <span class="p">[]</span><span class="n">string</span><span class="p">{</span>
     <span class="s2">&quot;3. Triple Kill&quot;</span><span class="p">,</span>
     <span class="s2">&quot;5. Penta Kill&quot;</span><span class="p">,</span>
@@ -313,11 +318,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -328,7 +341,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

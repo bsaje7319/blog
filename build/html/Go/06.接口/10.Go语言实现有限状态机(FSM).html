@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="7. 包" href="../07.包/index.html" />
     <link rel="prev" title="6.9. 09.类型分支-批量判断空接口中变量的类型" href="09.类型分支-批量判断空接口中变量的类型.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -132,6 +136,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -170,7 +175,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -182,7 +187,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/06.接口/10.Go语言实现有限状态机(FSM).txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/06.接口/10.Go语言实现有限状态机(FSM).rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -212,7 +217,7 @@
 <p>有限状态机的组成
 有限状态机有两个必要的特点，一是离散的，二是有限的。基于这两点，现实世界上绝大多数事物因为复杂的状态而无法用有限状态机表示。</p>
 <p>而描述事物的有限状态机模型的元素由以下组成：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>· 状态（State）：事物的状态，包括初始状态和所有事件触发后的状态。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>· 状态（State）：事物的状态，包括初始状态和所有事件触发后的状态。
 · 事件（Event）：触发状态变化或者保持原状态的事件。
 · 行为或转换（Action/Transition）：执行状态转换的过程。
 · 检测器（Guard）：检测某种状态要转换成另一种状态的条件是否满足。
@@ -220,7 +225,7 @@
 </div>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id3">6.10.1. 有限状态机的举例</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>FSM 持有有限多个状态集合，有当前状态、默认状态、接收的外部数据等。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>FSM 持有有限多个状态集合，有当前状态、默认状态、接收的外部数据等。
 并且 FSM 有一系列的行为：启动 FSM、退出 FSM 以及状态转移等。
 
 State（状态）也会有一系列的行为：
@@ -231,7 +236,7 @@ State（状态）也会有一系列的行为：
 <p>【示例】下面以游戏中的宠物为例，将这个宠物看做一个 FSM，比如这个宠物每天
 8 点开始挣金币，中午 12 点开始打坐练功，8 点和 12 点就是对这个 FSM
 的输入语句，对应的状态则开始执行，代码如下所示：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -426,11 +431,19 @@ State（状态）也会有一系列的行为：
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -441,7 +454,6 @@ State（状态）也会有一系列的行为：
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2.2. for循环语句" href="02.for循环语句.html" />
     <link rel="prev" title="2. Python中流程控制语句" href="index.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -132,7 +136,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -150,6 +154,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -188,7 +193,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -200,7 +205,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/02.流程控制语句/01.选择语句.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/02.流程控制语句/01.选择语句.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -237,7 +242,7 @@
 <h1><a class="toc-backref" href="#id7">2.1. 选择语句</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="python">
 <h2><a class="toc-backref" href="#id8">2.1.1. Python代码执行过程</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Python代码在执行过程中，遵循下面的基本原则：
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Python代码在执行过程中，遵循下面的基本原则：
 
 普通语句，直接执行；
 碰到函数，将函数体载入内存，并不直接执行
@@ -252,7 +257,7 @@
 <h2><a class="toc-backref" href="#id9">2.1.2. 条件判断</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id10">Python 中的比较操作符见下表。</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">相等</span> <span class="o">==</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">相等</span> <span class="o">==</span>
 <span class="n">不等于</span> <span class="o">!=</span>
 <span class="n">小于</span> <span class="o">&lt;</span>
 <span class="n">不大于</span> <span class="o">&lt;=</span>
@@ -267,7 +272,7 @@
 True 和 False ? 一个成假赋值不一定明确表示为 False .</li>
 </ul>
 <p>下面的情况也会被认为是 False 。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">布尔</span> <span class="kc">False</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">布尔</span> <span class="kc">False</span>
 <span class="n">null</span> <span class="n">类型</span> <span class="kc">None</span>
 <span class="n">整型</span> <span class="mi">0</span>
 <span class="n">浮点型</span> <span class="mf">0.0</span>
@@ -278,7 +283,7 @@ True 和 False ? 一个成假赋值不一定明确表示为 False .</li>
 <span class="n">空集合</span> <span class="nb">set</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>简单的if语句
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>简单的if语句
 if 表达式：（布尔值）
     语句块
 
@@ -327,7 +332,7 @@ if items:
 </pre></div>
 </div>
 <p>eg</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="k">if</span> <span class="nb">str</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;str不是空字符串&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
@@ -348,8 +353,8 @@ if items:
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dict2 是空字典&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">python没有switch或case语句用于测试多个值，要处理多个值，可以使用elif语句，如下</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;hujianli.py&quot;</span>
+<p><code class="docutils literal notranslate"><span class="pre">python没有switch或case语句用于测试多个值，要处理多个值，可以使用elif语句，如下</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;hujianli.py&quot;</span>
 <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">suffix</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="k">if</span> <span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.htm&quot;</span><span class="p">:</span>
@@ -367,11 +372,11 @@ if items:
 </pre></div>
 </div>
 <p>输出</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">表示真值，可以用True和False</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">has_y</span> <span class="o">=</span> <span class="kc">False</span>
+<p><code class="docutils literal notranslate"><span class="pre">表示真值，可以用True和False</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">has_y</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;hujianli.py&quot;</span>
 <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">suffix</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
@@ -391,10 +396,10 @@ if items:
 </pre></div>
 </div>
 <p>输出</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kc">True</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>########################if 的嵌套方式########################
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>########################if 的嵌套方式########################
 if 表达式1：
     if 表达式2：
         语句块2
@@ -407,8 +412,8 @@ else:
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id11">代码示例1</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">if...else嵌套的语句</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p><code class="docutils literal notranslate"><span class="pre">if...else嵌套的语句</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> 为了您和家人的安全，请不要酒后开车</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">var1</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入每100毫升血液中的酒精含量度数：&quot;</span><span class="p">))</span>
@@ -428,7 +433,7 @@ else:
 <h2><a class="toc-backref" href="#id12">2.1.3. 三元运算符</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id13">代码示例2</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
@@ -449,7 +454,7 @@ else:
 <span class="n">minalue</span> <span class="o">=</span> <span class="n">a</span> <span class="k">if</span> <span class="n">a</span><span class="o">&lt;=</span><span class="n">b</span> <span class="k">else</span> <span class="n">b</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/6/5 18:28</span>
@@ -460,7 +465,7 @@ else:
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">st</span> <span class="o">=</span> <span class="s2">&quot;a大于b&quot;</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="k">else</span>  <span class="s2">&quot;a不大于b&quot;</span>
 <span class="c1"># 输出&quot;a大于b&quot;</span>
@@ -489,7 +494,7 @@ else:
 <div class="section" id="assert">
 <h2><a class="toc-backref" href="#id14">2.1.4. 断言 assert</a><a class="headerlink" href="#assert" title="Permalink to this headline">¶</a></h2>
 <p>assert 断言的执行逻辑是：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">if条件为Fa1se</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">if条件为Fa1se</span>
     <span class="n">程序引发AssertionError</span> <span class="n">错误</span>
 </pre></div>
 </div>
@@ -499,10 +504,10 @@ else:
 <li>如果为假，则表明一定是前面发生了错误，程序停止运行，报出异常。</li>
 </ul>
 <p>示例1:</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="k">assert</span>  <span class="mi">1</span><span class="o">!=</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;1不等于1报错，断言错误.....&quot;</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span>  <span class="mi">1</span><span class="o">!=</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;1不等于1报错，断言错误.....&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
@@ -525,7 +530,7 @@ else:
 </pre></div>
 </div>
 <p>eg</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/10 15:17</span>
@@ -541,7 +546,7 @@ else:
 </div>
 <div class="section" id="pass">
 <h2><a class="toc-backref" href="#id15">2.1.5. pass 占位符</a><a class="headerlink" href="#pass" title="Permalink to this headline">¶</a></h2>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;xiaoming&quot;</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;xiaoming&quot;</span>
 <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;xiaoming&quot;</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> hello&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
 <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;xiaozhang&quot;</span><span class="p">:</span>
@@ -573,11 +578,19 @@ else:
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -588,7 +601,6 @@ else:
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

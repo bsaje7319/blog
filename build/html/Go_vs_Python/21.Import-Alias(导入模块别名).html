@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="22. Sprintf（格式化字符串）" href="22.Sprintf(格式化字符串).html" />
     <link rel="prev" title="20. Args" href="20.Args.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -134,6 +138,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -172,7 +177,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="index.html">Go vs Python</a> &raquo;</li>
         
@@ -182,7 +187,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/Go_vs_Python/21.Import-Alias(导入模块别名).txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/Go_vs_Python/21.Import-Alias(导入模块别名).rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -208,20 +213,20 @@
 <div class="section" id="import-alias">
 <h1><a class="toc-backref" href="#id1">21. Import-Alias(导入模块别名)</a><a class="headerlink" href="#import-alias" title="Permalink to this headline">¶</a></h1>
 <p>这个例子有点愚蠢，因为您通常不会为简短的内置插件而烦恼。它适合于长导入名的导入，例如:</p>
-<div class="code go highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">(</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">pb</span> <span class="s2">&quot;github.com/golang/groupcache/groupcachepb&quot;</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <p>您还可以导入实际上不会使用的软件包。例如:</p>
-<div class="code go highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">(</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">_</span> <span class="s2">&quot;image/png&quot;</span>  <span class="o">//</span> <span class="kn">import</span> <span class="nn">can</span> <span class="n">do</span> <span class="n">magic</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="python">
 <h2><a class="toc-backref" href="#id2">21.1. Python</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span> <span class="k">as</span> <span class="nn">s</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span> <span class="k">as</span> <span class="nn">s</span>
 
 <span class="nb">print</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">(</span><span class="s2">&quot;world&quot;</span><span class="p">)</span>
 </pre></div>
@@ -229,7 +234,7 @@
 </div>
 <div class="section" id="go">
 <h2><a class="toc-backref" href="#id3">21.2. Go</a><a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h2>
-<div class="code go highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;fmt&quot;</span>
@@ -264,11 +269,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -279,7 +292,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

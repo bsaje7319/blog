@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="12.5. randome模块" href="05.randome模块.html" />
     <link rel="prev" title="12.3. shutil模块" href="03.shutil模块.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -143,7 +147,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -161,6 +165,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -199,7 +204,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -211,7 +216,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/12.Python标准库/04.time、datetime模块.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/12.Python标准库/04.time、datetime模块.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -249,7 +254,7 @@
 <h1><a class="toc-backref" href="#id9">12.4. time、datetime模块</a><a class="headerlink" href="#timedatetime" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="time">
 <h2><a class="toc-backref" href="#id10">12.4.1. time模块</a><a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>常用表示时间方式： 时间戳，格式化的时间字符串，元组（struct_time）
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>常用表示时间方式： 时间戳，格式化的时间字符串，元组（struct_time）
 UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文时间，世界标准时间。在中国为UTC+8。DST（Daylight Saving Time）即夏令时。
 时间戳（timestamp）的方式：通常来说，时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量。
 元组（struct_time）方式：struct_time元组共有9个元素，返回struct_time的函数主要有gmtime()，localtime()，strptime()。
@@ -261,7 +266,7 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
 <img alt="时间转换" src="../../_images/date_to_format.PNG" />
 <p class="caption"><span class="caption-text">时间转换</span></p>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="c1">#时间戳格式时间</span>
@@ -327,20 +332,20 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
 <img alt="时间转换" src="../../_images/date_to_format2.PNG" />
 <p class="caption"><span class="caption-text">时间转换</span></p>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#时间戳转换成字符串</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#时间戳转换成字符串</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>eg</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="c1"># 将当前时间转换为时间字符串</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">())</span>
 
@@ -384,7 +389,7 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
 </pre></div>
 </div>
 <p>eg</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/9/17 12:42</span>
@@ -428,7 +433,7 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">t1</span> <span class="o">=</span> <span class="n">TimeInfo</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -436,7 +441,7 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
 </div>
 <div class="section" id="datetime">
 <h2><a class="toc-backref" href="#id13">12.4.2. datetime模块</a><a class="headerlink" href="#datetime" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">功能</span>  <span class="n">说明</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">功能</span>  <span class="n">说明</span>
 <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>   <span class="n">打印输出当前的系统日期</span>
 <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>    <span class="n">将时间戳转成日期格式</span>
 <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="n">打印当前的系统时间</span>
@@ -451,14 +456,14 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
 </div>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id14">输出当前系统时间</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span>
 <span class="go">2016-05-25</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id15">将时间戳格式转换为日期格式</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="go"># 时间戳格式</span>
 <span class="go">1464156222.1887317</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
@@ -469,7 +474,7 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
 </div>
 <div class="section" id="struct-time">
 <h3><a class="toc-backref" href="#id16">将日期格式转换为struct_time格式</a><a class="headerlink" href="#struct-time" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">current_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">current_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>
 <span class="go">2016-05-25 14:05:26.706667</span>
 
@@ -481,7 +486,7 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
 </div>
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id17">替换当前系统时间</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">current_time</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">current_time</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="go">2016-05-12 14:05:26.706667</span>
 <span class="go">将字符串转换成日期格式</span>
 
@@ -494,31 +499,31 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id18">时间相加减</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>比现在加10天</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">new_date</span><span class="p">)</span>
 <span class="go">2016-06-04 14:10:36.119523</span>
 </pre></div>
 </div>
 <p>比现在减10天</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">new_date</span><span class="p">)</span>
 <span class="go">2016-05-15 14:11:06.739814</span>
 </pre></div>
 </div>
 <p>比现在减10小时</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">new_date</span><span class="p">)</span>
 <span class="go">2016-05-25 04:11:44.095624</span>
 </pre></div>
 </div>
 <p>比现在+120s</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">new_date</span><span class="p">)</span>
 <span class="go">2016-05-25 14:14:02.090219</span>
 </pre></div>
 </div>
 <p>代码示例</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/8/26 11:22</span>
@@ -570,7 +575,7 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
 </pre></div>
 </div>
 <p>输出信息：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>当前时间： 2019-09-12 12:54:11.749537
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>当前时间： 2019-09-12 12:54:11.749537
 (%Y-%m-%d %H:%M:%S %f):  2019-09-12 12:54:11 749537
 (%Y-%m-%d %H:%M:%S %p):  19-09-12 12:54:11 PM
 %a: Thu
@@ -587,7 +592,7 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
 </pre></div>
 </div>
 <p>代码示例</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">strftime</span><span class="p">,</span> <span class="n">localtime</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">strftime</span><span class="p">,</span> <span class="n">localtime</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">date</span>
 <span class="kn">import</span> <span class="nn">calendar</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
@@ -776,7 +781,7 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2 months before this month is:&#39;</span><span class="p">,</span> <span class="n">get_firstday_month</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># 2 months before this month is: 2019-07-01</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -804,11 +809,19 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -819,7 +832,6 @@ UTC（Coordinated Universal Time，世界协调时）:亦即格林威治天文�
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

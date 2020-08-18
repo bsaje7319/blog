@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="22.5.3. 请求参数的获取" href="03.请求参数的获取.html" />
     <link rel="prev" title="22.5.1. Tornado框架简介" href="01.Tornado框架简介.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,13 +119,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. 02.Flask-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">22.5. Tornado-Web框架及其应用</a><ul class="current">
@@ -130,6 +134,7 @@
 <li class="toctree-l4"><a class="reference internal" href="03.请求参数的获取.html">22.5.3. 请求参数的获取</a></li>
 <li class="toctree-l4"><a class="reference internal" href="04.用cookie与安全cookie跟踪客户.html">22.5.4. 用cookie与安全cookie跟踪客户</a></li>
 <li class="toctree-l4"><a class="reference internal" href="05.URL转向与静态文件资源.html">22.5.5. URL转向与静态文件资源</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06.表单和模板操作.html">22.5.6. 表单和模板操作</a></li>
 </ul>
 </li>
 </ul>
@@ -147,6 +152,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -185,7 +191,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -199,7 +205,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/05.Tornado-Web框架及其应用/02.Tornado框架初识.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/05.Tornado-Web框架及其应用/02.Tornado框架初识.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -224,16 +230,16 @@
 <div class="section" id="tornado">
 <h1><a class="toc-backref" href="#id2">22.5.2. 　Tornado框架初识</a><a class="headerlink" href="#tornado" title="Permalink to this headline">¶</a></h1>
 <p>要使用Tornado这个Web框架，也必须先安装它。其安装方法与本书前面所述的各种第三方库的安装方法相同。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">tornado</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">tornado</span>
 </pre></div>
 </div>
 <p>到https://pypi.python.org/packages/source/t/tornado/tornado-4.1.tar.gz网址下载tornado的源码，解压缩后，在命令提示符下对该子目录执行以下命令：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>Tornado框架来编写Web服务器端程序就是通过继承tornado.Web.RequestHandler类，并编写get()、post()业务方法，以实现对客户端指定URL的GET请求和POST请求的回应。然后启动框架中提供的服务器以等待客户端连接、处理相关数据并返回请求信息。</p>
 <p>用Tornado框架编写Web服务器的基本代码框架如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.ioloop</span>                         <span class="c1">#导入相关模块</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.ioloop</span>                         <span class="c1">#导入相关模块</span>
 <span class="kn">import</span> <span class="nn">tornado.Web</span>
 
 <span class="k">class</span> <span class="nc">MainHdl</span> <span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">Web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>   <span class="c1">#定义类（继承RequestHandler）</span>
@@ -245,16 +251,16 @@
       <span class="k">pass</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">Web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>               <span class="c1">#调用tornado初始化应用</span>
-      <span class="p">(</span><span class="s1">r&#39;/&#39;</span><span class="p">,</span><span class="n">MainHdl</span><span class="p">),</span>
+      <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="n">MainHdl</span><span class="p">),</span>
       <span class="o">......</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
    <span class="n">app</span><span class="o">.</span><span class="n">listen</span> <span class="p">(</span><span class="mi">8888</span><span class="p">)</span>                         <span class="c1">#服务器监听服务端口8888</span>
    <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>  <span class="c1">#启动服务器，等待客户端连接</span>
 </pre></div>
 </div>
 <p>通过以上框架可以看出，用Tornado框架编写服务器端程序的代码结构是非常清晰的。其基本工作就是编写相关的业务处理类，并将它们和某一特定的URL映射起来，Tornado框架服务器收到对应的请求后进行调用。</p>
 <p>一般来说简单的网站项目可以把所有的代码放入同一个模块之中，但为了维护方便，可按照功能将其划分到不同的模块中，其一般模块结构（目录结构）如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">proj</span>\
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proj</span>\
          <span class="n">manage</span><span class="o">.</span><span class="n">py</span>                      <span class="c1">#服务器启动入口</span>
          <span class="n">settings</span><span class="o">.</span><span class="n">py</span>                    <span class="c1">#服务器配置文件</span>
          <span class="n">url</span><span class="o">.</span><span class="n">py</span>                         <span class="c1">#服务器URL配置文件</span>
@@ -272,7 +278,7 @@
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id3">代码演示1</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>演示了一个使用Tornado框架编写的最基本服务器程序，代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/5/6 16:07</span>
@@ -288,18 +294,18 @@
 
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">r&#39;/&#39;</span><span class="p">,</span> <span class="n">MainHdl</span><span class="p">),</span>  <span class="c1">##URL映射列表（可有多条）</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">MainHdl</span><span class="p">),</span>  <span class="c1">##URL映射列表（可有多条）</span>
 <span class="p">],</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>  <span class="c1">##服务器监听8888端口</span>
     <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>  <span class="c1">##启动服务器</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>【代码说明】 由以上代码可以看出，用Tornado框架写一个基本的Web服务器端程序也不过十行代码且代码结构清晰。首先要导入Tornado相关模块，然后自定义URL的响应业务方法（GET、POST等），其次是实例化Tornado模块中提供的Application类，并传URL映射列表及有关参数，最后启动服务器即可。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【代码说明】 由以上代码可以看出，用Tornado框架写一个基本的Web服务器端程序也不过十行代码且代码结构清晰。首先要导入Tornado相关模块，然后自定义URL的响应业务方法（GET、POST等），其次是实例化Tornado模块中提供的Application类，并传URL映射列表及有关参数，最后启动服务器即可。
 </pre></div>
 </div>
-<p>在浏览器地址栏中输入<code class="docutils literal"><span class="pre">http://localhost:8888</span></code>，就可以访问服务器，看到默认主页页面了。本例页面如图</p>
+<p>在浏览器地址栏中输入<code class="docutils literal notranslate"><span class="pre">http://localhost:8888</span></code>，就可以访问服务器，看到默认主页页面了。本例页面如图</p>
 <p><img alt="image0" src="../../../_images/tornado001.png" /></p>
 </div>
 </div>
@@ -324,11 +330,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -339,7 +353,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

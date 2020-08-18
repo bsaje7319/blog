@@ -1,0 +1,258 @@
+.. contents::
+   :depth: 3
+..
+
+Json序列化和反序列化
+====================
+
+Json序列化
+----------
+
+简介
+~~~~
+
+json序列号是指，将有key-value结构的数据类型（比如结构体、map、切片）序列化成json字符串的操作。
+
+应用案例
+~~~~~~~~
+
+这里我们介绍一下结构体、map和切片的序列化，其它数据类型的序列化类似。
+
+代码示例
+~~~~~~~~
+
+::
+
+   package main
+
+   import (
+       "encoding/json"
+       "fmt"
+       "os"
+   )
+
+   //定义一个结构体
+   type Monster struct {
+       Name     string `json:"monster_name"` //反射机制
+       Age      int    `json:"monster_age"`
+       Birthday string //....
+       Sal      float64
+       Skill    string
+   }
+
+   func testStruct() {
+       //演示
+       monster := Monster{
+           Name:     "牛魔王",
+           Age:      500,
+           Birthday: "2011-11-11",
+           Sal:      8000.0,
+           Skill:    "牛魔拳",
+       }
+
+       //将monster 序列化
+       data, err := json.Marshal(&monster) //..
+       if err != nil {
+           fmt.Printf("序列号错误 err=%v\n", err)
+       }
+       //输出序列化后的结果
+       fmt.Printf("monster序列化后=%v\n", string(data))
+
+       // 创建文件,将json数据写入到文件中
+       file := "info.json"
+       filePtr, err1 := os.Create(file)
+       if err1 != nil {
+           fmt.Println("文件创建失败", err.Error())
+           return
+       }
+       defer filePtr.Close()
+       // 创建Json编码器
+       encoder := json.NewEncoder(filePtr)
+       err = encoder.Encode(string(data))
+       if err != nil {
+           fmt.Println("编码错误", err.Error())
+       } else {
+           fmt.Printf("json 文件 %s 编码成功\n", file)
+       }
+   }
+
+   //将map进行序列化
+   func testMap() {
+       //定义一个map
+       var a map[string]interface{}
+       //使用map,需要make
+       a = make(map[string]interface{})
+       a["name"] = "红孩儿"
+       a["age"] = 30
+       a["address"] = "洪崖洞"
+
+       //将a这个map进行序列化
+       //将monster 序列化
+       data, err := json.Marshal(a)
+       if err != nil {
+           fmt.Printf("序列化错误 err=%v\n", err)
+       }
+       //输出序列化后的结果
+       fmt.Printf("a map 序列化后=%v\n", string(data))
+
+   }
+
+   //演示对切片进行序列化, 我们这个切片 []map[string]interface{}
+   func testSlice() {
+       var slice []map[string]interface{}
+       var m1 map[string]interface{}
+       //使用map前，需要先make
+       m1 = make(map[string]interface{})
+       m1["name"] = "jack"
+       m1["age"] = "7"
+       m1["address"] = "北京"
+       slice = append(slice, m1)
+
+       var m2 map[string]interface{}
+       //使用map前，需要先make
+       m2 = make(map[string]interface{})
+       m2["name"] = "tom"
+       m2["age"] = "20"
+       m2["address"] = [2]string{"墨西哥", "夏威夷"}
+       slice = append(slice, m2)
+
+       //将切片进行序列化操作
+       data, err := json.Marshal(slice)
+       if err != nil {
+           fmt.Printf("序列化错误 err=%v\n", err)
+       }
+       //输出序列化后的结果
+       fmt.Printf("slice 序列化后=%v\n", string(data))
+
+   }
+
+   //对基本数据类型序列化，对基本数据类型进行序列化意义不大
+   func testFloat64() {
+       var num1 float64 = 2345.67
+
+       //对num1进行序列化
+       data, err := json.Marshal(num1)
+       if err != nil {
+           fmt.Printf("序列化错误 err=%v\n", err)
+       }
+       //输出序列化后的结果
+       fmt.Printf("num1 序列化后=%v\n", string(data))
+   }
+
+   func main() {
+       //演示将结构体, map , 切片进行序列号
+       testStruct()
+       testMap()
+       testSlice()   //演示对切片的序列化
+       testFloat64() //演示对基本数据类型的序列化
+   }
+
+Json反序列化
+------------
+
+基本介绍
+~~~~~~~~
+
+Json反序列化是指，将json字符串反序列化成对应的数据类型（比如结构体、map、切片）的操作
+
+.. _应用案例-1:
+
+应用案例
+~~~~~~~~
+
+我们演示json字符串反序列化成结构体、map和切片
+
+代码示例
+
+::
+
+   package main
+   import (
+       "fmt"
+       "encoding/json"
+   )
+
+   //定义一个结构体
+   type Monster struct {
+       Name string  
+       Age int 
+       Birthday string //....
+       Sal float64
+       Skill string
+   }
+
+
+   //演示将json字符串，反序列化成struct
+   func unmarshalStruct() {
+       //说明str 在项目开发中，是通过网络传输获取到.. 或者是读取文件获取到
+       str := "{\"Name\":\"牛魔王~~~\",\"Age\":500,\"Birthday\":\"2011-11-11\",\"Sal\":8000,\"Skill\":\"牛魔拳\"}"
+
+       //定义一个Monster实例
+       var monster Monster
+
+       err := json.Unmarshal([]byte(str), &monster)
+       if err != nil {
+           fmt.Printf("unmarshal err=%v\n", err)
+       }
+       fmt.Printf("反序列化后 monster=%v monster.Name=%v \n", monster, monster.Name)
+
+   }
+   //将map进行序列化
+   func testMap() string {
+       //定义一个map
+       var a map[string]interface{}
+       //使用map,需要make
+       a = make(map[string]interface{})
+       a["name"] = "红孩儿~~~~~~"
+       a["age"] = 30
+       a["address"] = "洪崖洞"
+
+       //将a这个map进行序列化
+       //将monster 序列化
+       data, err := json.Marshal(a)
+       if err != nil {
+           fmt.Printf("序列化错误 err=%v\n", err)
+       }
+       //输出序列化后的结果
+       //fmt.Printf("a map 序列化后=%v\n", string(data))
+       return string(data)
+
+   }
+
+   //演示将json字符串，反序列化成map
+   func unmarshalMap() {
+       //str := "{\"address\":\"洪崖洞\",\"age\":30,\"name\":\"红孩儿\"}"
+       str := testMap()
+       //定义一个map
+       var a map[string]interface{} 
+
+       //反序列化
+       //注意：反序列化map,不需要make,因为make操作被封装到 Unmarshal函数
+       err := json.Unmarshal([]byte(str), &a)
+       if err != nil {
+           fmt.Printf("unmarshal err=%v\n", err)
+       }
+       fmt.Printf("反序列化后 a=%v\n", a)
+
+   }
+
+   //演示将json字符串，反序列化成切片
+   func unmarshalSlice() {
+       str := "[{\"address\":\"北京\",\"age\":\"7\",\"name\":\"jack\"}," + 
+           "{\"address\":[\"墨西哥\",\"夏威夷\"],\"age\":\"20\",\"name\":\"tom\"}]"
+       
+       //定义一个slice
+       var slice []map[string]interface{}
+       //反序列化，不需要make,因为make操作被封装到 Unmarshal函数
+       err := json.Unmarshal([]byte(str), &slice)
+       if err != nil {
+           fmt.Printf("unmarshal err=%v\n", err)
+       }
+       fmt.Printf("反序列化后 slice=%v\n", slice)
+   }
+
+   func main() {
+       unmarshalStruct()
+       unmarshalMap()
+       unmarshalSlice()
+   }

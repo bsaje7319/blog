@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2. Python中流程控制语句" href="../02.流程控制语句/index.html" />
     <link rel="prev" title="1.13. 建立大型数据结构" href="12.建立大型数据结构.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -140,7 +144,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -158,6 +162,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -196,7 +201,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -208,7 +213,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/01.Python数据类型/13.Python常用IDE集成环境.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/01.Python数据类型/13.Python常用IDE集成环境.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -246,7 +251,7 @@
 <h1><a class="toc-backref" href="#id3">1.14. Python常用IDE集成环境</a><a class="headerlink" href="#pythonide" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="pip">
 <h2><a class="toc-backref" href="#id4">1.14.1. 安装pip</a><a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#linux上安装pip方法：
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#linux上安装pip方法：
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 或
 curl https://bootstrap.pypa.io/get-pip.py | python
@@ -354,7 +359,7 @@ pip的优点有：
 </div>
 <div class="section" id="ipython">
 <h2><a class="toc-backref" href="#id6">1.14.3. 安装ipython</a><a class="headerlink" href="#ipython" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>pip install ipython
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pip install ipython
 
 
 # 更好的获取帮助信息
@@ -375,7 +380,7 @@ os.path.ismount
 </ol>
 </li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">libname</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">libname</span>
 <span class="c1"># libname是要下载安装的第三方库的名称，它会自动下载和安装其依赖的第三方库。</span>
 
 <span class="n">卸载库文件</span>
@@ -390,7 +395,7 @@ os.path.ismount
 <span class="o">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@pxe</span><span class="o">-</span><span class="n">server</span> <span class="o">~</span><span class="p">]</span><span class="c1"># python -c &quot;import paramiko&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@pxe</span><span class="o">-</span><span class="n">server</span> <span class="o">~</span><span class="p">]</span><span class="c1"># python -c &quot;import paramiko&quot;</span>
 
 <span class="p">[</span><span class="n">root</span><span class="nd">@k8s</span><span class="o">-</span><span class="n">master</span> <span class="o">~</span><span class="p">]</span><span class="c1"># python -c &quot;import sys&quot;</span>
 </pre></div>
@@ -398,13 +403,13 @@ os.path.ismount
 <div class="section" id="pip-timeout">
 <h3><a class="toc-backref" href="#id8">设置pip timeout超时时间</a><a class="headerlink" href="#pip-timeout" title="Permalink to this headline">¶</a></h3>
 <p>创建或修改pip.conf配置文件：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vi ~/.pip/pip.config //linux or MacOS
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vi ~/.pip/pip.config //linux or MacOS
 
 timeout = 6000    #设置pip超时时间
 </pre></div>
 </div>
 <p>使用国内镜像</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>使用镜像来替代原来的官网，方法如下：（推荐这种方法）
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>使用镜像来替代原来的官网，方法如下：（推荐这种方法）
 
 1. pip install redis -i https://pypi.douban.com/simple
 -i：指定镜像地址
@@ -416,7 +421,7 @@ python -m pip --default-timeout=100 install 库名称 -i http://pypi.douban.com/
 python3 -m pip --default-timeout=100 install 库名称 -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>2. 创建或修改pip.conf配置文件指定镜像地址：
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>2. 创建或修改pip.conf配置文件指定镜像地址：
 [global]
 timeout = 6000
 index-url = http://pypi.douban.com/simple/
@@ -432,7 +437,7 @@ trusted-host = pypi.douban.com
 </ol>
 </li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ easy_install watchdog
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ easy_install watchdog
 </pre></div>
 </div>
 <ul class="simple">
@@ -442,11 +447,11 @@ trusted-host = pypi.douban.com
 </li>
 </ul>
 <p>自行下载第三方库的压缩包并解压缩，然后在命令提示符下或终端下进入目录输入：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>如果在系统上同时安装了python2和python3.为python3.x安装第三方库时应适应命令为：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>在Linux环境下，使用安装命令前必须要加sudo，或者先su进入可以安装软件的用户权限中才可以安装。</p>
@@ -454,7 +459,7 @@ trusted-host = pypi.douban.com
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id9">1.14.5. 常用三方库的网站</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>https://pypi.python.org
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://pypi.python.org
 还可以在此网站中搜索想要的第三方库。也可以通过搜索引擎来搜索相关的第三方库来下载安装。
 
 或者从网络上下载安装包，在浏览器中输入安装包的下载地址https://www.lfd.uci.edu/～gohlke/pythonlibs/，找到与系统相对应的模块信息
@@ -471,13 +476,13 @@ pip install pyC8-0.14.4-py2.py3-none-any.whl
 <div class="line">​</div>
 <div class="line">## jupyter的使用</div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># pip安装jupyter</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip安装jupyter</span>
 <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="mi">18793</span><span class="o">&gt;</span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyter</span>
 <span class="n">Requirement</span> <span class="n">already</span> <span class="n">satisfied</span><span class="p">:</span> <span class="n">jupyter</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="mi">18793</span>\<span class="n">anaconda3</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>开启jupyter</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>C:\Users\18793&gt;jupyter notebook --no-browser --ip=0.0.0.0
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>C:\Users\18793&gt;jupyter notebook --no-browser --ip=0.0.0.0
 
 [E 17:11:22.817 NotebookApp] [nb_conda_kernels] couldn&#39;t call conda:
     Command &#39;[&#39;conda&#39;, &#39;info&#39;, &#39;--json&#39;]&#39; returned non-zero exit status 1
@@ -500,18 +505,18 @@ pip install pyC8-0.14.4-py2.py3-none-any.whl
 <h3><a class="toc-backref" href="#id10">为Jupyter Notebook添加目录</a><a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h3>
 <p>①： 在Windows搜索框中输入Anaconda Prompt并单击打开. <img alt="image1" src="../../_images/Ancona00001.png" /></p>
 <p>②：</p>
-<p><code class="docutils literal"><span class="pre">输入</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyter_contrib_nbextensions</span></code> 然后按 Enter
+<p><code class="docutils literal notranslate"><span class="pre">输入</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyter_contrib_nbextensions</span></code> 然后按 Enter
 键运行，安装jupyter_contrib_nbextensions模块</p>
 <p>③：</p>
-<p><code class="docutils literal"><span class="pre">继续输入jupyter</span> <span class="pre">contrib</span> <span class="pre">nbextension</span> <span class="pre">install</span> <span class="pre">--user</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">继续输入jupyter</span> <span class="pre">contrib</span> <span class="pre">nbextension</span> <span class="pre">install</span> <span class="pre">--user</span></code>
 然后按Enter键进行用户配置</p>
 <p>④： 打开Jupyter Notebook会看到界面上多了Nbextensions选项卡
-单击Nbextensions选项卡打开，<code class="docutils literal"><span class="pre">勾选Table</span> <span class="pre">of</span> <span class="pre">Contents(2)复选框</span></code>
+单击Nbextensions选项卡打开，<code class="docutils literal notranslate"><span class="pre">勾选Table</span> <span class="pre">of</span> <span class="pre">Contents(2)复选框</span></code>
 <img alt="image2" src="../../_images/ancode0002.png" /></p>
 <p>这个时候打开一个已经带有目录的ipynb文件，就会看到主界面多了一个方框内的按钮（如下图所示），但是仍然没有目录
 按下图右上角方框内的按钮，目录就会显示出来了，如下图所示。 <img alt="image3" src="../../_images/ancode00003.png" /></p>
 <p>⑤： 为Jupyter Notebook创建了目录环境，下面介绍如何新建带有目录的文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>直接在代码框输入不同级别的标题，
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>直接在代码框输入不同级别的标题，
 1个#表示一级标题，2个#表示二级标题，3个#表示三级标题（注意，#与标题文字之间是有空格的），
 标题级别随着#数量的增加依次递减。
 </pre></div>
@@ -521,9 +526,9 @@ pip install pyC8-0.14.4-py2.py3-none-any.whl
 </div>
 <div class="section" id="anaconda">
 <h2><a class="toc-backref" href="#id11">1.14.6. 安装Anaconda</a><a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">Anaconda是一个集成的python环境，自带很多python三方库</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Anaconda是一个集成的python环境，自带很多python三方库</span></code></p>
 <p>下载地址：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>进入官网（https://www.anaconda.com），单击右上角的Download按钮
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>进入官网（https://www.anaconda.com），单击右上角的Download按钮
 根据电脑系统类型（Windows/macOS/Linux）选择对应的软件类型
 
 建议百度云下载，因为Anacoda官网是国外地址，下载较慢
@@ -532,7 +537,7 @@ pip install pyC8-0.14.4-py2.py3-none-any.whl
 </div>
 <div class="section" id="ide">
 <h2><a class="toc-backref" href="#id12">1.14.7. 使用较多的IDE</a><a class="headerlink" href="#ide" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>IDLE是IDE中的一种，也是最简单、最基础的一种IDE。当然了，IDE中有很多种IDLE，例如Visual Studio（VS）、PyCharm、Xcode、Spyder、Jupyter Notebook等
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>IDLE是IDE中的一种，也是最简单、最基础的一种IDE。当然了，IDE中有很多种IDLE，例如Visual Studio（VS）、PyCharm、Xcode、Spyder、Jupyter Notebook等
 </pre></div>
 </div>
 <div class="line-block">
@@ -569,11 +574,19 @@ pip install pyC8-0.14.4-py2.py3-none-any.whl
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -584,7 +597,6 @@ pip install pyC8-0.14.4-py2.py3-none-any.whl
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

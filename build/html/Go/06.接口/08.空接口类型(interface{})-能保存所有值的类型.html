@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6.9. 09.类型分支-批量判断空接口中变量的类型" href="09.类型分支-批量判断空接口中变量的类型.html" />
     <link rel="prev" title="6.7. 07.在接口和类型间转换" href="07.在接口和类型间转换.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -135,6 +139,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -173,7 +178,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -185,7 +190,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/06.接口/08.空接口类型(interface{})-能保存所有值的类型.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/06.接口/08.空接口类型(interface{})-能保存所有值的类型.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -225,13 +230,13 @@
 <h1><a class="toc-backref" href="#id12">6.8. 08.空接口类型(interface{})-能保存所有值的类型</a><a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h1>
 <p>空接口是接口类型的特殊形式，空接口没有任何方法，因此任何类型都无须实现空接口。</p>
 <p>从实现的角度看，任何值都满足这个接口的需求。因此空接口可以保存任何值，也可以从空接口中取出原值。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>使用空接口保存一个数据的过程会比直接使用数据对应类型的变量保存稍慢，因此在开发中，应在需要的地方使用空接口，
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>使用空接口保存一个数据的过程会比直接使用数据对应类型的变量保存稍慢，因此在开发中，应在需要的地方使用空接口，
 而不是在所有地方使用空接口。
 </pre></div>
 </div>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id13">6.8.1. 1.将值保存到空接口</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -253,7 +258,7 @@ func main() {
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id14">6.8.2. 2.从空接口获取值</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -274,7 +279,7 @@ func main() {
 <h2><a class="toc-backref" href="#id15">6.8.3. 3.空接口的值比较</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id16">1.类型不同的空接口间的比较结果不相同</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -294,7 +299,7 @@ func main() {
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id17">2.不能比较空接口中的动态值</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>当接口中保存有动态类型的值时，运行时将触发错误，代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">a1</span> <span class="n">interface</span><span class="p">{}</span> <span class="o">=</span> <span class="p">[]</span><span class="nb">int</span><span class="p">{</span><span class="mi">10</span><span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">a1</span> <span class="n">interface</span><span class="p">{}</span> <span class="o">=</span> <span class="p">[]</span><span class="nb">int</span><span class="p">{</span><span class="mi">10</span><span class="p">}</span>
 <span class="n">var</span> <span class="n">a2</span> <span class="n">interface</span><span class="p">{}</span> <span class="o">=</span> <span class="p">[]</span><span class="nb">int</span><span class="p">{</span><span class="mi">20</span><span class="p">}</span>
 <span class="o">//</span><span class="n">这里会发生崩溃</span>
 <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">a1</span> <span class="o">==</span> <span class="n">a2</span><span class="p">)</span>
@@ -310,10 +315,10 @@ func main() {
 <div class="section" id="id7">
 <h2><a class="toc-backref" href="#id19">6.8.4. 示例：使用空接口实现可以保存任意值的字典</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>空接口可以保存任何类型这个特性可以方便地用于容器的设计。 下面例子：</p>
-<p><code class="docutils literal"><span class="pre">使用map和interface{}实现一个字典。字典在其他语言中的功能和map类型，可以将任意的值做成键值对保存，</span> <span class="pre">然后进行找回、遍历操作。</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">使用map和interface{}实现一个字典。字典在其他语言中的功能和map类型，可以将任意的值做成键值对保存，</span> <span class="pre">然后进行找回、遍历操作。</span></code></p>
 <div class="section" id="id8">
 <h3><a class="toc-backref" href="#id20">1.值设置和获取</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 //字典结构
 type Dictionary struct {
@@ -336,7 +341,7 @@ func (d *Dictionary) Set(key interface{}, value interface{}) {
 <h3><a class="toc-backref" href="#id21">2.遍历字段的索引键值关联数据</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>每个容器都有遍历操作，遍历时，需要提供一个回调返回需要遍历的数据。
 为了方便在必要时终止遍历操作，可以将回调的返回值设置为bool类型。外部逻辑在回调中不需要遍历时直接返回false即可终止遍历。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>// 定义回调函数，func(k, v interface{}) bool 意思是返回键值数据(k,v)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// 定义回调函数，func(k, v interface{}) bool 意思是返回键值数据(k,v)
 func (d *Dictionary) Visit(callback func(k, v interface{}) bool) {
     if callback == nil {
         return
@@ -354,7 +359,7 @@ func (d *Dictionary) Visit(callback func(k, v interface{}) bool) {
 </div>
 <div class="section" id="id10">
 <h3><a class="toc-backref" href="#id22">3.初始化和清除</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>// 清空所有的数据，map没有独立的复位内部元素的操作，需要复位元素时，使用 make 创建新的实例。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// 清空所有的数据，map没有独立的复位内部元素的操作，需要复位元素时，使用 make 创建新的实例。
 func (d *Dictionary) Clear() {
     d.data = make(map[interface{}]interface{})
 
@@ -373,7 +378,7 @@ func NewDictionary() *Dictionary {
 </div>
 <div class="section" id="id11">
 <h3><a class="toc-backref" href="#id23">4.使用字典</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>func main() {
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>func main() {
     // 创建字典实例
     dict := NewDictionary()
     dict.Set(&quot;hujianli1&quot;, 100)
@@ -431,11 +436,19 @@ hujianli2 is expensive
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -446,7 +459,6 @@ hujianli2 is expensive
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2.3. 02.映射（map）-建立事务关联的容器" href="03.映射（map）-建立事务关联的容器.html" />
     <link rel="prev" title="2.1. 数组-固定大小的连续空间" href="01.数组-固定大小的连续空间.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -126,6 +130,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -164,7 +169,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -176,7 +181,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/02.容器-存储与组织数据的方式/02.切片-动态分配大小的连续空间.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/02.容器-存储与组织数据的方式/02.切片-动态分配大小的连续空间.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -212,7 +217,7 @@
 <h2><a class="toc-backref" href="#id8">2.2.1. 切片</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id9">从数组切片生成新的切片</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>slice [开始位置：结束位置]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>slice [开始位置：结束位置]
 
 · slice表示目标切片对象
 · 开始位置对应目标切片对象的索引
@@ -220,11 +225,11 @@
 </pre></div>
 </div>
 <p>从数组生成切片，代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">array_list</span><span class="p">,</span><span class="n">array_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>     <span class="o">//</span> <span class="p">[</span><span class="n">hujianli1</span> <span class="n">hujianli2</span> <span class="n">hujianli3</span><span class="p">]</span> <span class="p">[</span><span class="n">hujianli2</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">array_list</span><span class="p">,</span><span class="n">array_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>     <span class="o">//</span> <span class="p">[</span><span class="n">hujianli1</span> <span class="n">hujianli2</span> <span class="n">hujianli3</span><span class="p">]</span> <span class="p">[</span><span class="n">hujianli2</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>(1)从指定范围中生成切片</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -245,13 +250,13 @@
 </pre></div>
 </div>
 <p>(2)表示原有切片</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">number2</span><span class="p">[:])</span>     <span class="o">//</span><span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">15</span> <span class="mi">16</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">19</span> <span class="mi">20</span> <span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span> <span class="mi">24</span> <span class="mi">25</span> <span class="mi">26</span> <span class="mi">27</span> <span class="mi">28</span> <span class="mi">29</span> <span class="mi">30</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">number2</span><span class="p">[:])</span>     <span class="o">//</span><span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">15</span> <span class="mi">16</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">19</span> <span class="mi">20</span> <span class="mi">21</span> <span class="mi">22</span> <span class="mi">23</span> <span class="mi">24</span> <span class="mi">25</span> <span class="mi">26</span> <span class="mi">27</span> <span class="mi">28</span> <span class="mi">29</span> <span class="mi">30</span><span class="p">]</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li>重置切片，清空所有元素</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">number2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">])</span>   <span class="o">//</span><span class="p">[]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">number2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">])</span>   <span class="o">//</span><span class="p">[]</span>
 </pre></div>
 </div>
 </div>
@@ -259,10 +264,10 @@
 <h3><a class="toc-backref" href="#id10">声明切片</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>每一种类型都可以拥有其切片类型，表示多个类型元素的连续集合，因此切片类型也可以被声明。</p>
 <p>切片类型声明格式如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">name</span> <span class="p">[]</span><span class="n">T</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">name</span> <span class="p">[]</span><span class="n">T</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -284,14 +289,14 @@
 <div class="section" id="make">
 <h3><a class="toc-backref" href="#id11">使用make()函数构造切片</a><a class="headerlink" href="#make" title="Permalink to this headline">¶</a></h3>
 <p>如果需要动态地创建一个切片，可以使用make()内建函数，格式如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>make([]T, size, cap)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>make([]T, size, cap)
 
 · T：切片的元素类型。
 · size：就是为这个类型分配多少个元素
 · cap： 预分配的元素数量，降低多次分配空间造成的性能问题
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">([]</span><span class="nb">int</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">([]</span><span class="nb">int</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">b</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">([]</span><span class="nb">int</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>        <span class="o">//</span><span class="p">[</span><span class="mi">0</span> <span class="mi">0</span><span class="p">]</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>  <span class="o">//</span><span class="mi">2</span> <span class="mi">2</span>
@@ -300,7 +305,7 @@
 </div>
 <div class="section" id="append">
 <h3><a class="toc-backref" href="#id12">使用append()函数为切片添加元素</a><a class="headerlink" href="#append" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -316,7 +321,7 @@ func main() {
 </pre></div>
 </div>
 <p>append()一次添加一个元素和一次性添加很多元素</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">定义3个切片</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">定义3个切片</span>
 <span class="n">var</span> <span class="p">(</span>
     <span class="n">car</span> <span class="p">[]</span><span class="n">string</span>
     <span class="n">car2</span> <span class="p">[]</span><span class="n">string</span>
@@ -342,13 +347,13 @@ func main() {
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id13">复制切片元素到另一个切片</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>使用Go语言内建的copy()函数，可以迅速地将一个切片的数据复制到另外一个切片空间中，copy()函数的使用格式如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>copy(destSlice, srcSlice []T) int
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>copy(destSlice, srcSlice []T) int
 
 · srcSlice 数据来源切片
 · destSlice 为复制的目标
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -386,7 +391,7 @@ func main() {
 <h3><a class="toc-backref" href="#id14">从切片中删除元素</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>Go语言中切片删除元素的本质是：
 以被删除元素为分界点，将前后两个部分的内存重新连接起来。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -427,11 +432,19 @@ func main() {
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -442,7 +455,6 @@ func main() {
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

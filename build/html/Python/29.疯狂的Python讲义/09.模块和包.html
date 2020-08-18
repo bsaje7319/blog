@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,22 +33,20 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="next" title="Go vs Python" href="../../Go_vs_Python/index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="27.10. 常见模块" href="10.常见模块.html" />
     <link rel="prev" title="27.8. 08.Python类的特殊方法" href="08.Python类的特殊方法.html" /> 
 </head>
 
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -140,6 +144,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id14">27.9.4. 9.4 查看模块内容</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="10.常见模块.html">27.10. 常见模块</a></li>
 </ul>
 </li>
 </ul>
@@ -150,6 +155,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -188,7 +194,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -200,7 +206,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/29.疯狂的Python讲义/09.模块和包.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/29.疯狂的Python讲义/09.模块和包.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -253,12 +259,12 @@
 <p>对于一个python程序，我们不可能自己完成所有的工作，通常要借助三方库，也不可能在一个源文件中编写整个程序的源代码，都需要以模块化的方式来组织项目的源代码。</p>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id18">9.1.1 导入模块的语法</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span>import 模块名1 [as 别名1],模块名2 [as 别名2],  # 导入整个模块
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span>import 模块名1 [as 别名1],模块名2 [as 别名2],  # 导入整个模块
 from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入模块中的指定成员
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">import_test.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p><code class="docutils literal notranslate"><span class="pre">import_test.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># @auther:   18793</span>
 <span class="c1"># @Date：    2020/7/7 17:15</span>
@@ -269,61 +275,61 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
 <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">import_test2.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">s</span>
+<p><code class="docutils literal notranslate"><span class="pre">import_test2.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">s</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">import_test3.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<p><code class="docutils literal notranslate"><span class="pre">import_test3.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">import_test4.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">s</span><span class="o">,</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">o</span>
+<p><code class="docutils literal notranslate"><span class="pre">import_test4.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">s</span><span class="o">,</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">o</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">from_import_test.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sys</span> <span class="k">import</span> <span class="n">argv</span>
+<p><code class="docutils literal notranslate"><span class="pre">from_import_test.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sys</span> <span class="k">import</span> <span class="n">argv</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">from_import_test2.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 导入sys模块的argv成员，并为其指定别名v</span>
+<p><code class="docutils literal notranslate"><span class="pre">from_import_test2.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入sys模块的argv成员，并为其指定别名v</span>
 <span class="kn">from</span> <span class="nn">sys</span> <span class="k">import</span> <span class="n">argv</span> <span class="k">as</span> <span class="n">v</span>
 <span class="c1"># 使用导入成员（并指定别名）的语法，直接使用成员的别名访问</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">from_import_test3.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 导入sys模块的argv,winver成员</span>
+<p><code class="docutils literal notranslate"><span class="pre">from_import_test3.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入sys模块的argv,winver成员</span>
 <span class="kn">from</span> <span class="nn">sys</span> <span class="k">import</span> <span class="n">argv</span><span class="p">,</span> <span class="n">winver</span>
 <span class="c1"># 使用导入成员的语法，直接使用成员名访问</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">winver</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">from_import_test4.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sys</span> <span class="k">import</span> <span class="o">*</span>
+<p><code class="docutils literal notranslate"><span class="pre">from_import_test4.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sys</span> <span class="k">import</span> <span class="o">*</span>
 <span class="c1"># 使用导入成员的语法，直接使用成员的别名访问</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">winver</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>不推荐使用<code class="docutils literal"><span class="pre">from</span> <span class="pre">模块</span> <span class="pre">import</span> <span class="pre">*</span></code>这种语法导入存在风险。</p>
+<p>不推荐使用<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">模块</span> <span class="pre">import</span> <span class="pre">*</span></code>这种语法导入存在风险。</p>
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id19">9.1.2 定义模块</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>模块就是程序，所有的python程序都可以作为模块导入。</p>
 <p>下面定义一个简单的模块:</p>
-<p><code class="docutils literal"><span class="pre">module1.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<p><code class="docutils literal notranslate"><span class="pre">module1.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">这是我们编写的第一个模块，该模块包含以下内容：</span>
 <span class="sd">my_book：字符串变量</span>
 <span class="sd">say_hi：简单的函数</span>
@@ -353,20 +359,20 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
     <span class="n">u</span><span class="o">.</span><span class="n">walk</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
 <span class="c1"># 当__name__为&#39;__main__&#39;（直接使用python运行该模块）时执行如下代码</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">test_my_book</span><span class="p">()</span>
     <span class="n">test_say_hi</span><span class="p">()</span>
     <span class="n">test_User</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">module1.py</span></code> 的模块名就是<code class="docutils literal"><span class="pre">module1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">module1.py</span></code> 的模块名就是<code class="docutils literal notranslate"><span class="pre">module1</span></code></p>
 </div>
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id20">9.1.3 为模块编写说明文档</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>在实际的开发中往往应该为模块编写说明文档，否则，其他开发者看不懂模块的作用和功能。</p>
 <p>为模块编写说明文档很简单，只需要在模块开始处定义一个字符串直接量即可。</p>
 <p>module1.py文件的第一行代码之前添加如下内容：</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">这是我们编写的第一个模块，该模块包含以下内容：</span>
 <span class="sd">my_book：字符串变量</span>
 <span class="sd">say_hi：简单的函数</span>
@@ -374,11 +380,11 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
 <span class="sd">&#39;&#39;&#39;</span>
 </pre></div>
 </div>
-<p>这段字符串内容将作为该模块的说明文档，可以通过模块的<code class="docutils literal"><span class="pre">__doc__</span></code>属性来访问文档。</p>
+<p>这段字符串内容将作为该模块的说明文档，可以通过模块的<code class="docutils literal notranslate"><span class="pre">__doc__</span></code>属性来访问文档。</p>
 </div>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id21">9.1.4 为模块编写测试代码</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># ===以下部分是测试代码===</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===以下部分是测试代码===</span>
 <span class="k">def</span> <span class="nf">test_my_book</span> <span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">my_book</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">test_say_hi</span><span class="p">():</span>
@@ -392,8 +398,8 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
 </div>
 <p>上面代码为module1定义了三个函数，分别用于测试模块中的变量、函数和类，不过这三个函数并没有得到调用的机会。</p>
 <p>如果只是简单的调用上面的程序，则会导致一个问题：当其他程序每次导入该模块时，这三个函数都会自动运行。我们期望的效果是：python执行该模块，相当于测试，程序执行该函数的测试模块。如果其他程序导入该模块，程序不应该执行该模块的测试函数。</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 当__name__为&#39;__main__&#39;（直接使用python运行该模块）时执行如下代码</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 当__name__为&#39;__main__&#39;（直接使用python运行该模块）时执行如下代码</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">test_my_book</span><span class="p">()</span>
     <span class="n">test_say_hi</span><span class="p">()</span>
     <span class="n">test_User</span><span class="p">()</span>
@@ -413,7 +419,7 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
 <p><strong>1.windows上设置环境变量</strong></p>
 <p>“计算机” –&gt; “属性” –&gt; “高级系统设置” –&gt; “用户变量” – &gt; “模块路径”</p>
 <p><strong>2.Linux上设置环境变量</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PYTHONPATH</span><span class="o">=./</span><span class="n">home</span><span class="o">/</span><span class="n">hujianli</span><span class="o">/</span><span class="n">python_module</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PYTHONPATH</span><span class="o">=./</span><span class="n">home</span><span class="o">/</span><span class="n">hujianli</span><span class="o">/</span><span class="n">python_module</span>
 
 <span class="n">vim</span> <span class="o">.</span><span class="n">bash_profile</span>
 <span class="n">export</span> <span class="n">PYTHONPATH</span><span class="o">=./</span><span class="n">home</span><span class="o">/</span><span class="n">hujianli</span><span class="o">/</span><span class="n">python_module</span>
@@ -424,7 +430,7 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
 </pre></div>
 </div>
 <p>导入模块</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">module1</span> <span class="k">as</span> <span class="nn">md</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">module1</span> <span class="k">as</span> <span class="nn">md</span>
 <span class="kn">import</span> <span class="nn">module1</span> <span class="k">as</span> <span class="nn">md</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">md</span><span class="o">.</span><span class="n">my_book</span><span class="p">)</span>
 <span class="n">md</span><span class="o">.</span><span class="n">say_hi</span><span class="p">(</span><span class="s1">&#39;Charlie&#39;</span><span class="p">)</span>
@@ -436,14 +442,14 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
 </div>
 <div class="section" id="id9">
 <h3><a class="toc-backref" href="#id24">9.2.2 默认的模块加载路径</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">pprint</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">pprint</span>
 
 <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>下面编写一个python模块文件，将文件复制到<code class="docutils literal"><span class="pre">lib/site-packages</span></code>下</p>
-<p><code class="docutils literal"><span class="pre">print_shape.py</span></code></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
+<p>下面编写一个python模块文件，将文件复制到<code class="docutils literal notranslate"><span class="pre">lib/site-packages</span></code>下</p>
+<p><code class="docutils literal notranslate"><span class="pre">print_shape.py</span></code></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">简单的模块，该模块包含以下内容</span>
 <span class="sd">my_list：保存列表的变量</span>
@@ -464,30 +470,30 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
     <span class="n">print_triangle</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
     <span class="n">print_triangle</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
     <span class="n">print_triangle</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">test_print_triangle</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>就可以在python交互式解释器中测试该模块</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">print_shape</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">print_shape</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id10">
 <h3><a class="toc-backref" href="#id25">9.2.3 导入模块的本质</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">from</span> <span class="pre">...</span> <span class="pre">import...</span></code>值导入模块中部分成员，该模块中的输出语句也会在import时自动执行，说明Python依然会加载并执行模块中的代码。</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">...</span> <span class="pre">import...</span></code>值导入模块中部分成员，该模块中的输出语句也会在import时自动执行，说明Python依然会加载并执行模块中的代码。</p>
 <p>导入模块的本质就是：将模块中的全部代码加载到内存并执行，然后将模块的内容赋值给与模块名同名的变量，该变量类型是module，而在该模块中定义的所有程序单元都相当于该module对象的成员。</p>
-<p>在导入模块后，可以在模块文件所在目录下看的一个名为<code class="docutils literal"><span class="pre">__pycache__</span></code>的文件夹，打开该文件夹，可以看到Python为每个模块都生成一个<code class="docutils literal"><span class="pre">*.cpyhton-36.pyc</span></code>文件。比如Python为fk_module.py模块生成一个fk_module.cpyhton-36.pyc文件，该文件其实是Python为模块编译生成的字节码，用于提升该模块的运行效率。</p>
+<p>在导入模块后，可以在模块文件所在目录下看的一个名为<code class="docutils literal notranslate"><span class="pre">__pycache__</span></code>的文件夹，打开该文件夹，可以看到Python为每个模块都生成一个<code class="docutils literal notranslate"><span class="pre">*.cpyhton-36.pyc</span></code>文件。比如Python为fk_module.py模块生成一个fk_module.cpyhton-36.pyc文件，该文件其实是Python为模块编译生成的字节码，用于提升该模块的运行效率。</p>
 </div>
 <div class="section" id="all">
 <h3><a class="toc-backref" href="#id26">9.2.4 模块的__all__变量</a><a class="headerlink" href="#all" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>__all__变量的意义在于为模块定义了一个开放的公共接口，通常来说，
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>__all__变量的意义在于为模块定义了一个开放的公共接口，通常来说，
 只有__all__变量列出的程序单元，才是希望该模块被外界使用的程序单元。
 不需要使用的函数、类、变量可以使用__all__进行过滤，
 这样import的时候就不会自动导入了
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">测试__all__变量的模块</span><span class="s1">&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">测试__all__变量的模块</span><span class="s1">&#39;</span>
 
 <span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, Python&quot;</span><span class="p">)</span>
@@ -500,7 +506,7 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;world&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 导入all_module模块内所有成员</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入all_module模块内所有成员</span>
 <span class="kn">from</span> <span class="nn">all_module</span> <span class="k">import</span> <span class="o">*</span>
 <span class="n">hello</span><span class="p">()</span>
 <span class="n">world</span><span class="p">()</span>
@@ -513,28 +519,28 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
 <h2><a class="toc-backref" href="#id27">27.9.3. 9.3 使用包</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id12">
 <h3><a class="toc-backref" href="#id28">9.3.1 什么是包</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<p>从物理的角度看：包就是一个文件夹。该文件夹下包含一个<code class="docutils literal"><span class="pre">__init__.py</span></code>的文件。该文件夹可以包含多个模块源文件。</p>
+<p>从物理的角度看：包就是一个文件夹。该文件夹下包含一个<code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>的文件。该文件夹可以包含多个模块源文件。</p>
 <p>从逻辑上看： 包的本质依然是模块</p>
 </div>
 <div class="section" id="id13">
 <h3><a class="toc-backref" href="#id29">9.3.2 定义包</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>创建一个文件夹，该文件夹就是包名</li>
-<li>在文件夹内添加一个<code class="docutils literal"><span class="pre">__init__.py</span></code>文件即可</li>
+<li>在文件夹内添加一个<code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>文件即可</li>
 </ol>
-<p><code class="docutils literal"><span class="pre">first_package/__init__.py</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<p><code class="docutils literal notranslate"><span class="pre">first_package/__init__.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">这是学习包的第一个示例</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;this is first_package&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>使用包</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 导入first_package包（模块）</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入first_package包（模块）</span>
 <span class="kn">import</span> <span class="nn">first_package</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;==========&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">first_package</span><span class="o">.</span><span class="n">__doc__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first_package</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">first_package</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">first_package</span><span class="p">)</span>
 </pre></div>
@@ -547,18 +553,18 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
 <h3><a class="toc-backref" href="#id31">9.4.1 模块包含什么</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>使用dir()函数</li>
-<li>使用模块本身提供的<code class="docutils literal"><span class="pre">__all__</span></code>变量</li>
+<li>使用模块本身提供的<code class="docutils literal notranslate"><span class="pre">__all__</span></code>变量</li>
 </ol>
 </div>
 <div class="section" id="doc">
 <h3><a class="toc-backref" href="#id32">9.4.2 使用__doc__查看属性查看文档</a><a class="headerlink" href="#doc" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="o">.</span><span class="n">__doc__</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="file">
 <h3><a class="toc-backref" href="#id33">9.4.3 使用__file__属性查看模块的源文件路径</a><a class="headerlink" href="#file" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">__file__</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -573,7 +579,7 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../Go_vs_Python/index.html" class="btn btn-neutral float-right" title="Go vs Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="10.常见模块.html" class="btn btn-neutral float-right" title="27.10. 常见模块" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="08.Python类的特殊方法.html" class="btn btn-neutral float-left" title="27.8. 08.Python类的特殊方法" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -585,11 +591,19 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -600,7 +614,6 @@ from 模块名 import 成员名1[as 别名1]，成员名2[as 别名2],  #导入�
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

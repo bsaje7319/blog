@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.4. 列表 List" href="04.列表数据类型.html" />
     <link rel="prev" title="1.2. 代码注释" href="02.代码注释.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -145,7 +149,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -163,6 +167,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -201,7 +206,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -213,7 +218,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/01.Python数据类型/03.字符串数据类型.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/01.Python数据类型/03.字符串数据类型.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -269,7 +274,7 @@
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id31">1.3.2. 字符串内建方法</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;人生苦短&#39;</span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">()))</span>  <span class="c1">#utf8每个中文占3个字节12print(len(str.encode(&quot;gbk&quot;)))   #gbk每个中文占2个字节8</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;人生苦短&#39;</span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">()))</span>  <span class="c1">#utf8每个中文占3个字节12print(len(str.encode(&quot;gbk&quot;)))   #gbk每个中文占2个字节8</span>
 <span class="n">string</span><span class="o">.</span><span class="n">expandtabs</span><span class="p">(</span><span class="n">tabsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>                  <span class="c1"># tab符号转为空格 #默认8个空格</span>
 <span class="n">string</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="n">beg</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">staring</span><span class="p">))</span>   <span class="c1"># 检测字符串是否已obj结束,如果是返回True #如果beg或end指定检测范围是否已obj结束</span>
 <span class="n">string</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="n">beg</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>       <span class="c1"># 检测str在string里出现次数  f.count(&#39;\n&#39;,0,len(f)) 判断文件行数</span>
@@ -297,7 +302,7 @@
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id32">操作字符串示例</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/13 10:51</span>
@@ -322,7 +327,7 @@
 </div>
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id33">代码示例：</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="s2">&quot;abc&quot;</span>
 <span class="s2">&quot;123abc&quot;</span>
@@ -368,7 +373,7 @@
 </div>
 <div class="section" id="id6">
 <h2><a class="toc-backref" href="#id34">1.3.3. 字符串的拼接</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bottles</span><span class="o">=</span><span class="mi">99</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bottles</span><span class="o">=</span><span class="mi">99</span>
 
 <span class="n">base</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
 
@@ -387,7 +392,7 @@
 </div>
 <div class="section" id="id7">
 <h2><a class="toc-backref" href="#id35">1.3.4. 将其他类型数据转为字符串</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/usr/bin/env python
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/env python
 # -*- coding:utf8 -*-
 # auther; 18793
 # Date：2020/3/3 11:56
@@ -415,7 +420,7 @@ repr()函数通常会创建一个表达式字符串，可以使用evel()对它�
 </div>
 <div class="section" id="id8">
 <h3><a class="toc-backref" href="#id36">使用反斜线进行转义</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">speen</span> <span class="o">=</span> <span class="s2">&quot;today we honor our friend, the backslash :</span><span class="se">\\</span><span class="s2">.&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">speen</span> <span class="o">=</span> <span class="s2">&quot;today we honor our friend, the backslash :</span><span class="se">\\</span><span class="s2">.&quot;</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">speen</span><span class="p">)</span>
 <span class="n">today</span> <span class="n">we</span> <span class="n">honor</span> <span class="n">our</span> <span class="n">friend</span><span class="p">,</span> <span class="n">the</span> <span class="n">backslash</span> <span class="p">:</span>\<span class="o">.</span>
@@ -425,7 +430,7 @@ repr()函数通常会创建一个表达式字符串，可以使用evel()对它�
 </div>
 <div class="section" id="format">
 <h2><a class="toc-backref" href="#id37">1.3.5. 字符串格式化(%和format的使用)</a><a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am </span><span class="si">%s</span><span class="s2"> stduy </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="s2">&quot;hujianli&quot;</span><span class="p">,</span><span class="s2">&quot;python&quot;</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am </span><span class="si">{0}</span><span class="s2"> stduy </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;hujianli&quot;</span><span class="p">,</span><span class="s2">&quot;python&quot;</span><span class="p">)</span> <span class="p">)</span>
@@ -453,7 +458,7 @@ repr()函数通常会创建一个表达式字符串，可以使用evel()对它�
 </div>
 <div class="section" id="id9">
 <h2><a class="toc-backref" href="#id38">1.3.6. 打印浮点数</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">123</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">123</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">number</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">number</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.4f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">number</span><span class="p">)</span>
@@ -474,13 +479,13 @@ repr()函数通常会创建一个表达式字符串，可以使用evel()对它�
 <h3><a class="toc-backref" href="#id39">format格式化字符串</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id11">
 <h4>一对一填充<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;我正在学习:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;python基础知识&#39;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;我正在学习:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;python基础知识&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id12">
 <h4>多对多填充<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我正在学习：</span><span class="si">{}</span><span class="s2">中的</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;python数据分析&quot;</span><span class="p">,</span><span class="s2">&quot;python基础知识&quot;</span><span class="p">))</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我正在学习：</span><span class="si">{}</span><span class="s2">中的</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;python数据分析&quot;</span><span class="p">,</span><span class="s2">&quot;python基础知识&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -488,7 +493,7 @@ repr()函数通常会创建一个表达式字符串，可以使用evel()对它�
 <h4>浮点数设置<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="f-3f">
 <h5>.2f表示以浮点型展示，且显示小数点后两位，也可以是.3f或者其他<a class="headerlink" href="#f-3f" title="Permalink to this headline">¶</a></h5>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">约</span><span class="si">{:.2f}</span><span class="s2">亿&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;2018年中国单身人数&quot;</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">约</span><span class="si">{:.2f}</span><span class="s2">亿&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;2018年中国单身人数&quot;</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -497,7 +502,7 @@ repr()函数通常会创建一个表达式字符串，可以使用evel()对它�
 <h4>百分数设置<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="id15">
 <h5>.2%表示以百分比的形式展示，且展示小数点后两位，也可以是.3%或者其他。<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h5>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;中国男性占总人口的比例:</span><span class="si">{:.2%}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">0.519</span><span class="p">))</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;中国男性占总人口的比例:</span><span class="si">{:.2%}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">0.519</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -505,7 +510,7 @@ repr()函数通常会创建一个表达式字符串，可以使用evel()对它�
 </div>
 <div class="section" id="id16">
 <h3><a class="toc-backref" href="#id40">指定占位符宽度</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">))</span>
 <span class="n">number</span> <span class="o">=</span> <span class="s2">&quot;ABCDE&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%6s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">number</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%06s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">number</span><span class="p">)</span>
@@ -518,7 +523,7 @@ repr()函数通常会创建一个表达式字符串，可以使用evel()对它�
 <h2><a class="toc-backref" href="#id41">1.3.7. 字符串的修改和替换</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id18">
 <span id="id19"></span><h3><a class="toc-backref" href="#id42">代码示例</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;spammy&#39;</span>
 <span class="n">S</span> <span class="o">=</span> <span class="n">s</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;xx&#39;</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span>
@@ -545,7 +550,7 @@ repr()函数通常会创建一个表达式字符串，可以使用evel()对它�
 <h3><a class="toc-backref" href="#id43">字符串格式化输出</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id21">
 <span id="id22"></span><h4>代码示例<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am </span><span class="si">%s</span><span class="s2"> stduy </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="s2">&quot;hujianli&quot;</span><span class="p">,</span><span class="s2">&quot;python&quot;</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am </span><span class="si">{0}</span><span class="s2"> stduy </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;hujianli&quot;</span><span class="p">,</span><span class="s2">&quot;python&quot;</span><span class="p">)</span> <span class="p">)</span>
@@ -568,7 +573,7 @@ repr()函数通常会创建一个表达式字符串，可以使用evel()对它�
 <span class="nb">print</span><span class="p">(</span><span class="n">context1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>占位符 说明
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>占位符 说明
 %s  字符串(采用str()的显示)
 %r  字符串(采用repr()的显示)
 %c  单个字符
@@ -629,15 +634,15 @@ print((&#39;宽度前加加号：%+5d&#39;%10)+&#39;\n&#39;+(&#39;宽度前加�
 </div>
 <div class="section" id="id23">
 <h4>示例<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Suzhou is more than </span><span class="si">%d</span><span class="s2"> years. </span><span class="si">%s</span><span class="s2"> lives in here.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="s2">&quot;qiwsir&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Suzhou is more than </span><span class="si">%d</span><span class="s2"> years. </span><span class="si">%s</span><span class="s2"> lives in here.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="s2">&quot;qiwsir&quot;</span><span class="p">))</span>
 <span class="n">Suzhou</span> <span class="ow">is</span> <span class="n">more</span> <span class="n">than</span> <span class="mi">2500</span> <span class="n">years</span><span class="o">.</span> <span class="n">qiwsir</span> <span class="n">lives</span> <span class="ow">in</span> <span class="n">here</span><span class="o">.</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>python非常提倡的string.format()的格式化方法，其中{索引值}作为占位符
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>python非常提倡的string.format()的格式化方法，其中{索引值}作为占位符
 </pre></div>
 </div>
 <p><img alt="image2" src="../../_images/format.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;my name is </span><span class="si">{name}</span><span class="s2">, age is </span><span class="si">{age}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;hujianli&quot;</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="s2">&quot;22&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;my name is </span><span class="si">{name}</span><span class="s2">, age is </span><span class="si">{age}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;hujianli&quot;</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="s2">&quot;22&quot;</span><span class="p">))</span>
 <span class="n">my</span> <span class="n">name</span> <span class="ow">is</span> <span class="n">hujianli</span><span class="p">,</span> <span class="n">age</span> <span class="ow">is</span> <span class="mi">22</span>
 
 
@@ -659,7 +664,7 @@ print((&#39;宽度前加加号：%+5d&#39;%10)+&#39;\n&#39;+(&#39;宽度前加�
 <span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="s1">&#39;!!!!!!BIG SALE!!!!!!&#39;</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;hello world&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;hello world&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
@@ -717,7 +722,7 @@ print((&#39;宽度前加加号：%+5d&#39;%10)+&#39;\n&#39;+(&#39;宽度前加�
 </div>
 <div class="section" id="id24">
 <h2><a class="toc-backref" href="#id44">1.3.8. 字符串的反转</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="n">li</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">li</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
@@ -728,8 +733,8 @@ print((&#39;宽度前加加号：%+5d&#39;%10)+&#39;\n&#39;+(&#39;宽度前加�
 <span class="nb">print</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;胡建力啊啊啊啊哈哈哈哈哈&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">使用列表的反转，更简单，如下</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reverse2</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<p><code class="docutils literal notranslate"><span class="pre">使用列表的反转，更简单，如下</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reverse2</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="n">li</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="n">li</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
     <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
@@ -738,8 +743,8 @@ print((&#39;宽度前加加号：%+5d&#39;%10)+&#39;\n&#39;+(&#39;宽度前加�
 <span class="nb">print</span><span class="p">(</span><span class="n">reverse2</span><span class="p">(</span><span class="s2">&quot;胡建力啊啊啊啊哈哈哈哈哈&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">一行代码实现字符串的反转</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reverse3</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<p><code class="docutils literal notranslate"><span class="pre">一行代码实现字符串的反转</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reverse3</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># 或者</span>
@@ -752,7 +757,7 @@ print((&#39;宽度前加加号：%+5d&#39;%10)+&#39;\n&#39;+(&#39;宽度前加�
 </div>
 <div class="section" id="id25">
 <h2><a class="toc-backref" href="#id45">1.3.9. 字符串操作技巧</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">##不推荐</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##不推荐</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">]</span>
 <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
@@ -766,7 +771,7 @@ print((&#39;宽度前加加号：%+5d&#39;%10)+&#39;\n&#39;+(&#39;宽度前加�
 </div>
 <div class="section" id="id26">
 <h2><a class="toc-backref" href="#id46">1.3.10. 字符串切片</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
 <span class="n">str1</span> <span class="o">=</span> <span class="s1">&#39;Hello Python!&#39;</span>
 <span class="n">str2</span> <span class="o">=</span> <span class="s2">&quot;Object Oriented Programming&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;str1[0]: &quot;</span><span class="p">,</span> <span class="n">str1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># str1[0]:  H</span>
@@ -776,7 +781,7 @@ print((&#39;宽度前加加号：%+5d&#39;%10)+&#39;\n&#39;+(&#39;宽度前加�
 </div>
 <div class="section" id="id27">
 <h2><a class="toc-backref" href="#id47">1.3.11. 字符串拼接</a><a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
 <span class="n">str1</span> <span class="o">=</span> <span class="s1">&#39;Hello Python!&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original String: - &quot;</span><span class="p">,</span> <span class="n">str1</span><span class="p">)</span>  <span class="c1"># Original String: -  Hello Python!</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Updated String: - &quot;</span><span class="p">,</span> <span class="n">str1</span> <span class="p">[:</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;John&#39;</span><span class="p">)</span>    <span class="c1"># Updated String: -  Hello John</span>
@@ -785,7 +790,7 @@ print((&#39;宽度前加加号：%+5d&#39;%10)+&#39;\n&#39;+(&#39;宽度前加�
 </div>
 <div class="section" id="id28">
 <h2><a class="toc-backref" href="#id48">1.3.12. 文本输入的变量插入.</a><a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/3 17:32</span>
@@ -862,11 +867,19 @@ print((&#39;宽度前加加号：%+5d&#39;%10)+&#39;\n&#39;+(&#39;宽度前加�
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -877,7 +890,6 @@ print((&#39;宽度前加加号：%+5d&#39;%10)+&#39;\n&#39;+(&#39;宽度前加�
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

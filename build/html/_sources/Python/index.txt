@@ -25,7 +25,7 @@ Python自动化运维
     15.Python网络编程/index
     16.线程和进程/index
     17.Python语言的扩展与嵌入/index
-    20.自动化运维工具/index
+    20.Python自动化运维最佳实践/index
     21.Python进阶学习/index
     22.Python网络爬虫/index
     23.前端技术/index

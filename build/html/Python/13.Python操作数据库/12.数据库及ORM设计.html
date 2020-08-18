@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>13.12. 数据库及ORM &mdash; 运维开发修炼之路</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="14. Python 三方库学习" href="../14.Python三方库/index.html" />
+    <link rel="prev" title="13.11. 封装SQLite的类" href="11.封装SQLite的类.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">13. Python对数据库的操作</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.Python操作NoSQL数据存储.html">13.1. Python操作NoSQL数据存储</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.Python操作SQLite数据库.html">13.2. Python 操作SQLite数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Python操作mysql数据库.html">13.3. python操作mysql数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.Python封装mysql数据库.html">13.4. python操作mysql数据库封装类和方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.mysql介绍和安装.html">13.5. Mysql介绍和安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.数据库模块化.html">13.6. 数据库模块化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Python操作mongoDB数据库.html">13.7. Python操作mongoDB数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.封装mongoDB的类.html">13.8. 封装MongoDB的类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.Pyhton操作Redis数据库.html">13.9. Python操作Redis数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.使用ORM工具操作mongoDB.html">13.10. 使用ORM工具操作mongoDB数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.封装SQLite的类.html">13.11. 封装SQLite的类</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">13.12. 数据库及ORM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web">13.12.1. Web开发中的数据库</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">13.12.2. 关系数据库建模</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">13.12.3. 数据库建模举例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#er-md">13.12.4. 一款在线ER模型设计工具.md</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../24.Python框架学习/index.html">22. Python框架学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Go_vs_Python/index.html">Go vs Python</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="index.html">13. Python对数据库的操作</a> &raquo;</li>
+        
+      <li>13.12. 数据库及ORM</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Python/13.Python操作数据库/12.数据库及ORM设计.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#orm" id="id5">数据库及ORM</a><ul>
+<li><a class="reference internal" href="#web" id="id6">Web开发中的数据库</a></li>
+<li><a class="reference internal" href="#id1" id="id7">关系数据库建模</a><ul>
+<li><a class="reference internal" href="#e-r" id="id8">1. 设计E-R图</a></li>
+<li><a class="reference internal" href="#id2" id="id9">2.关系表设计</a></li>
+<li><a class="reference internal" href="#id3" id="id10">3.数据库中的键型、索引、约束解释</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4" id="id11">数据库建模举例</a></li>
+<li><a class="reference internal" href="#er-md" id="id12">一款在线ER模型设计工具.md</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="orm">
+<h1><a class="toc-backref" href="#id5">13.12. 数据库及ORM</a><a class="headerlink" href="#orm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="web">
+<h2><a class="toc-backref" href="#id6">13.12.1. Web开发中的数据库</a><a class="headerlink" href="#web" title="Permalink to this headline">¶</a></h2>
+<p>网站系统设计一般遵循三层架构。分为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>客户端层（HTML、CSS、JavaSctipt）
+业务逻辑层（Python）
+数据访问层（Python）
+</pre></div>
+</div>
+<p><img alt="image0" src="../../_images/E-R0001.png" /></p>
+<p>各自行为表现为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>用户：通过客户端软件（web浏览器）访问网站，通过业务逻辑层和数据访问层间接的获得数据服务
+
+开发者：设计和开发所有三层架构中的所有程序，包括数据库模型建立、数据访问代码开发等。
+
+数据管理员: 通过数据库管理系统（DBMS），对数据库进行维护和配置，包括数据库性能分析、性能改进、数据备份、数据恢复等。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id7">13.12.2. 关系数据库建模</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>关系数据库建模通常由以下两步完成。</p>
+<ul class="simple">
+<li>设计E-R图：构造一个反映现实世界实体之间联系的模型。</li>
+<li>关系表设计：将E-R图转换成关系表，并定义列类型，建立主键、外键等各种约束。</li>
+</ul>
+<div class="section" id="e-r">
+<h3><a class="toc-backref" href="#id8">1. 设计E-R图</a><a class="headerlink" href="#e-r" title="Permalink to this headline">¶</a></h3>
+<p>E-R图，即实体-关系图。E-R图通过以下3种概念描述信息结构。</p>
+<ul class="simple">
+<li>实体：客观存在的事务、事件、角色等，比如采购员、老师、课程、订单等。</li>
+<li>实体属性：描述实体的特性，每个实体可以有多个属性，比如老师的性别、名字、住址等。</li>
+<li>关系：反映两个实体之间客观存在的关系。</li>
+</ul>
+<p>设计E-R图围绕着识别系统中实体和明确实体之间关系而进行的。E-R图中两个实体（实体A、实体B）的关系被分为以下3类。</p>
+<ul class="simple">
+<li>一对一关系：典型的一对一关系包括人与身份证、丈夫与妻子等，一对一关系在E-R图中被标记为1:1</li>
+<li>一对多关系：典型的一对多关系包括班级与学生、人与银行卡等，一对多关系在E-R图中被标记为1：N</li>
+<li>多对多关系：典型的多对多关系包括老师和班级、学生与课程等，多对多关系在E-R图中被标记为M:N</li>
+</ul>
+<p>E-R图的绘制中，通常方块表示实体，圆圈表示属性，实体之间的菱形表示关系，一个学校系统的E-R图示例如下：</p>
+<p><img alt="image1" src="../../_images/E-R002.png" /></p>
+<p>图中的3个关系分别是：</p>
+<p>课程与老师之间的关系是1：N；</p>
+<p>课程与学生之间的关系是M: N；</p>
+<p>学生与学生证之间的关系是1: 1；</p>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id9">2.关系表设计</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>数据库选型，例如MySQL、Oracle、PostgreSQL、SQLite、SQL Server</p>
+<p>将每个实体转换为一个数据表，将实体的属性转换为表中的列，为每个列定义相应的数据类型。</p>
+<p>对于1:1关系的两个表，为两个表设置相同的主键列。</p>
+<p>对于1：N关系的两个表，在N中添加一个外键列，该列与1表中的主键相关联。</p>
+<p>对于M: N关系，生成一个单独的表表示该关系，该关系的列由两个表的主键组成。</p>
+<p>重新审核所有的表，对需要的地方添加约束，对常用的条件字段设置索引。</p>
+<p>综上所述，可以将4.2中实体关系模型转换为具体的关系表。</p>
+<p>该图可以生成5个表，4个实体表和1个关系表。</p>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id10">3.数据库中的键型、索引、约束解释</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Index：索引，对数据库中一列或者多列值进行排序的一种结构，对常用的查询字段添加索引可显著提高SQL语句的性能。</li>
+<li>Constraint：约束，是对列数据取值的某种限定，常见的约束有主键、外键、非空、唯一等。</li>
+<li>PK：主键（primary
+key），唯一标识一条记录，不允许为空，在大多数数据库中主键列也是一个索引列。</li>
+<li>FK：外键（foreign
+key），是另一个表的主键，表示关联关系，可以是空字段。</li>
+<li>NUT NULL：非空约束，即不允许列值为空。</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id11">13.12.3. 数据库建模举例</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>设计一个学生答题管理系统。示例图如下：</p>
+<p><img alt="image2" src="../../_images/E-R0003.png" /></p>
+<p>根据示例图，画出E-R数据库建模图。</p>
+<p><img alt="image3" src="../../_images/E-R0004.png" /></p>
+<p>导出数据SQL文件，导出的数据SQL文件可用于建库操作。</p>
+</div>
+<div class="section" id="er-md">
+<h2><a class="toc-backref" href="#id12">13.12.4. 一款在线ER模型设计工具.md</a><a class="headerlink" href="#er-md" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://blog.51cto.com/486221/2421425">https://blog.51cto.com/486221/2421425</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../14.Python三方库/index.html" class="btn btn-neutral float-right" title="14. Python 三方库学习" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="11.封装SQLite的类.html" class="btn btn-neutral float-left" title="13.11. 封装SQLite的类" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

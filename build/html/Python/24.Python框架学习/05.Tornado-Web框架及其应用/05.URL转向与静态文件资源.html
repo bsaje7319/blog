@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,22 +33,20 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="next" title="23. Python开发环境部署" href="../../25.Python开发环境部署/index.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="22.5.6. 表单和模板操作" href="06.表单和模板操作.html" />
     <link rel="prev" title="22.5.4. 用cookie与安全cookie跟踪客户" href="04.用cookie与安全cookie跟踪客户.html" /> 
 </head>
 
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
@@ -130,6 +134,7 @@
 <li class="toctree-l4"><a class="reference internal" href="03.请求参数的获取.html">22.5.3. 请求参数的获取</a></li>
 <li class="toctree-l4"><a class="reference internal" href="04.用cookie与安全cookie跟踪客户.html">22.5.4. 用cookie与安全cookie跟踪客户</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">22.5.5. URL转向与静态文件资源</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06.表单和模板操作.html">22.5.6. 表单和模板操作</a></li>
 </ul>
 </li>
 </ul>
@@ -147,6 +152,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -185,7 +191,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -199,7 +205,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/05.Tornado-Web框架及其应用/05.URL转向与静态文件资源.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/05.Tornado-Web框架及其应用/05.URL转向与静态文件资源.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -215,10 +221,13 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#url" id="id5">URL转向与静态文件资源</a><ul>
-<li><a class="reference internal" href="#id1" id="id6">代码演示1</a></li>
-<li><a class="reference internal" href="#id2" id="id7">代码演示1</a><ul>
-<li><a class="reference internal" href="#id4" id="id8">注意</a></li>
+<li><a class="reference internal" href="#url" id="id7">URL转向与静态文件资源</a><ul>
+<li><a class="reference internal" href="#id1" id="id8">URL转向</a><ul>
+<li><a class="reference internal" href="#id2" id="id9">代码演示</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3" id="id10">使用静态资源文件</a><ul>
+<li><a class="reference internal" href="#id4" id="id11">代码演示</a></li>
 </ul>
 </li>
 </ul>
@@ -226,20 +235,22 @@
 </ul>
 </div>
 <div class="section" id="url">
-<h1><a class="toc-backref" href="#id5">22.5.5. URL转向与静态文件资源</a><a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id7">22.5.5. URL转向与静态文件资源</a><a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h1>
 <p>在Tornado框架的Web编程中，也可以实现与Flask中相同的URL转向的功能。Tornado框架中有两种方法可以实现URL转向：</p>
 <ul class="simple">
 <li>redirect（url）　在业务逻辑中转向URL；</li>
 <li>RedirectHandler　实现某个URL的直接转向。</li>
 </ul>
 <p>RedirectHandler类的具体使用形式为：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">r&#39;/aaa&#39;</span><span class="p">,</span> <span class="n">tornado</span><span class="o">.</span><span class="n">Web</span><span class="o">.</span><span class="n">RedirectHandler</span><span class="p">,</span><span class="nb">dict</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;/abc&#39;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/aaa&#39;</span><span class="p">,</span> <span class="n">tornado</span><span class="o">.</span><span class="n">Web</span><span class="o">.</span><span class="n">RedirectHandler</span><span class="p">,</span><span class="nb">dict</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;/abc&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="section" id="id1">
-<h2><a class="toc-backref" href="#id6">代码演示1</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">URL转向</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id9">代码演示</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>演示了两种URL转向的实例，代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/5/6 16:41</span>
@@ -270,12 +281,12 @@
 
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">r&#39;/dist&#39;</span><span class="p">,</span> <span class="n">DistHdl</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">r&#39;/src&#39;</span><span class="p">,</span> <span class="n">SrcHdl</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">r&#39;/rdrt&#39;</span><span class="p">,</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RedirectHandler</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;/src&#39;</span><span class="p">})</span>  <span class="c1"># 直接转向</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/dist&#39;</span><span class="p">,</span> <span class="n">DistHdl</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/src&#39;</span><span class="p">,</span> <span class="n">SrcHdl</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/rdrt&#39;</span><span class="p">,</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RedirectHandler</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;/src&#39;</span><span class="p">})</span>  <span class="c1"># 直接转向</span>
 <span class="p">])</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
     <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
@@ -290,12 +301,16 @@
 <p>运行的结果无论是你访问‘/rdrt’，还是访问‘/src’，最后都会如图</p>
 <p>转向的目的页面</p>
 <p><img alt="image0" src="../../../_images/tornado-dingxiang01.png" /></p>
-<p>Tornado框架也支持在网站的页面中直接使用静态的资源文件，如图片、JS脚本、CSS样式表等。如果需要使用静态文件资源时，需要在Application类初始化时提供“static_path”参数。</p>
 </div>
-<div class="section" id="id2">
-<span id="id3"></span><h2><a class="toc-backref" href="#id7">代码演示1</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id10">使用静态资源文件</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Tornado框架也支持在网站的页面中直接使用静态的资源文件，如图片、JS脚本、CSS样式表等。如果需要使用静态文件资源时，需要在Application类初始化时提供“static_path”参数。</p>
+<div class="section" id="id4">
+<span id="id5"></span><h3><a class="toc-backref" href="#id11">代码演示</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>同级目录下存放<code class="docutils literal notranslate"><span class="pre">static/torn.jpg</span></code>文件。</p>
 <p>演示了在网站页面中引用图片的实例，代码如下：</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/5/6 16:45</span>
@@ -315,10 +330,10 @@
 
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">r&#39;/stt&#39;</span><span class="p">,</span> <span class="n">SttHdl</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/stt&#39;</span><span class="p">,</span> <span class="n">SttHdl</span><span class="p">),</span>
 <span class="p">],</span> <span class="n">static_path</span><span class="o">=</span><span class="s1">&#39;./static&#39;</span><span class="p">)</span>                   <span class="c1">#提供了static_path参数</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
     <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
@@ -326,11 +341,12 @@
 <p><strong>【代码说明】</strong>
 代码中‘/stt’请求返回的HTML代码中是一个img标签，引用本网站中的一幅图片。在初始化Application类时，提供了static_path参数，以指明静态资源的目录。</p>
 <hr class="docutils" />
-<div class="section" id="id4">
-<h3><a class="toc-backref" href="#id8">注意</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h4>注意<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <p>此处的静态资源目录是相对于运行时所在的路径目录，所以运行服务器命令行时应进入对应的目录，否则无法找到静态资源。你可以使用绝对路径来排除此问题。</p>
 <hr class="docutils" />
 <p><strong>【运行效果】</strong> 如下图所示，页面中显示了一幅图片： <img alt="image1" src="../../../_images/tornado-photo01.png" /></p>
+</div>
 </div>
 </div>
 </div>
@@ -343,7 +359,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../25.Python开发环境部署/index.html" class="btn btn-neutral float-right" title="23. Python开发环境部署" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="06.表单和模板操作.html" class="btn btn-neutral float-right" title="22.5.6. 表单和模板操作" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="04.用cookie与安全cookie跟踪客户.html" class="btn btn-neutral float-left" title="22.5.4. 用cookie与安全cookie跟踪客户" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -355,11 +371,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -370,7 +394,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

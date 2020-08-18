@@ -1,0 +1,78 @@
+.. contents::
+   :depth: 3
+..
+
+模板
+====
+
+user.html
+
+::
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <title>Title</title>
+   </head>
+   <body>
+   <h1> Hello {{ name }} </h1>
+   </body>
+   </html>
+
+::
+
+   #!/usr/bin/env python
+   # -*- coding:utf8 -*-
+   # auther; 18793
+   # Date：2019/4/19 15:47
+   # filename: render.py
+   from flask import Flask, render_template
+
+   app = Flask(__name__)
+
+
+   @app.route("/")
+   def hello_world():
+       return render_template("index.html")
+
+
+   @app.route("/user/<username>")
+   def user_login(username):
+       # 显示该用户的信息
+       return render_template("user.html", name=username)
+
+
+   if __name__ == '__main__':
+       app.run(debug=True)
+
+eg：
+
+::
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <title>Title</title>
+   </head>
+   <body>
+   <h1> Hello {{ name }} </h1>
+
+       {{ dic['key2'] }}
+       {{'<h1> hello world2222222</h1>'|safe}}
+       {% if name == "zhangsan" %}
+       你好，胡建力
+       {% else  %}
+       你不是 胡建力
+       {% endif %}
+       {% for (temp,value) in dic.items() %}
+           <p> {{ temp}} : {{value}}</p>
+       {% endfor %}
+
+   </body>
+   </html>
+
+参考文献
+
+https://www.ctolib.com/docs//sfile/flask-mega-tutorial/templates.html#id2

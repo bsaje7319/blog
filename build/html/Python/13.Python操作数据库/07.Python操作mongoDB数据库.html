@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="13.8. 封装MongoDB的类" href="08.封装mongoDB的类.html" />
     <link rel="prev" title="13.6. 数据库模块化" href="06.数据库模块化.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -128,13 +132,15 @@
 <li class="toctree-l3"><a class="reference internal" href="08.封装mongoDB的类.html">13.8. 封装MongoDB的类</a></li>
 <li class="toctree-l3"><a class="reference internal" href="09.Pyhton操作Redis数据库.html">13.9. Python操作Redis数据库</a></li>
 <li class="toctree-l3"><a class="reference internal" href="10.使用ORM工具操作mongoDB.html">13.10. 使用ORM工具操作mongoDB数据库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.封装SQLite的类.html">13.11. 封装SQLite的类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.数据库及ORM设计.html">13.12. 数据库及ORM</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../14.Python三方库/index.html">14. Python 三方库学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -152,6 +158,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -190,7 +197,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -202,7 +209,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/13.Python操作数据库/07.Python操作mongoDB数据库.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/13.Python操作数据库/07.Python操作mongoDB数据库.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -236,7 +243,7 @@
 <p>MongoDB是一种noSQL（not only SQL）非关系型数据库</p>
 <div class="section" id="mongodb">
 <h2><a class="toc-backref" href="#id6">13.7.1. MongoDB数据库简介</a><a class="headerlink" href="#mongodb" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>MongoDB是一种强大、灵活、可扩展的数据存储方式，它扩展了关系型数据库大量有用的功能，主要特点有：
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MongoDB是一种强大、灵活、可扩展的数据存储方式，它扩展了关系型数据库大量有用的功能，主要特点有：
     MongoDB数据库数据存储没有模式：对于关系型数据库来说，只要建立一个关系，即一张表，那么其中的数据类型基本上就已经定格了，
     MongoDB数据存储基本单元是“文档”，每个文档的模式可以不同，不仅数据类型可以不同，其结构也可以不同。
 
@@ -252,13 +259,13 @@
 </div>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id7">13.7.2. 建立mongoDB数据库操作环境</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">https://www.runoob.com/mongodb/mongodb-window-install.html</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">https://www.runoob.com/mongodb/mongodb-window-install.html</span></code></p>
 <p>mongodb的开启和关闭</p>
 <p>在D:，输入命令启动MongoDB服务：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mongod</span> <span class="o">-</span><span class="n">dbpath</span> <span class="n">D</span><span class="p">:</span>\<span class="n">mongodb</span>\<span class="n">data</span>\<span class="n">db</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mongod</span> <span class="o">-</span><span class="n">dbpath</span> <span class="n">D</span><span class="p">:</span>\<span class="n">mongodb</span>\<span class="n">data</span>\<span class="n">db</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>启动：mongod --dbpath=/application/mongodb/data --logpath=/application/mongodb/log/mongodb.log --port=27017 --logappend --fork
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>启动：mongod --dbpath=/application/mongodb/data --logpath=/application/mongodb/log/mongodb.log --port=27017 --logappend --fork
 
 关闭：mongod --shutdown  --dbpath=/application/mongodb/data --logpath=/application/mongodb/log/mongodb.log --port=27017 --logappend --fork
 </pre></div>
@@ -271,7 +278,7 @@
 <div class="line-block">
 <div class="line">下载压缩包，并解压到新建的mongodb目录下：</div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir mongodb
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir mongodb
 $curl-O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-3.2.11.tgz
 $ tar-zxvf mongodb-linux-x86_64-ubuntu1404-3.2.11.tgz
 $ mv mongodb-linux-x86_64-ubuntu1404-3.2.11/mongodb/
@@ -279,33 +286,33 @@ $ mv mongodb-linux-x86_64-ubuntu1404-3.2.11/mongodb/
 </div>
 <p>MongoDB的可执行文件位于mongodb-linux-x86_64-ubuntu1404-3.2.11文件夹下的bin目录下，将bin目录所在路径添加到环境变量中。本人Ubuntu系统所使用的bin目录路径为/home/ubuntu/mongodb/mongodb-linux-x86_64-ubuntu1404-3.2.11/bin。</p>
 <hr class="docutils" />
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ export  PATH=/home/ubuntu/mongodb/mongodb-linux-x86_64-ubuntu1404-3.2.11/bin:$PATH
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export  PATH=/home/ubuntu/mongodb/mongodb-linux-x86_64-ubuntu1404-3.2.11/bin:$PATH
 </pre></div>
 </div>
 <hr class="docutils" />
 <p>接着需要创建数据库路径，MongoDB的数据存储默认在data目录的db目录下。</p>
 <hr class="docutils" />
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir -p /data/db
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p /data/db
 </pre></div>
 </div>
 <hr class="docutils" />
 <p>这个时候，进入bin目录，运行mongod服务。</p>
 <hr class="docutils" />
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ./mongod
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo ./mongod
 </pre></div>
 </div>
 <hr class="docutils" />
 <p>启动mongodb服务</p>
 <p>如果你创建数据库的目录不是在根目录下，可以使用–dbpath参数指定。示例如下：</p>
 <hr class="docutils" />
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">./</span><span class="n">mongod</span> <span class="o">--</span><span class="n">dbpath</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">db</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">./</span><span class="n">mongod</span> <span class="o">--</span><span class="n">dbpath</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">db</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id9">13.7.4. MongoDB数据库基础</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p><img alt="image0" src="../../_images/python-mongoDB0002.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span>
 <span class="o">&gt;</span> <span class="n">use</span> <span class="n">tese</span>                  <span class="c1">#切换到test数据库</span>
 <span class="n">switched</span> <span class="n">to</span> <span class="n">db</span> <span class="n">tese</span>
 
@@ -347,11 +354,11 @@ $ mv mongodb-linux-x86_64-ubuntu1404-3.2.11/mongodb/
 <ul class="simple">
 <li>安装pymongo三方库</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pymongo</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pymongo</span>
 </pre></div>
 </div>
 <p><img alt="image1" src="../../_images/python-mongo0002.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/6/25 14:48</span>
@@ -378,7 +385,7 @@ $ mv mongodb-linux-x86_64-ubuntu1404-3.2.11/mongodb/
     <span class="k">return</span> <span class="n">res</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;建立连接...................&quot;</span><span class="p">)</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    db = MongoClient()</span>
@@ -415,7 +422,7 @@ $ mv mongodb-linux-x86_64-ubuntu1404-3.2.11/mongodb/
 </pre></div>
 </div>
 <p>输出信息</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">建立连接</span><span class="o">...................</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">建立连接</span><span class="o">...................</span>
 <span class="n">插入一条记录</span><span class="o">.................</span>
 <span class="n">显示所有记录</span><span class="o">...................</span>
 <span class="o">&lt;</span><span class="n">pymongo</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">Cursor</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x000001E06CEED748</span><span class="o">&gt;</span>
@@ -441,7 +448,7 @@ $ mv mongodb-linux-x86_64-ubuntu1404-3.2.11/mongodb/
 </pre></div>
 </div>
 <p>mongoDB自带导出工具，可以在bin文件夹下打开命令行窗口，输入下面命令即可完成集合向CSV文件的导出。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mongoexport</span> <span class="o">-</span><span class="n">d</span> <span class="n">mydb</span> <span class="o">-</span><span class="n">c</span> <span class="n">test</span> <span class="o">--</span><span class="n">csv</span> <span class="o">-</span><span class="n">f</span> <span class="n">name</span><span class="p">,</span><span class="n">sex</span><span class="p">,</span><span class="n">grade</span> <span class="o">-</span><span class="n">o</span> <span class="n">test</span><span class="o">.</span><span class="n">csv</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mongoexport</span> <span class="o">-</span><span class="n">d</span> <span class="n">mydb</span> <span class="o">-</span><span class="n">c</span> <span class="n">test</span> <span class="o">--</span><span class="n">csv</span> <span class="o">-</span><span class="n">f</span> <span class="n">name</span><span class="p">,</span><span class="n">sex</span><span class="p">,</span><span class="n">grade</span> <span class="o">-</span><span class="n">o</span> <span class="n">test</span><span class="o">.</span><span class="n">csv</span>
 
 <span class="o">-</span><span class="n">d</span> <span class="n">数据库</span>
 <span class="o">-</span><span class="n">c</span> <span class="n">表数据</span>
@@ -476,11 +483,19 @@ $ mv mongodb-linux-x86_64-ubuntu1404-3.2.11/mongodb/
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -491,7 +506,6 @@ $ mv mongodb-linux-x86_64-ubuntu1404-3.2.11/mongodb/
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

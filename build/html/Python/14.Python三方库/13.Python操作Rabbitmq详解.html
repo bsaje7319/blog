@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="14.14. 打包和发布" href="14.打包和发布.html" />
     <link rel="prev" title="14.12. Python3读写Excel文件" href="12.Python3读写Excel文件.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -135,12 +139,13 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="14.打包和发布.html">14.14. 打包和发布</a></li>
 <li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html">14.15. Jinja2模板</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.python第三方库request.html">14.16. Python第三方库requests学习笔记</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -158,6 +163,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -196,7 +202,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -208,7 +214,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/14.Python三方库/13.Python操作Rabbitmq详解.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/14.Python三方库/13.Python操作Rabbitmq详解.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -256,7 +262,7 @@ Rabbitmq不处理文件，而是接收，并存储和以二进制形式将消息
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id10">14.13.2. 技术亮点</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>可靠性
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>可靠性
 RabbitMQ 提供了多种技术可以让你在性能和可靠性之间进行权衡。这些技术包括持久性、投递确认、发布者证实和高可用性。
 
 灵活的路由
@@ -297,7 +303,7 @@ RabbitMQ 附带了各种各样的插件来对自己进行扩展。甚至你也�
 <div class="section" id="rabbitmq">
 <h2><a class="toc-backref" href="#id11">14.13.3. RabbitMQ 消息队列介绍</a><a class="headerlink" href="#rabbitmq" title="Permalink to this headline">¶</a></h2>
 <p>RabbitMQ也是消息队列，那RabbitMQ和之前python的Queue有什么区别么？</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>py 消息队列:
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>py 消息队列:
     线程 queue（同一进程下线程之间进行交互）
     进程 Queue（父子进程进行交互 或者 同属于同一进程下的多个子进程进行交互）
 </pre></div>
@@ -307,7 +313,7 @@ RabbitMQ 附带了各种各样的插件来对自己进行扩展。甚至你也�
 <p>【Disk、Socket、其他中间件】这里中间件不仅可以支持两个程序之间交互，可以支持多个程序，
 可以维护好多个程序的队列。</p>
 <p>像这种公共的中间件有好多成熟的产品：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RabbitMQ</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RabbitMQ</span>
 <span class="n">ZeroMQ</span>
 <span class="n">ActiveMQ</span>
 <span class="o">........</span>
@@ -315,13 +321,13 @@ RabbitMQ 附带了各种各样的插件来对自己进行扩展。甚至你也�
 </div>
 <p>RabbitMQ：erlang语言 开发的。</p>
 <p>Python中连接RabbitMQ的模块：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>pika 、Celery(分布式任务队列) 、haigha可以维护很多的队列
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pika 、Celery(分布式任务队列) 、haigha可以维护很多的队列
 </pre></div>
 </div>
 <p>RabbitMQ 教程官网：<a class="reference external" href="http://www.rabbitmq.com/getstarted.html">http://www.rabbitmq.com/getstarted.html</a></p>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id12">几个概念说明：</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Broker：简单来说就是消息队列服务器实体。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Broker：简单来说就是消息队列服务器实体。
 Exchange：消息交换机，它指定消息按什么规则，路由到哪个队列。
 Queue：消息队列载体，每个消息都会被投入到一个或多个队列。
 Binding：绑定，它的作用就是把exchange和queue按照路由规则绑定起来。
@@ -339,7 +345,7 @@ channel：消息通道，在客户端的每个连接里，可建立多个channel
 <p><img alt="image0" src="../../_images/python_rabbitmq000002.png" /></p>
 <p>生产者（producter）：队列消息的产生者，负责生产消息，并将消息传入队列
 producer.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/7 17:01</span>
@@ -368,7 +374,7 @@ producer.py</p>
 </pre></div>
 </div>
 <p>consumer.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/7 17:02</span>
@@ -398,7 +404,7 @@ producer.py</p>
 </pre></div>
 </div>
 <p>执行生产者，生成消息队列。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># python producer.py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># python producer.py</span>
 
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10000&quot;</span><span class="p">}</span>
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10001&quot;</span><span class="p">}</span>
@@ -421,7 +427,7 @@ producer.py</p>
 </div>
 <p>查看消息队列中数据</p>
 <p>RabbitMQ 相关命令</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># rabbitmqctl list_queues</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># rabbitmqctl list_queues</span>
 <span class="n">WARNING</span><span class="p">:</span> <span class="n">ignoring</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">rabbitmq</span><span class="o">/</span><span class="n">rabbitmq</span><span class="o">.</span><span class="n">conf</span> <span class="o">--</span> <span class="n">location</span> <span class="n">has</span> <span class="n">moved</span> <span class="n">to</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">rabbitmq</span><span class="o">/</span><span class="n">rabbitmq</span><span class="o">-</span><span class="n">env</span><span class="o">.</span><span class="n">conf</span>
 <span class="n">Listing</span> <span class="n">queues</span> <span class="o">...</span>
 <span class="n">hello</span>   <span class="mi">2</span>
@@ -431,7 +437,7 @@ producer.py</p>
 <p>python-test这个队列里面有50条数据，暂未处理。</p>
 <p>执行消费者 consumer.py</p>
 <p>消费者会一直阻塞在这里，等待有新的队列信息进来。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># python consumer.py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># python consumer.py</span>
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10000&quot;</span><span class="p">}</span>
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10001&quot;</span><span class="p">}</span>
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10002&quot;</span><span class="p">}</span>
@@ -486,7 +492,7 @@ producer.py</p>
 </div>
 <p>再次查看队列里面的信息如下：</p>
 <p>已经全部取出。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># rabbitmqctl list_queues</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># rabbitmqctl list_queues</span>
 <span class="n">WARNING</span><span class="p">:</span> <span class="n">ignoring</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">rabbitmq</span><span class="o">/</span><span class="n">rabbitmq</span><span class="o">.</span><span class="n">conf</span> <span class="o">--</span> <span class="n">location</span> <span class="n">has</span> <span class="n">moved</span> <span class="n">to</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">rabbitmq</span><span class="o">/</span><span class="n">rabbitmq</span><span class="o">-</span><span class="n">env</span><span class="o">.</span><span class="n">conf</span>
 <span class="n">Listing</span> <span class="n">queues</span> <span class="o">...</span>
 <span class="n">hello</span>   <span class="mi">2</span>
@@ -502,12 +508,12 @@ producer.py</p>
 挂掉，queue、exchange 将会全部丢失。 所以我们一般在创建 queue 或者
 exchange 的时候会声明 持久化。</p>
 <p>1.queue 声明持久化</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 声明消息队列，消息将在这个队列传递，如不存在，则创建。durable = True 代表消息队列持久化存储，False 非持久化存储</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明消息队列，消息将在这个队列传递，如不存在，则创建。durable = True 代表消息队列持久化存储，False 非持久化存储</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">channel</span><span class="o">.</span><span class="n">queue_declare</span><span class="p">(</span><span class="n">queue</span> <span class="o">=</span> <span class="s1">&#39;python-test&#39;</span><span class="p">,</span><span class="n">durable</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>2.exchange 声明持久化</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 声明exchange，由exchange指定消息在哪个队列传递，如不存在，则创建.durable = True 代表exchange持久化存储，False 非持久化存储</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 声明exchange，由exchange指定消息在哪个队列传递，如不存在，则创建.durable = True 代表exchange持久化存储，False 非持久化存储</span>
 <span class="n">channel</span><span class="o">.</span><span class="n">exchange_declare</span><span class="p">(</span><span class="n">exchange</span> <span class="o">=</span> <span class="s1">&#39;python-test&#39;</span><span class="p">,</span> <span class="n">durable</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -518,7 +524,7 @@ exchange 的时候会声明 持久化。</p>
 <p>3.消息持久化</p>
 <p>虽然 exchange 和 queue 都申明了持久化，但如果消息只存在内存里，rabbitmq
 重启后，内存里的东西还是会丢失。所以必须声明消息也是持久化，从内存转存到硬盘。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 向队列插入数值 routing_key是队列名。delivery_mode = 2 声明消息在队列中持久化，delivery_mod = 1 消息非持久化</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 向队列插入数值 routing_key是队列名。delivery_mode = 2 声明消息在队列中持久化，delivery_mod = 1 消息非持久化</span>
     <span class="n">channel</span><span class="o">.</span><span class="n">basic_publish</span><span class="p">(</span><span class="n">exchange</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">routing_key</span> <span class="o">=</span> <span class="s1">&#39;python-test&#39;</span><span class="p">,</span><span class="n">body</span> <span class="o">=</span> <span class="n">message</span><span class="p">,</span>
                           <span class="n">properties</span><span class="o">=</span><span class="n">pika</span><span class="o">.</span><span class="n">BasicProperties</span><span class="p">(</span><span class="n">delivery_mode</span> <span class="o">=</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
@@ -526,7 +532,7 @@ exchange 的时候会声明 持久化。</p>
 <p>4.acknowledgement 消息不丢失</p>
 <p>消费者（consumer）调用callback函数时，会存在处理消息失败的风险，如果处理失败，则消息丢失。但是也可以选择消费者处理失败时，将消息回退给
 rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">channel</span><span class="o">.</span><span class="n">basic_consume</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span><span class="n">queue</span> <span class="o">=</span> <span class="s1">&#39;python-test&#39;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">channel</span><span class="o">.</span><span class="n">basic_consume</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span><span class="n">queue</span> <span class="o">=</span> <span class="s1">&#39;python-test&#39;</span><span class="p">,</span>
 <span class="c1"># no_ack 设置成 False，在调用callback函数时，未收到确认标识，消息会重回队列。True，无论调用callback成功与否，消息都被消费掉</span>
                       <span class="n">no_ack</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -534,7 +540,7 @@ rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识�
 <p>示例</p>
 <p>通过远程连接rabbitmq-Server服务器。</p>
 <p>producer.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/7 17:01</span>
@@ -565,7 +571,7 @@ rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识�
 </pre></div>
 </div>
 <p>consumer.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/7 17:02</span>
@@ -598,7 +604,7 @@ rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识�
 </pre></div>
 </div>
 <p>向队列里面放入持久化的数据</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># python producer.py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># python producer.py</span>
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10000&quot;</span><span class="p">}</span>
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10001&quot;</span><span class="p">}</span>
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10002&quot;</span><span class="p">}</span>
@@ -624,7 +630,7 @@ rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识�
 </pre></div>
 </div>
 <p>运行消费者</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># python consumer.py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># python consumer.py</span>
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10000&quot;</span><span class="p">}</span>
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10001&quot;</span><span class="p">}</span>
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10002&quot;</span><span class="p">}</span>
@@ -647,14 +653,14 @@ rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识�
 我们现在需要的时候，当三个消费者都在执行任务的时候，
 比如说第二个消费者任务执行完了，其他消费者都还在执行任务，
 当第四个任务到来的时候希望交给第二个消费者，若要实现此功能，只需要在消费者加上一下代码即可：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">channel</span><span class="o">.</span><span class="n">basic_qos</span><span class="p">(</span><span class="n">prefetch_count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">channel</span><span class="o">.</span><span class="n">basic_qos</span><span class="p">(</span><span class="n">prefetch_count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line">发布者</div>
 <div class="line">producer.py</div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/8 12:44</span>
@@ -685,7 +691,7 @@ rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识�
 </pre></div>
 </div>
 <p>订阅者 consumer.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/8 12:44</span>
@@ -711,7 +717,7 @@ rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识�
 </pre></div>
 </div>
 <p>消费者一直监听，执行如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python consumer.py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python consumer.py</span>
  <span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Waiting</span> <span class="k">for</span> <span class="n">messages</span><span class="o">.</span> <span class="n">To</span> <span class="n">exit</span> <span class="n">press</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">C</span>
  <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="n">Received</span> <span class="s1">&#39;Hello World! 3&#39;</span>
  <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="n">Done</span>
@@ -729,7 +735,7 @@ rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识�
 </pre></div>
 </div>
 <p>生产者，往里面送数据</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python producer.py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python producer.py</span>
  <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="n">Sent</span> <span class="s1">&#39;Hello World! 1&#39;</span>
  <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="n">Sent</span> <span class="s1">&#39;Hello World! 2&#39;</span>
  <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="n">Sent</span> <span class="s1">&#39;Hello World! 3&#39;</span>
@@ -747,20 +753,20 @@ rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识�
 <h2><a class="toc-backref" href="#id16">14.13.6. 4.RabbitMq 发布与订阅</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>rabbitmq 的发布与订阅要借助交换机（Exchange）的原理实现：</p>
 <p><img alt="image1" src="../../_images/python_rabbitmq00001.png" /></p>
-<p>· <code class="docutils literal"><span class="pre">Exchange</span> <span class="pre">一共有三种工作模式：fanout,</span> <span class="pre">direct,</span> <span class="pre">topicd</span></code></p>
+<p>· <code class="docutils literal notranslate"><span class="pre">Exchange</span> <span class="pre">一共有三种工作模式：fanout,</span> <span class="pre">direct,</span> <span class="pre">topicd</span></code></p>
 <div class="section" id="fanoutall">
 <h3><a class="toc-backref" href="#id17">模式一:fanout纯广播、all</a><a class="headerlink" href="#fanoutall" title="Permalink to this headline">¶</a></h3>
 <p>这种模式下，传递到 exchange 的消息将会转发到所有与其绑定的 queue 上。
 <img alt="image2" src="../../_images/python_rabbitmq000003.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>不需要指定 routing_key ，即使指定了也是无效。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>不需要指定 routing_key ，即使指定了也是无效。
 需要提前将 exchange 和 queue 绑定，一个 exchange 可以绑定多个 queue，一个queue可以绑定多个exchange。
 需要先启动 订阅者，此模式下的队列是 consumer 随机生成的，发布者 仅仅发布消息到 exchange ，由 exchange 转发消息至 queue。
 </pre></div>
 </div>
-<p>· <code class="docutils literal"><span class="pre">注意：广播，是实时的，收不到就没了，消息不会存下来，类似收音机。</span></code></p>
+<p>· <code class="docutils literal notranslate"><span class="pre">注意：广播，是实时的，收不到就没了，消息不会存下来，类似收音机。</span></code></p>
 <p>· producer01.py</p>
 <p>发布者</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/7 17:01</span>
@@ -785,7 +791,7 @@ rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识�
 <span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 广播数据不会存储</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 广播数据不会存储</span>
 <span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">module</span><span class="p">]</span><span class="c1"># python producer.py</span>
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10000&quot;</span><span class="p">}</span>
 <span class="p">{</span><span class="s2">&quot;OrderId&quot;</span><span class="p">:</span> <span class="s2">&quot;10001&quot;</span><span class="p">}</span>
@@ -806,7 +812,7 @@ rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识�
 </div>
 <p>· consumer01.py</p>
 <p>执行订阅者，先阻塞着，等待生产者产生数据，因为是广播，不会存储到队列中。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/7 17:01</span>
@@ -845,7 +851,7 @@ rabbitmq ，重新再被消费者消费，这个时候需要设置确认标识�
 RabbitMQ还支持根据关键字发送，即：队列绑定关键字，发送者将数据根据关键字发送到消息exchange，exchange根据
 关键字 判定应该将数据发送至指定队列。</p>
 <p><img alt="image3" src="../../_images/python_rabbitmq000004.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>这种工作模式的原理是 消息发送至 exchange，
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>这种工作模式的原理是 消息发送至 exchange，
 
 exchange 根据 路由键（routing_key）转发到相对应的 queue 上。
 
@@ -855,7 +861,7 @@ exchange 根据 路由键（routing_key）转发到相对应的 queue 上。
 </pre></div>
 </div>
 <p>producer02.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/8 10:15</span>
@@ -881,7 +887,7 @@ exchange 根据 路由键（routing_key）转发到相对应的 queue 上。
 </pre></div>
 </div>
 <p>consumer02.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/8 10:17</span>
@@ -924,7 +930,7 @@ exchange 根据 路由键（routing_key）转发到相对应的 queue 上。
 <span class="n">channel</span><span class="o">.</span><span class="n">start_consuming</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python producer02.py 123 32dsadasds122</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python producer02.py 123 32dsadasds122</span>
  <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="n">Sent</span> <span class="s1">&#39;123&#39;</span><span class="p">:</span><span class="s1">&#39;32dsadasds122&#39;</span>
 
 
@@ -960,7 +966,7 @@ exchange 根据 路由键（routing_key）转发到相对应的 queue 上。
 </table>
 <p>比如把error中，apache和mysql的分别或取出来</p>
 <p>producer04.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/8 10:58</span>
@@ -989,7 +995,7 @@ exchange 根据 路由键（routing_key）转发到相对应的 queue 上。
 </pre></div>
 </div>
 <p>consumer04.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/1/8 10:58</span>
@@ -1034,14 +1040,14 @@ exchange 根据 路由键（routing_key）转发到相对应的 queue 上。
 </pre></div>
 </div>
 <p>生产者</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python producer04.py mysql</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python producer04.py mysql</span>
  <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="n">Sent</span> <span class="s1">&#39;anonymous.info&#39;</span><span class="p">:</span><span class="s1">&#39;Hello World!&#39;</span>
 <span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python producer04.py ms12131</span>
  <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="n">Sent</span> <span class="s1">&#39;anonymous.info&#39;</span><span class="p">:</span><span class="s1">&#39;Hello World!&#39;</span>
 </pre></div>
 </div>
 <p>消费者</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">## 接收所有消息</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## 接收所有消息</span>
 <span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python consumer04.py &quot;#&quot;</span>
  <span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Waiting</span> <span class="k">for</span> <span class="n">logs</span><span class="o">.</span> <span class="n">To</span> <span class="n">exit</span> <span class="n">press</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">C</span>
  <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="s1">&#39;anonymous.info&#39;</span><span class="p">:</span><span class="s1">&#39;Hello World!&#39;</span>
@@ -1052,12 +1058,12 @@ exchange 根据 路由键（routing_key）转发到相对应的 queue 上。
 <li>把error中，apache和mysql的分别或取出来</li>
 </ul>
 <p>生产者</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python producer04.py aaa.error mysql.aaa</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python producer04.py aaa.error mysql.aaa</span>
  <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="n">Sent</span> <span class="s1">&#39;aaa.error&#39;</span><span class="p">:</span><span class="s1">&#39;mysql.aaa&#39;</span>
 </pre></div>
 </div>
 <p>消费者</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python consumer04.py *.error mysql.*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ftnode</span><span class="o">-</span><span class="mi">172</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">19</span> <span class="n">ftinstall</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">distributed</span><span class="p">]</span><span class="c1"># python consumer04.py *.error mysql.*</span>
  <span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Waiting</span> <span class="k">for</span> <span class="n">logs</span><span class="o">.</span> <span class="n">To</span> <span class="n">exit</span> <span class="n">press</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">C</span>
  <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="s1">&#39;aaa.error&#39;</span><span class="p">:</span><span class="s1">&#39;mysql.aaa&#39;</span>
 </pre></div>
@@ -1068,7 +1074,7 @@ exchange 根据 路由键（routing_key）转发到相对应的 queue 上。
 <p>客户端发送一个任务到服务端，服务端把任务的执行结果再返回给客户端</p>
 <p><img alt="image4" src="../../_images/python_rabbitmq_rpc01.png" /></p>
 <p>RPC_Server.py 消费端</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#_*_coding:utf-8_*_</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#_*_coding:utf-8_*_</span>
 <span class="kn">import</span> <span class="nn">pika</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="c1"># 链接socket</span>
@@ -1121,7 +1127,7 @@ exchange 根据 路由键（routing_key）转发到相对应的 queue 上。
 </pre></div>
 </div>
 <p>RPC_Client.py 生产端</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># coding:utf-8</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># coding:utf-8</span>
 <span class="kn">import</span> <span class="nn">pika</span>
 <span class="kn">import</span> <span class="nn">uuid</span>
 <span class="kn">import</span> <span class="nn">time</span>
@@ -1218,11 +1224,19 @@ exchange 根据 路由键（routing_key）转发到相对应的 queue 上。
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1233,7 +1247,6 @@ exchange 根据 路由键（routing_key）转发到相对应的 queue 上。
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

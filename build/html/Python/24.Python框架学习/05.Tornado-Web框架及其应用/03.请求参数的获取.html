@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="22.5.4. 用cookie与安全cookie跟踪客户" href="04.用cookie与安全cookie跟踪客户.html" />
     <link rel="prev" title="22.5.2. Tornado框架初识" href="02.Tornado框架初识.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,13 +119,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. 02.Flask-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">22.5. Tornado-Web框架及其应用</a><ul class="current">
@@ -130,6 +134,7 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">22.5.3. 请求参数的获取</a></li>
 <li class="toctree-l4"><a class="reference internal" href="04.用cookie与安全cookie跟踪客户.html">22.5.4. 用cookie与安全cookie跟踪客户</a></li>
 <li class="toctree-l4"><a class="reference internal" href="05.URL转向与静态文件资源.html">22.5.5. URL转向与静态文件资源</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06.表单和模板操作.html">22.5.6. 表单和模板操作</a></li>
 </ul>
 </li>
 </ul>
@@ -147,6 +152,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -185,7 +191,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -199,7 +205,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/05.Tornado-Web框架及其应用/03.请求参数的获取.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/05.Tornado-Web框架及其应用/03.请求参数的获取.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -227,12 +233,12 @@
 <p>客户端请求的参数有URL中的参数、GET请求中的参数和POST请求中的参数。</p>
 <p>在Tornado框架中，要获取URL中包含的参数，与Flask框架有相似之处，它们都是在URL定义中定义获取参数，并在对应的业务方法中给出相应的参数名进行获取。</p>
 <p>Tornado框架URL定义字符串中，使用正则表达式来匹配URL及URL中的参数，比如：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s2">r&quot;uid/([0-9]+)&quot;</span><span class="p">,</span><span class="n">UserHdl</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;uid/([0-9]+)&quot;</span><span class="p">,</span><span class="n">UserHdl</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>这种形式的URL字符串定义可以接受形如“uid/”后跟一位或多位数字的客户端URL请求。</p>
 <p>对应以上URL定义，可以以如下方式定义get()方法：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>def get(self,uid)：
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>def get(self,uid)：
    pass
 </pre></div>
 </div>
@@ -240,7 +246,7 @@
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id5">代码演示1</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>演示了在GET方法中获取URL中参数的基本实例，代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- encoding:utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- encoding:utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">tornado.ioloop</span>
 <span class="kn">import</span> <span class="nn">tornado.web</span>
 
@@ -254,21 +260,21 @@
 
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">r&#39;/([0-9]+)&#39;</span><span class="p">,</span> <span class="n">MainHdl</span><span class="p">),</span>            <span class="c1">##正则表达式URL，捕获参数</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/([0-9]+)&#39;</span><span class="p">,</span> <span class="n">MainHdl</span><span class="p">),</span>            <span class="c1">##正则表达式URL，捕获参数</span>
 <span class="p">],</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
     <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>【代码说明】 代码中使用了上述正则表达式的URL字符串定义及带有uid参数的get()方法。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【代码说明】 代码中使用了上述正则表达式的URL字符串定义及带有uid参数的get()方法。
 </pre></div>
 </div>
 <p><strong>【运行效果】</strong> 服务器运行后，浏览器访问结果如图</p>
 <p><img alt="image0" src="../../../_images/tormado002.png" /></p>
 <p>而如果要获取GET或POST请求参数，则更加简单。只需要调用从RequestHandler类中继承来的get_argument()方法即可，其原型如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">get_argument</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">strip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">get_argument</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">strip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>其中参数意义是：</p>
@@ -280,7 +286,7 @@
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id6">代码演示2</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- encoding:utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- encoding:utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">tornado.ioloop</span>
 <span class="kn">import</span> <span class="nn">tornado.web</span>
 
@@ -308,18 +314,18 @@
 
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">r&#39;/get&#39;</span><span class="p">,</span> <span class="n">MainHdl</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/get&#39;</span><span class="p">,</span> <span class="n">MainHdl</span><span class="p">),</span>
 <span class="p">],</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
     <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>【代码说明】 在上述代码中，服务器收到GET请求时，返回一个带有表单的页面内容；当用户填写自己的姓名，并单击“发送POST请求”时，将用户输入的姓名以POST参数形式发送到服务器端。最后服务器端调用get_argument()方法来获取和处理它。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>【代码说明】 在上述代码中，服务器收到GET请求时，返回一个带有表单的页面内容；当用户填写自己的姓名，并单击“发送POST请求”时，将用户输入的姓名以POST参数形式发送到服务器端。最后服务器端调用get_argument()方法来获取和处理它。
 </pre></div>
 </div>
-<p>发送“localhost:8888/get”的GET请求时，<code class="docutils literal"><span class="pre">返回页面如图1所示，而当用户提交时显示的页面如图2所示。</span></code></p>
+<p>发送“localhost:8888/get”的GET请求时，<code class="docutils literal notranslate"><span class="pre">返回页面如图1所示，而当用户提交时显示的页面如图2所示。</span></code></p>
 <p>图1</p>
 <p><img alt="image1" src="../../../_images/tornado003-1.png" /></p>
 <p>图2</p>
@@ -347,11 +353,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -362,7 +376,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

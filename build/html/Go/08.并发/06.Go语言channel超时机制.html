@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="8.7. 07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据" href="07.Go语言通道的多路复用-同时处理接收和发送多个通道的数据.html" />
     <link rel="prev" title="8.5. 05.Go语言带缓冲的通道" href="05.Go语言带缓冲的通道.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -133,6 +137,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -171,7 +176,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -183,7 +188,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/08.并发/06.Go语言channel超时机制.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/08.并发/06.Go语言channel超时机制.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -214,7 +219,7 @@ select 的特点是只要其中有一个 case
 开始一个新的选择块，每个选择条件由 case 语句来描述。</p>
 <p>与 switch 语句相比，select 有比较多的限制，其中最大的一条限制就是每个
 case 语句里必须是一个 IO 操作，大致的结构如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>select {
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>select {
     case &lt;-chan1:
     // 如果chan1成功读到数据，则进行该case处理语句
     case chan2 &lt;- 1:
@@ -231,7 +236,7 @@ case 语句里必须是一个 IO 操作，大致的结构如下：</p>
 select 语句后的语句中恢复；</p>
 <p>· 如果没有 default 语句，那么 select
 语句将被阻塞，直到至少有一个通信可以进行下去。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;fmt&quot;</span>
@@ -297,11 +302,19 @@ select 语句后的语句中恢复；</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -312,7 +325,6 @@ select 语句后的语句中恢复；</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

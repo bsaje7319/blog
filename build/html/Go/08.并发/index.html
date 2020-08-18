@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="8.1. 01.轻量级线程(goroutine)-根据需要随时创建“线程“" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html" />
     <link rel="prev" title="7.5. 05.工厂模式自动注册-管理多个包的结构体" href="../07.包/05.工厂模式自动注册-管理多个包的结构体.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -133,6 +137,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -171,7 +176,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -181,7 +186,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/08.并发/index.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/08.并发/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -213,7 +218,10 @@
 <li class="toctree-l2"><a class="reference internal" href="01.轻量级线程(goroutine)-根据需要随时创建“线程“.html#golangcpu">8.1.6. 设置Golang运行的cpu数</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="02.goroutine和coroutine的区别.html">8.2. 02.goroutine和coroutine的区别</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02.goroutine和coroutine的区别.html">8.2. 02.goroutine和coroutine的区别</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.goroutine和coroutine的区别.html#goroutine">8.2.1. 启动多个Goroutine</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html">8.3. 03.通道(channel)-在多个goroutine间通信的管道</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html#id1">8.3.1. 通道的特性</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03.通道(channel)-在多个goroutine间通信的管道.html#id2">8.3.2. 声明通道类型</a></li>
@@ -285,11 +293,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -300,7 +316,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

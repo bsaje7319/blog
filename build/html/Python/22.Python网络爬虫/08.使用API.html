@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="20.10. 数据的存储" href="09.数据的存储.html" />
     <link rel="prev" title="20.8. 3种爬虫模式性能对比" href="07.三种爬虫模式性能对比.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">20. Python网络爬虫</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01.基础语法复习.html">20.1. 基础语法复习</a></li>
@@ -171,6 +175,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -209,7 +214,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -221,7 +226,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/22.Python网络爬虫/08.使用API.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/22.Python网络爬虫/08.使用API.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -260,7 +265,7 @@
 <h1><a class="toc-backref" href="#id7">20.9. 使用API</a><a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="postput">
 <h2><a class="toc-backref" href="#id8">20.9.1. POST、PUT方法</a><a class="headerlink" href="#postput" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1· POST 方法就是填写表单或提交信息时所做的事情， 如登录一个网址， 使用的便是
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1· POST 方法就是填写表单或提交信息时所做的事情， 如登录一个网址， 使用的便是
 POST方法。
 2· PUT 方法在API 里有时会用到。PUT请求是用来更新一个对象或信息。对于老用
 户的个人信息进行更新时就会用到PUT方法。
@@ -271,7 +276,7 @@ POST方法。
 </div>
 <div class="section" id="json">
 <h2><a class="toc-backref" href="#id9">20.9.2. 解析Json数据</a><a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/12 16:34</span>
@@ -293,7 +298,7 @@ POST方法。
 </pre></div>
 </div>
 <p>输出信息：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Perter&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;xiaohu&#39;</span><span class="p">}]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Perter&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;xiaohu&#39;</span><span class="p">}]</span>
 <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;andi&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;zhangsan&#39;</span><span class="p">}]</span>
 <span class="n">Perter</span>
 <span class="n">zhangsan</span>
@@ -306,9 +311,9 @@ POST方法。
 <div class="section" id="json-api">
 <h2><a class="toc-backref" href="#id10">20.9.3. 使用JSON API免费接口查询信息</a><a class="headerlink" href="#json-api" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://www.bejson.com/knownjson/webInterface/">http://www.bejson.com/knownjson/webInterface/</a></p>
-<p><code class="docutils literal"><span class="pre">聚合数据API入口</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">聚合数据API入口</span></code></p>
 <p><a class="reference external" href="https://www.juhe.cn/">https://www.juhe.cn/</a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/12 21:52</span>
@@ -326,7 +331,7 @@ POST方法。
 </pre></div>
 </div>
 <p>输出信息</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>请输入商品名称：手机
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>请输入商品名称：手机
 {&#39;result&#39;: [[&#39;手机壳&#39;, &#39;4947514.056456573&#39;],
             [&#39;手机壳苹果x&#39;, &#39;850054.4360219479&#39;],
             [&#39;手机壳苹果&#39;, &#39;1364618.3711661247&#39;],
@@ -342,7 +347,7 @@ POST方法。
 </div>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id11">20.9.4. 使用聚合数据API入口查询菜谱大全</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/12 21:52</span>
@@ -369,7 +374,7 @@ POST方法。
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id12">20.9.5. 调用API接口查询天气</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/13 11:13</span>
@@ -394,11 +399,11 @@ POST方法。
 </pre></div>
 </div>
 <p>输出信息： <img alt="image1" src="../../_images/json-api0002.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>天气获取接口
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>天气获取接口
 https://www.apiopen.top/weatherApi?city=成都
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>随机推荐段子（包含文字、图片、GIF、视频）：
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>随机推荐段子（包含文字、图片、GIF、视频）：
 https://www.apiopen.top/satinApi?type=1&amp;page=1
 
 接口传参说明：
@@ -420,7 +425,7 @@ type=31 : 声音
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id13">20.9.6. 有道词典的API</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#!/usr/bin/env python
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/env python
 #-*- coding:utf8 -*-
 # auther; 18793
 # Date：2019/7/13 14:07
@@ -464,7 +469,7 @@ SP2ZH_CN 西语　»　中文
 </div>
 <div class="section" id="post">
 <h3><a class="toc-backref" href="#id14">直接使用网页post访问有道云翻译</a><a class="headerlink" href="#post" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/8/9 17:50</span>
@@ -497,7 +502,7 @@ SP2ZH_CN 西语　»　中文
     <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="s1">&#39;translateResult&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;tgt&#39;</span><span class="p">])</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">translate_date</span><span class="p">(</span><span class="s2">&quot;运维开发&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -505,7 +510,7 @@ SP2ZH_CN 西语　»　中文
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id15">查询身份证的API</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/25 14:03</span>
@@ -517,7 +522,7 @@ SP2ZH_CN 西语　»　中文
 <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;d3cbaa24a5ebc4e885da53e7b7f8f028&quot;</span>
 
 <span class="n">id_card</span> <span class="o">=</span> <span class="s2">&quot;420981199407226517&quot;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s1">r&#39;http://apis.juhe.cn/idcard/index?key=</span><span class="si">{0}</span><span class="s1">&amp;cardno=</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">id_card</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;http://apis.juhe.cn/idcard/index?key=</span><span class="si">{0}</span><span class="s1">&amp;cardno=</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">id_card</span><span class="p">)</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
@@ -527,7 +532,7 @@ SP2ZH_CN 西语　»　中文
 </div>
 <div class="section" id="facebook-apipo">
 <h3><a class="toc-backref" href="#id16">使用Facebook API收集粉丝专页PO文</a><a class="headerlink" href="#facebook-apipo" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">使用Facebook API收集粉丝专页PO文</span>
 <span class="sd">JSON格式</span>
@@ -554,7 +559,7 @@ SP2ZH_CN 西语　»　中文
 </div>
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id17">爬取煎蛋网的图片下载到本地</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/13 13:34</span>
@@ -583,7 +588,7 @@ SP2ZH_CN 西语　»　中文
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>  <span class="c1"># 把图片内容写入文件</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
         <span class="n">get_photo</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
@@ -592,7 +597,7 @@ SP2ZH_CN 西语　»　中文
 </div>
 <div class="section" id="apipexels">
 <h2><a class="toc-backref" href="#id18">20.9.7. 利用翻译API来爬取PEXELS图片</a><a class="headerlink" href="#apipexels" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/13 11:25</span>
@@ -656,12 +661,12 @@ SP2ZH_CN 西语　»　中文
 </div>
 <div class="section" id="id6">
 <h2><a class="toc-backref" href="#id19">20.9.8. 使用爬取糗事百科用户地址并转为经纬度分析用户数据</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">个人BDP是一款在线的数据可视化工具</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1.个人BDP
+<p><code class="docutils literal notranslate"><span class="pre">个人BDP是一款在线的数据可视化工具</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.个人BDP
 ① 登陆个人BDP，网址为：https://me.bdp.cn/home.html
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/7/13 23:44</span>
@@ -748,7 +753,7 @@ SP2ZH_CN 西语　»　中文
         <span class="k">pass</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://www.qiushibaike.com/8hr/page/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">36</span><span class="p">)]</span>
     <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
         <span class="n">get_user_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -792,11 +797,19 @@ SP2ZH_CN 西语　»　中文
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -807,7 +820,6 @@ SP2ZH_CN 西语　»　中文
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="22.2.8. if和for的使用" href="07.if和for的使用.html" />
     <link rel="prev" title="22.2.6. Jinja2模板引擎" href="05.Jinja2模板引擎.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,13 +119,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">22.2. 02.Flask-Web框架及其应用</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">22.2. Flask-Web框架及其应用</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="01.安装Flask项目环境.html">22.2.1. 安装Flask项目环境</a></li>
 <li class="toctree-l4"><a class="reference internal" href="02.路由.html">22.2.2. 路由</a></li>
 <li class="toctree-l4"><a class="reference internal" href="03.静态文件.html">22.2.3. 静态文件</a></li>
@@ -155,6 +159,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -193,13 +198,13 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
           <li><a href="../index.html">22. Python框架学习</a> &raquo;</li>
         
-          <li><a href="index.html">22.2. 02.Flask-Web框架及其应用</a> &raquo;</li>
+          <li><a href="index.html">22.2. Flask-Web框架及其应用</a> &raquo;</li>
         
       <li>22.2.7. 过滤器</li>
     
@@ -207,7 +212,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/06.过滤器.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/06.过滤器.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -234,7 +239,7 @@
 <h1><a class="toc-backref" href="#id4">22.2.7. 过滤器</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id5">常用的过滤器</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>abs:绝对值
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>abs:绝对值
 default:如果当前变量没有值，则会使用参数中的值来替代
 escape:转义字符
 first:返回一个序列的第一个元素
@@ -253,7 +258,7 @@ striptags：删除字符串中所有的html标签，如果出现多个空格，�
 </pre></div>
 </div>
 <p>index.html</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -269,14 +274,14 @@ striptags：删除字符串中所有的html标签，如果出现多个空格，�
 </pre></div>
 </div>
 <p>render.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/4/19 15:47</span>
 <span class="c1"># filename: render.py</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
@@ -289,7 +294,7 @@ striptags：删除字符串中所有的html标签，如果出现多个空格，�
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">context</span><span class="p">)</span>  <span class="c1"># 加双下划綫，就可以直接获取key和value了</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -298,14 +303,14 @@ striptags：删除字符串中所有的html标签，如果出现多个空格，�
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id6">自定义过滤器</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>render.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/4/19 15:47</span>
 <span class="c1"># filename: render.py</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">Flask</span><span class="p">,</span><span class="n">render_template</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
@@ -344,12 +349,12 @@ striptags：删除字符串中所有的html标签，如果出现多个空格，�
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">time</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>index.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -387,11 +392,19 @@ striptags：删除字符串中所有的html标签，如果出现多个空格，�
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -402,7 +415,6 @@ striptags：删除字符串中所有的html标签，如果出现多个空格，�
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="21.3.4. jQuery" href="04.jQuery.html" />
     <link rel="prev" title="21.3.2. JavaScript HTML DOM事件" href="02.JavaScript-HTML-DOM事件.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">21. 前端技术</a><ul class="current">
@@ -145,6 +149,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -183,7 +188,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -197,7 +202,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/23.前端技术/03.JavaScript学习/03.JavaScript库.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/23.前端技术/03.JavaScript学习/03.JavaScript库.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -218,7 +223,7 @@
 </div>
 <div class="section" id="javascript">
 <h1><a class="toc-backref" href="#id1">21.3.3. JavaScript库</a><a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default"><div class="highlight"><pre><span></span>JavaScript 框架（库）
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>JavaScript 框架（库）
 
 JavaScript 高级程序设计（特别是对浏览器差异的复杂处理），通常很困难也很耗时。
 为了应对这些调整，许多的 JavaScript (helper) 库应运而生。
@@ -229,7 +234,7 @@ JavaScript 库 - jQuery、Prototype、MooTools。
 </pre></div>
 </div>
 <p>jQuery</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>jQuery 是目前最受欢迎的 JavaScript 框架。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>jQuery 是目前最受欢迎的 JavaScript 框架。
 它使用 CSS 选择器来访问和操作网页上的 HTML 元素（DOM 对象）。
 jQuery 同时提供 companion UI（用户界面）和插件。
 许多大公司在网站上使用 jQuery：
@@ -241,20 +246,20 @@ jQuery 同时提供 companion UI（用户界面）和插件。
 </pre></div>
 </div>
 <p>Prototype</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Prototype 是一种库，提供用于执行常见 web 任务的简单 API。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Prototype 是一种库，提供用于执行常见 web 任务的简单 API。
 API 是应用程序编程接口（Application Programming Interface）的缩写。它是包含属性和方法的库，用于操作 HTML DOM。
 Prototype 通过提供类和继承，实现了对 JavaScript 的增强。
 提示：Prototype 框架最大的部分就是对DOM的扩展。通过Prototype框架里的$()函数能够返回一个网页DOM元素，框架给这个元素添加了很多方便的方法。
 </pre></div>
 </div>
 <p>MooTools</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>MooTools 也是一个框架，提供了可使常见的 JavaScript 编程更为简单的 API。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MooTools 也是一个框架，提供了可使常见的 JavaScript 编程更为简单的 API。
 MooTools 也含有一些轻量级的效果和动画函数。
 提示：虽然Mootools跟Prototype几乎拥有一样的语法，但是它提供了比Prototype多的功能，而且更强大，拥有实用而清晰的文档和示例帮助你轻松入门。
 </pre></div>
 </div>
 <p>其他框架</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>YUI - Yahoo! User Interface Framework，涵盖大量函数的大型库，从简单的 JavaScript 功能到完整的 internet widget。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>YUI - Yahoo! User Interface Framework，涵盖大量函数的大型库，从简单的 JavaScript 功能到完整的 internet widget。
 
 Ext JS - 可定制的 widget，用于构建富因特网应用程序（rich Internet applications）。
 
@@ -266,7 +271,7 @@ UIZE - Widget、AJAX、DOM、模板等等。
 </pre></div>
 </div>
 <p>实例1</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
     &lt;script
@@ -288,7 +293,7 @@ UIZE - Widget、AJAX、DOM、模板等等。
 </div>
 <p><img alt="image0" src="../../../_images/jquery00001.png" /></p>
 <p>实例2</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
     &lt;script
@@ -331,11 +336,19 @@ UIZE - Widget、AJAX、DOM、模板等等。
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -346,7 +359,6 @@ UIZE - Widget、AJAX、DOM、模板等等。
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

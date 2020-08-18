@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="10. Python中包和模块" href="../10.Python中的包和模块/index.html" />
     <link rel="prev" title="9.15. 小试牛刀-批量文件修改后缀名" href="15.小试牛刀-批量文件修改后缀名.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -138,7 +142,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -156,6 +160,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -194,7 +199,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -206,7 +211,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/09.Python文件操作/16.使用python管理压缩包.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/09.Python文件操作/16.使用python管理压缩包.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -248,7 +253,7 @@
 <h1><a class="toc-backref" href="#id6">9.16. 使用python管理压缩包</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="tarfiletar">
 <h2><a class="toc-backref" href="#id7">9.16.1. 使用tarfile库读取和创建tar包</a><a class="headerlink" href="#tarfiletar" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/20 10:48</span>
@@ -263,7 +268,7 @@
 </div>
 <div class="section" id="tar">
 <h3><a class="toc-backref" href="#id8">创建tar包</a><a class="headerlink" href="#tar" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/20 10:48</span>
@@ -282,19 +287,19 @@
 <ol class="arabic simple">
 <li>读取一个用gzip算法压缩的tar包</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;tarfile_add.tar&#39;</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r:gz&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;tarfile_add.tar&#39;</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r:gz&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li>创建一个用bzip2算法压缩的tar包</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;tarfile_add.tar&#39;</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w:bz2&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;tarfile_add.tar&#39;</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w:bz2&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id1">
 <h3><a class="toc-backref" href="#id10">备份指定文件到压缩包中</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/20 10:59</span>
@@ -342,7 +347,7 @@
             <span class="n">f</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -352,7 +357,7 @@
 <h2><a class="toc-backref" href="#id11">9.16.2. 使用zipfile库创建和读取zip压缩包</a><a class="headerlink" href="#zipfilezip" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="zip">
 <h3><a class="toc-backref" href="#id12">1.读取zip文件</a><a class="headerlink" href="#zip" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/20 11:10</span>
@@ -375,7 +380,7 @@
 </div>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="#id13">2.创建zip文件</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/20 11:35</span>
@@ -394,7 +399,7 @@
 </div>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id14">3.将一个文件夹备份到一个ZIP文件</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zipfile</span><span class="o">,</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zipfile</span><span class="o">,</span> <span class="nn">os</span>
 
 
 <span class="k">def</span> <span class="nf">backupToZip</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
@@ -449,7 +454,7 @@
 <h2><a class="toc-backref" href="#id15">9.16.3. 使用shutil创建和读取压缩包</a><a class="headerlink" href="#shutil" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id16">shutil创建压缩包</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/20 11:41</span>
@@ -464,7 +469,7 @@
 </div>
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id17">使用shutil读取压缩包</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">unpack_archive</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">extract_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">unpack_archive</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">extract_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="s2">&quot;&quot;&quot;Unpack an archive.</span>
 
 <span class="s2">    `filename` is the name of the archive. #压缩包的名称</span>
@@ -478,7 +483,7 @@
 <span class="s2">    extension.</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/20 11:46</span>
@@ -512,11 +517,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -527,7 +540,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

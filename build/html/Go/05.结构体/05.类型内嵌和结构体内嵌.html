@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6. 接口" href="../06.接口/index.html" />
     <link rel="prev" title="5.4. 04.接收器-方法作用的目标" href="04.接收器.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -133,6 +137,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -171,7 +176,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -183,7 +188,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/05.结构体/05.类型内嵌和结构体内嵌.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/05.结构体/05.类型内嵌和结构体内嵌.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -217,7 +222,7 @@
 <div class="section" id="id1">
 <h1><a class="toc-backref" href="#id9">5.5. 05.类型内嵌和结构体内嵌</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>结构体允许其成员字段在声明时没有字段名而只有类型，这种形式的字段被称为类型内嵌或匿名字段。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -243,7 +248,7 @@
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id10">5.5.1. 声明结构体内嵌</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -277,7 +282,7 @@
 </pre></div>
 </div>
 <p>使用Go语言的结构体内嵌写法重新调整代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -315,13 +320,13 @@
 <h2><a class="toc-backref" href="#id11">5.5.2. 结构内嵌特性：</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Go语言的结构体内嵌有如下特性。</p>
 <p>1.内嵌的结构体可以直接访问其成员变量</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>例如：ins.a.b.c 的访问可以简化为 ins.C。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>例如：ins.a.b.c 的访问可以简化为 ins.C。
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li>内嵌结构体的字段名是它的类型名</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span>内嵌结构体字段仍然可以使用详细的字段进行一层层访问，内嵌结构体的字段名就是它的类型名，代码如下：
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>内嵌结构体字段仍然可以使用详细的字段进行一层层访问，内嵌结构体的字段名就是它的类型名，代码如下：
 
 var c Color
 c.BasicColor,R =1
@@ -334,7 +339,7 @@ c.BasicColor,B =1
 <h2><a class="toc-backref" href="#id12">5.5.3. 使用组合思想描述对象特性</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>面对对象的设计原则中，建议对象最好不要使用多重继承。Java和C#就默认禁止了。
 组合特性可以快速构建对象的不同特性。比如：人和鸟的特性中，都有行走。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -386,7 +391,7 @@ func main() {
 <div class="section" id="id5">
 <h2><a class="toc-backref" href="#id13">5.5.4. 初始化结构体内嵌</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>结构体内嵌初始化时，将结构体内嵌的类型作为字段名像普通结构体一样进行初始化。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -428,7 +433,7 @@ func main() {
 </div>
 <div class="section" id="id6">
 <h2><a class="toc-backref" href="#id14">5.5.5. 初始化内嵌匿名结构体</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -467,10 +472,10 @@ func main() {
 </div>
 <p>原来的Engine结构体被直接定义在Car的结构体中，这种嵌入的写法就是将原来的结构体类型转换为struct{…}</p>
 <p>对Car的Engine开始初始化的时候，由于Engine字段的类型没有被单独定义，因此在初始化其字段时需要先填写struct{…}声明其类型。</p>
-<p>填充匿名结构体的数据，按&#8221;“键：值”格式填充。</p>
+<p>填充匿名结构体的数据，按”“键：值”格式填充。</p>
 <div class="section" id="id7">
 <h3><a class="toc-backref" href="#id15">成员名字冲突</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -502,7 +507,7 @@ func main() {
 </div>
 <div class="section" id="id8">
 <h2><a class="toc-backref" href="#id16">5.5.6. 用外层结构体引用内嵌接口的实例</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -538,7 +543,7 @@ func main() {
 </div>
 <div class="section" id="json">
 <h2><a class="toc-backref" href="#id17">5.5.7. 示例：使用匿名结构体分离JSON数据</a><a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import (
     &quot;encoding/json&quot;
@@ -634,11 +639,19 @@ func main() {
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -649,7 +662,6 @@ func main() {
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

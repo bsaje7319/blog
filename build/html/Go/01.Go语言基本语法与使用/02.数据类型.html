@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.3. 指针" href="03.指针.html" />
     <link rel="prev" title="1.1. 声明变量" href="01.声明变量.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -136,6 +140,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -174,7 +179,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -186,7 +191,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/01.Go语言基本语法与使用/02.数据类型.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/01.Go语言基本语法与使用/02.数据类型.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -222,13 +227,13 @@
 </div>
 <div class="section" id="id1">
 <h1><a class="toc-backref" href="#id10">1.2. 数据类型</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Go语言的基本数据类型和其他语言的大同小异。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Go语言的基本数据类型和其他语言的大同小异。
 </pre></div>
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id11">1.2.1. 整型</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>整型分为两个大类</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>* 按长度分为：int8、int16、int32、int64
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* 按长度分为：int8、int16、int32、int64
 * 对应的无符号的整型：uint8、uint16、uint32、uint64
 
 uint8  就是我们熟知的byte型
@@ -241,12 +246,12 @@ uint64 对应C语言中的long型
 <h2><a class="toc-backref" href="#id12">1.2.2. 浮点型</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Go语言支持两种浮点类型：
 float32和float64.两种浮点类型格式遵循IEEE754标准</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>float32的浮点数的最大范围约为 3.4e38，可以使用常量定义：math.MaxFloat32。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>float32的浮点数的最大范围约为 3.4e38，可以使用常量定义：math.MaxFloat32。
 float64的浮点数最大范围约为 1.8e308,可以使用一个常量定义：math.MaxFloat64。
 </pre></div>
 </div>
 <p>打印浮点数，使用格式化%f</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;fmt&quot;</span>
@@ -262,21 +267,21 @@ float64的浮点数最大范围约为 1.8e308,可以使用一个常量定义：m
 </div>
 <div class="section" id="id4">
 <h2><a class="toc-backref" href="#id13">1.2.3. 布尔型</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>布尔型数据在Go语言中以bool类型进行声明，布尔数据只有true和false两个值
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>布尔型数据在Go语言中以bool类型进行声明，布尔数据只有true和false两个值
 </pre></div>
 </div>
 </div>
 <div class="section" id="id5">
 <h2><a class="toc-backref" href="#id14">1.2.4. 字符串</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>字符串的值为双引号中的内容，可以在Go语言的源码中直接添加非ASCII码字符，代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">str</span> <span class="p">:</span><span class="o">=</span> <span class="s2">&quot;hello world&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span> <span class="p">:</span><span class="o">=</span> <span class="s2">&quot;hello world&quot;</span>
 
 <span class="n">ch</span> <span class="p">:</span><span class="o">=</span> <span class="s2">&quot;中文&quot;</span>
 </pre></div>
 </div>
 <p>1.字符串转义符 <img alt="image0" src="../../_images/go_str0001.png" /></p>
 <p>Go语言源码中使用转义符代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;fmt&quot;</span>
@@ -289,7 +294,7 @@ float64的浮点数最大范围约为 1.8e308,可以使用一个常量定义：m
 </div>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id15">定义多行字符串</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import (
     &quot;fmt&quot;
@@ -319,13 +324,13 @@ func main() {
 <div class="section" id="id7">
 <h2><a class="toc-backref" href="#id16">1.2.5. 字符</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>Go语言的字符有以下两种:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>· 一种是uint8类型，或者叫byte型，代表ASCII码的一个字符。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>· 一种是uint8类型，或者叫byte型，代表ASCII码的一个字符。
 · 另一种是rune类型，代表一个UTF-8字符，当要处理中文、日文或者其他复合字符时，则需要用到rune类型。
     rune类型实际是一个int32
 </pre></div>
 </div>
 <p>fmt.Printf中的“%T”动词可以输出变量的实际类型。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -340,7 +345,7 @@ func main() {
 </div>
 <div class="section" id="utf-8unicode">
 <h3><a class="toc-backref" href="#id17">UTF-8和Unicode 有何区别？</a><a class="headerlink" href="#utf-8unicode" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Unicode 是字符集。ASCII 也是一种字符集。字符集为每个字符分配一个唯一的ID ， 我们使用到的所有字符在Unicode 字符集中都
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Unicode 是字符集。ASCII 也是一种字符集。字符集为每个字符分配一个唯一的ID ， 我们使用到的所有字符在Unicode 字符集中都
 有唯一的一个ID 对应， 例如上面例子中的a 在与ASCII 中的编码都是97 。“ 你”在Unicode 中的编码为20320 ，
  但是在不同国家的字符集中， “ 你” 的ID 会不同。而无论任何情况下， Unicode 中的字符的ID 都是不会变化的。
 
@@ -358,7 +363,7 @@ UTF-16 编码等。
 </div>
 <div class="section" id="id8">
 <h2><a class="toc-backref" href="#id18">1.2.6. 切片</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -381,7 +386,7 @@ func main() {
 <p>Go语言使用类型前置加括号的方式进行类型转换，一般格式如下：</p>
 <p>T(表达式)</p>
 <p>其中，T代表要转换的类型，表达式包括变量，复杂算子和函数返回值等。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import (
     &quot;fmt&quot;
@@ -429,11 +434,19 @@ func main() {
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -444,7 +457,6 @@ func main() {
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

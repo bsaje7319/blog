@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.6. 常量–恒定不变的值" href="06.常量.html" />
     <link rel="prev" title="1.4. 变量声明周期 - 变量能够使用的代码范围" href="04.变量声明周期.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -108,6 +112,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id3">1.5.3. 计算字符串长度</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">1.5.4. 遍历字符串-获取每一个字符串元素</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#unicode">1.5.5. 按Unicode字符遍历字符串</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">1.5.6. 字符串的常见操作</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="06.常量.html">1.6. 常量–恒定不变的值</a></li>
@@ -134,6 +139,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -172,7 +178,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -184,7 +190,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/01.Go语言基本语法与使用/05.字符串应用.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/01.Go语言基本语法与使用/05.字符串应用.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -200,33 +206,34 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id10">字符串应用</a><ul>
-<li><a class="reference internal" href="#id2" id="id11">字符串拼接</a></li>
-<li><a class="reference internal" href="#string" id="id12">有关string的处理</a></li>
-<li><a class="reference internal" href="#id3" id="id13">计算字符串长度</a></li>
-<li><a class="reference internal" href="#id4" id="id14">遍历字符串-获取每一个字符串元素</a><ul>
-<li><a class="reference internal" href="#ascii" id="id15">遍历每一个ASCII字符</a></li>
+<li><a class="reference internal" href="#id1" id="id11">字符串应用</a><ul>
+<li><a class="reference internal" href="#id2" id="id12">字符串拼接</a></li>
+<li><a class="reference internal" href="#string" id="id13">有关string的处理</a></li>
+<li><a class="reference internal" href="#id3" id="id14">计算字符串长度</a></li>
+<li><a class="reference internal" href="#id4" id="id15">遍历字符串-获取每一个字符串元素</a><ul>
+<li><a class="reference internal" href="#ascii" id="id16">遍历每一个ASCII字符</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#unicode" id="id16">按Unicode字符遍历字符串</a><ul>
-<li><a class="reference internal" href="#id5" id="id17">获取字符串的某一段字符</a></li>
-<li><a class="reference internal" href="#id6" id="id18">修改字符串</a></li>
-<li><a class="reference internal" href="#id7" id="id19">连接字符串</a></li>
-<li><a class="reference internal" href="#id8" id="id20">格式化</a></li>
-<li><a class="reference internal" href="#base64" id="id21">Base64解码-电子邮件的基础解码格式</a></li>
-<li><a class="reference internal" href="#ini" id="id22">从INI配置文件中查询需要的值</a></li>
+<li><a class="reference internal" href="#unicode" id="id17">按Unicode字符遍历字符串</a><ul>
+<li><a class="reference internal" href="#id5" id="id18">获取字符串的某一段字符</a></li>
+<li><a class="reference internal" href="#id6" id="id19">修改字符串</a></li>
+<li><a class="reference internal" href="#id7" id="id20">连接字符串</a></li>
+<li><a class="reference internal" href="#id8" id="id21">格式化</a></li>
+<li><a class="reference internal" href="#base64" id="id22">Base64解码-电子邮件的基础解码格式</a></li>
+<li><a class="reference internal" href="#ini" id="id23">从INI配置文件中查询需要的值</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id10" id="id24">字符串的常见操作</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id10">1.5. 字符串应用</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id11">1.5. 字符串应用</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id11">1.5.1. 字符串拼接</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">1.5.1. 字符串拼接</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>·直接使用运算符</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>str := &quot;beijing wellcom to you&quot; + &quot;beibei jingjing huanhuan yy nini&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>str := &quot;beijing wellcom to you&quot; + &quot;beibei jingjing huanhuan yy nini&quot;
 fmt.Println(str)
 
 s := &quot;hello &quot; + &quot;hujianli&quot;
@@ -235,19 +242,19 @@ fmt.Println(s)      //hello hujianlistudy golang!
 </pre></div>
 </div>
 <p>· fmt.Sprintf()</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ss</span> <span class="p">:</span><span class="o">=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="s2">&quot;年&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ss</span> <span class="p">:</span><span class="o">=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="s2">&quot;年&quot;</span><span class="p">)</span>
 <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">ss</span><span class="p">)</span>     <span class="o">//</span><span class="mi">2020</span> <span class="n">年</span>
 </pre></div>
 </div>
 <p>· strings.Join()</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">hu</span> <span class="p">:</span><span class="o">=</span><span class="n">strings</span><span class="o">.</span><span class="n">Join</span><span class="p">([]</span><span class="n">string</span><span class="p">{</span><span class="s2">&quot;hello world&quot;</span><span class="p">,</span> <span class="s2">&quot;hujianli&quot;</span><span class="p">},</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hu</span> <span class="p">:</span><span class="o">=</span><span class="n">strings</span><span class="o">.</span><span class="n">Join</span><span class="p">([]</span><span class="n">string</span><span class="p">{</span><span class="s2">&quot;hello world&quot;</span><span class="p">,</span> <span class="s2">&quot;hujianli&quot;</span><span class="p">},</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">hu</span><span class="p">)</span>     <span class="o">//</span><span class="n">hello</span> <span class="n">world</span><span class="p">,</span><span class="n">hujianli</span>
 </pre></div>
 </div>
 <p>·bytes.Buffer</p>
 <p>这个比较理想，可以当成可变字符使用，对内存的增长也有优化，如果能预估字符串的长度，还可以用
 buffer.Grow() 接口来设置 capacity。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">buffer</span>  <span class="nb">bytes</span><span class="o">.</span><span class="n">Buffer</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">buffer</span>  <span class="nb">bytes</span><span class="o">.</span><span class="n">Buffer</span>
 <span class="n">buffer</span><span class="o">.</span><span class="n">WriteString</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
 <span class="n">buffer</span><span class="o">.</span><span class="n">WriteString</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="n">buffer</span><span class="o">.</span><span class="n">WriteString</span><span class="p">(</span><span class="s2">&quot;world&quot;</span><span class="p">)</span>
@@ -261,7 +268,7 @@ Grow()
 来支持预定义容量。当我们可以预定义我们需要使用的容量时，strings.Builder
 就能避免扩容而创建新的 slice 了。strings.Builder是非线程安全，性能上和
 bytes.Buffer 相差无几。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">b1</span> <span class="n">strings</span><span class="o">.</span><span class="n">Builder</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">b1</span> <span class="n">strings</span><span class="o">.</span><span class="n">Builder</span>
 <span class="n">b1</span><span class="o">.</span><span class="n">WriteString</span><span class="p">(</span><span class="s2">&quot;ABC&quot;</span><span class="p">)</span>
 <span class="n">b1</span><span class="o">.</span><span class="n">WriteString</span><span class="p">(</span><span class="s2">&quot;DEF&quot;</span><span class="p">)</span>
 <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">b1</span><span class="o">.</span><span class="n">String</span><span class="p">())</span>        <span class="o">//</span><span class="n">ABCDEF</span>
@@ -269,8 +276,8 @@ bytes.Buffer 相差无几。</p>
 </div>
 </div>
 <div class="section" id="string">
-<h2><a class="toc-backref" href="#id12">1.5.2. 有关string的处理</a><a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>strings 包提供了很多操作字符串的简单函数，通常一般的字符串操作需求都可以在这个包中找到。下面简单举几个例子：
+<h2><a class="toc-backref" href="#id13">1.5.2. 有关string的处理</a><a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>strings 包提供了很多操作字符串的简单函数，通常一般的字符串操作需求都可以在这个包中找到。下面简单举几个例子：
 
 判断是否以某字符串打头  strings.HasPrefix(s, prefix string) bool
 
@@ -293,8 +300,8 @@ bytes.Buffer 相差无几。</p>
 </div>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id13">1.5.3. 计算字符串长度</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<h2><a class="toc-backref" href="#id14">1.5.3. 计算字符串长度</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -311,16 +318,16 @@ bytes.Buffer 相差无几。</p>
 </div>
 <p>每个中文占3个字节，中文len后结果为9.如果希望按照字符串个数进行计算，就要使用Go语言中的UTF-8包提供的RuneCountInString()函数，
 统计Uncode字符数量。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">utf8</span><span class="o">.</span><span class="n">RuneCountInString</span><span class="p">(</span><span class="s2">&quot;你好&quot;</span><span class="p">))</span>   <span class="o">//</span><span class="mi">2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">utf8</span><span class="o">.</span><span class="n">RuneCountInString</span><span class="p">(</span><span class="s2">&quot;你好&quot;</span><span class="p">))</span>   <span class="o">//</span><span class="mi">2</span>
 <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">utf8</span><span class="o">.</span><span class="n">RuneCountInString</span><span class="p">(</span><span class="s2">&quot;你好，安河桥&quot;</span><span class="p">))</span>       <span class="o">//</span><span class="mi">6</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id14">1.5.4. 遍历字符串-获取每一个字符串元素</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">1.5.4. 遍历字符串-获取每一个字符串元素</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="ascii">
-<h3><a class="toc-backref" href="#id15">遍历每一个ASCII字符</a><a class="headerlink" href="#ascii" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<h3><a class="toc-backref" href="#id16">遍历每一个ASCII字符</a><a class="headerlink" href="#ascii" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -351,8 +358,8 @@ ascii: t 116 */
 </div>
 </div>
 <div class="section" id="unicode">
-<h2><a class="toc-backref" href="#id16">1.5.5. 按Unicode字符遍历字符串</a><a class="headerlink" href="#unicode" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<h2><a class="toc-backref" href="#id17">1.5.5. 按Unicode字符遍历字符串</a><a class="headerlink" href="#unicode" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -375,8 +382,8 @@ ascii: t 116 */
 </pre></div>
 </div>
 <div class="section" id="id5">
-<h3><a class="toc-backref" href="#id17">获取字符串的某一段字符</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<h3><a class="toc-backref" href="#id18">获取字符串的某一段字符</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;fmt&quot;</span>
@@ -396,8 +403,8 @@ ascii: t 116 */
 </div>
 </div>
 <div class="section" id="id6">
-<h3><a class="toc-backref" href="#id18">修改字符串</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<h3><a class="toc-backref" href="#id19">修改字符串</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -419,15 +426,15 @@ ascii: t 116 */
 <p>代码中实际修改的是[]byte，[]byte在Go语言中是可变的，本身就是一个切片。
 完成对[]byte操作后，在使用string()将[]byte转为字符串时，重新创建一个新的字符串。</p>
 <p>总结：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>· Go语言的字符串时不可变的
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>· Go语言的字符串时不可变的
 · 修改字符串时，可以将字符串转换为[]byte进行修改
 · []byte和string可以通过强制类型转换互转。
 </pre></div>
 </div>
 </div>
 <div class="section" id="id7">
-<h3><a class="toc-backref" href="#id19">连接字符串</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<h3><a class="toc-backref" href="#id20">连接字符串</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;bytes&quot;</span>
@@ -455,14 +462,14 @@ ascii: t 116 */
 </div>
 </div>
 <div class="section" id="id8">
-<h3><a class="toc-backref" href="#id20">格式化</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id21">格式化</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>格式化在逻辑中非常常用，使用格式化函数，要注意写法：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>fmt.Sprintf(格式化样式，参数列表)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fmt.Sprintf(格式化样式，参数列表)
 </pre></div>
 </div>
 <p>· 格式化样式： 字符串形式，格式化动词以%开头。 ·
 参数列表：多个参数以逗号分隔，个数必须与格式化样式中的个数一一对应，否则运行时会报错。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -500,8 +507,8 @@ func main() {
 <p><img alt="image0" src="../../_images/go_format0001.png" /></p>
 </div>
 <div class="section" id="base64">
-<h3><a class="toc-backref" href="#id21">Base64解码-电子邮件的基础解码格式</a><a class="headerlink" href="#base64" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<h3><a class="toc-backref" href="#id22">Base64解码-电子邮件的基础解码格式</a><a class="headerlink" href="#base64" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;encoding/base64&quot;</span>
@@ -532,9 +539,9 @@ func main() {
 </div>
 </div>
 <div class="section" id="ini">
-<h3><a class="toc-backref" href="#id22">从INI配置文件中查询需要的值</a><a class="headerlink" href="#ini" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id23">从INI配置文件中查询需要的值</a><a class="headerlink" href="#ini" title="Permalink to this headline">¶</a></h3>
 <p>example.ini</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">core</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">core</span><span class="p">]</span>
 <span class="n">repositoryformatversion</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="n">filemode</span> <span class="o">=</span> <span class="n">false</span>
@@ -553,7 +560,7 @@ func main() {
 </div>
 <div class="section" id="id9">
 <h4>从INI文件中取值的函数<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import (
     &quot;bufio&quot;
@@ -623,7 +630,7 @@ func main() {
 </pre></div>
 </div>
 <p>函数使用说明：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>getValue() 函数的声明如下：
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>getValue() 函数的声明如下：
 func getValue(filename, expectSection, expectKey string) string
 
 参数说明如下。
@@ -633,6 +640,45 @@ func getValue(filename, expectSection, expectKey string) string
 </pre></div>
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id24">1.5.6. 字符串的常见操作</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;strings&quot;
+)
+
+func main() {
+    str0:=&quot;hujianli&quot;
+    str1:=`第一行
+    第二行
+    第三行
+    `
+    fmt.Println(len(str0),len(str1))        //求长度
+    var str3 string = str0 + str1
+    fmt.Println(str3)
+
+    str4 :=fmt.Sprintf(&quot;%s %s&quot;,str0,str1)   //拼接字符串
+    fmt.Println(str4)
+
+    str5:=&quot;hu,jian,li&quot;
+    fmt.Println(strings.Split(str5,&quot;,&quot;))        //分割
+    fmt.Println(strings.Split(str5,&quot;i&quot;))
+    fmt.Printf(&quot;%q\n&quot;, strings.Split(&quot; xyz &quot;, &quot;&quot;))
+    fmt.Printf(&quot;%q\n&quot;, strings.Split(&quot;&quot;, &quot;Bernardo O&#39;Higgins&quot;))
+
+    fmt.Printf(&quot;%t\n&quot;,strings.Contains(&quot;sssss&quot;,&quot;ss&quot;))       //判断是否包含
+
+    fmt.Printf(&quot;%t\n&quot;,strings.HasPrefix(&quot;hujianli&quot;,&quot;hu&quot;))   //判断前缀
+    fmt.Printf(&quot;%t\n&quot;,strings.HasSuffix(&quot;hujianli&quot;,&quot;li&quot;))   //判断后缀
+    fmt.Printf(&quot;%d\n&quot;,strings.Index(&quot;hujianli&quot;,&quot;li&quot;))   //判断子串出现的位置
+    fmt.Printf(&quot;%d\n&quot;,strings.LastIndex(&quot;hujianli&quot;,&quot;i&quot;))    //判断子串最后出现的位置
+    s := []string{&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;}
+    fmt.Println(strings.Join(s, &quot;,&quot;))       //将一系列字符串连接为一个字符串，之间用sep来分隔。
+</pre></div>
 </div>
 </div>
 </div>
@@ -657,11 +703,19 @@ func getValue(filename, expectSection, expectKey string) string
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -672,7 +726,6 @@ func getValue(filename, expectSection, expectKey string) string
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6.2. 02.实现接口的条件" href="02.实现接口的条件.html" />
     <link rel="prev" title="6. 接口" href="index.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -132,6 +136,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -170,7 +175,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -182,7 +187,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/06.接口/01.声明接口.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/06.接口/01.声明接口.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -215,7 +220,7 @@
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id5">6.1.1. 1.接口的声明格式</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>每个接口由数个方法组成。接口的形式代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">接口类型名</span> <span class="n">interface</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">接口类型名</span> <span class="n">interface</span> <span class="p">{</span>
     <span class="n">方法名1</span><span class="p">(</span><span class="n">参数列表1</span><span class="p">)</span> <span class="n">返回值列表1</span>
     <span class="n">方法名2</span><span class="p">(</span><span class="n">参数列表2</span><span class="p">)</span> <span class="n">返回值列表2</span>
     <span class="o">......</span>
@@ -232,7 +237,7 @@
 方法名：当方法名首字母是大写时，且这个接口类型名首字母也是大写时，这个接口可以被接口所在的包（package）之外的代码访问。
 · 参数列表、返回值列表：
 参数列表和返回值列表中的参数变量名可以被忽略，例如：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">writer</span> <span class="n">interface</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">writer</span> <span class="n">interface</span> <span class="p">{</span>
     <span class="n">Writer</span><span class="p">([]</span><span class="n">byte</span><span class="p">)</span> <span class="n">error</span>
 <span class="p">}</span>
 </pre></div>
@@ -240,13 +245,13 @@
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id6">开发中常见的接口及写法</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>例如io包中的Writer接口：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">Writer</span> <span class="n">interface</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">Writer</span> <span class="n">interface</span> <span class="p">{</span>
     <span class="n">Write</span><span class="p">(</span><span class="n">p</span> <span class="p">[]</span><span class="n">byte</span><span class="p">)</span> <span class="p">(</span><span class="n">n</span> <span class="nb">int</span><span class="p">,</span> <span class="n">err</span> <span class="n">error</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>有一个对象以字符串形式展现的接口，在调用String()方法时，都可以获得对象对应的字符串，在fmt包中定义如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">Stringer</span> <span class="n">interface</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">Stringer</span> <span class="n">interface</span> <span class="p">{</span>
     <span class="n">String</span><span class="p">()</span> <span class="n">string</span>
 <span class="p">}</span>
 </pre></div>
@@ -278,11 +283,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -293,7 +306,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

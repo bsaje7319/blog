@@ -22,3 +22,4 @@ Python 三方库学习
     13.Python操作Rabbitmq详解
     14.打包和发布
     15.Jinja2模板
+    16.python第三方库request

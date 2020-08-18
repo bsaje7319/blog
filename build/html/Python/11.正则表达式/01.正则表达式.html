@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="11.2. 匹配字符串示例" href="02.匹配字符串示例.html" />
     <link rel="prev" title="11. Python正则表达式" href="index.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -129,7 +133,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -147,6 +151,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -185,7 +190,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -197,7 +202,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/11.正则表达式/01.正则表达式.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/11.正则表达式/01.正则表达式.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -244,7 +249,7 @@
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id20">行定位符</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>字母、数字、汉字、下划线、以及没有特殊定义的符号，都是&quot;普通字符&quot;。正则表达式中的普通字符，在匹配的时候，只匹配与自身相同的一个字符。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>字母、数字、汉字、下划线、以及没有特殊定义的符号，都是&quot;普通字符&quot;。正则表达式中的普通字符，在匹配的时候，只匹配与自身相同的一个字符。
 例如：表达式c，在匹配字符串abcde时，匹配结果是：成功；匹配到的内容是c；匹配到的位置开始于2，结束于3。（注：下标从0开始还是从1开始，因当前编程语言的不同而可能不同）
 
    ^tm          #匹配tm开头的字符
@@ -255,7 +260,7 @@
 </div>
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id21">元字符</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>表达式 匹配
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>表达式 匹配
 .       小数点可以匹配除了换行符\n以外的任意一个字符
 |       逻辑或操作符
 []      匹配字符集中的一个字符
@@ -280,7 +285,7 @@ a.c匹配abc
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id22">限定符</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>使用()匹配任意数量的字母或数字，如果要匹配特定数量的数字，匹配8位QQ号可以使用如下表达式</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>^\d{8}$
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>^\d{8}$
 </pre></div>
 </div>
 <p><img alt="image2" src="../../_images/xiandingfu_re.png" /></p>
@@ -288,7 +293,7 @@ a.c匹配abc
 </div>
 <div class="section" id="id7">
 <h3><a class="toc-backref" href="#id23">字符类匹配</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>[aeiou]     #匹配任何一个英文元音字母
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[aeiou]     #匹配任何一个英文元音字母
 [.?!]       #匹配标点符号&quot;.&quot;、“？”、“！”
 [0-9]       #与\d完全一致
 [a-z0-9A-Z_]    #与\w类似
@@ -300,13 +305,13 @@ a.c匹配abc
 <div class="line">​</div>
 <div class="line">### 排除字符</div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">^</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z</span><span class="p">]</span>       <span class="c1">#匹配一个不是字母的字符</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">^</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z</span><span class="p">]</span>       <span class="c1">#匹配一个不是字母的字符</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id8">
 <h3><a class="toc-backref" href="#id24">选择字符</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>包含着条件选择的逻辑，需要使用选择字符(|)来实现。该字符可以理解为“或”
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>包含着条件选择的逻辑，需要使用选择字符(|)来实现。该字符可以理解为“或”
 
 (^\d{15}$)|(^\d{18}$)|(^\d{17})(\d|X|x)$
 匹配15位数字或者18位数字、或者17位数字和最后一位，最后一位可以是X或者是x
@@ -315,7 +320,7 @@ a.c匹配abc
 </div>
 <div class="section" id="id9">
 <h3><a class="toc-backref" href="#id25">转义字符</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>表达式 匹配
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>表达式 匹配
 \r, \n  匹配回车和换行符
 \t  匹配制表符
 \\  匹配斜杠\
@@ -328,7 +333,7 @@ a.c匹配abc
 <div class="section" id="id10">
 <h3><a class="toc-backref" href="#id26">分组</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>小括号的作用</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>①改变限定符的作用范围，如“|”、“*”、“^”
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>①改变限定符的作用范围，如“|”、“*”、“^”
 (six|four)th
 表示匹配sixth或者fourth。
 
@@ -340,7 +345,7 @@ a.c匹配abc
 </div>
 <div class="section" id="id11">
 <h3><a class="toc-backref" href="#id27">预定义匹配字符集</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>表达式 匹配
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>表达式 匹配
 \d      任意一个数字，0~9 中的任意一个
 \w      任意一个字母或数字或下划线，也就是 A~Z,a~z,0~9,_ 中的任意一个
 \s      空格、制表符、换页符等空白字符的其中任意一个
@@ -356,7 +361,7 @@ python正则表达式操作指南</p>
 </div>
 <div class="section" id="id12">
 <h3><a class="toc-backref" href="#id28">重复匹配</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>表达式 匹配
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>表达式 匹配
 {n}     表达式重复n次，比如\d{2}相当于\d\d,a{3}相当于aaa
 {m,n}   表达式至少重复m次，最多重复n次。比如ab{1,3}可以匹配ab或abb或abbb
 {m,}    表达式至少重复m次，比如\w\d{2,}可以匹配a12,_1111,M123等等
@@ -372,7 +377,7 @@ python正则表达式操作指南</p>
 </div>
 <div class="section" id="id13">
 <h3><a class="toc-backref" href="#id29">位置匹配</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>表达式 匹配
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>表达式 匹配
 ^   在字符串开始的地方匹配，符号本身不匹配任何字符
 $   在字符串结束的地方匹配，符号本身不匹配任何字符
 \b  匹配一个单词边界，也就是单词和空格之间的位置，符号本身不匹配任何字符
@@ -382,13 +387,13 @@ $   在字符串结束的地方匹配，符号本身不匹配任何字符
 </div>
 <div class="section" id="id14">
 <h3><a class="toc-backref" href="#id30">贪婪与非贪婪模式</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>在重复匹配时，正则表达式默认总是尽可能多的匹配，这被称为贪婪模式。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>在重复匹配时，正则表达式默认总是尽可能多的匹配，这被称为贪婪模式。
 比如，针对文本dxxxdxxxd，表达式(d)(\w+)(d)中的\w+将匹配第一个d和最后一个d之间的所有字符xxxdxxx。
 </pre></div>
 </div>
 <div class="section" id="id15">
 <h4>举例说明<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&lt;table&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&lt;table&gt;</span>
 <span class="s1">    &lt;tr&gt;</span>
 <span class="s1">        &lt;td&gt;电视机&lt;/td&gt;</span>
 <span class="s1">        &lt;td&gt;冰箱&lt;/td&gt;</span>
@@ -402,7 +407,7 @@ $   在字符串结束的地方匹配，符号本身不匹配任何字符
 <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;&lt;td&gt;\w+?&lt;/td&gt;&quot;</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>       <span class="c1"># &lt;td&gt;电视机&lt;/td&gt;</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>我们的意图是获取每个&lt;td&gt;&lt;/td&gt;标签中的元素内容，
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>我们的意图是获取每个&lt;td&gt;&lt;/td&gt;标签中的元素内容，
 如果你将正则表达式写成&lt;td&gt;(.*)&lt;/td&gt;的话，你得到的是&lt;td&gt;电视机&lt;/td&gt;&lt;td&gt;冰箱&lt;/td&gt;&lt;td&gt;空调&lt;/td&gt;这么个东西，而不是“电视机”、“冰箱”、“空调”。
 表达式&lt;td&gt;(.*?)&lt;/td&gt;匹配上面的字符串时，将只得到&lt;td&gt;电视机&lt;/td&gt;，再次匹配下一个时，可以得到&lt;td&gt;冰箱&lt;/td&gt;，以此类推。贪婪匹配
 表达式&lt;td&gt;(\w+?)&lt;/td&gt;为了让整个表达式匹配成功，\w+? 将尽可能少的匹配，从而使整个表达式匹配成功，实现非贪婪的匹配
@@ -411,7 +416,7 @@ $   在字符串结束的地方匹配，符号本身不匹配任何字符
 <ul class="simple">
 <li>贪婪匹配和惰性匹配 eg</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/21 17:31</span>
@@ -419,18 +424,18 @@ $   在字符串结束的地方匹配，符号本身不匹配任何字符
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="c1"># 使用贪婪匹配</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r&#39;\d{5,8}&#39;</span><span class="p">,</span> <span class="s1">&#39;87654321&#39;</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d{5,8}&#39;</span><span class="p">,</span> <span class="s1">&#39;87654321&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="c1"># 使用惰性匹配</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r&#39;\d{5,8}?&#39;</span><span class="p">,</span> <span class="s1">&#39;87654321&#39;</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d{5,8}?&#39;</span><span class="p">,</span> <span class="s1">&#39;87654321&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>输出结果</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">_sre</span><span class="o">.</span><span class="n">SRE_Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;87654321&#39;</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">_sre</span><span class="o">.</span><span class="n">SRE_Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;87654321&#39;</span><span class="o">&gt;</span>
 <span class="mi">87654321</span>
 <span class="o">&lt;</span><span class="n">_sre</span><span class="o">.</span><span class="n">SRE_Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;87654&#39;</span><span class="o">&gt;</span>
 <span class="mi">87654</span>
@@ -471,7 +476,7 @@ $   在字符串结束的地方匹配，符号本身不匹配任何字符
 <div class="section" id="id16">
 <h2><a class="toc-backref" href="#id31">11.1.2. 正则表达式匹配模式</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 <p><img alt="image4" src="../../_images/re_moudle002.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>方法                                  描述                                          返回值
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>方法                                  描述                                          返回值
 compile(pattern[, flags])   根据包含正则表达式的字符串创建模式对象                     re对象
 search(pattern, string[, flags])    在字符串中查找                              第一个匹配到的对象或者None
 match(pattern, string[, flags]) 在字符串的开始处匹配模式                             在字符串开头匹配到的对象或者None
@@ -511,11 +516,19 @@ fullmatch(pattern, string[, flags]) match方法的全字符串匹配版本      
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -526,7 +539,6 @@ fullmatch(pattern, string[, flags]) match方法的全字符串匹配版本      
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

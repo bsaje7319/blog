@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,23 +33,21 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6.4. 装饰器" href="04.装饰器.html" />
-    <link rel="prev" title="6.2. 导入 itertools模块" href="02.itertools模块中常用的工具函数.html" /> 
+    <link rel="prev" title="6.2. itertools模块中常用工具函数" href="02.itertools模块中常用的工具函数.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -105,7 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../05.推导式学习/index.html">5. 推导式学习</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">6. 生成器、迭代器、装饰器</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01.迭代器.html">6.1. 迭代器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="02.itertools模块中常用的工具函数.html">6.2. 导入 itertools模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.itertools模块中常用的工具函数.html">6.2. itertools模块中常用工具函数</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">6.3. 生成器</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#yield">6.3.1. yield语句</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">6.3.2. 快速定义一个生成器</a></li>
@@ -127,7 +131,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -145,6 +149,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -183,7 +188,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -195,7 +200,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/06.迭代器_生成器_装饰器/03.生成器.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/06.迭代器_生成器_装饰器/03.生成器.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -242,7 +247,7 @@
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id11">6.3.2. 快速定义一个生成器</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 
 <span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
@@ -254,7 +259,7 @@
 </div>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id12">代码示例1</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 
 <span class="k">def</span> <span class="nf">myYield</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -266,22 +271,22 @@
         <span class="k">yield</span> <span class="n">n</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;完成一次......&quot;</span><span class="p">)</span>
         <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">myYield</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;遍历得到的值：&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">()</span>
 
     <span class="n">my_yield</span> <span class="o">=</span> <span class="n">myYield</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>      <span class="c1">#生成一个生成对象</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;已经实例化生成器对象&quot;</span><span class="p">)</span>
-    <span class="n">my_yield</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+    <span class="n">my_yield</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;第二次调用__next__()方法：&quot;</span><span class="p">)</span>
-    <span class="n">my_yield</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+    <span class="n">my_yield</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id13">代码示例2</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 
 <span class="k">def</span> <span class="nf">myYield</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -294,19 +299,19 @@
         <span class="k">if</span> <span class="n">rcv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">n</span> <span class="o">=</span> <span class="n">rcv</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">my_yield</span> <span class="o">=</span> <span class="n">myYield</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">my_yield</span><span class="o">.</span><span class="n">__next__</span><span class="p">())</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">my_yield</span><span class="o">.</span><span class="n">__next__</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">my_yield</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">my_yield</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;传给生成器一个值，重新初始化生成器&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">my_yield</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">my_yield</span><span class="o">.</span><span class="n">__next__</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">my_yield</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id14">代码示例3</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 
 <span class="c1">#通过生成器推导式构建</span>
@@ -319,7 +324,7 @@
     <span class="k">yield</span> <span class="mi">2</span>
 
 <span class="n">g</span> <span class="o">=</span> <span class="n">generator</span><span class="p">()</span>
-<span class="n">ret</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*****&quot;</span><span class="p">,</span><span class="n">ret</span><span class="p">)</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
@@ -337,12 +342,12 @@
     <span class="k">yield</span> <span class="mi">777</span>
 
 <span class="n">g_obj</span> <span class="o">=</span> <span class="n">func1</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">g_obj</span><span class="o">.</span><span class="n">__next__</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">g_obj</span><span class="o">.</span><span class="n">__next__</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g_obj</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g_obj</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>eg</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/5/17 23:21</span>
@@ -355,22 +360,22 @@
 <span class="c1"># for i in square(5):</span>
 <span class="c1">#     print(i, end=&quot; &quot;)</span>
 <span class="n">hujianli</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">hujianli</span><span class="o">.</span><span class="n">__next__</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">hujianli</span><span class="o">.</span><span class="n">__next__</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">hujianli</span><span class="o">.</span><span class="n">__next__</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">hujianli</span><span class="o">.</span><span class="n">__next__</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">hujianli</span><span class="o">.</span><span class="n">__next__</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">hujianli</span><span class="o">.</span><span class="n">__next__</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hujianli</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hujianli</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hujianli</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hujianli</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hujianli</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hujianli</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>生成器函数通过yield返回数据，与return不同的是，
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>生成器函数通过yield返回数据，与return不同的是，
 return语句一次返回所有数据，函数调用结束；
 而yield语句只返回一个元素数据，函数调用不会结束，只是暂停，
 直到__next__()方法被调用，程序继续执行yield语句之后的语句代码
 </pre></div>
 </div>
 <p>生成器函数同样实现了与普通函数同样的功能，它们有如下区别：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1.生成器代码更简洁。(代码少，结构更为简洁)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.生成器代码更简洁。(代码少，结构更为简洁)
 2.生成器内存占用极少。(与普通函数相比，普通函数面临严重的内存问题)
 3.运行方式不同。(普通函数是顺序执行的，直到遇到return语句就返回，而生成器函数则是遇到yield语句返回，再次执行时，从上次离开的地方继续执行。)
 </pre></div>
@@ -381,7 +386,7 @@ return语句一次返回所有数据，函数调用结束；
 <h2><a class="toc-backref" href="#id15">6.3.3. 生成器和协程</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id7">
 <h3><a class="toc-backref" href="#id16">示例</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">time</span>
@@ -403,7 +408,7 @@ return语句一次返回所有数据，函数调用结束；
 
 <span class="k">def</span> <span class="nf">producer</span><span class="p">():</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">consumer</span><span class="p">()</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+    <span class="n">c</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;模拟生产者模型&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -411,12 +416,12 @@ return语句一次返回所有数据，函数调用结束；
         <span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;蛋糕:【</span><span class="si">%s</span><span class="s2">】&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">producer</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>输出信息:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>等待接收处理任务.......
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>等待接收处理任务.......
 模拟生产者模型
 开始制作第1个蛋糕, 【🍰】【1】做好了.....
 收到 蛋糕:【1】，开始品尝 【🍰】：
@@ -439,7 +444,7 @@ return语句一次返回所有数据，函数调用结束；
 </div>
 <div class="section" id="id8">
 <h2><a class="toc-backref" href="#id17">6.3.4. 尽量使用生成器代替列表</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>##不推荐
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>##不推荐
 def my_range(n):
   i = 0
   result = []
@@ -471,7 +476,7 @@ def my_range(n):
         <a href="04.装饰器.html" class="btn btn-neutral float-right" title="6.4. 装饰器" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="02.itertools模块中常用的工具函数.html" class="btn btn-neutral float-left" title="6.2. 导入 itertools模块" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="02.itertools模块中常用的工具函数.html" class="btn btn-neutral float-left" title="6.2. itertools模块中常用工具函数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -480,11 +485,19 @@ def my_range(n):
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -495,7 +508,6 @@ def my_range(n):
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

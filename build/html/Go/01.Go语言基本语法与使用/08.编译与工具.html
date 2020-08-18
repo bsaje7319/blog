@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2. 容器-存储与组织数据的方式" href="../02.容器-存储与组织数据的方式/index.html" />
     <link rel="prev" title="1.7. 类型别名" href="07.类型别名.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -131,6 +135,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -169,7 +174,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -181,7 +186,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/01.Go语言基本语法与使用/08.编译与工具.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/01.Go语言基本语法与使用/08.编译与工具.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -197,14 +202,15 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id13">编译与工具</a><ul>
-<li><a class="reference internal" href="#go" id="id14">Go常用的编译方法</a></li>
-<li><a class="reference internal" href="#gopath" id="id15">配置GOPATH</a><ul>
-<li><a class="reference internal" href="#go-build" id="id16">1.编译(go build)</a></li>
-<li><a class="reference internal" href="#go-run" id="id17">2.编译后运行(go run)</a></li>
-<li><a class="reference internal" href="#go-install" id="id18">3.编译并安装(go install)</a></li>
-<li><a class="reference internal" href="#go-get" id="id19">4.一键获取代码、编译并安装(go get)</a></li>
-<li><a class="reference internal" href="#go-test" id="id20">5.测试(go test)</a></li>
+<li><a class="reference internal" href="#id1" id="id14">编译与工具</a><ul>
+<li><a class="reference internal" href="#go" id="id15">Go常用的编译方法</a></li>
+<li><a class="reference internal" href="#gopath" id="id16">配置GOPATH</a><ul>
+<li><a class="reference internal" href="#go-build" id="id17">1.编译(go build)</a></li>
+<li><a class="reference internal" href="#go-run" id="id18">2.编译后运行(go run)</a></li>
+<li><a class="reference internal" href="#go-install" id="id19">3.编译并安装(go install)</a></li>
+<li><a class="reference internal" href="#go-get" id="id20">4.一键获取代码、编译并安装(go get)</a></li>
+<li><a class="reference internal" href="#go-test" id="id21">5.测试(go test)</a></li>
+<li><a class="reference internal" href="#id13" id="id22">6. 命令</a></li>
 </ul>
 </li>
 </ul>
@@ -212,12 +218,12 @@
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id13">1.8. 编译与工具</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id14">1.8. 编译与工具</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="go">
-<h2><a class="toc-backref" href="#id14">1.8.1. Go常用的编译方法</a><a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">1.8.1. Go常用的编译方法</a><a class="headerlink" href="#go" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="gopath">
-<h2><a class="toc-backref" href="#id15">1.8.2. 配置GOPATH</a><a class="headerlink" href="#gopath" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">1.8.2. 配置GOPATH</a><a class="headerlink" href="#gopath" title="Permalink to this headline">¶</a></h2>
 <p>GOPATH是真正存放diamante的路径，Go寻找依赖包时会根据$GOPATH来寻找，GOPATH目录约定有如下3个子目录。</p>
 <ul class="simple">
 <li>src存放源代码。</li>
@@ -225,7 +231,7 @@
 <li>bin存放编译后的可执行文件。</li>
 </ul>
 <div class="section" id="go-build">
-<h3><a class="toc-backref" href="#id16">1.编译(go build)</a><a class="headerlink" href="#go-build" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id17">1.编译(go build)</a><a class="headerlink" href="#go-build" title="Permalink to this headline">¶</a></h3>
 <p>Go语言的编译速度非常快。Go1.9版本后默认利用Go语言的并发特性进行函数粒度的并发编译。</p>
 <p>Go语言的程序编写基本以源码方式，无论是直接的代码还是第三方代码，
 并且以GOPATH作为母子目录和一套完整的工程目录规则。</p>
@@ -234,7 +240,7 @@
 <h4>1.1 go build无参数编译<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <p>将源码编译成可执行文件，go build有很多种编译方法，如：
 无参数编译、文件列表编译、指定包编译，使用这些方法都可以输出可执行文件。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ tree
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tree
 .
 └── gobuild
     ├── lib.go
@@ -242,7 +248,7 @@
 </pre></div>
 </div>
 <p>lib.go代码如下</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -252,7 +258,7 @@
 </pre></div>
 </div>
 <p>main.go代码如下</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -263,7 +269,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>D:\go_studay\go_path\src\awesomeProject20&gt;cd gobuild
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>D:\go_studay\go_path\src\awesomeProject20&gt;cd gobuild
 
 D:\go_studay\go_path\src\awesomeProject20\gobuild&gt;go build
 
@@ -281,7 +287,7 @@ hello world
 <h4>1.2 go build+文件列表<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <p>编译同目录的多个源码文件时，可以在go build的后面提供多个文件名，go
 build会编译这些源码。 输出可执行文件， go build + 文件列表的格式如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ls
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
 gobuild.exe  lib.go  main.go
 
 18793@DESKTOP-PMJTNGI /cygdrive/d/go_studay/go_path/src/awesomeProject20/gobuild
@@ -297,7 +303,7 @@ hello world
 </pre></div>
 </div>
 <p>如果需要指定输出可执行文件名，可以使用-o参数。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ go build -o myexe main.go lib.go
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ go build -o myexe main.go lib.go
 
 18793@DESKTOP-PMJTNGI /cygdrive/d/go_studay/go_path/src/awesomeProject20/gobuild
 $ ./myexe
@@ -311,7 +317,7 @@ hello world
 <h4>1.3 go build+包<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <p>“go
 build+包”在设置GOPATH后，可以直接根据包名进行编译，即使包内文件被增删也不影响编译指令。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ tree gobuild02/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tree gobuild02/
 gobuild02/
 ├── main.go
 └── mypkg
@@ -319,7 +325,7 @@ gobuild02/
 </pre></div>
 </div>
 <p>main.go代码如下</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;awesomeProject20/gobuild02/mypkg&quot;</span>
@@ -333,7 +339,7 @@ gobuild02/
 </pre></div>
 </div>
 <p>mypkg.go代码如下</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">mypkg</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">mypkg</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -342,14 +348,14 @@ gobuild02/
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>设置的GOPATH 路径为<code class="docutils literal"><span class="pre">D:\go_studay\go_path\</span></code></p>
+<p>设置的GOPATH 路径为<code class="docutils literal notranslate"><span class="pre">D:\go_studay\go_path\</span></code></p>
 <p>按包编译命令</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">go_studay</span>\<span class="n">go_path</span>\<span class="n">src</span>\<span class="n">awesomeProject20</span><span class="o">&gt;</span><span class="n">go</span> <span class="n">build</span> <span class="o">-</span><span class="n">o</span> <span class="n">main</span> <span class="n">awesomeProject20</span><span class="o">/</span><span class="n">gobuild02</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">go_studay</span>\<span class="n">go_path</span>\<span class="n">src</span>\<span class="n">awesomeProject20</span><span class="o">&gt;</span><span class="n">go</span> <span class="n">build</span> <span class="o">-</span><span class="n">o</span> <span class="n">main</span> <span class="n">awesomeProject20</span><span class="o">/</span><span class="n">gobuild02</span>
 </pre></div>
 </div>
 <p>-o
 执行指定输出文件为main，后面接要编译的包名，包名是相对于GOPATH下的src目录开始的。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>18793@DESKTOP-PMJTNGI /cygdrive/d/go_studay/go_path/src/awesomeProject20
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>18793@DESKTOP-PMJTNGI /cygdrive/d/go_studay/go_path/src/awesomeProject20
 $ ll
 总用量 2060
 drwxrwx---+ 1 18793 18793       0 1月  15 11:14 gobuild
@@ -369,18 +375,18 @@ hello world
 </div>
 </div>
 <div class="section" id="go-run">
-<h3><a class="toc-backref" href="#id17">2.编译后运行(go run)</a><a class="headerlink" href="#go-run" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id18">2.编译后运行(go run)</a><a class="headerlink" href="#go-run" title="Permalink to this headline">¶</a></h3>
 <p>Python和Lua语言可以在不输出二进制的情况下，将代码使用虚拟机直接执行，
 Go语言虽然不使用虚拟机，但可使用go run指令达到同样的效果。</p>
 <p>go
 run命令会编译源码，兵器直接执行源码的main()函数，不会在当前目录下留下可执行文件。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ tree gorun/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tree gorun/
 gorun/
 └── main.go
 </pre></div>
 </div>
-<p>我们准备一个<code class="docutils literal"><span class="pre">main.go</span></code>文件</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<p>我们准备一个<code class="docutils literal notranslate"><span class="pre">main.go</span></code>文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;fmt&quot;</span>
@@ -392,23 +398,23 @@ gorun/
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd gorun/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd gorun/
 $ go run main.go --file xxx.go
 args: [D:\Cygwin\tmp\go-build804207966\b001\exe\main.exe --file xxx.go]
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">go</span> <span class="pre">run</span></code>不会在运行目录下生成任何文件，可执行文件被放在临时文件中被执行，工作目录被设置为当前目录，
-在<code class="docutils literal"><span class="pre">go</span> <span class="pre">run</span></code>的后部可以添加参数，这部分参数会作为代码可以接受的命令行输入提供给程序。</p>
-<p><code class="docutils literal"><span class="pre">go</span> <span class="pre">run</span></code>不能使用“go run +
+<p><code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">run</span></code>不会在运行目录下生成任何文件，可执行文件被放在临时文件中被执行，工作目录被设置为当前目录，
+在<code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">run</span></code>的后部可以添加参数，这部分参数会作为代码可以接受的命令行输入提供给程序。</p>
+<p><code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">run</span></code>不能使用“go run +
 包”的方式进行编译，如果要快速运行编译包，需要使用如下步骤： （1）使用go
 build生成可执行文件</p>
 <p>（2）运行可执行文件</p>
 </div>
 <div class="section" id="go-install">
-<h3><a class="toc-backref" href="#id18">3.编译并安装(go install)</a><a class="headerlink" href="#go-install" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id19">3.编译并安装(go install)</a><a class="headerlink" href="#go-install" title="Permalink to this headline">¶</a></h3>
 <p>go install的功能和go build类似，附加参数绝大多数都可以与go build通用。
-<code class="docutils literal"><span class="pre">go</span> <span class="pre">install</span></code>只是将编译的中间文件放在GOPATH的pkg目录下，以及<code class="docutils literal"><span class="pre">固定的地将编译结果放在GOPATH的bin目录下</span></code>。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ go install awesomeProject20/gobuild
+<code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">install</span></code>只是将编译的中间文件放在GOPATH的pkg目录下，以及<code class="docutils literal notranslate"><span class="pre">固定的地将编译结果放在GOPATH的bin目录下</span></code>。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ go install awesomeProject20/gobuild
 </pre></div>
 </div>
 <p>· go install是建立在GOPATH上的，无法在独立的目录里使用go install</p>
@@ -419,7 +425,7 @@ install输出目录始终为GOPATH下的bin目录，无法使用-o附加参数�
 <p>· GOPATH下的pkg目录放置的是编译期间的中间文件。</p>
 </div>
 <div class="section" id="go-get">
-<h3><a class="toc-backref" href="#id19">4.一键获取代码、编译并安装(go get)</a><a class="headerlink" href="#go-get" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id20">4.一键获取代码、编译并安装(go get)</a><a class="headerlink" href="#go-get" title="Permalink to this headline">¶</a></h3>
 <p>go
 get可以借助代码管理工具通远程拉取或更新代码包及其依赖包，并自动完成编译和安装。
 整个过程就像安装一个App一样简单。</p>
@@ -433,14 +439,14 @@ get前，需要安装与远程包匹配的代码管理工具，如Git、SVN、HG
 <h4>go get + 远程包<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <p>默认情况下，go
 get可以直接使用。例如，想获取go的源码并编译，使用下面命令行即可：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">davyxu</span><span class="o">/</span><span class="n">cellnet</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">davyxu</span><span class="o">/</span><span class="n">cellnet</span>
 </pre></div>
 </div>
 <p>获取前，请确保GOPATH已经设置，Go
 1.8版本之后，GOPATH默认在用户目录的go文件下。</p>
-<p><code class="docutils literal"><span class="pre">cellnet</span></code>只是一个网络库，并没有可执行文件， 因此在go
+<p><code class="docutils literal notranslate"><span class="pre">cellnet</span></code>只是一个网络库，并没有可执行文件， 因此在go
 get操作成功后GOPATH下的bin目录下不会有任何编译好的二进制文件。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">go</span> <span class="n">get</span> <span class="n">giyhub</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">davyxu</span><span class="o">/</span><span class="n">tabtoy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">go</span> <span class="n">get</span> <span class="n">giyhub</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">davyxu</span><span class="o">/</span><span class="n">tabtoy</span>
 </pre></div>
 </div>
 </div>
@@ -450,12 +456,12 @@ get操作成功后GOPATH下的bin目录下不会有任何编译好的二进制�
 </div>
 </div>
 <div class="section" id="go-test">
-<h3><a class="toc-backref" href="#id20">5.测试(go test)</a><a class="headerlink" href="#go-test" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id21">5.测试(go test)</a><a class="headerlink" href="#go-test" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id9">
 <h4>5.1 单元测试-测试和验证代码的框架<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <p>要开始一个单元测试，需要准备一个go源码文件，在命名文件时需要让文件必须以_test结尾。</p>
 <p>单元测试源码文件可以由多个测试用例组成，每个测试用例函数需要以Test为前缀，例如：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">TestXXX</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span><span class="n">testing</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">TestXXX</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span><span class="n">testing</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>· 测试用例文件不会参与正常源码编译，不会被包含到可执行文件中。</p>
@@ -464,7 +470,7 @@ test指令来执行，没有也不需要main()作为函数入口，所有在以_
 以Test开头的函数会自动被执行。</p>
 <p>· 测试用例可以不传入*testing.T参数。</p>
 <p>helloworld_test.go</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">goTest</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">goTest</span>
 
 <span class="kn">import</span> <span class="s2">&quot;testing&quot;</span>
 
@@ -474,7 +480,7 @@ test指令来执行，没有也不需要main()作为函数入口，所有在以_
 </pre></div>
 </div>
 <p>执行如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>GOROOT=C:\Go #gosetup
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GOROOT=C:\Go #gosetup
 GOPATH=D:\go_studay\go_path #gosetup
 C:\Go\bin\go.exe test -c -o C:\Users\18793\AppData\Local\Temp\___TestHelloWorld_in_awesomeProject20_goTest.exe awesomeProject20/goTest #gosetup
 C:\Go\bin\go.exe tool test2json -t C:\Users\18793\AppData\Local\Temp\___TestHelloWorld_in_awesomeProject20_goTest.exe -test.v -test.run ^TestHelloWorld$ #gosetup
@@ -491,7 +497,7 @@ PASS
 test指定文件时默认执行文件内的所有测试用例，可以使用-run参数选择需要的测试用例单独执行。
 参考如下代码：</p>
 <p>select_test.go</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">goTest</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">goTest</span>
 
 <span class="kn">import</span> <span class="s2">&quot;testing&quot;</span>
 
@@ -511,7 +517,7 @@ test指定文件时默认执行文件内的所有测试用例，可以使用-run
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">go</span> <span class="n">test</span> <span class="o">-</span><span class="n">run</span> <span class="n">TestA</span> <span class="n">select_test</span><span class="o">.</span><span class="n">go</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">go</span> <span class="n">test</span> <span class="o">-</span><span class="n">run</span> <span class="n">TestA</span> <span class="n">select_test</span><span class="o">.</span><span class="n">go</span>
 <span class="n">ok</span>      <span class="n">command</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">arguments</span>  <span class="mf">0.257</span><span class="n">s</span>
 
 <span class="n">go</span> <span class="n">test</span> <span class="o">-</span><span class="n">run</span> <span class="n">TestB</span> <span class="n">helloworld_test</span><span class="o">.</span><span class="n">go</span>
@@ -522,7 +528,7 @@ test指定文件时默认执行文件内的所有测试用例，可以使用-run
 <div class="section" id="id11">
 <h4>5.3 标记单元测试结果<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <p>当需要终止当前测试用例时，可以使用FailNow，参考下面代码：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">goTest</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">goTest</span>
 
 <span class="kn">import</span> <span class="s2">&quot;testing&quot;</span>
 
@@ -531,7 +537,7 @@ test指定文件时默认执行文件内的所有测试用例，可以使用-run
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">goTest</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">goTest</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;fmt&quot;</span>
@@ -546,7 +552,7 @@ test指定文件时默认执行文件内的所有测试用例，可以使用-run
 </pre></div>
 </div>
 <p>测试结果如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>GOROOT=C:\Go #gosetup
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GOROOT=C:\Go #gosetup
 GOPATH=D:\go_studay\go_path #gosetup
 C:\Go\bin\go.exe test -c -o C:\Users\18793\AppData\Local\Temp\___TestFailNow_in_awesomeProject20_goTest.exe awesomeProject20/goTest #gosetup
 C:\Go\bin\go.exe tool test2json -t C:\Users\18793\AppData\Local\Temp\___TestFailNow_in_awesomeProject20_goTest.exe -test.v -test.run ^TestFailNow$ #gosetup
@@ -561,8 +567,30 @@ FAIL
 <div class="section" id="id12">
 <h4>5.4 单元测试日志<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
 <p>每个测试用例可能并发执行，使用yesying.T提供的日志输出可以保证日志跟随这个测试上下文一起打印输出。
-<code class="docutils literal"><span class="pre">testing.T</span></code>提供了几种日志输出方法。 <img alt="image3" src="../../_images/test_log001.png" /></p>
+<code class="docutils literal notranslate"><span class="pre">testing.T</span></code>提供了几种日志输出方法。 <img alt="image3" src="../../_images/test_log001.png" /></p>
 </div>
+</div>
+<div class="section" id="id13">
+<h3><a class="toc-backref" href="#id22">6. 命令</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>假如你已安装了golang环境，你可以在命令行执行go命令查看相关的Go语言命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ goGo is a tool for managing Go source code.Usage:    go command [arguments]The commands are:    build       compile packages and dependencies    clean       remove object files    doc         show documentation for package or symbol    env         print Go environment information    bug         start a bug report    fix         run go tool fix on packages    fmt         run gofmt on package sources    generate    generate Go files by processing source    get         download and install packages and dependencies    install     compile and install packages and dependencies    list        list packages    run         compile and run Go program    test        test packages    tool        run specified go tool    version     print Go version    vet         run go tool vet on packagesUse &quot;go help [command]&quot; for more information about a command.Additional help topics:    c           calling between Go and C    buildmode   description of build modes    filetype    file types    gopath      GOPATH environment variable    environment environment variables    importpath  import path syntax    packages    description of package lists    testflag    description of testing flags    testfunc    description of testing functionsUse &quot;go help [topic]&quot; for more information about that topic.
+</pre></div>
+</div>
+<p>go env用于打印Go语言的环境信息。</p>
+<p>go run命令可以编译并运行命令源码文件。</p>
+<p>go
+get可以根据要求和实际情况从互联网上下载或更新指定的代码包及其依赖包，并对它们进行编译和安装。</p>
+<p>go build命令用于编译我们指定的源码文件或代码包以及它们的依赖包。</p>
+<p>go install用于编译并安装指定的代码包及它们的依赖包。</p>
+<p>go clean命令会删除掉执行其它命令时产生的一些文件和目录。</p>
+<p>go
+doc命令可以打印附于Go语言程序实体上的文档。我们可以通过把程序实体的标识符作为该命令的参数来达到查看其文档的目的。</p>
+<p>go test命令用于对Go语言编写的程序进行测试。</p>
+<p>go list命令的作用是列出指定的代码包的信息。</p>
+<p>go
+fix会把指定代码包的所有Go语言源码文件中的旧版本代码修正为新版本的代码。</p>
+<p>go vet是一个用于检查Go语言源码中静态错误的简单工具。</p>
+<p>go tool pprof命令来交互式的访问概要文件的内容。</p>
 </div>
 </div>
 </div>
@@ -587,11 +615,19 @@ FAIL
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -602,7 +638,6 @@ FAIL
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

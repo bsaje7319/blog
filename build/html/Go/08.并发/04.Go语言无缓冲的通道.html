@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="8.5. 05.Go语言带缓冲的通道" href="05.Go语言带缓冲的通道.html" />
     <link rel="prev" title="8.3. 03.通道(channel)-在多个goroutine间通信的管道" href="03.通道(channel)-在多个goroutine间通信的管道.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -133,6 +137,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -171,7 +176,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -183,7 +188,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/08.并发/04.Go语言无缓冲的通道.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/08.并发/04.Go语言无缓冲的通道.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -212,7 +217,7 @@ goroutine
 阻塞等待。这种对通道进行发送和接收的交互行为本身就是同步的。其中任意一个操作都无法离开另一个操作单独存在。</p>
 <p>阻塞指的是由于某种原因数据没有到达，当前协程（线程）持续处于等待状态，直到条件满足才解除阻塞。</p>
 <p>同步指的是在两个或多个协程（线程）之间，保持数据内容一致性的机制。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>·无缓冲的通道（unbuffered channel）是指在接收前没有能力保存任何值的通道。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>·无缓冲的通道（unbuffered channel）是指在接收前没有能力保存任何值的通道。
 
 这种类型的通道要求发送 goroutine 和接收 goroutine 同时准备好，才能完成发送和接收操作。
 如果两个goroutine没有同时准备好，通道会导致先执行发送或接收操作的 goroutine 阻塞等待。
@@ -220,7 +225,7 @@ goroutine
 </div>
 <p><img alt="image0" src="../../_images/go_no_chache001.PNG" /></p>
 <p>代码示例</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>// 这个示例程序展示如何用无缓冲的通道来模拟
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// 这个示例程序展示如何用无缓冲的通道来模拟
 // 2 个goroutine 间的网球比赛
 package main
 import (
@@ -299,11 +304,19 @@ func player(name string, court chan int) {
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -314,7 +327,6 @@ func player(name string, court chan int) {
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

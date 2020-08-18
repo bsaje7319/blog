@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="16. Python 进程和线程" href="../16.线程和进程/index.html" />
     <link rel="prev" title="15.6. 使用Python实现一个geek邮件客户端" href="06.使用Python实现一个geek邮件客户端.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -129,7 +133,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -147,6 +151,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -185,7 +190,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -197,7 +202,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/15.Python网络编程/07.创建一个简单的REST接口.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/15.Python网络编程/07.创建一个简单的REST接口.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -232,7 +237,7 @@
 <p>构建一个REST风格的接口最简单的方法是创建一个基于WSGI标准（PEP
 3333）的很小的库，下面是一个例子：</p>
 <p>resty.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/4/1 17:05</span>
@@ -243,7 +248,7 @@
 
 <span class="k">def</span> <span class="nf">notfound_404</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
     <span class="n">start_response</span><span class="p">(</span><span class="s1">&#39;404 Not Found&#39;</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">)])</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">b</span><span class="s1">&#39;Not Found&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;Not Found&#39;</span><span class="p">]</span>
 
 
 <span class="k">class</span> <span class="nc">PathDispatcher</span><span class="p">:</span>
@@ -265,7 +270,7 @@
 </pre></div>
 </div>
 <p>service_REST.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/4/1 17:08</span>
@@ -314,16 +319,16 @@
     <span class="k">pass</span>
     <span class="n">start_response</span><span class="p">(</span><span class="s1">&#39;200 OK&#39;</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">)])</span>
     <span class="n">resp</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">resp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;Hello World</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">resp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;Goodbye!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">resp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;Hello World</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">resp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;Goodbye!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">resp</span>
 
 
 <span class="k">def</span> <span class="nf">wsgi_app1</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
     <span class="k">pass</span>
     <span class="n">start_response</span><span class="p">(</span><span class="s1">&#39;200 OK&#39;</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">)])</span>
-    <span class="k">yield</span> <span class="n">b</span><span class="s1">&#39;Hello World</span><span class="se">\n</span><span class="s1">&#39;</span>
-    <span class="k">yield</span> <span class="n">b</span><span class="s1">&#39;Goodbye!</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="k">yield</span> <span class="sa">b</span><span class="s1">&#39;Hello World</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="k">yield</span> <span class="sa">b</span><span class="s1">&#39;Goodbye!</span><span class="se">\n</span><span class="s1">&#39;</span>
 
 
 <span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
@@ -337,7 +342,7 @@
     <span class="k">return</span> <span class="p">[</span><span class="n">response_body</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)]</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">resty</span> <span class="k">import</span> <span class="n">PathDispatcher</span>
     <span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="k">import</span> <span class="n">make_server</span>
 
@@ -356,7 +361,7 @@
 </pre></div>
 </div>
 <p>client01.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/4/1 17:10</span>
@@ -387,7 +392,7 @@
 </div>
 <p>尽管WSGI程序通常被定义成一个函数，不过你也可以使用类实例来实现，只要它实现了合适的
 __call__() 方法。例如：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">WSGIApplication</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">WSGIApplication</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="o">...</span>
     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
@@ -398,13 +403,13 @@ __call__() 方法。例如：</p>
 这个分发器仅仅只是管理一个字典，将(方法,路径)对映射到处理器函数上面。
 当一个请求到来时，它的方法和路径被提取出来，然后被分发到对应的处理器上面去。
 另外，任何查询变量会被解析后放到一个字典中，以
-<code class="docutils literal"><span class="pre">environ['params']</span></code>形式存储。
+<code class="docutils literal notranslate"><span class="pre">environ['params']</span></code>形式存储。
 后面这个步骤太常见，所以建议你在分发器里面完成，这样可以省掉很多重复代码。
 使用分发器的时候，你只需简单的创建一个实例，然后通过它注册各种WSGI形式的函数。
 编写这些函数应该超级简单了，只要你遵循 start_response() 函数的编写规则，
 并且最后返回字节字符串即可。</p>
 <p>当编写这种函数的时候还需注意的一点就是对于字符串模板的使用。
-没人愿意写那种到处混合着<code class="docutils literal"><span class="pre">print()</span></code>函数
+没人愿意写那种到处混合着<code class="docutils literal notranslate"><span class="pre">print()</span></code>函数
 、XML和大量格式化操作的代码。
 我们上面使用了三引号包含的预先定义好的字符串模板。
 这种方式的可以让我们很容易的在以后修改输出格式(只需要修改模板本身，而不用动任何使用它的地方)。</p>
@@ -435,11 +440,19 @@ __call__() 方法。例如：</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -450,7 +463,6 @@ __call__() 方法。例如：</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="8.12. 12.同步-保证并发环境下数据访问的正确性" href="12.同步-保证并发环境下数据访问的正确性.html" />
     <link rel="prev" title="8.10. 10.Go语言多核并行化" href="10.Go语言多核并行化.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -141,6 +145,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -179,7 +184,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Go语言学习</a> &raquo;</li>
         
@@ -191,7 +196,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Go/08.并发/11.Go语言Telnet回音服务器-TCP服务器的基本结构.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Go/08.并发/11.Go语言Telnet回音服务器-TCP服务器的基本结构.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -232,7 +237,7 @@ Go语言中的 Socket、goroutine 和通道编写一个简单的 Telnet
 <h2><a class="toc-backref" href="#id7">8.11.1. 接受连接</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>回音服务器能同时服务于多个连接。要接受连接就需要先创建侦听器，侦听器需要一个侦听地址和协议类型。就像你想卖东西，需要先确认卖什么东西，卖东西的类型就是协议类型，然后需要一个店面，店面位于街区的某个位置，这就是侦听器的地址。一个服务器可以开启多个侦听器，就像一个街区可以有多个店面。街区上的编号对应的就是地址中的端口号，如下图所示。</p>
 <p><img alt="image0" src="../../_images/goroutine00001.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>· 主机 IP：一般为一个 IP 地址或者域名，127.0.0.1 表示本机地址。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>· 主机 IP：一般为一个 IP 地址或者域名，127.0.0.1 表示本机地址。
 · 端口号：16 位无符号整型值，一共有 65536 个有效端口号。
 </pre></div>
 </div>
@@ -248,7 +253,7 @@ Accept 操作，窗口的数量就是 CPU 的处理能力。因此，使用 goro
 <p><img alt="image1" src="../../_images/goroutine00002.png" /> Go语言中可以根据实际会话数量创建多个
 goroutine，并自动的调度它们的处理。</p>
 <p>telnet 服务器处理：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>package main
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import (
     &quot;fmt&quot;
@@ -299,7 +304,7 @@ TCP
 <p><img alt="image2" src="../../_images/goroutine0003.png" /></p>
 <p>回音服务器需要将收到的有效数据通过 Socket 发送回去。</p>
 <p>Telnet会话处理：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>// 连接的会话逻辑
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// 连接的会话逻辑
 func handleSession(conn net.Conn, exitChan chan int) {
     fmt.Println(&quot;Session started:&quot;)
     //使用 bufio 包的 NewReader() 方法，创建一个网络数据读取器，这个 Reader 将输入数据的读取过程进行封装，方便我们迅速获取到需要的数据
@@ -340,12 +345,12 @@ func handleSession(conn net.Conn, exitChan chan int) {
 连接。 我们一般用 Telnet 来连接 TCP
 服务器，键盘输入一行字符回车后，即被发送到服务器上。</p>
 <p>在下例中，定义了以下两个特殊控制指令，用以实现一些功能：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>· 输入“@close”退出当前连接会话。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>· 输入“@close”退出当前连接会话。
 · 输入“@shutdown”终止服务器运行。
 </pre></div>
 </div>
 <p>Telnet命令处理：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>func processTelnetCommand(str string, exitChan chan int) bool {
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>func processTelnetCommand(str string, exitChan chan int) bool {
     //当输入字符串中包含“@close”前缀时,返回 false，表示需要关闭当前会话。
     // @close指令表示终止本次会话
     if strings.HasPrefix(str, &quot;@close&quot;) {
@@ -375,7 +380,7 @@ func handleSession(conn net.Conn, exitChan chan int) {
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id10">8.11.4. 程序入口</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Telnet 回音处理主流程</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>func main() {
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>func main() {
     //创建一个整型的无缓冲通道作为退出信号
     // 创建一个程序结束码的通道
     exitChan := make(chan int)
@@ -402,7 +407,7 @@ func handleSession(conn net.Conn, exitChan chan int) {
 </div>
 <div class="section" id="id5">
 <h2><a class="toc-backref" href="#id12">8.11.6. 测试关闭会话</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>当输入 @close 时，Telnet 命令行显示如下：
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>当输入 @close 时，Telnet 命令行显示如下：
 @close
 Connection closed by foreign host
 
@@ -444,11 +449,19 @@ Server shutdown
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -459,7 +472,6 @@ Server shutdown
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

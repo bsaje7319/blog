@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>22.4.6. 实战演练-开发Django站点 &mdash; 运维开发修炼之路</title>
+  <title>22.4.5. 实战演练-开发Django站点 &mdash; 运维开发修炼之路</title>
   
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
 
   
   
@@ -17,7 +20,9 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,23 +33,21 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="next" title="22.4.7. Django模型层" href="08.Django模型层.html" />
-    <link rel="prev" title="22.4.5. Django流程跑通" href="03.Django流程跑通.html" /> 
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="22.4.6. Django模型层" href="08.Django模型层.html" />
+    <link rel="prev" title="22.4.4. Django流程跑通" href="03.Django流程跑通.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,24 +119,24 @@
 <li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../02.Flask_Web框架/index.html">22.2. Flask_Web框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">22.4. Django学习</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="10.Python高效开发实战-Django/index.html">22.4.1. Python高效开发实战-Django</a></li>
-<li class="toctree-l4"><a class="reference internal" href="20.简单的博客系统/index.html">22.4.2. 简单的博客系统</a></li>
-<li class="toctree-l4"><a class="reference internal" href="01.安装DjangoWeb框架.html">22.4.3. 安装DjangoWeb框架</a></li>
-<li class="toctree-l4"><a class="reference internal" href="02.Django框架的使用.html">22.4.4. Django框架的使用</a></li>
-<li class="toctree-l4"><a class="reference internal" href="03.Django流程跑通.html">22.4.5. Django流程跑通</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">22.4.6. 实战演练-开发Django站点</a></li>
-<li class="toctree-l4"><a class="reference internal" href="08.Django模型层.html">22.4.7. Django模型层</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01.安装DjangoWeb框架.html">22.4.2. 安装DjangoWeb框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02.Django框架的使用.html">22.4.3. Django框架的使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03.Django流程跑通.html">22.4.4. Django流程跑通</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">22.4.5. 实战演练-开发Django站点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="08.Django模型层.html">22.4.6. Django模型层</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
@@ -148,6 +152,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -186,7 +191,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -194,13 +199,13 @@
         
           <li><a href="index.html">22.4. Django学习</a> &raquo;</li>
         
-      <li>22.4.6. 实战演练-开发Django站点</li>
+      <li>22.4.5. 实战演练-开发Django站点</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/Python/24.Python框架学习/04.Django学习/07.实战演练-开发Django站点.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Python/24.Python框架学习/04.Django学习/07.实战演练-开发Django站点.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -242,15 +247,15 @@
 </ul>
 </div>
 <div class="section" id="django">
-<h1><a class="toc-backref" href="#id16">22.4.6. 实战演练-开发Django站点</a><a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id16">22.4.5. 实战演练-开发Django站点</a><a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id17">建立项目</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">djangosite</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">djangosite</span>
 </pre></div>
 </div>
 <p><img alt="image0" src="../../../_images/django00001.png" /></p>
 <p>设置中文settings.py</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LANGUAGE_CODE</span> <span class="o">=</span> <span class="s1">&#39;zh-hans&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LANGUAGE_CODE</span> <span class="o">=</span> <span class="s1">&#39;zh-hans&#39;</span>
 
 <span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="s1">&#39;Asia/Shanghai&#39;</span>
 
@@ -264,13 +269,13 @@
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id18">建立应用</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">djangosite</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">djangosite</span>
 <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">start</span> <span class="n">app</span>
 </pre></div>
 </div>
 <p>完成后，会在项目目录中建立如下的目录及文件结构</p>
 <p><img alt="image1" src="../../../_images/django00002.png" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>对其中的文件功能解析如下。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>对其中的文件功能解析如下。
 * __init__.py ： 其中暂无内容,该文件的存在使得app 成为一个python 包。
 * admin.py ： 管理站点模型的声明文件， 默认为空。
 * apps.py： 应用信息定义文件.在其中生成了类AppConfig 该类用于定义应用名等Meta等数据。
@@ -283,7 +288,7 @@
 <ol class="arabic simple">
 <li>首先在django/app/views.py中建立一个路由响应函数</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Create your views here.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create your views here.</span>
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span>
 
 
@@ -295,22 +300,22 @@
 <li>通过URL映射将用户的HTTP访问与该函数绑定起来
 在django/app目录中新建一个urls.py文件。管理app的索引URL映射，文件内容如下</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="k">import</span> <span class="n">url</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="k">import</span> <span class="n">url</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">views</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">welcome</span><span class="p">),</span>        <span class="c1">#把索引路由映射到view.py中的welcome函数</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">welcome</span><span class="p">),</span>        <span class="c1">#把索引路由映射到view.py中的welcome函数</span>
 </pre></div>
 </div>
 <p>（3）在项目URL文件djangosite/urls.py的urlpatterns中新建一项，声明对应用app中urls.py文件的引用，代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
 <span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="k">import</span> <span class="n">url</span>
 <span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="k">import</span> <span class="n">include</span>  <span class="c1"># 本行新增</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^app/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;app.urls&#39;</span><span class="p">)),</span>  <span class="c1"># 本行新增，url()函数的第1个参数用正则表达式表达URL路由</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^app/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;app.urls&#39;</span><span class="p">)),</span>  <span class="c1"># 本行新增，url()函数的第1个参数用正则表达式表达URL路由</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -318,7 +323,7 @@
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id19">访问应用</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>内置Web服务器</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">djangosite</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">djangosite</span>
 <span class="n">python</span> <span class="n">manage</span><span class="p">,</span><span class="n">py</span> <span class="n">runserver</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mi">8001</span>
 </pre></div>
 </div>
@@ -329,7 +334,7 @@
 <div class="section" id="installen-apps">
 <h3><a class="toc-backref" href="#id21">1.配置项目 INSTALLEN_APPS</a><a class="headerlink" href="#installen-apps" title="Permalink to this headline">¶</a></h3>
 <p>app.apps.AppConfig声明的是djangosite/app/apps.py中指定生成的AppConfig类</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;app.apps.AppConfig&#39;</span><span class="p">,</span>           <span class="c1"># 新增此行</span>
     <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
@@ -345,7 +350,7 @@
 <h3><a class="toc-backref" href="#id22">2.模型定义</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>djangosite/app/models.py
 在其中新建一个模型类Moment用来定义信息发布表。代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
 
 <span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
@@ -363,7 +368,7 @@
 </div>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id23">3.生成数据移植文件</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">djangosite</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">djangosite</span>
 <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span> <span class="n">app</span>
 </pre></div>
 </div>
@@ -371,7 +376,7 @@
 </div>
 <div class="section" id="id7">
 <h2><a class="toc-backref" href="#id24">4.移植到数据库</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
 </pre></div>
 </div>
 <p>每次修改模型类后，都需要生成移植文件，然后将移植的文件同步到数据库中。</p>
@@ -381,7 +386,7 @@
 <div class="section" id="id9">
 <h3><a class="toc-backref" href="#id26">1.定义表单类</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>djangosite/app/forms.py,定义表单类MomnetForm，代码如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.forms</span> <span class="k">import</span> <span class="n">ModelForm</span>  <span class="c1"># 导入django.forms.ModelForm类，该类时所用Django表单类的基类</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.forms</span> <span class="k">import</span> <span class="n">ModelForm</span>  <span class="c1"># 导入django.forms.ModelForm类，该类时所用Django表单类的基类</span>
 <span class="kn">from</span> <span class="nn">app.models</span> <span class="k">import</span> <span class="n">Moment</span>
 
 <span class="k">class</span> <span class="nc">MomentForm</span><span class="p">(</span><span class="n">ModelForm</span><span class="p">):</span>
@@ -395,7 +400,7 @@
 <h3><a class="toc-backref" href="#id27">2.修改模型类。</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>为了用户能够以单选的方式设置消息类型，需要在modules.py文件中定义单选枚举值，
 并与模型类Moment相关联。修改djangosite/app/models.py如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
 
 <span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
@@ -423,7 +428,7 @@
 </div>
 <div class="section" id="id11">
 <h3><a class="toc-backref" href="#id28">3.再次生成移植文件，并将移植的数据同步到数据库</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">djangosite</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">djangosite</span>
 <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span>
 <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
 </pre></div>
@@ -432,7 +437,7 @@
 <div class="section" id="id12">
 <h3><a class="toc-backref" href="#id29">4.开发模板文件</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>建立目录djangosite/app/templates，在其中新建模板文件moments_input.html.文件内容如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;/html&gt;
     &lt;head&gt;
         &lt;title&gt;消息录入页面&lt;/title&gt;
@@ -456,7 +461,7 @@
 <h3><a class="toc-backref" href="#id30">5.开发视图</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>开发视图函数，是表单类和页面模板衔接起来。打开djangosite/app/views.py文件。
 在其中加入如下函数：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
 
 <span class="c1"># Create your views here.</span>
@@ -481,19 +486,19 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">form</span> <span class="o">=</span> <span class="n">MomentForm</span><span class="p">()</span>
     <span class="kn">import</span> <span class="nn">os</span>
-    <span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">)))</span>
+    <span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">PROJECT_ROOT</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_ROOT</span><span class="p">,</span> <span class="s1">&#39;app/templates&#39;</span><span class="p">,</span> <span class="s1">&#39;moments_input.html&#39;</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
 </pre></div>
 </div>
 <p>在djangosite/app/urls.py文件中增加该视图函数的路由映射,内容如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="k">import</span> <span class="n">url</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="k">import</span> <span class="n">url</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">views</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;moments_input&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">moments_input</span><span class="p">),</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">welcome</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;moments_input&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">moments_input</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">welcome</span><span class="p">),</span>
     <span class="c1"># url(r&#39;^myadmin/&#39;,admin_site.url),</span>
 <span class="p">]</span>
 </pre></div>
@@ -508,7 +513,7 @@
 <p>Django管理界面是一个通过嘉安达的配置就可以实现的数据模型后台的Web控制台，
 管理界面退出时给系统管理员使用的，以完成元数据的输入、删除、查询等工作。</p>
 <p>djangosite/app/admin.py文件中</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Moment</span>
 
 <span class="c1"># Register your models here.</span>
@@ -516,9 +521,9 @@
 </pre></div>
 </div>
 <p>通过manage.py工具的createsuperuser命令建立管理员用户</p>
-<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">createsuperuser</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">createsuperuser</span></code></p>
 <p>之后就可以访问：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">admin</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">admin</span>
 </pre></div>
 </div>
 </div>
@@ -533,10 +538,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="08.Django模型层.html" class="btn btn-neutral float-right" title="22.4.7. Django模型层" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="08.Django模型层.html" class="btn btn-neutral float-right" title="22.4.6. Django模型层" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="03.Django流程跑通.html" class="btn btn-neutral float-left" title="22.4.5. Django流程跑通" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="03.Django流程跑通.html" class="btn btn-neutral float-left" title="22.4.4. Django流程跑通" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -545,11 +550,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -560,7 +573,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

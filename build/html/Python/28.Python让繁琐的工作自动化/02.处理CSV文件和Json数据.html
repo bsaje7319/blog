@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -28,21 +33,19 @@
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="26.3. 03.多线程的使用小示例" href="03.多线程的使用小示例.html" />
     <link rel="prev" title="26.1. 01.调试" href="01.调试.html" /> 
 </head>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> 小健_Linux-Python-Devops_Blog
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
           
 
           
@@ -88,6 +91,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../15.Python网络编程/index.html">15. Python 网络编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../16.线程和进程/index.html">16. Python 进程和线程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../20.自动化运维工具/index.html">18. 自动化运维工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../23.前端技术/index.html">21. 前端技术</a></li>
@@ -152,6 +156,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -190,7 +195,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../index.html">Python自动化运维</a> &raquo;</li>
         
@@ -202,7 +207,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/Python/28.Python让繁琐的工作自动化/02.处理CSV文件和Json数据.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/Python/28.Python让繁琐的工作自动化/02.处理CSV文件和Json数据.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -251,9 +256,9 @@
 <div class="section" id="csv">
 <h2><a class="toc-backref" href="#id14">26.2.1. csv模块</a><a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h2>
 <p>示例文件</p>
-<p><code class="docutils literal"><span class="pre">example.csv</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">example.csv</span></code></p>
 <p>在文本编辑器中输入文本，并保存为example.csv</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">2015</span> <span class="mi">13</span><span class="p">:</span><span class="mi">34</span><span class="p">,</span><span class="n">Apples</span><span class="p">,</span><span class="mi">73</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">2015</span> <span class="mi">13</span><span class="p">:</span><span class="mi">34</span><span class="p">,</span><span class="n">Apples</span><span class="p">,</span><span class="mi">73</span>
 <span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">2015</span> <span class="mi">3</span><span class="p">:</span><span class="mi">41</span><span class="p">,</span><span class="n">Cherries</span><span class="p">,</span><span class="mi">85</span>
 <span class="mi">4</span><span class="o">/</span><span class="mi">6</span><span class="o">/</span><span class="mi">2015</span> <span class="mi">12</span><span class="p">:</span><span class="mi">46</span><span class="p">,</span><span class="n">Pears</span><span class="p">,</span><span class="mi">14</span>
 <span class="mi">4</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">2015</span> <span class="mi">8</span><span class="p">:</span><span class="mi">59</span><span class="p">,</span><span class="n">Oranges</span><span class="p">,</span><span class="mi">52</span>
@@ -265,7 +270,7 @@
 </div>
 <div class="section" id="reader">
 <h2><a class="toc-backref" href="#id15">26.2.2. Reader对象</a><a class="headerlink" href="#reader" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
 
 <span class="n">exampleFile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;example.csv&quot;</span><span class="p">)</span>
 <span class="n">exampleReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">exampleFile</span><span class="p">)</span>
@@ -281,7 +286,7 @@
 </div>
 <div class="section" id="for-reader">
 <h2><a class="toc-backref" href="#id16">26.2.3. 在for循环中，从Reader对象读取数据</a><a class="headerlink" href="#for-reader" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/23 15:34</span>
@@ -298,7 +303,7 @@
 <div class="section" id="writer">
 <h2><a class="toc-backref" href="#id17">26.2.4. Writer对象</a><a class="headerlink" href="#writer" title="Permalink to this headline">¶</a></h2>
 <p>如果你在 open()中忘记了 newline=’’关键字参数，CSV 文件将有两倍行距</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
 
 <span class="n">outputFile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="n">outputWriter</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">outputFile</span><span class="p">)</span>
@@ -311,7 +316,7 @@
 </div>
 <div class="section" id="delimiter-lineterminator">
 <h2><a class="toc-backref" href="#id18">26.2.5. delimiter 和 lineterminator 关键字参数</a><a class="headerlink" href="#delimiter-lineterminator" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
 
 <span class="n">csvFile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;example2.tsv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="n">csvWriter</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvFile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">lineterminator</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -322,7 +327,7 @@
 </pre></div>
 </div>
 <p>输出example2.tsv信息如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">apples</span>  <span class="n">oranges</span> <span class="n">grapes</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apples</span>  <span class="n">oranges</span> <span class="n">grapes</span>
 
 <span class="n">eggs</span>    <span class="n">bacon</span>   <span class="n">ham</span>
 
@@ -336,7 +341,7 @@ lineterminator=’’，这将单元格之间的字符改变为制表符，
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id19">26.2.6. 项目：从 CSV 文件中删除表头</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>思路：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>• 找出当前工作目录中的所有 CSV 文件。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>• 找出当前工作目录中的所有 CSV 文件。
 • 读取每个文件的全部内容。
 • 跳过第一行，将内容写入一个新的 CSV 文件。
 在代码层面上，这意味着该程序需要做到以下几点：
@@ -348,7 +353,7 @@ lineterminator=’’，这将单元格之间的字符改变为制表符，
 </div>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="#id20">第1步:循环遍历每个CSV文件</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/23 15:34</span>
@@ -372,7 +377,7 @@ lineterminator=’’，这将单元格之间的字符改变为制表符，
 </div>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id21">第2步:读入CSV文件</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="o">---</span><span class="n">snip</span><span class="o">---</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">---</span><span class="n">snip</span><span class="o">---</span>
 
     <span class="c1"># TODO: Read the CSV file in (skipping first row).</span>
     <span class="n">csvRows</span> <span class="o">=</span> <span class="p">[]</span>
@@ -390,7 +395,7 @@ lineterminator=’’，这将单元格之间的字符改变为制表符，
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id22">第3步:写入CSV文件，没有第一行</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">---</span><span class="n">snip</span><span class="o">---</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span><span class="n">snip</span><span class="o">---</span>
 <span class="c1"># TODO: Write out the CSV file.</span>
 <span class="n">csvFileObj</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;headerRemoved&quot;</span><span class="p">,</span> <span class="n">csvFilename</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="n">csvWriter</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvFileObj</span><span class="p">)</span>
@@ -402,7 +407,7 @@ lineterminator=’’，这将单元格之间的字符改变为制表符，
 </div>
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id23">整合代码</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/23 15:34</span>
@@ -441,7 +446,7 @@ lineterminator=’’，这将单元格之间的字符改变为制表符，
 <h2><a class="toc-backref" href="#id24">26.2.7. 类似程序的想法</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>针对 CSV 文件写的程序类似于针对 Excel 文件写的程序，因为它们都是电子表
 格文件。你可以编程完成以下任务：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>• 在一个 CSV 文件的不同行，或多个 CSV 文件之间比较数据。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>• 在一个 CSV 文件的不同行，或多个 CSV 文件之间比较数据。
 • 从 CSV 文件拷贝特定的数据到 Excel 文件，或反过来。
 • 检查 CSV 文件中无效的数据或格式错误，并向用户提醒这些错误。
 • 从 CSV 文件读取数据，作为 Python 程序的输入。
@@ -453,10 +458,10 @@ lineterminator=’’，这将单元格之间的字符改变为制表符，
 </div>
 <div class="section" id="loads-json">
 <h2><a class="toc-backref" href="#id26">26.2.9. 用loads()函数读取JSON</a><a class="headerlink" href="#loads-json" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">json</span> <span class="pre">----&gt;</span> <span class="pre">python</span> <span class="pre">类型</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">----&gt;</span> <span class="pre">python</span> <span class="pre">类型</span></code></p>
 <p>要将包含JSON 数据的字符串转换为Python 的值，就将它传递给
 json.loads()函数（这个名字的意思是“load string”，而不 是“loads”）。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/23 16:08</span>
@@ -481,10 +486,10 @@ json.loads()函数（这个名字的意思是“load string”，而不 是“lo
 </div>
 <div class="section" id="dumpsjson">
 <h2><a class="toc-backref" href="#id27">26.2.10. 用dumps函数写出JSON</a><a class="headerlink" href="#dumpsjson" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">----&gt;</span> <span class="pre">json</span> <span class="pre">类型</span></code></p>
-<p><code class="docutils literal"><span class="pre">json.dumps()</span></code>函数（它表示“dump string”,而不是
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">----&gt;</span> <span class="pre">json</span> <span class="pre">类型</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">json.dumps()</span></code>函数（它表示“dump string”,而不是
 “dumps”）将一个Python值转换成 JSON 格式的数据字符串</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/23 16:08</span>
@@ -509,7 +514,7 @@ json.loads()函数（这个名字的意思是“load string”，而不 是“lo
 <div class="section" id="id7">
 <h2><a class="toc-backref" href="#id28">26.2.11. 项目：取得当前的天气数据</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>要求：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>• 从命令行读取请求的位置。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>• 从命令行读取请求的位置。
 • 从 OpenWeatherMap.org下载 JSON 天气数据。
 • 将 JSON 数据字符串转换成 Python 的数据结构。
 • 打印今天和未来两天的天气。
@@ -517,7 +522,7 @@ json.loads()函数（这个名字的意思是“load string”，而不 是“lo
 </div>
 <p>思路：</p>
 <p>代码需要完成以下任务：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>• 连接 sys.argv 中的字符串，得到位置。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>• 连接 sys.argv 中的字符串，得到位置。
 • 调用 requests.get()，下载天气数据。
 • 调用 json.loads()，将 JSON 数据转换为 Python 数据结构。
 • 打印天气预报。
@@ -535,7 +540,7 @@ json.loads()函数（这个名字的意思是“load string”，而不 是“lo
 </div>
 <div class="section" id="id8">
 <h3><a class="toc-backref" href="#id29">第 1 步：从命令行参数获取位置</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 
@@ -558,7 +563,7 @@ json.loads()函数（这个名字的意思是“load string”，而不 是“lo
 <div class="section" id="id9">
 <h3><a class="toc-backref" href="#id30">第 2 步:下载 JSON 数据</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>通过API平台查询到查询天气的API，注意申请自己的KEY。发送get请求时携带key信息。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">location</span> <span class="o">=</span> <span class="s2">&quot;北京&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">location</span> <span class="o">=</span> <span class="s2">&quot;北京&quot;</span>
 <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;91536efa9a578f9b33318278dc711eb5&quot;</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://v.juhe.cn/weather/index?format=2&amp;cityname=</span><span class="si">{}</span><span class="s1">&amp;key=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -572,8 +577,8 @@ json.loads()函数（这个名字的意思是“load string”，而不 是“lo
 <div class="section" id="id10">
 <h3><a class="toc-backref" href="#id31">第3步:加载JSON数据并打印天气</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>response.text 成员变量保存了一个 JSON
-格式数据的大字符串。要将它转换为Python值，就调用<code class="docutils literal"><span class="pre">json.loads()</span></code>函数。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;时间&quot;</span><span class="p">,</span> <span class="s2">&quot;星期&quot;</span><span class="p">,</span> <span class="s2">&quot;天气&quot;</span><span class="p">,</span> <span class="s2">&quot;温度&quot;</span><span class="p">]</span>
+格式数据的大字符串。要将它转换为Python值，就调用<code class="docutils literal notranslate"><span class="pre">json.loads()</span></code>函数。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;时间&quot;</span><span class="p">,</span> <span class="s2">&quot;星期&quot;</span><span class="p">,</span> <span class="s2">&quot;天气&quot;</span><span class="p">,</span> <span class="s2">&quot;温度&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">w</span><span class="p">:</span>
     <span class="n">week</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span>
     <span class="n">weather</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">]</span>
@@ -587,7 +592,7 @@ json.loads()函数（这个名字的意思是“load string”，而不 是“lo
 </div>
 <div class="section" id="id11">
 <span id="id12"></span><h3><a class="toc-backref" href="#id32">整合代码</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2020/3/23 16:18</span>
@@ -622,7 +627,7 @@ json.loads()函数（这个名字的意思是“load string”，而不 是“lo
 </pre></div>
 </div>
 <p>测试:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>python quickWeather.py 武汉
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>python quickWeather.py 武汉
 
 时间:20200323 星期:星期一 天气:多云转晴 温度:13℃~23℃
 
@@ -657,11 +662,19 @@ json.loads()函数（这个名字的意思是“load string”，而不 是“lo
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, huxiaojian
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -672,7 +685,6 @@ json.loads()函数（这个名字的意思是“load string”，而不 是“lo
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
