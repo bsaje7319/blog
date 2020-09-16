@@ -12,7 +12,9 @@ Go语言的defer语句会将其后面跟随的语句进行延迟处理。
 多个延迟执行语句的处理顺序
 --------------------------
 
-::
+延迟执行语句示例1
+
+.. code:: go
 
    package main
 
@@ -36,6 +38,105 @@ Go语言的defer语句会将其后面跟随的语句进行延迟处理。
 
 代码的执行顺序与最终的执行顺序是反向的。
 延迟调用是在defer所在函数结束时进行，函数结束可以是正常返回时，也可以是发生宕机时。
+
+延迟执行语句示例2
+
+.. code:: go
+
+   package main
+
+   import "fmt"
+
+   //定义结构体
+   type Test struct {
+       name string
+   }
+
+   // 定义结构体方法
+   func (t *Test) Close() {
+       fmt.Println(t.name, "closed")
+   }
+
+   func main() {
+       //声明一个数组
+       ts := []Test{{"a"}, {"b"}, {"c"}}
+       for _, t := range ts {
+           t2 := t
+           //t2.Close()
+           defer t2.Close()
+       }
+
+   }
+
+多个 defer 注册，按 FILO 次序执行 ( 先进后出
+)。哪怕函数或某个延迟调用发生错误，这些调用依旧会被执行。
+
+.. code:: go
+
+   package main
+
+   func test(x int) {
+       defer println("a")
+       defer println("b")
+
+       defer func() {
+           println(100/x)
+       }()
+       defer println("c")
+
+   }
+
+   func main() {
+       test(0)
+   }
+
+   /*c
+   b
+   a
+   panic: runtime error: integer divide by zero*/
+
+``*``\ 滥用 defer 可能会导致性能问题，尤其是在一个 “大循环” 里。
+
+.. code:: go
+
+   package main
+
+   import (
+       "fmt"
+       "sync"
+       "time"
+   )
+
+   var lock sync.Mutex
+
+   func test(x int) {
+       lock.Lock()
+       fmt.Printf("%d ",x)
+       lock.Unlock()
+   }
+   func testdefer(x int) {
+       lock.Lock()
+       fmt.Printf("%d ",x)
+       defer lock.Unlock()
+   }
+   func main() {
+       func() {
+           t1 := time.Now()
+           for i := 0; i < 100; i++ {
+               test(i)
+           }
+           elapsed := time.Since(t1)
+           fmt.Println("test elapsed: ", elapsed)
+       }()
+       func() {
+           t1 := time.Now()
+           for i := 0; i < 100; i++ {
+               testdefer(i)
+           }
+           elapsed := time.Since(t1)
+           fmt.Println("testdefer elapsed: ", elapsed)
+       }()
+   }
 
 使用延迟执行语句，在函数结束时自动释放资源
 ------------------------------------------
@@ -116,9 +217,9 @@ defer正好是函数退出时执行的语句，所以defer能非常好的处理�
 上面代码中使用defer添加解锁，该语句不会马上执行，而是等待readValue1返回时才会被执行。
 
 2.使用延迟释放文件句柄
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code:: go
 
    package main
 
@@ -155,7 +256,7 @@ defer正好是函数退出时执行的语句，所以defer能非常好的处理�
 
 使用defer对代码进行优化
 
-::
+.. code:: go
 
    package main
 
@@ -189,4 +290,83 @@ defer正好是函数退出时执行的语句，所以defer能非常好的处理�
    func main() {
        f_name, f_size := fileSize("deferTest03.go")
        fmt.Printf("name: %s  size: %dK", f_name, f_size)   //name: deferTest03.go  size: 606K
+   }
+
+文件句柄操作示例
+
+.. code:: go
+
+   package main
+
+   import (
+       "bufio"
+       "fmt"
+       "io"
+       "os"
+   )
+
+   func do() (err error) {
+       file, error := os.Open("D:\\go_studay/go_path/src/github.com/function001/defer06/test.log")
+       if error != nil {
+           fmt.Println(error)
+           return
+       }
+       //  看这里，这里是重点，如果打开正常，有数据，就正常关闭句柄
+       if file != nil{
+           defer func() {
+               if f:=file.Close();f !=nil{
+                   err = f
+               }
+           }()
+       }
+       reader := bufio.NewReader(file)
+       var line []byte
+       for {
+           data, prefix, err := reader.ReadLine()
+           if err == io.EOF {
+               break
+           }
+
+           line = append(line, data...)
+           if !prefix {
+               fmt.Printf("data:%s\n", string(line))
+               line = line[:]
+           }
+
+       }
+       return nil
+
+   }
+
+   func main() {
+       do()
+   }
+
+3.使用延迟释放网络连接句柄
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: go
+
+   package main
+
+   import (
+       "fmt"
+       "net/http"
+   )
+
+   func do() error {
+       res,err :=http.Get("http://www.baidu.com")
+       // 当且仅当 http.Get 成功执行时才使用 defer
+       if res != nil {
+           defer res.Body.Close()
+       }
+       if err != nil {
+           return err
+       }
+       fmt.Println(res)
+       return nil
+   }
+
+   func main() {
+       do()
    }

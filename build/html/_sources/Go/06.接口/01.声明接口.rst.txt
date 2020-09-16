@@ -15,7 +15,7 @@
 
 每个接口由数个方法组成。接口的形式代码如下：
 
-::
+.. code:: go
 
    type 接口类型名 interface {
        方法名1(参数列表1) 返回值列表1
@@ -34,7 +34,7 @@
 · 参数列表、返回值列表：
 参数列表和返回值列表中的参数变量名可以被忽略，例如：
 
-::
+.. code:: go
 
    type writer interface {
        Writer([]byte) error
@@ -45,7 +45,7 @@
 
 例如io包中的Writer接口：
 
-::
+.. code:: go
 
    type Writer interface {
        Write(p []byte) (n int, err error)
@@ -53,7 +53,7 @@
 
 有一个对象以字符串形式展现的接口，在调用String()方法时，都可以获得对象对应的字符串，在fmt包中定义如下：
 
-::
+.. code:: go
 
    type Stringer interface {
        String() string
@@ -61,5 +61,4 @@
 
 Stringer接口在Go语言中使用频率非常高，类似Java中的ToString的操作。
 
-Go语言中接口中的方法并不多，Go希望一个接口能精准的描述它自己的功能，通过多个接口的嵌入和组合的方式将
-简单的接口扩展为复杂的接口。
+Go语言中接口中的方法并不多，Go希望一个接口能精准的描述它自己的功能，通过多个接口的嵌入和组合的方式将简单的接口扩展为复杂的接口。

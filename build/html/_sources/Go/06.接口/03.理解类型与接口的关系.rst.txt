@@ -10,7 +10,7 @@
 
 一个类型可以同时实现多个接口，而接口间彼此独立，不知道对方的实现。
 
-::
+.. code:: go
 
    type Socket struct {
    }
@@ -41,7 +41,7 @@ Socket结构的Writer实现了io.Writer接口：
 
 |image0|
 
-::
+.. code:: go
 
    func usingWriter(writer io.Writer) {
        writer.Write(nil)
@@ -61,10 +61,54 @@ Socket结构的Writer实现了io.Writer接口：
 
 usingWriter()和usingCloser()完全独立，互相不知道对方的存在，也不知道自己使用的接口是Socket实现的。
 
+一个类型实现多个接口的示例代码
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: go
+
+   package main
+
+   import (
+       "fmt"
+   )
+
+   func main() {
+       var s Sayer
+       var m Move
+
+       var p =People{name:"hujianli"}
+       s = p
+       m = p
+       s.say()
+       m.move()
+       
+   }
+
+   type Sayer interface {
+       say()
+   } 
+
+   type Move interface {
+       move()
+   }
+
+
+   type People struct {
+       name string
+   }
+
+   func (p People) say() {
+       fmt.Printf("%s say hello go go go\n", p.name)
+   }
+
+   func (p People)move() {
+       fmt.Printf("%s begin move.....\n",p.name)
+   }
+
 多个类型和实现相同的接口
 ------------------------
 
-::
+.. code:: go
 
    package main
 
@@ -108,7 +152,7 @@ s就可以使用Start()方法和Log()方法，其中,Start()由GameService实现
 一个接口的简单示例
 ~~~~~~~~~~~~~~~~~~
 
-::
+.. code:: go
 
    package main
 
@@ -169,6 +213,47 @@ s就可以使用Start()方法和Log()方法，其中,Start()由GameService实现
        fmt.Println("鼠标结束工作")
    }
 
+接口嵌套
+--------
+
+.. code:: go
+
+   package main
+
+   import "fmt"
+
+   func main() {
+       var x animal
+       x = cat{name: "吉吉"}
+       x.say()
+       x.move()
+   }
+
+   type Sayer interface {
+       say()
+   }
+
+   type Move interface {
+       move()
+   }
+
+   type animal interface {
+       Sayer
+       Move
+   }
+
+   type cat struct {
+       name string
+   }
+
+   func (c cat) say() {
+       fmt.Println(c.name, "喵喵喵喵")
+   }
+
+   func (c cat) move() {
+       fmt.Println(c.name,"猫会动")
+   }
+
 示例：便于扩展输出方式的日志系统
 --------------------------------
 
@@ -178,7 +263,7 @@ s就可以使用Start()方法和Log()方法，其中,Start()由GameService实现
 
 logger.go
 
-::
+.. code:: go
 
    package main
 
@@ -220,7 +305,7 @@ logger.go
 
 file.go
 
-::
+.. code:: go
 
    package main
 
@@ -276,7 +361,7 @@ file.go
 
 3.命令行写入器
 
-::
+.. code:: go
 
    package main
 
@@ -308,7 +393,7 @@ file.go
 
 4.使用日志
 
-::
+.. code:: go
 
    package main
 
@@ -349,7 +434,7 @@ file.go
 示例：使用接口进行数据的排序
 ----------------------------
 
-::
+.. code:: go
 
    package main
 
@@ -366,7 +451,7 @@ file.go
 使用sort.Interface接口进行排序
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code:: go
 
    package main
 

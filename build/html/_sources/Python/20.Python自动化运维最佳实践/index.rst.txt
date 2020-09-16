@@ -17,3 +17,4 @@ Python自动化运维最佳实践
     06.业务服务监控详解
     07.Supervisor在Devops工作中的应用
     08.网页自动化开发
+    09.Conda创建python虚拟环境

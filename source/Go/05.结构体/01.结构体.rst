@@ -82,7 +82,7 @@ Go语言的关键字type可以将各种基本类型定义为自定义类型，�
 
 实例化结构体 Point，如下：
 
-::
+.. code:: go
 
    func main() {
        var p Point
@@ -101,7 +101,7 @@ Go语言中，还可以使用new关键字对类型进行实例化，结构体在
 
 使用new格式如下：
 
-::
+.. code:: go
 
    ins :=new(T)
 
@@ -109,7 +109,7 @@ Go语言中，还可以使用new关键字对类型进行实例化，结构体在
 
 · ins： T类型被实例化后保存到ins变量中，ins的类型为*T，属于指针。
 
-::
+.. code:: go
 
    package main
 

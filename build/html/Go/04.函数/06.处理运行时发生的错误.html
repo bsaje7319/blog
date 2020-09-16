@@ -253,7 +253,7 @@ Conn连接对象和error；如果发生错误，error会告知错误的类型，
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id8">4.6.2. 错误接口的定义格式</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>error是Go系统声明的接口类型，代码如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">error</span> <span class="n">interface</span> <span class="p">{</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">error</span> <span class="n">interface</span> <span class="p">{</span>
     <span class="n">Error</span><span class="p">()</span> <span class="n">string</span>
 <span class="p">}</span>
 </pre></div>
@@ -264,14 +264,14 @@ Error()返回错误的具体描述，使用者可以通过这个字符串知道�
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id9">4.6.3. 自定义一个错误</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>返回错误前，需要定义会生成哪些可能的错误。在Go语言中，使用errors包进行错误的定义，格式如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">err</span> <span class="o">=</span> <span class="n">errors</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="s2">&quot;this is an error&quot;</span><span class="p">)</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">err</span> <span class="o">=</span> <span class="n">errors</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="s2">&quot;this is an error&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>错误字符串由于相对固定，一般在包作用域声明，应尽量减少在使用时直接使用errors.New返回。</p>
 <div class="section" id="errors">
 <h3><a class="toc-backref" href="#id10">1,errors包</a><a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h3>
 <p>Go语言的errors中对New的定义非常简单，代码如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// 创建错误对象
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>// 创建错误对象
 // 将errorString结构体实例化，并赋值错误描述的成员。
 func New(text string) error {
     return &amp;errorString{text}
@@ -295,7 +295,7 @@ func (e *errorString) Error() string {
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id11">2.在代码中使用错误定义</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import (
     &quot;errors&quot;
@@ -325,7 +325,7 @@ func main() {
 <h3><a class="toc-backref" href="#id12">示例：在解析中使用自定义错误</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>使用errors.New定义的错误字符串的错误类型是无法提供丰富的错误信息的。那么需要携带错误信息返回，
 就需要借助自定义结构体实现错误接口。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 

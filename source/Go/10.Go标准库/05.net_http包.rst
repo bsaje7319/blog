@@ -8,7 +8,7 @@ net_http包
 Go最简单的http服务器
 --------------------
 
-::
+.. code:: go
 
    package main
 
@@ -91,7 +91,7 @@ GET请求示例
 
 ``client01.go``
 
-::
+.. code:: go
 
    package main
 
@@ -169,7 +169,7 @@ Post请求示例
 
 ``client02.go``
 
-::
+.. code:: go
 
    package main
 
@@ -207,7 +207,7 @@ Post请求示例
 
 下面代码通过指定目录，作为静态站点
 
-::
+.. code:: go
 
    package main
 
@@ -217,3 +217,8 @@ Post请求示例
        http.Handle("/", http.FileServer(http.Dir("D:\\my_blog\\build\\html")))
        http.ListenAndServe(":8080", nil)
    }
+
+参考文献
+--------
+
+https://www.bookstack.cn/read/topgoer/a4d91804c507fc2a.md

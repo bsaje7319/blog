@@ -276,7 +276,7 @@ Go语言使用结构体和结构体成员来描述真实世界的实体和实体
 <p>· ins 为结构体实例</p>
 <p>· T 为结构体类型</p>
 <p>实例化结构体 Point，如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">var</span> <span class="n">p</span> <span class="n">Point</span>
     <span class="n">p</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="mi">19</span>
     <span class="n">p</span><span class="o">.</span><span class="n">Y</span> <span class="o">=</span> <span class="mi">20</span>
@@ -291,12 +291,12 @@ Go语言使用结构体和结构体成员来描述真实世界的实体和实体
 <h3><a class="toc-backref" href="#id18">2.2创建指针类型的结构体</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>Go语言中，还可以使用new关键字对类型进行实例化，结构体在实例化后会形成指针类型的结构体。</p>
 <p>使用new格式如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ins</span> <span class="p">:</span><span class="o">=</span><span class="n">new</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ins</span> <span class="p">:</span><span class="o">=</span><span class="n">new</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>· T 为类型，可以是结构体、整型、字符串等</p>
 <p>· ins： T类型被实例化后保存到ins变量中，ins的类型为*T，属于指针。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 type Player struct {
     Name        string

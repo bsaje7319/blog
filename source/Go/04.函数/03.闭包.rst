@@ -19,7 +19,7 @@
 
 闭包对它作用域上部变量的引用可以进行修改，修改引用变量就会对变量进行实际修改。
 
-::
+.. code:: go
 
    package main
 
@@ -44,7 +44,7 @@
 示例：闭包的记忆效应
 --------------------
 
-::
+.. code:: go
 
    package main
 
@@ -85,7 +85,7 @@
 
 下面展示一个创建玩家生成器的过程：
 
-::
+.. code:: go
 
    package main
 
@@ -117,5 +117,116 @@
    /*
    high noon 150
     */
+
+示例
+----
+
+.. code:: go
+
+   package main
+
+   import "fmt"
+
+   func a() func() int {
+       i := 0
+       b := func() int{
+           i++
+           fmt.Println(i)
+           return i
+       }
+       return b
+   }
+   func main() {
+       c:=a()
+       c() //1
+       c() //2
+       c() //3
+   }
+
+延迟求值的示例
+--------------
+
+.. code:: go
+
+   package main
+
+   import "fmt"
+
+   func add(base int) func(int) int {
+       return func(i int) int {
+           base +=i
+           return base
+       }
+   }
+   func main() {
+       name1 := add(10)
+       fmt.Println(name1(10),name1(20))    //20 40
+
+       name2 :=add(30)
+       fmt.Println(name2(1),name2(2))      //31 33
+
+   }
+
+返回2个闭包的示例
+-----------------
+
+.. code:: go
+
+   package main
+
+   import "fmt"
+
+   func test01(base int) (func(int) int, func(int) int) {
+       // 定义2个函数，并返回
+       // 相加
+       add := func(i int) int {
+           base += i
+           return base
+       }
+
+       //相减
+       base2 :=base        // 使用初始值去减，防止出现累加后再减
+       sub := func(i int) int {
+           base2 -= i
+           return base2
+       }
+       // 返回两个函数
+       return add, sub
+
+   }
+   func main() {
+       f1, f2 := test01(10)
+       add_1 := f1(12)
+       sub_1 := f2(9)
+       fmt.Printf("add：%d -------  sub: %d", add_1, sub_1)
+
+   }
+
+递归函数
+--------
+
+数字阶乘
+
+.. code:: go
+
+   package main
+
+   import "fmt"
+
+   //数字阶乘
+
+   func digui(i int) int {
+       // 如果小于1了就返回1
+       if i <= 1 {
+           return 1
+       }
+       // 否则不断的进行递归相乘
+       return i * digui(i-1)
+   }
+
+   func main() {
+       var i int = 5
+       fmt.Printf("%d ----- %d", i, digui(i))      //5 ----- 120
+   }
 
 .. |image0| image:: ../../_static/go_bibao01.png

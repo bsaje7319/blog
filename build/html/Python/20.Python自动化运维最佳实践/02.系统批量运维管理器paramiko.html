@@ -123,13 +123,17 @@
 <li class="toctree-l3"><a class="reference internal" href="01.系统基础信息模块详解.html">18.1. 系统基础信息模块详解</a></li>
 <li class="toctree-l3"><a class="reference internal" href="01.系统批量运维管理器pexpect.html">18.2. 系统批量运维管理器pexpect</a></li>
 <li class="toctree-l3"><a class="reference internal" href="02.业务服务监控详解.html">18.3. 业务服务监控详解</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">18.4. 系统批量运维管理器paramiko</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">18.4. 系统批量运维管理器paramiko</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python">18.4.1. 使用 Python 远程登陆服务器的最佳实践</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="03.批量运维管理器Fabric.html">18.5. 批量运维管理器Fabric</a></li>
 <li class="toctree-l3"><a class="reference internal" href="04.Ansible入门与playbook实战.html">18.6. Ansible入门与playbook实战</a></li>
 <li class="toctree-l3"><a class="reference internal" href="05.Saltstack安装使用入门.html">18.7. Saltstack安装使用入门（自己总结）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="06.业务服务监控详解.html">18.8. 业务服务监控详解</a></li>
 <li class="toctree-l3"><a class="reference internal" href="07.Supervisor在Devops工作中的应用.html">18.9. Supervisor在Devops工作中的应用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="08.网页自动化开发.html">18.10. 网页自动化开发</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.Conda创建python虚拟环境.html">18.11. Conda创建python虚拟环境</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
@@ -216,11 +220,17 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#paramiko" id="id1">系统批量运维管理器paramiko</a></li>
+<li><a class="reference internal" href="#paramiko" id="id1">系统批量运维管理器paramiko</a><ul>
+<li><a class="reference internal" href="#python" id="id2">使用 Python 远程登陆服务器的最佳实践</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="paramiko">
 <h1><a class="toc-backref" href="#id1">18.4. 系统批量运维管理器paramiko</a><a class="headerlink" href="#paramiko" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="python">
+<h2><a class="toc-backref" href="#id2">18.4.1. 使用 Python 远程登陆服务器的最佳实践</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://juejin.im/post/6844904078057668615">https://juejin.im/post/6844904078057668615</a></p>
 <p>pip安装</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">paramiko</span>
 <span class="n">easy_install</span> <span class="n">paramiko</span>
@@ -739,6 +749,7 @@
     <span class="c1"># 从本地上传文件到远程</span>
     <span class="n">hu</span><span class="o">.</span><span class="n">scp_put</span><span class="p">(</span><span class="s2">&quot;/home/aaa&quot;</span><span class="p">,</span> <span class="s2">&quot;/home/&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 

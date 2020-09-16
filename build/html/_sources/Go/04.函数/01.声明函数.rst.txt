@@ -239,6 +239,92 @@ Go语言中函数调用格式如下：
        f() // 调用函数
    }
 
+5. 函数参数
+~~~~~~~~~~~
+
+.. code:: go
+
+   package main
+
+   import "fmt"
+
+   /*//值传递
+   func swap(x,y int) int {
+       //TODO1
+   }*/
+
+   // 引用传递
+   func swap(x, y *int) {
+       var temp int
+
+       temp = *x // 保存x的值
+       *x = *y   // 将y的值赋值给x
+       *y = temp //将temp的值赋值给y
+   }
+
+   func main() {
+       var x, y int = 5, 6
+       swap(&x, &y)
+       fmt.Println(x,y)
+   }
+
+6.函数返回值
+~~~~~~~~~~~~
+
+.. code:: go
+
+   package main
+
+   func add(a, b int) (c int) {
+       c = a + b
+       return c
+   }
+
+   func calc(a, b int) (sum int, avg int) {
+       sum = a + b
+       avg = (a + b) / 2
+       return sum, avg
+   }
+
+   func main() {
+       println(add(1, 10))
+       a1, a2 := calc(10, 20)
+       println(a1, a2)
+   }
+
+.. code:: go
+
+       a4,_ :=calc(20,30)  //使用_忽略掉不用的返回值
+       println(a4)
+
+7.多返回值可直接作为其他函数调用实参
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: go
+
+   package main
+
+   func test() (x, y int) {
+       return 1, 2
+   }
+
+   func add(x, y int) int {
+       return x + y
+   }
+
+   func calc(s ...int) int {
+       var n int
+       for _, i2 := range s {
+           n +=i2
+       }
+       return n
+   }
+
+   func main() {
+       println(add(test()))        //3
+       println(calc(test()))       //3
+   }
+
 递归与回调
 ~~~~~~~~~~
 

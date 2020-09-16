@@ -8,7 +8,7 @@
 接口被实现的条件一：接口的方法与实现接口的类型方法格式一致
 ----------------------------------------------------------
 
-::
+.. code:: go
 
    package main
 
@@ -49,7 +49,7 @@
 
 当一个接口中有多个方法时，只有这些方法都被实现了，接口才能被正确编译并使用。
 
-::
+.. code:: go
 
    // 定义一个数据写入器
    type DataWriter1 interface {
@@ -62,3 +62,41 @@
 新增了CanWrite()方法，返回bool，此时编译就会报错.
 
 注意：接口中的方法必须要全部实现，才能实现接口。
+
+一个接口的示例
+--------------
+
+.. code:: go
+
+   package main
+
+   import "fmt"
+
+   type People interface {
+       Speak(string) string
+   }
+
+   type Student struct {}
+
+   func (stu *Student) Speak(think string) (talk string) {
+       if think == "sb" {
+           talk = "你是个大帅比"
+       }else{
+           talk = "您好"
+       }
+       return talk
+   }
+
+   func main() {
+       // 实例化一个结构体
+       p :=new(Student)
+       // 声明接口
+       var p1 People
+       //把接口赋值给结构体p
+       p1 = p
+       think := "bitch"
+       fmt.Println(p1.Speak(think))    //您好
+
+       think1 :="sb"
+       fmt.Println(p1.Speak(think1))   //你是个大帅比
+   }

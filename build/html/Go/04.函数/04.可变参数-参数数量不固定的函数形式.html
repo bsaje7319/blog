@@ -244,13 +244,33 @@ v为可变参数变量，类型为[]T,也就是拥有多个T元素的T类型切�
 </pre></div>
 </div>
 <p>fmt.Printf()函数在调用时，第一个函数始终必须传入字符串，对应的参数是format，后面的参数数量可以变化。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;value %v </span><span class="si">%f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">Pi</span><span class="p">)</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;value %v </span><span class="si">%f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">Pi</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>代码示例</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">add_info</span><span class="p">(</span><span class="n">s</span> <span class="n">string</span><span class="p">,</span> <span class="n">n</span> <span class="o">...</span><span class="n">int</span><span class="p">)</span> <span class="n">string</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">x</span> <span class="nb">int</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">i2</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="n">n</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="n">i2</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span><span class="n">println</span><span class="p">(</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;sum: </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">//</span><span class="nb">sum</span><span class="p">:</span> <span class="mi">6</span>
+    <span class="n">s</span> <span class="p">:</span><span class="o">=</span> <span class="p">[]</span><span class="nb">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;sum: </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">...</span><span class="p">))</span>      <span class="o">//</span><span class="nb">sum</span><span class="p">:</span> <span class="mi">15</span>           <span class="o">//</span><span class="n">s</span><span class="o">...</span><span class="n">展开s</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id8">4.4.3. 遍历可变参数，获得每个参数的值</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import (
     &quot;bytes&quot;
@@ -287,7 +307,7 @@ one two three four five
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id9">4.4.4. 获得可变参数的类型–获得每一个参数的类型</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;bytes&quot;</span>
@@ -341,7 +361,7 @@ one two three four five
 <h2><a class="toc-backref" href="#id10">4.4.5. 在多个可变参数函数中传递参数</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>可变参数变量是一个包含所有参数的切片，如果要在多个可变参数中传递参数，可以在传递时在可变参数变量中默认添加“…”,
 将切片中的元素进行传递，而不是传递可变参数变量本身。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
