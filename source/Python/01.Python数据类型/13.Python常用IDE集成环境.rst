@@ -109,6 +109,13 @@ Python常用IDE集成环境
    · pip 能够处理二进制格式(.whl);
    · pip是先下载后安装，如果安装失败，也会清理干净，不会留下一个中间状态。
 
+**Python软件包管理工具pip实战篇**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+参考文献：
+
+https://www.cnblogs.com/yinzhengjie/p/13696906.html
+
 Python开发之Python离线安装项目所需所有pip包
 -------------------------------------------
 
@@ -319,22 +326,17 @@ https://shazhenyu.blog.csdn.net/article/details/84943889
 
    建议百度云下载，因为Anacoda官网是国外地址，下载较慢
 
+**Python软件包及环境管理器conda实战篇**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+https://www.cnblogs.com/yinzhengjie/p/13659317.html
+
 使用较多的IDE
 -------------
 
 ::
 
    IDLE是IDE中的一种，也是最简单、最基础的一种IDE。当然了，IDE中有很多种IDLE，例如Visual Studio（VS）、PyCharm、Xcode、Spyder、Jupyter Notebook等
-
-| ​
-| ​
-| ​
-| ​
-| ​
-| ​
-| ​
-| ​
-| ​
 
 .. |image0| image:: ../../_static/jupyter-python.png
 .. |image1| image:: ../../_static/Ancona00001.png

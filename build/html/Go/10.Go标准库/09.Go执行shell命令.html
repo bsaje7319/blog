@@ -46,7 +46,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="11. 项目代码" href="../11.项目代码/index.html" />
+    <link rel="next" title="10.10. flag接收命令行参数" href="10.flag接收命令行参数.html" />
     <link rel="prev" title="10.8. Go语言常用资料及工具详细汇总" href="08.Go语言常用资料及工具详细汇总.html" /> 
 </head>
 
@@ -119,7 +119,16 @@
 <li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html">10.6. Go语言操作MySQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html">10.7. Json序列化和反序列化</a></li>
 <li class="toctree-l3"><a class="reference internal" href="08.Go语言常用资料及工具详细汇总.html">10.8. Go语言常用资料及工具详细汇总</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">10.9. Go执行shell命令</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.9. Go执行shell命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">10.9.1. 执行单个命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">10.9.2. 执行多个命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">10.9.3. 实现两条命令的管道功能</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="10.flag接收命令行参数.html">10.10. flag接收命令行参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.strings.html">10.11. strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.OS.html">10.12. os</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.log.html">10.13. Log</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
@@ -199,11 +208,18 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#goshell" id="id1">Go执行shell命令</a></li>
+<li><a class="reference internal" href="#goshell" id="id4">Go执行shell命令</a><ul>
+<li><a class="reference internal" href="#id1" id="id5">执行单个命令</a></li>
+<li><a class="reference internal" href="#id2" id="id6">执行多个命令</a></li>
+<li><a class="reference internal" href="#id3" id="id7">实现两条命令的管道功能</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="goshell">
-<h1><a class="toc-backref" href="#id1">10.9. Go执行shell命令</a><a class="headerlink" href="#goshell" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id4">10.9. Go执行shell命令</a><a class="headerlink" href="#goshell" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id5">10.9.1. 执行单个命令</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>go执行shell示例1：</p>
 <div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
@@ -222,6 +238,9 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id6">10.9.2. 执行多个命令</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>go执行shell示例2：</p>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
@@ -264,6 +283,366 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>示例3</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s2">&quot;bufio&quot;</span>
+    <span class="s2">&quot;fmt&quot;</span>
+    <span class="s2">&quot;os/exec&quot;</span>
+<span class="p">)</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cmd0</span> <span class="p">:</span><span class="o">=</span> <span class="n">exec</span><span class="o">.</span><span class="n">Command</span><span class="p">(</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span><span class="s2">&quot;-n&quot;</span><span class="p">,</span><span class="s2">&quot;My first command comes form golang&quot;</span><span class="p">)</span>
+
+    <span class="n">stdout0</span><span class="p">,</span><span class="n">error</span> <span class="p">:</span><span class="o">=</span> <span class="n">cmd0</span><span class="o">.</span><span class="n">StdoutPipe</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">error</span> <span class="o">!=</span> <span class="n">nil</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Error: Could&#39;t obtain the stdout pipe for command NO.0: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="p">:</span><span class="o">=</span> <span class="n">cmd0</span><span class="o">.</span><span class="n">Start</span><span class="p">();</span><span class="n">err</span> <span class="o">!=</span><span class="n">nil</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Error : the command No.0 can not be startup: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="o">//</span><span class="n">output0</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">([]</span><span class="n">byte</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+    <span class="o">//</span><span class="n">n</span><span class="p">,</span><span class="n">err1</span> <span class="p">:</span><span class="o">=</span> <span class="n">stdout0</span><span class="o">.</span><span class="n">Read</span><span class="p">(</span><span class="n">output0</span><span class="p">)</span>
+    <span class="o">//</span><span class="k">if</span> <span class="n">err1</span> <span class="o">!=</span> <span class="n">nil</span> <span class="p">{</span>
+    <span class="o">//</span>  <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Error: Cloud&#39;t read data form the pipe: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">err1</span><span class="p">)</span>
+    <span class="o">//</span>  <span class="k">return</span>
+    <span class="o">//</span><span class="p">}</span>
+    <span class="o">//</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">output0</span><span class="p">[:</span><span class="n">n</span><span class="p">])</span>
+
+    <span class="n">outputBuf0</span> <span class="p">:</span><span class="o">=</span> <span class="n">bufio</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="n">stdout0</span><span class="p">)</span>
+    <span class="n">output0</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">err</span> <span class="p">:</span><span class="o">=</span> <span class="n">outputBuf0</span><span class="o">.</span><span class="n">ReadLine</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="n">nil</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Error: Cloudn&#39;t read data from the pipe: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">string</span><span class="p">(</span><span class="n">output0</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id7">10.9.3. 实现两条命令的管道功能</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>实现shell命令<code class="docutils literal notranslate"><span class="pre">ps</span> <span class="pre">aux|grep</span> <span class="pre">sshd</span></code></p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+
+import (
+    &quot;bytes&quot;
+    &quot;fmt&quot;
+    &quot;os/exec&quot;
+)
+
+func main() {
+    cmd1 := exec.Command(&quot;ps aux&quot;)
+    cmd2 := exec.Command(&quot;grep sshd&quot;)
+
+    // 设置cmd1的stdout字段，然后启动cmd1,并等待它运行完毕
+    var outputBuf1 bytes.Buffer
+    cmd1.Stdout = &amp;outputBuf1
+    if err := cmd1.Start(); err != nil {
+        fmt.Printf(&quot;Error: The first command can not be startup %s\n&quot;, err)
+        return
+    }
+    if err := cmd1.Wait(); err != nil {
+        fmt.Printf(&quot;Error: Couldn&#39;t wait for the first command:%s\n&quot;, err)
+        return
+    }
+    // 设置cmd2的stdin和stdout字段，然后启动cmd2,并等待它运行完毕
+    cmd2.Stdin = &amp;outputBuf1
+    var outputBuf2 bytes.Buffer
+    cmd2.Stdout = &amp;outputBuf2
+    if err := cmd2.Start(); err != nil {
+        fmt.Printf(&quot;Error: The Second command can not be startup %s\n&quot;, err)
+        return
+    }
+    if err := cmd2.Wait(); err != nil {
+        fmt.Printf(&quot;Error: Couldn&#39;t wait for the Second command:%s\n&quot;, err)
+        return
+    }
+    fmt.Printf(&quot;%s\n&quot;,outputBuf2.Bytes())
+
+    // 模拟出ps aux|grep sshd
+}
+</pre></div>
+</div>
+<p>封装为函数</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+
+import (
+    &quot;bufio&quot;
+    &quot;bytes&quot;
+    &quot;fmt&quot;
+    &quot;io&quot;
+    &quot;os/exec&quot;
+)
+
+func main() {
+    runCmd()
+    fmt.Println()
+    runCmdWithPipe()
+}
+
+func runCmdWithPipe() {
+    fmt.Println(&quot;Run command `ps aux | grep apipe`: &quot;)
+    cmd1 := exec.Command(&quot;ps&quot;, &quot;aux&quot;)
+    cmd2 := exec.Command(&quot;grep&quot;, &quot;apipe&quot;)
+    var outputBuf1 bytes.Buffer
+    cmd1.Stdout = &amp;outputBuf1
+    if err := cmd1.Start(); err != nil {
+        fmt.Printf(&quot;Error: The first command can not be startup %s\n&quot;, err)
+        return
+    }
+    if err := cmd1.Wait(); err != nil {
+        fmt.Printf(&quot;Error: Couldn&#39;t wait for the first command: %s\n&quot;, err)
+        return
+    }
+    cmd2.Stdin = &amp;outputBuf1
+    var outputBuf2 bytes.Buffer
+    cmd2.Stdout = &amp;outputBuf2
+    if err := cmd2.Start(); err != nil {
+        fmt.Printf(&quot;Error: The second command can not be startup: %s\n&quot;, err)
+        return
+    }
+    if err := cmd2.Wait(); err != nil {
+        fmt.Printf(&quot;Error: Couldn&#39;t wait for the second command: %s\n&quot;, err)
+        return
+    }
+    fmt.Printf(&quot;%s\n&quot;, outputBuf2.Bytes())
+}
+
+func runCmd() {
+    useBufferedIO := false
+    fmt.Println(&quot;Run command `echo -n \&quot;My first command comes from golang.\&quot;`: &quot;)
+    cmd0 := exec.Command(&quot;echo&quot;, &quot;-n&quot;, &quot;My first command comes from golang.&quot;)
+    stdout0, err := cmd0.StdoutPipe()
+    if err != nil {
+        fmt.Printf(&quot;Error: Couldn&#39;t obtain the stdout pipe for command No.0: %s\n&quot;, err)
+        return
+    }
+    if err := cmd0.Start(); err != nil {
+        fmt.Printf(&quot;Error: The command No.0 can not be startup: %s\n&quot;, err)
+        return
+    }
+    if !useBufferedIO {
+        var outputBuf0 bytes.Buffer
+        for {
+            tempOutput := make([]byte, 5)
+            n, err := stdout0.Read(tempOutput)
+            if err != nil {
+                if err == io.EOF {
+                    break
+                } else {
+                    fmt.Printf(&quot;Error: Couldn&#39;t read data from the pipe: %s\n&quot;, err)
+                    return
+                }
+            }
+            if n &gt; 0 {
+                outputBuf0.Write(tempOutput[:n])
+            }
+        }
+        fmt.Printf(&quot;%s\n&quot;, outputBuf0.String())
+    } else {
+        outputBuf0 := bufio.NewReader(stdout0)
+        output0, _, err := outputBuf0.ReadLine()
+        if err != nil {
+            fmt.Printf(&quot;Error: Couldn&#39;t read data from the pipe: %s\n&quot;, err)
+            return
+        }
+        fmt.Printf(&quot;%s\n&quot;, string(output0))
+    }
+}
+</pre></div>
+</div>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+
+import (
+    &quot;bytes&quot;
+    &quot;errors&quot;
+    &quot;fmt&quot;
+    &quot;io&quot;
+    &quot;os&quot;
+    &quot;os/exec&quot;
+    &quot;os/signal&quot;
+    &quot;runtime/debug&quot;
+    &quot;strconv&quot;
+    &quot;strings&quot;
+    &quot;sync&quot;
+    &quot;syscall&quot;
+    &quot;time&quot;
+)
+
+func main() {
+    go func() {
+        time.Sleep(5 * time.Second)
+        sendSignal()
+    }()
+    handleSignal()
+}
+
+func handleSignal() {
+    sigRecv1 := make(chan os.Signal, 1)
+    sigs1 := []os.Signal{syscall.SIGINT, syscall.SIGQUIT}
+    fmt.Printf(&quot;Set notification for %s... [sigRecv1]\n&quot;, sigs1)
+    signal.Notify(sigRecv1, sigs1...)
+    sigRecv2 := make(chan os.Signal, 1)
+    sigs2 := []os.Signal{syscall.SIGQUIT}
+    fmt.Printf(&quot;Set notification for %s... [sigRecv2]\n&quot;, sigs2)
+    signal.Notify(sigRecv2, sigs2...)
+
+    var wg sync.WaitGroup
+    wg.Add(2)
+    go func() {
+        for sig := range sigRecv1 {
+            fmt.Printf(&quot;Received a signal from sigRecv1: %s\n&quot;, sig)
+        }
+        fmt.Printf(&quot;End. [sigRecv1]\n&quot;)
+        wg.Done()
+    }()
+    go func() {
+        for sig := range sigRecv2 {
+            fmt.Printf(&quot;Received a signal from sigRecv2: %s\n&quot;, sig)
+        }
+        fmt.Printf(&quot;End. [sigRecv2]\n&quot;)
+        wg.Done()
+    }()
+
+    fmt.Println(&quot;Wait for 2 seconds... &quot;)
+    time.Sleep(2 * time.Second)
+    fmt.Printf(&quot;Stop notification...&quot;)
+    signal.Stop(sigRecv1)
+    close(sigRecv1)
+    fmt.Printf(&quot;done. [sigRecv1]\n&quot;)
+    wg.Wait()
+}
+
+func sendSignal() {
+    defer func() {
+        if err := recover(); err != nil {
+            fmt.Printf(&quot;Fatal Error: %s\n&quot;, err)
+            debug.PrintStack()
+        }
+    }()
+    // ps aux | grep &quot;signal&quot; | grep -v &quot;grep&quot; | grep -v &quot;go run&quot; | awk &#39;{print $2}&#39;
+    cmds := []*exec.Cmd{
+        exec.Command(&quot;ps&quot;, &quot;aux&quot;),
+        exec.Command(&quot;grep&quot;, &quot;signal&quot;),
+        exec.Command(&quot;grep&quot;, &quot;-v&quot;, &quot;grep&quot;),
+        exec.Command(&quot;grep&quot;, &quot;-v&quot;, &quot;go run&quot;),
+        exec.Command(&quot;awk&quot;, &quot;{print $2}&quot;),
+    }
+    output, err := runCmds(cmds)
+    if err != nil {
+        fmt.Printf(&quot;Command Execution Error: %s\n&quot;, err)
+        return
+    }
+    pids, err := getPids(output)
+    if err != nil {
+        fmt.Printf(&quot;PID Parsing Error: %s\n&quot;, err)
+        return
+    }
+    fmt.Printf(&quot;Target PID(s):\n%v\n&quot;, pids)
+    for _, pid := range pids {
+        proc, err := os.FindProcess(pid)
+        if err != nil {
+            fmt.Printf(&quot;Process Finding Error: %s\n&quot;, err)
+            return
+        }
+        sig := syscall.SIGQUIT
+        fmt.Printf(&quot;Send signal &#39;%s&#39; to the process (pid=%d)...\n&quot;, sig, pid)
+        err = proc.Signal(sig)
+        if err != nil {
+            fmt.Printf(&quot;Signal Sending Error: %s\n&quot;, err)
+            return
+        }
+    }
+}
+
+func getPids(strs []string) ([]int, error) {
+    var pids []int
+    for _, str := range strs {
+        pid, err := strconv.Atoi(strings.TrimSpace(str))
+        if err != nil {
+            return nil, err
+        }
+        pids = append(pids, pid)
+    }
+    return pids, nil
+}
+
+// 返回进程ID列表
+func runCmds(cmds []*exec.Cmd) ([]string, error) {
+    if cmds == nil || len(cmds) == 0 {
+        return nil, errors.New(&quot;The cmd slice is invalid!&quot;)
+    }
+    first := true
+    var output []byte
+    var err error
+    for _, cmd := range cmds {
+        fmt.Printf(&quot;Run command: %v\n&quot;, getCmdPlaintext(cmd))
+        if !first {
+            var stdinBuf bytes.Buffer
+            stdinBuf.Write(output)
+            cmd.Stdin = &amp;stdinBuf
+        }
+        var stdoutBuf bytes.Buffer
+        cmd.Stdout = &amp;stdoutBuf
+        if err = cmd.Start(); err != nil {
+            return nil, getError(err, cmd)
+        }
+        if err = cmd.Wait(); err != nil {
+            return nil, getError(err, cmd)
+        }
+        output = stdoutBuf.Bytes()
+        //fmt.Printf(&quot;Output:\n%s\n&quot;, string(output))
+        if first {
+            first = false
+        }
+    }
+    var lines []string
+    var outputBuf bytes.Buffer
+    outputBuf.Write(output)
+    for {
+        line, err := outputBuf.ReadBytes(&#39;\n&#39;)
+        if err != nil {
+            if err == io.EOF {
+                break
+            } else {
+                return nil, getError(err, nil)
+            }
+        }
+        lines = append(lines, string(line))
+    }
+    return lines, nil
+}
+
+func getCmdPlaintext(cmd *exec.Cmd) string {
+    var buf bytes.Buffer
+    buf.WriteString(cmd.Path)
+    for _, arg := range cmd.Args[1:] {
+        buf.WriteRune(&#39; &#39;)
+        buf.WriteString(arg)
+    }
+    return buf.String()
+}
+
+func getError(err error, cmd *exec.Cmd, extraInfo ...string) error {
+    var errMsg string
+    if cmd != nil {
+        errMsg = fmt.Sprintf(&quot;%s  [%s %v]&quot;, err, (*cmd).Path, (*cmd).Args)
+    } else {
+        errMsg = fmt.Sprintf(&quot;%s&quot;, err)
+    }
+    if len(extraInfo) &gt; 0 {
+        errMsg = fmt.Sprintf(&quot;%s (%v)&quot;, errMsg, extraInfo)
+    }
+    return errors.New(errMsg)
+}
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -274,7 +653,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../11.项目代码/index.html" class="btn btn-neutral float-right" title="11. 项目代码" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="10.flag接收命令行参数.html" class="btn btn-neutral float-right" title="10.10. flag接收命令行参数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="08.Go语言常用资料及工具详细汇总.html" class="btn btn-neutral float-left" title="10.8. Go语言常用资料及工具详细汇总" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

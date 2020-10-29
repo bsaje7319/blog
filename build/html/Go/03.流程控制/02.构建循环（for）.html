@@ -106,11 +106,12 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">3. 流程控制</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01.条件判断if.html">3.1. 条件判断if</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">3.2. 02.构建循环（for）</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">3.2.1. for中的初始语句-开始循环时执行的语句</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">3.2.2. for中的条件表达式-控制是否循环的开关</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#for-range">3.2.3. 键值循环（for range）-直接获得对象的索引和数据</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#range">3.2.4. “range”语句中更新引用元素的值</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">3.2.5. for循环的常见写法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">3.2.1. for常用遍历方式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">3.2.2. for中的初始语句-开始循环时执行的语句</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">3.2.3. for中的条件表达式-控制是否循环的开关</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-range">3.2.4. 键值循环（for range）-直接获得对象的索引和数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#range">3.2.5. “range”语句中更新引用元素的值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">3.2.6. for循环的常见写法</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="03.分支选择(switch)-拥有多个条件分支的判断.html">3.3. 03.分支选择(switch)-拥有多个条件分支的判断</a></li>
@@ -202,32 +203,48 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#for" id="id10">02.构建循环（for）</a><ul>
-<li><a class="reference internal" href="#id1" id="id11">for中的初始语句-开始循环时执行的语句</a></li>
-<li><a class="reference internal" href="#id2" id="id12">for中的条件表达式-控制是否循环的开关</a><ul>
-<li><a class="reference internal" href="#id3" id="id13">1.结束循环时带可执行语句的无限循环</a></li>
-<li><a class="reference internal" href="#id4" id="id14">2.无限循环</a></li>
-<li><a class="reference internal" href="#id5" id="id15">3.for中的结束语句</a></li>
+<li><a class="reference internal" href="#for" id="id11">02.构建循环（for）</a><ul>
+<li><a class="reference internal" href="#id1" id="id12">for常用遍历方式</a></li>
+<li><a class="reference internal" href="#id2" id="id13">for中的初始语句-开始循环时执行的语句</a></li>
+<li><a class="reference internal" href="#id3" id="id14">for中的条件表达式-控制是否循环的开关</a><ul>
+<li><a class="reference internal" href="#id4" id="id15">1.结束循环时带可执行语句的无限循环</a></li>
+<li><a class="reference internal" href="#id5" id="id16">2.无限循环</a></li>
+<li><a class="reference internal" href="#id6" id="id17">3.for中的结束语句</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#for-range" id="id16">键值循环（for range）-直接获得对象的索引和数据</a><ul>
-<li><a class="reference internal" href="#id6" id="id17">遍历数组、切片 - 获得索引和元素</a></li>
-<li><a class="reference internal" href="#id7" id="id18">遍历字符串-获得字符</a></li>
-<li><a class="reference internal" href="#map-map" id="id19">遍历map-获得map的键和值</a></li>
-<li><a class="reference internal" href="#channel" id="id20">遍历通道（channel） - 接收通道数据</a></li>
-<li><a class="reference internal" href="#id8" id="id21">在遍历中选择希望获得的变量</a></li>
+<li><a class="reference internal" href="#for-range" id="id18">键值循环（for range）-直接获得对象的索引和数据</a><ul>
+<li><a class="reference internal" href="#id7" id="id19">遍历数组、切片 - 获得索引和元素</a></li>
+<li><a class="reference internal" href="#id8" id="id20">遍历字符串-获得字符</a></li>
+<li><a class="reference internal" href="#map-map" id="id21">遍历map-获得map的键和值</a></li>
+<li><a class="reference internal" href="#channel" id="id22">遍历通道（channel） - 接收通道数据</a></li>
+<li><a class="reference internal" href="#id9" id="id23">在遍历中选择希望获得的变量</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#range" id="id22">“range”语句中更新引用元素的值</a></li>
-<li><a class="reference internal" href="#id9" id="id23">for循环的常见写法</a></li>
+<li><a class="reference internal" href="#range" id="id24">“range”语句中更新引用元素的值</a></li>
+<li><a class="reference internal" href="#id10" id="id25">for循环的常见写法</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="for">
-<h1><a class="toc-backref" href="#id10">3.2. 02.构建循环（for）</a><a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id11">3.2. 02.构建循环（for）</a><a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2><a class="toc-backref" href="#id11">3.2.1. for中的初始语句-开始循环时执行的语句</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">3.2.1. for常用遍历方式</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>我们可以用for循环来迭代数组。下面常见的几种方式都可以用来遍历数组：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="n">a</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;a[</span><span class="si">%d</span><span class="s2">]: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="n">b</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;b[</span><span class="si">%d</span><span class="s2">]: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="p">:</span><span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;c[</span><span class="si">%d</span><span class="s2">]: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id13">3.2.2. for中的初始语句-开始循环时执行的语句</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
@@ -244,10 +261,10 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h2><a class="toc-backref" href="#id12">3.2.2. for中的条件表达式-控制是否循环的开关</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3><a class="toc-backref" href="#id13">1.结束循环时带可执行语句的无限循环</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id14">3.2.3. for中的条件表达式-控制是否循环的开关</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id15">1.结束循环时带可执行语句的无限循环</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
@@ -265,8 +282,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h3><a class="toc-backref" href="#id14">2.无限循环</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id16">2.无限循环</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
@@ -310,8 +327,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h3><a class="toc-backref" href="#id15">3.for中的结束语句</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id17">3.for中的结束语句</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>在结束每次循环前执行的语句，如果循环被break、goto、return、panic等语句强制退出，结束语句不会被执行。</p>
 <p>打印一个99乘法表</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
@@ -342,9 +359,9 @@
 </div>
 </div>
 <div class="section" id="for-range">
-<h2><a class="toc-backref" href="#id16">3.2.3. 键值循环（for range）-直接获得对象的索引和数据</a><a class="headerlink" href="#for-range" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id6">
-<h3><a class="toc-backref" href="#id17">遍历数组、切片 - 获得索引和元素</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id18">3.2.4. 键值循环（for range）-直接获得对象的索引和数据</a><a class="headerlink" href="#for-range" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id19">遍历数组、切片 - 获得索引和元素</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>在遍历代码中，key和value分别代表切片的下标及下标对应的值。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
@@ -365,8 +382,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id7">
-<h3><a class="toc-backref" href="#id18">遍历字符串-获得字符</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id20">遍历字符串-获得字符</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
@@ -389,7 +406,7 @@
 </div>
 </div>
 <div class="section" id="map-map">
-<h3><a class="toc-backref" href="#id19">遍历map-获得map的键和值</a><a class="headerlink" href="#map-map" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id21">遍历map-获得map的键和值</a><a class="headerlink" href="#map-map" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
@@ -411,7 +428,7 @@
 </div>
 </div>
 <div class="section" id="channel">
-<h3><a class="toc-backref" href="#id20">遍历通道（channel） - 接收通道数据</a><a class="headerlink" href="#channel" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id22">遍历通道（channel） - 接收通道数据</a><a class="headerlink" href="#channel" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
@@ -435,8 +452,8 @@ func main() {
 </pre></div>
 </div>
 </div>
-<div class="section" id="id8">
-<h3><a class="toc-backref" href="#id21">在遍历中选择希望获得的变量</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id23">在遍历中选择希望获得的变量</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>在使用for
 range循环遍历某个对象时，一般不会同时需要key或者value，这个时候可以采用一些技巧。
 让代码变得简单。</p>
@@ -475,7 +492,7 @@ range循环遍历某个对象时，一般不会同时需要key或者value，这�
 </div>
 </div>
 <div class="section" id="range">
-<h2><a class="toc-backref" href="#id22">3.2.4. “range”语句中更新引用元素的值</a><a class="headerlink" href="#range" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id24">3.2.5. “range”语句中更新引用元素的值</a><a class="headerlink" href="#range" title="Permalink to this headline">¶</a></h2>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
@@ -502,8 +519,8 @@ func main() {
 </pre></div>
 </div>
 </div>
-<div class="section" id="id9">
-<h2><a class="toc-backref" href="#id23">3.2.5. for循环的常见写法</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id25">3.2.6. for循环的常见写法</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>

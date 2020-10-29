@@ -274,11 +274,12 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Go/03.流程控制/02.构建循环（for）.html">3.2. 02.构建循环（for）</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Go/03.流程控制/02.构建循环（for）.html#id1">3.2.1. for中的初始语句-开始循环时执行的语句</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Go/03.流程控制/02.构建循环（for）.html#id2">3.2.2. for中的条件表达式-控制是否循环的开关</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Go/03.流程控制/02.构建循环（for）.html#for-range">3.2.3. 键值循环（for range）-直接获得对象的索引和数据</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Go/03.流程控制/02.构建循环（for）.html#range">3.2.4. “range”语句中更新引用元素的值</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Go/03.流程控制/02.构建循环（for）.html#id9">3.2.5. for循环的常见写法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/03.流程控制/02.构建循环（for）.html#id1">3.2.1. for常用遍历方式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/03.流程控制/02.构建循环（for）.html#id2">3.2.2. for中的初始语句-开始循环时执行的语句</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/03.流程控制/02.构建循环（for）.html#id3">3.2.3. for中的条件表达式-控制是否循环的开关</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/03.流程控制/02.构建循环（for）.html#for-range">3.2.4. 键值循环（for range）-直接获得对象的索引和数据</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/03.流程控制/02.构建循环（for）.html#range">3.2.5. “range”语句中更新引用元素的值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/03.流程控制/02.构建循环（for）.html#id10">3.2.6. for循环的常见写法</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Go/03.流程控制/03.分支选择(switch)-拥有多个条件分支的判断.html">3.3. 03.分支选择(switch)-拥有多个条件分支的判断</a><ul>
@@ -303,7 +304,9 @@
 <li class="toctree-l4"><a class="reference internal" href="Go/04.函数/02.匿名函数.html#id4">4.2.3. 2.匿名函数做回调函数</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Go/04.函数/02.匿名函数.html#id5">4.2.4. 3.使用匿名函数实现操作封装</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Go/04.函数/02.匿名函数.html#id6">4.2.5. 4.函数类型实现接口-把函数作为接口来调用</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Go/04.函数/02.匿名函数.html#golang">4.2.6. Golang匿名函数更多用法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/04.函数/02.匿名函数.html#id8">4.2.6. 总结匿名函数的用法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/04.函数/02.匿名函数.html#golang">4.2.7. Golang匿名函数更多用法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/04.函数/02.匿名函数.html#id10">4.2.8. 函数是一等公民</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Go/04.函数/03.闭包.html">4.3. 闭包</a><ul>
@@ -344,6 +347,11 @@
 <li class="toctree-l3"><a class="reference internal" href="Go/04.函数/08.宕机恢复(recover)-防止程序崩溃.html">4.8. 08 宕机恢复(recover)-防止程序崩溃</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="Go/04.函数/08.宕机恢复(recover)-防止程序崩溃.html#id1">4.8.1. 让程序在崩溃时继续执行</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Go/04.函数/08.宕机恢复(recover)-防止程序崩溃.html#panicrecover">4.8.2. panic和recover的关系</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Go/04.函数/09.单元测试.html">4.9. 单元测试</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Go/04.函数/09.单元测试.html#id2">4.9.1. 执行单元测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/04.函数/09.单元测试.html#id3">4.9.2. 标记单元测试</a></li>
 </ul>
 </li>
 </ul>
@@ -583,10 +591,24 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Go/10.Go标准库/08.Go语言常用资料及工具详细汇总.html">10.8. Go语言常用资料及工具详细汇总</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Go/10.Go标准库/09.Go执行shell命令.html">10.9. Go执行shell命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Go/10.Go标准库/09.Go执行shell命令.html">10.9. Go执行shell命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Go/10.Go标准库/09.Go执行shell命令.html#id1">10.9.1. 执行单个命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/10.Go标准库/09.Go执行shell命令.html#id2">10.9.2. 执行多个命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/10.Go标准库/09.Go执行shell命令.html#id3">10.9.3. 实现两条命令的管道功能</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="Go/10.Go标准库/10.flag接收命令行参数.html">10.10. flag接收命令行参数</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="Go/10.Go标准库/10.flag接收命令行参数.html#id1">10.10.1. 示例1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Go/10.Go标准库/10.flag接收命令行参数.html#id2">10.10.2. 示例2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Go/10.Go标准库/11.strings.html">10.11. strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Go/10.Go标准库/12.OS.html">10.12. os</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Go/10.Go标准库/13.log.html">10.13. Log</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Go/10.Go标准库/13.log.html#logger">10.13.1. 使用Logger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/10.Go标准库/13.log.html#id1">10.13.2. 配置logger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/10.Go标准库/13.log.html#id2">10.13.3. 配置日志前缀</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Go/10.Go标准库/13.log.html#id3">10.13.4. 配置日志输出位置</a></li>
 </ul>
 </li>
 </ul>
@@ -1105,7 +1127,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Python/09.Python文件操作/index.html">9. Python文件操作</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Python/09.Python文件操作/01.open()函数介绍.html">9.1. Open()函数介绍</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="Python/09.Python文件操作/01.open()函数介绍.html#id1">9.1.1. 语法</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/09.Python文件操作/01.open()函数介绍.html#id2">9.1.2. 打开文件的模</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/09.Python文件操作/01.open()函数介绍.html#id2">9.1.2. 打开文件的模式</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/09.Python文件操作/02.读写文件.html">9.2. 读写文件</a><ul>
@@ -1583,7 +1605,8 @@
 <li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/14.打包和发布.html#id4">14.14.6. 打包</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/14.打包和发布.html#python-entry-pointspython">14.14.7. Python编程：entry_points将Python模块转变为命令行工具</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/14.打包和发布.html#id5">14.14.8. 打包且成为命令行模式的示例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/14.打包和发布.html#id6">14.14.9. 小结</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/14.打包和发布.html#id6">14.14.9. 手把手带你发布自己的专属模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python/14.Python三方库/14.打包和发布.html#id10">14.14.10. 小结</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Python/14.Python三方库/15.Jinja2模板.html">14.15. Jinja2模板</a><ul>
@@ -1716,7 +1739,10 @@
 <li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/01.系统批量运维管理器pexpect.html#id1">18.2.1. pexpect应用示例</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/02.业务服务监控详解.html">18.3. 业务服务监控详解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/02.业务服务监控详解.html">18.3. 业务服务监控详解</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/02.业务服务监控详解.html#id2">18.3.1. 文件内容差异对比方法</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/02.系统批量运维管理器paramiko.html">18.4. 系统批量运维管理器paramiko</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="Python/20.Python自动化运维最佳实践/02.系统批量运维管理器paramiko.html#python">18.4.1. 使用 Python 远程登陆服务器的最佳实践</a></li>
 </ul>

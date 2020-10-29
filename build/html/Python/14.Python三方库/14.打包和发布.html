@@ -117,7 +117,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">14. Python 三方库学习</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01.psutil模块.html">14.1. psutil模块</a></li>
-<li class="toctree-l3"><a class="reference internal" href="02.paramiko（ssh秘钥执行命令).html">14.2. paramiko模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.paramiko(ssh秘钥执行命令).html">14.2. paramiko(ssh秘钥执行命令)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="03.IPy模块.html">14.3. IPy模块</a></li>
 <li class="toctree-l3"><a class="reference internal" href="04.dnspython模块.html">14.4. DNS处理模块dnspython</a></li>
 <li class="toctree-l3"><a class="reference internal" href="05.difflib文本比较模块.html">14.5. difflib文本比较模块</a></li>
@@ -138,7 +138,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#id4">14.14.6. 打包</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#python-entry-pointspython">14.14.7. Python编程：entry_points将Python模块转变为命令行工具</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">14.14.8. 打包且成为命令行模式的示例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">14.14.9. 小结</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">14.14.9. 手把手带你发布自己的专属模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">14.14.10. 小结</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="15.Jinja2模板.html">14.15. Jinja2模板</a></li>
@@ -233,37 +234,44 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id7">打包和发布</a><ul>
-<li><a class="reference internal" href="#zipapp" id="id8">zipapp模块</a></li>
-<li><a class="reference internal" href="#id2" id="id9">使用zipapp模块</a><ul>
-<li><a class="reference internal" href="#python" id="id10">生成可执行的Python档案包</a></li>
+<li><a class="reference internal" href="#id1" id="id11">打包和发布</a><ul>
+<li><a class="reference internal" href="#zipapp" id="id12">zipapp模块</a></li>
+<li><a class="reference internal" href="#id2" id="id13">使用zipapp模块</a><ul>
+<li><a class="reference internal" href="#python" id="id14">生成可执行的Python档案包</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id3" id="id11">创建独立应用</a></li>
-<li><a class="reference internal" href="#pythonpypiwhl" id="id12">将python包发布到PyPI和制作whl文件方式</a></li>
-<li><a class="reference internal" href="#setuptools" id="id13">Setuptools基础</a></li>
-<li><a class="reference internal" href="#id4" id="id14">打包</a></li>
-<li><a class="reference internal" href="#python-entry-pointspython" id="id15">Python编程：entry_points将Python模块转变为命令行工具</a></li>
-<li><a class="reference internal" href="#id5" id="id16">打包且成为命令行模式的示例</a></li>
-<li><a class="reference internal" href="#id6" id="id17">小结</a></li>
+<li><a class="reference internal" href="#id3" id="id15">创建独立应用</a></li>
+<li><a class="reference internal" href="#pythonpypiwhl" id="id16">将python包发布到PyPI和制作whl文件方式</a></li>
+<li><a class="reference internal" href="#setuptools" id="id17">Setuptools基础</a></li>
+<li><a class="reference internal" href="#id4" id="id18">打包</a></li>
+<li><a class="reference internal" href="#python-entry-pointspython" id="id19">Python编程：entry_points将Python模块转变为命令行工具</a></li>
+<li><a class="reference internal" href="#id5" id="id20">打包且成为命令行模式的示例</a></li>
+<li><a class="reference internal" href="#id6" id="id21">手把手带你发布自己的专属模块</a><ul>
+<li><a class="reference internal" href="#setup-py" id="id22">① 创建 setup.py</a></li>
+<li><a class="reference internal" href="#id7" id="id23">② 构建模块</a></li>
+<li><a class="reference internal" href="#id8" id="id24">③ 安装模块压缩包</a></li>
+<li><a class="reference internal" href="#id9" id="id25">④ 卸载模块</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10" id="id26">小结</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id7">14.14. 打包和发布</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id11">14.14. 打包和发布</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="zipapp">
-<h2><a class="toc-backref" href="#id8">14.14.1. zipapp模块</a><a class="headerlink" href="#zipapp" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">14.14.1. zipapp模块</a><a class="headerlink" href="#zipapp" title="Permalink to this headline">¶</a></h2>
 <p>zipapp模块可用于生成可执行的Python档案包，这个档案包会包含目录下所有的Python程序。
 如果使用pip工具先将Python程序所依赖的模块下载到目标目录下，
 那么就可以生成可独立运行的Python程序–只要目标及其上安装有Python解释器环境即可。</p>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id9">14.14.2. 使用zipapp模块</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">14.14.2. 使用zipapp模块</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>python提供一个zipapp模块，通过该模块可以将一个Python模块(可能包含很多个源程序)打包成一个Python应用。
 甚至发布成一个Windows的可执行程序。</p>
 <div class="section" id="python">
-<h3><a class="toc-backref" href="#id10">生成可执行的Python档案包</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id14">生成可执行的Python档案包</a><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">zipapp</span> <span class="n">source</span> <span class="p">[</span><span class="n">option</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -327,7 +335,7 @@ source参数值加.pyz后缀。
 </div>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id11">14.14.3. 创建独立应用</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">14.14.3. 创建独立应用</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>上面的方式打包得到的档案包只有当前项目的Python文件，如果Python应用还需要使用第三方模块和包，
 比如（连接Mysql的驱动），那么仅仅打包该应用的Python程序是不够的。</p>
 <p>需要执行如下两步操作： ·1. 将应用依赖模块和包下载到应用目录中。
@@ -388,14 +396,14 @@ Collecting mysql-connector-python
 <p>此时本机的python目录下不在包含mysql-connector-python模块，但dbapp.pyz程序依然可以正常运行–因为它自包含了<code class="docutils literal notranslate"><span class="pre">mysql-connector-python</span></code>模块。</p>
 </div>
 <div class="section" id="pythonpypiwhl">
-<h2><a class="toc-backref" href="#id12">14.14.4. 将python包发布到PyPI和制作whl文件方式</a><a class="headerlink" href="#pythonpypiwhl" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">14.14.4. 将python包发布到PyPI和制作whl文件方式</a><a class="headerlink" href="#pythonpypiwhl" title="Permalink to this headline">¶</a></h2>
 <p>参考文献</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">jb51</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">article</span><span class="o">/</span><span class="mf">177180.</span><span class="n">htm</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="setuptools">
-<h2><a class="toc-backref" href="#id13">14.14.5. Setuptools基础</a><a class="headerlink" href="#setuptools" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">14.14.5. Setuptools基础</a><a class="headerlink" href="#setuptools" title="Permalink to this headline">¶</a></h2>
 <p>Setuptools和较旧的Distutils都是用于发布Python包的工具包，让你能够使用Python轻松地编写安装脚本。这些脚本
 可用于生成可发布的归档文档，供用户用来编译和安装你编写的库。</p>
 <p><code class="docutils literal notranslate"><span class="pre">setuptools</span></code>是 Python Enterprise Application Kit(PEAK)的一个副项目,
@@ -500,7 +508,7 @@ Collecting mysql-connector-python
 </div>
 </div>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id14">14.14.6. 打包</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">14.14.6. 打包</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>编写让用户能够安装模块的脚本setup.py后，就可使用它来创建归档文件了。你还可使用它
 来创建Windows安装程序、RPM包、egg文件、wheel文件等（wheel将最终取代egg）。这里只介绍
 如何创建.tar.gz文件，你应该能够根据文档轻松地创建其他格式的文件。
@@ -524,7 +532,7 @@ Collecting mysql-connector-python
 </div>
 </div>
 <div class="section" id="python-entry-pointspython">
-<h2><a class="toc-backref" href="#id15">14.14.7. Python编程：entry_points将Python模块转变为命令行工具</a><a class="headerlink" href="#python-entry-pointspython" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id19">14.14.7. Python编程：entry_points将Python模块转变为命令行工具</a><a class="headerlink" href="#python-entry-pointspython" title="Permalink to this headline">¶</a></h2>
 <p>将模块变<code class="docutils literal notranslate"><span class="pre">“/usr/bin/”</span></code>目录下的命令行工具</p>
 <p>参考文献：</p>
 <p><a class="reference external" href="https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
@@ -557,7 +565,7 @@ Collecting mysql-connector-python
 </div>
 </div>
 <div class="section" id="id5">
-<h2><a class="toc-backref" href="#id16">14.14.8. 打包且成为命令行模式的示例</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">14.14.8. 打包且成为命令行模式的示例</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span>[root@keepalived-master python01]# tree
 .
 ├── pyHello
@@ -658,7 +666,110 @@ Collecting mysql-connector-python
 <p>使用entry_points的优点，就是可以让这些入口点能够被其他Python程序动态发现包所提供的功能，但是对应的代码的耦合度非常低。</p>
 </div>
 <div class="section" id="id6">
-<h2><a class="toc-backref" href="#id17">14.14.9. 小结</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">14.14.9. 手把手带你发布自己的专属模块</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>模块 -&gt; 压缩包 我们要将模块制作成压缩包，这里一共有 3 个步骤：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.创建 setup.py；
+2.构建模块；
+3.生成发布压缩包。
+</pre></div>
+</div>
+<div class="section" id="setup-py">
+<h3><a class="toc-backref" href="#id22">① 创建 setup.py</a><a class="headerlink" href="#setup-py" title="Permalink to this headline">¶</a></h3>
+<p>具体内容如下所示：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># @auther:   18793</span>
+<span class="c1"># @Date：    2020/9/21 16:18</span>
+<span class="c1"># @filename: setup.py</span>
+<span class="c1"># @Email:    1879324764@qq.com</span>
+<span class="c1"># @Software: PyCharm</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">模块 -&gt; 压缩包</span>
+<span class="sd">我们要将模块制作成压缩包，这里一共有 3 个步骤：</span>
+
+<span class="sd">创建 setup.py；</span>
+<span class="sd">构建模块；</span>
+<span class="sd">生成发布压缩包。</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">distutils.core</span> <span class="k">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;rocky_module&quot;</span><span class="p">,</span>  <span class="c1"># 包名</span>
+    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>  <span class="c1"># 版本</span>
+    <span class="c1"># py_modules=[&#39;rocky_module.add&#39;, &#39;rocky_module.delete&#39;],</span>
+    <span class="n">py_modules</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rocky_module&#39;</span><span class="p">],</span>
+    <span class="n">author</span><span class="o">=</span><span class="s2">&quot;hujianli&quot;</span><span class="p">,</span>  <span class="c1"># 作者</span>
+    <span class="n">author_email</span><span class="o">=</span><span class="s2">&quot;hujianli@qq.com&quot;</span><span class="p">,</span>  <span class="c1"># 作者邮箱</span>
+    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://rocky0429.blog.csdn.net/&#39;</span><span class="p">,</span>  <span class="c1"># 主页</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;增加和删除模块&#39;</span><span class="p">,</span>  <span class="c1"># 描述信息</span>
+    <span class="n">long_description</span><span class="o">=</span><span class="s1">&#39;完整的增加和删除模块&#39;</span>  <span class="c1"># 完整的描述信息</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id23">② 构建模块</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>setup.py 创建完成以后，我们可以在解释器中输入下面的代码来「构建模块」：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
+</pre></div>
+</div>
+<p>这就是使用 Python 解释器，在执行 setup.py 时跟上 build
+这个参数产生的结果，build
+目录下所有的文件就是我们最终打包的压缩包里面包含的文件。</p>
+<p>最后一步就是生成「发布压缩包」：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">My_module</span><span class="o">&gt;</span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span>
+</pre></div>
+</div>
+<p>同样回车以后会产生一些提示信息：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">running</span> <span class="n">sdist</span>
+<span class="n">running</span> <span class="n">check</span>
+<span class="n">warning</span><span class="p">:</span> <span class="n">sdist</span><span class="p">:</span> <span class="n">manifest</span> <span class="n">template</span> <span class="s1">&#39;MANIFEST.in&#39;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span> <span class="p">(</span><span class="n">using</span> <span class="n">default</span> <span class="n">file</span> <span class="nb">list</span><span class="p">)</span>
+
+<span class="n">warning</span><span class="p">:</span> <span class="n">sdist</span><span class="p">:</span> <span class="n">standard</span> <span class="n">file</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span> <span class="n">should</span> <span class="n">have</span> <span class="n">one</span> <span class="n">of</span> <span class="n">README</span><span class="p">,</span> <span class="n">README</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span> <span class="n">README</span><span class="o">.</span><span class="n">rst</span>
+
+<span class="n">writing</span> <span class="n">manifest</span> <span class="n">file</span> <span class="s1">&#39;MANIFEST&#39;</span>
+<span class="n">creating</span> <span class="n">rocky_module</span><span class="o">-</span><span class="mf">1.0</span>
+<span class="n">making</span> <span class="n">hard</span> <span class="n">links</span> <span class="ow">in</span> <span class="n">rocky_module</span><span class="o">-</span><span class="mf">1.0</span><span class="o">...</span>
+<span class="n">hard</span> <span class="n">linking</span> <span class="n">rocky_module</span><span class="o">.</span><span class="n">py</span> <span class="o">-&gt;</span> <span class="n">rocky_module</span><span class="o">-</span><span class="mf">1.0</span>
+<span class="n">hard</span> <span class="n">linking</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">-&gt;</span> <span class="n">rocky_module</span><span class="o">-</span><span class="mf">1.0</span>
+<span class="n">creating</span> <span class="n">dist</span>
+<span class="n">Creating</span> <span class="n">tar</span> <span class="n">archive</span>
+<span class="n">removing</span> <span class="s1">&#39;rocky_module-1.0&#39;</span> <span class="p">(</span><span class="ow">and</span> <span class="n">everything</span> <span class="n">under</span> <span class="n">it</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这时你会发现当前目录下又多了一个 dist 的目录，同时在这个目录下又多个了
+.tar.gz 的压缩文件：</p>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id24">③ 安装模块压缩包</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>第一步：用 tar 把我们的压缩包做一个解压：
+tar zxvf rocky_module-1.0.tar.gz
+
+第二步：使用 sudo 让 Python解释器以 root 的身份执行 setup.py
+python setup.py install
+
+验证一下，在终端中进入 ipython，然后导入该模块，如果没有报错，就证明安装成功
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id25">④ 卸载模块</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>模块其实都自带一个内置属性 file，这个就可以查看模块的完整路径</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rocky_module</span>
+<span class="n">rocky_module</span><span class="o">.</span><span class="vm">__file__</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">18793</span><span class="se">\\</span><span class="s1">Anaconda3</span><span class="se">\\</span><span class="s1">lib</span><span class="se">\\</span><span class="s1">site-packages</span><span class="se">\\</span><span class="s1">rocky_module.py&#39;</span>
+</pre></div>
+</div>
+<p>所以进入安装目录,接下来就是执行删除操作：</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">r</span> <span class="n">rocky_module</span><span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id26">14.14.10. 小结</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>· Setuptools：Setuptools工具包让你能够编写安装脚本。根据约定，这种安装脚本被命名为setup.py。使用这种脚本，可安装模块、包和扩展。
 
 · Setuptools的命令:可使用多个命令来运行setup.py脚本，如build、build_ext、install、sdist和bdist。

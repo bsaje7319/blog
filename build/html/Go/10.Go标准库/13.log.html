@@ -1,0 +1,435 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>10.13. Log &mdash; 运维开发修炼之路</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="11. 项目代码" href="../11.项目代码/index.html" />
+    <link rel="prev" title="10.12. os" href="12.OS.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. Go语言基础之反射</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">10. Go标准库</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.文件IO的操作.html">10.1. 文件IO的操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.fmt包.html">10.2. fmt包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Socket网络.html">10.3. Socket网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.模板.html">10.4. 模板</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.net_http包.html">10.5. net_http包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html">10.6. Go语言操作MySQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html">10.7. Json序列化和反序列化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.Go语言常用资料及工具详细汇总.html">10.8. Go语言常用资料及工具详细汇总</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.Go执行shell命令.html">10.9. Go执行shell命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.flag接收命令行参数.html">10.10. flag接收命令行参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.strings.html">10.11. strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.OS.html">10.12. os</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.13. Log</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#logger">10.13.1. 使用Logger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">10.13.2. 配置logger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">10.13.3. 配置日志前缀</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">10.13.4. 配置日志输出位置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Go_vs_Python/index.html">Go vs Python</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">10. Go标准库</a> &raquo;</li>
+        
+      <li>10.13. Log</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/10.Go标准库/13.log.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#log" id="id5">Log</a><ul>
+<li><a class="reference internal" href="#logger" id="id6">使用Logger</a></li>
+<li><a class="reference internal" href="#id1" id="id7">配置logger</a></li>
+<li><a class="reference internal" href="#id2" id="id8">配置日志前缀</a></li>
+<li><a class="reference internal" href="#id3" id="id9">配置日志输出位置</a><ul>
+<li><a class="reference internal" href="#id4" id="id10">创建logger</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="log">
+<h1><a class="toc-backref" href="#id5">10.13. Log</a><a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h1>
+<p>Go语言内置的log包实现了简单的日志服务。</p>
+<div class="section" id="logger">
+<h2><a class="toc-backref" href="#id6">10.13.1. 使用Logger</a><a class="headerlink" href="#logger" title="Permalink to this headline">¶</a></h2>
+<p>log包定义了Logger类型，该类型提供了一些格式化输出的方法。本包也提供了一个预定义的“标准”logger，可以通过调用函数Print系列(Print|Printf|Println）、Fatal系列（Fatal|Fatalf|Fatalln）、和Panic系列（Panic|Panicf|Panicln）来使用，比自行创建一个logger对象更容易使用。</p>
+<p>我们可以像下面的代码一样直接通过log包来调用上面提到的方法，默认它们会将日志信息打印到终端界面：</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;log&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;这是一条很普通的日志.&quot;</span><span class="p">)</span>
+    <span class="n">v</span> <span class="p">:</span><span class="o">=</span> <span class="s2">&quot;很普通的&quot;</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;这是一条</span><span class="si">%s</span><span class="s2">日志。</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">Fatalln</span><span class="p">(</span><span class="s2">&quot;这是一条会触发fatal的日志。&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">Panicln</span><span class="p">(</span><span class="s2">&quot;这是一条会触发panic的日志。&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>logger会打印每条日志信息的日期、时间，默认输出到系统的标准错误。</p>
+<p>Fatal系列函数会在写入日志信息后调用os.Exit(1)。</p>
+<p>Panic系列函数会在写入日志信息后panic。</p>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id7">10.13.2. 配置logger</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>默认情况下的logger只会提供日志的时间信息，但是很多情况下我们希望得到更多信息，比如记录该日志的文件名和行号等。log标准库中为我们提供了定制这些设置的方法。</p>
+<p>log标准库中的Flags函数会返回标准logger的输出配置，而SetFlags函数用来设置标准logger的输出配置。</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">Flags</span><span class="p">()</span> <span class="nb">int</span>
+<span class="n">func</span> <span class="n">SetFlags</span><span class="p">(</span><span class="n">flag</span> <span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>log标准库提供了如下的flag选项，它们是一系列定义好的常量。</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="p">(</span>
+    <span class="n">Ldate</span>         <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">iota</span>     <span class="o">//</span> <span class="n">the</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">local</span> <span class="n">time</span> <span class="n">zone</span><span class="p">:</span> <span class="mi">2009</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">23</span>
+    <span class="n">Ltime</span>                         <span class="o">//</span> <span class="n">the</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">local</span> <span class="n">time</span> <span class="n">zone</span><span class="p">:</span> <span class="mi">01</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">23</span>
+    <span class="n">Lmicroseconds</span>                 <span class="o">//</span> <span class="n">microsecond</span> <span class="n">resolution</span><span class="p">:</span> <span class="mi">01</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">23.123123</span><span class="o">.</span>  <span class="n">assumes</span> <span class="n">Ltime</span><span class="o">.</span>
+    <span class="n">Llongfile</span>                     <span class="o">//</span> <span class="n">full</span> <span class="n">file</span> <span class="n">name</span> <span class="ow">and</span> <span class="n">line</span> <span class="n">number</span><span class="p">:</span> <span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">23</span>
+    <span class="n">Lshortfile</span>                    <span class="o">//</span> <span class="n">final</span> <span class="n">file</span> <span class="n">name</span> <span class="n">element</span> <span class="ow">and</span> <span class="n">line</span> <span class="n">number</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mf">23.</span> <span class="n">overrides</span> <span class="n">Llongfile</span>
+    <span class="n">LUTC</span>                          <span class="o">//</span> <span class="k">if</span> <span class="n">Ldate</span> <span class="ow">or</span> <span class="n">Ltime</span> <span class="ow">is</span> <span class="nb">set</span><span class="p">,</span> <span class="n">use</span> <span class="n">UTC</span> <span class="n">rather</span> <span class="n">than</span> <span class="n">the</span> <span class="n">local</span> <span class="n">time</span> <span class="n">zone</span>
+    <span class="n">LstdFlags</span>     <span class="o">=</span> <span class="n">Ldate</span> <span class="o">|</span> <span class="n">Ltime</span> <span class="o">//</span> <span class="n">initial</span> <span class="n">values</span> <span class="k">for</span> <span class="n">the</span> <span class="n">standard</span> <span class="n">logger</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>下面我们在记录日志之前先设置一下标准logger的输出选项如下：</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+
+import &quot;log&quot;
+
+func main() {
+    log.SetFlags(log.Llongfile | log.Lmicroseconds | log.Ldate)
+    log.Println(&quot;这是一条很普通的日志。&quot;)
+}
+
+//2020/09/21 14:26:10.276892 D:/go_studay/go_path/src/github.com/go_Test/go007/src/go_log02/main.go:7: 这是一条很普通的日志。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id8">10.13.3. 配置日志前缀</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>log标准库中还提供了关于日志信息前缀的两个方法：</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">Prefix</span><span class="p">()</span> <span class="n">string</span>
+<span class="n">func</span> <span class="n">SetPrefix</span><span class="p">(</span><span class="n">prefix</span> <span class="n">string</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+
+import &quot;log&quot;
+
+func main() {
+    log.SetFlags(log.Llongfile | log.Lmicroseconds | log.Ldate)
+    log.Println(&quot;这是一条很普通的日志。&quot;)
+    log.SetPrefix(&quot;[ttserver]&quot;)
+    log.Println(&quot;这是一条很普通的日志。&quot;)
+}
+
+//2020/09/21 14:27:55.635287 D:/go_studay/go_path/src/github.com/go_Test/go007/src/go_log03/main.go:7: 这是一条很普通的日志。
+//[ttserver]2020/09/21 14:27:55.766934 D:/go_studay/go_path/src/github.com/go_Test/go007/src/go_log03/main.go:9: 这是一条很普通的日志。
+</pre></div>
+</div>
+<p>这样我们就能够在代码中为我们的日志信息添加指定的前缀，方便之后对日志信息进行检索和处理。</p>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id9">10.13.4. 配置日志输出位置</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">SetOutput</span><span class="p">(</span><span class="n">w</span> <span class="n">io</span><span class="o">.</span><span class="n">Writer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>SetOutput函数用来设置标准logger的输出目的地，默认是标准错误输出。</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s2">&quot;fmt&quot;</span>
+    <span class="s2">&quot;log&quot;</span>
+    <span class="s2">&quot;os&quot;</span>
+<span class="p">)</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">logFile</span><span class="p">,</span> <span class="n">err</span> <span class="p">:</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">OpenFile</span><span class="p">(</span><span class="s2">&quot;./ttserver.log&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">O_CREATE</span><span class="o">|</span><span class="n">os</span><span class="o">.</span><span class="n">O_WRONLY</span><span class="o">|</span><span class="n">os</span><span class="o">.</span><span class="n">O_APPEND</span><span class="p">,</span> <span class="mi">0644</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="n">nil</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;open log file failed, err:&quot;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">SetOutput</span><span class="p">(</span><span class="n">logFile</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">Llongfile</span> <span class="o">|</span> <span class="n">log</span><span class="o">.</span><span class="n">Lmicroseconds</span> <span class="o">|</span> <span class="n">log</span><span class="o">.</span><span class="n">Ldate</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;这是一条很普通的日志。&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">SetPrefix</span><span class="p">(</span><span class="s2">&quot;[小王子]&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;这是一条很普通的日志。&quot;</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果你要使用标准的logger，我们通常会把上面的配置操作写到init函数中。</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">logFile</span><span class="p">,</span> <span class="n">err</span> <span class="p">:</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">OpenFile</span><span class="p">(</span><span class="s2">&quot;./xx.log&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">O_CREATE</span><span class="o">|</span><span class="n">os</span><span class="o">.</span><span class="n">O_WRONLY</span><span class="o">|</span><span class="n">os</span><span class="o">.</span><span class="n">O_APPEND</span><span class="p">,</span> <span class="mi">0644</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="n">nil</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;open log file failed, err:&quot;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">SetOutput</span><span class="p">(</span><span class="n">logFile</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">SetFlags</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">Llongfile</span> <span class="o">|</span> <span class="n">log</span><span class="o">.</span><span class="n">Lmicroseconds</span> <span class="o">|</span> <span class="n">log</span><span class="o">.</span><span class="n">Ldate</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id10">创建logger</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>log标准库中还提供了一个创建新logger对象的构造函数–New，支持我们创建自己的logger示例。New函数的签名如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">New</span><span class="p">(</span><span class="n">out</span> <span class="n">io</span><span class="o">.</span><span class="n">Writer</span><span class="p">,</span> <span class="n">prefix</span> <span class="n">string</span><span class="p">,</span> <span class="n">flag</span> <span class="nb">int</span><span class="p">)</span> <span class="o">*</span><span class="n">Logger</span>
+</pre></div>
+</div>
+<p>New创建一个Logger对象。其中，参数out设置日志信息写入的目的地。参数prefix会添加到生成的每一条日志前面。参数flag定义日志的属性（时间、文件等等）。</p>
+<p>举个例子：</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s2">&quot;log&quot;</span>
+    <span class="s2">&quot;os&quot;</span>
+<span class="p">)</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">logger</span> <span class="p">:</span><span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stdout</span><span class="p">,</span><span class="s2">&quot;&lt;xtserver&gt;:&quot;</span><span class="p">,</span><span class="n">log</span><span class="o">.</span><span class="n">Lshortfile</span><span class="o">|</span><span class="n">log</span><span class="o">.</span><span class="n">Ldate</span><span class="o">|</span><span class="n">log</span><span class="o">.</span><span class="n">Ltime</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;这是自定义的logger记录的日志&quot;</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>将上面的代码编译执行之后，得到结果如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">xtserver</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">2020</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">21</span> <span class="mi">14</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">40</span> <span class="n">main</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span> <span class="n">这是自定义的logger记录的日志</span>
+</pre></div>
+</div>
+<p>总结 :
+Go内置的log库功能有限，例如无法满足记录不同级别日志的情况，我们在实际的项目中根据自己的需要选择使用第三方的日志库，如logrus、zap等。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../11.项目代码/index.html" class="btn btn-neutral float-right" title="11. 项目代码" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="12.OS.html" class="btn btn-neutral float-left" title="10.12. os" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

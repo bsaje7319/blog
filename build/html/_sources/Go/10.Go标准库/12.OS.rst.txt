@@ -1,0 +1,44 @@
+.. contents::
+   :depth: 3
+..
+
+os
+==
+
+::
+
+   import "os"
+
+os包提供了操作系统函数的不依赖平台的接口。设计为Unix风格的，虽然错误处理是go风格的；失败的调用会返回错误值而非错误码。通常错误值里包含更多信息。
+
+.. code:: go
+
+   fmt.Println(os.Hostname())             //bogon <nil>(返回内核提供的主机名)
+   fmt.Println(os.Getpagesize())          //4096(返回底层的系统内存页的尺寸)
+   fmt.Println(os.Environ())              //(环境变量的格式为"key=value"的字符串的切片拷贝)
+   fmt.Println(os.Getenv("GOPATH"))       //(名为key的环境变量的值,不存在返回空)
+   fmt.Println(os.Setenv("Name", "Nick")) //(设置名为key的环境变量)
+   os.Clearenv()    //(删除所有环境变量)
+   os.Exit(0)       //(以给出的状态码code退出,程序会立刻终止，defer的函数不会被执行)
+
+   fmt.Println(os.Getuid())    //501(调用者的用户ID)
+   fmt.Println(os.Geteuid())   //501(调用者的有效用户ID)
+   fmt.Println(os.Getgid())    //20(调用者的组ID)
+   fmt.Println(os.Getegid())   //20(调用者的有效组ID)
+   fmt.Println(os.Getgroups()) //[20 701 12 61 79 80 81 ...](调用者所属的所有用户组的组ID)
+   fmt.Println(os.Getpid())    //62027(调用者所在进程的进程ID)
+   fmt.Println(os.Getppid())   //62020(调用者所在进程的父进程的进程ID)
+
+   fmt.Println(os.Getwd())                      //返回一个对应当前工作目录的根路径
+   os.Chdir("/tmp/")                            //将当前工作目录修改为dir指定的目录
+   os.Mkdir("/tmp/test", 0666)                  //用指定的权限和名称创建一个目录
+   os.MkdirAll("/tmp/test1/test2/test3", 0666)  //使用指定的权限和名称创建一个目录,递归上级目录
+   os.Rename("/tmp/test", "/tmp/test1/testNew") //修改一个文件的名字，移动一个文件
+   os.Remove("/tmp/test1/test2/test3")          //删除name指定的文件或目录
+   os.RemoveAll("/tmp/test1/")                  //删除path指定的文件
+
+   os.Create("/tmp/test")      //0666,创建文件,存在会清空
+   os.Open("/tmp/test")        //O_RDONLY,打开一个文件
+   os.OpenFile("/tmp/test", os.O_CREATE|os.O_WRONLY, 0666)
+
+   Args保管了命令行参数，第一个是程序名。

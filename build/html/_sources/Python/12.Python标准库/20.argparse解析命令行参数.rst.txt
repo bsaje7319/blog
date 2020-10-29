@@ -8,7 +8,7 @@ argparse解析命令行参数
 代码举例1
 ---------
 
-::
+.. code:: python
 
    #!/usr/bin/env python
    # -*- coding:utf8 -*-
@@ -40,7 +40,7 @@ argparse解析命令行参数
 
 输出信息
 
-::
+.. code:: shell
 
    python apgparse模块.py
    Namespace(boolean_switch=False, server='localhost')
@@ -55,7 +55,7 @@ argparse解析命令行参数
 通过help选项获取帮助信息
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code:: shell
 
    python apgparse模块.py --help
    usage: apgparse模块.py [-h] [--host SERVER] [-t]
@@ -72,7 +72,7 @@ argparse解析命令行参数
 
 模仿Mysql客户端的命令行参数
 
-::
+.. code:: python
 
    import argparse
 
@@ -106,7 +106,7 @@ argparse解析命令行参数
 
 输出信息
 
-::
+.. code:: python
 
    python apgparse模块.py --help
 
@@ -125,7 +125,17 @@ argparse解析命令行参数
 
 示例代码
 
-::
+.. code:: python
+
+   #!/usr/bin/env python
+   # -*- coding: utf-8 -*-
+   # @auther:   18793
+   # @Date：    2020/9/30 10:04
+   # @filename: argparse01.py
+   # @Email:    1879324764@qq.com
+   # @Software: PyCharm
+   import argparse
+
 
    def get_argparse():
        parser = argparse.ArgumentParser(description='A email client in terminal')
@@ -135,3 +145,20 @@ argparse解析命令行参数
        parser.add_argument('-r', action='store', nargs='*', dest='recipients', required=True, help='recipient who you are sending the email to')
        parser.add_argument('-v', action='version', version='%(prog)s 0.2')
        return parser.parse_args()
+
+
+
+   if __name__ == '__main__':
+       parser = get_argparse()
+       print(parser)
+       print("s = ", parser.subject)
+       print("r = ", parser.recipients)
+       print("f = ", parser.conf)
+
+.. code:: python
+
+   D:\GitHub\python标准库\解析命令行参数>python argparse02.py -s hu -r huajianli -f "config.cfg"
+   Namespace(attaches=None, conf='config.cfg', recipients=['huajianli'], subject='hu')
+   s =  hu
+   r =  ['huajianli']
+   f =  config.cfg

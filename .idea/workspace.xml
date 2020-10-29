@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="69646ed4-e4ad-4b2d-b1a7-75e0fa19a2db" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/build/doctrees/Go/04.函数/09.单元测试.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/doctrees/Go/10.Go标准库/11.strings.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/doctrees/Go/10.Go标准库/12.OS.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/doctrees/Go/10.Go标准库/13.log.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/html/Go/04.函数/09.单元测试.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/html/Go/10.Go标准库/11.strings.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/html/Go/10.Go标准库/12.OS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/html/Go/10.Go标准库/13.log.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/html/_sources/Go/04.函数/09.单元测试.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/html/_sources/Go/10.Go标准库/11.strings.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/html/_sources/Go/10.Go标准库/12.OS.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/html/_sources/Go/10.Go标准库/13.log.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/03.流程控制/02.构建循环（for）.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/03.流程控制/02.构建循环（for）.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/04.函数/02.匿名函数.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/04.函数/02.匿名函数.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/04.函数/05.延迟执行语句(defer).doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/04.函数/05.延迟执行语句(defer).doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/04.函数/index.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/04.函数/index.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/10.Go标准库/02.fmt包.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/10.Go标准库/02.fmt包.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/10.Go标准库/07.Json序列化和反序列化.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/10.Go标准库/07.Json序列化和反序列化.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/10.Go标准库/09.Go执行shell命令.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/10.Go标准库/09.Go执行shell命令.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/10.Go标准库/index.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/10.Go标准库/index.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/01.Python数据类型/13.Python常用IDE集成环境.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/01.Python数据类型/13.Python常用IDE集成环境.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/09.Python文件操作/01.open()函数介绍.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/09.Python文件操作/01.open()函数介绍.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/12.Python标准库/20.argparse解析命令行参数.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/12.Python标准库/20.argparse解析命令行参数.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/14.Python三方库/14.打包和发布.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/14.Python三方库/14.打包和发布.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/environment.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/03.流程控制/02.构建循环（for）.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/03.流程控制/02.构建循环（for）.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/03.流程控制/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/03.流程控制/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/04.函数/02.匿名函数.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/04.函数/02.匿名函数.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/04.函数/05.延迟执行语句(defer).html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/04.函数/05.延迟执行语句(defer).html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/04.函数/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/04.函数/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/10.Go标准库/02.fmt包.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/10.Go标准库/02.fmt包.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/10.Go标准库/07.Json序列化和反序列化.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/10.Go标准库/07.Json序列化和反序列化.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/10.Go标准库/09.Go执行shell命令.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/10.Go标准库/09.Go执行shell命令.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/10.Go标准库/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/10.Go标准库/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/01.Python数据类型/13.Python常用IDE集成环境.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/01.Python数据类型/13.Python常用IDE集成环境.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/01.Python数据类型/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/01.Python数据类型/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/09.Python文件操作/01.open()函数介绍.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/09.Python文件操作/01.open()函数介绍.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/09.Python文件操作/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/09.Python文件操作/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/12.Python标准库/20.argparse解析命令行参数.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/12.Python标准库/20.argparse解析命令行参数.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/14.Python三方库/14.打包和发布.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/14.Python三方库/14.打包和发布.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/14.Python三方库/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/14.Python三方库/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/20.Python自动化运维最佳实践/01.系统基础信息模块详解.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/20.Python自动化运维最佳实践/01.系统基础信息模块详解.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/20.Python自动化运维最佳实践/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/20.Python自动化运维最佳实践/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/03.流程控制/02.构建循环（for）.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/03.流程控制/02.构建循环（for）.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/04.函数/02.匿名函数.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/04.函数/02.匿名函数.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/04.函数/05.延迟执行语句(defer).rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/04.函数/05.延迟执行语句(defer).rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/04.函数/index.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/04.函数/index.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/10.Go标准库/02.fmt包.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/10.Go标准库/02.fmt包.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/10.Go标准库/07.Json序列化和反序列化.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/10.Go标准库/07.Json序列化和反序列化.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/10.Go标准库/09.Go执行shell命令.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/10.Go标准库/09.Go执行shell命令.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/10.Go标准库/index.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/10.Go标准库/index.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/01.Python数据类型/13.Python常用IDE集成环境.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/01.Python数据类型/13.Python常用IDE集成环境.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/09.Python文件操作/01.open()函数介绍.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/09.Python文件操作/01.open()函数介绍.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/12.Python标准库/20.argparse解析命令行参数.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/12.Python标准库/20.argparse解析命令行参数.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/14.Python三方库/14.打包和发布.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/14.Python三方库/14.打包和发布.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/20.Python自动化运维最佳实践/01.系统基础信息模块详解.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/20.Python自动化运维最佳实践/01.系统基础信息模块详解.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/objects.inv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/searchindex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_md5.json" beforeDir="false" afterPath="$PROJECT_DIR$/file_md5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/md_to_rst_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/md_to_rst_tool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/03.流程控制/02.构建循环（for）.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/03.流程控制/02.构建循环（for）.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/03.流程控制/02.构建循环（for）.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/03.流程控制/02.构建循环（for）.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/04.函数/02.匿名函数.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/04.函数/02.匿名函数.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/04.函数/02.匿名函数.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/04.函数/02.匿名函数.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/04.函数/05.延迟执行语句(defer).md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/04.函数/05.延迟执行语句(defer).md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/04.函数/05.延迟执行语句(defer).rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/04.函数/05.延迟执行语句(defer).rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/04.函数/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/04.函数/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/10.Go标准库/02.fmt包.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/10.Go标准库/02.fmt包.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/10.Go标准库/02.fmt包.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/10.Go标准库/02.fmt包.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/10.Go标准库/07.Json序列化和反序列化.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/10.Go标准库/07.Json序列化和反序列化.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/10.Go标准库/07.Json序列化和反序列化.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/10.Go标准库/07.Json序列化和反序列化.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/10.Go标准库/09.Go执行shell命令.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/10.Go标准库/09.Go执行shell命令.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/10.Go标准库/09.Go执行shell命令.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/10.Go标准库/09.Go执行shell命令.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/10.Go标准库/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/10.Go标准库/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/01.Python数据类型/13.Python常用IDE集成环境.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/01.Python数据类型/13.Python常用IDE集成环境.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/01.Python数据类型/13.Python常用IDE集成环境.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/01.Python数据类型/13.Python常用IDE集成环境.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/09.Python文件操作/01.open()函数介绍.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/09.Python文件操作/01.open()函数介绍.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/09.Python文件操作/01.open()函数介绍.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/09.Python文件操作/01.open()函数介绍.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/12.Python标准库/20.argparse解析命令行参数.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/12.Python标准库/20.argparse解析命令行参数.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/12.Python标准库/20.argparse解析命令行参数.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/12.Python标准库/20.argparse解析命令行参数.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/14.Python三方库/14.打包和发布.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/14.Python三方库/14.打包和发布.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/14.Python三方库/14.打包和发布.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/14.Python三方库/14.打包和发布.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/01.系统基础信息模块详解.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/01.系统基础信息模块详解.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/01.系统基础信息模块详解.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/01.系统基础信息模块详解.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.rst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/my_blog$static_photo.coverage" NAME="static_photo Coverage Results" MODIFIED="1587344325772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_blog$md_to_rst_tool.coverage" NAME="md_to_rst_tool Coverage Results" MODIFIED="1587344638075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_blog$a3_2.coverage" NAME="a3_2 Coverage Results" MODIFIED="1584068557299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../21天学编程语言系列/21天学通Python-书和源码/21天学通Python-源代码/C3" />
+    <SUITE FILE_PATH="coverage/my_Go_Py_blog$md_to_rst_tool.coverage" NAME="md_to_rst_tool Coverage Results" MODIFIED="1603851417510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_blog$multi_return.coverage" NAME="multi_return Coverage Results" MODIFIED="1585021193319" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Python相关知识/《疯狂Python讲义》/《疯狂Python讲义》PDF+源代码/源代码/05/5.1" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>man_</find>
+      <find>author</find>
+      <find>or操作符等同于MySQL的or</find>
+      <find>多个元素的情况，需要使用</find>
+      <find>的元素为检索条件</find>
+    </findStrings>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
+  <component name="JupyterTrust" id="c45f9f5c-1fc7-48fe-bab6-fcb2c1df8661" />
+  <component name="ProjectId" id="1jUNrFs2eeiOvXvILR8JSOb84xB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../my_Linux_Devops" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\my_blog\source\Docker_Cloud_operations" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\my_Go_Py_blog\source\Python\24.Python框架学习\06.Python高效开发实战-Django、Flask" />
+      <recent name="D:\my_Go_Py_blog\source\Python\24.Python框架学习\05.Tornado-Web框架及其应用" />
+      <recent name="D:\my_Go_Py_blog\source\Go-vs-Python" />
+      <recent name="D:\my_blog\source\other\07.一些常用的工具" />
+      <recent name="D:\my_blog\source\Python\30.Python面试题锦集" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.md_to_rst_tool">
+    <configuration name="a3_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="my_blog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../21天学编程语言系列/21天学通Python-书和源码/21天学通Python-源代码/C3" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../21天学编程语言系列/21天学通Python-书和源码/21天学通Python-源代码/C3/a3_2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="md_to_rst_tool" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="my_blog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/md_to_rst_tool.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="multi_return" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="my_blog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Python相关知识/《疯狂Python讲义》/《疯狂Python讲义》PDF+源代码/源代码/05/5.1" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Python相关知识/《疯狂Python讲义》/《疯狂Python讲义》PDF+源代码/源代码/05/5.1/multi_return.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="static_photo" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="my_blog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:\my_blog\Delete_staticPhoto.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.md_to_rst_tool" />
+        <item itemvalue="Python.static_photo" />
+        <item itemvalue="Python.multi_return" />
+        <item itemvalue="Python.a3_2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="69646ed4-e4ad-4b2d-b1a7-75e0fa19a2db" name="默认更改列表" comment="" />
+      <created>1583821989954</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583821989954</updated>
+      <workItem from="1583821991426" duration="7319000" />
+      <workItem from="1583837218408" duration="3567000" />
+      <workItem from="1583844966101" duration="1210000" />
+      <workItem from="1583888654742" duration="2621000" />
+      <workItem from="1583896953382" duration="6743000" />
+      <workItem from="1583914098369" duration="4188000" />
+      <workItem from="1583920070174" duration="258000" />
+      <workItem from="1583927737141" duration="2050000" />
+      <workItem from="1583979213442" duration="3173000" />
+      <workItem from="1583984704299" duration="829000" />
+      <workItem from="1584003482085" duration="67000" />
+      <workItem from="1584066883008" duration="733000" />
+      <workItem from="1584068371058" duration="2733000" />
+      <workItem from="1584081602197" duration="445000" />
+      <workItem from="1584087474263" duration="376000" />
+      <workItem from="1584088438824" duration="97000" />
+      <workItem from="1584089059398" duration="829000" />
+      <workItem from="1584091191755" duration="127000" />
+      <workItem from="1584176459247" duration="1290000" />
+      <workItem from="1584190255251" duration="365000" />
+      <workItem from="1584191780809" duration="345000" />
+      <workItem from="1584240322316" duration="1208000" />
+      <workItem from="1584361332076" duration="579000" />
+      <workItem from="1584410341266" duration="5205000" />
+      <workItem from="1584524241646" duration="1404000" />
+      <workItem from="1584575319093" duration="22315000" />
+      <workItem from="1584620650229" duration="2507000" />
+      <workItem from="1584625356819" duration="182000" />
+      <workItem from="1584665319336" duration="14079000" />
+      <workItem from="1584754513330" duration="10830000" />
+      <workItem from="1584840257904" duration="8179000" />
+      <workItem from="1584855604405" duration="17805000" />
+      <workItem from="1584929728849" duration="13363000" />
+      <workItem from="1585020129760" duration="9949000" />
+      <workItem from="1585034313922" duration="7758000" />
+      <workItem from="1585051176464" duration="5851000" />
+      <workItem from="1585096844128" duration="26174000" />
+      <workItem from="1585148363304" duration="1595000" />
+      <workItem from="1585190860154" duration="12471000" />
+      <workItem from="1585212919961" duration="8789000" />
+      <workItem from="1585277763614" duration="4466000" />
+      <workItem from="1585301239535" duration="8704000" />
+      <workItem from="1585363347209" duration="17393000" />
+      <workItem from="1585404207865" duration="18000" />
+      <workItem from="1585406484427" duration="113000" />
+      <workItem from="1585406909908" duration="25000" />
+      <workItem from="1585454943670" duration="1482000" />
+      <workItem from="1585456459841" duration="194000" />
+      <workItem from="1585458054605" duration="8725000" />
+      <workItem from="1585475209815" duration="564000" />
+      <workItem from="1585481908680" duration="1250000" />
+      <workItem from="1585535690465" duration="104000" />
+      <workItem from="1585535820229" duration="51000" />
+      <workItem from="1585539357947" duration="7549000" />
+      <workItem from="1585573407310" duration="1194000" />
+      <workItem from="1585616021388" duration="6578000" />
+      <workItem from="1585718730324" duration="1755000" />
+      <workItem from="1585721878761" duration="196000" />
+      <workItem from="1585728126182" duration="4077000" />
+      <workItem from="1585746826515" duration="1890000" />
+      <workItem from="1585800729865" duration="9000" />
+      <workItem from="1585821413803" duration="1006000" />
+      <workItem from="1586161884128" duration="212000" />
+      <workItem from="1586169972982" duration="729000" />
+      <workItem from="1586171515662" duration="906000" />
+      <workItem from="1586248692203" duration="11000" />
+      <workItem from="1586343315352" duration="177000" />
+      <workItem from="1586658184521" duration="11000" />
+      <workItem from="1586770425729" duration="1484000" />
+      <workItem from="1586831667123" duration="2374000" />
+      <workItem from="1587109192397" duration="4606000" />
+      <workItem from="1587181310691" duration="6540000" />
+      <workItem from="1587203281617" duration="2638000" />
+      <workItem from="1587214260468" duration="3799000" />
+      <workItem from="1587225362253" duration="234000" />
+      <workItem from="1587260661077" duration="3544000" />
+      <workItem from="1587267021348" duration="4776000" />
+      <workItem from="1587297228183" duration="7661000" />
+      <workItem from="1587341516961" duration="3535000" />
+      <workItem from="1587345162659" duration="1579000" />
+      <workItem from="1587351712992" duration="882000" />
+      <workItem from="1587447991896" duration="3539000" />
+      <workItem from="1587519659157" duration="1281000" />
+      <workItem from="1587532967781" duration="877000" />
+      <workItem from="1587543575752" duration="138000" />
+      <workItem from="1587563892474" duration="67000" />
+      <workItem from="1587795133816" duration="1826000" />
+      <workItem from="1588735996937" duration="1421000" />
+      <workItem from="1588743265145" duration="816000" />
+      <workItem from="1588749898552" duration="750000" />
+      <workItem from="1588755135264" duration="2189000" />
+      <workItem from="1588828843789" duration="2249000" />
+      <workItem from="1589117221247" duration="2388000" />
+      <workItem from="1591585400930" duration="388000" />
+      <workItem from="1591600812874" duration="51000" />
+      <workItem from="1592382711682" duration="702000" />
+      <workItem from="1592451245412" duration="73000" />
+      <workItem from="1592539677878" duration="703000" />
+      <workItem from="1592546719330" duration="14000" />
+      <workItem from="1592550705308" duration="99000" />
+      <workItem from="1592550819878" duration="201000" />
+      <workItem from="1592732266346" duration="79000" />
+      <workItem from="1592819219304" duration="83000" />
+      <workItem from="1592893077259" duration="89000" />
+      <workItem from="1592973809994" duration="975000" />
+      <workItem from="1592979311843" duration="106000" />
+      <workItem from="1592987238747" duration="1335000" />
+      <workItem from="1593011954224" duration="47000" />
+      <workItem from="1593266255026" duration="31000" />
+      <workItem from="1593440401644" duration="194000" />
+      <workItem from="1593527668311" duration="321000" />
+      <workItem from="1593570858134" duration="24000" />
+      <workItem from="1594117485904" duration="69000" />
+      <workItem from="1594117651451" duration="81000" />
+      <workItem from="1594176289465" duration="120000" />
+      <workItem from="1594188221374" duration="402000" />
+      <workItem from="1594189528339" duration="19000" />
+      <workItem from="1594610147320" duration="66000" />
+      <workItem from="1594713865947" duration="233000" />
+      <workItem from="1594969230201" duration="863000" />
+      <workItem from="1594976134164" duration="2654000" />
+      <workItem from="1595048589418" duration="950000" />
+      <workItem from="1595224885496" duration="624000" />
+      <workItem from="1595313558038" duration="2053000" />
+      <workItem from="1595388587732" duration="2072000" />
+      <workItem from="1595398545436" duration="1825000" />
+      <workItem from="1595411100074" duration="617000" />
+      <workItem from="1595467446588" duration="1206000" />
+      <workItem from="1595484109518" duration="1754000" />
+      <workItem from="1595492755528" duration="729000" />
+      <workItem from="1596014299124" duration="1362000" />
+      <workItem from="1596086707400" duration="108000" />
+      <workItem from="1596092823490" duration="52000" />
+      <workItem from="1596092905880" duration="26000" />
+      <workItem from="1596119477012" duration="340000" />
+      <workItem from="1596181470086" duration="35000" />
+      <workItem from="1596791446128" duration="408000" />
+      <workItem from="1597114789923" duration="1268000" />
+      <workItem from="1597386465620" duration="632000" />
+      <workItem from="1597396997538" duration="1198000" />
+      <workItem from="1597634348510" duration="74000" />
+      <workItem from="1597739910919" duration="1204000" />
+      <workItem from="1597741847308" duration="437000" />
+      <workItem from="1597746422304" duration="40000" />
+      <workItem from="1597801560526" duration="51000" />
+      <workItem from="1597808159908" duration="640000" />
+      <workItem from="1597815379636" duration="668000" />
+      <workItem from="1599109770333" duration="777000" />
+      <workItem from="1599389517916" duration="355000" />
+      <workItem from="1600226386297" duration="406000" />
+      <workItem from="1600232241149" duration="496000" />
+      <workItem from="1600238168514" duration="239000" />
+      <workItem from="1600239168123" duration="121000" />
+      <workItem from="1600241061828" duration="236000" />
+      <workItem from="1600417073018" duration="142000" />
+      <workItem from="1600671377827" duration="1441000" />
+      <workItem from="1600680139952" duration="215000" />
+      <workItem from="1600958076152" duration="602000" />
+      <workItem from="1600998057869" duration="148000" />
+      <workItem from="1600998310403" duration="341000" />
+      <workItem from="1600998726714" duration="91000" />
+      <workItem from="1601432399569" duration="718000" />
+      <workItem from="1603851286335" duration="351000" />
+      <workItem from="1603854918269" duration="1290000" />
+      <workItem from="1603856525198" duration="262000" />
+      <workItem from="1603856869655" duration="51000" />
+      <workItem from="1603857124130" duration="86000" />
+      <workItem from="1603859571683" duration="1366000" />
+      <workItem from="1603861516722" duration="131000" />
+      <workItem from="1603861772325" duration="198000" />
+      <workItem from="1603881005566" duration="307000" />
+      <workItem from="1603936304087" duration="601000" />
+      <workItem from="1603955518357" duration="1638000" />
+    </task>
+    <task id="LOCAL-00001" summary="first-commint">
+      <created>1583823851714</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583823851714</updated>
+    </task>
+    <task id="LOCAL-00002" summary="second-commint">
+      <created>1583834473877</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1583834473877</updated>
+    </task>
+    <task id="LOCAL-00003" summary="2020-3-10 second-commint">
+      <created>1583836022967</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1583836022967</updated>
+    </task>
+    <task id="LOCAL-00004" summary="2020-4-18 second-commint">
+      <created>1587189752386</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587189752386</updated>
+    </task>
+    <task id="LOCAL-00005" summary="2020-4-18 second-commint">
+      <created>1587191544891</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1587191544891</updated>
+    </task>
+    <task id="LOCAL-00006" summary="2020-4-18 3-commint">
+      <created>1587193071953</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1587193071954</updated>
+    </task>
+    <task id="LOCAL-00007" summary="2020-4-18 6-commint">
+      <created>1587205303660</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1587205303660</updated>
+    </task>
+    <task id="LOCAL-00008" summary="2020-4-19 first-commint">
+      <created>1587299955551</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1587299955551</updated>
+    </task>
+    <task id="LOCAL-00009" summary="2020-4-20 first-commint">
+      <created>1587351868631</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1587351868631</updated>
+    </task>
+    <task id="LOCAL-00010" summary="2020-4-20 first2-commint">
+      <created>1587352548128</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1587352548128</updated>
+    </task>
+    <task id="LOCAL-00011" summary="2020-4-21 first-commint">
+      <created>1587472112754</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1587472112754</updated>
+    </task>
+    <task id="LOCAL-00012" summary="2020-4-22 first-commint">
+      <created>1587543680739</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1587543680739</updated>
+    </task>
+    <task id="LOCAL-00013" summary="2020-5-6 first-commint">
+      <created>1588749989418</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1588749989418</updated>
+    </task>
+    <task id="LOCAL-00014" summary="2020-5-6 second-commint">
+      <created>1588757298950</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1588757298950</updated>
+    </task>
+    <task id="LOCAL-00015" summary="2020-5-7 first-commint">
+      <created>1588829436536</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1588829436536</updated>
+    </task>
+    <task id="LOCAL-00016" summary="2020-5-10 first-commint">
+      <created>1589120194992</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1589120194992</updated>
+    </task>
+    <task id="LOCAL-00017" summary="2020-6-08 first-commint">
+      <created>1591585719645</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1591585719645</updated>
+    </task>
+    <task id="LOCAL-00018" summary="2020-6-19 first-commint">
+      <created>1592544175061</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1592544175061</updated>
+    </task>
+    <task id="LOCAL-00019" summary="2020-6-24 first-commint">
+      <created>1592979356581</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1592979356581</updated>
+    </task>
+    <task id="LOCAL-00020" summary="2020-7-14 first-commint">
+      <created>1594713954593</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1594713954593</updated>
+    </task>
+    <task id="LOCAL-00021" summary="2020-8-18 first-commint">
+      <created>1597740384454</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1597740384454</updated>
+    </task>
+    <task id="LOCAL-00022" summary="2020-8-18 second-commint">
+      <created>1597742073702</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1597742073703</updated>
+    </task>
+    <task id="LOCAL-00023" summary="2020-9-16 second-commint">
+      <created>1600226527040</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1600226527040</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="first-commint" />
+    <MESSAGE value="second-commint" />
+    <MESSAGE value="2020-3-10 second-commint" />
+    <MESSAGE value="2020-4-18 second-commint" />
+    <MESSAGE value="2020-4-18 3-commint" />
+    <MESSAGE value="2020-4-18 5-commint" />
+    <MESSAGE value="2020-4-18 6-commint" />
+    <MESSAGE value="2020-4-19 first-commint" />
+    <MESSAGE value="2020-4-20 first-commint" />
+    <MESSAGE value="2020-4-20 first2-commint" />
+    <MESSAGE value="2020-4-21 first-commint" />
+    <MESSAGE value="2020-4-22 first-commint" />
+    <MESSAGE value="2020-5-6 first-commint" />
+    <MESSAGE value="2020-5-6 second-commint" />
+    <MESSAGE value="2020-5-7 first-commint" />
+    <MESSAGE value="2020-5-10 first-commint" />
+    <MESSAGE value="2020-6-08 first-commint" />
+    <MESSAGE value="2020-6-19 first-commint" />
+    <MESSAGE value="2020-6-24 first-commint" />
+    <MESSAGE value="2020-7-14 first-commint" />
+    <MESSAGE value="2020-8-18 first-commint" />
+    <MESSAGE value="2020-8-18 second-commint" />
+    <MESSAGE value="2020-9-16 second-commint" />
+    <MESSAGE value="2020-10-28 first-commint" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020-10-28 first-commint" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="294" y="13" key="CommitChangelistDialog2" timestamp="1603881304966">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="294" y="13" key="CommitChangelistDialog2/0.0.1440.920@0.0.1440.920" timestamp="1603881304966" />
+    <state x="501" y="215" key="FileChooserDialogImpl" timestamp="1603861976185">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="501" y="215" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1603861976185" />
+    <state width="1397" height="438" key="GridCell.Tab.0.bottom" timestamp="1603957677791">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1397" height="438" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1603957677791" />
+    <state width="1397" height="438" key="GridCell.Tab.0.center" timestamp="1603957677791">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1397" height="438" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1603957677791" />
+    <state width="1397" height="438" key="GridCell.Tab.0.left" timestamp="1603957677791">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1397" height="438" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1603957677791" />
+    <state width="1397" height="438" key="GridCell.Tab.0.right" timestamp="1603957677791">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state width="1397" height="438" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1603957677791" />
+    <state x="222" y="105" key="SettingsEditor" timestamp="1603861938292">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="222" y="105" key="SettingsEditor/0.0.1440.920@0.0.1440.920" timestamp="1603861938292" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/my_Go_Py_blog$md_to_rst_tool.coverage" NAME="md_to_rst_tool Coverage Results" MODIFIED="1603957602911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

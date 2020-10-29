@@ -246,7 +246,7 @@
 <h1><a class="toc-backref" href="#id3">12.20. argparse解析命令行参数</a><a class="headerlink" href="#argparse" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id4">12.20.1. 代码举例1</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/6/19 17:36</span>
@@ -276,7 +276,7 @@
 </pre></div>
 </div>
 <p>输出信息</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">apgparse模块</span><span class="o">.</span><span class="n">py</span>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">apgparse模块</span><span class="o">.</span><span class="n">py</span>
 <span class="n">Namespace</span><span class="p">(</span><span class="n">boolean_switch</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">server</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">)</span>
 <span class="n">host</span> <span class="o">=</span>  <span class="n">localhost</span>
 <span class="n">boolean_switch</span><span class="o">=</span> <span class="kc">False</span>
@@ -289,7 +289,7 @@
 </div>
 <div class="section" id="help">
 <h3><a class="toc-backref" href="#id5">通过help选项获取帮助信息</a><a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">apgparse模块</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">apgparse模块</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span>
 <span class="n">usage</span><span class="p">:</span> <span class="n">apgparse模块</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">host</span> <span class="n">SERVER</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span><span class="p">]</span>
 
 <span class="n">This</span> <span class="ow">is</span> <span class="n">description</span>
@@ -305,7 +305,7 @@
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id6">12.20.2. 代码举例2</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>模仿Mysql客户端的命令行参数</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 
 <span class="k">def</span> <span class="nf">_argparse</span><span class="p">():</span>
@@ -337,7 +337,7 @@
 </pre></div>
 </div>
 <p>输出信息</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">apgparse模块</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">apgparse模块</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span>
 
 <span class="n">usage</span><span class="p">:</span> <span class="n">apgparse模块</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">--</span><span class="n">host</span> <span class="n">HOST</span> <span class="o">-</span><span class="n">u</span> <span class="n">USER</span> <span class="o">-</span><span class="n">p</span> <span class="n">PASSWORD</span> <span class="p">[</span><span class="o">-</span><span class="n">P</span> <span class="n">PORT</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
 
@@ -354,7 +354,17 @@
 </pre></div>
 </div>
 <p>示例代码</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_argparse</span><span class="p">():</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># @auther:   18793</span>
+<span class="c1"># @Date：    2020/9/30 10:04</span>
+<span class="c1"># @filename: argparse01.py</span>
+<span class="c1"># @Email:    1879324764@qq.com</span>
+<span class="c1"># @Software: PyCharm</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+
+
+<span class="k">def</span> <span class="nf">get_argparse</span><span class="p">():</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;A email client in terminal&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;subject&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;specify a subject (must be in quotes if it has spaces)&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;attaches&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;attach file(s) to the message&#39;</span><span class="p">)</span>
@@ -362,6 +372,22 @@
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;recipients&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;recipient who you are sending the email to&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-v&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;version&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(prog)s</span><span class="s1"> 0.2&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">get_argparse</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s = &quot;</span><span class="p">,</span> <span class="n">parser</span><span class="o">.</span><span class="n">subject</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;r = &quot;</span><span class="p">,</span> <span class="n">parser</span><span class="o">.</span><span class="n">recipients</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f = &quot;</span><span class="p">,</span> <span class="n">parser</span><span class="o">.</span><span class="n">conf</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">GitHub</span>\<span class="n">python标准库</span>\<span class="n">解析命令行参数</span><span class="o">&gt;</span><span class="n">python</span> <span class="n">argparse02</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">s</span> <span class="n">hu</span> <span class="o">-</span><span class="n">r</span> <span class="n">huajianli</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;config.cfg&quot;</span>
+<span class="n">Namespace</span><span class="p">(</span><span class="n">attaches</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">conf</span><span class="o">=</span><span class="s1">&#39;config.cfg&#39;</span><span class="p">,</span> <span class="n">recipients</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;huajianli&#39;</span><span class="p">],</span> <span class="n">subject</span><span class="o">=</span><span class="s1">&#39;hu&#39;</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span>  <span class="n">hu</span>
+<span class="n">r</span> <span class="o">=</span>  <span class="p">[</span><span class="s1">&#39;huajianli&#39;</span><span class="p">]</span>
+<span class="n">f</span> <span class="o">=</span>  <span class="n">config</span><span class="o">.</span><span class="n">cfg</span>
 </pre></div>
 </div>
 </div>

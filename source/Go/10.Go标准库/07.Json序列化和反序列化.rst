@@ -13,6 +13,47 @@ Json序列化
 
 json序列号是指，将有key-value结构的数据类型（比如结构体、map、切片）序列化成json字符串的操作。
 
+Marshal函数
+~~~~~~~~~~~
+
+Marshal函数返回v的json编码:
+
+::
+
+   import "encoding/json"
+
+json包实现了json对象的编解码。Marshal、Unmarshal函数。
+
+.. code:: go
+
+   package main
+
+   import (
+       "encoding/json"
+       "fmt"
+   )
+
+   type ColorGroup struct {
+       ID     int
+       Name   string
+       Colors []string
+   }
+
+   func main() {
+       group := ColorGroup{
+           ID:     1,
+           Name:   "Reds",
+           Colors: []string{"Crimson", "Red", "Ruby", "Maroon"},
+       }
+       b, err := json.Marshal(group)
+       if err != nil {
+           fmt.Println("error:", err)
+       }
+       //os.Stdout.Write(b)
+       fmt.Println(string(b))
+
+   }
+
 应用案例
 ~~~~~~~~
 
@@ -21,7 +62,7 @@ json序列号是指，将有key-value结构的数据类型（比如结构体、m
 代码示例
 ~~~~~~~~
 
-::
+.. code:: go
 
    package main
 
@@ -155,6 +196,42 @@ Json反序列化
 
 Json反序列化是指，将json字符串反序列化成对应的数据类型（比如结构体、map、切片）的操作
 
+Unmarshal函数
+~~~~~~~~~~~~~
+
+解析json编码的数据并将结果存入v指向的值:
+
+.. code:: go
+
+   package main
+
+   import (
+       "encoding/json"
+       "fmt"
+   )
+
+   type Animal struct {
+       Name  string
+       Order string
+   }
+
+   func main() {
+       var jsonBlob = []byte(`[
+           {"Name": "Platypus", "Order": "Monotremata"},
+           {"Name": "Quoll",    "Order": "Dasyuromorphia"}
+       ]`)
+
+       var animals []Animal
+       err := json.Unmarshal(jsonBlob, &animals)
+       if err != nil {
+           fmt.Println("error:", err)
+       }
+       fmt.Printf("%+v", animals)
+       
+   }
+
+   //[{Name:Platypus Order:Monotremata} {Name:Quoll Order:Dasyuromorphia}]
+
 .. _应用案例-1:
 
 应用案例
@@ -164,7 +241,7 @@ Json反序列化是指，将json字符串反序列化成对应的数据类型（
 
 代码示例
 
-::
+.. code:: go
 
    package main
    import (

@@ -21,7 +21,7 @@
 ::
 
    1) 多线程程序在单核上运行，就是并发
-   2） 多线程程序在多核上运行，就是并行
+   2）多线程程序在多核上运行，就是并行
 
 并发与并行并不相同，并发主要由切换时间片来实现“同时”运行，并行则是直接利用多核实现多线程的运行，Go程序可以设置使用核心数，以发挥多核计算机的能力。
 
@@ -84,7 +84,7 @@ goroutine语法：
 使用go关键字，将running()函数并发执行，每隔一秒打印一次计数器， 而 main
 的 goroutine 则等待用户输入，两个行为可以同时进行。
 
-::
+.. code:: go
 
    package main
 
@@ -194,3 +194,42 @@ go关键字后也可以为匿名函数或闭包启动goroutine。
        runtime.GOMAXPROCS(num)
        fmt.Println("num = ", num)      //num =  4
    }
+
+示例代码
+
+.. code:: go
+
+   package main
+
+   import (
+       "fmt"
+       "runtime"
+       "time"
+   )
+
+   func A() {
+       for i := 1; i < 10; i++ {
+           fmt.Println("A", i)
+       }
+   }
+
+   func B() {
+       for i := 1; i < 10; i++ {
+           fmt.Println("B", i)
+       }
+   }
+   func main() {
+       //设置CPU的核心数量
+       //runtime.GOMAXPROCS(1)
+       runtime.GOMAXPROCS(2)
+       go A()
+       go B()
+       time.Sleep(time.Second)
+
+   }
+
+Go语言中的操作系统线程和goroutine的关系：
+
+   -  1.一个操作系统线程对应用户态多个goroutine。
+   -  2.go程序可以同时使用多个操作系统线程。
+   -  3.goroutine和OS线程是多对多的关系，即m:n。

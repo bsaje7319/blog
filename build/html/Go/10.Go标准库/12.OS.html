@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>10.12. os &mdash; 运维开发修炼之路</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="11. 项目代码" href="../11.项目代码/index.html" />
+    <link rel="prev" title="10.11. strings" href="11.strings.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Go语言学习</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01.Go语言基本语法与使用/index.html">1. Go语言基本语法与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.容器-存储与组织数据的方式/index.html">2. 容器-存储与组织数据的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 流程控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 结构体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.接口/index.html">6. 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.包/index.html">7. 包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08.并发/index.html">8. 并发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09.Go语言基础之反射/index.html">9. Go语言基础之反射</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">10. Go标准库</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.文件IO的操作.html">10.1. 文件IO的操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02.fmt包.html">10.2. fmt包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03.Socket网络.html">10.3. Socket网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04.模板.html">10.4. 模板</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.net_http包.html">10.5. net_http包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06.Go语言操作MySQL.html">10.6. Go语言操作MySQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html">10.7. Json序列化和反序列化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08.Go语言常用资料及工具详细汇总.html">10.8. Go语言常用资料及工具详细汇总</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.Go执行shell命令.html">10.9. Go执行shell命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.flag接收命令行参数.html">10.10. flag接收命令行参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.strings.html">10.11. strings</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.12. os</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/index.html">Python自动化运维</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Go_vs_Python/index.html">Go vs Python</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Go语言学习</a> &raquo;</li>
+        
+          <li><a href="index.html">10. Go标准库</a> &raquo;</li>
+        
+      <li>10.12. os</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Go/10.Go标准库/12.OS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#os" id="id1">os</a></li>
+</ul>
+</div>
+<div class="section" id="os">
+<h1><a class="toc-backref" href="#id1">10.12. os</a><a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s2">&quot;os&quot;</span>
+</pre></div>
+</div>
+<p>os包提供了操作系统函数的不依赖平台的接口。设计为Unix风格的，虽然错误处理是go风格的；失败的调用会返回错误值而非错误码。通常错误值里包含更多信息。</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>fmt.Println(os.Hostname())             //bogon &lt;nil&gt;(返回内核提供的主机名)
+fmt.Println(os.Getpagesize())          //4096(返回底层的系统内存页的尺寸)
+fmt.Println(os.Environ())              //(环境变量的格式为&quot;key=value&quot;的字符串的切片拷贝)
+fmt.Println(os.Getenv(&quot;GOPATH&quot;))       //(名为key的环境变量的值,不存在返回空)
+fmt.Println(os.Setenv(&quot;Name&quot;, &quot;Nick&quot;)) //(设置名为key的环境变量)
+os.Clearenv()    //(删除所有环境变量)
+os.Exit(0)       //(以给出的状态码code退出,程序会立刻终止，defer的函数不会被执行)
+
+fmt.Println(os.Getuid())    //501(调用者的用户ID)
+fmt.Println(os.Geteuid())   //501(调用者的有效用户ID)
+fmt.Println(os.Getgid())    //20(调用者的组ID)
+fmt.Println(os.Getegid())   //20(调用者的有效组ID)
+fmt.Println(os.Getgroups()) //[20 701 12 61 79 80 81 ...](调用者所属的所有用户组的组ID)
+fmt.Println(os.Getpid())    //62027(调用者所在进程的进程ID)
+fmt.Println(os.Getppid())   //62020(调用者所在进程的父进程的进程ID)
+
+fmt.Println(os.Getwd())                      //返回一个对应当前工作目录的根路径
+os.Chdir(&quot;/tmp/&quot;)                            //将当前工作目录修改为dir指定的目录
+os.Mkdir(&quot;/tmp/test&quot;, 0666)                  //用指定的权限和名称创建一个目录
+os.MkdirAll(&quot;/tmp/test1/test2/test3&quot;, 0666)  //使用指定的权限和名称创建一个目录,递归上级目录
+os.Rename(&quot;/tmp/test&quot;, &quot;/tmp/test1/testNew&quot;) //修改一个文件的名字，移动一个文件
+os.Remove(&quot;/tmp/test1/test2/test3&quot;)          //删除name指定的文件或目录
+os.RemoveAll(&quot;/tmp/test1/&quot;)                  //删除path指定的文件
+
+os.Create(&quot;/tmp/test&quot;)      //0666,创建文件,存在会清空
+os.Open(&quot;/tmp/test&quot;)        //O_RDONLY,打开一个文件
+os.OpenFile(&quot;/tmp/test&quot;, os.O_CREATE|os.O_WRONLY, 0666)
+
+Args保管了命令行参数，第一个是程序名。
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../11.项目代码/index.html" class="btn btn-neutral float-right" title="11. 项目代码" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="11.strings.html" class="btn btn-neutral float-left" title="10.11. strings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

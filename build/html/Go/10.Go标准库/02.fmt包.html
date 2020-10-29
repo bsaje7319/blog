@@ -123,6 +123,9 @@
 <li class="toctree-l3"><a class="reference internal" href="07.Json序列化和反序列化.html">10.7. Json序列化和反序列化</a></li>
 <li class="toctree-l3"><a class="reference internal" href="08.Go语言常用资料及工具详细汇总.html">10.8. Go语言常用资料及工具详细汇总</a></li>
 <li class="toctree-l3"><a class="reference internal" href="09.Go执行shell命令.html">10.9. Go执行shell命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10.flag接收命令行参数.html">10.10. flag接收命令行参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="11.strings.html">10.11. strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.OS.html">10.12. os</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
@@ -210,6 +213,65 @@
 </div>
 <div class="section" id="fmt">
 <h1><a class="toc-backref" href="#id1">10.2. fmt包</a><a class="headerlink" href="#fmt" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+</pre></div>
+</div>
+<p>mt包实现了类似C语言printf和scanf的格式化I/O。格式化动作（‘verb’）源自C语言但更简单。</p>
+<p>通用：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>%v    值的默认格式表示
+%+v    类似%v，但输出结构体时会添加字段名
+%#v    值的Go语法表示
+%T    值的类型的Go语法表示
+%%    百分号
+</pre></div>
+</div>
+<p>布尔值：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">t</span>    <span class="n">单词true或false</span>
+</pre></div>
+</div>
+<p>整数：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>%b    表示为二进制
+%c    该值对应的unicode码值
+%d    表示为十进制
+%o    表示为八进制
+%q    该值对应的单引号括起来的go语法字符字面值，必要时会采用安全的转义表示
+%x    表示为十六进制，使用a-f
+%X    表示为十六进制，使用A-F
+%U    表示为Unicode格式：U+1234，等价于&quot;U+%04X&quot;
+</pre></div>
+</div>
+<p>浮点数与复数的两个组分：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>%b    无小数部分、二进制指数的科学计数法，如-123456p-78；参见strconv.FormatFloat
+%e    科学计数法，如-1234.456e+78
+%E    科学计数法，如-1234.456E+78
+%f    有小数部分但无指数部分，如123.456
+%F    等价于%f
+%g    根据实际情况采用%e或%f格式（以获得更简洁、准确的输出）
+%G    根据实际情况采用%E或%F格式（以获得更简洁、准确的输出）
+%f:    默认宽度，默认精度
+%9f    宽度9，默认精度
+%.2f   默认宽度，精度2
+%9.2f  宽度9，精度2
+%9.f   宽度9，精度0
+</pre></div>
+</div>
+<p>字符串和[]byte：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>%s    直接输出字符串或者[]byte
+%q    该值对应的双引号括起来的go语法字符串字面值，必要时会采用安全的转义表示
+%x    每个字节用两字符十六进制数表示（使用a-f）
+%X    每个字节用两字符十六进制数表示（使用A-F）
+</pre></div>
+</div>
+<p>指针：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>%p    表示为十六进制，并加上前导的0x
+</pre></div>
+</div>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">前置补0</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%03d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%0*d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Println、Fprintln、Sprintln 输出内容时会加上换行符；
 Print、Fprint、Sprint 输出内容时不加上换行符；
 Printf、Fprintf、Sprintf 按照指定格式化文本输出内容。
@@ -223,7 +285,7 @@ Sprint、Sprintf、Sprintln 输出内容到字符串。
 <div class="section" id="verb">
 <h2><a class="toc-backref" href="#id2">10.2.1. 格式化verb应用</a><a class="headerlink" href="#verb" title="Permalink to this headline">¶</a></h2>
 <p>代码示例</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s2">&quot;fmt&quot;</span>

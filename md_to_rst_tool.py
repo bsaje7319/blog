@@ -32,7 +32,6 @@ class Conversion:
     """
     文件格式转换类
     """
-
     def __init__(self):
         self.__js_file = "file_md5.json"
 
