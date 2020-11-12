@@ -10,7 +10,7 @@ zipapp模块
 
 zipapp模块可用于生成可执行的Python档案包，这个档案包会包含目录下所有的Python程序。
 如果使用pip工具先将Python程序所依赖的模块下载到目标目录下，
-那么就可以生成可独立运行的Python程序–只要目标及其上安装有Python解释器环境即可。
+那么就可以生成可独立运行的Python程序--只要目标及其上安装有Python解释器环境即可。
 
 使用zipapp模块
 --------------
@@ -23,7 +23,7 @@ python提供一个zipapp模块，通过该模块可以将一个Python模块(可�
 
 ::
 
-   python -m zipapp source [option]
+    python -m zipapp source [option]
 
 source参数可以是单个的python文件，也可以是文件夹。如果souce参数是文件夹，那么zipapp模块
 会打包该文件夹中所有的Python文件。
@@ -32,61 +32,61 @@ source参数可以是单个的python文件，也可以是文件夹。如果souce
 
 ::
 
-   $ tree
-   .
-   └── app
-       ├── app.py
-       └── say_hello.py
+    $ tree
+    .
+    └── app
+        ├── app.py
+        └── say_hello.py
 
-say_hello.py
+say\_hello.py
 
 ::
 
-   # coding: utf-8
-   def say_hello(name):
-       return name + "，您好！"
+    # coding: utf-8
+    def say_hello(name):
+        return name + "，您好！"
 
 app.py
 
 ::
 
-   from say_hello import *
+    from say_hello import *
 
-   def main():
-       print('程序开始执行')
-       print(say_hello('孙悟空'))
+    def main():
+        print('程序开始执行')
+        print(say_hello('孙悟空'))
 
 在app目录下执行
 
 ::
 
-   python -m zipapp app -o first.pyz -m "app:main"
+    python -m zipapp app -o first.pyz -m "app:main"
 
 上面命令指定将当前目录下的app子目录下的所有Python源文件打包成一个档案包，并通过-o选择指定所生产的档案包的文件名为
 ``first.pyz``\ ；-m选项指定使用app.py模块中的main函数作为程序入口。
 
 ::
 
-   $ tree
-   .
-   ├── app
-   │   ├── app.py
-   │   └── say_hello.py
-   └── first.pyz
+    $ tree
+    .
+    ├── app
+    │   ├── app.py
+    │   └── say_hello.py
+    └── first.pyz
 
 接下来可以使用python命令来运行first.pyz文件。
 
 ::
 
-   $ python first.pyz
-   程序开始执行
-   孙悟空，您好！
+    $ python first.pyz
+    程序开始执行
+    孙悟空，您好！
 
 通过命令行工具在app目录下执行如下命令：
 
 ::
 
-   python -m zipapp app -m "app:main"
+    python -m zipapp app -m "app:main"
 
 上面命令没有指定-o选项，该命令将会使用默认的输出文件名：
 source参数值加.pyz后缀。
@@ -95,10 +95,10 @@ source参数值加.pyz后缀。
 ::
 
 
-   ├── app
-   │   ├── app.py
-   │   └── say_hello.py
-   ├── app.pyz
+    ├── app
+    │   ├── app.py
+    │   └── say_hello.py
+    ├── app.pyz
 
 创建独立应用
 ------------
@@ -113,12 +113,12 @@ source参数值加.pyz后缀。
 
 ::
 
-   $ tree
-   .
-   ├── dbapp
-   │   ├── __main__.py
-   │   └── exec_select.py
-   └── requirements.txt
+    $ tree
+    .
+    ├── dbapp
+    │   ├── __main__.py
+    │   └── exec_select.py
+    └── requirements.txt
 
 ``__main__.py``\ 文件作为程序入口。这样程序在打包档案包时就不需要知道程序入口了。
 
@@ -126,38 +126,38 @@ source参数值加.pyz后缀。
 
 ::
 
-   from exec_select import *
+    from exec_select import *
 
-   # 执行query_db()函数
-   query_db()
+    # 执行query_db()函数
+    query_db()
 
 requirements.txt
 
 ::
 
-   mysql-connector-python
+    mysql-connector-python
 
 通过命令行工具执行如下命令：
 
 ::
 
-   python -m pip install -r requirements.txt --target dbapp
-   Collecting mysql-connector-python
-     Downloading https://files.pythonhosted.org/packages/1f/e9/474a3cfb87e5eff6db9cec4ded8e52c098c77411382a86bea2bd836576d0/mysql_connector_python-8.0.19-cp
-   35-cp35m-win_amd64.whl (4.3MB)
-        |████████████████████████████████| 4.3MB 547kB/s
+    python -m pip install -r requirements.txt --target dbapp
+    Collecting mysql-connector-python
+      Downloading https://files.pythonhosted.org/packages/1f/e9/474a3cfb87e5eff6db9cec4ded8e52c098c77411382a86bea2bd836576d0/mysql_connector_python-8.0.19-cp
+    35-cp35m-win_amd64.whl (4.3MB)
+         |████████████████████████████████| 4.3MB 547kB/s
 
 上面的命令时间上就是使用pip模块来安装模块，其中python -m pip install
 表示要安装模块。
 
-–target选项指定将模块安装到指定目录下，此处指定将依赖模块安装到dbapp子目录下。
+--target选项指定将模块安装到指定目录下，此处指定将依赖模块安装到dbapp子目录下。
 
 -r 选项支持两个值
 
 ::
 
-   > 直接指定要安装的模块或包
-   > 使用清单文件指定要安装的模块和包
+    > 直接指定要安装的模块或包
+    > 使用清单文件指定要安装的模块和包
 
 当依赖模块较多时，建议使用清单文件来列出所依赖的模块。
 
@@ -166,14 +166,14 @@ requirements.txt
 
 ::
 
-   · 如果pip在dbapp子目录下生成了.dist-info目录，则建议删除该目录。
-   · 使用zipapp模块执行打包操作，如果dbapp子目录下包含了__main__.py文件，该文件会作为程序入口，因此打包时不需要指定-m选项。
+    · 如果pip在dbapp子目录下生成了.dist-info目录，则建议删除该目录。
+    · 使用zipapp模块执行打包操作，如果dbapp子目录下包含了__main__.py文件，该文件会作为程序入口，因此打包时不需要指定-m选项。
 
 使用如下命令来打包
 
 ::
 
-   python -m zipapp dbapp
+    python -m zipapp dbapp
 
 运行上面命令，将会得到一个大约为18MB的档案包。因为档案包包含了\ ``mysql-connector-python``\ 模块，所有其比较大。
 
@@ -181,9 +181,9 @@ requirements.txt
 
 ::
 
-   pip uninstall mysql-connector-python
+    pip uninstall mysql-connector-python
 
-此时本机的python目录下不在包含mysql-connector-python模块，但dbapp.pyz程序依然可以正常运行–因为它自包含了\ ``mysql-connector-python``\ 模块。
+此时本机的python目录下不在包含mysql-connector-python模块，但dbapp.pyz程序依然可以正常运行--因为它自包含了\ ``mysql-connector-python``\ 模块。
 
 将python包发布到PyPI和制作whl文件方式
 -------------------------------------
@@ -192,7 +192,7 @@ requirements.txt
 
 ::
 
-   https://www.jb51.net/article/177180.htm
+    https://www.jb51.net/article/177180.htm
 
 Setuptools基础
 --------------
@@ -210,75 +210,75 @@ Setuptools和较旧的Distutils都是用于发布Python包的工具包，让你�
 
 .. code:: python
 
-   #!/usr/bin/env python
-   # -*- coding:utf8 -*-
-   # auther; 18793
-   # Date：2020/2/3 16:21
-   # filename: hello.py
+    #!/usr/bin/env python
+    # -*- coding:utf8 -*-
+    # auther; 18793
+    # Date：2020/2/3 16:21
+    # filename: hello.py
 
-   def add(a, b):
-       if a > 0 and b > 0:
-           return a + b
-       else:
-           return 0
+    def add(a, b):
+        if a > 0 and b > 0:
+            return a + b
+        else:
+            return 0
 
-   def hello1():
-       print("hello world1")
+    def hello1():
+        print("hello world1")
 
 
-   def hello2(args):
-       print("hello {}".format(args))
+    def hello2(args):
+        print("hello {}".format(args))
 
 ``简单的Setuptools安装脚本``
 
 .. code:: python
 
-   #!/usr/bin/env python
-   # -*- coding:utf8 -*-
-   # auther; 18793
-   # Date：2020/2/3 16:15
-   # filename: setup.py.py
-   """
-   简单的Setuptools安装脚本
-   """
+    #!/usr/bin/env python
+    # -*- coding:utf8 -*-
+    # auther; 18793
+    # Date：2020/2/3 16:15
+    # filename: setup.py.py
+    """
+    简单的Setuptools安装脚本
+    """
 
-   from setuptools import setup
+    from setuptools import setup
 
-   setup(
-       name="add_module",
-       version="1.0.0",
-       description="My test add_module ",
-       author="hujianli",
-       url="http://xxxx.com",
-       py_modules=['add_module'],
-       # packages=['add_module']
-   )
+    setup(
+        name="add_module",
+        version="1.0.0",
+        description="My test add_module ",
+        author="hujianli",
+        url="http://xxxx.com",
+        py_modules=['add_module'],
+        # packages=['add_module']
+    )
 
 ::
 
-   D:\Python-code\代码打包为exe文件\03.Setuptools打包>python setup.py
-   usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]
-      or: setup.py --help [cmd1 cmd2 ...]
-      or: setup.py --help-commands
-      or: setup.py cmd --help
+    D:\Python-code\代码打包为exe文件\03.Setuptools打包>python setup.py
+    usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]
+       or: setup.py --help [cmd1 cmd2 ...]
+       or: setup.py --help-commands
+       or: setup.py cmd --help
 
-   error: no commands supplied
+    error: no commands supplied
 
-从上述输出可知，要获得更多的信息，可使用开关 –help 或 –help-commands
+从上述输出可知，要获得更多的信息，可使用开关 --help 或 --help-commands
 。尝试执行命令 build ，让Setuptools行动起来。
 
 ::
 
-   python setup.py build
+    python setup.py build
 
 ::
 
-   D:\Python-code\代码打包为exe文件\03.Setuptools打包>python setup.py build
-   running build
-   running build_py
-   creating build
-   creating build\lib
-   copying hello.py -> build\lib
+    D:\Python-code\代码打包为exe文件\03.Setuptools打包>python setup.py build
+    running build
+    running build_py
+    creating build
+    creating build\lib
+    copying hello.py -> build\lib
 
 Setuptools创建了一个名为build的目录，其中包含子目录lib。
 同时将将hello.py复制到了这个子目录中。
@@ -292,29 +292,29 @@ Setuptools创建了一个名为build的目录，其中包含子目录lib。
 
 ::
 
-   D:\Python-code\代码打包为exe文件\03.Setuptools打包>python setup.py install
-   .....
-   Processing Hello-1.0-py3.5.egg
-   Copying Hello-1.0-py3.5.egg to c:\users\18793\anaconda3\lib\site-packages
-   Adding Hello 1.0 to easy-install.pth file
+    D:\Python-code\代码打包为exe文件\03.Setuptools打包>python setup.py install
+    .....
+    Processing Hello-1.0-py3.5.egg
+    Copying Hello-1.0-py3.5.egg to c:\users\18793\anaconda3\lib\site-packages
+    Adding Hello 1.0 to easy-install.pth file
 
-   Installed c:\users\18793\anaconda3\lib\site-packages\hello-1.0-py3.5.egg
-   Processing dependencies for Hello==1.0
-   Finished processing dependencies for Hello==1.0
+    Installed c:\users\18793\anaconda3\lib\site-packages\hello-1.0-py3.5.egg
+    Processing dependencies for Hello==1.0
+    Finished processing dependencies for Hello==1.0
 
 将hello.py作为包放置到\ ``anaconda3\lib\site-packages``\ 中，可以直接当做包进行import导入
 
 .. code:: python
 
-   import hello
-   hello.hello1()
-   hello.hello2("hujianli")
+    import hello
+    hello.hello1()
+    hello.hello2("hujianli")
 
 ::
 
-   这就是用于安装Python模块、包和扩展的标准机制。你只需提供一个小小的安装脚本即可。
+    这就是用于安装Python模块、包和扩展的标准机制。你只需提供一个小小的安装脚本即可。
 
-   如你所见，在安装过程中，Setuptools创建了一个.egg文件，这是一个独立的Python包。
+    如你所见，在安装过程中，Setuptools创建了一个.egg文件，这是一个独立的Python包。
 
 打包
 ----
@@ -328,15 +328,15 @@ Setuptools创建了一个名为build的目录，其中包含子目录lib。
 
 .. code:: shell
 
-   python setup.py sdist
-   running sdist
-   running egg_info
-   writing top-level names to Hello.egg-info\top_level.txt
-   writing dependency_links to Hello.egg-info\dependency_links.txt
-   writing Hello.egg-info\PKG-INFO
-   reading manifest file 'Hello.egg-info\SOURCES.txt'
-   writing manifest file 'Hello.egg-info\SOURCES.txt'
-   warning: sdist: standard file not found: should have one of README, README.rst, README.txt, README.md
+    python setup.py sdist
+    running sdist
+    running egg_info
+    writing top-level names to Hello.egg-info\top_level.txt
+    writing dependency_links to Hello.egg-info\dependency_links.txt
+    writing Hello.egg-info\PKG-INFO
+    reading manifest file 'Hello.egg-info\SOURCES.txt'
+    writing manifest file 'Hello.egg-info\SOURCES.txt'
+    warning: sdist: standard file not found: should have one of README, README.rst, README.txt, README.md
 
 现在，除目录build外，应该还有一个名为dist的目录。在这个目录中，有一个名为Hello-1.0.tar.gz的文件。你可将其分发给他人，而对方可将其解压缩，再使用脚本setup.py进行安装。
 
@@ -344,136 +344,131 @@ Setuptools创建了一个名为build的目录，其中包含子目录lib。
 
 .. code:: shell
 
-   python setup.py bdist_wheel
+    python setup.py bdist_wheel
 
-Python编程：entry_points将Python模块转变为命令行工具
-----------------------------------------------------
+Python编程：entry\_points将Python模块转变为命令行工具
+-----------------------------------------------------
 
 将模块变\ ``“/usr/bin/”``\ 目录下的命令行工具
 
 参考文献：
 
-https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
+https://blog.csdn.net/mouday/article/details/90582313?depth\_1-utm\_source=distribute.pc\_relevant.none-task&utm\_source=distribute.pc\_relevant.none-task
 
 示例代码
 
 ::
 
-   #!/usr/bin/env python
-   # coding: utf-8
-   from setuptools import setup
+    #!/usr/bin/env python
+    # coding: utf-8
+    from setuptools import setup
 
-   setup(
-       name='emcli',
-       version='0.2',
-       author='Mingxing LAI',
-       author_email='me@mingxinglai.com',
-       url='https://github.com/lalor/emcli',
-       description='A email client in terminal',
-       packages=['emcli'],
-       install_requires=['yagmail'],
-       tests_require=['nose', 'tox'],
-       entry_points={
-           'console_scripts': [
-               'emcli=emcli:main',
-           ]
-       }
-   )
+    setup(
+        name='emcli',
+        version='0.2',
+        author='Mingxing LAI',
+        author_email='me@mingxinglai.com',
+        url='https://github.com/lalor/emcli',
+        description='A email client in terminal',
+        packages=['emcli'],
+        install_requires=['yagmail'],
+        tests_require=['nose', 'tox'],
+        entry_points={
+            'console_scripts': [
+                'emcli=emcli:main',
+            ]
+        }
+    )
 
 参考如下\ ``setup.py``\ 文件：
 
 ::
 
-   https://github.com/mouday/PureMySQL/blob/master/setup.py
+    https://github.com/mouday/PureMySQL/blob/master/setup.py
 
 打包且成为命令行模式的示例
 --------------------------
 
-.. code:: shell
-
-   [root@keepalived-master python01]# tree
-   .
-   ├── pyHello
-   │   ├── hello.py
-   │   ├── __init__.py
-   │   └── __main__.py
-   └── setup.py
+``shell  [root@keepalived-master python01]# tree . ├── pyHello │   ├── hello.py │   ├── __init__.py │   └── __main__.py └── setup.py``
 
 ``cat pyHello/hello.py``
 
 .. code:: python
 
-   #!/usr/bin/env python
-   #-*- coding:utf8 -*-
-   # auther; 18793
-   # Date：2020/4/1 14:01
-   # filename: hello.py
+    #!/usr/bin/env python
+    #-*- coding:utf8 -*-
+    # auther; 18793
+    # Date：2020/4/1 14:01
+    # filename: hello.py
 
-   def hello1():
-       print("hello world1")
-
-
-   def hello2(args):
-       print("hello {}".format(args))
+    def hello1():
+        print("hello world1")
 
 
-   def main():
-       hello1()
-       hello2("hujianli")
+    def hello2(args):
+        print("hello {}".format(args))
 
-   if __name__ == '__main__':
-       main()
+
+    def main():
+        hello1()
+        hello2("hujianli")
+
+    if __name__ == '__main__':
+        main()
 
 ``cat pyHello/__main__.py``
 
 .. code:: python
 
-   #!/usr/bin/env python
-   #-*- coding:utf8 -*-
-   # auther; 18793
-   # Date：2020/4/1 14:03
-   # filename: __main__.py
-   from .hello import main
+    #!/usr/bin/env python
+    #-*- coding:utf8 -*-
+    # auther; 18793
+    # Date：2020/4/1 14:03
+    # filename: __main__.py
+    from .hello import main
 
-   if __name__ == '__main__':
-       main()
+    if __name__ == '__main__':
+        main()
 
 ``setup.py``
 
 .. code:: python
 
-   #!/usr/bin/env python
-   #-*- coding:utf8 -*-
-   # auther; 18793
-   # Date：2020/4/1 14:06
-   # filename: setup.py
-   from setuptools import setup, find_packages
+    #!/usr/bin/env python
+    #-*- coding:utf8 -*-
+    # auther; 18793
+    # Date：2020/4/1 14:06
+    # filename: setup.py
+    try:
+        from setuptools import setup
+    except ImportError:
+        from distutils.core import setup
 
-   """
-   打包的用的setup必须引入，
-   """
+    """
+    打包的用的setup必须引入，
+    """
 
-   VERSION = '0.0.3'
+    VERSION = '0.0.3'
 
-   setup(name='pyHello',
-         version=VERSION,
-         description="a command line tool for camel hello",
-         long_description='a python command tool for camel hello',
-         classifiers=[],  # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
-         keywords='pyHello',
-         author='Peng Shiyu',
-         author_email='pengshiyuyx@gmail.com',
-         license='MIT',
-         packages=find_packages(),
-         include_package_data=True,
-         zip_safe=True,
-         install_requires=[],
-         entry_points={
-             'console_scripts': [
-                 'pyHello = pyHello.hello:main'
-             ]
-         }
-         )
+    setup(name='pyHello',
+          version=VERSION,
+          description="a command line tool for camel hello",
+          long_description='a python command tool for camel hello',
+          classifiers=[],  # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+          keywords='pyHello',
+          author='Peng Shiyu',
+          author_email='pengshiyuyx@gmail.com',
+          license='MIT',
+          packages=find_packages(),
+          include_package_data=True,
+          zip_safe=True,
+          install_requires=[],
+          entry_points={
+              'console_scripts': [
+                  'pyHello = pyHello.hello:main'
+              ]
+          }
+          )
 
 其中有个\ ``console_scripts``\ 的键，表示注册一个叫作\ ``pyHello``\ 的系统命令，
 这个命令会调用\ ``pyHello.hello的main函数``\ ，安装的时候由setuptools来帮助我们生成了\ ``/usr/local/bin/pyHello``\ 这个文件。
@@ -481,23 +476,55 @@ https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distrib
 
 ::
 
-   · 没办法预先知道Python解释器的版本和位置。
-   · 很难确定会安装在哪里。
-   · 无法优雅地解决可移植到不同系统上的问题。
+    · 没办法预先知道Python解释器的版本和位置。
+    · 很难确定会安装在哪里。
+    · 无法优雅地解决可移植到不同系统上的问题。
+
+setup.py完整设置：
+
+.. code:: python
+
+    # -*- coding: utf-8 -*-
+
+    from setuptools import setup, find_packages
+
+    """
+    打包的用的setup必须引入，
+    """
+
+    VERSION = '0.0.1'
+
+    setup(name='pycase',
+            version=VERSION,
+            description="a command line tool for camel case",
+            long_description='a python command tool for camel case',
+            classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+            keywords='pycase',
+            author='Peng',
+            author_email='peng@gmail.com',
+            license='MIT',
+            packages=find_packages(),
+            include_package_data=True,
+            zip_safe=True,
+            install_requires=[],
+            entry_points={
+                 'console_scripts': ['pycase = pycase.case:main']
+            }
+    )
 
 ``deploy.sh``
 
 .. code:: shell
 
-   rm -rf dist build *.egg-info
+    rm -rf dist build *.egg-info
 
-   python setup.py install
-   python setup.py sdist bdist_wheel
-   twine upload dist/*
+    python setup.py install
+    python setup.py sdist bdist_wheel
+    twine upload dist/*
 
-   rm -rf dist build *.egg-info
+    rm -rf dist build *.egg-info
 
-使用entry_points的优点，就是可以让这些入口点能够被其他Python程序动态发现包所提供的功能，但是对应的代码的耦合度非常低。
+使用entry\_points的优点，就是可以让这些入口点能够被其他Python程序动态发现包所提供的功能，但是对应的代码的耦合度非常低。
 
 手把手带你发布自己的专属模块
 ----------------------------
@@ -506,9 +533,9 @@ https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distrib
 
 ::
 
-   1.创建 setup.py；
-   2.构建模块；
-   3.生成发布压缩包。
+    1.创建 setup.py；
+    2.构建模块；
+    3.生成发布压缩包。
 
 ① 创建 setup.py
 ~~~~~~~~~~~~~~~
@@ -517,36 +544,36 @@ https://blog.csdn.net/mouday/article/details/90582313?depth_1-utm_source=distrib
 
 .. code:: python
 
-   #!/usr/bin/env python
-   # -*- coding: utf-8 -*-
-   # @auther:   18793
-   # @Date：    2020/9/21 16:18
-   # @filename: setup.py
-   # @Email:    1879324764@qq.com
-   # @Software: PyCharm
-   """
-   模块 -> 压缩包
-   我们要将模块制作成压缩包，这里一共有 3 个步骤：
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
+    # @auther:   18793
+    # @Date：    2020/9/21 16:18
+    # @filename: setup.py
+    # @Email:    1879324764@qq.com
+    # @Software: PyCharm
+    """
+    模块 -> 压缩包
+    我们要将模块制作成压缩包，这里一共有 3 个步骤：
 
-   创建 setup.py；
-   构建模块；
-   生成发布压缩包。
+    创建 setup.py；
+    构建模块；
+    生成发布压缩包。
 
-   """
+    """
 
-   from distutils.core import setup
+    from distutils.core import setup
 
-   setup(
-       name="rocky_module",  # 包名
-       version="1.0",  # 版本
-       # py_modules=['rocky_module.add', 'rocky_module.delete'],
-       py_modules=['rocky_module'],
-       author="hujianli",  # 作者
-       author_email="hujianli@qq.com",  # 作者邮箱
-       url='https://rocky0429.blog.csdn.net/',  # 主页
-       description='增加和删除模块',  # 描述信息
-       long_description='完整的增加和删除模块'  # 完整的描述信息
-   )
+    setup(
+        name="rocky_module",  # 包名
+        version="1.0",  # 版本
+        # py_modules=['rocky_module.add', 'rocky_module.delete'],
+        py_modules=['rocky_module'],
+        author="hujianli",  # 作者
+        author_email="hujianli@qq.com",  # 作者邮箱
+        url='https://rocky0429.blog.csdn.net/',  # 主页
+        description='增加和删除模块',  # 描述信息
+        long_description='完整的增加和删除模块'  # 完整的描述信息
+    )
 
 ② 构建模块
 ~~~~~~~~~~
@@ -555,7 +582,7 @@ setup.py 创建完成以后，我们可以在解释器中输入下面的代码�
 
 ::
 
-   python3 setup.py build
+    python3 setup.py build
 
 这就是使用 Python 解释器，在执行 setup.py 时跟上 build
 这个参数产生的结果，build
@@ -565,26 +592,26 @@ setup.py 创建完成以后，我们可以在解释器中输入下面的代码�
 
 ::
 
-   D:\GitHub\My_module>python setup.py sdist
+    D:\GitHub\My_module>python setup.py sdist
 
 同样回车以后会产生一些提示信息：
 
 .. code:: python
 
-   running sdist
-   running check
-   warning: sdist: manifest template 'MANIFEST.in' does not exist (using default file list)
+    running sdist
+    running check
+    warning: sdist: manifest template 'MANIFEST.in' does not exist (using default file list)
 
-   warning: sdist: standard file not found: should have one of README, README.txt, README.rst
+    warning: sdist: standard file not found: should have one of README, README.txt, README.rst
 
-   writing manifest file 'MANIFEST'
-   creating rocky_module-1.0
-   making hard links in rocky_module-1.0...
-   hard linking rocky_module.py -> rocky_module-1.0
-   hard linking setup.py -> rocky_module-1.0
-   creating dist
-   Creating tar archive
-   removing 'rocky_module-1.0' (and everything under it)
+    writing manifest file 'MANIFEST'
+    creating rocky_module-1.0
+    making hard links in rocky_module-1.0...
+    hard linking rocky_module.py -> rocky_module-1.0
+    hard linking setup.py -> rocky_module-1.0
+    creating dist
+    Creating tar archive
+    removing 'rocky_module-1.0' (and everything under it)
 
 这时你会发现当前目录下又多了一个 dist 的目录，同时在这个目录下又多个了
 .tar.gz 的压缩文件：
@@ -594,13 +621,13 @@ setup.py 创建完成以后，我们可以在解释器中输入下面的代码�
 
 ::
 
-   第一步：用 tar 把我们的压缩包做一个解压：
-   tar zxvf rocky_module-1.0.tar.gz
+    第一步：用 tar 把我们的压缩包做一个解压：
+    tar zxvf rocky_module-1.0.tar.gz
 
-   第二步：使用 sudo 让 Python解释器以 root 的身份执行 setup.py
-   python setup.py install
+    第二步：使用 sudo 让 Python解释器以 root 的身份执行 setup.py
+    python setup.py install
 
-   验证一下，在终端中进入 ipython，然后导入该模块，如果没有报错，就证明安装成功
+    验证一下，在终端中进入 ipython，然后导入该模块，如果没有报错，就证明安装成功
 
 ④ 卸载模块
 ~~~~~~~~~~
@@ -609,21 +636,26 @@ setup.py 创建完成以后，我们可以在解释器中输入下面的代码�
 
 .. code:: python
 
-   import rocky_module
-   rocky_module.__file__
-   Out[3]: 'C:\\Users\\18793\\Anaconda3\\lib\\site-packages\\rocky_module.py'
+    import rocky_module
+    rocky_module.__file__
+    Out[3]: 'C:\\Users\\18793\\Anaconda3\\lib\\site-packages\\rocky_module.py'
 
 所以进入安装目录,接下来就是执行删除操作：
 
 .. code:: shell
 
-   rm -r rocky_module*
+    rm -r rocky_module*
 
 小结
 ----
 
 ::
 
-   · Setuptools：Setuptools工具包让你能够编写安装脚本。根据约定，这种安装脚本被命名为setup.py。使用这种脚本，可安装模块、包和扩展。
+    · Setuptools：Setuptools工具包让你能够编写安装脚本。根据约定，这种安装脚本被命名为setup.py。使用这种脚本，可安装模块、包和扩展。
 
-   · Setuptools的命令:可使用多个命令来运行setup.py脚本，如build、build_ext、install、sdist和bdist。
+    · Setuptools的命令:可使用多个命令来运行setup.py脚本，如build、build_ext、install、sdist和bdist。
+
+参考文献
+--------
+
+`Python包管理工具 <https://www.cnblogs.com/hester/p/5152961.html>`__

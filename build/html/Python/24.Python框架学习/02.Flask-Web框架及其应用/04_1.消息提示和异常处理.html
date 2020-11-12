@@ -144,6 +144,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06.Python高效开发实战-Django、Flask/index.html">22.6. Python高效开发实战-Django、Flask</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
@@ -228,19 +229,21 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id4">消息提示和异常处理</a><ul>
-<li><a class="reference internal" href="#id2" id="id5">消息提示</a></li>
-<li><a class="reference internal" href="#id3" id="id6">异常处理</a></li>
+<li><a class="reference internal" href="#id1" id="id6">消息提示和异常处理</a><ul>
+<li><a class="reference internal" href="#id2" id="id7">消息提示</a></li>
+<li><a class="reference internal" href="#id3" id="id8">会话上下文</a></li>
+<li><a class="reference internal" href="#id4" id="id9">异常处理</a></li>
+<li><a class="reference internal" href="#id5" id="id10">小结回顾</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id4">22.2.5. 消息提示和异常处理</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id6">22.2.5. 消息提示和异常处理</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id5">消息提示</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">消息提示</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>app.py</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">flash</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span><span class="n">abort</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">flash</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span><span class="n">abort</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span> <span class="s2">&quot;123&quot;</span>
@@ -273,7 +276,7 @@
 </pre></div>
 </div>
 <p>index.html</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+<div class="code html highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -298,8 +301,49 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id6">异常处理</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">errorhandler</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+<h2><a class="toc-backref" href="#id8">会话上下文</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>会话(Session)上下文是一种客户端与服务器端保持状态的解决方案。</p>
+<p>在服务器端，会话上下文是用来实现这种解决方案的存储结构。</p>
+<p>代码如下：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">session</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span> <span class="s2">&quot;SET_ME_BEFORE_USE_SESSION&quot;</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/writeSession&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">writeSession</span><span class="p">():</span>
+    <span class="n">session</span><span class="p">[</span><span class="s1">&#39;key_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">)</span>  <span class="c1"># 将当前时间保存在Session中</span>
+    <span class="k">return</span> <span class="n">session</span><span class="p">[</span><span class="s1">&#39;key_time&#39;</span><span class="p">]</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/readSession&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">readSession</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;key_time&#39;</span><span class="p">)</span>  <span class="c1"># 获得上次调用writeSession时写入的时间，并返回</span>
+</pre></div>
+</div>
+<p>除了正常的数据保存与读取，flask.session对象还维护自身的状态，这通过如下两个属性来实现。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* new: 判断本次请求的Session是否是新建的。
+* modified： 判断本次请求中是否修改过session键值。
+</pre></div>
+</div>
+<p>代码示例：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># modified的使用方法</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/wsession&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">wsession</span><span class="p">():</span>
+    <span class="n">session</span><span class="p">[</span><span class="s1">&#39;key1_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>       <span class="c1">#将当前时间保存在session中</span>
+    <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">modified</span>               <span class="c1"># 之前进行了session设置，所以此处返回True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id9">异常处理</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">errorhandler</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">not_found</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;404.html&quot;</span><span class="p">),</span> <span class="mi">404</span>
 
@@ -340,6 +384,152 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id10">小结回顾</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">abort</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">render_template</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">Markup</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># 模板渲染</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/hello&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/hello/&lt;name&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;hello.html&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="c1"># 转换特殊字符</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/hello1/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello1</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">Markup</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;Hi </span><span class="si">%s</span><span class="s2">!&lt;/strong&gt;&quot;</span><span class="p">)</span> <span class="o">%</span> <span class="s1">&#39;&lt;blink&gt;Hujianli&lt;/blink&gt;&#39;</span><span class="p">)</span>
+    <span class="c1"># return (&quot;&lt;strong&gt;Hi %s!&lt;/strong&gt;&quot; % &#39;&lt;blink&gt;Hujianli&lt;/blink&gt;&#39;)</span>
+
+
+<span class="c1"># 重定义和错误处理</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/check&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/check&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">check</span><span class="p">():</span>
+    <span class="n">abort</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+    <span class="k">pass</span>  <span class="c1"># 后面代码不会执行</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">errorhandler</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">bad_request</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;bad_request.html&quot;</span><span class="p">),</span> <span class="mi">400</span>
+
+
+<span class="c1">############################ 路由 ############################</span>
+<span class="c1"># 1.带变量的路由</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/show_welcome/&lt;username&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_welcome</span><span class="p">(</span><span class="n">username</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;Hi </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">username</span>
+
+
+<span class="c1"># 2.为变量指定类型,指定声明时被映射为int类型</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/add_one/&lt;int:number&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add_one</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1"># 3.路径最后分隔符的作用</span>
+
+<span class="c1"># xxxx/school/和xxxx/school都能访问</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/school/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">school</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;The school page&quot;</span>
+
+
+<span class="c1"># 仅xxxx/school能访问</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/student&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">student</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;The student page&quot;</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/people/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">people</span><span class="p">():</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s2">&quot;login&quot;</span><span class="p">))</span>
+    <span class="n">user_agent</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;User-Aagent&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;Name:</span><span class="si">{0}</span><span class="s2">;UA:</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">user_agent</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/login/&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">user_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;User: </span><span class="si">{}</span><span class="s1"> login&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Open Login page&#39;</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/secret/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">secret</span><span class="p">():</span>
+    <span class="n">abort</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This is never executed&#39;</span><span class="p">)</span>
+
+
+<span class="c1">############################## http方法绑定 ###############################</span>
+
+<span class="c1"># 1.指定HTTP访问方式的方法</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/Messaging&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">Messaging</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;This is Post request!!!!&quot;</span>
+        <span class="c1"># do_send()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;This is GET request!!!!&quot;</span>
+        <span class="c1"># show_the_send_from</span>
+
+
+<span class="c1"># 2.将同一个url根据访问方式映射到不同的函数</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/Message&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">show_the_send_from</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;this is GET !!!!!!!!!!!!!!!!!!!&quot;</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/Message&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">do_send</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;this is POST !!!!!!!!!!!!!!!!!!!&quot;</span>
+
+
+<span class="c1">################################ 路由地址反向生成 ###################################</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/f_root&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">f_root</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/industry&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">f_industry</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/book/&lt;book_name&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">f_book</span><span class="p">(</span><span class="n">book_name</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s2">&quot;f_root&quot;</span><span class="p">))</span>  <span class="c1"># /f_root</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s2">&quot;f_industry&quot;</span><span class="p">))</span>  <span class="c1"># /industry</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s2">&quot;f_industry&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;web&quot;</span><span class="p">))</span>  <span class="c1"># /industry?name=web</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s2">&quot;f_book&quot;</span><span class="p">,</span> <span class="n">book_name</span><span class="o">=</span><span class="s2">&quot;Python Book&quot;</span><span class="p">))</span>  <span class="c1"># /book/Python%20Book</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

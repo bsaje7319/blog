@@ -118,12 +118,14 @@
 <li class="toctree-l3"><a class="reference internal" href="12.建立大型数据结构.html">1.13. 建立大型数据结构</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">1.14. Python常用IDE集成环境</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#pip">1.14.1. 安装pip</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pythonpythonpip">1.14.2. Python开发之Python离线安装项目所需所有pip包</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ipython">1.14.3. 安装ipython</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">1.14.4. 下载安装第三方库一般有以下几种方法</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">1.14.5. 常用三方库的网站</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#anaconda">1.14.6. 安装Anaconda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ide">1.14.7. 使用较多的IDE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">1.14.2. PIP 高级用法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pythonpythonpip">1.14.3. Python开发之Python离线安装项目所需所有pip包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ipython">1.14.4. 安装ipython</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.14.5. 下载安装第三方库一般有以下几种方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.14.6. 常用三方库的网站</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#anaconda">1.14.7. 安装Anaconda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ide">1.14.8. 使用较多的IDE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.14.9. 包管理和虚拟化环境</a></li>
 </ul>
 </li>
 </ul>
@@ -229,34 +231,40 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#pythonide" id="id3">Python常用IDE集成环境</a><ul>
-<li><a class="reference internal" href="#pip" id="id4">安装pip</a><ul>
-<li><a class="reference internal" href="#pythonpip" id="id5"><strong>Python软件包管理工具pip实战篇</strong></a></li>
+<li><a class="reference internal" href="#pythonide" id="id5">Python常用IDE集成环境</a><ul>
+<li><a class="reference internal" href="#pip" id="id6">安装pip</a><ul>
+<li><a class="reference internal" href="#pythonpip" id="id7"><strong>Python软件包管理工具pip实战篇</strong></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#pythonpythonpip" id="id6">Python开发之Python离线安装项目所需所有pip包</a></li>
-<li><a class="reference internal" href="#ipython" id="id7">安装ipython</a></li>
-<li><a class="reference internal" href="#id1" id="id8">下载安装第三方库一般有以下几种方法</a><ul>
-<li><a class="reference internal" href="#pip-timeout" id="id9">设置pip timeout超时时间</a></li>
+<li><a class="reference internal" href="#id1" id="id8">PIP 高级用法</a><ul>
+<li><a class="reference internal" href="#devapi" id="id9">使用devapi作为缓存代理服务器</a></li>
+<li><a class="reference internal" href="#pypi" id="id10">PYPI的完全镜像</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id2" id="id10">常用三方库的网站</a><ul>
-<li><a class="reference internal" href="#jupyter-notebook" id="id11">为Jupyter Notebook添加目录</a></li>
+<li><a class="reference internal" href="#pythonpythonpip" id="id11">Python开发之Python离线安装项目所需所有pip包</a></li>
+<li><a class="reference internal" href="#ipython" id="id12">安装ipython</a></li>
+<li><a class="reference internal" href="#id2" id="id13">下载安装第三方库一般有以下几种方法</a></li>
+<li><a class="reference internal" href="#id3" id="id14">常用三方库的网站</a><ul>
+<li><a class="reference internal" href="#jupyter-notebook" id="id15">为Jupyter Notebook添加目录</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#anaconda" id="id12">安装Anaconda</a><ul>
-<li><a class="reference internal" href="#pythonconda" id="id13"><strong>Python软件包及环境管理器conda实战篇</strong></a></li>
+<li><a class="reference internal" href="#anaconda" id="id16">安装Anaconda</a><ul>
+<li><a class="reference internal" href="#pythonconda" id="id17"><strong>Python软件包及环境管理器conda实战篇</strong></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#ide" id="id14">使用较多的IDE</a></li>
+<li><a class="reference internal" href="#ide" id="id18">使用较多的IDE</a></li>
+<li><a class="reference internal" href="#id4" id="id19">包管理和虚拟化环境</a><ul>
+<li><a class="reference internal" href="#setuptools" id="id20">setuptools工具</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="pythonide">
-<h1><a class="toc-backref" href="#id3">1.14. Python常用IDE集成环境</a><a class="headerlink" href="#pythonide" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id5">1.14. Python常用IDE集成环境</a><a class="headerlink" href="#pythonide" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="pip">
-<h2><a class="toc-backref" href="#id4">1.14.1. 安装pip</a><a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">1.14.1. 安装pip</a><a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#linux上安装pip方法：
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 或
@@ -358,18 +366,33 @@ pip的优点有：
 </pre></div>
 </div>
 <div class="section" id="pythonpip">
-<h3><a class="toc-backref" href="#id5"><strong>Python软件包管理工具pip实战篇</strong></a><a class="headerlink" href="#pythonpip" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id7"><strong>Python软件包管理工具pip实战篇</strong></a><a class="headerlink" href="#pythonpip" title="Permalink to this headline">¶</a></h3>
 <p>参考文献：</p>
 <p><a class="reference external" href="https://www.cnblogs.com/yinzhengjie/p/13696906.html">https://www.cnblogs.com/yinzhengjie/p/13696906.html</a></p>
 </div>
 </div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id8">1.14.2. PIP 高级用法</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="devapi">
+<h3><a class="toc-backref" href="#id9">使用devapi作为缓存代理服务器</a><a class="headerlink" href="#devapi" title="Permalink to this headline">¶</a></h3>
+<p>pip缓存只针对当前的用户。如果公司使用Python的规模很大，尤其是有很多
+自己分发的包的时候，使用缓存代理是非常提高下载效率的方法，这样就不再依赖
+网络环境到PYPI下载包了。</p>
+</div>
+<div class="section" id="pypi">
+<h3><a class="toc-backref" href="#id10">PYPI的完全镜像</a><a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h3>
+<p>bandersnatch（<a class="reference external" href="https://bitbucket.org/pypa/bandersnatch">https://bitbucket.org/pypa/bandersnatch</a>）是PyPA组
+织根据PEP381（<a class="reference external" href="http://www.python.org/dev/peps/pep-0381/">http://www.python.org/dev/peps/pep-0381/</a>）实现的镜像
+客户端。它可以帮我们建立一个包含了全部包的本地镜像服务。</p>
+</div>
+</div>
 <div class="section" id="pythonpythonpip">
-<h2><a class="toc-backref" href="#id6">1.14.2. Python开发之Python离线安装项目所需所有pip包</a><a class="headerlink" href="#pythonpythonpip" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">1.14.3. Python开发之Python离线安装项目所需所有pip包</a><a class="headerlink" href="#pythonpythonpip" title="Permalink to this headline">¶</a></h2>
 <p>参考资料</p>
 <p><a class="reference external" href="https://shazhenyu.blog.csdn.net/article/details/84943889">https://shazhenyu.blog.csdn.net/article/details/84943889</a></p>
 </div>
 <div class="section" id="ipython">
-<h2><a class="toc-backref" href="#id7">1.14.3. 安装ipython</a><a class="headerlink" href="#ipython" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">1.14.4. 安装ipython</a><a class="headerlink" href="#ipython" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pip install ipython
 
 
@@ -383,56 +406,53 @@ os.path.ismount
 </pre></div>
 </div>
 </div>
-<div class="section" id="id1">
-<h2><a class="toc-backref" href="#id8">1.14.4. 下载安装第三方库一般有以下几种方法</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id13">1.14.5. 下载安装第三方库一般有以下几种方法</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><ol class="first arabic">
-<li>pip进行安装，命令如下：</li>
+<li>pip进行安装，命令如下： ```
+pip install libname
+#
+libname是要下载安装的第三方库的名称，它会自动下载和安装其依赖的第三方库。</li>
 </ol>
 </li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">libname</span>
-<span class="c1"># libname是要下载安装的第三方库的名称，它会自动下载和安装其依赖的第三方库。</span>
-
-<span class="n">卸载库文件</span>
-<span class="n">pip</span> <span class="n">uninstall</span> <span class="n">libname</span>
-
-<span class="n">检查第三方库是否正确安装</span>
-<span class="p">[</span><span class="n">root</span><span class="nd">@pxe</span><span class="o">-</span><span class="n">server</span> <span class="o">~</span><span class="p">]</span><span class="c1"># python</span>
-<span class="n">Python</span> <span class="mf">2.7</span><span class="o">.</span><span class="mi">5</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Oct</span> <span class="mi">30</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">23</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">53</span><span class="p">)</span>
-<span class="p">[</span><span class="n">GCC</span> <span class="mf">4.8</span><span class="o">.</span><span class="mi">5</span> <span class="mi">20150623</span> <span class="p">(</span><span class="n">Red</span> <span class="n">Hat</span> <span class="mf">4.8</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="mi">36</span><span class="p">)]</span> <span class="n">on</span> <span class="n">linux2</span>
-<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">paramiko</span>
-<span class="o">&gt;&gt;&gt;</span>
-</pre></div>
-</div>
+<p>卸载库文件 pip uninstall libname</p>
+<p>检查第三方库是否正确安装 [<a class="reference external" href="mailto:root&#37;&#52;&#48;pxe-server">root<span>&#64;</span>pxe-server</a> ~]# python Python 2.7.5
+(default, Oct 30 2018, 23:45:53) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+on linux2 Type “help”, “copyright”, “credits” or “license” for more
+information. &gt;&gt;&gt; import paramiko &gt;&gt;&gt;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@pxe</span><span class="o">-</span><span class="n">server</span> <span class="o">~</span><span class="p">]</span><span class="c1"># python -c &quot;import paramiko&quot;</span>
-
-<span class="p">[</span><span class="n">root</span><span class="nd">@k8s</span><span class="o">-</span><span class="n">master</span> <span class="o">~</span><span class="p">]</span><span class="c1"># python -c &quot;import sys&quot;</span>
 </pre></div>
 </div>
-<div class="section" id="pip-timeout">
-<h3><a class="toc-backref" href="#id9">设置pip timeout超时时间</a><a class="headerlink" href="#pip-timeout" title="Permalink to this headline">¶</a></h3>
-<p>创建或修改pip.conf配置文件：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vi ~/.pip/pip.config //linux or MacOS
+<p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;k8s-master">root<span>&#64;</span>k8s-master</a> ~]# python -c “import sys”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### 设置pip timeout超时时间
 
-timeout = 6000    #设置pip超时时间
+
+
+参考文献
+
+[[更改PIP默认安装源](https://www.cnblogs.com/hester/p/12317171.html)](https://www.cnblogs.com/hester/p/12317171.html)
+
+
+创建或修改pip.conf配置文件：
 </pre></div>
 </div>
-<p>使用国内镜像</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>使用镜像来替代原来的官网，方法如下：（推荐这种方法）
-
-1. pip install redis -i https://pypi.douban.com/simple
--i：指定镜像地址
-
-2.配置好环境变量后cmd输入
-python -m pip --default-timeout=100 install 库名称 -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
-
-3.python.exe改名版
-python3 -m pip --default-timeout=100 install 库名称 -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+<p>$ sudo vi ~/.pip/pip.config //linux or MacOS</p>
+<p>timeout = 6000 #设置pip超时时间</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">使用国内镜像</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>2. 创建或修改pip.conf配置文件指定镜像地址：
+<p>使用镜像来替代原来的官网，方法如下：（推荐这种方法）</p>
+<ol class="arabic simple">
+<li>pip install redis -i <a class="reference external" href="https://pypi.douban.com/simple">https://pypi.douban.com/simple</a> -i：指定镜像地址
+　 2.配置好环境变量后cmd输入 python -m pip –default-timeout=100
+install 库名称 -i <a class="reference external" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a> –trusted-host
+pypi.douban.com</li>
+</ol>
+<p>3.python.exe改名版 python3 -m pip –default-timeout=100 install 库名称
+-i <a class="reference external" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a> –trusted-host pypi.douban.com ```</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span>2. 创建或修改pip.conf配置文件指定镜像地址：
 [global]
 timeout = 6000
 index-url = http://pypi.douban.com/simple/
@@ -442,17 +462,16 @@ mirrors = http://pypi.douban.com/simple/
 trusted-host = pypi.douban.com
 </pre></div>
 </div>
-<ul class="simple">
+<ul>
 <li><ol class="first arabic" start="2">
-<li>Installing from PyPI using easy_install:</li>
-</ol>
-</li>
-</ul>
+<li><p class="first">Installing from PyPI using easy_install:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ easy_install watchdog
 </pre></div>
 </div>
-<ul class="simple">
-<li><ol class="first arabic" start="3">
+</li>
+</ol>
+</li>
+<li><ol class="first arabic simple" start="3">
 <li>源码安装</li>
 </ol>
 </li>
@@ -467,9 +486,8 @@ trusted-host = pypi.douban.com
 </div>
 <p>在Linux环境下，使用安装命令前必须要加sudo，或者先su进入可以安装软件的用户权限中才可以安装。</p>
 </div>
-</div>
-<div class="section" id="id2">
-<h2><a class="toc-backref" href="#id10">1.14.5. 常用三方库的网站</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id14">1.14.6. 常用三方库的网站</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://pypi.python.org
 还可以在此网站中搜索想要的第三方库。也可以通过搜索引擎来搜索相关的第三方库来下载安装。
 
@@ -511,10 +529,12 @@ pip install pyC8-0.14.4-py2.py3-none-any.whl
 才能访问。
 </pre></div>
 </div>
-<p><img alt="image0" src="../../_images/jupyter-python.png" /></p>
+<div class="figure">
+<img alt="" src="../../_images/jupyter-python.png" />
+</div>
 <div class="section" id="jupyter-notebook">
-<h3><a class="toc-backref" href="#id11">为Jupyter Notebook添加目录</a><a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h3>
-<p>①： 在Windows搜索框中输入Anaconda Prompt并单击打开. <img alt="image1" src="../../_images/Ancona00001.png" /></p>
+<h3><a class="toc-backref" href="#id15">为Jupyter Notebook添加目录</a><a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h3>
+<p>①： 在Windows搜索框中输入Anaconda Prompt并单击打开. <img alt="image0" src="../../_images/Ancona00001.png" /></p>
 <p>②：</p>
 <p><code class="docutils literal notranslate"><span class="pre">输入</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyter_contrib_nbextensions</span></code> 然后按 Enter
 键运行，安装jupyter_contrib_nbextensions模块</p>
@@ -523,20 +543,22 @@ pip install pyC8-0.14.4-py2.py3-none-any.whl
 然后按Enter键进行用户配置</p>
 <p>④： 打开Jupyter Notebook会看到界面上多了Nbextensions选项卡
 单击Nbextensions选项卡打开，<code class="docutils literal notranslate"><span class="pre">勾选Table</span> <span class="pre">of</span> <span class="pre">Contents(2)复选框</span></code>
-<img alt="image2" src="../../_images/ancode0002.png" /></p>
+<img alt="image1" src="../../_images/ancode0002.png" /></p>
 <p>这个时候打开一个已经带有目录的ipynb文件，就会看到主界面多了一个方框内的按钮（如下图所示），但是仍然没有目录
-按下图右上角方框内的按钮，目录就会显示出来了，如下图所示。 <img alt="image3" src="../../_images/ancode00003.png" /></p>
+按下图右上角方框内的按钮，目录就会显示出来了，如下图所示。 <img alt="image2" src="../../_images/ancode00003.png" /></p>
 <p>⑤： 为Jupyter Notebook创建了目录环境，下面介绍如何新建带有目录的文件</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>直接在代码框输入不同级别的标题，
 1个#表示一级标题，2个#表示二级标题，3个#表示三级标题（注意，#与标题文字之间是有空格的），
 标题级别随着#数量的增加依次递减。
 </pre></div>
 </div>
-<p><img alt="image4" src="../../_images/ancode0004.png" /></p>
+<div class="figure">
+<img alt="" src="../../_images/ancode0004.png" />
+</div>
 </div>
 </div>
 <div class="section" id="anaconda">
-<h2><a class="toc-backref" href="#id12">1.14.6. 安装Anaconda</a><a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">1.14.7. 安装Anaconda</a><a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Anaconda是一个集成的python环境，自带很多python三方库</span></code></p>
 <p>下载地址：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>进入官网（https://www.anaconda.com），单击右上角的Download按钮
@@ -546,14 +568,48 @@ pip install pyC8-0.14.4-py2.py3-none-any.whl
 </pre></div>
 </div>
 <div class="section" id="pythonconda">
-<h3><a class="toc-backref" href="#id13"><strong>Python软件包及环境管理器conda实战篇</strong></a><a class="headerlink" href="#pythonconda" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id17"><strong>Python软件包及环境管理器conda实战篇</strong></a><a class="headerlink" href="#pythonconda" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://www.cnblogs.com/yinzhengjie/p/13659317.html">https://www.cnblogs.com/yinzhengjie/p/13659317.html</a></p>
 </div>
 </div>
 <div class="section" id="ide">
-<h2><a class="toc-backref" href="#id14">1.14.7. 使用较多的IDE</a><a class="headerlink" href="#ide" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">1.14.8. 使用较多的IDE</a><a class="headerlink" href="#ide" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>IDLE是IDE中的一种，也是最简单、最基础的一种IDE。当然了，IDE中有很多种IDLE，例如Visual Studio（VS）、PyCharm、Xcode、Spyder、Jupyter Notebook等
 </pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id19">1.14.9. 包管理和虚拟化环境</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>目前使用三方包的方法有如下三种：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.通过Python社区开发的pip、easy_install等工具。
+2.使用系统本身自带的包管理器(yum、emerge、apt-get等)
+3.通过源码安装(python setup.py install )
+</pre></div>
+</div>
+<p>最推荐使用pip安装</p>
+<p>三方包主要分布在https://pypi.org/、GitHub、Bitbucket等代码托管服务上。</p>
+<div class="section" id="setuptools">
+<h3><a class="toc-backref" href="#id20">setuptools工具</a><a class="headerlink" href="#setuptools" title="Permalink to this headline">¶</a></h3>
+<p>它是用来解决distutils的限制的替代品，优点如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* 可以创建Eggs和
+Wheel（https://wheel.readthedocs.org/en/latest/）格式的包。
+
+* 自带easy_install，能帮助你找到、下载、安装以及更新需要使用的包。
+
+* 支持PYPI上传，可以很方便地把本地项目发布到PYPI。
+
+* 支持测试集成。
+
+* 提供了更多的功能函数和额外特性。
+</pre></div>
+</div>
+<p>对于开源项目建议使用如下代码：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">setuptools</span> <span class="k">import</span> <span class="n">setup</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">distutils.core</span> <span class="k">import</span> <span class="n">setup</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

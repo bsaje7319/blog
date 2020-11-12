@@ -124,6 +124,12 @@
 <li class="toctree-l3"><a class="reference internal" href="01.系统批量运维管理器pexpect.html">18.2. 系统批量运维管理器pexpect</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">18.3. 业务服务监控详解</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">18.3.1. 文件内容差异对比方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">18.3.2. 文件与目录差异对比方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smtplib">18.3.3. 发送电子邮件模块smtplib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web">18.3.4. 探测web服务质量方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pythonexcel">18.3.5. Python操作Excel表格</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">18.3.6. 实现高效的端口扫描</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">18.3.7. 主机信息监测</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="02.系统批量运维管理器paramiko.html">18.4. 系统批量运维管理器paramiko</a></li>
@@ -220,10 +226,38 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id4">业务服务监控详解</a><ul>
-<li><a class="reference internal" href="#id2" id="id5">文件内容差异对比方法</a><ul>
-<li><a class="reference internal" href="#id3" id="id6">示例1：两个字符串的差异对比</a></li>
-<li><a class="reference internal" href="#nginx" id="id7">示例2：对比Nginx配置文件差异</a></li>
+<li><a class="reference internal" href="#id1" id="id17">业务服务监控详解</a><ul>
+<li><a class="reference internal" href="#id2" id="id18">文件内容差异对比方法</a><ul>
+<li><a class="reference internal" href="#id3" id="id19">示例1：两个字符串的差异对比</a></li>
+<li><a class="reference internal" href="#nginx" id="id20">示例2：对比Nginx配置文件差异</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4" id="id21">文件与目录差异对比方法</a></li>
+<li><a class="reference internal" href="#smtplib" id="id22">发送电子邮件模块smtplib</a><ul>
+<li><a class="reference internal" href="#id5" id="id23">一个发邮件的简单示例</a></li>
+<li><a class="reference internal" href="#html" id="id24">实现html格式的数据报表邮件</a></li>
+<li><a class="reference internal" href="#id6" id="id25">实现图文格式的服务器性能报表邮件</a></li>
+<li><a class="reference internal" href="#id7" id="id26">实现带附件格式的业务服务质量周报邮件</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#web" id="id27">探测web服务质量方法</a><ul>
+<li><a class="reference internal" href="#id8" id="id28">实现探测Web服务质量</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pythonexcel" id="id29">Python操作Excel表格</a><ul>
+<li><a class="reference internal" href="#id9" id="id30">简单示例</a></li>
+<li><a class="reference internal" href="#id10" id="id31">定制自动化业务流量报表周报</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11" id="id32">实现高效的端口扫描</a><ul>
+<li><a class="reference internal" href="#id12" id="id33">单线程端口扫描示例</a></li>
+<li><a class="reference internal" href="#id13" id="id34">多线程端口扫描示例</a></li>
+<li><a class="reference internal" href="#python-nmap" id="id35">使用python-nmap实现端口扫描</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14" id="id36">主机信息监测</a><ul>
+<li><a class="reference internal" href="#id15" id="id37">多线程版主机监测</a></li>
+<li><a class="reference internal" href="#id16" id="id38">消息队列版主机监测</a></li>
 </ul>
 </li>
 </ul>
@@ -231,12 +265,12 @@
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id4">18.3. 业务服务监控详解</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id17">18.3. 业务服务监控详解</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id5">18.3.1. 文件内容差异对比方法</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">18.3.1. 文件内容差异对比方法</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3><a class="toc-backref" href="#id6">示例1：两个字符串的差异对比</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<h3><a class="toc-backref" href="#id19">示例1：两个字符串的差异对比</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1"># @auther:   18793</span>
 <span class="c1"># @Date：    2020/10/29 15:08</span>
@@ -267,7 +301,7 @@
 另外difflib的SequenceMatcher()类支持任意类型序列的比较，
 HtmlDiff()类支持将比较结果输出为HTML格式，</p>
 <p><strong>生成美观的对比HTML格式文档</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1"># @auther:   18793</span>
 <span class="c1"># @Date：    2020/10/29 15:08</span>
@@ -302,8 +336,8 @@ HtmlDiff()类支持将比较结果输出为HTML格式，</p>
 </div>
 </div>
 <div class="section" id="nginx">
-<h3><a class="toc-backref" href="#id7">示例2：对比Nginx配置文件差异</a><a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<h3><a class="toc-backref" href="#id20">示例2：对比Nginx配置文件差异</a><a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1"># @auther:   18793</span>
 <span class="c1"># @Date：    2020/10/29 15:23</span>
@@ -347,6 +381,698 @@ HtmlDiff()类支持将比较结果输出为HTML格式，</p>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;index2.html&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id21">18.3.2. 文件与目录差异对比方法</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Python的标准库filecmp模块可以实现文件、目录、遍历子目录的差异对比功能。</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/8/17 10:18</span>
+<span class="c1"># filename: 校验源与备份目录差异.py</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">filecmp</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+
+<span class="n">PWd_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+
+<span class="c1"># 创建一个空列表</span>
+<span class="n">holderlist</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">def</span> <span class="nf">compareme</span><span class="p">(</span><span class="n">dir1</span><span class="p">,</span> <span class="n">dir2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    递归获取更新项函数</span>
+<span class="sd">    :param dir1: source dir</span>
+<span class="sd">    :param dir2: target dir</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dircomp</span> <span class="o">=</span> <span class="n">filecmp</span><span class="o">.</span><span class="n">dircmp</span><span class="p">(</span><span class="n">dir1</span><span class="p">,</span> <span class="n">dir2</span><span class="p">)</span>
+    <span class="n">only_in_one</span> <span class="o">=</span> <span class="n">dircomp</span><span class="o">.</span><span class="n">left_only</span>  <span class="c1"># 源目录新文件或目录</span>
+    <span class="n">diff_in_one</span> <span class="o">=</span> <span class="n">dircomp</span><span class="o">.</span><span class="n">diff_files</span>  <span class="c1"># 不匹配文件，源目录已经发生变化</span>
+    <span class="n">dirpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">dir1</span><span class="p">)</span>  <span class="c1"># 获取源目录绝对路径</span>
+    <span class="p">[</span><span class="n">holderlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir1</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">only_in_one</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">holderlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir1</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">diff_in_one</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dircomp</span><span class="o">.</span><span class="n">common_dirs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dircomp</span><span class="o">.</span><span class="n">common_dirs</span><span class="p">:</span>
+            <span class="n">compareme</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir1</span><span class="p">,</span> <span class="n">item</span><span class="p">)),</span> \
+                      <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir2</span><span class="p">,</span> <span class="n">item</span><span class="p">)))</span>
+            <span class="k">return</span> <span class="n">holderlist</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">holderlist</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># if len(sys.argv) &gt; 2:</span>
+    <span class="c1">#     # dir1 = sys.argv[1]</span>
+    <span class="c1">#     dir1 = &quot;D:/1.学习知识待整理\DevOps自动化运维/https-github.com-yorkoliu-pyauto-master/第二章/filecmp/dir1&quot;</span>
+    <span class="c1">#     # dir2 = sys.argv[2]</span>
+    <span class="c1">#     dir2 = &quot;D:/1.学习知识待整理\DevOps自动化运维/https-github.com-yorkoliu-pyauto-master/第二章/filecmp/dir2&quot;</span>
+    <span class="c1"># else:</span>
+    <span class="c1">#     print(&quot;Usage: &quot;, sys.argv[0], &quot;datadir backupdir&quot;)</span>
+    <span class="c1">#     sys.exit()</span>
+
+    <span class="n">dir1</span> <span class="o">=</span> <span class="n">PWd_path</span> <span class="o">+</span> <span class="s2">&quot;/dir1/&quot;</span>
+    <span class="n">dir2</span> <span class="o">=</span> <span class="n">PWd_path</span> <span class="o">+</span> <span class="s2">&quot;/dir2/&quot;</span>
+    <span class="n">source_files</span> <span class="o">=</span> <span class="n">compareme</span><span class="p">(</span><span class="n">dir1</span><span class="p">,</span> <span class="n">dir2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dir2</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">):</span> <span class="n">dir2</span> <span class="o">=</span> <span class="n">dir2</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
+    <span class="n">dir1</span> <span class="o">=</span> <span class="n">dir1</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">dir2</span> <span class="o">=</span> <span class="n">dir2</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">destination_files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">createdir_bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="c1">#</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">source_files</span><span class="p">:</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+        <span class="c1"># print(dir1, dir2, item)</span>
+        <span class="n">destination_dir</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">dir1</span><span class="p">,</span> <span class="n">dir2</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+        <span class="n">destination_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">destination_dir</span><span class="p">)</span>
+        <span class="c1"># print(destination_files)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">destination_dir</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">destination_dir</span><span class="p">)</span>
+                <span class="n">createdir_bool</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="n">createdir_bool</span><span class="p">:</span>
+        <span class="n">destination_files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">source_files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">source_files</span> <span class="o">=</span> <span class="n">compareme</span><span class="p">(</span><span class="n">dir1</span><span class="p">,</span> <span class="n">dir2</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">source_files</span><span class="p">:</span>
+            <span class="n">destination_dir</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">dir1</span><span class="p">,</span> <span class="n">dir2</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+            <span class="n">destination_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">destination_dir</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;update item:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------------------------&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">source_files</span><span class="p">)</span>     <span class="c1"># 输出更新列表清单</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------------------------&quot;</span><span class="p">)</span>
+
+    <span class="c1">#</span>
+    <span class="n">copy_pair</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">source_files</span><span class="p">,</span> <span class="n">destination_files</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">copy_pair</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="smtplib">
+<h2><a class="toc-backref" href="#id22">18.3.3. 发送电子邮件模块smtplib</a><a class="headerlink" href="#smtplib" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id23">一个发邮件的简单示例</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>代码示例1：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">smtplib</span>
+<span class="kn">import</span> <span class="nn">string</span>
+
+<span class="n">HOST</span> <span class="o">=</span> <span class="s2">&quot;smtp.gmail.com&quot;</span>
+<span class="n">SUBJECT</span> <span class="o">=</span> <span class="s2">&quot;Test email from Python&quot;</span>
+<span class="n">TO</span> <span class="o">=</span> <span class="s2">&quot;test@qq.com&quot;</span>
+<span class="n">FROM</span> <span class="o">=</span> <span class="s2">&quot;test@gmail.com&quot;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Python rules them all!&quot;</span>
+<span class="n">BODY</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">join</span><span class="p">((</span>
+        <span class="s2">&quot;From: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">FROM</span><span class="p">,</span>
+        <span class="s2">&quot;To: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">TO</span><span class="p">,</span>
+        <span class="s2">&quot;Subject: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">SUBJECT</span> <span class="p">,</span>
+        <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">text</span>
+        <span class="p">),</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">()</span>
+<span class="n">server</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">HOST</span><span class="p">,</span><span class="s2">&quot;25&quot;</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>
+<span class="n">server</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">&quot;test@gmail.com&quot;</span><span class="p">,</span><span class="s2">&quot;123456&quot;</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">FROM</span><span class="p">,</span> <span class="p">[</span><span class="n">TO</span><span class="p">],</span> <span class="n">BODY</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="html">
+<h3><a class="toc-backref" href="#id24">实现html格式的数据报表邮件</a><a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h3>
+<p>代码示例2</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
+<span class="kn">import</span> <span class="nn">smtplib</span>
+<span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="k">import</span> <span class="n">MIMEText</span>
+
+<span class="n">HOST</span> <span class="o">=</span> <span class="s2">&quot;smtp.gmail.com&quot;</span>
+<span class="n">SUBJECT</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;官网流量数据报表&quot;</span>
+<span class="n">TO</span> <span class="o">=</span> <span class="s2">&quot;test@qq.com&quot;</span>
+<span class="n">FROM</span> <span class="o">=</span> <span class="s2">&quot;test@gmail.com&quot;</span>
+
+<span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEText</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    &lt;table width=&quot;800&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;4&quot;&gt;</span>
+<span class="s2">      &lt;tr&gt;</span>
+<span class="s2">        &lt;td bgcolor=&quot;#CECFAD&quot; height=&quot;20&quot; style=&quot;font-size:14px&quot;&gt;*官网数据  &lt;a href=&quot;monitor.domain.com&quot;&gt;更多&gt;&gt;&lt;/a&gt;&lt;/td&gt;</span>
+<span class="s2">      &lt;/tr&gt;</span>
+<span class="s2">      &lt;tr&gt;</span>
+<span class="s2">        &lt;td bgcolor=&quot;#EFEBDE&quot; height=&quot;100&quot; style=&quot;font-size:13px&quot;&gt;</span>
+<span class="s2">        1）日访问量:&lt;font color=red&gt;152433&lt;/font&gt;  访问次数:23651 页面浏览量:45123 点击数:545122  数据流量:504Mb&lt;br&gt;</span>
+<span class="s2">        2）状态码信息&lt;br&gt;</span>
+<span class="s2">        &amp;nbsp;&amp;nbsp;500:105  404:3264  503:214&lt;br&gt;</span>
+<span class="s2">        3）访客浏览器信息&lt;br&gt;</span>
+<span class="s2">        &amp;nbsp;&amp;nbsp;IE:50</span><span class="si">%  f</span><span class="s2">irefox:10</span><span class="si">% c</span><span class="s2">hrome:30</span><span class="si">% o</span><span class="s2">ther:10%&lt;br&gt;</span>
+<span class="s2">        4）页面信息&lt;br&gt;</span>
+<span class="s2">        &amp;nbsp;&amp;nbsp;/index.php 42153&lt;br&gt;</span>
+<span class="s2">        &amp;nbsp;&amp;nbsp;/view.php 21451&lt;br&gt;</span>
+<span class="s2">        &amp;nbsp;&amp;nbsp;/login.php 5112&lt;br&gt;</span>
+<span class="s2">    &lt;/td&gt;</span>
+<span class="s2">      &lt;/tr&gt;</span>
+<span class="s2">    &lt;/table&gt;&quot;&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;html&quot;</span><span class="p">,</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="n">msg</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SUBJECT</span>
+<span class="n">msg</span><span class="p">[</span><span class="s1">&#39;From&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">FROM</span>
+<span class="n">msg</span><span class="p">[</span><span class="s1">&#39;To&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">TO</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">()</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">HOST</span><span class="p">,</span><span class="s2">&quot;25&quot;</span><span class="p">)</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">&quot;test@gmail.com&quot;</span><span class="p">,</span><span class="s2">&quot;123456&quot;</span><span class="p">)</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">FROM</span><span class="p">,</span> <span class="n">TO</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="s2">&quot;邮件发送成功！&quot;</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s2">&quot;失败：&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id25">实现图文格式的服务器性能报表邮件</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>代码示例3</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
+<span class="kn">import</span> <span class="nn">smtplib</span>
+<span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="k">import</span> <span class="n">MIMEMultipart</span>
+<span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="k">import</span> <span class="n">MIMEText</span>
+<span class="kn">from</span> <span class="nn">email.mime.image</span> <span class="k">import</span> <span class="n">MIMEImage</span>
+
+<span class="n">HOST</span> <span class="o">=</span> <span class="s2">&quot;smtp.gmail.com&quot;</span>
+<span class="n">SUBJECT</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;业务性能数据报表&quot;</span>
+<span class="n">TO</span> <span class="o">=</span> <span class="s2">&quot;test@qq.com&quot;</span>
+<span class="n">FROM</span> <span class="o">=</span> <span class="s2">&quot;test@gmail.com&quot;</span>
+
+<span class="k">def</span> <span class="nf">addimg</span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="n">imgid</span><span class="p">):</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+    <span class="n">msgImage</span> <span class="o">=</span> <span class="n">MIMEImage</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">msgImage</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s1">&#39;Content-ID&#39;</span><span class="p">,</span> <span class="n">imgid</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">msgImage</span>
+
+<span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">(</span><span class="s1">&#39;related&#39;</span><span class="p">)</span>
+<span class="n">msgtext</span> <span class="o">=</span> <span class="n">MIMEText</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;table width=&quot;600&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;4&quot;&gt;</span>
+<span class="s2">      &lt;tr bgcolor=&quot;#CECFAD&quot; height=&quot;20&quot; style=&quot;font-size:14px&quot;&gt;</span>
+<span class="s2">        &lt;td colspan=2&gt;*官网性能数据  &lt;a href=&quot;monitor.domain.com&quot;&gt;更多&gt;&gt;&lt;/a&gt;&lt;/td&gt;</span>
+<span class="s2">      &lt;/tr&gt;</span>
+<span class="s2">      &lt;tr bgcolor=&quot;#EFEBDE&quot; height=&quot;100&quot; style=&quot;font-size:13px&quot;&gt;</span>
+<span class="s2">        &lt;td&gt;</span>
+<span class="s2">         &lt;img src=&quot;cid:io&quot;&gt;&lt;/td&gt;&lt;td&gt;</span>
+<span class="s2">         &lt;img src=&quot;cid:key_hit&quot;&gt;&lt;/td&gt;</span>
+<span class="s2">      &lt;/tr&gt;</span>
+<span class="s2">      &lt;tr bgcolor=&quot;#EFEBDE&quot; height=&quot;100&quot; style=&quot;font-size:13px&quot;&gt;</span>
+<span class="s2">         &lt;td&gt;</span>
+<span class="s2">         &lt;img src=&quot;cid:men&quot;&gt;&lt;/td&gt;&lt;td&gt;</span>
+<span class="s2">         &lt;img src=&quot;cid:swap&quot;&gt;&lt;/td&gt;</span>
+<span class="s2">      &lt;/tr&gt;</span>
+<span class="s2">    &lt;/table&gt;&quot;&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;html&quot;</span><span class="p">,</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">msgtext</span><span class="p">)</span>
+<span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">addimg</span><span class="p">(</span><span class="s2">&quot;img/bytes_io.png&quot;</span><span class="p">,</span><span class="s2">&quot;io&quot;</span><span class="p">))</span>
+<span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">addimg</span><span class="p">(</span><span class="s2">&quot;img/myisam_key_hit.png&quot;</span><span class="p">,</span><span class="s2">&quot;key_hit&quot;</span><span class="p">))</span>
+<span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">addimg</span><span class="p">(</span><span class="s2">&quot;img/os_mem.png&quot;</span><span class="p">,</span><span class="s2">&quot;men&quot;</span><span class="p">))</span>
+<span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">addimg</span><span class="p">(</span><span class="s2">&quot;img/os_swap.png&quot;</span><span class="p">,</span><span class="s2">&quot;swap&quot;</span><span class="p">))</span>
+
+<span class="n">msg</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SUBJECT</span>
+<span class="n">msg</span><span class="p">[</span><span class="s1">&#39;From&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">FROM</span>
+<span class="n">msg</span><span class="p">[</span><span class="s1">&#39;To&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">TO</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">()</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">HOST</span><span class="p">,</span><span class="s2">&quot;25&quot;</span><span class="p">)</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">&quot;test@gmail.com&quot;</span><span class="p">,</span><span class="s2">&quot;123456&quot;</span><span class="p">)</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">FROM</span><span class="p">,</span> <span class="n">TO</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="s2">&quot;邮件发送成功！&quot;</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s2">&quot;失败：&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id26">实现带附件格式的业务服务质量周报邮件</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
+<span class="kn">import</span> <span class="nn">smtplib</span>
+<span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="k">import</span> <span class="n">MIMEMultipart</span>
+<span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="k">import</span> <span class="n">MIMEText</span>
+<span class="kn">from</span> <span class="nn">email.mime.image</span> <span class="k">import</span> <span class="n">MIMEImage</span>
+
+<span class="n">HOST</span> <span class="o">=</span> <span class="s2">&quot;smtp.gmail.com&quot;</span>
+<span class="n">SUBJECT</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;官网业务服务质量周报&quot;</span>
+<span class="n">TO</span> <span class="o">=</span> <span class="s2">&quot;test@qq.com&quot;</span>
+<span class="n">FROM</span> <span class="o">=</span> <span class="s2">&quot;test@gmail.com&quot;</span>
+
+<span class="k">def</span> <span class="nf">addimg</span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="n">imgid</span><span class="p">):</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+    <span class="n">msgImage</span> <span class="o">=</span> <span class="n">MIMEImage</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">msgImage</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s1">&#39;Content-ID&#39;</span><span class="p">,</span> <span class="n">imgid</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">msgImage</span>
+
+<span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">(</span><span class="s1">&#39;related&#39;</span><span class="p">)</span>
+<span class="n">msgtext</span> <span class="o">=</span> <span class="n">MIMEText</span><span class="p">(</span><span class="s2">&quot;&lt;font color=red&gt;官网业务周平均延时图表:&lt;br&gt;&lt;img src=</span><span class="se">\&quot;</span><span class="s2">cid:weekly</span><span class="se">\&quot;</span><span class="s2"> border=</span><span class="se">\&quot;</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2">&gt;&lt;br&gt;详细内容见附件。&lt;/font&gt;&quot;</span><span class="p">,</span><span class="s2">&quot;html&quot;</span><span class="p">,</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">msgtext</span><span class="p">)</span>
+<span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">addimg</span><span class="p">(</span><span class="s2">&quot;img/weekly.png&quot;</span><span class="p">,</span><span class="s2">&quot;weekly&quot;</span><span class="p">))</span>
+
+<span class="n">attach</span> <span class="o">=</span> <span class="n">MIMEText</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;doc/week_report.xlsx&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="s2">&quot;base64&quot;</span><span class="p">,</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="n">attach</span><span class="p">[</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;application/octet-stream&quot;</span>
+<span class="c1">#attach[&quot;Content-Disposition&quot;] = &quot;attachment; filename=\&quot;业务服务质量周报(12周).xlsx\&quot;&quot;.decode(&quot;utf-8&quot;).encode(&quot;gb18030&quot;)</span>
+<span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">attach</span><span class="p">)</span>
+
+<span class="n">msg</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SUBJECT</span>
+<span class="n">msg</span><span class="p">[</span><span class="s1">&#39;From&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">FROM</span>
+<span class="n">msg</span><span class="p">[</span><span class="s1">&#39;To&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">TO</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">()</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">HOST</span><span class="p">,</span><span class="s2">&quot;25&quot;</span><span class="p">)</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s2">&quot;test@gmail.com&quot;</span><span class="p">,</span><span class="s2">&quot;123456&quot;</span><span class="p">)</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">FROM</span><span class="p">,</span> <span class="n">TO</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="s2">&quot;邮件发送成功！&quot;</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s2">&quot;失败：&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="web">
+<h2><a class="toc-backref" href="#id27">18.3.4. 探测web服务质量方法</a><a class="headerlink" href="#web" title="Permalink to this headline">¶</a></h2>
+<p>pyurl是一个用C语言写的libcurl
+Python实现，功能非常强大，支持的协议有FTP、HTTP、HTTPS、TELNET等，
+可以理解成Linux下的curl命令功能的Python封装，简单易用。</p>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id28">实现探测Web服务质量</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span><span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pycurl</span>
+
+<span class="n">URL</span><span class="o">=</span><span class="s2">&quot;http://www.google.com.hk&quot;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">pycurl</span><span class="o">.</span><span class="n">Curl</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">setopt</span><span class="p">(</span><span class="n">pycurl</span><span class="o">.</span><span class="n">URL</span><span class="p">,</span> <span class="n">URL</span><span class="p">)</span>
+
+<span class="c1">#连接超时时间,5秒</span>
+<span class="n">c</span><span class="o">.</span><span class="n">setopt</span><span class="p">(</span><span class="n">pycurl</span><span class="o">.</span><span class="n">CONNECTTIMEOUT</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1">#下载超时时间,5秒</span>
+<span class="n">c</span><span class="o">.</span><span class="n">setopt</span><span class="p">(</span><span class="n">pycurl</span><span class="o">.</span><span class="n">TIMEOUT</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">setopt</span><span class="p">(</span><span class="n">pycurl</span><span class="o">.</span><span class="n">FORBID_REUSE</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">setopt</span><span class="p">(</span><span class="n">pycurl</span><span class="o">.</span><span class="n">MAXREDIRS</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">setopt</span><span class="p">(</span><span class="n">pycurl</span><span class="o">.</span><span class="n">NOPROGRESS</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">setopt</span><span class="p">(</span><span class="n">pycurl</span><span class="o">.</span><span class="n">DNS_CACHE_TIMEOUT</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># 创建一个文件对象 以“wb”方式打开，用来存储返回的http头部及页面内容</span>
+<span class="n">indexfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span><span class="o">+</span><span class="s2">&quot;/content.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">setopt</span><span class="p">(</span><span class="n">pycurl</span><span class="o">.</span><span class="n">WRITEHEADER</span><span class="p">,</span> <span class="n">indexfile</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">setopt</span><span class="p">(</span><span class="n">pycurl</span><span class="o">.</span><span class="n">WRITEDATA</span><span class="p">,</span> <span class="n">indexfile</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span><span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s2">&quot;connecion error:&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">indexfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+<span class="n">NAMELOOKUP_TIME</span> <span class="o">=</span>  <span class="n">c</span><span class="o">.</span><span class="n">getinfo</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">NAMELOOKUP_TIME</span><span class="p">)</span>
+<span class="n">CONNECT_TIME</span> <span class="o">=</span>  <span class="n">c</span><span class="o">.</span><span class="n">getinfo</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">CONNECT_TIME</span><span class="p">)</span>
+<span class="n">PRETRANSFER_TIME</span> <span class="o">=</span>   <span class="n">c</span><span class="o">.</span><span class="n">getinfo</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">PRETRANSFER_TIME</span><span class="p">)</span>
+<span class="n">STARTTRANSFER_TIME</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">getinfo</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">STARTTRANSFER_TIME</span><span class="p">)</span>
+<span class="n">TOTAL_TIME</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">getinfo</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">TOTAL_TIME</span><span class="p">)</span>
+<span class="n">HTTP_CODE</span> <span class="o">=</span>  <span class="n">c</span><span class="o">.</span><span class="n">getinfo</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">HTTP_CODE</span><span class="p">)</span>
+<span class="n">SIZE_DOWNLOAD</span> <span class="o">=</span>  <span class="n">c</span><span class="o">.</span><span class="n">getinfo</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">SIZE_DOWNLOAD</span><span class="p">)</span>
+<span class="n">HEADER_SIZE</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">getinfo</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">HEADER_SIZE</span><span class="p">)</span>
+<span class="n">SPEED_DOWNLOAD</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">getinfo</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">SPEED_DOWNLOAD</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="s2">&quot;HTTP状态码：</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">HTTP_CODE</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;DNS解析时间：</span><span class="si">%.2f</span><span class="s2"> ms&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">NAMELOOKUP_TIME</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;建立连接时间：</span><span class="si">%.2f</span><span class="s2"> ms&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">CONNECT_TIME</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;准备传输时间：</span><span class="si">%.2f</span><span class="s2"> ms&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">PRETRANSFER_TIME</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;传输开始时间：</span><span class="si">%.2f</span><span class="s2"> ms&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">STARTTRANSFER_TIME</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;传输结束总时间：</span><span class="si">%.2f</span><span class="s2"> ms&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">TOTAL_TIME</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="s2">&quot;下载数据包大小：</span><span class="si">%d</span><span class="s2"> bytes/s&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">SIZE_DOWNLOAD</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;HTTP头部大小：</span><span class="si">%d</span><span class="s2"> byte&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">HEADER_SIZE</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;平均下载速度：</span><span class="si">%d</span><span class="s2"> bytes/s&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">SPEED_DOWNLOAD</span><span class="p">)</span>
+
+<span class="n">indexfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pythonexcel">
+<h2><a class="toc-backref" href="#id29">18.3.5. Python操作Excel表格</a><a class="headerlink" href="#pythonexcel" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id30">简单示例</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>插入文字、数字、图片单元格简单示例 代码示例1</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
+<span class="kn">import</span> <span class="nn">xlsxwriter</span>
+
+
+<span class="c1"># Create an new Excel file and add a worksheet.</span>
+<span class="n">workbook</span> <span class="o">=</span> <span class="n">xlsxwriter</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="s1">&#39;demo1.xlsx&#39;</span><span class="p">)</span>
+<span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_worksheet</span><span class="p">()</span>
+
+<span class="c1"># Widen the first column to make the text clearer.</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="s1">&#39;A:A&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Add a bold format to use to highlight cells.</span>
+<span class="c1">#bold = workbook.add_format({&#39;bold&#39;: True})</span>
+<span class="n">bold</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_format</span><span class="p">()</span>
+<span class="n">bold</span><span class="o">.</span><span class="n">set_bold</span><span class="p">()</span>
+
+<span class="c1"># Write some simple text.</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;A1&#39;</span><span class="p">,</span> <span class="s1">&#39;Hello&#39;</span><span class="p">)</span>
+
+<span class="c1"># Text with formatting.</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;A2&#39;</span><span class="p">,</span> <span class="s1">&#39;World&#39;</span><span class="p">,</span> <span class="n">bold</span><span class="p">)</span>
+
+<span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;中文测试&#39;</span><span class="p">,</span> <span class="n">bold</span><span class="p">)</span>
+
+<span class="c1"># Write some numbers, with row/column notation.</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">35.5</span><span class="p">)</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;=SUM(A3:A4)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Insert an image.</span>
+<span class="n">worksheet</span><span class="o">.</span><span class="n">insert_image</span><span class="p">(</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span> <span class="s1">&#39;img/python-logo.png&#39;</span><span class="p">)</span>
+
+<span class="n">workbook</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id31">定制自动化业务流量报表周报</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>代码示例</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2019/8/17 10:34</span>
+<span class="c1"># filename: python操作Excel方法.py</span>
+
+<span class="kn">import</span> <span class="nn">xlwt</span>
+
+<span class="c1"># 定义数据表头列表</span>
+<span class="n">title</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;业务名称&quot;</span><span class="p">,</span> <span class="s2">&quot;星期一&quot;</span><span class="p">,</span> <span class="s2">&quot;星期二&quot;</span><span class="p">,</span> <span class="s2">&quot;星期三&quot;</span><span class="p">,</span> <span class="s2">&quot;星期四&quot;</span><span class="p">,</span> <span class="s2">&quot;星期五&quot;</span><span class="p">,</span> <span class="s2">&quot;星期六&quot;</span><span class="p">,</span> <span class="s2">&quot;星期日&quot;</span><span class="p">,</span> <span class="s2">&quot;平均流量&quot;</span><span class="p">]</span>
+
+<span class="c1"># 定义5频道一周7天的流量数据</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;业务官网&quot;</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">152</span><span class="p">,</span> <span class="mi">158</span><span class="p">,</span> <span class="mi">149</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">148</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;新闻中心&quot;</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;购物频道&quot;</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">222</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">179</span><span class="p">,</span> <span class="mi">190</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;体育频道&quot;</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;亲子频道&quot;</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="mi">87</span><span class="p">],</span>
+<span class="p">]</span>
+
+<span class="c1"># for da in data:</span>
+<span class="c1">#     da.append(sum(da[1:])/len(da[1:]))</span>
+
+<span class="c1"># 计算平均值</span>
+<span class="p">[</span><span class="n">da</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">da</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">da</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span> <span class="k">for</span> <span class="n">da</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+
+<span class="n">book</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="n">sheet</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">add_sheet</span><span class="p">(</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">title</span><span class="p">)):</span>
+    <span class="n">sheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">title</span><span class="p">[</span><span class="n">h</span><span class="p">])</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="nb">list</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="n">sheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">book</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;excel测试.xls&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2><a class="toc-backref" href="#id32">18.3.6. 实现高效的端口扫描</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h3><a class="toc-backref" href="#id33">单线程端口扫描示例</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/21 11:01</span>
+<span class="c1"># filename: smaple02.py</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">telnetlib</span>
+
+
+<span class="k">def</span> <span class="nf">conn_scan</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">telnetlib</span><span class="o">.</span><span class="n">Telnet</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="s1">&#39;is avaliable&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">pass</span>
+        <span class="c1"># print(host, port, &#39;is not avaliable&#39;,e)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span>
+    <span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">1000</span><span class="p">):</span>
+        <span class="n">conn_scan</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>代码示例</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># @auther:   18793</span>
+<span class="c1"># @Date：    2020/11/3 15:34</span>
+<span class="c1"># @filename: sample03.py</span>
+<span class="c1"># @Email:    1879324764@qq.com</span>
+<span class="c1"># @Software: PyCharm</span>
+
+<span class="kn">import</span> <span class="nn">socket</span>
+
+
+<span class="k">def</span> <span class="nf">check_server</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Attempting to connect to </span><span class="si">%s</span><span class="s1"> on port </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">address</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connected to </span><span class="si">%s</span><span class="s1"> on port </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connection to </span><span class="si">%s</span><span class="s1"> on port </span><span class="si">%s</span><span class="s1"> failed: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">check_server</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="n">port</span><span class="o">=</span><span class="mi">443</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3><a class="toc-backref" href="#id34">多线程端口扫描示例</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/21 10:58</span>
+<span class="c1"># filename: tasks.py</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">socket</span> <span class="k">import</span> <span class="o">*</span>
+
+
+<span class="k">def</span> <span class="nf">conn_scan</span><span class="p">(</span><span class="n">port</span><span class="p">):</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="s1">&#39;is available&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># print(host, port, &#39;is not available&#39;, e)</span>
+        <span class="k">pass</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">mulit_run</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">max_workers</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    多线程执行命令</span>
+<span class="sd">    :param func:  执行函数</span>
+<span class="sd">    :param max_workers: 最多线程数</span>
+<span class="sd">    :param args: 可迭代对象</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="k">import</span> <span class="n">ThreadPoolExecutor</span><span class="p">,</span> <span class="n">wait</span><span class="p">,</span> <span class="n">ALL_COMPLETED</span><span class="p">,</span> <span class="n">FIRST_COMPLETED</span>
+    <span class="n">executor</span> <span class="o">=</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="n">max_workers</span><span class="p">)</span>
+    <span class="n">all_task</span> <span class="o">=</span> <span class="p">[</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">all_task</span><span class="p">,</span> <span class="n">return_when</span><span class="o">=</span><span class="n">ALL_COMPLETED</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">ports</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)]</span>
+    <span class="n">mulit_run</span><span class="p">(</span><span class="n">conn_scan</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ports</span><span class="p">),</span> <span class="n">ports</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="python-nmap">
+<h3><a class="toc-backref" href="#id35">使用python-nmap实现端口扫描</a><a class="headerlink" href="#python-nmap" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># @auther:   18793</span>
+<span class="c1"># @Date：    2020/11/3 15:48</span>
+<span class="c1"># @filename: nmap_sample01.py</span>
+<span class="c1"># @Email:    1879324764@qq.com</span>
+<span class="c1"># @Software: PyCharm</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">nmap</span>
+
+<span class="n">scan_row</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">input_data</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Please input hosts and port: &#39;</span><span class="p">)</span>
+<span class="n">scan_row</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">scan_row</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Input errors,example </span><span class="se">\&quot;</span><span class="s2">192.168.1.0/24 80,443,22</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">hosts</span> <span class="o">=</span> <span class="n">scan_row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># 接收用户输入的主机</span>
+<span class="n">port</span> <span class="o">=</span> <span class="n">scan_row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># 接收用户输入的端口</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">nm</span> <span class="o">=</span> <span class="n">nmap</span><span class="o">.</span><span class="n">PortScanner</span><span class="p">()</span>  <span class="c1"># 创建端口扫描对象</span>
+<span class="k">except</span> <span class="n">nmap</span><span class="o">.</span><span class="n">PortScannerError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nmap not found&#39;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unexpected error:&quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">nm</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">hosts</span><span class="o">=</span><span class="n">hosts</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="s1">&#39; -v -sS -p &#39;</span> <span class="o">+</span> <span class="n">port</span><span class="p">)</span>  <span class="c1"># 调用扫描方法，参数指定扫描主机hosts，nmap扫描命令行参数arguments</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scan erro:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">host</span> <span class="ow">in</span> <span class="n">nm</span><span class="o">.</span><span class="n">all_hosts</span><span class="p">():</span>  <span class="c1"># 遍历扫描主机</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------------------------------------------------&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Host : </span><span class="si">%s</span><span class="s1"> (</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">nm</span><span class="p">[</span><span class="n">host</span><span class="p">]</span><span class="o">.</span><span class="n">hostname</span><span class="p">()))</span>  <span class="c1"># 输出主机及主机名</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;State : </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">nm</span><span class="p">[</span><span class="n">host</span><span class="p">]</span><span class="o">.</span><span class="n">state</span><span class="p">())</span>  <span class="c1"># 输出主机状态，如up、down</span>
+
+    <span class="k">for</span> <span class="n">proto</span> <span class="ow">in</span> <span class="n">nm</span><span class="p">[</span><span class="n">host</span><span class="p">]</span><span class="o">.</span><span class="n">all_protocols</span><span class="p">():</span>  <span class="c1"># 遍历扫描协议，如tcp、udp</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Protocol : </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">proto</span><span class="p">)</span>  <span class="c1"># 输入协议名</span>
+
+        <span class="n">lport</span> <span class="o">=</span> <span class="n">nm</span><span class="p">[</span><span class="n">host</span><span class="p">][</span><span class="n">proto</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>  <span class="c1"># 获取协议的所有扫描端口</span>
+        <span class="n">lport</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1"># 端口列表排序</span>
+        <span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="n">lport</span><span class="p">:</span>  <span class="c1"># 遍历端口及输出端口与状态</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;port : </span><span class="si">%s</span><span class="se">\t</span><span class="s1">state : </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">nm</span><span class="p">[</span><span class="n">host</span><span class="p">][</span><span class="n">proto</span><span class="p">][</span><span class="n">port</span><span class="p">][</span><span class="s1">&#39;state&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id14">
+<h2><a class="toc-backref" href="#id36">18.3.7. 主机信息监测</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h3><a class="toc-backref" href="#id37">多线程版主机监测</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/21 10:50</span>
+<span class="c1"># filename: ping001.py</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+
+<span class="k">def</span> <span class="nf">is_reacheable</span><span class="p">(</span><span class="n">ip</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s2">&quot;ping&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">ip</span><span class="p">]):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> is alive&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ip</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> is unreacheable&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ip</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ips.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="n">thr</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">is_reacheable</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">line</span><span class="p">,))</span>
+            <span class="n">thr</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+            <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thr</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">thr</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+            <span class="n">thr</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h3><a class="toc-backref" href="#id38">消息队列版主机监测</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># auther; 18793</span>
+<span class="c1"># Date：2020/3/21 10:54</span>
+<span class="c1"># filename: ping002.py</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">from</span> <span class="nn">queue</span> <span class="k">import</span> <span class="n">Queue</span>
+<span class="kn">from</span> <span class="nn">queue</span> <span class="k">import</span> <span class="n">Empty</span>
+
+
+<span class="k">def</span> <span class="nf">call_ping</span><span class="p">(</span><span class="n">ip</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s2">&quot;ping&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">ip</span><span class="p">]):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> is alive&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ip</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> is unreacheable&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ip</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">is_reacheable</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">ip</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get_nowait</span><span class="p">()</span>
+            <span class="n">call_ping</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">Empty</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ips.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+    <span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">thr</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">is_reacheable</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">q</span><span class="p">,))</span>
+        <span class="n">thr</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thr</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">thr</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+        <span class="n">thr</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

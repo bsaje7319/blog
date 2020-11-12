@@ -117,7 +117,11 @@
 <li class="toctree-l3"><a class="reference internal" href="5.异常跟踪.html">8.5. 异常跟踪 traceback</a></li>
 <li class="toctree-l3"><a class="reference internal" href="6.小试牛刀.html">8.6. 小试牛刀</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">8.7. 测试程序</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pyunit-unittest">8.7.1. 使用PyUnit(unittest)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pydoc">8.7.1. 使用pydoc生成文档</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">8.7.2. 文档测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyunit-unittest">8.7.3. 使用PyUnit(unittest)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">8.7.4. 使用测试包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setupteardown">8.7.5. 测试固件之setUp和tearDown</a></li>
 </ul>
 </li>
 </ul>
@@ -216,19 +220,168 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id3">测试程序</a><ul>
-<li><a class="reference internal" href="#pyunit-unittest" id="id4">使用PyUnit(unittest)</a><ul>
-<li><a class="reference internal" href="#id2" id="id5">代码示例</a></li>
+<li><a class="reference internal" href="#id1" id="id6">测试程序</a><ul>
+<li><a class="reference internal" href="#pydoc" id="id7">使用pydoc生成文档</a></li>
+<li><a class="reference internal" href="#id2" id="id8">文档测试</a></li>
+<li><a class="reference internal" href="#pyunit-unittest" id="id9">使用PyUnit(unittest)</a><ul>
+<li><a class="reference internal" href="#id3" id="id10">代码示例</a></li>
+<li><a class="reference internal" href="#id4" id="id11">代码示例</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id5" id="id12">使用测试包</a></li>
+<li><a class="reference internal" href="#setupteardown" id="id13">测试固件之setUp和tearDown</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id3">8.7. 测试程序</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id6">8.7. 测试程序</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pydoc">
+<h2><a class="toc-backref" href="#id7">8.7.1. 使用pydoc生成文档</a><a class="headerlink" href="#pydoc" title="Permalink to this headline">¶</a></h2>
+<p>示例代码</p>
+<p>fkmodule.py</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MY_NAME</span> <span class="o">=</span> <span class="s1">&#39;疯狂软件教育中心&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">say_hi</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    定义一个打招呼的函数</span>
+<span class="sd">    返回对指定用户打招呼的字符串</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;执行say_hi函数&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;您好！&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">print_rect</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    定义一个打印矩形的函数</span>
+<span class="sd">    height - 代表矩形的高</span>
+<span class="sd">    width - 代表矩形的宽</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nb">print</span><span class="p">((</span><span class="s1">&#39;*&#39;</span> <span class="o">*</span> <span class="n">width</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">height</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
+    <span class="n">NATIONAL</span> <span class="o">=</span> <span class="s1">&#39;China&#39;</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    定义一个代表用户的类</span>
+<span class="sd">    该类包括name、age两个变量</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        name初始化该用户的name</span>
+<span class="sd">        age初始化该用户的age</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">food</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        定义用户吃东西的方法</span>
+<span class="sd">        food - 代表用户正在吃的东西</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">正在吃</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">food</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>在控制台中查看文档：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pydoc</span> <span class="n">fkmodule</span>
+</pre></div>
+</div>
+<p>生成HTML文档:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pydoc</span> <span class="o">-</span><span class="n">w</span> <span class="n">fkmodule</span>
+<span class="n">wrote</span> <span class="n">fkmodule</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>pydoc 指定目录生成html文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pydoc</span> <span class="o">-</span><span class="n">w</span> <span class="n">目录名</span>
+</pre></div>
+</div>
+<p>启动本地服务器查看文档信息</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pydoc</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8899</span>
+<span class="n">Server</span> <span class="n">ready</span> <span class="n">at</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8899</span><span class="o">/</span>
+<span class="n">Server</span> <span class="n">commands</span><span class="p">:</span> <span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="n">rowser</span><span class="p">,</span> <span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="n">uit</span>
+</pre></div>
+</div>
+<p>查找模块</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pydoc</span> <span class="o">-</span><span class="n">k</span> <span class="n">被搜索模块的部分内容</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pydoc</span> <span class="o">-</span><span class="n">k</span> <span class="n">fk</span>
+<span class="n">fkmodule</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id8">8.7.2. 文档测试</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>所谓文档测试，指的是通过doctest模块运行Python源文件的说明文档中的测试用例，从而生成测试报告。</p>
+<p>代码示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span> <span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    一个用于计算平方的函数</span>
+
+<span class="sd">    例如</span>
+<span class="sd">    &gt;&gt;&gt; square(2)</span>
+<span class="sd">    4</span>
+<span class="sd">    &gt;&gt;&gt; square(3)</span>
+<span class="sd">    9</span>
+<span class="sd">    &gt;&gt;&gt; square(-3)</span>
+<span class="sd">    9</span>
+<span class="sd">    &gt;&gt;&gt; square(0)</span>
+<span class="sd">    0</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+<span class="c1">#    return x * 2 # ①、故意写错的</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="c1"># 修改正确</span>
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    定义一个代表用户的类，该类包含如下两个属性：</span>
+<span class="sd">    name - 代表用户的名字</span>
+<span class="sd">    age - 代表用户的年龄</span>
+
+<span class="sd">    例如</span>
+<span class="sd">    &gt;&gt;&gt; u = User(&#39;fkjava&#39;, 9)</span>
+<span class="sd">    &gt;&gt;&gt; u.name</span>
+<span class="sd">    &#39;fkjava&#39;</span>
+<span class="sd">    &gt;&gt;&gt; u.age</span>
+<span class="sd">    9</span>
+<span class="sd">    &gt;&gt;&gt; u.say(&#39;i love python&#39;)</span>
+<span class="sd">    &#39;fkjava说: i love python&#39;</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="c1"># self.name = &#39;fkit&#39; # ②、故意写错的</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="c1"># 修改正确</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+    <span class="k">def</span> <span class="nf">say</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;说: &#39;</span> <span class="o">+</span> <span class="n">content</span>
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>运行时，错误的输出如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">py</span><span class="s2">&quot;, line 43, in User</span>
+<span class="n">Failed</span> <span class="n">example</span><span class="p">:</span>
+    <span class="n">u</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Expected</span><span class="p">:</span>
+    <span class="s1">&#39;fkjava&#39;</span>
+<span class="n">Got</span><span class="p">:</span>
+    <span class="s1">&#39;fkit&#39;</span>
+
+
+
+<span class="o">.</span><span class="n">py</span><span class="s2">&quot;, line 47, in User</span>
+<span class="n">Failed</span> <span class="n">example</span><span class="p">:</span>
+    <span class="n">u</span><span class="o">.</span><span class="n">say</span><span class="p">(</span><span class="s1">&#39;i love python&#39;</span><span class="p">)</span>
+<span class="n">Expected</span><span class="p">:</span>
+    <span class="s1">&#39;fkjava说: i love python&#39;</span>
+<span class="n">Got</span><span class="p">:</span>
+    <span class="s1">&#39;fkit说: i love python&#39;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="pyunit-unittest">
-<h2><a class="toc-backref" href="#id4">8.7.1. 使用PyUnit(unittest)</a><a class="headerlink" href="#pyunit-unittest" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">8.7.3. 使用PyUnit(unittest)</a><a class="headerlink" href="#pyunit-unittest" title="Permalink to this headline">¶</a></h2>
 <p>PyUnit是Python自带的单元测试框架，用于编写和运行可重复的测试，PyUnit是xUnit体系的一个成员，
 xUnit是众多测试框架的一个总称，PyUnit主要用于白盒测试和回归测试。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>所有测试的本质其实都是一样的：通过给定参数来执行函数，然后判断函数的实际输出结果和期望输出的结果是否一致。
@@ -244,8 +397,135 @@ xUnit是众多测试框架的一个总称，PyUnit主要用于白盒测试和回
 · 测试方法应该以test_开头。
 </pre></div>
 </div>
-<div class="section" id="id2">
-<h3><a class="toc-backref" href="#id5">代码示例</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id10">代码示例</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>splitter.py</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># @auther:   18793</span>
+<span class="c1"># @Date：    2020/11/2 10:36</span>
+<span class="c1"># @filename: splitter.py</span>
+<span class="c1"># @Email:    1879324764@qq.com</span>
+<span class="c1"># @Software: PyCharm</span>
+
+<span class="k">def</span> <span class="nf">split</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param line:</span>
+<span class="sd">    :param types:</span>
+<span class="sd">    :param delimiter:</span>
+<span class="sd">    :return: Splits a line text and optionally performe type conversion.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">delimiter</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">types</span><span class="p">:</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">ty</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">ty</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">types</span><span class="p">,</span> <span class="n">fields</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">fields</span>
+</pre></div>
+</div>
+<p>testsplitter.py</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">import</span> <span class="nn">splitter</span>
+
+
+<span class="k">class</span> <span class="nc">MyTestCase</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_something</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># 执行设置操作 (如果有的话)</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># 执行清除操作 (如果有的话)</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">testsimplestring</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">splitter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;GOOG 100 490.50&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;GOOG&quot;</span><span class="p">,</span> <span class="s2">&quot;100&quot;</span><span class="p">,</span> <span class="s2">&quot;490.50&quot;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">testtypeconvert</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">splitter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;GOOG 100 490.50&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;GOOG&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">490.50</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">testdelimiter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">splitter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;GOOG,100,490.50&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;GOOG&quot;</span><span class="p">,</span> <span class="s2">&quot;100&quot;</span><span class="p">,</span> <span class="s2">&quot;490.50&quot;</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>输出结果如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>testsplitter.py::MyTestCase::test_something
+testsplitter.py::MyTestCase::testdelimiter
+testsplitter.py::MyTestCase::testsimplestring
+testsplitter.py::MyTestCase::testtypeconvert
+
+========================== 4 passed in 0.06 seconds ===========================
+
+进程已结束，退出代码 0
+PASSED                       [ 25%]PASSED                        [ 50%]PASSED                     [ 75%]PASSED                      [100%]
+</pre></div>
+</div>
+<p>mathfunc.py</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># @auther:   18793</span>
+<span class="c1"># @Date：    2020/6/17 14:51</span>
+<span class="c1"># @filename: mathfunc.py</span>
+<span class="c1"># @Email:    1879324764@qq.com</span>
+<span class="c1"># @Software: PyCharm</span>
+
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+
+<span class="k">def</span> <span class="nf">minus</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+
+
+<span class="k">def</span> <span class="nf">multi</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+
+<span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>单元测试代码示例：</p>
+<p>inittest_01.py</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf8 -*-</span>
+<span class="c1"># @auther:   18793</span>
+<span class="c1"># @Date：    2020/6/17 14:53</span>
+<span class="c1"># @filename: inittest_01.py</span>
+<span class="c1"># @Email:    1879324764@qq.com</span>
+<span class="c1"># @Software: PyCharm</span>
+
+<span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">mathfunc</span> <span class="k">import</span> <span class="o">*</span>
+
+
+<span class="k">class</span> <span class="nc">TestMathFunc</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_add</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="c1"># self.assertNotEqual(3, add(1, 2))</span>
+
+    <span class="k">def</span> <span class="nf">test_multi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">multi</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">test_divide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">divide</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">divide</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id11">代码示例</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arithmetic</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
 <span class="c1"># Testing add_numbers function from arithmetic.</span>
@@ -302,9 +582,15 @@ xUnit是众多测试框架的一个总称，PyUnit主要用于白盒测试和回
     <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><img alt="image0" src="../../_images/unittest00001.png" /></p>
-<p><img alt="image1" src="../../_images/unittest0002.png" /></p>
-<p><img alt="image2" src="../../_images/unittest0003.png" /></p>
+<div class="figure">
+<img alt="" src="../../_images/unittest00001.png" />
+</div>
+<div class="figure">
+<img alt="" src="../../_images/unittest0002.png" />
+</div>
+<div class="figure">
+<img alt="" src="../../_images/unittest0003.png" />
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">if_example</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
 
@@ -317,6 +603,107 @@ xUnit是众多测试框架的一个总称，PyUnit主要用于白盒测试和回
     <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id12">8.7.4. 使用测试包</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>使用测试包可以组织多个测试用例，测试包可以嵌套测试包，可以使用测试运行器来运行该测试包所包含的所有测试用例。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="c1"># 加载两个测试类</span>
+<span class="kn">from</span> <span class="nn">test_fk_math</span> <span class="k">import</span> <span class="n">TestFkMath</span>
+<span class="kn">from</span> <span class="nn">test_hello</span> <span class="k">import</span> <span class="n">TestHello</span>
+
+<span class="n">test_cases</span> <span class="o">=</span> <span class="p">(</span><span class="n">TestHello</span><span class="p">,</span> <span class="n">TestFkMath</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">whole_suite</span><span class="p">():</span>
+    <span class="c1"># 创建测试加载器</span>
+    <span class="n">loader</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TestLoader</span><span class="p">()</span>
+    <span class="c1"># 创建测试包</span>
+    <span class="n">suite</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TestSuite</span><span class="p">()</span>
+    <span class="c1"># 遍历所有测试类</span>
+    <span class="k">for</span> <span class="n">test_class</span> <span class="ow">in</span> <span class="n">test_cases</span><span class="p">:</span>
+        <span class="c1"># 从测试类中加载测试用例</span>
+        <span class="n">tests</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">loadTestsFromTestCase</span><span class="p">(</span><span class="n">test_class</span><span class="p">)</span>
+        <span class="c1"># 将测试用例添加到测试包中</span>
+        <span class="n">suite</span><span class="o">.</span><span class="n">addTests</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">suite</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="c1">#    # 创建测试运行器（TestRunner）</span>
+<span class="c1">#    runner = unittest.TextTestRunner(verbosity=2)</span>
+<span class="c1">#    runner.run(whole_suite())</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;fk_test_report.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="c1"># 创建测试运行器（TestRunner），将测试报告输出到文件中</span>
+        <span class="n">runner</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TextTestRunner</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">whole_suite</span><span class="p">())</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setupteardown">
+<h2><a class="toc-backref" href="#id13">8.7.5. 测试固件之setUp和tearDown</a><a class="headerlink" href="#setupteardown" title="Permalink to this headline">¶</a></h2>
+<p>unittest.TestCase包含了setUp()和tearDown()两个方法，其中</p>
+<ul class="simple">
+<li>setUp() 用于初始化测试固件</li>
+<li>tearDown() 用于销毁测试固件</li>
+</ul>
+<p>程序会在运行每个测试用例(以test_开头的方法)之前自动执行setUp()方法来初始化测试固件，
+并在每个测试用例(以test_开头的方法)运行完成之后自动执行tearDown()方法来销毁测试固件。</p>
+<p>代码示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="kn">from</span> <span class="nn">hello</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">class</span> <span class="nc">TestHello</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="c1"># 测试say_hello函数</span>
+    <span class="k">def</span> <span class="nf">test_say_hello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">say_hello</span><span class="p">()</span> <span class="p">,</span> <span class="s2">&quot;Hello World.&quot;</span><span class="p">)</span>
+    <span class="c1"># 测试add函数</span>
+    <span class="k">def</span> <span class="nf">test_add</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">====执行setUp模拟初始化固件====&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">====调用tearDown模拟销毁固件====&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>也可以重写setUpClass()和tearDownClass()类来执行测试用例之前初始化固件和执行测试用例之后销毁固件。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="kn">from</span> <span class="nn">hello</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">class</span> <span class="nc">TestHello</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="c1"># 测试say_hello函数</span>
+    <span class="k">def</span> <span class="nf">test_say_hello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">say_hello</span><span class="p">()</span> <span class="p">,</span> <span class="s2">&quot;Hello World.&quot;</span><span class="p">)</span>
+    <span class="c1"># 测试add函数</span>
+    <span class="k">def</span> <span class="nf">test_add</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">setUpClass</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">====执行setUpClass在类级别模拟初始化固件====&#39;</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">tearDownClass</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">====调用tearDownClass在类级别模拟销毁固件====&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">unittest</span> <span class="o">-</span><span class="n">v</span> <span class="n">fixture_test2</span><span class="o">.</span>
+<span class="n">py</span>
+
+<span class="o">====</span><span class="n">执行setUpClass在类级别模拟初始化固件</span><span class="o">====</span>
+<span class="n">test_add</span> <span class="p">(</span><span class="n">fixture_test2</span><span class="o">.</span><span class="n">TestHello</span><span class="p">)</span> <span class="o">...</span> <span class="n">ok</span>
+<span class="n">test_say_hello</span> <span class="p">(</span><span class="n">fixture_test2</span><span class="o">.</span><span class="n">TestHello</span><span class="p">)</span> <span class="o">...</span> <span class="n">ok</span>
+
+<span class="o">====</span><span class="n">调用tearDownClass在类级别模拟销毁固件</span><span class="o">====</span>
+
+<span class="o">----------------------------------------------------------------------</span>
+<span class="n">Ran</span> <span class="mi">2</span> <span class="n">tests</span> <span class="ow">in</span> <span class="mf">0.000</span><span class="n">s</span>
+</pre></div>
 </div>
 </div>
 </div>

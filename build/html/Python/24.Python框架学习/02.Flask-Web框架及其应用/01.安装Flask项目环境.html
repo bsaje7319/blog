@@ -246,20 +246,20 @@
 <p>比较Flask和Django的区别 <a class="reference external" href="http://www.python88.cn/book/flask/">http://www.python88.cn/book/flask/</a></p>
 <div class="section" id="virtualenv">
 <h2><a class="toc-backref" href="#id4">安装virtualenv虚拟环境</a><a class="headerlink" href="#virtualenv" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#安装virtualenv
-sudo pip install virtualenv
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span>#安装virtualenv
+$ sudo pip install virtualenv
 
 #创建python环境
-virtualenv venv
+$ virtualenv venv
 # virtualenv --no-site-packages venv        #--no-site-packages 是安装到系统python环境中的三方包不会复制过来。可以省略
 
 #使用source激活virtualenv环境：
-source venv/bin/activate
-(venv)＞ which python                #注意终端提示的改变，前面添加了“(venv)”前缀。
- /home/ubuntu/venv/bin/python       #可以看到已经不再使用系统环境变量中的Python了。
+$ source venv/bin/activate
+$ (venv)＞ which python              #注意终端提示的改变，前面添加了“(venv)”前缀。    /home/ubuntu/venv/bin/python         #可以看到已经不再使用系统环境变量中的Python了。
+
 
 #如果要退出虚拟环境，可以取消激活：
-(venv)＞ deactivate
+$ (venv)＞ deactivate
 </pre></div>
 </div>
 </div>
@@ -282,13 +282,14 @@ pipenv, version 11.10.4
 </pre></div>
 </div>
 <p>默认情况下，Pipenv会统一管理所有虚拟环境。在Windows系统
-中，虚拟环境文件夹会在C：.virtualenvs:raw-latex:<cite>目录下创</cite>
-建，而Linux或macOS会在~/.local/share/virtualenvs/目录下创建。如果你
-想在项目目录内创建虚拟环境文件夹，可以设置环境变量
+中，虚拟环境文件夹会在<code class="docutils literal notranslate"><span class="pre">C:\Users\Administrator\.virtualenvs\</span></code>目录下创
+建，而Linux或macOS会在<code class="docutils literal notranslate"><span class="pre">~/.local/share/virtualenvs/</span></code>目录下创建。</p>
+<p>如果你想在项目目录内创建虚拟环境文件夹，可以设置环境变量
 PIPENV_VENV_IN_PROJECT，这时名为.venv的虚拟环境文件夹将在
-项目根目录被创建。
-虚拟环境文件夹的目录名称的形式为“当前项目目录名+一串随机字
-符”，比如helloflask-5Pa0ZfZw。</p>
+项目根目录被创建。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>虚拟环境文件夹的目录名称的形式为“当前项目目录名+一串随机字符”，比如helloflask-5Pa0ZfZw。
+</pre></div>
+</div>
 <p>在单独使用Virtualenv时，我们通常会显式地激活虚拟环境。在
 Pipenv中，可以使用pipenv shell命令显式地激活虚拟环境：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pipenv shell
@@ -353,14 +354,15 @@ Pipenv中，可以使用pipenv shell命令显式地激活虚拟环境：</p>
 </div>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="#id8">开启调试</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>开启调试之后，任何修改立即生效，无需重新运行程序，刷新网页即可。
-方法一</li>
-</ul>
+<ul>
+<li><p class="first">开启调试之后，任何修改立即生效，无需重新运行程序，刷新网页即可。
+方法一</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</li>
+</ul>
 <p>方法二</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="kc">True</span>

@@ -1,7 +1,3 @@
-.. role:: raw-latex(raw)
-   :format: latex
-..
-
 .. contents::
    :depth: 3
 ..
@@ -14,22 +10,22 @@
 安装virtualenv虚拟环境
 ----------------------
 
-::
+.. code:: shell
 
-       #安装virtualenv
-       sudo pip install virtualenv
+    #安装virtualenv
+    $ sudo pip install virtualenv
 
-       #创建python环境
-       virtualenv venv
-       # virtualenv --no-site-packages venv        #--no-site-packages 是安装到系统python环境中的三方包不会复制过来。可以省略
-       
-       #使用source激活virtualenv环境：
-       source venv/bin/activate
-       (venv)＞ which python                #注意终端提示的改变，前面添加了“(venv)”前缀。    
-        /home/ubuntu/venv/bin/python       #可以看到已经不再使用系统环境变量中的Python了。
-       
-       #如果要退出虚拟环境，可以取消激活：     
-       (venv)＞ deactivate
+    #创建python环境
+    $ virtualenv venv
+    # virtualenv --no-site-packages venv        #--no-site-packages 是安装到系统python环境中的三方包不会复制过来。可以省略
+        
+    #使用source激活virtualenv环境：
+    $ source venv/bin/activate
+    $ (venv)＞ which python              #注意终端提示的改变，前面添加了“(venv)”前缀。    /home/ubuntu/venv/bin/python         #可以看到已经不再使用系统环境变量中的Python了。
+        
+        
+    #如果要退出虚拟环境，可以取消激活：     
+    $ (venv)＞ deactivate
 
 Pipenv工作流
 ------------
@@ -41,44 +37,47 @@ Pipenv是基于pip的Python包管理工具，它和pip的用法非常相似，�
 
 ::
 
-   $ yum -y install python-pip 
-   $ pip install pipenv
+    $ yum -y install python-pip 
+    $ pip install pipenv
 
 可以使用下面的命令检查Pipenv是否已经安装：
 
 ::
 
-   $ pipenv --version
-   pipenv, version 11.10.4
+    $ pipenv --version
+    pipenv, version 11.10.4
 
 2.创建虚拟环境
 
 ::
 
-   $ pipenv install
+    $ pipenv install
 
 默认情况下，Pipenv会统一管理所有虚拟环境。在Windows系统
-中，虚拟环境文件夹会在C：:raw-latex:`\Users`:raw-latex:`\Administrator`.virtualenvs:raw-latex:`\目录下创`
-建，而Linux或macOS会在~/.local/share/virtualenvs/目录下创建。如果你
-想在项目目录内创建虚拟环境文件夹，可以设置环境变量
-PIPENV_VENV_IN_PROJECT，这时名为.venv的虚拟环境文件夹将在
+中，虚拟环境文件夹会在\ ``C:\Users\Administrator\.virtualenvs\``\ 目录下创
+建，而Linux或macOS会在\ ``~/.local/share/virtualenvs/``\ 目录下创建。
+
+如果你想在项目目录内创建虚拟环境文件夹，可以设置环境变量
+PIPENV\_VENV\_IN\_PROJECT，这时名为.venv的虚拟环境文件夹将在
 项目根目录被创建。
-虚拟环境文件夹的目录名称的形式为“当前项目目录名+一串随机字
-符”，比如helloflask-5Pa0ZfZw。
+
+::
+
+    虚拟环境文件夹的目录名称的形式为“当前项目目录名+一串随机字符”，比如helloflask-5Pa0ZfZw。
 
 在单独使用Virtualenv时，我们通常会显式地激活虚拟环境。在
 Pipenv中，可以使用pipenv shell命令显式地激活虚拟环境：
 
 ::
 
-   $ pipenv shell
+    $ pipenv shell
 
 Pipenv会启动一个激活虚拟环境的子shell，现在你会发现命令行提
 示符前添加了虚拟环境名“（虚拟环境名称）$”，比如：
 
 ::
 
-   (helloflask-5Pa0ZfZw) $
+    (helloflask-5Pa0ZfZw) $
 
 除了显式地激活虚拟环境，Pipenv还提供了一个pipenv run命令，这
 个命令允许你不显式激活虚拟环境即可在当前项目的虚拟环境中执行命
@@ -86,55 +85,55 @@ Pipenv会启动一个激活虚拟环境的子shell，现在你会发现命令行
 
 ::
 
-   $ pipenv run python hello.py
+    $ pipenv run python hello.py
 
 安装Flask模块
 -------------
 
 ::
 
-   virtualenv D:\GitHub\Flask\venv
+    virtualenv D:\GitHub\Flask\venv
 
-   D:\GitHub\Flask>D:\GitHub\Flask\venv\Scripts\activate
+    D:\GitHub\Flask>D:\GitHub\Flask\venv\Scripts\activate
 
-   (venv) D:\GitHub\Flask>
-   #安装Flask模块
-   (venv) D:\GitHub\Flask>pip install flask
+    (venv) D:\GitHub\Flask>
+    #安装Flask模块
+    (venv) D:\GitHub\Flask>pip install flask
 
-   (venv) D:\GitHub\Flask>pip list
-   Package      Version
-   ------------ -------
-   Click        7.0
-   Flask        1.0.2
-   itsdangerous 1.1.0
-   Jinja2       2.10.1
-   MarkupSafe   1.1.1
-   pip          19.0.3
-   setuptools   41.0.0
-   Werkzeug     0.15.2
-   wheel        0.33.1
+    (venv) D:\GitHub\Flask>pip list
+    Package      Version
+    ------------ -------
+    Click        7.0
+    Flask        1.0.2
+    itsdangerous 1.1.0
+    Jinja2       2.10.1
+    MarkupSafe   1.1.1
+    pip          19.0.3
+    setuptools   41.0.0
+    Werkzeug     0.15.2
+    wheel        0.33.1
 
 编写第一个hello Word网页
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
-   #!/usr/bin/env python
-   #-*- coding:utf8 -*-
-   # auther; 18793
-   # Date：2019/4/19 12:41
-   # filename: helloword.py
+    #!/usr/bin/env python
+    #-*- coding:utf8 -*-
+    # auther; 18793
+    # Date：2019/4/19 12:41
+    # filename: helloword.py
 
-   from flask import Flask
-   app = Flask(__name__)
+    from flask import Flask
+    app = Flask(__name__)
 
-   @app.route("/")
-   def hello():
-       return "Hello World!你好"
+    @app.route("/")
+    def hello():
+        return "Hello World!你好"
 
 
-   if __name__ == '__main__':
-       app.run()
+    if __name__ == '__main__':
+        app.run()
 
 开启调试
 ~~~~~~~~
@@ -142,15 +141,15 @@ Pipenv会启动一个激活虚拟环境的子shell，现在你会发现命令行
 -  开启调试之后，任何修改立即生效，无需重新运行程序，刷新网页即可。
    方法一
 
-::
+   ::
 
-   if __name__ == '__main__':
+       if __name__ == '__main__':
        app.run(debug=True)
 
 方法二
 
 ::
 
-   if __name__ == '__main__':
-       app.debug = True
-       app.run()
+    if __name__ == '__main__':
+        app.debug = True
+        app.run()

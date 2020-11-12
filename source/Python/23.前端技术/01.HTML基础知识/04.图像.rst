@@ -10,109 +10,114 @@
 
 ::
 
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <title>插入图像</title>
-   </head>
-   <body>
-   <! --以下是插入图像-->
-   <img src="96440.jpg">
-   </body>
-   </html>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>插入图像</title>
+    </head>
+    <body>
+    <! --以下是插入图像-->
+    <img src="96440.jpg">
+    </body>
+    </html>
 
-|image0|
+.. figure:: ../../../_static/html+css-photo001.png
+   :alt: 
 
 图像无法显示时的提示信息
 ------------------------
 
 ::
 
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <title>alt用法</title>
-   </head>
-   <body>
-   <! --下面一行表示在图像标记中设置alt-->
-   <img src="964401.jpg" alt="风景">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>alt用法</title>
+    </head>
+    <body>
+    <! --下面一行表示在图像标记中设置alt-->
+    <img src="964401.jpg" alt="风景">
 
-   </body>
-   </html>
+    </body>
+    </html>
 
-|image1|
+.. figure:: ../../../_static/html+css-photo0002.png
+   :alt: 
 
 控制图像的大小
 
 ::
 
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <title>控制图像的大小</title>
-   </head>
-   <body>
-   <! --下面是控制图像的宽度和高度-->
-   <img src="96440.jpg" alt="风景" width="800px" height="500px">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>控制图像的大小</title>
+    </head>
+    <body>
+    <! --下面是控制图像的宽度和高度-->
+    <img src="96440.jpg" alt="风景" width="800px" height="500px">
 
-   </body>
-   </html>
+    </body>
+    </html>
 
 图像top对齐
 
 ::
 
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <title>图像top对齐</title>
-   </head>
-   <body>
-   图像与文本top对齐
-   <br>
-   <img src="96440.jpg" alt="风景" align="top">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>图像top对齐</title>
+    </head>
+    <body>
+    图像与文本top对齐
+    <br>
+    <img src="96440.jpg" alt="风景" align="top">
 
-   </body>
-   </html>
+    </body>
+    </html>
 
-|image2|
+.. figure:: ../../../_static/html+css-photo000003.png
+   :alt: 
 
 图像与文本顶部对齐、居中对齐、底部对齐
 
 ::
 
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>图像top对齐</title>
+    </head>
+    <body>
+    图像与文本top对齐
+    <br>
+    <img src="96440.jpg" alt="风景" align="top">
+
+    <br>
+    图像与文本居中对齐
+    <br>
+    <img src="96440.jpg" alt="风景" align="middle">
+    <br>
+    图像在底部显示
+    <br>
+    <img src="96440.jpg" alt="风景" align="bottom">
+
+    </body>
+    </html>
+
+
+
+    设置图像边框
+
+.. raw:: html
+
    <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <title>图像top对齐</title>
-   </head>
-   <body>
-   图像与文本top对齐
-   <br>
-   <img src="96440.jpg" alt="风景" align="top">
-
-   <br>
-   图像与文本居中对齐
-   <br>
-   <img src="96440.jpg" alt="风景" align="middle">
-   <br>
-   图像在底部显示
-   <br>
-   <img src="96440.jpg" alt="风景" align="bottom">
-
-   </body>
-   </html>
-
-
-
-   设置图像边框
-
-<!DOCTYPE html>
 
 .. raw:: html
 
@@ -121,44 +126,23 @@
 .. raw:: html
 
    <head>
-
-.. raw:: html
-
-   <meta charset="UTF-8">
-
-.. raw:: html
-
-   <title>
-
-设置图像边框
-
-.. raw:: html
-
-   </title>
-
-.. raw:: html
-
-   </head>
-
-.. raw:: html
-
-   <body>
-
-.. raw:: html
-
-   </body>
-
-.. raw:: html
-
-   </html>
 
 ::
 
-   ![](../../../_static/html+css-photo00004.png)
+    <meta charset="UTF-8">
+    <title>设置图像边框</title>
 
-   图片设置超链接
+.. raw:: html
 
-<!DOCTYPE html>
+   </head>
+
+.. raw:: html
+
+   <body>
+
+.. raw:: html
+
+   <!DOCTYPE html>
 
 .. raw:: html
 
@@ -168,19 +152,10 @@
 
    <head>
 
-.. raw:: html
+::
 
-   <meta charset="UTF-8">
-
-.. raw:: html
-
-   <title>
-
-图片超链接
-
-.. raw:: html
-
-   </title>
+    <meta charset="UTF-8">
+    <title>图片超链接</title>
 
 .. raw:: html
 
@@ -197,9 +172,3 @@
 .. raw:: html
 
    </html>
-
-\``\`
-
-.. |image0| image:: ../../../_static/html+css-photo001.png
-.. |image1| image:: ../../../_static/html+css-photo0002.png
-.. |image2| image:: ../../../_static/html+css-photo000003.png

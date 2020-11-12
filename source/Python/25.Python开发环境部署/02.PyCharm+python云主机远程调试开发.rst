@@ -21,6 +21,11 @@ Pycharm专业版配置远程服务器并自动同步代码
 
 https://www.cnblogs.com/xiao987334176/p/11091528.html
 
+使用Pycharm远程连接及管理Docker
+-------------------------------
+
+https://www.jianshu.com/p/f6e02bfc18b4
+
 .. |image0| image:: ../../_static/pychrm_python.png
 .. |image1| image:: ../../_static/pychrm+python2.png
 .. |image2| image:: ../../_static/pychrm+python3.png

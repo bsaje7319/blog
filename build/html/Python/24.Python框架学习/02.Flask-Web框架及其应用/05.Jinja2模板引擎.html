@@ -144,6 +144,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06.Python高效开发实战-Django、Flask/index.html">22.6. Python高效开发实战-Django、Flask</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
@@ -228,14 +229,18 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#jinja2" id="id2">Jinja2模板引擎</a><ul>
-<li><a class="reference internal" href="#id1" id="id3">变量</a></li>
+<li><a class="reference internal" href="#jinja2" id="id4">Jinja2模板引擎</a><ul>
+<li><a class="reference internal" href="#id1" id="id5">变量</a></li>
+<li><a class="reference internal" href="#id2" id="id6">模板继承</a><ul>
+<li><a class="reference internal" href="#id3" id="id7">1.基模板</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="jinja2">
-<h1><a class="toc-backref" href="#id2">22.2.6. Jinja2模板引擎</a><a class="headerlink" href="#jinja2" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id4">22.2.6. Jinja2模板引擎</a><a class="headerlink" href="#jinja2" title="Permalink to this headline">¶</a></h1>
 <p>index.html</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -265,7 +270,7 @@
 </pre></div>
 </div>
 <p>render.py</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
 <span class="c1"># Date：2019/4/19 15:47</span>
@@ -291,7 +296,7 @@
 </pre></div>
 </div>
 <div class="section" id="id1">
-<h2><a class="toc-backref" href="#id3">变量</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">变量</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
@@ -336,7 +341,9 @@
 &lt;/html&gt;
 </pre></div>
 </div>
-<p><img alt="image0" src="../../../_images/flask1.png" /></p>
+<div class="figure">
+<img alt="" src="../../../_images/flask1.png" />
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Jinja2 能识别所有类型的变量，甚至是一些复杂的类型，例如列表、字典和对象。在模板
 中使用变量的一些示例如下：
 &lt;p&gt;A value from a dictionary: {{ mydict[&#39;key&#39;] }}.&lt;/p&gt;
@@ -344,6 +351,109 @@
 &lt;p&gt;A value from a list, with a variable index: {{ mylist[myintvar] }}.&lt;/p&gt;
 &lt;p&gt;A value from an object&#39;s method: {{ myobj.somemethod() }}.&lt;/p&gt;
 </pre></div>
+</div>
+<p>代码示例：</p>
+<p>hello1.html</p>
+<div class="code html highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;First Jinja2 webpage&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;ul id=&quot;navigation&quot;&gt;
+    {% for item in navigation %}
+        &lt;li&gt;&lt;a href=&quot;{{ item }}&quot;&gt;{{ item }}&lt;/a&gt;&lt;/li&gt;
+    {% endfor %}
+&lt;/ul&gt;
+
+&lt;h1&gt;Hello world&lt;/h1&gt;
+{{ a_variable }}
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>sample3.py</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;hello01.html&quot;</span><span class="p">,</span> <span class="n">a_variable</span><span class="o">=</span><span class="s2">&quot;Devops!&quot;</span><span class="p">,</span> <span class="n">navigation</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;www.baidu.com&quot;</span><span class="p">,</span> <span class="s2">&quot;www.google.com&quot;</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id6">模板继承</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>在web开发中很多页面的部分内容是一样的，比如页头、导航、尾页。通过Jinja2模板继承，可以把相同内容的一部分集中到一个“基模板”中，而在每个页面中继承“基模板”以到达导入其内容的目的。</p>
+<p>这样达到使公共内容集中且易于修改的目的。</p>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id7">1.基模板</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>base.html</p>
+<div class="code html highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;
+    &lt;title&gt;{{ site_name }}&lt;/title&gt;
+
+    &lt;!-- Bootstrap --&gt;
+    &lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+    &lt;!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 --&gt;
+    &lt;!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 --&gt;
+    &lt;!--[if lt IE 9]&gt;
+      &lt;script src=&quot;https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js&quot;&gt;&lt;/script&gt;
+      &lt;script src=&quot;https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js&quot;&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+  &lt;/head&gt;
+  &lt;body class=&quot;skin-blue sidebar-mini&quot;&gt;
+    &lt;h1&gt;你好，世界！&lt;/h1&gt;
+    &lt;span class=&quot;logo-mini&quot;&gt;&lt;b&gt;我在基模板中&lt;/b&gt;&lt;/span&gt;
+
+    &lt;!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) --&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 --&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>sub.html</p>
+<div class="code html highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+{% extends &quot;base.html&quot; %}
+{% block content %}
+&lt;p class=&quot;important&quot;&gt;
+    我在子模板中。
+&lt;/p&gt;
+{% endblock %}
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>本例中的支模板文件可以直接用于对Flask的渲染，用如下代码渲染子模板。</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/hello&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;sub.html&quot;</span><span class="p">,</span> <span class="n">site_name</span><span class="o">=</span><span class="s2">&quot;继承测试&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

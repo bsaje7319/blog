@@ -144,6 +144,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06.Python高效开发实战-Django、Flask/index.html">22.6. Python高效开发实战-Django、Flask</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
@@ -228,22 +229,24 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#flask" id="id2">Flask框架中使用数据库</a><ul>
-<li><a class="reference internal" href="#flasksqlit3" id="id3">flask使用sqlit3的两种方式</a></li>
-<li><a class="reference internal" href="#id1" id="id4">Flask使用数据库实现用户登录-用户注销功能</a></li>
+<li><a class="reference internal" href="#flask" id="id3">Flask框架中使用数据库</a><ul>
+<li><a class="reference internal" href="#id1" id="id4">简单示例</a></li>
+<li><a class="reference internal" href="#flasksqlit3" id="id5">flask使用sqlit3的两种方式</a></li>
+<li><a class="reference internal" href="#id2" id="id6">Flask使用数据库实现用户登录-用户注销功能</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="flask">
-<h1><a class="toc-backref" href="#id2">22.2.13. Flask框架中使用数据库</a><a class="headerlink" href="#flask" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id3">22.2.13. Flask框架中使用数据库</a><a class="headerlink" href="#flask" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>在Flask 框架中提供了一种只需要定义一次连接和定义一次释放连接， 之后就可以在所有
 的业务函数中直接使用数据连接来查询数据库。这就需要使用FIask 框架中的两个装饰器和一个g 对象。
 
 两个装饰器分别是before-request()和teardown-request()，被before-request() 装饰的函数会
 在每个请求之前调用，而被teardown-request() 装饰的函数会在每个请求结束之后调用。此外，
 还有一个after request() 装饰器， 只不过它在业务函数中引发错误时它装饰的函数不会被执行。
-Flask 提供了特殊的g 对象， 这个对象与每一个请求是一一对应的， 并且只在函数内部有
+
+Flask 提供了特殊的g对象， 这个对象与每一个请求是一一对应的， 并且只在函数内部有
 效。不要在其他对象中存储类似信息， 因为在多线程环境下无效。这个特殊的g 对象会在后台神奇地工作， 保证系统正常运行。
 将刚才介绍的装饰器和g 对象结合起来， 就可以实现在所有的请求处理方法中直接使用数
 据库， 而不用在请求处理方法中去重复地编写数据库连接与断开的代码。
@@ -275,12 +278,144 @@ Flask 提供了特殊的g 对象， 这个对象与每一个请求是一一对�
 <span class="n">cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                     <span class="c1">#关闭游标</span>
 </pre></div>
 </div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id4">简单示例</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>演示一个使用数据库保存用户注册信息和验证登录的简单实例。</p>
+<p>app1.py</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- encoding:utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">flask</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">g</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span>
+<span class="kn">from</span> <span class="nn">sqlite3</span> <span class="k">import</span> <span class="n">connect</span>
+
+<span class="n">DBNAME</span> <span class="o">=</span> <span class="s1">&#39;test.db&#39;</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span> <span class="s1">&#39;dfadff#$#5dgfddgssgfgsfgr4$T^%^&#39;</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">before_first_request</span>  <span class="c1"># 在对应用程序实例的第一个请求之前注册要运行的函数, 只会执行一次</span>
+<span class="k">def</span> <span class="nf">init_db</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">DBNAME</span><span class="p">):</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span><span class="n">DBNAME</span><span class="p">)</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;create table user (name text,passwd text)&#39;</span><span class="p">)</span>
+        <span class="n">cur</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;数据库初始化完成!&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">before_request</span>     <span class="c1"># 应用装饰器，每个请求开始时运行被装饰函数</span>
+<span class="k">def</span> <span class="nf">before_request</span><span class="p">():</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span><span class="n">DBNAME</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">teardown_request</span>   <span class="c1"># 应用装饰器，每个退出时运行被装饰函数</span>
+<span class="k">def</span> <span class="nf">teardown_request</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">db</span><span class="p">:</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>          <span class="c1"># 关闭数据库游标</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s1">&#39;username&#39;</span> <span class="ow">in</span> <span class="n">session</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;你好，&quot;</span> <span class="o">+</span> <span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;&lt;p&gt;&lt;a href=&quot;/logout&quot;&gt;注销&lt;/a&gt;&lt;/p&gt;&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;a href=&quot;/login&quot;&gt;登录&lt;/a&gt;,&lt;a href=&quot;/signup&quot;&gt;注册&lt;/a&gt;&#39;</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/signup&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">signup</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;signup.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">passwd</span> <span class="o">=</span> <span class="s1">&#39;passwd&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;passwd&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">and</span> <span class="n">passwd</span><span class="p">:</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;insert into user (name,passwd) values (?,?)&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">passwd</span><span class="p">))</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;signup&#39;</span><span class="p">))</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">passwd</span> <span class="o">=</span> <span class="s1">&#39;passwd&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;passwd&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">and</span> <span class="n">passwd</span><span class="p">:</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;select * from user where name=?&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,))</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">res</span> <span class="ow">and</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">passwd</span><span class="p">:</span>
+                <span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+                <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;登录失败!&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;参数不全!&#39;</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/logout&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">logout</span><span class="p">():</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>signup.html</p>
+<div class="code html highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!DOCTYPE html&gt;
+        &lt;form method=&#39;post&#39;&gt;
+        &lt;input type=&#39;text&#39; name=&#39;name&#39; placeholder=&#39;用户名&#39; /&gt;
+        &lt;input type=&#39;password&#39; name=&#39;passwd&#39; placeholder=&#39;密码&#39; /&gt;
+        &lt;input type=&#39;submit&#39; value=&#39;注册&#39; /&gt;
+        &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>login.html</p>
+<div class="code html highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;form method=&#39;post&#39;&gt;
+    &lt;input type=&#39;text&#39; name=&#39;name&#39; placeholder=&#39;用户名&#39;/&gt;
+    &lt;input type=&#39;password&#39; name=&#39;passwd&#39; placeholder=&#39;密码&#39;/&gt;
+    &lt;input type=&#39;submit&#39; value=&#39;登录&#39;/&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+</div>
 <div class="section" id="flasksqlit3">
-<h2><a class="toc-backref" href="#id3">flask使用sqlit3的两种方式</a><a class="headerlink" href="#flasksqlit3" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">flask使用sqlit3的两种方式</a><a class="headerlink" href="#flasksqlit3" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://www.cnblogs.com/hhh5460/p/6557350.html">https://www.cnblogs.com/hhh5460/p/6557350.html</a></p>
 </div>
-<div class="section" id="id1">
-<h2><a class="toc-backref" href="#id4">Flask使用数据库实现用户登录-用户注销功能</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id6">Flask使用数据库实现用户登录-用户注销功能</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://www.cnblogs.com/hhh5460/p/9745812.html">https://www.cnblogs.com/hhh5460/p/9745812.html</a></p>
 </div>
 </div>
