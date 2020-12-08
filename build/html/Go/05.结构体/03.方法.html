@@ -106,13 +106,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../03.流程控制/index.html">3. 流程控制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04.函数/index.html">4. 函数</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">5. 结构体</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="01.结构体.html">5.1. 结构体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.结构体.html">5.1. 01.结构体</a></li>
 <li class="toctree-l3"><a class="reference internal" href="02.构造函数.html">5.2. 02.构造函数-结构体和类型的一系列初始化操作的函数封装</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">5.3. 03.方法</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">5.3.1. 为结构体添加方法</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">5.3.2. 结构体中方法</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">5.3.3. 结构体的匿名字段</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">5.3.4. 结构体字段的可见性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">5.3.3. 指针结类型方法和非指针类型方法案例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">5.3.4. 类型的本质</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">5.3.5. 结构体的匿名字段</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">5.3.6. 结构体字段的可见性</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="04.接收器.html">5.4. 04.接收器-方法作用的目标</a></li>
@@ -201,27 +203,29 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id9">03.方法</a><ul>
-<li><a class="reference internal" href="#id2" id="id10">为结构体添加方法</a></li>
-<li><a class="reference internal" href="#id3" id="id11">结构体中方法</a><ul>
-<li><a class="reference internal" href="#id4" id="id12">非指针类型的接收者</a></li>
-<li><a class="reference internal" href="#id5" id="id13">指针类型的接收者</a></li>
-<li><a class="reference internal" href="#id6" id="id14">什么时候应该使用指针类型接收者</a></li>
+<li><a class="reference internal" href="#id1" id="id11">03.方法</a><ul>
+<li><a class="reference internal" href="#id2" id="id12">为结构体添加方法</a></li>
+<li><a class="reference internal" href="#id3" id="id13">结构体中方法</a><ul>
+<li><a class="reference internal" href="#id4" id="id14">非指针类型的接收者</a></li>
+<li><a class="reference internal" href="#id5" id="id15">指针类型的接收者</a></li>
+<li><a class="reference internal" href="#id6" id="id16">什么时候应该使用指针类型接收者</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id7" id="id15">结构体的匿名字段</a></li>
-<li><a class="reference internal" href="#id8" id="id16">结构体字段的可见性</a></li>
+<li><a class="reference internal" href="#id7" id="id17">指针结类型方法和非指针类型方法案例</a></li>
+<li><a class="reference internal" href="#id8" id="id18">类型的本质</a></li>
+<li><a class="reference internal" href="#id9" id="id19">结构体的匿名字段</a></li>
+<li><a class="reference internal" href="#id10" id="id20">结构体字段的可见性</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id9">5.3. 03.方法</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id11">5.3. 03.方法</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>Go语言中的方法(Method)是一种作用于特定类型变量的函数。这种特定类型变量叫做接收器(Receiver)。</p>
 <p>如果把结构体理解为类，那么接收器就是this或者self
 在Go语言中，接收器的类型可以是任何类型，不仅仅是结构体，任何类型都可以拥有方法。</p>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id10">5.3.1. 为结构体添加方法</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">5.3.1. 为结构体添加方法</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>1.面向过程的实现方法</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
@@ -270,9 +274,9 @@ func main() {
 <img alt="image0" src="../../_images/go_method_jieshouqi.png" /></p>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id11">5.3.2. 结构体中方法</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">5.3.2. 结构体中方法</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id4">
-<h3><a class="toc-backref" href="#id12">非指针类型的接收者</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id14">非指针类型的接收者</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
@@ -314,7 +318,7 @@ func main() {
 </div>
 </div>
 <div class="section" id="id5">
-<h3><a class="toc-backref" href="#id13">指针类型的接收者</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id15">指针类型的接收者</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>// 指针类型的接收者，类方法定义
 // 重新设置年龄
 func (p *Person) SetAge(age int8) {
@@ -334,7 +338,7 @@ func main() {
 </div>
 </div>
 <div class="section" id="id6">
-<h3><a class="toc-backref" href="#id14">什么时候应该使用指针类型接收者</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">什么时候应该使用指针类型接收者</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><code class="docutils literal notranslate"><span class="pre">需要修改接收者中的值</span></code></li>
 <li><code class="docutils literal notranslate"><span class="pre">接收者是拷贝代价比较大的大对象</span></code></li>
@@ -343,7 +347,74 @@ func main() {
 </div>
 </div>
 <div class="section" id="id7">
-<h2><a class="toc-backref" href="#id15">5.3.3. 结构体的匿名字段</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">5.3.3. 指针结类型方法和非指针类型方法案例</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+//声明一个用户类型
+type user struct {
+    name  string
+    email string
+}
+
+//实现一个方法
+func (u user) notify() {
+    fmt.Printf(&quot;Sending User email to %s&lt;%s&gt;\n&quot;, u.name, u.email)
+}
+
+// ------------------实现指针方法
+func (u *user) changeEmail_zz(email string) {
+    u.email = email
+}
+
+// -------------------实现非指针方法
+func (u user) changeEmail(email string) {
+    u.email = email
+    fmt.Printf(&quot;func 中的email value %s\n&quot;, u.email)
+}
+
+func main() {
+    name1 := user{
+        name:  &quot;hujianli&quot;,
+        email: &quot;123@qq.com&quot;,
+    }
+    name1.notify()
+    name1.changeEmail(&quot;666@qq.com&quot;)
+    name1.notify()
+
+    fmt.Println(&quot;----------------------------------------&quot;)
+
+    //值接收者使用值的副本来调用方法，而指针接受者使用实际值来调用方法。
+    name2 := &amp;user{
+        name:  &quot;huxiaojian&quot;,
+        email: &quot;456@qq.com&quot;,
+    }
+    name2.notify()
+    name2.changeEmail_zz(&quot;789@qq.com&quot;)
+    name2.notify()
+
+}
+
+/**
+Sending User email to hujianli&lt;123@qq.com&gt;
+func 中的email value 666@qq.com
+Sending User email to hujianli&lt;123@qq.com&gt;
+----------------------------------------
+Sending User email to huxiaojian&lt;456@qq.com&gt;
+Sending User email to huxiaojian&lt;789@qq.com&gt;
+*/
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id18">5.3.4. 类型的本质</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>在声明一个新类型之后，声明一个该类型的方法之前，需要先回答一个问题：这个类型的本质是什么。如果给这个类型增加或者删除某个值，是要创建一个新值，还是要更改当前的值？</p>
+<p><code class="docutils literal notranslate"><span class="pre">如果是要创建一个新值，该类型的方法就使用值接收者。如果是要修改当前值，就使用指针接收者</span></code>。</p>
+<p>这个答案也会影响程序内部传递这个类型的值的方式：是按值做传递，还是按指针做传递。保持传递的一致性很重要。这个背后的原则是，不要只关注某个方法是如何处理这个值，而是要关注这个值的本质是什么。</p>
+</div>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id19">5.3.5. 结构体的匿名字段</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
@@ -390,8 +461,8 @@ func main() {
 </pre></div>
 </div>
 </div>
-<div class="section" id="id8">
-<h2><a class="toc-backref" href="#id16">5.3.4. 结构体字段的可见性</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id20">5.3.6. 结构体字段的可见性</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p>结构体中字段大写开头表示可公开访问，小写表示私有（仅在定义当前结构体的包中可访问）。</p>
 </div>
 </div>

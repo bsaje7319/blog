@@ -230,7 +230,9 @@
 <div class="section" id="channel-goroutine">
 <h1><a class="toc-backref" href="#id10">8.3. 03.通道(channel)-在多个goroutine间通信的管道</a><a class="headerlink" href="#channel-goroutine" title="Permalink to this headline">¶</a></h1>
 <p>Go语言提倡使用通信的方法代替共享内存，这里通信的方法就是使用通道(channel).</p>
-<p><img alt="image0" src="../../_images/go_channel00001.png" /></p>
+<div class="figure">
+<img alt="" src="../../_images/go_channel00001.png" />
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>在地铁站、食堂、洗手间等公共场所人很多的情况下，大家养成了排队的习惯，
 目的也是避免拥挤、插队导致的低效的资源使用和交换过程。代码与数据也是如此，多个 goroutine 为了争抢数据，势必造成执行的低效率，使用队列的方式是最高效的，channel 就是一种队列一样的结构。
 </pre></div>
@@ -264,6 +266,13 @@ chan 类型的空值是 nil，声明后需要配合 make 后才能使用。
 · 通道实例：通过make创建的通道句柄。
 </pre></div>
 </div>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">无缓冲的整型通道</span>
+<span class="n">unbuffered</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="n">chan</span> <span class="nb">int</span><span class="p">)</span>
+
+<span class="o">//</span> <span class="n">有缓冲的字符串通道</span>
+<span class="n">buffered</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="n">chan</span> <span class="n">string</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>例子：</p>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
@@ -291,19 +300,17 @@ chan 类型的空值是 nil，声明后需要配合 make 后才能使用。
 <p>通道创建后，就可以使用通道进行发送和接收操作。</p>
 <ol class="arabic simple">
 <li>通道发送数据的格式
-通道的发送使用特殊的操作符&lt;-，将数据通过通道发送的格式为：</li>
+通道的发送使用特殊的操作符&lt;-，将数据通过通道发送的格式为： ```
+通道变量 &lt;- 值</li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>通道变量 &lt;- 值
-
-· 通道变量：通过make创建好的通道实例。
-· 值：可以是变量、常量、表达式或者函数返回值等。值的类型必须与ch通道的元素类型一致。
-</pre></div>
-</div>
+<p>· 通道变量：通过make创建好的通道实例。 ·
+值：可以是变量、常量、表达式或者函数返回值等。值的类型必须与ch通道的元素类型一致。
+```</p>
 <ol class="arabic simple" start="2">
 <li>通过通道发送数据的例子</li>
 </ol>
 <p>使用 make 创建一个通道后，就可以使用&lt;-向通道发送数据，代码如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">创建一个空接口通道</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">创建一个空接口通道</span>
 <span class="n">ch</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="n">chan</span> <span class="n">interface</span><span class="p">{})</span>
 
 <span class="o">//</span> <span class="n">将0放入通道中</span>
@@ -315,7 +322,7 @@ chan 类型的空值是 nil，声明后需要配合 make 后才能使用。
 <p>3)发送将持续阻塞，直到数据被接收</p>
 <p>把数据往通道中发送时，如果接收方一直都没有接收，那么发送操作将持续阻塞。Go
 程序运行时能智能地发现一些永远无法发送成功的语句并做出提示，</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 // 通过通道发送数据的例子
 
@@ -348,9 +355,24 @@ fatal error: all goroutines are asleep - deadlock!
 通道一次只能接收一个数据元素。
 </pre></div>
 </div>
+<p>　向通道发送值</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">有缓冲的字符串通道</span>
+<span class="n">buffered</span> <span class="p">:</span><span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="n">chan</span> <span class="n">string</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="o">//</span> <span class="n">通过通道发送一个字符串</span>
+<span class="n">buffered</span> <span class="o">&lt;-</span> <span class="s2">&quot;Gopher&quot;</span>
+</pre></div>
+</div>
+<p>从通道里接收值</p>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">从通道接收一个字符串</span>
+<span class="n">value</span> <span class="p">:</span><span class="o">=</span> <span class="o">&lt;-</span><span class="n">buffered</span>
+</pre></div>
+</div>
+<p>当从通道里接收一个值或者指针时，<code class="docutils literal notranslate"><span class="pre">&lt;-</span></code>
+运算符在要操作的通道变量的左侧。</p>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id16">使用通道做并发同步的写法如下：</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -374,6 +396,8 @@ import &quot;fmt&quot;
     }
  */
 
+
+
 func main() {
     // 构建一个通道
     ch :=make(chan int)
@@ -395,6 +419,7 @@ func main() {
     fmt.Println(&quot;all done&quot;)
 }
 
+
 /*
 wait goroutine
 start gorutine
@@ -406,7 +431,7 @@ all done
 </div>
 <div class="section" id="id7">
 <h3><a class="toc-backref" href="#id17">遍历通道数据的例子请参考下面的代码。</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import (
     &quot;fmt&quot;
@@ -443,7 +468,7 @@ func main() {
 </div>
 <div class="section" id="id8">
 <h3><a class="toc-backref" href="#id18">示例：并发打印</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
 
@@ -499,7 +524,7 @@ func main() {
 </div>
 <div class="section" id="id9">
 <h3><a class="toc-backref" href="#id19">示例，同时发送和接收(不带缓冲的通道)</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import (
     &quot;fmt&quot;
@@ -514,6 +539,7 @@ channel := make(chan int)
 
  // 定义接收的channel
 receive_only := make (&lt;-chan int)
+
  // 定义发送的channel
 send_only := make (chan&lt;- int)
 

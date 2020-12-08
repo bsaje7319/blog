@@ -108,7 +108,8 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">4.1. 声明函数</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">4.1.1. 普通函数的声明形式</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">4.1.2. 参数类型的简写</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">4.1.3. 函数的返回值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">4.1.3. 函数的作用域</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">4.1.4. 函数的返回值</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="02.匿名函数.html">4.2. 匿名函数</a></li>
@@ -118,6 +119,7 @@
 <li class="toctree-l3"><a class="reference internal" href="06.处理运行时发生的错误.html">4.6. 处理运行时发生的错误</a></li>
 <li class="toctree-l3"><a class="reference internal" href="07.宕机(panic)-程序终止运行.html">4.7. 07.宕机(panic)-程序终止运行</a></li>
 <li class="toctree-l3"><a class="reference internal" href="08.宕机恢复(recover)-防止程序崩溃.html">4.8. 08 宕机恢复(recover)-防止程序崩溃</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09.单元测试.html">4.9. 单元测试</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../05.结构体/index.html">5. 结构体</a></li>
@@ -203,18 +205,19 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id14">声明函数</a><ul>
-<li><a class="reference internal" href="#id2" id="id15">普通函数的声明形式</a></li>
-<li><a class="reference internal" href="#id3" id="id16">参数类型的简写</a></li>
-<li><a class="reference internal" href="#id4" id="id17">函数的返回值</a><ul>
-<li><a class="reference internal" href="#id5" id="id18">1. 同一种类型返回值</a></li>
-<li><a class="reference internal" href="#id6" id="id19">2.带有变量名的返回值</a></li>
-<li><a class="reference internal" href="#id7" id="id20">3.调用函数</a></li>
-<li><a class="reference internal" href="#id8" id="id21">4.函数变量-把函数作为值保存到变量中</a></li>
-<li><a class="reference internal" href="#id9" id="id22">5. 函数参数</a></li>
-<li><a class="reference internal" href="#id10" id="id23">6.函数返回值</a></li>
-<li><a class="reference internal" href="#id11" id="id24">7.多返回值可直接作为其他函数调用实参</a></li>
-<li><a class="reference internal" href="#id12" id="id25">递归与回调</a></li>
+<li><a class="reference internal" href="#id1" id="id15">声明函数</a><ul>
+<li><a class="reference internal" href="#id2" id="id16">普通函数的声明形式</a></li>
+<li><a class="reference internal" href="#id3" id="id17">参数类型的简写</a></li>
+<li><a class="reference internal" href="#id4" id="id18">函数的作用域</a></li>
+<li><a class="reference internal" href="#id5" id="id19">函数的返回值</a><ul>
+<li><a class="reference internal" href="#id6" id="id20">1. 同一种类型返回值</a></li>
+<li><a class="reference internal" href="#id7" id="id21">2.带有变量名的返回值</a></li>
+<li><a class="reference internal" href="#id8" id="id22">3.调用函数</a></li>
+<li><a class="reference internal" href="#id9" id="id23">4.函数变量-把函数作为值保存到变量中</a></li>
+<li><a class="reference internal" href="#id10" id="id24">5. 函数参数</a></li>
+<li><a class="reference internal" href="#id11" id="id25">6.函数返回值</a></li>
+<li><a class="reference internal" href="#id12" id="id26">7.多返回值可直接作为其他函数调用实参</a></li>
+<li><a class="reference internal" href="#id13" id="id27">递归与回调</a></li>
 </ul>
 </li>
 </ul>
@@ -222,9 +225,9 @@
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id14">4.1. 声明函数</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id15">4.1. 声明函数</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id15">4.1.1. 普通函数的声明形式</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">4.1.1. 普通函数的声明形式</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Go语言的函数声明以func标识，后面紧接着函数名、参数列表、返回参数列表及函数体，
 具体形式如下：</p>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>func 函数名（参数列表）（返回参数列表）{
@@ -233,17 +236,22 @@
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>· 函数名：由字母、数字、下划线组成。其中，函数名的第一个字母不能为数字。在同一个包内，函数名称不能重名。
+
 · 参数列表： 一个参数由参数变量和参数类型组成。其中参数列表中的变量作为函数的局部变量而存在。
+
 · 返回参数列表：可以是返回值类型列表，也可以是类似参数列表中变量名和类型名的组合。函数在声明有返回值时，必须在函数体中使用return语句提供返回值列表。
+
 · 函数体： 能够被重复调用的代码片段
+
+· 函数名首字母大写可以被其他包使用
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id16">4.1.2. 参数类型的简写</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">4.1.2. 参数类型的简写</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>在参数列表中，如有多个参数变量，则以逗号分割；如果相邻变量是同类型，则可以将类型省略。
 例如：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -257,9 +265,62 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+func functionA(a int, b int) {
+    fmt.Println(a + b)
+}
+
+func functionB(a, b int) {
+    fmt.Println(a * b)
+}
+
+func functionC(a bool) {
+    fmt.Println(!a)
+}
+
+func functionD(s string, d int) {
+    for i := 0; i &lt;= d; i++ {
+        fmt.Println(s)
+    }
+    fmt.Println()
+}
+func main() {
+    functionA(10,20)
+    functionB(1,10)
+    functionC(false)
+    functionD(&quot;hello go&quot;,3)
+}
+</pre></div>
+</div>
 </div>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id17">4.1.3. 函数的返回值</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">4.1.3. 函数的作用域</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
+
+import &quot;fmt&quot;
+
+// 包级别的作用域，全包生效
+var float_num float64
+
+func printNedd(width float64, height float64) float64 {
+    area := width * height
+    return area/float_num
+}
+
+func main() {
+    // 作用域变量进行赋值
+    float_num = 10.0
+    result :=printNedd(200,10)
+    fmt.Println(result)
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id19">4.1.4. 函数的返回值</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>Go
 语言支持多返回值，多返回值方便地获得函数执行后的多个返回参数，Go语言经常使用多返回值中的最后一个返回参数
 返回函数执行中可能发生的错误。示例代码如下：</p>
@@ -269,8 +330,8 @@
 </pre></div>
 </div>
 <p>Go语言既支持安全指针，也支持多返回值，因此在使用函数进行逻辑编写时更为方便。</p>
-<div class="section" id="id5">
-<h3><a class="toc-backref" href="#id18">1. 同一种类型返回值</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id20">1. 同一种类型返回值</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import &quot;fmt&quot;
@@ -288,8 +349,8 @@ func main() {
 </pre></div>
 </div>
 </div>
-<div class="section" id="id6">
-<h3><a class="toc-backref" href="#id19">2.带有变量名的返回值</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id21">2.带有变量名的返回值</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">namedRetValues</span><span class="p">()</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="mi">2</span>
@@ -302,8 +363,8 @@ func main() {
 </pre></div>
 </div>
 </div>
-<div class="section" id="id7">
-<h3><a class="toc-backref" href="#id20">3.调用函数</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id22">3.调用函数</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>Go语言中函数调用格式如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>返回值变量列表 = 函数名（参数列表）
 · 函数名： 需要调用的函数名
@@ -318,7 +379,7 @@ func main() {
 <ul class="simple">
 <li>一个将秒解析为时间的多返回值函数</li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 
@@ -352,76 +413,9 @@ func main() {
 <span class="p">}</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>函数中参数传递效果测试</li>
-</ul>
-<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
-
-import &quot;fmt&quot;
-/*
-Data声明为结构体类型
- */
-type Data struct {
-    complax  [] int     // 测试切片在参数传递中的效果
-    instance InnerData  //示例分配的innerData
-    ptr      *InnerData // 将ptr声明为InnerData的指针类型
-}
-
-/*
-内嵌的结构
- */
-type InnerData struct {
-    a int
-}
-
-/*
-值传递测试函数
-*/
-func passByvalue(inFunc Data) Data {
-    //输出参数的成员情况
-    fmt.Printf(&quot;inFunc value: %+v\n&quot;, inFunc)
-    // 打印inFunc的指针
-    fmt.Printf(&quot;inFunc ptr: %p\n&quot;, &amp;inFunc)
-    return inFunc
-}
-
-func main() {
-    // 准备传入函数的结构
-    in := Data{
-        complax:  []int{1, 2, 3},
-        instance: InnerData{5,},
-        ptr:      &amp;InnerData{1},
-    }
-    // 输出结构的成员情况
-    fmt.Printf(&quot;in value: %+v\n&quot;, in)
-    // 输出结构的指针地址
-    fmt.Printf(&quot;in ptr: %p\n&quot;, &amp;in)
-    // 传入结构体，返回同类型的结构体
-    out := passByvalue(in)
-    // 输出结构的指针地址
-    fmt.Printf(&quot;pput ptr: %p\n&quot;, &amp;out)
-
-}
-
-/*
-in value: {complax:[1 2 3] instance:{a:5} ptr:0xc00000a0b8}
-in ptr: 0xc00005c330
-inFunc value: {complax:[1 2 3] instance:{a:5} ptr:0xc00000a0b8}
-inFunc ptr: 0xc00005c3c0
-pput ptr: 0xc00005c390
-
-所有的Data结构的指针发生了变化，意味着所有的结构都是一块新的内存，无论是将Data结构传入函数内部，
-还是通过函数返回传回Data都发生了复制行为。
-
-所有Data结构中的成员值没有发生变化，原样传递，意味着所有的参数都是值传递
-
-Data结构中的ptr成员在传递过程中保持一致，指针在函数参数值传递中传递的只是指针值，不会复制指针指向的部分。
-*/
-</pre></div>
 </div>
-</div>
-<div class="section" id="id8">
-<h3><a class="toc-backref" href="#id21">4.函数变量-把函数作为值保存到变量中</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id23">4.函数变量-把函数作为值保存到变量中</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
@@ -439,8 +433,8 @@ Data结构中的ptr成员在传递过程中保持一致，指针在函数参数�
 </pre></div>
 </div>
 </div>
-<div class="section" id="id9">
-<h3><a class="toc-backref" href="#id22">5. 函数参数</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id24">5. 函数参数</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
@@ -467,8 +461,8 @@ Data结构中的ptr成员在传递过程中保持一致，指针在函数参数�
 </pre></div>
 </div>
 </div>
-<div class="section" id="id10">
-<h3><a class="toc-backref" href="#id23">6.函数返回值</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3><a class="toc-backref" href="#id25">6.函数返回值</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="n">func</span> <span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="nb">int</span><span class="p">)</span> <span class="p">(</span><span class="n">c</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
@@ -494,8 +488,8 @@ Data结构中的ptr成员在传递过程中保持一致，指针在函数参数�
 </pre></div>
 </div>
 </div>
-<div class="section" id="id11">
-<h3><a class="toc-backref" href="#id24">7.多返回值可直接作为其他函数调用实参</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3><a class="toc-backref" href="#id26">7.多返回值可直接作为其他函数调用实参</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="n">func</span> <span class="n">test</span><span class="p">()</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
@@ -521,8 +515,8 @@ Data结构中的ptr成员在传递过程中保持一致，指针在函数参数�
 </pre></div>
 </div>
 </div>
-<div class="section" id="id12">
-<h3><a class="toc-backref" href="#id25">递归与回调</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3><a class="toc-backref" href="#id27">递归与回调</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>Go 语言中也可以使用相互调用的递归函数：多个函数之间相互调用形成闭环。</p>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
@@ -541,8 +535,8 @@ Data结构中的ptr成员在传递过程中保持一致，指针在函数参数�
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="section" id="id13">
-<h4>字符串的链式处理-操作与数据分离的设计技巧<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id14">
+<h4>字符串的链式处理-操作与数据分离的设计技巧<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span>package main
 
 import (

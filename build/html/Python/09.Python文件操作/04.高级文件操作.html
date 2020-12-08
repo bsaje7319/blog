@@ -121,14 +121,15 @@
 <li class="toctree-l4"><a class="reference internal" href="#id3">9.4.4. 文件属性信息转换 函数</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#exists">9.4.5. exists()检查文件是否存在</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#isfile">9.4.6. isfile()检测文件</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#copy">9.4.7. copy()进行复制文件</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">9.4.8. 重命名文件</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">9.4.9. os.path模块</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">9.4.10. 永久删除文件或文件夹</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#bif">9.4.11. 操作文件目录相关BIF</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">9.4.12. 使用案例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">9.4.13. 文件赋权示例</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">9.4.14. 文件内容管理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">9.4.7. 检查是否是绝对路径</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#copy">9.4.8. copy()进行复制文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">9.4.9. 重命名文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">9.4.10. os.path模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">9.4.11. 永久删除文件或文件夹</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bif">9.4.12. 操作文件目录相关BIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">9.4.13. 使用案例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">9.4.14. 文件赋权示例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">9.4.15. 文件内容管理</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="05.目录操作.html">9.5. 目录操作</a></li>
@@ -238,23 +239,24 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id11">高级文件操作</a><ul>
-<li><a class="reference internal" href="#os" id="id12">os模块常用的文件处理函数</a></li>
-<li><a class="reference internal" href="#id2" id="id13">os模块常用的目录处理函数</a></li>
-<li><a class="reference internal" href="#os-path" id="id14">os.path模块常用函数</a></li>
-<li><a class="reference internal" href="#id3" id="id15">文件属性信息转换 函数</a></li>
-<li><a class="reference internal" href="#exists" id="id16">exists()检查文件是否存在</a></li>
-<li><a class="reference internal" href="#isfile" id="id17">isfile()检测文件</a></li>
-<li><a class="reference internal" href="#copy" id="id18">copy()进行复制文件</a></li>
-<li><a class="reference internal" href="#id4" id="id19">重命名文件</a></li>
-<li><a class="reference internal" href="#id5" id="id20">os.path模块</a></li>
-<li><a class="reference internal" href="#id6" id="id21">永久删除文件或文件夹</a></li>
-<li><a class="reference internal" href="#bif" id="id22">操作文件目录相关BIF</a></li>
-<li><a class="reference internal" href="#id7" id="id23">使用案例</a></li>
-<li><a class="reference internal" href="#id8" id="id24">文件赋权示例</a></li>
-<li><a class="reference internal" href="#id9" id="id25">文件内容管理</a><ul>
-<li><a class="reference internal" href="#md5" id="id26">MD5校验比较</a></li>
-<li><a class="reference internal" href="#id10" id="id27">找到目录下的重复文件</a></li>
+<li><a class="reference internal" href="#id1" id="id12">高级文件操作</a><ul>
+<li><a class="reference internal" href="#os" id="id13">os模块常用的文件处理函数</a></li>
+<li><a class="reference internal" href="#id2" id="id14">os模块常用的目录处理函数</a></li>
+<li><a class="reference internal" href="#os-path" id="id15">os.path模块常用函数</a></li>
+<li><a class="reference internal" href="#id3" id="id16">文件属性信息转换 函数</a></li>
+<li><a class="reference internal" href="#exists" id="id17">exists()检查文件是否存在</a></li>
+<li><a class="reference internal" href="#isfile" id="id18">isfile()检测文件</a></li>
+<li><a class="reference internal" href="#id4" id="id19">检查是否是绝对路径</a></li>
+<li><a class="reference internal" href="#copy" id="id20">copy()进行复制文件</a></li>
+<li><a class="reference internal" href="#id5" id="id21">重命名文件</a></li>
+<li><a class="reference internal" href="#id6" id="id22">os.path模块</a></li>
+<li><a class="reference internal" href="#id7" id="id23">永久删除文件或文件夹</a></li>
+<li><a class="reference internal" href="#bif" id="id24">操作文件目录相关BIF</a></li>
+<li><a class="reference internal" href="#id8" id="id25">使用案例</a></li>
+<li><a class="reference internal" href="#id9" id="id26">文件赋权示例</a></li>
+<li><a class="reference internal" href="#id10" id="id27">文件内容管理</a><ul>
+<li><a class="reference internal" href="#md5" id="id28">MD5校验比较</a></li>
+<li><a class="reference internal" href="#id11" id="id29">找到目录下的重复文件</a></li>
 </ul>
 </li>
 </ul>
@@ -262,22 +264,30 @@
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id11">9.4. 高级文件操作</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p><img alt="image0" src="../../_images/os-module00001.png" /></p>
+<h1><a class="toc-backref" href="#id12">9.4. 高级文件操作</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="figure">
+<img alt="" src="../../_images/os-module00001.png" />
+</div>
 <div class="section" id="os">
-<h2><a class="toc-backref" href="#id12">9.4.1. os模块常用的文件处理函数</a><a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h2>
-<p><img alt="image1" src="../../_images/file_os0001.png" /></p>
+<h2><a class="toc-backref" href="#id13">9.4.1. os模块常用的文件处理函数</a><a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h2>
+<div class="figure">
+<img alt="" src="../../_images/file_os0001.png" />
+</div>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id13">9.4.2. os模块常用的目录处理函数</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p><img alt="image2" src="../../_images/os-dir0001.png" /></p>
+<h2><a class="toc-backref" href="#id14">9.4.2. os模块常用的目录处理函数</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="figure">
+<img alt="" src="../../_images/os-dir0001.png" />
+</div>
 </div>
 <div class="section" id="os-path">
-<h2><a class="toc-backref" href="#id14">9.4.3. os.path模块常用函数</a><a class="headerlink" href="#os-path" title="Permalink to this headline">¶</a></h2>
-<p><img alt="image3" src="../../_images/os-path-module0002.png" /></p>
+<h2><a class="toc-backref" href="#id15">9.4.3. os.path模块常用函数</a><a class="headerlink" href="#os-path" title="Permalink to this headline">¶</a></h2>
+<div class="figure">
+<img alt="" src="../../_images/os-path-module0002.png" />
+</div>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id15">9.4.4. 文件属性信息转换 函数</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">9.4.4. 文件属性信息转换 函数</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>代码示例</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
@@ -324,44 +334,28 @@
 </div>
 </div>
 <div class="section" id="exists">
-<h2><a class="toc-backref" href="#id16">9.4.5. exists()检查文件是否存在</a><a class="headerlink" href="#exists" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="c1">#-*- coding:utf8 -*-</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;hujianli.txt&quot;</span>
-<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;file is exists...&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-   <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
-   <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;this is test file!&quot;</span><span class="p">)</span>
-   <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
+<h2><a class="toc-backref" href="#id17">9.4.5. exists()检查文件是否存在</a><a class="headerlink" href="#exists" title="Permalink to this headline">¶</a></h2>
+<p>``` #!/usr/bin/env python #-<em>- coding:utf8 -</em>- import os filename =
+“hujianli.txt” if os.path.exists(filename): print(“file is exists…”)
+else: f = open(filename,”w”) f.write(“this is test file!”) f.close()</p>
+<p>print(os.path.exists(filename)) print(os.path.exists(“test”))
+print(os.path.exists(“.”)) print(os.path.exists(“..”))</p>
+<p>```</p>
 </div>
 <div class="section" id="isfile">
-<h2><a class="toc-backref" href="#id17">9.4.6. isfile()检测文件</a><a class="headerlink" href="#isfile" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="c1">#-*- coding:utf8 -*-</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;hujianli.txt&quot;</span>
-<span class="c1">##检查是否是文件</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
-<span class="c1">## 检查是否是目录</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
-
-<span class="c1">## 检查是否是绝对路径</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="s2">&quot;/home/rzrk/hujianli.txt&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="s2">&quot;../hujianli.txt&quot;</span><span class="p">))</span>
-</pre></div>
+<h2><a class="toc-backref" href="#id18">9.4.6. isfile()检测文件</a><a class="headerlink" href="#isfile" title="Permalink to this headline">¶</a></h2>
+<p>``` #!/usr/bin/env python #-<em>- coding:utf8 -</em>- import os filename =
+“hujianli.txt” ##检查是否是文件 print(os.path.isfile(filename)) ##
+检查是否是目录 print(os.path.isdir(filename))</p>
 </div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id19">9.4.7. 检查是否是绝对路径</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>print(os.path.isabs(“/home/rzrk/hujianli.txt”))
+print(os.path.isabs(“../hujianli.txt”))</p>
+<p>```</p>
 </div>
 <div class="section" id="copy">
-<h2><a class="toc-backref" href="#id18">9.4.7. copy()进行复制文件</a><a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">9.4.8. copy()进行复制文件</a><a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
@@ -373,8 +367,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h2><a class="toc-backref" href="#id19">9.4.8. 重命名文件</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id21">9.4.9. 重命名文件</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>代码示例</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
@@ -399,8 +393,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h2><a class="toc-backref" href="#id20">9.4.9. os.path模块</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id22">9.4.10. os.path模块</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1">#-*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
@@ -457,17 +451,20 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id6">
-<h2><a class="toc-backref" href="#id21">9.4.10. 永久删除文件或文件夹</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>os.rmdir()      # 删除空目录，目录需要为空
-os.remove()     # 删除单一文件
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id23">9.4.11. 永久删除文件或文件夹</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span>os.rmdir(path)      # 将删除 path 处的文件夹。该文件夹必须为空，其中没有任何文件和文件夹。
+os.remove()         # 删除单一文件
+
+
 
 一般使用如下：
 os.unlink(path)     # 将删除 path 处的文件
-shutil.rmtree()     # 删除目录及其以下的所有文件，不管目录是否为空。
+shutil.rmtree(path)     # 将删除 path 处的文件夹，它包含的所有文件和文件夹都会被删除,无论目录或文件夹是否为空
 </pre></div>
 </div>
-<p>如下所示，删除文件之前，最好先进行<code class="docutils literal notranslate"><span class="pre">print()</span></code>打印,防止误删除。</p>
+<p>如果你有某些重要的文件以.rxt 结尾，它们就会被不小心永久地删除。</p>
+<p>作为替代，你应该先运行像这样的程序<strong>,删除文件之前，最好先进行``print()``打印,防止误删除。</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.rxt&#39;</span><span class="p">):</span>
@@ -542,7 +539,7 @@ shutil.rmtree()     # 删除目录及其以下的所有文件，不管目录是�
 </div>
 </div>
 <div class="section" id="bif">
-<h2><a class="toc-backref" href="#id22">9.4.11. 操作文件目录相关BIF</a><a class="headerlink" href="#bif" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id24">9.4.12. 操作文件目录相关BIF</a><a class="headerlink" href="#bif" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>·获得当前Python脚本工作的目录路径：os.getcwd（）。
 ·返回指定目录下的所有文件和目录名：os.listdir（）。例如返回C盘下的文件：os.listdir（“C：\\”）
 ·删除一个文件：os.remove（filepath）。
@@ -572,8 +569,8 @@ shutil.rmtree()     # 删除目录及其以下的所有文件，不管目录是�
 </pre></div>
 </div>
 </div>
-<div class="section" id="id7">
-<h2><a class="toc-backref" href="#id23">9.4.12. 使用案例</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id25">9.4.13. 使用案例</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
@@ -596,8 +593,8 @@ shutil.rmtree()     # 删除目录及其以下的所有文件，不管目录是�
 </pre></div>
 </div>
 </div>
-<div class="section" id="id8">
-<h2><a class="toc-backref" href="#id24">9.4.13. 文件赋权示例</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id26">9.4.14. 文件赋权示例</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
@@ -624,10 +621,10 @@ shutil.rmtree()     # 删除目录及其以下的所有文件，不管目录是�
 </pre></div>
 </div>
 </div>
-<div class="section" id="id9">
-<h2><a class="toc-backref" href="#id25">9.4.14. 文件内容管理</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id27">9.4.15. 文件内容管理</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="md5">
-<h3><a class="toc-backref" href="#id26">MD5校验比较</a><a class="headerlink" href="#md5" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id28">MD5校验比较</a><a class="headerlink" href="#md5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>
@@ -645,8 +642,8 @@ shutil.rmtree()     # 删除目录及其以下的所有文件，不管目录是�
 </pre></div>
 </div>
 </div>
-<div class="section" id="id10">
-<h3><a class="toc-backref" href="#id27">找到目录下的重复文件</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3><a class="toc-backref" href="#id29">找到目录下的重复文件</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf8 -*-</span>
 <span class="c1"># auther; 18793</span>

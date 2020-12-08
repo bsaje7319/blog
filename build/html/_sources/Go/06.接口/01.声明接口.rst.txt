@@ -5,8 +5,7 @@
 01.声明接口
 ===========
 
-接口是双方约定的一种合作协议。接口实现者不需要关心接口会被怎样使用，调用者也不用
-关心接口的实现细节。
+接口是双方约定的一种合作协议。接口实现者不需要关心接口会被怎样使用，调用者也不用关心接口的实现细节。
 
 接口是一种类型，也是一种抽象结构，不会暴露所含数据的格式、类型及结构。
 
@@ -62,3 +61,43 @@
 Stringer接口在Go语言中使用频率非常高，类似Java中的ToString的操作。
 
 Go语言中接口中的方法并不多，Go希望一个接口能精准的描述它自己的功能，通过多个接口的嵌入和组合的方式将简单的接口扩展为复杂的接口。
+
+使用接口代码示例
+~~~~~~~~~~~~~~~~
+
+.. code:: go
+
+   package main
+
+   import "fmt"
+
+   // 创建一个notifier的接口
+   type notifier interface {
+       notify()
+   }
+
+   // user在程序里定义一个用户类型
+   type user struct {
+       name  string
+       email string
+   }
+
+   // notify是使用指针接收者实现的方法
+   func (u *user) notify() {
+       fmt.Printf("Sending user email to %s<%s>\n", u.name, u.email)
+   }
+
+   func sendNotification(n notifier) {
+       n.notify()
+   }
+
+   func main() {
+       // 创建一个user类型的值，并发送通知
+       name := user{
+           name:  "hujianli",
+           email: "123@qq.com",
+       }
+       // 传入地址
+       sendNotification(&name)
+
+   }

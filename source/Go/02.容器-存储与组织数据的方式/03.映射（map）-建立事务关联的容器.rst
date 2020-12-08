@@ -2,8 +2,8 @@
    :depth: 3
 ..
 
-02.映射（map）-建立事务关联的容器
-=================================
+映射（map）-建立事务关联的容器
+==============================
 
 添加关联到map并访问关联和数据
 -----------------------------
@@ -12,95 +12,95 @@ Go语言中map的定义是这样的：
 
 ::
 
-   map[keyType]ValueType
+    map[keyType]ValueType
 
-   · KeyType为键类型
-   · ValueType为键对应的值类型
+    · KeyType为键类型
+    · ValueType为键对应的值类型
 
-   一个map的键和值总是成对出现的。
+    一个map的键和值总是成对出现的。
 
 ::
 
-   package main
+    package main
 
-   import "fmt"
+    import "fmt"
 
-   func main() {
-       // 创建一个map
-       scene := make(map[string]int)
-       // 向map中添加映射关系
-       scene["route"] = 66
-       fmt.Println(scene["route"]) //66
-       v := scene["route2"]
-       fmt.Println(v) //0
-   }
+    func main() {
+        // 创建一个map
+        scene := make(map[string]int)
+        // 向map中添加映射关系
+        scene["route"] = 66
+        fmt.Println(scene["route"]) //66
+        v := scene["route2"]
+        fmt.Println(v) //0
+    }
 
 另外一种声明map的方式
 
 ::
 
-       m := map[string]string{
-           "name":   "hujianli",
-           "age":    "22",
-           "sex":    "man",
-           "school": "dianda",
-       }
-       // name:hujianli  age:22  sex:man  school:dianda
-       fmt.Printf("name:%s  age:%s  sex:%s  school:%s", m["name"], m["age"], m["sex"], m["school"])
+        m := map[string]string{
+            "name":   "hujianli",
+            "age":    "22",
+            "sex":    "man",
+            "school": "dianda",
+        }
+        // name:hujianli  age:22  sex:man  school:dianda
+        fmt.Printf("name:%s  age:%s  sex:%s  school:%s", m["name"], m["age"], m["sex"], m["school"])
 
-遍历map中的键值对– 访问关联关系
--------------------------------
-
-::
-
-       m := map[string]string{
-           "name":   "hujianli",
-           "age":    "22",
-           "sex":    "man",
-           "school": "dianda",
-       }
-       for i, i2 := range m {
-           fmt.Printf("key:%s value:%s\n", i, i2)
-       }
+遍历map中的键值对-- 访问关联关系
+--------------------------------
 
 ::
 
-       // 只遍历值
-       for _, i2 := range m {
-           fmt.Printf("%s\n", i2)
-       }
-       // 只遍历键
-       for i := range m {
-           fmt.Printf("%s\n", i)
-       }
+        m := map[string]string{
+            "name":   "hujianli",
+            "age":    "22",
+            "sex":    "man",
+            "school": "dianda",
+        }
+        for i, i2 := range m {
+            fmt.Printf("key:%s value:%s\n", i, i2)
+        }
+
+::
+
+        // 只遍历值
+        for _, i2 := range m {
+            fmt.Printf("%s\n", i2)
+        }
+        // 只遍历键
+        for i := range m {
+            fmt.Printf("%s\n", i)
+        }
 
 如果要特定顺序的遍历结果。正确的做法是排序
 
 ::
 
-   package main
+    package main
 
-   import (
-       "fmt"
-       "sort"
-   )
-   func main() {
-       scene := make(map[string]int)
-       //准备map数据
-       scene["route"] = 66
-       scene["brazil"] = 4
-       scene["china"] = 960
-       // 声明一个切片保存map数据
-       var sceneList []string
-       // 将map数据遍历后复制到切片中
-       for key := range scene {
-           sceneList = append(sceneList,key)
-       }
-       // 对切片进行排序
-       sort.Strings(sceneList)
-       // 输出
-       fmt.Println(sceneList)  //[brazil china route]
-   }
+    import (
+        "fmt"
+        "sort"
+    )
+    func main() {
+        scene := make(map[string]int)
+        //准备map数据
+        scene["route"] = 66
+        scene["brazil"] = 4
+        scene["china"] = 960
+        // 声明一个切片保存map数据
+        var sceneList []string
+        // 将map数据遍历后复制到切片中
+        for key := range scene {
+            sceneList = append(sceneList,key)
+        }
+        // 对切片进行排序
+        sort.Strings(sceneList)
+        // 输出
+        fmt.Println(sceneList)  //[brazil china route]
+    }
 
 使用delete()函数从map中删除键值对
 ---------------------------------
@@ -109,68 +109,118 @@ delete函数从map中删除一组键值对，delete函数的格式如下：
 
 ::
 
-   delete(map,键)
-   · map为要删除的map实例
-   · 键为要删除map键值对中的键
+    delete(map,键)
+    · map为要删除的map实例
+    · 键为要删除map键值对中的键
 
 ::
 
-   package main
+    package main
 
-   import "fmt"
+    import "fmt"
 
-   func main() {
-       scene := make(map[string]int)
-       //准备map数据
-       scene["route"] = 66
-       scene["brazil"] = 4
-       scene["china"] = 960
-       // 删除一个键
-       delete(scene, "brazil")
-       fmt.Println(scene)      //map[china:960 route:66]
-       for i, i2 := range scene {
-           fmt.Println(i,i2)
-       }
-   }
+    func main() {
+        scene := make(map[string]int)
+        //准备map数据
+        scene["route"] = 66
+        scene["brazil"] = 4
+        scene["china"] = 960
+        // 删除一个键
+        delete(scene, "brazil")
+        fmt.Println(scene)      //map[china:960 route:66]
+        for i, i2 := range scene {
+            fmt.Println(i,i2)
+        }
+    }
 
 清空map中的所有元素
 -------------------
 
 ::
 
-   Go 语言中没有清空map的方法和函数。清空map的位于方法是重新make一个新的map。
-   Go中的并行垃圾回收效率比写一个清空函数高效多了。
+    Go 语言中没有清空map的方法和函数。清空map的位于方法是重新make一个新的map。
+    Go中的并行垃圾回收效率比写一个清空函数高效多了。
 
 能够在并发环境中使用的map-sync.Map
 ----------------------------------
 
 ::
 
-   package main
+    package main
 
-   import (
-       "fmt"
-       "sync"
-   )
+    import (
+        "fmt"
+        "sync"
+    )
 
-   func main() {
-       var scene sync.Map
-       // 将键值对保存到sync.Map中
-       scene.Store("green", 97)
-       scene.Store("red", 100)
-       scene.Store("blue", 200)
+    func main() {
+        var scene sync.Map
+        // 将键值对保存到sync.Map中
+        scene.Store("green", 97)
+        scene.Store("red", 100)
+        scene.Store("blue", 200)
 
-       // 从sync.Map中根据键取值
-       scene.Load("red")
-       //根据键删除对应的键值对
-       scene.Delete("green")
-       // 遍历所有的键值对
-       scene.Range(func(key, value interface{}) bool {
-           fmt.Println("iterate:", key, value)
-           return true
-       })
+        // 从sync.Map中根据键取值
+        scene.Load("red")
+        //根据键删除对应的键值对
+        scene.Delete("green")
+        // 遍历所有的键值对
+        scene.Range(func(key, value interface{}) bool {
+            fmt.Println("iterate:", key, value)
+            return true
+        })
 
-   }
+    }
 
-   /*iterate: red 100
-   iterate: blue 200*/
+    /*iterate: red 100
+    iterate: blue 200*/
+
+在函数间传递映射
+----------------
+
+在函数间传递映射并不会制造出该映射的一个副本。实际上，当传递映射给一个函数，并对这个映射做了修改时，所有对这个映射的引用都会察觉到这个修改。
+
+.. code:: go
+
+    package main
+
+    import "fmt"
+
+    func main() {
+        // 创建一个映射，存储颜色以及颜色对应的十六进制代码
+        colors := map[string]string{
+            "AliceBlue":   "#f0f8ff",
+            "Coral":       "#ff7F50",
+            "DarkGray":    "#a9a9a9",
+            "ForestGreen": "#228b22",
+        }
+
+        // 显示映射里的所有颜色
+        for key, value := range colors {
+            fmt.Printf("key is: %s value is: %s\n", key, value)
+        }
+        fmt.Println("--------------------------------------------------")
+        // 调用函数来移除指定的键
+        removeColor(colors, "Coral")
+
+        // 显示映射里的所有颜色
+        for key, value := range colors {
+            fmt.Printf("Key: %s　Value: %s\n", key, value)
+        }
+
+    }
+
+    func removeColor(colors map[string]string, s string) {
+        delete(colors, s)
+    }
+
+    /**
+    key is: AliceBlue value is: #f0f8ff
+    key is: Coral value is: #ff7F50
+    key is: DarkGray value is: #a9a9a9
+    key is: ForestGreen value is: #228b22
+    --------------------------------------------------
+    Key: DarkGray　Value: #a9a9a9
+    Key: ForestGreen　Value: #228b22
+    Key: AliceBlue　Value: #f0f8ff
+     */

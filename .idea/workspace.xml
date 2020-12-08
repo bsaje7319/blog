@@ -1,88 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="69646ed4-e4ad-4b2d-b1a7-75e0fa19a2db" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/doctrees/Go/11.项目代码/03.一个猜数字的游戏.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/html/Go/11.项目代码/03.一个猜数字的游戏.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/html/_images/go_routine000_china01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/html/_sources/Go/11.项目代码/03.一个猜数字的游戏.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/html/_static/go_routine000_china01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/Go/11.项目代码/03.一个猜数字的游戏.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/Go/11.项目代码/03.一个猜数字的游戏.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/_static/go_routine000_china01.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/01.Python数据类型/13.Python常用IDE集成环境.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/01.Python数据类型/13.Python常用IDE集成环境.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/08.异常处理/7.测试程序.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/08.异常处理/7.测试程序.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/14.Python三方库/14.打包和发布.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/14.Python三方库/14.打包和发布.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/23.前端技术/01.HTML基础知识/04.图像.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/23.前端技术/01.HTML基础知识/04.图像.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/01.安装Flask项目环境.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/01.安装Flask项目环境.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/04.模板.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/04.模板.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/04_1.消息提示和异常处理.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/04_1.消息提示和异常处理.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/05.Jinja2模板引擎.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/05.Jinja2模板引擎.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/06.过滤器.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/06.过滤器.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/07.if和for的使用.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/07.if和for的使用.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/11.Flask-SQLAlchemy.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/11.Flask-SQLAlchemy.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/12.Flask框架中使用数据库.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/24.Python框架学习/02.Flask-Web框架及其应用/12.Flask框架中使用数据库.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/01.Go语言基本语法与使用/02.数据类型.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/01.Go语言基本语法与使用/02.数据类型.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/01.Go语言基本语法与使用/03.指针.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/01.Go语言基本语法与使用/03.指针.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/01.Go语言基本语法与使用/05.字符串应用.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/01.Go语言基本语法与使用/05.字符串应用.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/01.Go语言基本语法与使用/08.编译与工具.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/01.Go语言基本语法与使用/08.编译与工具.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/02.容器-存储与组织数据的方式/02.切片-动态分配大小的连续空间.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/02.容器-存储与组织数据的方式/02.切片-动态分配大小的连续空间.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/02.容器-存储与组织数据的方式/03.映射（map）-建立事务关联的容器.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/02.容器-存储与组织数据的方式/03.映射（map）-建立事务关联的容器.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/04.函数/01.声明函数.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/04.函数/01.声明函数.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/04.函数/02.匿名函数.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/04.函数/02.匿名函数.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/05.结构体/01.结构体.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/05.结构体/01.结构体.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/05.结构体/03.方法.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/05.结构体/03.方法.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/06.接口/01.声明接口.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/06.接口/01.声明接口.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/06.接口/02.实现接口的条件.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/06.接口/02.实现接口的条件.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/06.接口/09.类型分支-批量判断空接口中变量的类型.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/06.接口/09.类型分支-批量判断空接口中变量的类型.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/06.接口/10.Go语言实现有限状态机(FSM).doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/06.接口/10.Go语言实现有限状态机(FSM).doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/08.并发/02.goroutine和coroutine的区别.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/08.并发/02.goroutine和coroutine的区别.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/08.并发/04.Go语言无缓冲的通道.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/08.并发/04.Go语言无缓冲的通道.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/08.并发/05.Go语言带缓冲的通道.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/08.并发/05.Go语言带缓冲的通道.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/08.并发/13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/08.并发/13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Go/11.项目代码/index.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Go/11.项目代码/index.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/09.Python文件操作/04.高级文件操作.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/09.Python文件操作/04.高级文件操作.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/doctrees/Python/25.Python开发环境部署/02.PyCharm+python云主机远程调试开发.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Python/25.Python开发环境部署/02.PyCharm+python云主机远程调试开发.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/environment.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/01.Python数据类型/13.Python常用IDE集成环境.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/01.Python数据类型/13.Python常用IDE集成环境.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/01.Python数据类型/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/01.Python数据类型/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/08.异常处理/7.测试程序.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/08.异常处理/7.测试程序.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/08.异常处理/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/08.异常处理/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/14.Python三方库/14.打包和发布.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/14.Python三方库/14.打包和发布.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/14.Python三方库/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/14.Python三方库/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/01.Go语言基本语法与使用/02.数据类型.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/01.Go语言基本语法与使用/02.数据类型.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/01.Go语言基本语法与使用/03.指针.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/01.Go语言基本语法与使用/03.指针.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/01.Go语言基本语法与使用/05.字符串应用.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/01.Go语言基本语法与使用/05.字符串应用.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/01.Go语言基本语法与使用/08.编译与工具.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/01.Go语言基本语法与使用/08.编译与工具.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/01.Go语言基本语法与使用/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/01.Go语言基本语法与使用/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/02.容器-存储与组织数据的方式/02.切片-动态分配大小的连续空间.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/02.容器-存储与组织数据的方式/02.切片-动态分配大小的连续空间.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/02.容器-存储与组织数据的方式/03.映射（map）-建立事务关联的容器.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/02.容器-存储与组织数据的方式/03.映射（map）-建立事务关联的容器.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/02.容器-存储与组织数据的方式/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/02.容器-存储与组织数据的方式/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/04.函数/01.声明函数.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/04.函数/01.声明函数.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/04.函数/02.匿名函数.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/04.函数/02.匿名函数.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/04.函数/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/04.函数/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/05.结构体/01.结构体.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/05.结构体/01.结构体.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/05.结构体/03.方法.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/05.结构体/03.方法.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/05.结构体/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/05.结构体/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/06.接口/01.声明接口.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/06.接口/01.声明接口.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/06.接口/02.实现接口的条件.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/06.接口/02.实现接口的条件.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/06.接口/09.类型分支-批量判断空接口中变量的类型.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/06.接口/09.类型分支-批量判断空接口中变量的类型.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/06.接口/10.Go语言实现有限状态机(FSM).html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/06.接口/10.Go语言实现有限状态机(FSM).html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/06.接口/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/06.接口/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/08.并发/02.goroutine和coroutine的区别.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/08.并发/02.goroutine和coroutine的区别.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/08.并发/04.Go语言无缓冲的通道.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/08.并发/04.Go语言无缓冲的通道.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/08.并发/05.Go语言带缓冲的通道.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/08.并发/05.Go语言带缓冲的通道.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/08.并发/13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/08.并发/13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/08.并发/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/08.并发/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/11.项目代码/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/11.项目代码/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Go/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Go/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/09.Python文件操作/04.高级文件操作.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/09.Python文件操作/04.高级文件操作.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/09.Python文件操作/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/09.Python文件操作/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/html/Python/20.Python自动化运维最佳实践/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/20.Python自动化运维最佳实践/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/23.前端技术/01.HTML基础知识/04.图像.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/23.前端技术/01.HTML基础知识/04.图像.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/01.安装Flask项目环境.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/01.安装Flask项目环境.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/04.模板.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/04.模板.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/04_1.消息提示和异常处理.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/04_1.消息提示和异常处理.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/05.Jinja2模板引擎.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/05.Jinja2模板引擎.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/06.过滤器.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/06.过滤器.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/07.if和for的使用.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/07.if和for的使用.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/11.Flask-SQLAlchemy.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/11.Flask-SQLAlchemy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/12.Flask框架中使用数据库.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/12.Flask框架中使用数据库.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/24.Python框架学习/02.Flask-Web框架及其应用/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/html/Python/25.Python开发环境部署/02.PyCharm+python云主机远程调试开发.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/25.Python开发环境部署/02.PyCharm+python云主机远程调试开发.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/html/Python/25.Python开发环境部署/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Python/25.Python开发环境部署/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/01.Python数据类型/13.Python常用IDE集成环境.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/01.Python数据类型/13.Python常用IDE集成环境.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/08.异常处理/7.测试程序.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/08.异常处理/7.测试程序.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/14.Python三方库/14.打包和发布.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/14.Python三方库/14.打包和发布.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/23.前端技术/01.HTML基础知识/04.图像.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/23.前端技术/01.HTML基础知识/04.图像.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/01.安装Flask项目环境.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/01.安装Flask项目环境.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/04.模板.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/04.模板.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/04_1.消息提示和异常处理.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/04_1.消息提示和异常处理.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/05.Jinja2模板引擎.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/05.Jinja2模板引擎.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/06.过滤器.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/06.过滤器.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/07.if和for的使用.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/07.if和for的使用.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/11.Flask-SQLAlchemy.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/11.Flask-SQLAlchemy.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/12.Flask框架中使用数据库.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/24.Python框架学习/02.Flask-Web框架及其应用/12.Flask框架中使用数据库.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/01.Go语言基本语法与使用/02.数据类型.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/01.Go语言基本语法与使用/02.数据类型.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/01.Go语言基本语法与使用/03.指针.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/01.Go语言基本语法与使用/03.指针.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/01.Go语言基本语法与使用/05.字符串应用.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/01.Go语言基本语法与使用/05.字符串应用.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/01.Go语言基本语法与使用/08.编译与工具.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/01.Go语言基本语法与使用/08.编译与工具.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/02.容器-存储与组织数据的方式/02.切片-动态分配大小的连续空间.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/02.容器-存储与组织数据的方式/02.切片-动态分配大小的连续空间.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/02.容器-存储与组织数据的方式/03.映射（map）-建立事务关联的容器.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/02.容器-存储与组织数据的方式/03.映射（map）-建立事务关联的容器.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/04.函数/01.声明函数.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/04.函数/01.声明函数.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/04.函数/02.匿名函数.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/04.函数/02.匿名函数.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/05.结构体/01.结构体.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/05.结构体/01.结构体.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/05.结构体/03.方法.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/05.结构体/03.方法.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/06.接口/01.声明接口.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/06.接口/01.声明接口.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/06.接口/02.实现接口的条件.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/06.接口/02.实现接口的条件.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/06.接口/09.类型分支-批量判断空接口中变量的类型.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/06.接口/09.类型分支-批量判断空接口中变量的类型.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/06.接口/10.Go语言实现有限状态机(FSM).rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/06.接口/10.Go语言实现有限状态机(FSM).rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/02.goroutine和coroutine的区别.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/02.goroutine和coroutine的区别.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/04.Go语言无缓冲的通道.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/04.Go语言无缓冲的通道.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/05.Go语言带缓冲的通道.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/05.Go语言带缓冲的通道.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/08.并发/13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Go/11.项目代码/index.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Go/11.项目代码/index.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/09.Python文件操作/04.高级文件操作.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/09.Python文件操作/04.高级文件操作.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.rst.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/html/_sources/Python/25.Python开发环境部署/02.PyCharm+python云主机远程调试开发.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Python/25.Python开发环境部署/02.PyCharm+python云主机远程调试开发.rst.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/objects.inv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/searchindex.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/file_md5.json" beforeDir="false" afterPath="$PROJECT_DIR$/file_md5.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/md_to_rst_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/md_to_rst_tool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/01.Python数据类型/13.Python常用IDE集成环境.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/01.Python数据类型/13.Python常用IDE集成环境.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/01.Python数据类型/13.Python常用IDE集成环境.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/01.Python数据类型/13.Python常用IDE集成环境.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/08.异常处理/7.测试程序.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/08.异常处理/7.测试程序.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/08.异常处理/7.测试程序.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/08.异常处理/7.测试程序.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/14.Python三方库/14.打包和发布.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/14.Python三方库/14.打包和发布.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/14.Python三方库/14.打包和发布.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/14.Python三方库/14.打包和发布.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/02.业务服务监控详解.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/23.前端技术/01.HTML基础知识/04.图像.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/23.前端技术/01.HTML基础知识/04.图像.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/23.前端技术/01.HTML基础知识/04.图像.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/23.前端技术/01.HTML基础知识/04.图像.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/01.安装Flask项目环境.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/01.安装Flask项目环境.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/01.安装Flask项目环境.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/01.安装Flask项目环境.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/04.模板.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/04.模板.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/04.模板.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/04.模板.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/04_1.消息提示和异常处理.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/04_1.消息提示和异常处理.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/04_1.消息提示和异常处理.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/04_1.消息提示和异常处理.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/05.Jinja2模板引擎.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/05.Jinja2模板引擎.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/05.Jinja2模板引擎.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/05.Jinja2模板引擎.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/06.过滤器.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/06.过滤器.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/06.过滤器.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/06.过滤器.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/07.if和for的使用.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/07.if和for的使用.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/07.if和for的使用.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/07.if和for的使用.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/11.Flask-SQLAlchemy.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/11.Flask-SQLAlchemy.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/11.Flask-SQLAlchemy.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/11.Flask-SQLAlchemy.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/12.Flask框架中使用数据库.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/12.Flask框架中使用数据库.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/12.Flask框架中使用数据库.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/24.Python框架学习/02.Flask-Web框架及其应用/12.Flask框架中使用数据库.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/02.数据类型.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/02.数据类型.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/02.数据类型.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/02.数据类型.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/03.指针.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/03.指针.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/03.指针.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/03.指针.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/05.字符串应用.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/05.字符串应用.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/05.字符串应用.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/05.字符串应用.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/08.编译与工具.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/08.编译与工具.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/08.编译与工具.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/01.Go语言基本语法与使用/08.编译与工具.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/02.容器-存储与组织数据的方式/02.切片-动态分配大小的连续空间.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/02.容器-存储与组织数据的方式/02.切片-动态分配大小的连续空间.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/02.容器-存储与组织数据的方式/02.切片-动态分配大小的连续空间.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/02.容器-存储与组织数据的方式/02.切片-动态分配大小的连续空间.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/02.容器-存储与组织数据的方式/03.映射（map）-建立事务关联的容器.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/02.容器-存储与组织数据的方式/03.映射（map）-建立事务关联的容器.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/02.容器-存储与组织数据的方式/03.映射（map）-建立事务关联的容器.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/02.容器-存储与组织数据的方式/03.映射（map）-建立事务关联的容器.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/04.函数/01.声明函数.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/04.函数/01.声明函数.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/04.函数/01.声明函数.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/04.函数/01.声明函数.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/04.函数/02.匿名函数.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/04.函数/02.匿名函数.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/04.函数/02.匿名函数.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/04.函数/02.匿名函数.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/05.结构体/01.结构体.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/05.结构体/01.结构体.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/05.结构体/01.结构体.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/05.结构体/01.结构体.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/05.结构体/03.方法.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/05.结构体/03.方法.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/05.结构体/03.方法.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/05.结构体/03.方法.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/06.接口/01.声明接口.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/06.接口/01.声明接口.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/06.接口/01.声明接口.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/06.接口/01.声明接口.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/06.接口/02.实现接口的条件.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/06.接口/02.实现接口的条件.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/06.接口/02.实现接口的条件.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/06.接口/02.实现接口的条件.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/06.接口/09.类型分支-批量判断空接口中变量的类型.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/06.接口/09.类型分支-批量判断空接口中变量的类型.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/06.接口/09.类型分支-批量判断空接口中变量的类型.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/06.接口/09.类型分支-批量判断空接口中变量的类型.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/06.接口/10.Go语言实现有限状态机(FSM).md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/06.接口/10.Go语言实现有限状态机(FSM).md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/06.接口/10.Go语言实现有限状态机(FSM).rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/06.接口/10.Go语言实现有限状态机(FSM).rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/01.轻量级线程(goroutine)-根据需要随时创建“线程“.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/02.goroutine和coroutine的区别.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/02.goroutine和coroutine的区别.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/02.goroutine和coroutine的区别.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/02.goroutine和coroutine的区别.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/03.通道(channel)-在多个goroutine间通信的管道.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/04.Go语言无缓冲的通道.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/04.Go语言无缓冲的通道.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/04.Go语言无缓冲的通道.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/04.Go语言无缓冲的通道.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/05.Go语言带缓冲的通道.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/05.Go语言带缓冲的通道.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/05.Go语言带缓冲的通道.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/05.Go语言带缓冲的通道.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/08.并发/13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/08.并发/13.互斥锁(sync.Mutex)-保证同时只有一个goroutine可以访问共享资源.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Go/11.项目代码/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Go/11.项目代码/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/09.Python文件操作/04.高级文件操作.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/09.Python文件操作/04.高级文件操作.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/09.Python文件操作/04.高级文件操作.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/09.Python文件操作/04.高级文件操作.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/20.Python自动化运维最佳实践/04.Ansible入门与playbook实战.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/Python/25.Python开发环境部署/02.PyCharm+python云主机远程调试开发.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/25.Python开发环境部署/02.PyCharm+python云主机远程调试开发.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/Python/25.Python开发环境部署/02.PyCharm+python云主机远程调试开发.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Python/25.Python开发环境部署/02.PyCharm+python云主机远程调试开发.rst" afterDir="false" />
     </list>
@@ -148,7 +227,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../my_Linux_Devops" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/开源中国/test_-gitee_-pr/test_-gitee_-pr" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -464,6 +543,18 @@
       <workItem from="1604908506409" duration="347000" />
       <workItem from="1605015249548" duration="25000" />
       <workItem from="1605173323706" duration="214000" />
+      <workItem from="1605175558056" duration="255000" />
+      <workItem from="1605524588417" duration="70000" />
+      <workItem from="1605844305147" duration="76000" />
+      <workItem from="1605844482545" duration="36000" />
+      <workItem from="1605851301617" duration="73000" />
+      <workItem from="1605851388270" duration="290000" />
+      <workItem from="1605883911415" duration="289000" />
+      <workItem from="1605938805921" duration="196000" />
+      <workItem from="1606095641768" duration="139000" />
+      <workItem from="1606130559305" duration="122000" />
+      <workItem from="1606132425234" duration="81000" />
+      <workItem from="1607438863019" duration="509000" />
     </task>
     <task id="LOCAL-00001" summary="first-commint">
       <created>1583823851714</created>
@@ -633,7 +724,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603960440964</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="2020-11-12 first-commint">
+      <created>1605175746051</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1605175746051</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -648,12 +746,23 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="first-commint" />
     <MESSAGE value="second-commint" />
     <MESSAGE value="2020-3-10 second-commint" />
     <MESSAGE value="2020-4-18 second-commint" />
@@ -678,43 +787,48 @@
     <MESSAGE value="2020-9-16 second-commint" />
     <MESSAGE value="2020-10-28 first-commint" />
     <MESSAGE value="2020-10-29 first-commint" />
-    <option name="LAST_COMMIT_MESSAGE" value="2020-10-29 first-commint" />
+    <MESSAGE value="2020-11-12 first-commint" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020-11-12 first-commint" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="294" y="13" key="CommitChangelistDialog2" timestamp="1603960429645">
+    <state x="294" y="13" key="CommitChangelistDialog2" timestamp="1605175741578">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="294" y="13" key="CommitChangelistDialog2/0.0.1440.920@0.0.1440.920" timestamp="1603960429645" />
-    <state x="501" y="215" key="FileChooserDialogImpl" timestamp="1604373044252">
+    <state x="294" y="13" key="CommitChangelistDialog2/0.0.1440.920@0.0.1440.920" timestamp="1605175741578" />
+    <state x="501" y="215" key="FileChooserDialogImpl" timestamp="1606132507572">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="501" y="215" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1604373044252" />
-    <state width="1397" height="435" key="GridCell.Tab.0.bottom" timestamp="1605173538411">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state x="501" y="215" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1606132507572" />
+    <state width="1877" height="504" key="GridCell.Tab.0.bottom" timestamp="1607439330725">
+      <screen x="2160" y="0" width="1920" height="1040" />
     </state>
-    <state width="1397" height="435" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1605173538411" />
-    <state width="1397" height="435" key="GridCell.Tab.0.center" timestamp="1605173538411">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state width="1877" height="504" key="GridCell.Tab.0.bottom/0.0.1440.920/2160.0.1920.1040@2160.0.1920.1040" timestamp="1607439330725" />
+    <state width="1397" height="273" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1606130682694" />
+    <state width="1877" height="504" key="GridCell.Tab.0.center" timestamp="1607439330725">
+      <screen x="2160" y="0" width="1920" height="1040" />
     </state>
-    <state width="1397" height="435" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1605173538411" />
-    <state width="1397" height="435" key="GridCell.Tab.0.left" timestamp="1605173538411">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state width="1877" height="504" key="GridCell.Tab.0.center/0.0.1440.920/2160.0.1920.1040@2160.0.1920.1040" timestamp="1607439330725" />
+    <state width="1397" height="273" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1606130682693" />
+    <state width="1877" height="504" key="GridCell.Tab.0.left" timestamp="1607439330725">
+      <screen x="2160" y="0" width="1920" height="1040" />
     </state>
-    <state width="1397" height="435" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1605173538411" />
-    <state width="1397" height="435" key="GridCell.Tab.0.right" timestamp="1605173538411">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state width="1877" height="504" key="GridCell.Tab.0.left/0.0.1440.920/2160.0.1920.1040@2160.0.1920.1040" timestamp="1607439330725" />
+    <state width="1397" height="273" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1606130682692" />
+    <state width="1877" height="504" key="GridCell.Tab.0.right" timestamp="1607439330725">
+      <screen x="2160" y="0" width="1920" height="1040" />
     </state>
-    <state width="1397" height="435" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1605173538411" />
+    <state width="1877" height="504" key="GridCell.Tab.0.right/0.0.1440.920/2160.0.1920.1040@2160.0.1920.1040" timestamp="1607439330725" />
+    <state width="1397" height="273" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1606130682693" />
     <state x="222" y="105" key="SettingsEditor" timestamp="1603861938292">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="222" y="105" key="SettingsEditor/0.0.1440.920@0.0.1440.920" timestamp="1603861938292" />
-    <state x="313" y="193" key="Vcs.Push.Dialog.v2" timestamp="1603960444284">
+    <state x="313" y="193" key="Vcs.Push.Dialog.v2" timestamp="1605175751911">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="313" y="193" key="Vcs.Push.Dialog.v2/0.0.1440.920@0.0.1440.920" timestamp="1603960444284" />
+    <state x="313" y="193" key="Vcs.Push.Dialog.v2/0.0.1440.920@0.0.1440.920" timestamp="1605175751911" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/my_Go_Py_blog$md_to_rst_tool.coverage" NAME="md_to_rst_tool Coverage Results" MODIFIED="1605173407872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/my_Go_Py_blog$md_to_rst_tool.coverage" NAME="md_to_rst_tool Coverage Results" MODIFIED="1607439323565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

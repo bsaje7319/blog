@@ -14,93 +14,93 @@
 
 ::
 
-   func(参数列表)（返回参数列表）{
-   函数体
-   }
+    func(参数列表)（返回参数列表）{
+    函数体
+    }
 
-   匿名函数的定义就是没有名字的普通函数定义
+    匿名函数的定义就是没有名字的普通函数定义
 
-1，在定义时调用匿名函数
------------------------
+1.在定义时调用匿名函数
+----------------------
 
 .. code:: go
 
-   package main
+    package main
 
-   import "fmt"
+    import "fmt"
 
-   func main() {
-       f := func(data int) {
-           fmt.Println("hello world", data)
-       }
-       f(123)      //hello world 123
-   }
+    func main() {
+        f := func(data int) {
+            fmt.Println("hello world", data)
+        }
+        f(123)      //hello world 123
+    }
 
 2.匿名函数做回调函数
 --------------------
 
 .. code:: go
 
-   package main
+    package main
 
-   import "fmt"
+    import "fmt"
 
-   /*
-   遍历切片每个元素，通过给定函数进行元素访问
-   */
-   // 使用函数将整个遍历过程进行封装，当要获取切片值时传入一个回调参数即可
-   func visit(list []int, f func(int)) {
-       for _, v := range list {
-           f(v)
-       }
-   }
+    /*
+    遍历切片每个元素，通过给定函数进行元素访问
+    */
+    // 使用函数将整个遍历过程进行封装，当要获取切片值时传入一个回调参数即可
+    func visit(list []int, f func(int)) {
+        for _, v := range list {
+            f(v)
+        }
+    }
 
-   func main() {
-       // 使用匿名函数打印切片内容
-       visit([]int{1, 2, 3, 4}, func(v int) {
-           fmt.Println(v)
-       })
-   }
+    func main() {
+        // 使用匿名函数打印切片内容
+        visit([]int{1, 2, 3, 4}, func(v int) {
+            fmt.Println(v)
+        })
+    }
 
 3.使用匿名函数实现操作封装
 --------------------------
 
 .. code:: go
 
-   package main
+    package main
 
-   import (
-       "flag"
-       "fmt"
-   )
+    import (
+        "flag"
+        "fmt"
+    )
 
-   // 定义命令行参数skill，从命理行输入skill，可以将空格后的字符串传入skillParam指针变量
-   var skillParam = flag.String("skill", "", "skill to perform")
+    // 定义命令行参数skill，从命理行输入skill，可以将空格后的字符串传入skillParam指针变量
+    var skillParam = flag.String("skill", "", "skill to perform")
 
-   func main() {
-       // 解析命令行参数，解析完成后，skillParam指针变量将执行命令行传入的值
-       flag.Parse()
-       // 定义一个从字符串映射到func()的map,然后填充这个map
-       var skill = map[string]func(){
-           // 初始化map的键值对，值为匿名函数
-           "fire": func() {
-               fmt.Println("chicken fire")
-           },
-           "run": func() {
-               fmt.Println("soldier run")
-           },
-           "fly": func() {
-               fmt.Println("angel fly")
-           },
-       }
-       // 使用*skillParam获取命令传递的值，并在map中查找对应命令行参数指定的字符串的函数
-       if f, ok := skill[*skillParam]; ok {
-           f()
-       }else {
-           fmt.Println("skill not found")
-       }
-   }
-   //  go run main.go --skill=run
+    func main() {
+        // 解析命令行参数，解析完成后，skillParam指针变量将执行命令行传入的值
+        flag.Parse()
+        // 定义一个从字符串映射到func()的map,然后填充这个map
+        var skill = map[string]func(){
+            // 初始化map的键值对，值为匿名函数
+            "fire": func() {
+                fmt.Println("chicken fire")
+            },
+            "run": func() {
+                fmt.Println("soldier run")
+            },
+            "fly": func() {
+                fmt.Println("angel fly")
+            },
+        }
+        // 使用*skillParam获取命令传递的值，并在map中查找对应命令行参数指定的字符串的函数
+        if f, ok := skill[*skillParam]; ok {
+            f()
+        }else {
+            fmt.Println("skill not found")
+        }
+    }
+    //  go run main.go --skill=run
 
 4.函数类型实现接口-把函数作为接口来调用
 ---------------------------------------
@@ -112,91 +112,91 @@
 
 .. code:: go
 
-   package main
+    package main
 
-   import "fmt"
+    import "fmt"
 
-   type Invoker interface {
-       Call(interface{})
-   }
+    type Invoker interface {
+        Call(interface{})
+    }
 
-   // 结构体类型,结构体中无须任何成员
-   type Struct struct {
-   }
+    // 结构体类型,结构体中无须任何成员
+    type Struct struct {
+    }
 
-   // 实现Invoker的Call,Call()为结构体的方法，该方法是大于from struct和传入的interface{}类型的值
-   func (s *Struct) Call(p interface{}) {
-       fmt.Println("from struct", p)
-   }
-   func main() {
-       // 声明接口变量
-       var invoker Invoker
-       // 实例化结构体
-       s := new(Struct)
-       // 将实例化的结构体赋值到接口
-       invoker = s
-       // 使用接口调用实例化结构体的方法Struct.Call
-       invoker.Call("hello")
-   }
+    // 实现Invoker的Call,Call()为结构体的方法，该方法是大于from struct和传入的interface{}类型的值
+    func (s *Struct) Call(p interface{}) {
+        fmt.Println("from struct", p)
+    }
+    func main() {
+        // 声明接口变量
+        var invoker Invoker
+        // 实例化结构体
+        s := new(Struct)
+        // 将实例化的结构体赋值到接口
+        invoker = s
+        // 使用接口调用实例化结构体的方法Struct.Call
+        invoker.Call("hello")
+    }
 
 
-   //from struct hello
+    //from struct hello
 
 总结匿名函数的用法
 ------------------
 
 .. code:: go
 
-   package main
+    package main
 
-   import "fmt"
+    import "fmt"
 
-   // 匿名函数直接赋值函数变量
-   var sum = func(a, b int) int {
-       return a + b
-   }
+    // 匿名函数直接赋值函数变量
+    var sum = func(a, b int) int {
+        return a + b
+    }
 
-   func doinput(f func(int, int) int, a, b int) int {
-       return f(a, b)
-   }
+    func doinput(f func(int, int) int, a, b int) int {
+        return f(a, b)
+    }
 
-   // 匿名函数作为返回值
-   func wrap(op string) func(int, int) int {
-       switch op {
-       case "add":
-           return func(i int, i2 int) int {
-               return i + i2
-           }
-       case "sub":
-           return func(i int, i2 int) int {
-               return i - i2
-           }
-       default:
-           return nil
-       }
-   }
+    // 匿名函数作为返回值
+    func wrap(op string) func(int, int) int {
+        switch op {
+        case "add":
+            return func(i int, i2 int) int {
+                return i + i2
+            }
+        case "sub":
+            return func(i int, i2 int) int {
+                return i - i2
+            }
+        default:
+            return nil
+        }
+    }
 
-   func main() {
-       defer func() {
-           if err := recover(); err != nil {
-               fmt.Println(err)
-           }
-       }()
+    func main() {
+        defer func() {
+            if err := recover(); err != nil {
+                fmt.Println(err)
+            }
+        }()
 
-       sumname := sum(1, 2)
-       fmt.Println(sumname)        //3
+        sumname := sum(1, 2)
+        fmt.Println(sumname)        //3
 
-       // 匿名函数作为实参
-       d_name :=doinput(func(i int, i2 int) int {
-           return i + i2
-       }, 10, 20)
-       fmt.Println(d_name)         //30
+        // 匿名函数作为实参
+        d_name :=doinput(func(i int, i2 int) int {
+            return i + i2
+        }, 10, 20)
+        fmt.Println(d_name)         //30
 
-       name := wrap("add")
-       opname := name(5,6)
-       fmt.Println(opname)         //11
+        name := wrap("add")
+        opname := name(5,6)
+        fmt.Println(opname)         //11
 
-   }
+    }
 
 函数体实现接口
 ~~~~~~~~~~~~~~
@@ -206,37 +206,37 @@
 
 .. code:: go
 
-   package main
+    package main
 
-   import "fmt"
+    import "fmt"
 
-   // 调用器接口
-   type Invoker interface {
-       Call(interface{})
-   }
+    // 调用器接口
+    type Invoker interface {
+        Call(interface{})
+    }
 
-   // 函数定义为类型
-   type FuncCaller func(interface{})
+    // 函数定义为类型
+    type FuncCaller func(interface{})
 
-   // 实现Invoker的Call方法
-   func (f FuncCaller) Call(p interface{}) {
-       // 调用f()函数本体
-       f(p)
-   }
+    // 实现Invoker的Call方法
+    func (f FuncCaller) Call(p interface{}) {
+        // 调用f()函数本体
+        f(p)
+    }
 
 
-   func main() {
-       // 声明接口变量
-       var invoker Invoker
-       // 将匿名函数转为FuncCaller类型，再赋值给接口
-       invoker = FuncCaller(func(v interface{}) {
-           fmt.Println("from function", v)
-       })
-       // 使用接口调用FuncCaller.Call,内部会调用函数本体
-       invoker.Call("hello")
-   }
+    func main() {
+        // 声明接口变量
+        var invoker Invoker
+        // 将匿名函数转为FuncCaller类型，再赋值给接口
+        invoker = FuncCaller(func(v interface{}) {
+            fmt.Println("from function", v)
+        })
+        // 使用接口调用FuncCaller.Call,内部会调用函数本体
+        invoker.Call("hello")
+    }
 
-   //from function hello
+    //from function hello
 
 Golang匿名函数更多用法
 ----------------------
@@ -245,33 +245,33 @@ Golang匿名函数更多用法
 
 .. code:: go
 
-   package main
+    package main
 
-   func main() {
-       name := func() { println("hello world!") }      //hello world!
-       name()
+    func main() {
+        name := func() { println("hello world!") }      //hello world!
+        name()
 
-       // --- function collection ---
-       fns := [](func(x int) int){
-           func(x int) int { return x + 1 },
-           func(x int) int { return x + 2 },
-       }
-       println(fns[0](100))        //101
-       println(fns[1](200))        //202
+        // --- function collection ---
+        fns := [](func(x int) int){
+            func(x int) int { return x + 1 },
+            func(x int) int { return x + 2 },
+        }
+        println(fns[0](100))        //101
+        println(fns[1](200))        //202
 
-       // --- function as field ---
-       d := struct {
-           fn func() string
-       }{
-           fn: func() string {return "hello hujianli"},    //hello hujianli
-       }
-       println(d.fn())
+        // --- function as field ---
+        d := struct {
+            fn func() string
+        }{
+            fn: func() string {return "hello hujianli"},    //hello hujianli
+        }
+        println(d.fn())
 
-       // --- channel of function ---
-       fc := make(chan func() string, 2)
-       fc <- func() string { return "Hello, World!" }      //Hello, World!
-       println((<-fc)())
-   }
+        // --- channel of function ---
+        fc := make(chan func() string, 2)
+        fc <- func() string { return "Hello, World!" }      //Hello, World!
+        println((<-fc)())
+    }
 
 函数是一等公民
 --------------
@@ -282,49 +282,49 @@ Golang匿名函数更多用法
 
 .. code:: go
 
-   package main
+    package main
 
-   import "fmt"
+    import "fmt"
 
-   // 加函数
-   func add(x, y int) int {
-       return x + y
-   }
+    // 加函数
+    func add(x, y int) int {
+        return x + y
+    }
 
-   // 减函数
-   func sub(x, y int) int {
-       return x - y
-   }
+    // 减函数
+    func sub(x, y int) int {
+        return x - y
+    }
 
-   // 定义一个函数类型
-   type OP func(int, int) int
+    // 定义一个函数类型
+    type OP func(int, int) int
 
-   // 定义一个函数,第一个参数是函数类型OP
-   func do(f OP, x int, y int) int {
-       return f(x, y)
-   }
+    // 定义一个函数,第一个参数是函数类型OP
+    func do(f OP, x int, y int) int {
+        return f(x, y)
+    }
 
-   func main() {
-       x := 10
-       y := 20
-       fmt.Println(do(sub,x,y))
-       fmt.Println(do(add,x,y))
-   }
+    func main() {
+        x := 10
+        y := 20
+        fmt.Println(do(sub,x,y))
+        fmt.Println(do(add,x,y))
+    }
 
 函数赋值给函数类型变量
 
 .. code:: go
 
-   package main
+    package main
 
-   import "fmt"
+    import "fmt"
 
-   func add(x, y int) int {
-       return x + y
-   }
+    func add(x, y int) int {
+        return x + y
+    }
 
-   func main() {
-       fmt.Println(add(20,30)) //50
-       function := add
-       fmt.Println(function(20,30))    //50
-   }
+    func main() {
+        fmt.Println(add(20,30)) //50
+        function := add
+        fmt.Println(function(20,30))    //50
+    }
