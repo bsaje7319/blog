@@ -9,145 +9,140 @@ while循环不同于for循环，while循环是只要条件满足，那么就会�
 
 ::
 
-   while <条件>:
-       <代码块>
-   else:
-       <如果条件不成立执行这里的代码块>
+    while <条件>:
+        <代码块>
+    else:
+        <如果条件不成立执行这里的代码块>
 
 代码示例
 --------
 
 ::
 
-   #!/usr/bin/env python
-   #-*- coding:utf8 -*-
+    #!/usr/bin/env python
+    #-*- coding:utf8 -*-
 
 
-   '''
-   while 条件表达式：
-       循环体
-       不满足条件表达式时，自动跳出循环
-   '''
+    '''
+    while 条件表达式：
+        循环体
+        不满足条件表达式时，自动跳出循环
+    '''
 
-   number = 500           #定义范围
-   start_nu = 0            #计数器
+    number = 500           #定义范围
+    start_nu = 0            #计数器
 
-   while start_nu <= number:
-       if start_nu%3 == 2 and start_nu%5 == 3 and start_nu%7 == 2:
-           print("答曰 这个数值是:{}".format(start_nu))
-       start_nu +=1
-   print("循环结束！！")
+    while start_nu <= number:
+        if start_nu%3 == 2 and start_nu%5 == 3 and start_nu%7 == 2:
+            print("答曰 这个数值是:{}".format(start_nu))
+        start_nu +=1
+    print("循环结束！！")
 
-打印99乘法表
-------------
+while代码演示
+-------------
 
 ::
 
-   #!/usr/bin/env python
-   #-*- coding:utf8 -*-
-   falg = 9
-   num = 0
-   while num < falg:
-       num +=1
-       for i in range(1,num+1):
-           print(num,"*",i,"=",num*i,end=" ")
-       print(" ")
+    myList = ['English', 'chiese', 'hujianli', "hujianli2", "hujianli3"]
+
+    while len(myList) > 0:
+        print("pop element out:", myList.pop())     # 出栈,list中一个个退出，退出完毕，循环结束
 
 遍历输出列表
 ------------
 
 ::
 
-   #!/usr/bin/env python
-   #-*- coding:utf8 -*-
-   alst = [1,2,3,4,5]
-   total = len(alst)
+    #!/usr/bin/env python
+    #-*- coding:utf8 -*-
+    alst = [1,2,3,4,5]
+    total = len(alst)
 
-   i = 0
-   while i < total:
-       print("{} 的平方是{}".format(alst[i], alst[i]*alst[i]))
-       i = i +1
-   else:
-       print("循环结束 ！！")
+    i = 0
+    while i < total:
+        print("{} 的平方是{}".format(alst[i], alst[i]*alst[i]))
+        i = i +1
+    else:
+        print("循环结束 ！！")
 
 实现一个人机交互
 ~~~~~~~~~~~~~~~~
 
 ::
 
-   #!/usr/bin/env python
-   # -*- coding:utf8 -*-
-   # auther; 18793
-   # Date：2019/12/22 12:29
-   # filename: 验收人机对话流程控制.py
-   """
-   1.如果输入‘hello’，进入主程序，开启人机对话服务
-   2.如果输入‘go away’或者是‘bye’退出程序
-   3.如果输入‘pardon’，重新等待用户输入
-   """
+    #!/usr/bin/env python
+    # -*- coding:utf8 -*-
+    # auther; 18793
+    # Date：2019/12/22 12:29
+    # filename: 验收人机对话流程控制.py
+    """
+    1.如果输入‘hello’，进入主程序，开启人机对话服务
+    2.如果输入‘go away’或者是‘bye’退出程序
+    3.如果输入‘pardon’，重新等待用户输入
+    """
 
-   init_str = ''
+    init_str = ''
 
-   while ("bye" != init_str):
-       if init_str == '':
-           print("hello Password!")
+    while ("bye" != init_str):
+        if init_str == '':
+            print("hello Password!")
 
-       init_str = input("请输入你的选择：")
-       if init_str.strip() == "hello":
-           print("How are you today?")
-           init_str = "start"
-       elif init_str.strip() == 'go away' or init_str.strip() == "bye":
-           print("sorry bye-bye")
-           break
-       elif init_str.strip() == "pardon":
-           init_str = ''
-           continue
-       else:
-           pass
+        init_str = input("请输入你的选择：")
+        if init_str.strip() == "hello":
+            print("How are you today?")
+            init_str = "start"
+        elif init_str.strip() == 'go away' or init_str.strip() == "bye":
+            print("sorry bye-bye")
+            break
+        elif init_str.strip() == "pardon":
+            init_str = ''
+            continue
+        else:
+            pass
 
-       if init_str == "start":
-           print("........init diaolog-server ...........")
-           print("........ one thing.....................")
-           print("........ two thing ....................")
-           print("...................................")
+        if init_str == "start":
+            print("........init diaolog-server ...........")
+            print("........ one thing.....................")
+            print("........ two thing ....................")
+            print("...................................")
 
 代码示例
 
 ::
 
-   #!/usr/bin/env python
-   # -*- coding:utf8 -*-
-   # auther; 18793
-   # Date：2020/3/22 14:06
-   # filename: while循环01.py
-   while True:
-       print("who are you ?")
-       name = input()
-       if name.strip() != "hujianli":
-           continue
-       print("Hello ,hujianli ,What is the password? (It is a fish.)")
-       password = input()
-       if password.strip() == "admin#123":
-           break
-   print("Access granted")
+    #!/usr/bin/env python
+    # -*- coding:utf8 -*-
+    # auther; 18793
+    # Date：2020/3/22 14:06
+    # filename: while循环01.py
+    while True:
+        print("who are you ?")
+        name = input()
+        if name.strip() != "hujianli":
+            continue
+        print("Hello ,hujianli ,What is the password? (It is a fish.)")
+        password = input()
+        if password.strip() == "admin#123":
+            break
+    print("Access granted")
 
 return语句
 ~~~~~~~~~~
 
 ::
 
-   #!/usr/bin/env python
-   #-*- coding:utf8 -*-
-   def test():
-       for i in range(10):
-           for j in range(10):
-               print("i的值是：%d,j的值是：%d" % (i, j))
-               if j == 1:
-                   return
-               print("return的输出语句")
+    #!/usr/bin/env python
+    #-*- coding:utf8 -*-
+    def test():
+        for i in range(10):
+            for j in range(10):
+                print("i的值是：%d,j的值是：%d" % (i, j))
+                if j == 1:
+                    return
+                print("return的输出语句")
 
-   test()
-       
-   i的值是：0,j的值是：0
-   return的输出语句
-   i的值是：0,j的值是：1
+    test()
+        
+    i的值是：0,j的值是：0
+    return的输出语句
+    i的值是：0,j的值是：1

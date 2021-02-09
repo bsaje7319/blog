@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>22.4.5. 玩转Django2.0-视图 &mdash; 运维开发修炼之路</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="22.4.6. 玩转Django2.0-模型与数据库" href="06.玩转Django2.0-模型与数据库.html" />
+    <link rel="prev" title="22.4.4. 实战演练-开发Django站点" href="04.实战演练-开发Django站点.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">22.4. Django学习</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="01.安装DjangoWeb框架.html">22.4.1. 安装DjangoWeb框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02.Django框架的使用.html">22.4.2. Django框架的使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03.Django流程跑通.html">22.4.3. Django流程跑通</a></li>
+<li class="toctree-l4"><a class="reference internal" href="04.实战演练-开发Django站点.html">22.4.4. 实战演练-开发Django站点</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">22.4.5. 玩转Django2.0-视图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06.玩转Django2.0-模型与数据库.html">22.4.6. 玩转Django2.0-模型与数据库</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06.玩转Django2.0-模板.html">22.4.7. 玩转Django2.0-模板</a></li>
+<li class="toctree-l4"><a class="reference internal" href="07.玩转Django2.0-表单与模型.html">22.4.8. 玩转Django2.0-表单与模型</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06.Python高效开发实战-Django、Flask/index.html">22.6. Python高效开发实战-Django、Flask</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Go_vs_Python/index.html">Go vs Python</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="../index.html">22. Python框架学习</a> &raquo;</li>
+        
+          <li><a href="index.html">22.4. Django学习</a> &raquo;</li>
+        
+      <li>22.4.5. 玩转Django2.0-视图</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/Python/24.Python框架学习/04.Django学习/05.玩转Django2.0-视图.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#django2-0" id="id8">玩转Django2.0-视图</a><ul>
+<li><a class="reference internal" href="#django" id="id9">Django配置信息</a><ul>
+<li><a class="reference internal" href="#id1" id="id10">1.基本配置</a></li>
+<li><a class="reference internal" href="#id2" id="id11">2.静态资源</a></li>
+<li><a class="reference internal" href="#id3" id="id12">3.模板路径</a></li>
+<li><a class="reference internal" href="#id4" id="id13">4.数据库配置</a></li>
+<li><a class="reference internal" href="#id5" id="id14">5.中间件</a></li>
+<li><a class="reference internal" href="#url" id="id15">6. 编写URL规则</a></li>
+<li><a class="reference internal" href="#id6" id="id16">7.获取请求信息</a></li>
+<li><a class="reference internal" href="#id7" id="id17">8. 通用视图</a></li>
+<li><a class="reference internal" href="#django-cookie-and-session" id="id18">9.Django cookie and session</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="django2-0">
+<h1><a class="toc-backref" href="#id8">22.4.5. 玩转Django2.0-视图</a><a class="headerlink" href="#django2-0" title="Permalink to this headline">¶</a></h1>
+<p>一、视图说明</p>
+<p>　　视图(View)是Django的MTV架构模式的V部分，主要负责处理用户请求和生成相应的相应部分，然后在页面或其它类型文档中显示。也可以理解为视图是MVC架构里面的C部分（控制器）,主要处理功能和业务上的逻辑。</p>
+<p>前期准备</p>
+<div class="section" id="django">
+<h2><a class="toc-backref" href="#id9">Django配置信息</a><a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 创建项目</span>
+<span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">mydajngo</span>
+
+<span class="c1"># 创建app</span>
+<span class="p">(</span><span class="n">mydjango</span><span class="p">)</span> <span class="n">D</span><span class="p">:</span>\<span class="n">mydjango</span><span class="o">&gt;</span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">web</span>
+<span class="p">(</span><span class="n">mydjango</span><span class="p">)</span> <span class="n">D</span><span class="p">:</span>\<span class="n">mydjango</span><span class="o">&gt;</span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">user</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id10">1.基本配置</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">mydajngo/settings.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;index&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;user&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id11">2.静态资源</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>APP下的静态资源</p>
+<p>创建<code class="docutils literal notranslate"><span class="pre">index/static</span></code>文件夹</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s1">&#39;/static/&#39;</span>
+</pre></div>
+</div>
+<p>设置根目录下的静态资源</p>
+<p>创建<code class="docutils literal notranslate"><span class="pre">mydjango/public_static</span></code>文件夹</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;public_static&#39;</span><span class="p">),</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;index/index_static&#39;</span><span class="p">),</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>在public_static下和index/index_static放置2张jpg图片，进行访问：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">static</span><span class="o">/</span><span class="n">index_pic</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">static</span><span class="o">/</span><span class="n">linmc</span><span class="o">.</span><span class="n">jpg</span>
+</pre></div>
+</div>
+<p>还可以设置服务器和项目之间的映射，STATIC_ROOT,该文件与服务器之间构建映射关系</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;all_static&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>STATIC_ROOT用于项目生产部署，在项目开发过程中作用不大。</p>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id12">3.模板路径</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;BACKEND&#39;</span><span class="p">:</span> <span class="s1">&#39;django.template.backends.django.DjangoTemplates&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;DIRS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;templates&#39;</span><span class="p">),</span>
+                 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;index/templates&#39;</span><span class="p">)],</span>
+
+        <span class="s1">&#39;APP_DIRS&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;OPTIONS&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;context_processors&#39;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s1">&#39;django.template.context_processors.debug&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;django.template.context_processors.request&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;django.contrib.auth.context_processors.auth&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;django.contrib.messages.context_processors.messages&#39;</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id13">4.数据库配置</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.mysql&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;myproject&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;HOST&#39;</span><span class="p">:</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;USER&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s1">&#39;admin#123&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;PORT&#39;</span><span class="p">:</span> <span class="s1">&#39;3306&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>值得注意的是，MySQL5.7在连接数据库时，会提示django.db.utils
+OperationalError的错误信息，因为mysql8.0在加密方式上发生了改变，mysql8.0版本的用户密码采用的是cha2加密方式。</p>
+<p>为了解决这个问题。将8.0加密方式改为原来的加密方式。可以解决Django连接Mysql数据库的错误问题，在Mysql的可视化工具中运行以下SQL语句。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">USER</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="n">WITH</span> <span class="n">mysql_native_password</span> <span class="n">BY</span> <span class="s1">&#39;admin#123&#39;</span><span class="p">;</span>
+<span class="n">FLUSH</span> <span class="n">PRIVILEGES</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id14">5.中间件</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>在项目的MIDDLEWARE中添加LocaleMideeleware中间件，使得Django内置的功能支持中文显示。代码如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;</span><span class="p">,</span>
+    <span class="c1"># 使用中文</span>
+    <span class="s1">&#39;django.middleware.locale.LocaleMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.csrf.CsrfViewMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages.middleware.MessageMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="url">
+<h3><a class="toc-backref" href="#id15">6. 编写URL规则</a><a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h3>
+<p>在App里添加urls.py是将属于App的URL都写入该文件。</p>
+<p>在从App的urls.py找到具体的URL信息，在根</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;index.urls&#39;</span><span class="p">)),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>由于首页的地址分发给index的urls.py处理，因此下一步需要对index的urls.py编写URL信息，代码信息如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>在views.py中编写index函数的处理，代码如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span>
+
+
+<span class="c1"># Create your views here.</span>
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id16">7.获取请求信息</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">urls.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span><span class="p">(</span><span class="s1">&#39;login.html&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">login</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">views.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+        <span class="c1">#相对地址，代表首页地址</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Everyone&#39;</span>
+        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s1">&#39;username is: &#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>在浏览器上分别输入以下URL地址：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://127.0.0.1:8000/index/login.html
+http://127.0.0.1:8000/index/login.html?name=Tom
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id17">8. 通用视图</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>　通用视图是通过定义和声明类的形式实现的，根据用途划分为三大类：TemplateView、ListView和DetailView。三者说明如下：</p>
+<p>　　　　　　1、TemplateView直接返回HTML模板，但无法将数据库的数据展示出来。</p>
+<p>　　　　　　2、ListView能将数据库的数据传递给HTML模板，通常获取某个表的所有数据。</p>
+<p>　　　　　　3、DetailView能将数据库的数据传递给HTML模板，通常获取数据表的单条数据。</p>
+<p><code class="docutils literal notranslate"><span class="pre">urls.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 通用视图ListView</span>
+<span class="c1"># path(&#39;index/&#39;, views.ProductList.as_view()),</span>
+
+<span class="n">path</span><span class="p">(</span><span class="s1">&#39;index/&lt;id&gt;.html&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">ProductList</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;phone&#39;</span><span class="p">}),</span>
+
+<span class="n">path</span><span class="p">(</span><span class="s1">&#39;index01.html&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index01</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index01&#39;</span><span class="p">),</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">views.py</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ProductList</span><span class="p">(</span><span class="n">ListView</span><span class="p">):</span>
+    <span class="c1"># context_object_name设置Html模版的变量名称</span>
+    <span class="n">context_object_name</span> <span class="o">=</span> <span class="s1">&#39;type_list&#39;</span>
+    <span class="c1"># 设定HTML模版</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;index.html&#39;</span>
+    <span class="c1"># 查询数据</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+
+    <span class="c1"># # # 重写 get_queryset 方法，对模型product进行数据筛选。</span>
+    <span class="c1"># def get_queryset(self):</span>
+    <span class="c1">#     type_list = Product.objects.values(&#39;type&#39;).distinct()</span>
+    <span class="c1">#     return type_list</span>
+
+    <span class="c1"># 添加其他变量</span>
+    <span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">context</span><span class="p">[</span><span class="s1">&#39;name_list&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">)</span>
+        <span class="c1"># print(context)</span>
+        <span class="k">return</span> <span class="n">context</span>
+
+    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 获取URL的变量id</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+        <span class="c1"># 获取URL的参数name</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+
+        <span class="c1"># 获取请求方式</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">)</span>
+        <span class="n">type_list</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">type_list</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="django-cookie-and-session">
+<h3><a class="toc-backref" href="#id18">9.Django cookie and session</a><a class="headerlink" href="#django-cookie-and-session" title="Permalink to this headline">¶</a></h3>
+<p><strong>cookie和session</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1、cookie不属于http协议范围，由于http协议无法保持状态，但实际情况，我们却又需要“保持状态”，因此cookie就是在这样一个场景下诞生。
+
+cookie的工作原理是：由服务器产生内容，浏览器收到请求后保存在本地；当浏览器再次访问时，浏览器会自动带上cookie，这样服务器就能通过cookie的内容来判断这个是“谁”了。
+
+2、cookie虽然在一定程度上解决了“保持状态”的需求，但是由于cookie本身最大支持4096字节，以及cookie本身保存在客户端，可能被拦截或窃取，因此就需要有一种新的东西，它能支持更多的字节，并且他保存在服务器，有较高的安全性。这就是session。
+
+问题来了，基于http协议的无状态特征，服务器根本就不知道访问者是“谁”。那么上述的cookie就起到桥接的作用。
+
+我们可以给每个客户端的cookie分配一个唯一的id，这样用户在访问时，通过cookie，服务器就知道来的人是“谁”。然后我们再根据不同的cookie的id，在服务器上保存一段时间的私密资料，如“账号密码”等等。
+
+3、总结而言：cookie弥补了http无状态的不足，让服务器知道来的人是“谁”；但是cookie以文本的形式保存在本地，自身安全性较差；所以我们就通过cookie识别不同的用户，对应的在session里保存私密的信息以及超过4096字节的文本。
+
+4、另外，上述所说的cookie和session其实是共通性的东西，不限于语言和框架
+</pre></div>
+</div>
+<div class="figure">
+<img alt="" src="../../../_images/django_cookie001.png" />
+</div>
+<p>下面我们再来最后的总结一下cookie和session的<a class="reference external" href="http://www.wredian.com/zhishi/">知识</a>点</p>
+<p>一、操作Cookie</p>
+<p>　　获取cookie：request.COOKIES[key]</p>
+<p>　　设置cookie：response.set_cookie(key,value)</p>
+<p>由于cookie保存在客户端的电脑上，所以，jquery也可以操作cookie。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;script src=&#39;http://830909.blog.51cto.com/static/js/jquery.cookie.js&#39;&gt;&lt;/script&gt;
+$.cookie(&quot;list_pager_num&quot;, 30,{ path: &#39;/&#39; });
+</pre></div>
+</div>
+<p>二、操作Session(session默认在服务器端保存15天)</p>
+<p>　　获取session：request.session[key]</p>
+<p>　　设置session：reqeust.session[key] = value</p>
+<p>　　删除session：del request.session[key]</p>
+<p>（这个删除其实就是把数据库的session_data更新为一个其他的值了，并没有立即删除）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>request.session.set_expiry(value)
+* 如果value是个整数，session会在些秒数后失效。
+* 如果value是个datatime或timedelta，session就会在这个时间后失效。
+* 如果value是0,用户关闭浏览器session就会失效。
+* 如果value是None,session会依赖全局session失效策略。
+</pre></div>
+</div>
+<p><strong>代码示例</strong></p>
+<p>参考：</p>
+<p><a class="reference external" href="https://www.cnblogs.com/nulige/p/6497311.html">https://www.cnblogs.com/nulige/p/6497311.html</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="06.玩转Django2.0-模型与数据库.html" class="btn btn-neutral float-right" title="22.4.6. 玩转Django2.0-模型与数据库" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="04.实战演练-开发Django站点.html" class="btn btn-neutral float-left" title="22.4.4. 实战演练-开发Django站点" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

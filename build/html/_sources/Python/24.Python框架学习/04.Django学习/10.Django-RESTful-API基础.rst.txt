@@ -1,0 +1,915 @@
+.. contents::
+   :depth: 3
+..
+
+Django-RESTful-API基础
+======================
+
+RESTful规范——如何写API
+----------------------
+
+API接口应该如何写？API跟URL有什么不同？这绝对是不可以被忽略的问题，如果API写得乱七八糟，很有可能会失去负责前端开发的同事的信任。将API写得“高大上”，也是一名开发者工匠精神的一种体现。下面来介绍如何写API。
+
+（1）如果是对同一个表进行数据操作（增、删、改、查），应该使用一条API，然后根据method的不同，进行不同的操作。
+
+--------------
+
+        ::
+
+            GET/POST/PUT/DELETE/PATCH
+
+--------------
+
+（2）面向资源编程，通过API提交的参数最好是名词，比如name，尽量少用动词。
+
+--------------
+
+        ::
+
+            http://www.abc.com/name
+
+--------------
+
+（3）体现版本，在API中加入像v1、v2这样的版本代号：
+
+--------------
+
+        ::
+
+            http://www.abc.com/v1/namehttp://www.abc.com/v2/name
+
+--------------
+
+（4）体现API，让使用者一眼能看出这是API而不是URL，应该在API中加入提示：
+
+--------------
+
+        ::
+
+            http://www.abc.com/api/v1/namehttp://www.abc.com/api/v2/name
+
+--------------
+
+（5）使用HTTPS，这一项原本是为了安全考虑，但是随着国内外互联网环境对安全性越来越重视，谷歌浏览器对所有不是HTTPS请求的链接全都会提示用户此链接为不安全链接，腾讯等平台也对小程序等产品强制要求使用HTTPS协议。不过，好在国内许多提供云服务的公司，像腾讯云、阿里云等，都提供免费的SSL证书，供开发者去申请。
+
+--------------
+
+        ::
+
+            https://www.abc.com/api/v1/namehttps://www.abc.com/api/v2/name
+
+--------------
+
+（6）响应式设置状态码，例如，200和201代表操作成功，403代表权限不够，404代表没有指定资源，500代表运行时发现代码逻辑错误等。
+
+--------------
+
+        ::
+
+            return HttpResponse('adgbag',status=300)
+
+--------------
+
+（7）API的参数中加入筛选条件参数，也可以理解为获取资源优先选择GET的方式。
+
+--------------
+
+        ::
+
+            https://www.abc.com/api/v2/name?page=1&size=10
+
+--------------
+
+（8）返回值的规范，不同的method操作成功后，后端应该响应的返回值如下：
+
+--------------
+
+        ::
+
+            https://www.abc.com/api/v1/name
+
+--------------
+
+不同的提交方式代表对数据进行不同的操作：
+
+·GET：所有列表。
+
+·POST：新增的数据。
+
+--------------
+
+        ::
+
+            https://www.abc.com/api/v1/name/1
+
+--------------
+
+·GET：单条数据。
+
+·PUT：更新，返回更新的数据。
+
+·PATCH：局部更新，返回更新的数据。
+
+·DELETE：删除，返回空文档。
+
+（9）返回错误信息，应该加入错误代号code，让用户能直接看出是哪种类型的错误。
+
+--------------
+
+        ::
+
+            ret {  code:1000，  data:{    {'id':1,'title':'lala'}  }}
+
+--------------
+
+（10）返回的详细信息，应该以字典的形式放在data中。
+
+--------------
+
+        ::
+
+            ret {   code:1000，  data:{    {'id':1,'title':'lala','detail':http://www.……}  }}
+
+--------------
+
+RESTful规范是业内约定俗成的规范，并不是技术上定义的公式，在实际生产使用中，大家还是要根据业务灵活运用。
+
+Django REST framework简介
+-------------------------
+
+如果可以将Django REST
+framework的10个常用组件融会贯通，那么使用Django开发前后端分离的项目中有可能遇到的绝大部分需求，都能得到高效的解决。
+
+Django REST framework的10个常用组件如下：
+
+·权限组件；
+
+·认证组件；
+
+·访问频率限制组件；
+
+·序列化组件；
+
+·路由组件；
+
+·视图组件；
+
+·分页组件；
+
+·解析器组件；
+
+·渲染器组件；
+
+·版本组件。
+
+Django REST framework官方文档的地址是
+https://www.django-rest-framework.org/\ 。
+
+1.用Django REST framework实现豆瓣API应用
+----------------------------------------
+
+1.1 Serializer和ModelSerializer序列化选择
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+我们对Django REST
+framework的两种序列化方式做一个总结：Serializer和ModelSerializer两种序列化方式中，前者比较容易理解，适用于新手；后者则在商业项目中被使用的更多，在实际开发中建议大家多使用后者。
+
+记得笔者初学Django REST
+framework时，一直很困惑于用哪种序列化方式更好。因为许多教材中都将Django
+REST
+framework的Serializer和ModelSerializer，与Django的Form和ModelForm做对比，虽然二者相似，在优劣选择上却是不同的。Form虽然没有ModelForm效率高，但是ModelForm的使用增加了项目的耦合度，不符合项目解耦原则，所以Form比ModelForm更优（除了字段量过大的情况）；而ModelSerializer有Serializer所有的优点，同时并没有比Serializer明显的不足之外，所以ModelSerializer比Serializer更优。
+
+1.1.1 Serializer序列化方式
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    from rest_framework import serializers
+    from .models import UserProfile, Book
+
+
+    class BookSerializer(serializers.Serializer):
+        title = serializers.CharField(required=True, max_length=100)
+        isbn = serializers.CharField(required=True, max_length=100)
+        author = serializers.CharField(required=True, max_length=100)
+        publish = serializers.CharField(required=True, max_length=100)
+        rate = serializers.FloatField(default=0)
+
+views.py
+
+::
+
+    class BookAPIView1(APIView):
+        """
+        使用Serializer
+        """
+
+        def get(self, request, format=None):
+            APIKey = self.request.query_params.get("apikey", 0)
+            developer = UserProfile.objects.filter(APIkey=APIKey).first()
+            if developer:
+                balance = developer.money
+                if balance > 0:
+                    isbn = self.request.query_params.get("isbn", 0)
+                    books = Book.objects.filter(isbn=int(isbn))
+                    books_serializer = BookSerializer(books, many=True)
+                    developer.money -= 1
+                    developer.save()
+                    return Response(books_serializer.data)
+                else:
+                    return Response("兄弟，又到了需要充钱的时候！好开心啊！")
+            else:
+                return Response("查无此人啊")
+
+1.1.2 ModelSerializer序列号方式
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    class BookModelSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Book
+            # 将整个表的所有字段都序列化
+            # fields = "__all__"
+            fields = ('title', 'isbn', 'author')    #指定序列化某些字段
+
+views.py
+
+::
+
+    class BookAPIView2(APIView):
+        """
+        使用ModelSerializer
+        """
+
+        def get(self, request, format=None):
+            APIKey = self.request.query_params.get("apikey", 0)
+            developer = UserProfile.objects.filter(APIkey=APIKey).first()
+            if developer:
+                balance = developer.money
+                if balance > 0:
+                    isbn = self.request.query_params.get("isbn", 0)
+                    books = Book.objects.filter(isbn=int(isbn))
+                    books_serializer = BookModelSerializer(books, many=True)
+                    developer.money -= 1
+                    developer.save()
+                    return Response(books_serializer.data)
+                else:
+                    return Response("兄弟，又到了需要充钱的时候！好开心啊！")
+            else:
+                return Response("查无此人啊")
+
+1.2 mixins.ListModelMixin+GenericAPIView的方式实现视图封装
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    # 使用mixins.ListModelMixin+generics.GenericAPIView对APIView进行一次封装，至少需要加一个get函数：
+    class BookMixinView1(mixins.ListModelMixin, generics.GenericAPIView):
+        queryset = Book.objects.all()
+        serializer_class = BookModelSerializer
+
+        def get(self, request, *args, **kwargs):  # 如果这里不加get函数，代表默认不支持get访问这个api，所以必须加上
+            APIKey = self.request.query_params.get("apikey", 0)
+            developer = UserProfile.objects.filter(APIkey=APIKey).first()
+            if developer:
+                balance = developer.money
+                if balance > 0:
+                    isbn = self.request.query_params.get("isbn", 0)
+                    developer.money -= 1
+                    developer.save()
+                    self.queryset = Book.objects.filter(isbn=int(isbn))
+                    return self.list(request, *args, **kwargs)
+                else:
+                    return Response("兄弟，又到了需要充钱的时候！好开心啊！")
+            else:
+                return Response("查无此人啊")
+
+1.3 generics.ListAPIView的方式实现视图封装
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    # 而使用generics.ListAPIView则可以不用加这个函数，因为generics.ListAPIView相对于mixins.ListModelMixin+generics.GenericAPIView而言，所谓的封装，就是封装了一个get函数罢了。
+    class BookMixinView2(generics.ListAPIView):
+        queryset = Book.objects.all()
+        serializer_class = BookModelSerializer
+
+        def get(self, request, *args, **kwargs):
+            APIKey = self.request.query_params.get("apikey", 0)
+            developer = UserProfile.objects.filter(APIkey=APIKey).first()
+            if developer:
+                balance = developer.money
+                if balance > 0:
+                    isbn = self.request.query_params.get("isbn", 0)
+                    developer.money -= 1
+                    developer.save()
+                    self.queryset = Book.objects.filter(isbn=int(isbn))
+                    return self.list(request, *args, **kwargs)
+                else:
+                    return Response("兄弟，又到了需要充钱的时候！好开心啊！")
+            else:
+                return Response("查无此人啊")
+
+1.4 viewsets+Router的方式实现视图封装
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    class IsDeveloper(BasePermission):
+        message = '查无此人啊'
+
+        def has_permission(self, request, view):
+            APIKey = request.query_params.get("apikey", 0)
+            developer = UserProfile.objects.filter(APIkey=APIKey).first()
+            if developer:
+                return True
+            else:
+                print(self.message)
+                return False
+
+
+    class EnoughMoney(BasePermission):
+        message = "兄弟，又到了需要充钱的时候！好开心啊！"
+
+        def has_permission(self, request, view):
+            APIKey = request.query_params.get("apikey", 0)
+            developer = UserProfile.objects.filter(APIkey=APIKey).first()
+            balance = developer.money
+            if balance > 0:
+                developer.money -= 1
+                developer.save()
+                return True
+            else:
+                return False
+
+
+    class BookModelViewSet(viewsets.ModelViewSet):
+        authentication_classes = []
+        permission_classes = [IsDeveloper, EnoughMoney]
+        queryset = Book.objects.all()
+        serializer_class = BookModelSerializer
+
+        def get_queryset(self):
+            isbn = self.request.query_params.get("isbn", 0)
+            books = Book.objects.filter(isbn=int(isbn))
+            queryset = books
+            return queryset
+
+urls.py
+
+::
+
+    from django.contrib import admin
+    from django.urls import path
+    from users.views import BookAPIView1, BookAPIView2, BookMixinView1, BookMixinView2, BookModelViewSet
+    from rest_framework.routers import DefaultRouter
+    from django.conf.urls import include
+
+    router = DefaultRouter()
+    router.register(r'apibook5', BookModelViewSet)
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        # Serializer
+        path('apibook1/', BookAPIView1.as_view(), name='book1'),
+        # ModelSerializer
+        path('apibook2/', BookAPIView2.as_view(), name='book2'),
+
+        # 用mixins.ListModelMixin+GenericAPIView的方式实现视图封装
+        path('apibook3/', BookMixinView1.as_view(), name='book3'),
+        # 用generics.ListAPIView的方式实现视图封装
+        path('apibook4/', BookMixinView2.as_view(), name='book4'),
+        # 用viewsets+Router的方式实现视图封装
+        path('', include(router.urls)),
+    ]
+
+使用Postman对API进行测试，用GET的方式访问：
+
+--------------
+
+        ::
+
+            http://127.0.0.1:8000/apibook1/?apikey=abcdefghigklmn&isbn=777777
+            http://127.0.0.1:8000/apibook2/?apikey=abcdefghigklmn&isbn=777777
+            http://127.0.0.1:8000/apibook3/?apikey=abcdefghigklmn&isbn=777777
+            http://127.0.0.1:8000/apibook4/?apikey=abcdefghigklmn&isbn=777777
+            http://127.0.0.1:8000/apibook5/?apikey=abcdefghigklmn&isbn=777777
+
+2. 用Django设计大型电商的类别表
+-------------------------------
+
+2.1 电商类别表的项目功能需求
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+（1）类别表必须包含多级类目，至少分为四级类目。
+
+（2）类别表每一级类目数据都要有各自类目级别的标注，以便前端进行网页设计。
+
+（3）类别表内的类别数据，必须可以灵活地进行增、减，并且不会因此而改变其上下层级的数据关系。
+
+2.1.1 使用Vue.js在前端开发一个电商导航栏项目demo1
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Vue.js就是一个前端框架。Vue.js的单页面应用模式对于前端技术的影响非常深远，包括微信小程序在内的很多前端原生语言，都是借鉴了此模式。
+
+Vue.js是一个构建数据驱动的Web界面渐进式框架，与Angular和React并称为前端三大框架，而Vue.js框架是由华人尤雨溪所创造，开发文档更适合中国人阅读，而且尤雨溪也已经加盟阿里巴巴，所以Vue.js在国内也得到了阿里巴巴的推广，已经成为了国内最热门的前端框架之一。Vue.js的知识非常简单，如果大家已经掌握了HTML+CSS+JavaScript语言，通过Vue.js的官方文档，只需要几个小时的学习，就可以轻松上手Vue.js框架了。Vue.js是实现多端并行中非常重要，也是非常基础的一个技术。
+
+3. 搭建Vue.js前端开发环境
+-------------------------
+
+（1）下载Node.js。
+
+Node.js官网地址为https://nodejs.org/en/
+
+（2）安装Node.js。
+
+（3）查看Node.js是否安装成功。
+
+（4）安装淘宝镜像cnpm，可以让资源包下载得更快。
+
+::
+
+    # npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+（5）安装Vue.js的脚手架工具。输入以下命令
+
+::
+
+    # cnpm install --global vue-cli
+
+（6）创建项目。创建Vue.js项目，命名为vue02.然后连续按5次Enter键默认选项。
+
+::
+
+    # vue init webpack-simple vue02
+
+    ? Project name demo1
+    ? Project description A Vue.js project
+    ? Author
+    ? License MIT
+    ? Use sass? No
+
+       vue-cli · Generated "demo1".
+
+       To get started:
+
+         cd demo1
+         npm install
+         npm run dev
+
+项目新建完成后，切换到项目目录下,安装依赖：
+
+::
+
+    [root@cicd-dev lib]# cd vue02D:\vue02>cnpm install axios --save
+    /
+    [root@cicd-dev demo1]# cnpm install
+
+（7）运行初始项目。在项目目录demo1下，执行以下命令，结果如图所示：
+
+::
+
+    [root@cicd-dev demo1]# npm run dev
+
+    > vue02@1.0.0 dev /usr/local/src/node-v10.9.0-linux-x64/lib/demo1
+    > cross-env NODE_ENV=development webpack-dev-server --open --hot
+
+    Project is running at http://localhost:8086/
+
+4. 使用PyCharm新建后端演示项目
+------------------------------
+
+4.1 新建基础环境和数据
+~~~~~~~~~~~~~~~~~~~~~~
+
+（1）新建Django项目并命名为demo2，同时新建App，命名为app01。
+
+（2）在PyCharm中打开项目终端，安装相关依赖包：
+
+**这里使用豆瓣源加速安装依赖包**
+
+::
+
+    pip install Djangorestframework markdown Django-filter pillow Django-guardian coreapi -i "https://pypi.doubanio.com/simple/"
+
+（3）在demo2/demo2/settings.py中注册rest\_framework：
+
+::
+
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'app01.apps.App01Config',
+        'rest_framework'
+    ]
+
+（4）在demo2/app01/models.py中新建类别表：
+
+::
+
+    from django.db import models
+    from datetime import datetime
+
+
+    # Create your models here.
+    class Type1(models.Model):
+        """
+        一级类目
+        """
+        name = models.CharField(max_length=10, default="", verbose_name="类目名")
+        add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
+
+        class Meta:
+            verbose_name = '商品类别'
+            verbose_name_plural = verbose_name
+
+        def __str__(self):
+            return self.name
+
+
+    class Type2(models.Model):
+        """
+        二级类目
+        """
+        parent = models.ForeignKey(Type1, verbose_name="父级类别",
+                                   null=True, blank=True, on_delete=models.CASCADE)
+        name = models.CharField(max_length=10, default="", verbose_name="类目名")
+        add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
+
+        class Meta:
+            verbose_name = '商品类别2'
+            verbose_name_plural = verbose_name
+
+        def __str__(self):
+            return self.name
+
+
+    class Type3(models.Model):
+        """
+        三级类目
+        """
+        parent = models.ForeignKey(Type2, verbose_name="父级类别",
+                                   null=True, blank=True, on_delete=models.CASCADE)
+        name = models.CharField(max_length=10, default="", verbose_name="类目名")
+        add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
+
+        class Meta:
+            verbose_name = '商品类别3'
+            verbose_name_plural = verbose_name
+
+        def __str__(self):
+            return self.name
+
+
+    class Type4(models.Model):
+        """
+            四级类目
+        """
+        parent = models.ForeignKey(Type3, verbose_name="父级类别", null=True, blank=True, on_delete=models.CASCADE)
+        name = models.CharField(max_length=10, default="", verbose_name="类目名")
+        add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
+
+        class Meta:
+            verbose_name = '商品类别4'
+            verbose_name_plural = verbose_name
+
+        def __str__(self):
+            return self.name
+
+然后同第（2）步一样，打开项目终端，执行数据更新命令：
+
+::
+
+    python manage.py makemigrations
+    python manage.py migrate
+
+当数据表构建成功后，在项目目录中会生成一个db.sqlite3数据库文件。
+
+（5）手动添加一些数据。我们不需要其他的数据库操作软件
+
+没有使用MySQL数据库，而是直接使用了Django自带的sqlite3数据库，的确方便了许多。但是sqlite3的局限性是只适合数据量级比较小的数据库服务，一旦涉及数据量比较庞大的项目，就要选择使用MySQL数据库或者其他数据库。
+
+4.2 完善demo2的后台逻辑代码
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+（1）在app01目录下新建序列化模块serializers.py，新建4个类别表的序列化类：
+
+::
+
+    from rest_framework import serializers  # 引入序列化模块
+    from .models import Type1, Type2, Type3, Type4  # 引入所有数据表类
+
+
+    class Type1ModelSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Type1
+            fields = "__all__"
+
+
+    class Type2ModelSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Type2
+            fields = "__all__"
+
+
+    class Type3ModelSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Type3
+            fields = "__all__"
+
+
+    class Type4ModelSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Type4
+            fields = "__all__"
+
+（2）在app01/views.py中，编写访问4个类别表的视图逻辑代码：
+
+::
+
+    #引入序列化类
+    from .serializers import Type1ModelSerializer,Type2ModelSerializer
+    from .serializers import Type3ModelSerializer,Type4ModelSerializer
+    #引入数据表
+    from .models import Type1,Type2,Type3,Type4
+    #引入rest_framework相关模块
+    from rest_framework.views import APIView
+    from rest_framework.response import Response
+    from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
+    # Create your views here.
+    class Type1View(APIView):
+        """
+        all Type1
+        """
+        renderer_classes = [JSONRenderer]
+        def get(self, request, format=None):
+            types=Type1.objects.all()
+            types_serializer = Type1ModelSerializer(types, many=True)
+            return Response(types_serializer.data)
+    class Type2View(APIView):
+        """
+        all Type2
+        """
+        renderer_classes = [JSONRenderer]
+        def get(self, request, format=None):
+            types=Type2.objects.all()
+            types_serializer = Type2ModelSerializer(types, many=True)
+            return Response(types_serializer.data)
+    class Type3View(APIView):
+        """
+        all Type3
+        """
+        renderer_classes = [JSONRenderer]
+        def get(self, request, format=None):
+            types=Type3.objects.all()
+            types_serializer = Type3ModelSerializer(types, many=True)
+            return Response(types_serializer.data)
+    class Type4View(APIView):
+        """
+        all Type4
+        """
+        renderer_classes = [JSONRenderer]
+        def get(self, request, format=None):
+            types=Type4.objects.all()
+            types_serializer = Type4ModelSerializer(types, many=True)
+            return Response(types_serializer.data)
+
+注意：这里用到了Django REST
+framework的选择器，大家可以根据自己的喜好，选择使用JSONRenderer模式还是BrowsableAPIRenderer。
+
+（3）在demo2/urls.py中添加路由代码：
+
+::
+
+    from django.contrib import admin
+    from django.urls import path
+
+    # 引入视图类
+    from app01.views import Type1View, Type2View, Type3View, Type4View
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('api/type1/', Type1View.as_view()),
+        path('api/type2/', Type2View.as_view()),
+        path('api/type3/', Type3View.as_view()),
+        path('api/type4/', Type4View.as_view())
+    ]
+
+5.前后端项目联合调试
+--------------------
+
+现在，前端项目demo1和后端项目demo2都完成了，可以正式开始前后端联合调试的工作了。
+
+（1）运行demo2项目。
+
+（2）给vue02项目安装网络请求模块axios。在cmd窗口执行安装axios模块命令。
+
+::
+
+    D:\vue02>cnpm install axios --save
+
+（3）改写前端项目，在vue02/src/App.vue中，\ ``<style>``\ 样式标签内的代码不做改变，其他代码修改如下：
+
+html
+
+::
+
+    <template>
+      <div id="app">
+        <div class="all">
+          <div class="one">
+            <div class="onetype" v-for="(item,index) in one" :key="index">
+              <b>{{one[index].name}}</b>
+            </div>
+          </div>
+          <div class="twothreefour">
+            <div class="two">
+              <div class="twotype" 
+              v-for="(item,index) in two" :key="index"
+               @mouseenter="open(index)">
+                <b>{{two[index].name}}</b>
+              </div>
+            </div>
+            <div class="threefour" v-if="flag"
+               @mouseleave="close()">
+              <div class="threefourtype" v-for="(item,index) in three1" :key="index">
+                <span class="three">{{three1[index]}}</span>
+                <span class="four" v-for="(item4,index4) in four1" :key="index4">
+    {{four1[index4]}}&nbsp;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+js
+
+::
+
+    <script>
+    import Axios from 'axios';
+
+    export default {
+      name: 'app',
+      data() {
+        return {
+          one: [],
+          two: [],
+          three: [],
+          four: [],
+          flag: false,
+          three1: [],
+          four1: []
+        }
+      },
+      methods: {
+        getData() {
+          const api = 'http://127.0.0.1:8000/';
+          var api1 = api + 'api/type1/';
+          var api2 = api + 'api/type2/';
+          var api3 = api + 'api/type3/';
+          var api4 = api + 'api/type4/';
+          var type1 = [];
+          var type2 = [];
+          var type3 = [];
+          var type4 = [];
+          Axios.get(api1)
+              .then(function (response) {
+                // console.log(response);
+                for (var i = 0; i < response.data.length; i++) {
+                  // console.log(response.data[i])
+                  type1.push(response.data[i])
+                }
+                // console.log(type1)
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          this.one = type1;
+          Axios.get(api2)
+              .then(function (response) {
+                // console.log(response);
+                for (var i = 0; i < response.data.length; i++) {
+                  // console.log(response.data[i])
+                  type2.push(response.data[i])
+                }
+                // console.log(type2)
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          this.two = type2;
+          Axios.get(api3)
+              .then(function (response) {
+                // console.log(response);
+                for (var i = 0; i < response.data.length; i++) {
+                  // console.log(response.data[i])
+                  type3.push(response.data[i])
+                }
+                // console.log(type3)
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          this.three = type3;
+          Axios.get(api4)
+              .then(function (response) {
+                // console.log(response);
+                for (var i = 0; i < response.data.length; i++) {
+                  // console.log(response.data[i])
+                  type4.push(response.data[i])
+                }
+                // console.log(type4)
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          this.four = type4;
+          // console.log(this.one)
+          // console.log(this.two)
+          // console.log(this.three)
+          // console.log(this.four)
+        },
+        open(index) {
+          // console.log(this.two[index].id)
+          var temp = []
+          for (var i = 0; i < this.three.length; i++) {
+            if (this.three[i].parent === index) {
+              temp.push(this.three[i].name)
+            }
+          }
+          console.log(temp)
+          this.three1 = temp;
+          var temp4 = []
+          for (var j = 0; j < this.four.length; j++) {
+            temp4.push(this.four[j].name)
+          }
+          this.four1 = temp4
+          this.flag = true
+        },
+        close() {
+          this.flag = false
+        }
+      },
+      mounted() {
+        this.getData()
+      },
+    }
+    </script>
+
+一级、二级、三级类目遵循了从属关系，而第四级类目为了体现效果并没有通过筛选赋值。
+
+（4）解决跨域问题。在后端Django项目demo2中安装相关模块：
+
+::
+
+    pip install Django-cors-headers -i "https://pypi.doubanio.com/simple/"
+
+然后在settings.py中的注册里配置如下：
+
+::
+
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'app01.apps.App01Config',
+        'rest_framework',
+        'corsheaders'
+    ]
+
+在settings.py中的MIDDLEWARE里设置如下：
+
+::
+
+    MIDDLEWARE = [
+        'corsheaders.middleware.CorsMiddleware',  # 放到中间件顶部
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ]
+
+在settings.py中新增配置项，即可解决本项目中的跨域问题。
+
+::
+
+    CORS_ORIGIN_ALLOW_ALL = True
+
+注意：在Python全栈开发的知识体系里，跨域问题和深浅拷贝，几乎是逢面试必考的两个笔试题。
+
+不同的是，深浅拷贝在实际项目中很少用到，而跨域问题却几乎在每个项目中都有涉及，只是并非都能被察觉罢了。跨域问题是非常重要的一个知识点，关系到网络安全，甚至说跨域问题是Web安全中最重要的一环也不为过。
+
+（5）重启前后端，即可看到效果

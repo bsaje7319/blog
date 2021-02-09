@@ -5,7 +5,6 @@
 centos7安装uwsgi、发布网站
 ==========================
 
-.. _centos7安装uwsgi发布网站-1:
+centos7安装uwsgi、发布网站
 
-`centos7安装uwsgi、发布网站 <https://www.cnblogs.com/Nicholas0707/p/12384572.html>`__
--------------------------------------------------------------------------------------
+参考文献： https://www.cnblogs.com/Nicholas0707/p/12384572.html

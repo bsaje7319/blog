@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>22.6.5. 建立安全的HTTPS网站 &mdash; 运维开发修炼之路</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="23. Python开发环境部署" href="../../25.Python开发环境部署/index.html" />
+    <link rel="prev" title="22.6.4. Linux+Nginx+uWSGI配置" href="002.Linux+Nginx+uWSGI配置.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">22.6. Python高效开发实战-Django、Flask</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="01.企业级开发框架Django.html">22.6.1. 企业级开发框架Django</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01.客户端的编程技术.html">22.6.2. 客户端的编程技术</a></li>
+<li class="toctree-l4"><a class="reference internal" href="001.关系数据库建模.html">22.6.3. 关系数据库建模</a></li>
+<li class="toctree-l4"><a class="reference internal" href="002.Linux+Nginx+uWSGI配置.html">22.6.4. Linux+Nginx+uWSGI配置</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">22.6.5. 建立安全的HTTPS网站</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Go_vs_Python/index.html">Go vs Python</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="../index.html">22. Python框架学习</a> &raquo;</li>
+        
+          <li><a href="index.html">22.6. Python高效开发实战-Django、Flask</a> &raquo;</li>
+        
+      <li>22.6.5. 建立安全的HTTPS网站</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/Python/24.Python框架学习/06.Python高效开发实战-Django、Flask/003.建立安全的HTTPS网站.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#https" id="id1">建立安全的HTTPS网站</a><ul>
+<li><a class="reference internal" href="#openssl" id="id2">1.在服务器中安装OpenSSL工具包</a></li>
+<li><a class="reference internal" href="#ssl" id="id3">2.生成SSL密钥和证书</a></li>
+<li><a class="reference internal" href="#nginx-https" id="id4">3.配置Nginx HTTPS服务器</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="https">
+<h1><a class="toc-backref" href="#id1">22.6.5. 建立安全的HTTPS网站</a><a class="headerlink" href="#https" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="openssl">
+<h2><a class="toc-backref" href="#id2">1.在服务器中安装OpenSSL工具包</a><a class="headerlink" href="#openssl" title="Permalink to this headline">¶</a></h2>
+<p>通过如下两条命令安装OpenSSL</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>yum -y install openssl
+yum -y install libssl-dev
+
+命令运行成功后，OpenSSL命令和配置文件将被安装到Linux系统目录中，
+* OpenSSL 命令：/usr/bin/openssl
+
+* 配置文件：/usr/lib/ssl/*
+</pre></div>
+</div>
+</div>
+<div class="section" id="ssl">
+<h2><a class="toc-backref" href="#id3">2.生成SSL密钥和证书</a><a class="headerlink" href="#ssl" title="Permalink to this headline">¶</a></h2>
+<p>通过如下步骤生成CA
+证书ca.crt、服务器密钥文件server.key和服务器证书server.crt：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 生成CA密钥</span>
+<span class="n">openssl</span> <span class="n">genrsa</span> <span class="o">-</span><span class="n">out</span> <span class="n">ca</span><span class="o">.</span><span class="n">key</span> <span class="mi">2048</span>
+
+<span class="c1"># 生成CA证书，days参数以天为单位设置证书的有效期，</span>
+<span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">x509</span> <span class="o">-</span><span class="n">new</span> <span class="o">-</span><span class="n">nodes</span> <span class="o">-</span><span class="n">key</span> <span class="n">ca</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">days</span> <span class="mi">365</span> <span class="o">-</span><span class="n">out</span> <span class="n">ca</span><span class="o">.</span><span class="n">crt</span>
+
+<span class="c1"># 生成服务器证书RSA的密钥对</span>
+<span class="n">openssl</span> <span class="n">genrsa</span> <span class="o">-</span><span class="n">out</span> <span class="n">server</span><span class="o">.</span><span class="n">key</span> <span class="mi">2048</span>
+
+<span class="c1"># 生成服务器端证书CSR，本过程会要求输入证书所在地、公司名、站点名等</span>
+<span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">new</span> <span class="o">-</span><span class="n">key</span> <span class="n">server</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="n">server</span><span class="o">.</span><span class="n">csr</span>
+
+<span class="c1"># 生成服务器端证书 ca.crt</span>
+<span class="n">openssl</span> <span class="n">x509</span> <span class="o">-</span><span class="n">req</span> <span class="o">-</span><span class="ow">in</span> <span class="n">server</span><span class="o">.</span><span class="n">csr</span> <span class="o">-</span><span class="n">CA</span> <span class="n">ca</span><span class="o">.</span><span class="n">crt</span> <span class="o">-</span><span class="n">CAkey</span> <span class="n">ca</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">CAcreateserial</span> <span class="o">-</span><span class="n">out</span> <span class="n">server</span><span class="o">.</span><span class="n">crt</span> <span class="o">-</span><span class="n">days</span> <span class="mi">365</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nginx-https">
+<h2><a class="toc-backref" href="#id4">3.配置Nginx HTTPS服务器</a><a class="headerlink" href="#nginx-https" title="Permalink to this headline">¶</a></h2>
+<p>配置文件/etc/nginx/sites-enabled/default
+中添加如下server段,可以定义一个基于HTTPS的接口。该接口的服务器端程序仍旧为uWSGI接口
+127.0.0.1:3011</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># You may add here your</span>
+<span class="c1"># server {</span>
+<span class="c1">#   ...</span>
+<span class="c1"># }</span>
+<span class="c1"># statements for each of your virtual hosts to this file</span>
+
+<span class="c1">##</span>
+<span class="c1"># You should look at the following URL&#39;s in order to grasp a solid understanding</span>
+<span class="c1"># of Nginx configuration files in order to fully unleash the power of Nginx.</span>
+<span class="c1"># http://wiki.nginx.org/Pitfalls</span>
+<span class="c1"># http://wiki.nginx.org/QuickStart</span>
+<span class="c1"># http://wiki.nginx.org/Configuration</span>
+<span class="c1">#</span>
+<span class="c1"># Generally, you will want to move this file somewhere, and start with a clean</span>
+<span class="c1"># file but keep this around for reference. Or just disable in sites-enabled.</span>
+<span class="c1">#</span>
+<span class="c1"># Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.</span>
+<span class="c1">##</span>
+
+
+
+
+<span class="n">server</span> <span class="p">{</span>
+<span class="n">listen</span>       <span class="mi">443</span><span class="p">;</span>                           <span class="c1">#HTTPS服务端口</span>
+<span class="n">server_name</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="p">;</span>                        <span class="c1">#本机上的所有IP地址</span>
+<span class="n">ssl</span>                  <span class="n">on</span><span class="p">;</span>
+<span class="n">ssl_certificate</span>     <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">server</span><span class="o">.</span><span class="n">crt</span><span class="p">;</span>
+<span class="n">ssl_certificate_key</span>     <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">server</span><span class="o">.</span><span class="n">key</span><span class="p">;</span>
+
+<span class="n">location</span> \ <span class="p">{</span>
+    <span class="n">uwsgi_pass</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3011</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>ssl_certificate
+和ssl_certificate_key需要分别制定生成的服务器证书和服务器密钥的全路径文件名。</p>
+<p>至此，我们已经可以使用443端口进行HTTPS加密通信了。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../25.Python开发环境部署/index.html" class="btn btn-neutral float-right" title="23. Python开发环境部署" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="002.Linux+Nginx+uWSGI配置.html" class="btn btn-neutral float-left" title="22.6.4. Linux+Nginx+uWSGI配置" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

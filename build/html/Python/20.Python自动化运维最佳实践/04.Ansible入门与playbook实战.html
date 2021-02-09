@@ -607,6 +607,13 @@ done
     <span class="n">sshe</span><span class="p">(</span><span class="s2">&quot;192.168.1.1&quot;</span><span class="p">,</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="s2">&quot;admin#123&quot;</span><span class="p">,</span> <span class="s2">&quot;hostname;ifconfig&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>或者使用ansible自动推送密钥</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span> <span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">2</span> <span class="n">批量分发公钥</span>
+
+<span class="c1"># 参考文献</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">my</span><span class="o">.</span><span class="n">oschina</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">attacker</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="mi">679618</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id24">18.6.5. Ansible与正则</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -1260,7 +1267,7 @@ ansible-playbook install_nginx.yml
 </div>
 <div class="section" id="tomcat">
 <h3><a class="toc-backref" href="#id44">示例：安装tomcat软件</a><a class="headerlink" href="#tomcat" title="Permalink to this headline">¶</a></h3>
-<p>创建vars.yml文件和tomcat.yml文件，在统计目录下 vars.yml</p>
+<p>创建vars.yml文件和tomcat.yml文件，在同一目录下 vars.yml</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span>
 <span class="c1">#软件包下载路径</span>
 <span class="n">download_dir</span><span class="p">:</span> <span class="o">/</span><span class="n">tmp</span>

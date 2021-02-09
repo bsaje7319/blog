@@ -46,7 +46,7 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="22.6.1. Linux+Nginx+uWSGI" href="01.Linux+Nginx+uWSGI.html" />
+    <link rel="next" title="22.6.1. 企业级开发框架Django" href="01.企业级开发框架Django.html" />
     <link rel="prev" title="22.5.6. 表单和模板操作" href="../05.Tornado-Web框架及其应用/06.表单和模板操作.html" /> 
 </head>
 
@@ -130,7 +130,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../04.Django学习/index.html">22.4. Django学习</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">22.6. Python高效开发实战-Django、Flask</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="01.Linux+Nginx+uWSGI.html">22.6.1. Linux+Nginx+uWSGI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01.企业级开发框架Django.html">22.6.1. 企业级开发框架Django</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01.客户端的编程技术.html">22.6.2. 客户端的编程技术</a></li>
+<li class="toctree-l4"><a class="reference internal" href="001.关系数据库建模.html">22.6.3. 关系数据库建模</a></li>
+<li class="toctree-l4"><a class="reference internal" href="002.Linux+Nginx+uWSGI配置.html">22.6.4. Linux+Nginx+uWSGI配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="003.建立安全的HTTPS网站.html">22.6.5. 建立安全的HTTPS网站</a></li>
 </ul>
 </li>
 </ul>
@@ -216,7 +220,49 @@
 <h1>22.6. Python高效开发实战-Django、Flask<a class="headerlink" href="#python-djangoflask" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="01.Linux+Nginx+uWSGI.html">22.6.1. Linux+Nginx+uWSGI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01.企业级开发框架Django.html">22.6.1. 企业级开发框架Django</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.企业级开发框架Django.html#django2">1.安装Django2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.企业级开发框架Django.html#id1">2.实战演练：开发Django站点</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.企业级开发框架Django.html#id2">2.1 建立项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.企业级开发框架Django.html#id3">2.2 建立应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.企业级开发框架Django.html#id4">2.3 基本视图</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.企业级开发框架Django.html#web">2.4 内置Web服务器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.企业级开发框架Django.html#id5">2.5 模型类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.企业级开发框架Django.html#id6">2.6 表单视图</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01.企业级开发框架Django.html#id7">3.使用管理界面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.企业级开发框架Django.html#id8">4. Django模型层</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.企业级开发框架Django.html#id9">4.1 基本操作</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="01.客户端的编程技术.html">22.6.2. 客户端的编程技术</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.客户端的编程技术.html#html">1. HTML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.客户端的编程技术.html#id2">1.1 HTML的基本标签</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.客户端的编程技术.html#id10">1.2 HTML表单</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01.客户端的编程技术.html#css">2. CSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="001.关系数据库建模.html">22.6.3. 关系数据库建模</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="001.关系数据库建模.html#e-r">1.设计E-R图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="001.关系数据库建模.html#id2">2.关系表的设计</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="002.Linux+Nginx+uWSGI配置.html">22.6.4. Linux+Nginx+uWSGI配置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="002.Linux+Nginx+uWSGI配置.html#nginx">安装Nginx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002.Linux+Nginx+uWSGI配置.html#uwsgi">安装uWSGI及配置</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="003.建立安全的HTTPS网站.html">22.6.5. 建立安全的HTTPS网站</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="003.建立安全的HTTPS网站.html#openssl">1.在服务器中安装OpenSSL工具包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="003.建立安全的HTTPS网站.html#ssl">2.生成SSL密钥和证书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="003.建立安全的HTTPS网站.html#nginx-https">3.配置Nginx HTTPS服务器</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -229,7 +275,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="01.Linux+Nginx+uWSGI.html" class="btn btn-neutral float-right" title="22.6.1. Linux+Nginx+uWSGI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="01.企业级开发框架Django.html" class="btn btn-neutral float-right" title="22.6.1. 企业级开发框架Django" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../05.Tornado-Web框架及其应用/06.表单和模板操作.html" class="btn btn-neutral float-left" title="22.5.6. 表单和模板操作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

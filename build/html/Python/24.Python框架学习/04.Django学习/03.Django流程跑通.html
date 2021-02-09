@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>22.4.4. Django流程跑通 &mdash; 运维开发修炼之路</title>
+  <title>22.4.3. Django流程跑通 &mdash; 运维开发修炼之路</title>
   
 
   
@@ -46,8 +46,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="22.4.5. 实战演练-开发Django站点" href="07.实战演练-开发Django站点.html" />
-    <link rel="prev" title="22.4.3. Django框架的使用" href="02.Django框架的使用.html" /> 
+    <link rel="next" title="22.4.4. 实战演练-开发Django站点" href="04.实战演练-开发Django站点.html" />
+    <link rel="prev" title="22.4.2. Django框架的使用" href="02.Django框架的使用.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -128,15 +128,18 @@
 <li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">22.4. Django学习</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="10.Python高效开发实战-Django/index.html">22.4.1. Python高效开发实战-Django</a></li>
-<li class="toctree-l4"><a class="reference internal" href="01.安装DjangoWeb框架.html">22.4.2. 安装DjangoWeb框架</a></li>
-<li class="toctree-l4"><a class="reference internal" href="02.Django框架的使用.html">22.4.3. Django框架的使用</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">22.4.4. Django流程跑通</a></li>
-<li class="toctree-l4"><a class="reference internal" href="07.实战演练-开发Django站点.html">22.4.5. 实战演练-开发Django站点</a></li>
-<li class="toctree-l4"><a class="reference internal" href="08.Django模型层.html">22.4.6. Django模型层</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01.安装DjangoWeb框架.html">22.4.1. 安装DjangoWeb框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02.Django框架的使用.html">22.4.2. Django框架的使用</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">22.4.3. Django流程跑通</a></li>
+<li class="toctree-l4"><a class="reference internal" href="04.实战演练-开发Django站点.html">22.4.4. 实战演练-开发Django站点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="05.玩转Django2.0-视图.html">22.4.5. 玩转Django2.0-视图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06.玩转Django2.0-模型与数据库.html">22.4.6. 玩转Django2.0-模型与数据库</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06.玩转Django2.0-模板.html">22.4.7. 玩转Django2.0-模板</a></li>
+<li class="toctree-l4"><a class="reference internal" href="07.玩转Django2.0-表单与模型.html">22.4.8. 玩转Django2.0-表单与模型</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06.Python高效开发实战-Django、Flask/index.html">22.6. Python高效开发实战-Django、Flask</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
@@ -199,7 +202,7 @@
         
           <li><a href="index.html">22.4. Django学习</a> &raquo;</li>
         
-      <li>22.4.4. Django流程跑通</li>
+      <li>22.4.3. Django流程跑通</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -221,24 +224,26 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#django" id="id7">Django流程跑通</a><ul>
-<li><a class="reference internal" href="#id1" id="id8">路由</a></li>
-<li><a class="reference internal" href="#id2" id="id9">表单</a></li>
-<li><a class="reference internal" href="#id3" id="id10">视图</a><ul>
-<li><a class="reference internal" href="#id4" id="id11">定义一个404错误页面</a></li>
+<li><a class="reference internal" href="#django" id="id8">Django流程跑通</a><ul>
+<li><a class="reference internal" href="#id1" id="id9">路由</a></li>
+<li><a class="reference internal" href="#id2" id="id10">表单</a></li>
+<li><a class="reference internal" href="#id3" id="id11">视图</a><ul>
+<li><a class="reference internal" href="#id4" id="id12">定义一个404错误页面</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#cbv" id="id12">基于类的视图(CBV)</a></li>
-<li><a class="reference internal" href="#id5" id="id13">Django模板</a><ul>
-<li><a class="reference internal" href="#id6" id="id14">Django简单分发流程</a></li>
+<li><a class="reference internal" href="#cbv" id="id13">基于类的视图(CBV)</a></li>
+<li><a class="reference internal" href="#id5" id="id14">Django模板</a><ul>
+<li><a class="reference internal" href="#id6" id="id15">Django简单分发流程</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id7" id="id16">目录结构介绍</a></li>
+<li><a class="reference internal" href="#djangoform" id="id17">Django学习—Form表单</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="django">
-<h1><a class="toc-backref" href="#id7">22.4.4. Django流程跑通</a><a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id8">22.4.3. Django流程跑通</a><a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h1>
 <p>app1下的admin.py中配置</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span> <span class="c1"># 引入admin模块</span>
 <span class="kn">from</span> <span class="nn">app1.models</span> <span class="k">import</span> <span class="n">Person</span><span class="p">,</span> <span class="n">Order</span> <span class="c1"># 引入数据模型类</span>
@@ -262,10 +267,14 @@
 <ul class="simple">
 <li>配置完成后，登录http://127.0.0.1:8000/admin/</li>
 </ul>
-<p><img alt="image0" src="../../../_images/admin_django.PNG" /></p>
+<div class="figure">
+<img alt="" src="../../../_images/admin_django.PNG" />
+</div>
 <div class="section" id="id1">
-<h2><a class="toc-backref" href="#id8">路由</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p><img alt="image1" src="../../../_images/Django_urls0001.png" /></p>
+<h2><a class="toc-backref" href="#id9">路由</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="figure">
+<img alt="" src="../../../_images/Django_urls0001.png" />
+</div>
 <p>Django的URL路由流程： （1）Django查找全局urlpatterns变量（urls.py）
 （2）按照先后顺序，对URL逐一匹配urlpatterns每个元素
 （3）找到第一个匹配时停止查找，根据匹配结果执行对应的处理函数
@@ -317,7 +326,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id9">表单</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">表单</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>在app1文件夹下创建一个forms.py文件，添加如下类代码：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="k">import</span> <span class="n">forms</span>
 <span class="k">class</span> <span class="nc">PersonForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
@@ -387,10 +396,12 @@
 </pre></div>
 </div>
 <p>此时访问访问 <a class="reference external" href="http://127.0.0.1:8000/app1/get_name">http://127.0.0.1:8000/app1/get_name</a></p>
-<p><img alt="image2" src="../../../_images/django001.png" /></p>
+<div class="figure">
+<img alt="" src="../../../_images/django001.png" />
+</div>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id10">视图</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">视图</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>在django项目中定义新的视图，app1/views.py</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span>  <span class="c1"># 导入响应对象</span>
 <span class="kn">import</span> <span class="nn">datetime</span>  <span class="c1"># 导入时间模块</span>
@@ -405,9 +416,11 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span><span class="p">(</span><span class="s1">&#39;current_datetime&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">current_datetime</span><span class="p">),</span>
 </pre></div>
 </div>
-<p><img alt="image3" src="../../../_images/django002.png" /></p>
+<div class="figure">
+<img alt="" src="../../../_images/django002.png" />
+</div>
 <div class="section" id="id4">
-<h3><a class="toc-backref" href="#id11">定义一个404错误页面</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id12">定义一个404错误页面</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>app1/views.py</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span><span class="p">,</span> <span class="n">Http404</span>
@@ -426,11 +439,13 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span><span class="p">(</span><span class="s1">&#39;person_detail/&lt;int:pk&gt;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">person_detail</span><span class="p">),</span>
 </pre></div>
 </div>
-<p><img alt="image4" src="../../../_images/django003.png" /></p>
+<div class="figure">
+<img alt="" src="../../../_images/django003.png" />
+</div>
 </div>
 </div>
 <div class="section" id="cbv">
-<h2><a class="toc-backref" href="#id12">基于类的视图(CBV)</a><a class="headerlink" href="#cbv" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">基于类的视图(CBV)</a><a class="headerlink" href="#cbv" title="Permalink to this headline">¶</a></h2>
 <p>app1/views.py</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
@@ -525,12 +540,16 @@
 </pre></div>
 </div>
 <p>在浏览器中访问 <a class="reference external" href="http://127.0.0.1:8000/app1/get_name1">http://127.0.0.1:8000/app1/get_name1</a></p>
-<p><img alt="image5" src="../../../_images/django004.png" /></p>
+<div class="figure">
+<img alt="" src="../../../_images/django004.png" />
+</div>
 </div>
 <div class="section" id="id5">
-<h2><a class="toc-backref" href="#id13">Django模板</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">Django模板</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>Django指定的模板引擎在settings.py文件中定义，代码如下：</p>
-<p><img alt="image6" src="../../../_images/django_module00001.png" /></p>
+<div class="figure">
+<img alt="" src="../../../_images/django_module00001.png" />
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[{</span>
         <span class="c1"># 模板引擎，默认为Django模板</span>
         <span class="s1">&#39;BACKEND&#39;</span><span class="p">:</span> <span class="s1">&#39;django.template.backends.django.DjangoTemplates&#39;</span><span class="p">,</span>
@@ -544,9 +563,126 @@
 </div>
 <p>app1/templates目录下的html文件都为模板文件。</p>
 <div class="section" id="id6">
-<h3><a class="toc-backref" href="#id14">Django简单分发流程</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p><img alt="image7" src="../../../_images/django_qianfeng000002.png" /></p>
+<h3><a class="toc-backref" href="#id15">Django简单分发流程</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<img alt="" src="../../../_images/django_qianfeng000002.png" />
 </div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id16">目录结构介绍</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> 1. web框架
+
+　　自己实现socket
+
+　　　　Tornado
+
+　　基于wsgi
+
+　　　　Django
+
+　　MVC/MTV
+
+　　　　mvc框架：
+
+　　　　　　controllers:处理用户请求
+
+　　　　　　views：放置html模板
+
+　　　　　　modals：操作数据库
+
+　　　　mtv框架：
+
+　　　　　　views：处理用户请求
+
+　　　　　　template：放置html模板
+
+　　　　　　modals：操作数据库
+
+   2 django-admin startproject  mysite
+
+
+   3 manage.py 管理我的django项目
+   4 （1）启动django--python3
+      -manage.py runserver 127.0.0.1:8002
+      -manage.py runserver 8002
+      -manage.py runserver
+     （2）pycharm启动：1  跟上面一样
+                  2 点绿色的箭头
+      不是点右键运行
+   5 停止 ctrl+c
+
+   6 目录介绍
+      settings--django全局配置文件
+      urls---路由关系
+
+
+app:
+   命令：python3 manage.py startapp app01
+   目录：
+      migrations：数据库迁移的文件
+      admin：后台管理相关
+      apps：app配置相关
+      models：模型，数据库相关，写一些类
+      tests：测试相关
+      views：视图函数
+
+settings：
+   DEBUG
+   INSTALLED_APPS---》放app的名字
+   MIDDLEWARE--》中间件
+   TEMPLATES---》指定模板文件放的路径
+   DATABASES---》指定连接的数据库
+
+
+静态文件配置：（名字一定不能错）
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR, &#39;static&#39;),
+]
+
+
+三件套：
+# render 模板渲染
+# HttpResponse 返回字符串
+# redirect 重定向
+
+
+　　连接数据库、操作数据
+
+　　　　　　　　ORM是可以通过Django里面提供的功能
+
+　　　　　　　　执行命令：
+
+　　　　　　　　　　python manage.py makemigrations
+
+　　　　　　　　　　python manage.py migrate
+
+　　　　　　　　　　数据库和相应的表已经创建完毕
+
+　　　　　　操作数据库
+
+　　　　　　　　检测：
+
+　　　　　　　　　　models.类.objects.filter(user=&quot;wzc&quot;)
+
+　　　　　　　　　　models.类.objects.filter(user=&quot;wzc&quot;).count()
+
+　　　　　　　　　　wzc这个用户是否存在
+
+　　　　　　　　　　通过return redirect来进行跳转
+
+　　　　　　　　生产数据
+
+　　　　　　　　　　models.类.objects.create(user=&#39;数据&#39;,passwd=&#39;数据&#39;)
+
+　　　　　　　　获取数据：
+
+　　　　　　　　　　models.类.objects.all()
+</pre></div>
+</div>
+</div>
+<div class="section" id="djangoform">
+<h2><a class="reference external" href="https://my.oschina.net/u/4303197/blog/3295088">Django学习—Form表单</a><a class="headerlink" href="#djangoform" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -558,10 +694,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="07.实战演练-开发Django站点.html" class="btn btn-neutral float-right" title="22.4.5. 实战演练-开发Django站点" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="04.实战演练-开发Django站点.html" class="btn btn-neutral float-right" title="22.4.4. 实战演练-开发Django站点" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="02.Django框架的使用.html" class="btn btn-neutral float-left" title="22.4.3. Django框架的使用" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="02.Django框架的使用.html" class="btn btn-neutral float-left" title="22.4.2. Django框架的使用" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

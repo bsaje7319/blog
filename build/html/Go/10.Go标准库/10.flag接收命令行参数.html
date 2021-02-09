@@ -46,7 +46,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="11. 项目代码" href="../11.项目代码/index.html" />
+    <link rel="next" title="10.11. strings" href="11.strings.html" />
     <link rel="prev" title="10.9. Go执行shell命令" href="09.Go执行shell命令.html" /> 
 </head>
 
@@ -123,8 +123,12 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">10.10. flag接收命令行参数</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">10.10.1. 示例1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">10.10.2. 示例2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">10.10.3. 示例3</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="11.strings.html">10.11. strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="12.OS.html">10.12. os</a></li>
+<li class="toctree-l3"><a class="reference internal" href="13.log.html">10.13. Log</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../11.项目代码/index.html">11. 项目代码</a></li>
@@ -204,21 +208,22 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#flag" id="id3">flag接收命令行参数</a><ul>
-<li><a class="reference internal" href="#id1" id="id4">示例1</a></li>
-<li><a class="reference internal" href="#id2" id="id5">示例2</a></li>
+<li><a class="reference internal" href="#flag" id="id4">flag接收命令行参数</a><ul>
+<li><a class="reference internal" href="#id1" id="id5">示例1</a></li>
+<li><a class="reference internal" href="#id2" id="id6">示例2</a></li>
+<li><a class="reference internal" href="#id3" id="id7">示例3</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="flag">
-<h1><a class="toc-backref" href="#id3">10.10. flag接收命令行参数</a><a class="headerlink" href="#flag" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id4">10.10. flag接收命令行参数</a><a class="headerlink" href="#flag" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="s2">&quot;flag&quot;</span>
 </pre></div>
 </div>
 <p>flag包实现了命令行参数的解析。</p>
 <div class="section" id="id1">
-<h2><a class="toc-backref" href="#id4">10.10.1. 示例1</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">10.10.1. 示例1</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
@@ -252,7 +257,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id5">10.10.2. 示例2</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">10.10.2. 示例2</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Mysql接收参数的例子</p>
 <div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
@@ -295,6 +300,119 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id7">10.10.3. 示例3</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="code go highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s2">&quot;flag&quot;</span>
+    <span class="s2">&quot;fmt&quot;</span>
+    <span class="s2">&quot;os&quot;</span>
+    <span class="s2">&quot;strconv&quot;</span>
+    <span class="s2">&quot;strings&quot;</span>
+<span class="p">)</span>
+
+<span class="n">func</span> <span class="n">usage</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">flag</span><span class="o">.</span><span class="n">Usage</span><span class="p">()</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Format:</span><span class="se">\n</span><span class="s2">mooon_ssh -h=host1,host2,... -P=port -u=user -p=password -c=command</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Example:</span><span class="se">\n</span><span class="s2">mooon_ssh -h=192.168.31.32 -P=22 -u=root -p=&#39;root@2018&#39; -c=&#39;whoami&#39;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="p">(</span>
+        <span class="n">g_help</span>     <span class="o">=</span> <span class="n">flag</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="s2">&quot;Display a help message and exit&quot;</span><span class="p">)</span>
+        <span class="n">g_hosts</span>    <span class="o">=</span> <span class="n">flag</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Connect to the remote machines on the given hosts separated by comma, can be replaced by environment variable &#39;H&#39;&quot;</span><span class="p">)</span>
+        <span class="n">g_port</span>     <span class="o">=</span> <span class="n">flag</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="s2">&quot;Specifies the port to connect to on the remote machines, can be replaced by environment variable &#39;PORT&#39;&quot;</span><span class="p">)</span>
+        <span class="n">g_user</span>     <span class="o">=</span> <span class="n">flag</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Specifies the user to log in as on the remote machines, can be replaced by environment variable &#39;U&#39;&quot;</span><span class="p">)</span>
+        <span class="n">g_password</span> <span class="o">=</span> <span class="n">flag</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;The password to use when connecting to the remote machines, can be replaced by environment variable &#39;P&#39;&quot;</span><span class="p">)</span>
+        <span class="n">g_command</span>  <span class="o">=</span> <span class="n">flag</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;The command is executed on the remote machines&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">var</span> <span class="n">hosts</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span> <span class="n">string</span>
+    <span class="n">var</span> <span class="n">port</span> <span class="nb">int</span>
+    <span class="n">flag</span><span class="o">.</span><span class="n">Parse</span><span class="p">()</span>
+
+    <span class="o">//</span> <span class="n">help</span>
+    <span class="k">if</span> <span class="o">*</span><span class="n">g_help</span> <span class="p">{</span>
+        <span class="n">usage</span><span class="p">()</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="o">//</span> <span class="n">hosts</span>
+    <span class="k">if</span> <span class="o">*</span><span class="n">g_hosts</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="p">{</span>
+        <span class="n">hosts</span> <span class="o">=</span> <span class="o">*</span><span class="n">g_hosts</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">s</span> <span class="p">:</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="p">{</span>
+            <span class="n">hosts</span> <span class="o">=</span> <span class="n">s</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Parameter[</span><span class="se">\033</span><span class="s2">[1;33m-h</span><span class="se">\033</span><span class="s2">[m] not set</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">usage</span><span class="p">()</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="o">//</span> <span class="n">port</span>
+    <span class="n">s</span> <span class="p">:</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="s2">&quot;PORT&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="p">{</span>
+        <span class="n">port</span> <span class="o">=</span> <span class="o">*</span><span class="n">g_port</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">port_</span><span class="p">,</span> <span class="n">err</span> <span class="p">:</span><span class="o">=</span> <span class="n">strconv</span><span class="o">.</span><span class="n">Atoi</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="n">nil</span> <span class="p">{</span>
+            <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Parameter[</span><span class="se">\033</span><span class="s2">[1;33m-P</span><span class="se">\033</span><span class="s2">[m]: invaid port</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">usage</span><span class="p">()</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="n">port_</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="o">//</span> <span class="n">user</span>
+    <span class="k">if</span> <span class="o">*</span><span class="n">g_user</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="p">{</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="o">*</span><span class="n">g_user</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">s</span> <span class="p">:</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="p">{</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">s</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Parameter[</span><span class="se">\033</span><span class="s2">[1;33m-u</span><span class="se">\033</span><span class="s2">[m] not set</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">usage</span><span class="p">()</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="o">//</span> <span class="n">password</span>
+    <span class="k">if</span> <span class="o">*</span><span class="n">g_password</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="p">{</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="o">*</span><span class="n">g_password</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">s</span> <span class="p">:</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="p">{</span>
+            <span class="n">password</span> <span class="o">=</span> <span class="n">s</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Parameter[</span><span class="se">\033</span><span class="s2">[1;33m-p</span><span class="se">\033</span><span class="s2">[m] not set</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">usage</span><span class="p">()</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="o">//</span> <span class="n">command</span>
+    <span class="k">if</span> <span class="o">*</span><span class="n">g_command</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Parameter[</span><span class="se">\033</span><span class="s2">[1;33m-c</span><span class="se">\033</span><span class="s2">[m] not set</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">usage</span><span class="p">()</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">host_array</span> <span class="p">:</span><span class="o">=</span> <span class="n">strings</span><span class="o">.</span><span class="n">Split</span><span class="p">(</span><span class="n">hosts</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">host</span> <span class="p">:</span><span class="o">=</span> <span class="nb">range</span> <span class="n">host_array</span> <span class="p">{</span>
+        <span class="n">ip_port</span> <span class="p">:</span><span class="o">=</span> <span class="n">host</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">ip_port</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -305,7 +423,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../11.项目代码/index.html" class="btn btn-neutral float-right" title="11. 项目代码" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="11.strings.html" class="btn btn-neutral float-right" title="10.11. strings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="09.Go执行shell命令.html" class="btn btn-neutral float-left" title="10.9. Go执行shell命令" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

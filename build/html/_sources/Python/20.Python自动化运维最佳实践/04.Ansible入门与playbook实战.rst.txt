@@ -348,6 +348,15 @@ sshkey.sh
     if __name__ == '__main__':
         sshe("192.168.1.1", "root", "admin#123", "hostname;ifconfig")
 
+或者使用ansible自动推送密钥
+
+::
+
+    ansible -01-2 批量分发公钥
+
+    # 参考文献
+    https://my.oschina.net/attacker/blog/679618
+
 Ansible与正则
 -------------
 
@@ -1064,7 +1073,7 @@ shell与ansible的互相转换 ``apache.sh``
 示例：安装tomcat软件
 ~~~~~~~~~~~~~~~~~~~~
 
-创建vars.yml文件和tomcat.yml文件，在统计目录下 vars.yml
+创建vars.yml文件和tomcat.yml文件，在同一目录下 vars.yml
 
 ::
 

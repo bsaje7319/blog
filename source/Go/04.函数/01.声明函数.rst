@@ -463,3 +463,68 @@ Go 语言中也可以使用相互调用的递归函数：多个函数之间相�
     /*slice =  [1 2 3 4 5 7]
     奇数元素： [1 3 5 7]
     偶数元素: [2 4]*/
+
+函数的值传递和指针类型传地址
+----------------------------
+
+示例
+
+.. code:: go
+
+    package main
+
+    import (
+        "fmt"
+        "log"
+    )
+
+    //普通函数，值的副本传递
+    func functionA(num float64) float64 {
+        num *= num
+        return float64(num)
+    }
+
+    //指针类型函数，传递一个float64的指针类型，返回一个float64的指针类型
+    func functionB(num *float64) *float64 {
+        *num *= *num // 指针类型num处的值 * 指针类型num处的值
+        return num   // 返回一个float64的指针类型
+    }
+
+    // 值函数，值的副本传递
+    func functionC(b bool) (b1 bool, e error) {
+        return !b, nil
+    }
+
+    // 指针函数, 传递一个bool的指针类型，返回一个bool的指针类型
+    func functionD(b *bool) *bool {
+        *b = !*b
+        return b
+    }
+
+    func main() {
+        n := 5.0
+        fmt.Println(functionA(n))
+        fmt.Println(n)
+
+        hu1 := functionB(&n) //传递一个float64的指针类型
+        fmt.Println(hu1)     //打印指针地址
+        fmt.Println(*hu1)    //打印hu1指针处的值
+        // 此时此刻已经改变了n指针地址处的原始值了
+        fmt.Println(n)
+
+        fmt.Println("-----------------------------------------------------")
+        b := true
+        fmt.Println(functionC(b))
+        fmt.Println(b)
+
+        hu2 := functionD(&b)
+        fmt.Println(hu2)
+        fmt.Println(*hu2)
+        fmt.Println(b)
+
+        h, err := functionC(false)
+        if err != nil {
+            log.Fatal("err",err)
+        }
+        fmt.Println(h)
+    }

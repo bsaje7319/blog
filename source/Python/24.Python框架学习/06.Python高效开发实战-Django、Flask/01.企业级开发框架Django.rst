@@ -1,0 +1,671 @@
+.. contents::
+   :depth: 3
+..
+
+企业级开发框架Django
+====================
+
+1.安装Django2
+-------------
+
+在安装pip工具的Python环境后，可以直接通过pip install命令安装Django：
+
+::
+
+    #pip install django
+    或者
+    #pip install django==2.0.7 -i "https://pypi.doubanio.com/simple/"       # 使用国内豆瓣pip安装django2.0.7
+
+该命令将自动下载Django安装包并安装。安装完成后可以进入Python，通过如下命令验证是否安装成功：
+
+::
+
+    #python
+    >>>import django
+    >>>print django.VERSION
+    >>> (2, 0, 7, 'final', 0)
+
+本阶段学习使用python3和Django2.0.7
+
+2.实战演练：开发Django站点
+--------------------------
+
+用Django开发网站需要遵循Django的一套开发流程。本节通过建立一个消息录入页面演示Django的开发流程及相关技术。
+
+2.1 建立项目
+~~~~~~~~~~~~
+
+在进行Django开发之前需要先用django-admin建立Django项目，语法如下：
+
+::
+
+    #django-admin startproject 站点名称
+
+其中django-admin是安装好Django组件后在Python目录中生成的Django项目管理工具。比如，建立一个叫作djangosite的开发项目，命令如下：
+
+::
+
+    #django-admin startproject mydjango
+
+该命令在当前目录中建立了一个子目录djangosite，并在其中生成了Django开发的默认文件，djangosite的目录内容如下：
+
+::
+
+    mydjango/
+      manage.py
+      mydjango/
+          __init__.py
+          settings.py
+          urls.py
+          wsgi.py
+
+默认生成的几个文件都非常重要，在今后的开发中要一直使用或者维护它们，对它们的意义解释如下。
+
+●
+manage.py：是Django用于管理本项目的命令行工具，之后进行站点运行、数据库自动生成、静态文件收集等都要通过该文件完成。
+
+●
+内层djangosite/目录中包含了本项目的实际文件，同时因为其中包含\_\_init\_\_.py文件，所以该目录也是一个Python包。
+
+●
+djangosite/\ **init**.py：告诉Python该目录是一个Python包，其中暂无内容。
+
+● djangosite/settings.py:Django
+的项目配置文件。默认时，在其中定义了本项目引用的Django 组件、Django
+项目名等。在之后的开发中，还需在其中配置数据库参数、导入的其他Python包等信息。
+
+●
+djangosite/urls.py：维护项目的URL路由映射，即定义客户端访问的URL由哪一个Python模块解释并提供反馈。在默认情况下，其中只定义了“/admin”即管理员站点的解释器。
+
+●
+djangosite/wsgi.py：定义WSGI的接口信息，用于与其他Web服务器集成，一般本文件在生成后无须改动。
+
+2.2 建立应用
+~~~~~~~~~~~~
+
+2.3 基本视图
+~~~~~~~~~~~~
+
+在完成Django项目和应用的建立后，即可开始编写网站的应用代码，这里通过为注册页面显示一个欢迎标题，来演示Django的路由映射功能。
+
+（1）首先在djangosite/app/views.py中建立一个路由响应函数：
+
+::
+
+    from django.http import HttpResponse
+
+    def welcome(request):
+      return HttpResponse("<h1>Welcome to my tiny twitter! </h1>")
+
+该代码定义了一个函数welcome（），简单地返回一条被HttpResponse（）封装的Welcome信息。
+
+（2）接下来，要通过URL映射将用户的HTTP访问与该函数绑定起来。
+
+在djangosite/app/目录中新建一个urls.py文件，管理应用app中的所有URL映射，其文件内容为：
+
+::
+
+    from django.conf.urls import url
+    from . import views
+
+    urlpatterns = [
+      url(r'', views.welcome),
+    ]
+
+在其中的第1行引入了django.conf.urls中的url（）函数，Django中的所有路由映射由该函数生成。第2行代码引入了djangosite/app/views.py模块。之后定义了关键变量urlpatterns，该变量是一个列表，保存所有由url（）函数生成的路由映射。本代码中只设置了一个映射，以及把所有路由映射到view.py中的welcome函数。
+
+（3）在项目URL文件djangosite/urls.py的urlpatterns中增加一项，声明对应用app中urls.py文件的引用，代码如下：
+
+::
+
+    from django.conf.urls import url
+    from django.contrib import admin
+    from django.conf.urls import include                        #本行新增
+
+    urlpatterns = [
+      url(r'^app/', include('app.urls')),                      #本行新增
+      url(r'^admin/', admin.site.urls),
+    ]
+
+首先通过import语句引入django.conf.urls.include()函数，之后在urlpatterns列表中增加一个路径app/，将其转接到app.urls包，即djangosite/app/urls.py文件。这样，通过include()函数就将两个urlpatterns连接了起来。
+
+**注意：**
+url（）函数的第1个参数用正则表达式来表达URL路由，本例中^app/的含义是所有以app开头的路由。
+
+2.4 内置Web服务器
+~~~~~~~~~~~~~~~~~
+
+通过以上配置和编码过程，读者应该已经迫不及待地想检验一下网站效果了。查看网站效果首先需要通过manage.py启动Web服务器，代码如下：
+
+::
+
+    #cd djangosite
+    #python manage.py runserver 0.0.0.0:8001
+
+    Performing system checks...
+    System check identified no issues (0 silenced).
+    February 22, 2016 - 07:53:07
+    Django version 1.9.2, using settings 'djangosite.settings'
+    Starting development server at http://0.0.0.0:8001/
+    Quit the server with CONTROL-C.
+
+其中runserver是启动网站的关键字，后面的参数指定网站绑定的IP地址与端口号。用0.0.0.0表示绑定本机的所有IP。在命令运行的过程中将一直占用控制台，可以输入Ctrl+C组合键退出运行。
+
+**注意：** 用这种方式启动的Web 服务器是Django 内置的Web
+服务器，由于性能原因，一般只可用于开发人员测试。正式运行的网站应该使用本章后面介绍的WSGI方式启动。
+
+启动Web服务器后即可通过浏览器访问http://xx.xx.xx.xx/app/检验欢迎消息，效果如图6.1所示。
+
+2.5 模型类
+~~~~~~~~~~
+
+现在开始Model层的处理，即设计和开发信息发布的数据访问层。本节只设计一个简单的模型，以带领读者掌握设计模型的3个步骤。
+
+**1．配置项目INSTALLED\_APPS**
+
+要在djangosite项目的settings.py中告诉Django需要安装应用app中的模型，则方法是打开djangosite/settings.py文件，找到其中的INSTALLED\_APPS数组，在其中添加应用app的Config类，代码如下：
+
+::
+
+    INSTALLED_APPS = [
+      'app.apps.AppConfig',                       #此行新增
+      'django.contrib.admin',
+      'django.contrib.auth',
+      'django.contrib.contenttypes',
+      'django.contrib.sessions',
+      'django.contrib.messages',
+      'django.contrib.staticfiles',
+    ]
+
+上述代码中的app.apps.AppConfig声明的是djangosite/app/apps.py中自动生成的AppConfig类。
+
+**2．模型定义**
+
+打开djangosite/app/models.py，在其中新建一个模型类Moment用来定义信息发布表，代码如下：
+
+::
+
+    from django.db import models
+
+    class Moment(models.Model):
+      content = models.CharField(max_length=200)
+      user_name = models.CharField(max_length = 20)
+      kind = models.CharField(max_length = 20)
+
+在第1行中引入了django.db.models类，所有Django模型类必须继承自它。之后定义了该类的子类Moment，在其中定义了两个字段：字符串类型的content用来保存消息的内容、发布人的名字、消息的类型。
+
+**3．生成数据移植文件**
+
+Django的术语“生成数据移植文件”（makemigrations）是指将models.py中定义的数据表转换成数据库生成脚本的过程。该过程通过命令行工具manage.py完成，具体的命令及输出如下：
+
+::
+
+    #cd djangosite
+    #python manage.py makemigrations app
+    Migrations for 'app':
+      0001_initial.py:
+      - Create model Moment
+
+通过输出可以看到完成了模型Moment的建立。输出中的0001\_initial.py是数据库生成的中间文件，通过它也可以知道当前的数据库版本；该文件及以后的所有migration文件都存在于目录djangosite/app/migrations/中。
+
+在makemigrations的过程中，Django会对比models.py中的模型与已有数据库之间的差异，如果没有差异则不会做任何工作，比如再次执行makemigrations操作时将产生如下输出：
+
+::
+
+    #python manage.py makemigrations app
+    No changes detected in app 'app'
+
+如果对models.py做任何修改，则在下一次makemigrations的时候将会将修改的内容同步到数据库中。比如，将Moment类的content字段长度从200修改为300后，再次执行makemigrations的结果如下：
+
+::
+
+    #python manage.py makemigrations app
+    Migrations for 'app':
+      0002_auto_20160223_0633.py:
+    - Alter field content on moment
+
+在其过程中产生了新的中间文件0002\_auto\_20160223\_0633.py，读者如果对其感兴趣，则可以打开该文件查看其内容，代码如下：
+
+::
+
+    # -＊- coding: utf-8 -＊-
+    # Generated by Django 1.9.1 on 2016-02-23 06:33
+    from __future__ import unicode_literals
+    from django.db import migrations, models
+
+    class Migration(migrations.Migration):
+
+    dependencies = [
+        ('app', '0001_initial'),
+      ]
+
+    operations = [
+        migrations.AlterField(
+          model_name='moment',
+          name='content',
+          field=models.CharField(max_length=300),
+        ),
+      ]
+
+其中定义了Migration类，通过其中的dependencies指定前置版本，通过operations声明对数据库进行的修改。
+
+**注意：**
+djangosite/app/migrations目录中的全部文件都由manage.py自己维护，开发者不要手动修改其中文件的内容。
+
+**4．移植到数据库**
+
+在模型的修改过程中可以随时调用makemigrations生成中间移植文件。而当需要使移植文件生效、修改真实的数据库schema时，则需要通过manage.py的migrate命令使修改同步到数据库中。比如：
+
+::
+
+    #cd djangosite
+    #python manage.py migrate
+    Operations to perform:
+      Apply all migrations: admin, app, contenttypes, auth, sessions
+    Running migrations:
+      Rendering model states... DONE
+      Applying contenttypes.0001_initial... OK
+      Applying auth.0001_initial... OK
+      Applying admin.0001_initial... OK
+      Applying admin.0002_logentry_remove_auto_add... OK
+      Applying app.0001_initial... OK
+      Applying app.0002_auto_20160223_0633... OK
+      Applying app.0003_auto_20160224_0447... OK
+      Applying app.0004_remove_moment_pub_date... OK
+      Applying contenttypes.0002_remove_content_type_name... OK
+      Applying auth.0002_alter_permission_name_max_length... OK
+      Applying auth.0003_alter_user_email_max_length... OK
+      Applying auth.0004_alter_user_username_opts... OK
+      Applying auth.0005_alter_user_last_login_null... OK
+      Applying auth.0006_require_contenttypes_0002... OK
+      Applying auth.0007_alter_validators_add_error_messages... OK
+      Applying sessions.0001_initial... OK
+
+在命令执行的过程中将检查djangosite/app/migrations目录中的所有文件，逐步使历次生成的移植文件生效。
+
+**技巧：**
+可以在每次修改models.py文件内容后运行makemigrations命令，检查改动是否符合数据库的语法规则；在调试运行之前，运行一次migrate命令使改动生效。
+
+2.6 表单视图
+~~~~~~~~~~~~
+
+接下来的任务是设计和开发信息录入页面。该页面的基本功能为：提供输入界面，让用户输入名字、文本消息内容、选择消息类型，用户提交后网页自动设置该信息的时间并保存到数据库中。下面逐步进行开发。
+
+**1．定义表单类**
+
+建立表单类文件djangosite/app/forms.py，在其中定义表单类MomentForm。代码如下：
+
+::
+
+    from django.forms import ModelForm
+    from app.models import Moment
+
+    class MomentForm(ModelForm):
+      class Meta:
+          model = Moment
+          fields = '__all__'               #导入所有字段
+
+解析如下。
+
+● 引入django.forms.ModelForm类，该类是所用Django表单类的基类。
+
+●
+引入在本应用models.py中定义的Moment类，以便在后面的表单类中关联Moment类。
+
+●
+定义表单类MomentForm，在其中定义子类Meta。在Meta中声明与本表单关联的模型类及其字段。
+
+● Fields
+字段可以设为\_\_all\_\_，也可以用列表形式声明所要导入的属性，比如：fields=（'content',
+'user\_name', 'kind'）。
+
+**技巧：** Meta中的fields =
+'**all**\ ’将所有模型类中的字段导入表单类中。
+
+**2．修改模型类**
+
+为了使用户能够以单选的方式设置消息类型，则需要在models.py文件中定义单选枚举值，并与模型类Moment相关联。修改djangosite/app/models.py如下：
+
+::
+
+    from django.db import models
+    # -*- coding: utf-8 -*-
+    from django.db import models
+
+    # 新增元组用于设置消息类型枚举项
+    KIND_CHOICES = (
+        ('Python技术', 'Python技术'),
+        ('数据库技术', '数据库技术'),
+        ('经济学', '经济学'),
+        ('文体资讯', '文体资讯'),
+        ('个人心情', '个人心情'),
+        ('其他', '其他'),
+    )
+
+
+    # Create your models here.
+
+
+    class Moment(models.Model):
+        content = models.CharField(max_length=300)
+        user_name = models.CharField(max_length=20, default='匿名')
+        # 修改kind定义，加入choices参数
+        kind = models.CharField(
+            max_length=20, choices=KIND_CHOICES, default=KIND_CHOICES[0])
+
+
+    LEVELS = (
+        ('1', 'Very good'),
+        ('2', 'Good'),
+        ('3', 'Normal'),
+        ('4', 'Bad'),
+    )
+
+
+    class Comment(models.Model):
+        id = models.AutoField(primary_key=True)
+        level = models.CharField("请为本条信息评级", max_length=1, choices=LEVELS)
+
+代码解析如下。
+
+● 为kind字段增加了消息类型枚举项。
+
+● 为user\_name和kind字段用default属性增加了默认值。
+
+● 因为在文件中增加了中文信息，所以要在第1行用# -*- coding: utf-8
+-*-声明文件用utf-8编码。
+
+**注意：**
+因为本次编辑导致模型层发生变化，所以需要用manage.py命令行工具运行makemigrations和migrate命令来更新数据库的定义。
+
+**3．开发模板文件**
+
+模板是Python
+Web框架中用于产生HTML、XML等文本格式文档的术语。模板文件本身也是一种文本文件，开发者需要手工对其编辑和开发。建立目录djangosite/app/templates，在其中新建模板文件moments\_input.html，文件的内容如下：
+
+::
+
+    <! DOCTYPE html>
+    </html>
+      <head>
+          <title>消息录入页面</title>
+      </head>
+      <body>
+          <form action="? " method="post">
+            <fieldset>
+                <legend>请输入并提交</legend>
+                    {{ form.as_p }}
+                    <input type="submit" value="submit" />
+            </fieldset>
+          </form>
+      </body>
+    </html>
+
+模板文件以HTML格式为基本结构，其中的模板内容用大括号标识。本例用{{
+form.as\_p
+}}定义表单类MomentForm的输入字段。模板文件的详细语法将在后续章节中介绍。
+
+**4．开发视图**
+
+下面开发视图函数，使得表单类和页面模板衔接起来。打开djangosite/app/views.py文件，在其中加入如下函数：
+
+::
+
+    import os
+    from django.http import HttpResponse
+    from app.forms import MomentForm
+    from django.http import HttpResponseRedirect
+    from django.urls import reverse
+    from django.shortcuts import render
+
+
+    # Create your views here.
+
+    def welcome(request):
+        return HttpResponse("<h1>Wellcome to my django!!!</h1>")
+
+
+    def moments_input(request):
+        if request.method == 'POST':
+            form = MomentForm(request.POST)
+            if form.is_valid():
+                moment = form.save()
+                moment.save()
+                return HttpResponseRedirect(reverse("first-url"))
+        else:
+            form = MomentForm()
+        PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        return render(
+            request,
+            os.path.join(PROJECT_ROOT, 'app/templates', 'moments_input.html'),
+            {'form': form})
+
+在代码中新增了视图函数moments\_input（），该函数定义了两种访问方式的不同处理。
+
+● 如果是用户的Post表单提交，则保存moment对象，并重定向到欢迎页面。
+
+● 如果是普通的访问，则返回moments\_input.html模板的渲染结果作为HTTP
+Response。注意render()的第3个参数，将form作为参数传给了模板，这样在模板文件中才能访问该MomentForm的实例。
+
+在djangosite/app/urls.py文件中增加该视图函数的路由映射，内容如下：
+
+::
+
+    urlpatterns = [
+      url(r'moments_input', views.moments_input),   #本行新增
+      url(r'', views.welcome),
+    ]
+
+在代码中定义了该视图的调用函数地址是moments\_input，算上Django应用本身的路径，则该视图的全路径为http://xx.xx.xx.xx/app/moments\_input。
+
+.. figure:: ../../../_static/django00004.png
+   :alt: 
+
+3.使用管理界面
+--------------
+
+Django管理界面是一个通过简单的配置就可以实现的数据模型后台的Web控制台。管理界面通常是给系统管理员使用的，以完成元数据的输入、删除、查询等工作。
+
+首先将管理界面需要管理的模型类添加到djangosite/app/admin.py文件中，具体如下：
+
+::
+
+    from django.contrib import admin
+    from .models import Moment
+    admin.site.register(Moment)
+
+本文件中只要通过admin.site.register()函数逐个声明要管理的模型类即可。
+
+在第1次访问管理界面之前，需要通过manage.py工具的createsuperuser命令建立管理员用户。在命令运行的过程中按照提示输入管理员的用户名、邮箱地址、密码：
+
+::
+
+    #cd djangosite
+    #python manage.py createsuperuser
+    Username: admin
+    Email address: admin@mysite.com
+    Password: ＊＊＊＊＊＊＊＊＊＊
+    Password (again): ＊＊＊＊＊＊＊＊＊
+    Superuser created successfully.
+
+之后即可访问管理员页面http://xx.xx.xx.xx/admin。输入用户名及密码后，效果如图6.3所示。在管理员界面提供新增Moment模型类的Add链接，单击Moments链接后，还可以看到修改和删除选项。界面中的Groups和Users涉及Django的用户管理系统，
+
+4. Django模型层
+---------------
+
+4.1 基本操作
+~~~~~~~~~~~~
+
+使用Django模型开发的首要任务就是定义模型类即其属性。每个模型类都可以被映射为数据库中的一个数据表，而类属性被映射为数据字段，除此之外，数据库表的主键、外键、约束等也通过类属性完成定义。
+
+**1．模型类定义**
+
+模型定义的基本结构如下：
+
+::
+
+    from django.db import models
+
+    class ModelName(models.Model):
+      field1 = models.XXField(…)
+      field2 = models.XXField(…)
+        …
+      class Meta:
+          db_table = …
+          other_metas = …
+
+解析如下。
+
+● 所有Django模型继承自django.db.models.Model类。
+
+● 通过其中的类属性定义模型字段，模型字段必须是某种models.XXField类型。
+
+●
+通过模型类中的Meta子类定义模型元数据，比如数据库表名、数据默认排序方式等。
+
+Meta类的属性名由Django预定义，常用的Meta类属性汇总如下。
+
+● abstract:True or False，标识本类是否为抽象基类。
+
+● app\_label：定义本类所属的应用，比如app\_label = 'myapp'。
+
+● db\_table：映射的数据表名，比如db\_table = 'moments'。
+
+**技巧：**
+如果Meta中不提供db\_table字段，则Django会为模型自动生成数据表名，生成的格式为“应用名\_模型名”，比如应用app的模型Comment的默认数据表名为app\_comment。
+
+●
+db\_tablespace：映射的表空间名称。表空间的概念只在某些数据库如Oracle中存在，不存在表空间概念的数据库将忽略本字段。
+
+●
+default\_related\_name：定义本模型的反向关系引用名称，默认与模型名一致。本名称的含义将在后续的内容中说明。
+
+●
+get\_latest\_by：定义按哪个字段值排列以获得模型的开始或结束记录，本属性值通常指向一个日期或整型的模型字段。
+
+● managed:True or
+False，定义Django的manage.py命令行工具是否管理本模型。本属性默认为True，如果将其设为False，则运行python
+manage.py
+migrate时将不会在数据库中生成本模型的数据表，所以需要手工维护数据库的定义。
+
+● order\_with\_respect\_to：定义本模型可以按照某外键引用的关系排序。
+
+●
+ordering：本模型记录的默认排序字段，可以设置多个字段，默认以降序排列，如果以升序排列则需要在字段名前加“负号”。比如如下定义按user\_name升序和pub\_date降序排列。
+
+::
+
+    class Meta:
+      ordering = ['user_name', 'pub_date']
+
+● default\_permissions：模型操作权限，默认为default\_permisstions=
+（'add', 'change', 'delete'）。
+
+● proxy:True or Flase，本模型及所有继承自本模型的子模型是否为代理模型。
+
+●
+required\_db\_features：定义底层数据库所必须具备的特性。比如required\_db\_features=['gis\_enabled']只将本数据模型生成在满足gis\_enabled特性的数据库中。
+
+●
+required\_db\_vendor：定义底层数据库的类型，比如SQLite、PostgreSQL、MySQL、Oracle。如果定义了本属性，则模型只能在其声明的数据库中被维护。
+
+●
+unique\_together：用来设置的不重复的字段组合，必须唯一（可以将多个字段做联合唯一）。
+
+::
+
+    class Meta:
+      unique_together =( ("user_name", "pub_date"), )
+
+上述代码定义每个user\_name在同一个pub\_date中只能有一条数据表记录。因为unique\_together本身是一个元组，所以可以设置多个这样的唯一约束。
+
+● index\_together：定义联合索引的字段，可以设置多个。
+
+::
+
+    class Meta:
+      index_together = [["pub_date", "deadline"], ]
+
+●
+verbose\_name：指明一个易于理解和表述的单数形式的对象名称。如果这个值没有被设置，则Django将会使用该model的类名的分词形式作为它的对象表述名，即CamelCase将会被转换为camel
+case。
+
+● verbose\_name\_plural：指明一个易于理解和表述的复数形式的对象名称。
+
+**2．普通字段类型**
+
+普通字段是指模型类中除外键关系外的数据字段属性。数据字段为Django使用模型时提供如下信息。
+
+● 在数据库中用什么类型定义模型字段，比如INTEGER、VARCHAR等。
+
+● 用什么样的HTML标签显示模型字段，比如\ ``<input type="radio">``\ 等。
+
+● 需要什么样的HTML表单数据验证。
+
+所有数据字段的属性必须继承自抽象类django.db.models.Field，开发者可以定义自己的继承自该类的字段类型，也可以使用Django预定义的一系列Field子类。常用的Django预定义字段类型描述如下。
+
+●
+AutoField：一个自动递增的整型字段，添加记录时它会自动增长。AutoField字段通常只用于充当数据表的主键；如果在模型中没有指定主键字段，则Django会自动添加一个AutoField字段。
+
+● BigIntegerField:64位整型字段。
+
+● BinaryField：二进制数据字段，只能通过bytes对其进行赋值。
+
+●
+BooleanField：布尔字段，相对应的HTML标签是\ ``<input type="checkbox">``\ 。
+
+●
+CharField：字符串字段，用于较短的字符串，相对应的HTML标签是单行输入框\ ``<input type="text">``\ 。
+
+●
+TextField：大容量文本字段，相对应的HTML标签是多行编辑框\ ``<textarea>``\ 。
+
+●
+CommaSeparatedIntegerField：用于存放逗号分隔的整数值，相对于普通的CharField，它有特殊的表单数据验证要求。
+
+●
+DateField：日期字段，相对应的HTML标签是\ ``<input type="text">``\ 、一个JavaScript日历和一个“Today”快捷按键。有下列额外的可选参数：auto\_now，当对象被保存时，将该字段的值设置为当前时间；auto\_now\_add，当对象首次被创建时，将该字段的值设置为当前时间。
+
+● DateTimeField：类似于DateField，但同时支持于时间的输入。
+
+● DurationField：存储时间周期，用Python的timedelta类型构建。
+
+● EmailField：一个带有检查Email合法性的CharField。
+
+●
+FileField：一个文件上传字段。在定义本子段时必须传入参数upload\_to，用于保存上载文件的服务器文件系统的路径。这个路径必须包含strftime
+formatting，该格式将被上载文件的date/time替换。
+
+●
+FilePathField：按目录限制规则选择文件，定义本字段时必须传入参数path，用以限定目录。
+
+●
+FloatField：浮点型字段。定义本字段时必须传入参数max\_digits和decimal\_places，用于定义总位数（不包括小数点和符号）和小数位数。
+
+●
+ImageField：类似于FileField，同时验证上传对象是否是一个合法图片。它有两个可选参数，即height\_field和width\_field，如果提供这两个参数，则图片将按提供的高度和宽度规格保存。该字段要求安装Python
+Imaging库。
+
+● IntegerField：用于保存一个整数。
+
+● IPAddressField：一个字符串形式的IP地址，比如“129.23.250.2”。
+
+● NullBooleanField：类似于BooleanField，但比其多一个None选项。
+
+●
+PhoneNumberField：带有美国风格的电话号码校验的CharField（格式为XXX-XXX-XXXX）。
+
+● PositiveIntegerField：只能输入非负数的IntegerField。
+
+● SlugField：只包含字母、数字、下画线和连字符的输入字段，它通常用于URL。
+
+●
+SmallIntegerField：类似于IntegerField，但只具有较小的输入范围，具体范围依赖于所使用的数据库。
+
+● TimeField：时间字段，类似于DateTimeField，但只能表达和输入时间。
+
+● URLField：用于保存URL。
+
+● USStateField：美国州名的缩写字段，由两个字母组成。
+
+● XMLField:XML字符字段，是具有XML合法性验证的TextField。

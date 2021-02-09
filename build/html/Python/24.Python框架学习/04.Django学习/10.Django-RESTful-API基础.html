@@ -1,0 +1,1107 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>22.4.11. Django-RESTful-API基础 &mdash; 运维开发修炼之路</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="22.5. Tornado-Web框架及其应用" href="../05.Tornado-Web框架及其应用/index.html" />
+    <link rel="prev" title="22.4.10. 玩转Django2.0-Auth认证系统" href="09.玩转Django2.0-Auth认证系统.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">22.4. Django学习</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="01.安装DjangoWeb框架.html">22.4.1. 安装DjangoWeb框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02.Django框架的使用.html">22.4.2. Django框架的使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03.Django流程跑通.html">22.4.3. Django流程跑通</a></li>
+<li class="toctree-l4"><a class="reference internal" href="04.实战演练-开发Django站点.html">22.4.4. 实战演练-开发Django站点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="05.玩转Django2.0-视图.html">22.4.5. 玩转Django2.0-视图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06.玩转Django2.0-模型与数据库.html">22.4.6. 玩转Django2.0-模型与数据库</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06.玩转Django2.0-模板.html">22.4.7. 玩转Django2.0-模板</a></li>
+<li class="toctree-l4"><a class="reference internal" href="07.玩转Django2.0-表单与模型.html">22.4.8. 玩转Django2.0-表单与模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="08.玩转Django2.0-admin后台系统.html">22.4.9. 玩转Django2.0-admin后台系统</a></li>
+<li class="toctree-l4"><a class="reference internal" href="09.玩转Django2.0-Auth认证系统.html">22.4.10. 玩转Django2.0-Auth认证系统</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">22.4.11. Django-RESTful-API基础</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06.Python高效开发实战-Django、Flask/index.html">22.6. Python高效开发实战-Django、Flask</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Go_vs_Python/index.html">Go vs Python</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="../index.html">22. Python框架学习</a> &raquo;</li>
+        
+          <li><a href="index.html">22.4. Django学习</a> &raquo;</li>
+        
+      <li>22.4.11. Django-RESTful-API基础</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/Python/24.Python框架学习/04.Django学习/10.Django-RESTful-API基础.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#django-restful-api" id="id4">Django-RESTful-API基础</a><ul>
+<li><a class="reference internal" href="#restfulapi" id="id5">RESTful规范——如何写API</a></li>
+<li><a class="reference internal" href="#django-rest-framework" id="id6">Django REST framework简介</a></li>
+<li><a class="reference internal" href="#django-rest-frameworkapi" id="id7">1.用Django REST framework实现豆瓣API应用</a><ul>
+<li><a class="reference internal" href="#serializermodelserializer" id="id8">1.1 Serializer和ModelSerializer序列化选择</a></li>
+<li><a class="reference internal" href="#mixins-listmodelmixin-genericapiview" id="id9">1.2 mixins.ListModelMixin+GenericAPIView的方式实现视图封装</a></li>
+<li><a class="reference internal" href="#generics-listapiview" id="id10">1.3 generics.ListAPIView的方式实现视图封装</a></li>
+<li><a class="reference internal" href="#viewsets-router" id="id11">1.4 viewsets+Router的方式实现视图封装</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#django" id="id12">2. 用Django设计大型电商的类别表</a><ul>
+<li><a class="reference internal" href="#id1" id="id13">2.1 电商类别表的项目功能需求</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vue-js" id="id14">3. 搭建Vue.js前端开发环境</a></li>
+<li><a class="reference internal" href="#pycharm" id="id15">4. 使用PyCharm新建后端演示项目</a><ul>
+<li><a class="reference internal" href="#id2" id="id16">4.1 新建基础环境和数据</a></li>
+<li><a class="reference internal" href="#demo2" id="id17">4.2 完善demo2的后台逻辑代码</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3" id="id18">5.前后端项目联合调试</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="django-restful-api">
+<h1><a class="toc-backref" href="#id4">22.4.11. Django-RESTful-API基础</a><a class="headerlink" href="#django-restful-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="restfulapi">
+<h2><a class="toc-backref" href="#id5">RESTful规范——如何写API</a><a class="headerlink" href="#restfulapi" title="Permalink to this headline">¶</a></h2>
+<p>API接口应该如何写？API跟URL有什么不同？这绝对是不可以被忽略的问题，如果API写得乱七八糟，很有可能会失去负责前端开发的同事的信任。将API写得“高大上”，也是一名开发者工匠精神的一种体现。下面来介绍如何写API。</p>
+<p>（1）如果是对同一个表进行数据操作（增、删、改、查），应该使用一条API，然后根据method的不同，进行不同的操作。</p>
+<hr class="docutils" />
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span><span class="o">/</span><span class="n">POST</span><span class="o">/</span><span class="n">PUT</span><span class="o">/</span><span class="n">DELETE</span><span class="o">/</span><span class="n">PATCH</span>
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+<p>（2）面向资源编程，通过API提交的参数最好是名词，比如name，尽量少用动词。</p>
+<hr class="docutils" />
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">name</span>
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+<p>（3）体现版本，在API中加入像v1、v2这样的版本代号：</p>
+<hr class="docutils" />
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">namehttp</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">name</span>
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+<p>（4）体现API，让使用者一眼能看出这是API而不是URL，应该在API中加入提示：</p>
+<hr class="docutils" />
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">namehttp</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">name</span>
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+<p>（5）使用HTTPS，这一项原本是为了安全考虑，但是随着国内外互联网环境对安全性越来越重视，谷歌浏览器对所有不是HTTPS请求的链接全都会提示用户此链接为不安全链接，腾讯等平台也对小程序等产品强制要求使用HTTPS协议。不过，好在国内许多提供云服务的公司，像腾讯云、阿里云等，都提供免费的SSL证书，供开发者去申请。</p>
+<hr class="docutils" />
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">namehttps</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">name</span>
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+<p>（6）响应式设置状态码，例如，200和201代表操作成功，403代表权限不够，404代表没有指定资源，500代表运行时发现代码逻辑错误等。</p>
+<hr class="docutils" />
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s1">&#39;adgbag&#39;</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+<p>（7）API的参数中加入筛选条件参数，也可以理解为获取资源优先选择GET的方式。</p>
+<hr class="docutils" />
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.abc.com/api/v2/name?page=1&amp;size=10
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+<p>（8）返回值的规范，不同的method操作成功后，后端应该响应的返回值如下：</p>
+<hr class="docutils" />
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">name</span>
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+<p>不同的提交方式代表对数据进行不同的操作：</p>
+<p>·GET：所有列表。</p>
+<p>·POST：新增的数据。</p>
+<hr class="docutils" />
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">name</span><span class="o">/</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+<p>·GET：单条数据。</p>
+<p>·PUT：更新，返回更新的数据。</p>
+<p>·PATCH：局部更新，返回更新的数据。</p>
+<p>·DELETE：删除，返回空文档。</p>
+<p>（9）返回错误信息，应该加入错误代号code，让用户能直接看出是哪种类型的错误。</p>
+<hr class="docutils" />
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ret {  code:1000，  data:{    {&#39;id&#39;:1,&#39;title&#39;:&#39;lala&#39;}  }}
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+<p>（10）返回的详细信息，应该以字典的形式放在data中。</p>
+<hr class="docutils" />
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ret {   code:1000，  data:{    {&#39;id&#39;:1,&#39;title&#39;:&#39;lala&#39;,&#39;detail&#39;:http://www.……}  }}
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+<p>RESTful规范是业内约定俗成的规范，并不是技术上定义的公式，在实际生产使用中，大家还是要根据业务灵活运用。</p>
+</div>
+<div class="section" id="django-rest-framework">
+<h2><a class="toc-backref" href="#id6">Django REST framework简介</a><a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h2>
+<p>如果可以将Django REST
+framework的10个常用组件融会贯通，那么使用Django开发前后端分离的项目中有可能遇到的绝大部分需求，都能得到高效的解决。</p>
+<p>Django REST framework的10个常用组件如下：</p>
+<p>·权限组件；</p>
+<p>·认证组件；</p>
+<p>·访问频率限制组件；</p>
+<p>·序列化组件；</p>
+<p>·路由组件；</p>
+<p>·视图组件；</p>
+<p>·分页组件；</p>
+<p>·解析器组件；</p>
+<p>·渲染器组件；</p>
+<p>·版本组件。</p>
+<p>Django REST framework官方文档的地址是
+<a class="reference external" href="https://www.django-rest-framework.org/">https://www.django-rest-framework.org/</a>。</p>
+</div>
+<div class="section" id="django-rest-frameworkapi">
+<h2><a class="toc-backref" href="#id7">1.用Django REST framework实现豆瓣API应用</a><a class="headerlink" href="#django-rest-frameworkapi" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="serializermodelserializer">
+<h3><a class="toc-backref" href="#id8">1.1 Serializer和ModelSerializer序列化选择</a><a class="headerlink" href="#serializermodelserializer" title="Permalink to this headline">¶</a></h3>
+<p>我们对Django REST
+framework的两种序列化方式做一个总结：Serializer和ModelSerializer两种序列化方式中，前者比较容易理解，适用于新手；后者则在商业项目中被使用的更多，在实际开发中建议大家多使用后者。</p>
+<p>记得笔者初学Django REST
+framework时，一直很困惑于用哪种序列化方式更好。因为许多教材中都将Django
+REST
+framework的Serializer和ModelSerializer，与Django的Form和ModelForm做对比，虽然二者相似，在优劣选择上却是不同的。Form虽然没有ModelForm效率高，但是ModelForm的使用增加了项目的耦合度，不符合项目解耦原则，所以Form比ModelForm更优（除了字段量过大的情况）；而ModelSerializer有Serializer所有的优点，同时并没有比Serializer明显的不足之外，所以ModelSerializer比Serializer更优。</p>
+<div class="section" id="serializer">
+<h4>1.1.1 Serializer序列化方式<a class="headerlink" href="#serializer" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="k">import</span> <span class="n">serializers</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">UserProfile</span><span class="p">,</span> <span class="n">Book</span>
+
+
+<span class="k">class</span> <span class="nc">BookSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">isbn</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">publish</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">FloatField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>views.py</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BookAPIView1</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    使用Serializer</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">APIKey</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;apikey&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">developer</span> <span class="o">=</span> <span class="n">UserProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">APIkey</span><span class="o">=</span><span class="n">APIKey</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">developer</span><span class="p">:</span>
+            <span class="n">balance</span> <span class="o">=</span> <span class="n">developer</span><span class="o">.</span><span class="n">money</span>
+            <span class="k">if</span> <span class="n">balance</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">isbn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;isbn&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">books</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">isbn</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">isbn</span><span class="p">))</span>
+                <span class="n">books_serializer</span> <span class="o">=</span> <span class="n">BookSerializer</span><span class="p">(</span><span class="n">books</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">developer</span><span class="o">.</span><span class="n">money</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">developer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">books_serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;兄弟，又到了需要充钱的时候！好开心啊！&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;查无此人啊&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modelserializer">
+<h4>1.1.2 ModelSerializer序列号方式<a class="headerlink" href="#modelserializer" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BookModelSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Book</span>
+        <span class="c1"># 将整个表的所有字段都序列化</span>
+        <span class="c1"># fields = &quot;__all__&quot;</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;isbn&#39;</span><span class="p">,</span> <span class="s1">&#39;author&#39;</span><span class="p">)</span>    <span class="c1">#指定序列化某些字段</span>
+</pre></div>
+</div>
+<p>views.py</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BookAPIView2</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    使用ModelSerializer</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">APIKey</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;apikey&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">developer</span> <span class="o">=</span> <span class="n">UserProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">APIkey</span><span class="o">=</span><span class="n">APIKey</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">developer</span><span class="p">:</span>
+            <span class="n">balance</span> <span class="o">=</span> <span class="n">developer</span><span class="o">.</span><span class="n">money</span>
+            <span class="k">if</span> <span class="n">balance</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">isbn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;isbn&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">books</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">isbn</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">isbn</span><span class="p">))</span>
+                <span class="n">books_serializer</span> <span class="o">=</span> <span class="n">BookModelSerializer</span><span class="p">(</span><span class="n">books</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">developer</span><span class="o">.</span><span class="n">money</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">developer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">books_serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;兄弟，又到了需要充钱的时候！好开心啊！&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;查无此人啊&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mixins-listmodelmixin-genericapiview">
+<h3><a class="toc-backref" href="#id9">1.2 mixins.ListModelMixin+GenericAPIView的方式实现视图封装</a><a class="headerlink" href="#mixins-listmodelmixin-genericapiview" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用mixins.ListModelMixin+generics.GenericAPIView对APIView进行一次封装，至少需要加一个get函数：</span>
+<span class="k">class</span> <span class="nc">BookMixinView1</span><span class="p">(</span><span class="n">mixins</span><span class="o">.</span><span class="n">ListModelMixin</span><span class="p">,</span> <span class="n">generics</span><span class="o">.</span><span class="n">GenericAPIView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">BookModelSerializer</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>  <span class="c1"># 如果这里不加get函数，代表默认不支持get访问这个api，所以必须加上</span>
+        <span class="n">APIKey</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;apikey&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">developer</span> <span class="o">=</span> <span class="n">UserProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">APIkey</span><span class="o">=</span><span class="n">APIKey</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">developer</span><span class="p">:</span>
+            <span class="n">balance</span> <span class="o">=</span> <span class="n">developer</span><span class="o">.</span><span class="n">money</span>
+            <span class="k">if</span> <span class="n">balance</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">isbn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;isbn&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">developer</span><span class="o">.</span><span class="n">money</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">developer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">queryset</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">isbn</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">isbn</span><span class="p">))</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;兄弟，又到了需要充钱的时候！好开心啊！&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;查无此人啊&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generics-listapiview">
+<h3><a class="toc-backref" href="#id10">1.3 generics.ListAPIView的方式实现视图封装</a><a class="headerlink" href="#generics-listapiview" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 而使用generics.ListAPIView则可以不用加这个函数，因为generics.ListAPIView相对于mixins.ListModelMixin+generics.GenericAPIView而言，所谓的封装，就是封装了一个get函数罢了。</span>
+<span class="k">class</span> <span class="nc">BookMixinView2</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">BookModelSerializer</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">APIKey</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;apikey&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">developer</span> <span class="o">=</span> <span class="n">UserProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">APIkey</span><span class="o">=</span><span class="n">APIKey</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">developer</span><span class="p">:</span>
+            <span class="n">balance</span> <span class="o">=</span> <span class="n">developer</span><span class="o">.</span><span class="n">money</span>
+            <span class="k">if</span> <span class="n">balance</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">isbn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;isbn&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">developer</span><span class="o">.</span><span class="n">money</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">developer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">queryset</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">isbn</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">isbn</span><span class="p">))</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;兄弟，又到了需要充钱的时候！好开心啊！&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s2">&quot;查无此人啊&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="viewsets-router">
+<h3><a class="toc-backref" href="#id11">1.4 viewsets+Router的方式实现视图封装</a><a class="headerlink" href="#viewsets-router" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">IsDeveloper</span><span class="p">(</span><span class="n">BasePermission</span><span class="p">):</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;查无此人啊&#39;</span>
+
+    <span class="k">def</span> <span class="nf">has_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="n">APIKey</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;apikey&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">developer</span> <span class="o">=</span> <span class="n">UserProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">APIkey</span><span class="o">=</span><span class="n">APIKey</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">developer</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">class</span> <span class="nc">EnoughMoney</span><span class="p">(</span><span class="n">BasePermission</span><span class="p">):</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;兄弟，又到了需要充钱的时候！好开心啊！&quot;</span>
+
+    <span class="k">def</span> <span class="nf">has_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="n">APIKey</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;apikey&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">developer</span> <span class="o">=</span> <span class="n">UserProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">APIkey</span><span class="o">=</span><span class="n">APIKey</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="n">balance</span> <span class="o">=</span> <span class="n">developer</span><span class="o">.</span><span class="n">money</span>
+        <span class="k">if</span> <span class="n">balance</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">developer</span><span class="o">.</span><span class="n">money</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">developer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">class</span> <span class="nc">BookModelViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+    <span class="n">authentication_classes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsDeveloper</span><span class="p">,</span> <span class="n">EnoughMoney</span><span class="p">]</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">BookModelSerializer</span>
+
+    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">isbn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;isbn&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">books</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">isbn</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">isbn</span><span class="p">))</span>
+        <span class="n">queryset</span> <span class="o">=</span> <span class="n">books</span>
+        <span class="k">return</span> <span class="n">queryset</span>
+</pre></div>
+</div>
+<p>urls.py</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">users.views</span> <span class="k">import</span> <span class="n">BookAPIView1</span><span class="p">,</span> <span class="n">BookAPIView2</span><span class="p">,</span> <span class="n">BookMixinView1</span><span class="p">,</span> <span class="n">BookMixinView2</span><span class="p">,</span> <span class="n">BookModelViewSet</span>
+<span class="kn">from</span> <span class="nn">rest_framework.routers</span> <span class="k">import</span> <span class="n">DefaultRouter</span>
+<span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="k">import</span> <span class="n">include</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">DefaultRouter</span><span class="p">()</span>
+<span class="n">router</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;apibook5&#39;</span><span class="p">,</span> <span class="n">BookModelViewSet</span><span class="p">)</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="c1"># Serializer</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;apibook1/&#39;</span><span class="p">,</span> <span class="n">BookAPIView1</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;book1&#39;</span><span class="p">),</span>
+    <span class="c1"># ModelSerializer</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;apibook2/&#39;</span><span class="p">,</span> <span class="n">BookAPIView2</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;book2&#39;</span><span class="p">),</span>
+
+    <span class="c1"># 用mixins.ListModelMixin+GenericAPIView的方式实现视图封装</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;apibook3/&#39;</span><span class="p">,</span> <span class="n">BookMixinView1</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;book3&#39;</span><span class="p">),</span>
+    <span class="c1"># 用generics.ListAPIView的方式实现视图封装</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;apibook4/&#39;</span><span class="p">,</span> <span class="n">BookMixinView2</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;book4&#39;</span><span class="p">),</span>
+    <span class="c1"># 用viewsets+Router的方式实现视图封装</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">router</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>使用Postman对API进行测试，用GET的方式访问：</p>
+<hr class="docutils" />
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://127.0.0.1:8000/apibook1/?apikey=abcdefghigklmn&amp;isbn=777777
+http://127.0.0.1:8000/apibook2/?apikey=abcdefghigklmn&amp;isbn=777777
+http://127.0.0.1:8000/apibook3/?apikey=abcdefghigklmn&amp;isbn=777777
+http://127.0.0.1:8000/apibook4/?apikey=abcdefghigklmn&amp;isbn=777777
+http://127.0.0.1:8000/apibook5/?apikey=abcdefghigklmn&amp;isbn=777777
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="django">
+<h2><a class="toc-backref" href="#id12">2. 用Django设计大型电商的类别表</a><a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id13">2.1 电商类别表的项目功能需求</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>（1）类别表必须包含多级类目，至少分为四级类目。</p>
+<p>（2）类别表每一级类目数据都要有各自类目级别的标注，以便前端进行网页设计。</p>
+<p>（3）类别表内的类别数据，必须可以灵活地进行增、减，并且不会因此而改变其上下层级的数据关系。</p>
+<div class="section" id="vue-jsdemo1">
+<h4>2.1.1 使用Vue.js在前端开发一个电商导航栏项目demo1<a class="headerlink" href="#vue-jsdemo1" title="Permalink to this headline">¶</a></h4>
+<p>Vue.js就是一个前端框架。Vue.js的单页面应用模式对于前端技术的影响非常深远，包括微信小程序在内的很多前端原生语言，都是借鉴了此模式。</p>
+<p>Vue.js是一个构建数据驱动的Web界面渐进式框架，与Angular和React并称为前端三大框架，而Vue.js框架是由华人尤雨溪所创造，开发文档更适合中国人阅读，而且尤雨溪也已经加盟阿里巴巴，所以Vue.js在国内也得到了阿里巴巴的推广，已经成为了国内最热门的前端框架之一。Vue.js的知识非常简单，如果大家已经掌握了HTML+CSS+JavaScript语言，通过Vue.js的官方文档，只需要几个小时的学习，就可以轻松上手Vue.js框架了。Vue.js是实现多端并行中非常重要，也是非常基础的一个技术。</p>
+</div>
+</div>
+</div>
+<div class="section" id="vue-js">
+<h2><a class="toc-backref" href="#id14">3. 搭建Vue.js前端开发环境</a><a class="headerlink" href="#vue-js" title="Permalink to this headline">¶</a></h2>
+<p>（1）下载Node.js。</p>
+<p>Node.js官网地址为https://nodejs.org/en/</p>
+<p>（2）安装Node.js。</p>
+<p>（3）查看Node.js是否安装成功。</p>
+<p>（4）安装淘宝镜像cnpm，可以让资源包下载得更快。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># npm install -g cnpm --registry=https://registry.npm.taobao.org</span>
+</pre></div>
+</div>
+<p>（5）安装Vue.js的脚手架工具。输入以下命令</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># cnpm install --global vue-cli</span>
+</pre></div>
+</div>
+<p>（6）创建项目。创建Vue.js项目，命名为vue02.然后连续按5次Enter键默认选项。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># vue init webpack-simple vue02
+
+? Project name demo1
+? Project description A Vue.js project
+? Author
+? License MIT
+? Use sass? No
+
+   vue-cli · Generated &quot;demo1&quot;.
+
+   To get started:
+
+     cd demo1
+     npm install
+     npm run dev
+</pre></div>
+</div>
+<p>项目新建完成后，切换到项目目录下,安装依赖：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@cicd</span><span class="o">-</span><span class="n">dev</span> <span class="n">lib</span><span class="p">]</span><span class="c1"># cd vue02D:\vue02&gt;cnpm install axios --save</span>
+<span class="o">/</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@cicd</span><span class="o">-</span><span class="n">dev</span> <span class="n">demo1</span><span class="p">]</span><span class="c1"># cnpm install</span>
+</pre></div>
+</div>
+<p>（7）运行初始项目。在项目目录demo1下，执行以下命令，结果如图所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@cicd</span><span class="o">-</span><span class="n">dev</span> <span class="n">demo1</span><span class="p">]</span><span class="c1"># npm run dev</span>
+
+<span class="o">&gt;</span> <span class="n">vue02</span><span class="nd">@1</span><span class="o">.</span><span class="mf">0.0</span> <span class="n">dev</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">node</span><span class="o">-</span><span class="n">v10</span><span class="o">.</span><span class="mf">9.0</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">demo1</span>
+<span class="o">&gt;</span> <span class="n">cross</span><span class="o">-</span><span class="n">env</span> <span class="n">NODE_ENV</span><span class="o">=</span><span class="n">development</span> <span class="n">webpack</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">server</span> <span class="o">--</span><span class="nb">open</span> <span class="o">--</span><span class="n">hot</span>
+
+<span class="n">Project</span> <span class="ow">is</span> <span class="n">running</span> <span class="n">at</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8086</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pycharm">
+<h2><a class="toc-backref" href="#id15">4. 使用PyCharm新建后端演示项目</a><a class="headerlink" href="#pycharm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id16">4.1 新建基础环境和数据</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>（1）新建Django项目并命名为demo2，同时新建App，命名为app01。</p>
+<p>（2）在PyCharm中打开项目终端，安装相关依赖包：</p>
+<p><strong>这里使用豆瓣源加速安装依赖包</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">Djangorestframework</span> <span class="n">markdown</span> <span class="n">Django</span><span class="o">-</span><span class="nb">filter</span> <span class="n">pillow</span> <span class="n">Django</span><span class="o">-</span><span class="n">guardian</span> <span class="n">coreapi</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;https://pypi.doubanio.com/simple/&quot;</span>
+</pre></div>
+</div>
+<p>（3）在demo2/demo2/settings.py中注册rest_framework：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;app01.apps.App01Config&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rest_framework&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>（4）在demo2/app01/models.py中新建类别表：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+
+
+<span class="c1"># Create your models here.</span>
+<span class="k">class</span> <span class="nc">Type1</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    一级类目</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;类目名&quot;</span><span class="p">)</span>
+    <span class="n">add_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;添加时间&#39;</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;商品类别&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="n">verbose_name</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+
+<span class="k">class</span> <span class="nc">Type2</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    二级类目</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Type1</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;父级类别&quot;</span><span class="p">,</span>
+                               <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;类目名&quot;</span><span class="p">)</span>
+    <span class="n">add_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;添加时间&#39;</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;商品类别2&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="n">verbose_name</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+
+<span class="k">class</span> <span class="nc">Type3</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    三级类目</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Type2</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;父级类别&quot;</span><span class="p">,</span>
+                               <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;类目名&quot;</span><span class="p">)</span>
+    <span class="n">add_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;添加时间&#39;</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;商品类别3&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="n">verbose_name</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+
+<span class="k">class</span> <span class="nc">Type4</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        四级类目</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Type3</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;父级类别&quot;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;类目名&quot;</span><span class="p">)</span>
+    <span class="n">add_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;添加时间&#39;</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;商品类别4&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="n">verbose_name</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<p>然后同第（2）步一样，打开项目终端，执行数据更新命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span>
+<span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+</pre></div>
+</div>
+<p>当数据表构建成功后，在项目目录中会生成一个db.sqlite3数据库文件。</p>
+<p>（5）手动添加一些数据。我们不需要其他的数据库操作软件</p>
+<p>没有使用MySQL数据库，而是直接使用了Django自带的sqlite3数据库，的确方便了许多。但是sqlite3的局限性是只适合数据量级比较小的数据库服务，一旦涉及数据量比较庞大的项目，就要选择使用MySQL数据库或者其他数据库。</p>
+</div>
+<div class="section" id="demo2">
+<h3><a class="toc-backref" href="#id17">4.2 完善demo2的后台逻辑代码</a><a class="headerlink" href="#demo2" title="Permalink to this headline">¶</a></h3>
+<p>（1）在app01目录下新建序列化模块serializers.py，新建4个类别表的序列化类：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="k">import</span> <span class="n">serializers</span>  <span class="c1"># 引入序列化模块</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Type1</span><span class="p">,</span> <span class="n">Type2</span><span class="p">,</span> <span class="n">Type3</span><span class="p">,</span> <span class="n">Type4</span>  <span class="c1"># 引入所有数据表类</span>
+
+
+<span class="k">class</span> <span class="nc">Type1ModelSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Type1</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;__all__&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">Type2ModelSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Type2</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;__all__&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">Type3ModelSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Type3</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;__all__&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">Type4ModelSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Type4</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;__all__&quot;</span>
+</pre></div>
+</div>
+<p>（2）在app01/views.py中，编写访问4个类别表的视图逻辑代码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#引入序列化类</span>
+<span class="kn">from</span> <span class="nn">.serializers</span> <span class="k">import</span> <span class="n">Type1ModelSerializer</span><span class="p">,</span><span class="n">Type2ModelSerializer</span>
+<span class="kn">from</span> <span class="nn">.serializers</span> <span class="k">import</span> <span class="n">Type3ModelSerializer</span><span class="p">,</span><span class="n">Type4ModelSerializer</span>
+<span class="c1">#引入数据表</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Type1</span><span class="p">,</span><span class="n">Type2</span><span class="p">,</span><span class="n">Type3</span><span class="p">,</span><span class="n">Type4</span>
+<span class="c1">#引入rest_framework相关模块</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="k">import</span> <span class="n">APIView</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="k">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">rest_framework.renderers</span> <span class="k">import</span> <span class="n">JSONRenderer</span><span class="p">,</span> <span class="n">BrowsableAPIRenderer</span>
+<span class="c1"># Create your views here.</span>
+<span class="k">class</span> <span class="nc">Type1View</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    all Type1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">renderer_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">JSONRenderer</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">types</span><span class="o">=</span><span class="n">Type1</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">types_serializer</span> <span class="o">=</span> <span class="n">Type1ModelSerializer</span><span class="p">(</span><span class="n">types</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">types_serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Type2View</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    all Type2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">renderer_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">JSONRenderer</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">types</span><span class="o">=</span><span class="n">Type2</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">types_serializer</span> <span class="o">=</span> <span class="n">Type2ModelSerializer</span><span class="p">(</span><span class="n">types</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">types_serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Type3View</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    all Type3</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">renderer_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">JSONRenderer</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">types</span><span class="o">=</span><span class="n">Type3</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">types_serializer</span> <span class="o">=</span> <span class="n">Type3ModelSerializer</span><span class="p">(</span><span class="n">types</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">types_serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Type4View</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    all Type4</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">renderer_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">JSONRenderer</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">types</span><span class="o">=</span><span class="n">Type4</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">types_serializer</span> <span class="o">=</span> <span class="n">Type4ModelSerializer</span><span class="p">(</span><span class="n">types</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">types_serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>注意：这里用到了Django REST
+framework的选择器，大家可以根据自己的喜好，选择使用JSONRenderer模式还是BrowsableAPIRenderer。</p>
+<p>（3）在demo2/urls.py中添加路由代码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+
+<span class="c1"># 引入视图类</span>
+<span class="kn">from</span> <span class="nn">app01.views</span> <span class="k">import</span> <span class="n">Type1View</span><span class="p">,</span> <span class="n">Type2View</span><span class="p">,</span> <span class="n">Type3View</span><span class="p">,</span> <span class="n">Type4View</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/type1/&#39;</span><span class="p">,</span> <span class="n">Type1View</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/type2/&#39;</span><span class="p">,</span> <span class="n">Type2View</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/type3/&#39;</span><span class="p">,</span> <span class="n">Type3View</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/type4/&#39;</span><span class="p">,</span> <span class="n">Type4View</span><span class="o">.</span><span class="n">as_view</span><span class="p">())</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id18">5.前后端项目联合调试</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>现在，前端项目demo1和后端项目demo2都完成了，可以正式开始前后端联合调试的工作了。</p>
+<p>（1）运行demo2项目。</p>
+<p>（2）给vue02项目安装网络请求模块axios。在cmd窗口执行安装axios模块命令。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span>\<span class="n">vue02</span><span class="o">&gt;</span><span class="n">cnpm</span> <span class="n">install</span> <span class="n">axios</span> <span class="o">--</span><span class="n">save</span>
+</pre></div>
+</div>
+<p>（3）改写前端项目，在vue02/src/App.vue中，<code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code>样式标签内的代码不做改变，其他代码修改如下：</p>
+<p>html</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;app&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;one&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;onetype&quot;</span> <span class="n">v</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;(item,index) in one&quot;</span> <span class="p">:</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">one</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;twothreefour&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;two&quot;</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;twotype&quot;</span>
+          <span class="n">v</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;(item,index) in two&quot;</span> <span class="p">:</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;index&quot;</span>
+           <span class="nd">@mouseenter</span><span class="o">=</span><span class="s2">&quot;open(index)&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">two</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;</span>
+          <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;threefour&quot;</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;flag&quot;</span>
+           <span class="nd">@mouseleave</span><span class="o">=</span><span class="s2">&quot;close()&quot;</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;threefourtype&quot;</span> <span class="n">v</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;(item,index) in three1&quot;</span> <span class="p">:</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;three&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">three1</span><span class="p">[</span><span class="n">index</span><span class="p">]}}</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;four&quot;</span> <span class="n">v</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;(item4,index4) in four1&quot;</span> <span class="p">:</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;index4&quot;</span><span class="o">&gt;</span>
+<span class="p">{{</span><span class="n">four1</span><span class="p">[</span><span class="n">index4</span><span class="p">]}}</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+          <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>js</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="kn">import</span> <span class="nn">Axios</span> <span class="kn">from</span> <span class="s1">&#39;axios&#39;</span><span class="p">;</span>
+
+<span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span>
+  <span class="n">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="n">one</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="n">two</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="n">three</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="n">four</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="n">flag</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+      <span class="n">three1</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="n">four1</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">getData</span><span class="p">()</span> <span class="p">{</span>
+      <span class="n">const</span> <span class="n">api</span> <span class="o">=</span> <span class="s1">&#39;http://127.0.0.1:8000/&#39;</span><span class="p">;</span>
+      <span class="n">var</span> <span class="n">api1</span> <span class="o">=</span> <span class="n">api</span> <span class="o">+</span> <span class="s1">&#39;api/type1/&#39;</span><span class="p">;</span>
+      <span class="n">var</span> <span class="n">api2</span> <span class="o">=</span> <span class="n">api</span> <span class="o">+</span> <span class="s1">&#39;api/type2/&#39;</span><span class="p">;</span>
+      <span class="n">var</span> <span class="n">api3</span> <span class="o">=</span> <span class="n">api</span> <span class="o">+</span> <span class="s1">&#39;api/type3/&#39;</span><span class="p">;</span>
+      <span class="n">var</span> <span class="n">api4</span> <span class="o">=</span> <span class="n">api</span> <span class="o">+</span> <span class="s1">&#39;api/type4/&#39;</span><span class="p">;</span>
+      <span class="n">var</span> <span class="n">type1</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="n">var</span> <span class="n">type2</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="n">var</span> <span class="n">type3</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="n">var</span> <span class="n">type4</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="n">Axios</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api1</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">function</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+              <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+              <span class="n">type1</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">type1</span><span class="p">)</span>
+          <span class="p">})</span>
+          <span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">function</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+          <span class="p">});</span>
+      <span class="n">this</span><span class="o">.</span><span class="n">one</span> <span class="o">=</span> <span class="n">type1</span><span class="p">;</span>
+      <span class="n">Axios</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api2</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">function</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+              <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+              <span class="n">type2</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">type2</span><span class="p">)</span>
+          <span class="p">})</span>
+          <span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">function</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+          <span class="p">});</span>
+      <span class="n">this</span><span class="o">.</span><span class="n">two</span> <span class="o">=</span> <span class="n">type2</span><span class="p">;</span>
+      <span class="n">Axios</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api3</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">function</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+              <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+              <span class="n">type3</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">type3</span><span class="p">)</span>
+          <span class="p">})</span>
+          <span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">function</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+          <span class="p">});</span>
+      <span class="n">this</span><span class="o">.</span><span class="n">three</span> <span class="o">=</span> <span class="n">type3</span><span class="p">;</span>
+      <span class="n">Axios</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api4</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">function</span> <span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+              <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+              <span class="n">type4</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">type4</span><span class="p">)</span>
+          <span class="p">})</span>
+          <span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">function</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+          <span class="p">});</span>
+      <span class="n">this</span><span class="o">.</span><span class="n">four</span> <span class="o">=</span> <span class="n">type4</span><span class="p">;</span>
+      <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">one</span><span class="p">)</span>
+      <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">two</span><span class="p">)</span>
+      <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">three</span><span class="p">)</span>
+      <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">four</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="nb">open</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="p">{</span>
+      <span class="o">//</span> <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">two</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+      <span class="n">var</span> <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">this</span><span class="o">.</span><span class="n">three</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">three</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">parent</span> <span class="o">===</span> <span class="n">index</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">temp</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">three</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+      <span class="n">this</span><span class="o">.</span><span class="n">three1</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+      <span class="n">var</span> <span class="n">temp4</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">this</span><span class="o">.</span><span class="n">four</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temp4</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">four</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+      <span class="p">}</span>
+      <span class="n">this</span><span class="o">.</span><span class="n">four1</span> <span class="o">=</span> <span class="n">temp4</span>
+      <span class="n">this</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="n">true</span>
+    <span class="p">},</span>
+    <span class="n">close</span><span class="p">()</span> <span class="p">{</span>
+      <span class="n">this</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="n">false</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">mounted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">getData</span><span class="p">()</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>一级、二级、三级类目遵循了从属关系，而第四级类目为了体现效果并没有通过筛选赋值。</p>
+<p>（4）解决跨域问题。在后端Django项目demo2中安装相关模块：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">Django</span><span class="o">-</span><span class="n">cors</span><span class="o">-</span><span class="n">headers</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;https://pypi.doubanio.com/simple/&quot;</span>
+</pre></div>
+</div>
+<p>然后在settings.py中的注册里配置如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;app01.apps.App01Config&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rest_framework&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;corsheaders&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>在settings.py中的MIDDLEWARE里设置如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;corsheaders.middleware.CorsMiddleware&#39;</span><span class="p">,</span>  <span class="c1"># 放到中间件顶部</span>
+    <span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.csrf.CsrfViewMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages.middleware.MessageMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>在settings.py中新增配置项，即可解决本项目中的跨域问题。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CORS_ORIGIN_ALLOW_ALL</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>注意：在Python全栈开发的知识体系里，跨域问题和深浅拷贝，几乎是逢面试必考的两个笔试题。</p>
+<p>不同的是，深浅拷贝在实际项目中很少用到，而跨域问题却几乎在每个项目中都有涉及，只是并非都能被察觉罢了。跨域问题是非常重要的一个知识点，关系到网络安全，甚至说跨域问题是Web安全中最重要的一环也不为过。</p>
+<p>（5）重启前后端，即可看到效果</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../05.Tornado-Web框架及其应用/index.html" class="btn btn-neutral float-right" title="22.5. Tornado-Web框架及其应用" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="09.玩转Django2.0-Auth认证系统.html" class="btn btn-neutral float-left" title="22.4.10. 玩转Django2.0-Auth认证系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

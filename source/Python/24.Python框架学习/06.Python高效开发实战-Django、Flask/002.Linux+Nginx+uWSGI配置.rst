@@ -1,0 +1,251 @@
+.. contents::
+   :depth: 3
+..
+
+Linux+Nginx+uWSGI配置
+=====================
+
+Nginx是Python在Linx环境下的首选Web服务器之一。
+
+安装Nginx
+---------
+
+Centos7 环境：
+
+::
+
+    sudo yum install epel-release -y
+    yum -y install nginx
+
+Nginx相关程序及文件的路径
+
+::
+
+    * 程序文件：  /usr/sbin/nginx目录中
+    * 全局配置文件： /etc/nginx/nginx.conf
+    * 访问日志文件：/var/log/nginx/access.log
+    * 错误日志文件：/var/log/ngoinx/error.log
+    * 站点配置文件：/etc/nginx/sites-enabled/default
+
+安装好后可以通过如下命令启动Nginx服务器
+
+::
+
+    # 启动nginx服务
+    service nginx start
+
+    # 停止nginx服务
+    service nginx stop
+
+    # 查看Nginx服务的状态
+    service nginx status
+
+    # 重启Nginx服务器
+    service nginx restart
+
+Nginx配置文件
+
+nginx.conf
+
+::
+
+    user www-data;
+    worker_processes 4;
+    pid /run/nginx.pid;
+
+    events {
+        worker_connections 768;
+        # multi_accept on;
+    }
+
+    http {
+
+        ##
+        # Basic Settings
+        ##
+
+        sendfile on;
+        tcp_nopush on;
+        tcp_nodelay on;
+        keepalive_timeout 65;
+        types_hash_max_size 2048;
+        # server_tokens off;
+
+        # server_names_hash_bucket_size 64;
+        # server_name_in_redirect off;
+
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+
+        ##
+        # Logging Settings
+        ##
+
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log;
+
+        ##
+        # Gzip Settings
+        ##
+
+        gzip on;
+        gzip_disable "msie6";
+
+        # gzip_vary on;
+        # gzip_proxied any;
+        # gzip_comp_level 6;
+        # gzip_buffers 16 8k;
+        # gzip_http_version 1.1;
+        # gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
+        ##
+        # nginx-naxsi config
+        ##
+        # Uncomment it if you installed nginx-naxsi
+        ##
+
+        #include /etc/nginx/naxsi_core.rules;
+
+        ##
+        # nginx-passenger config
+        ##
+        # Uncomment it if you installed nginx-passenger
+        ##
+        
+        #passenger_root /usr;
+        #passenger_ruby /usr/bin/ruby;
+
+        ##
+        # Virtual Host Configs
+        ##
+
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+    }
+
+
+    #mail {
+    #   # See sample authentication script at:
+    #   # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
+    # 
+    #   # auth_http localhost/auth.php;
+    #   # pop3_capabilities "TOP" "USER";
+    #   # imap_capabilities "IMAP4rev1" "UIDPLUS";
+    # 
+    #   server {
+    #       listen     localhost:110;
+    #       protocol   pop3;
+    #       proxy      on;
+    #   }
+    # 
+    #   server {
+    #       listen     localhost:143;
+    #       protocol   imap;
+    #       proxy      on;
+    #   }
+    #}
+
+安装uWSGI及配置
+---------------
+
+uWSGIshi WSGI在Linux中的一种实现，这样开发者就无需资金编写WSGI
+Server了。
+
+使用pip命令可以直接安装uWSGI：
+
+::
+
+    pip install uwsgi
+
+1.运行uwsgi命令启动WSGI服务器
+
+::
+
+    ----http-socket 指定监听端口
+    --wsgi-file 指定服务器端的程序名
+
+    [root@172-16-72-3 template]# uwsgi --http-socket=9090 --wsgi-file webapp.py 
+    *** Starting uWSGI 2.0.18 (64bit) on [Thu Dec 26 07:47:15 2019] ***
+    compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-39) on 26 December 2019 07:44:33
+    os: Linux-3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019
+    nodename: 172-16-72-3
+    machine: x86_64
+    clock source: unix
+    detected number of CPU cores: 8
+    current working directory: /home/centos/template
+    detected binary path: /usr/bin/uwsgi
+    !!! no internal routing support, rebuild with pcre support !!!
+    uWSGI running as root, you can use --uid/--gid/--chroot options
+    *** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+    *** WARNING: you are running uWSGI witho
+
+uwsgi 还允许通过一个配置文件设置这些配置参数，编写uwsgi.ini配置文件如下
+
+::
+
+    [uwsgi]
+    socket = 127.0.0.1: 3011
+    wsgi-file = webapp.py
+
+启动uWSGI时直接指定配置文件:
+
+::
+
+    [root@172-16-72-3 template]# uwsgi uwsgi.ini 
+
+如下配置文件用于Socket方式启动一个uWSGI服务器，并配置了进程和线程数
+
+::
+
+    [uwsgi]
+    socket = 127.0.0.1: 3011
+    wsgi-file = webapp.py
+    process = 4
+    threads = 3
+
+2.集成Nginx与uWSGI
+
+uWSGI接口：
+
+::
+
+    [uwsgi]
+    socket = 127.0.0.1: 3011
+    wsgi-file = webapp.py
+
+Nginx的站点配置文件为：
+
+::
+
+    # You may add here your
+    # server {
+    #   ...
+    # }
+    # statements for each of your virtual hosts to this file
+
+    ##
+    # You should look at the following URL's in order to grasp a solid understanding
+    # of Nginx configuration files in order to fully unleash the power of Nginx.
+    # http://wiki.nginx.org/Pitfalls
+    # http://wiki.nginx.org/QuickStart
+    # http://wiki.nginx.org/Configuration
+    #
+    # Generally, you will want to move this file somewhere, and start with a clean
+    # file but keep this around for reference. Or just disable in sites-enabled.
+    #
+    # Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+    ##
+
+
+
+    server {
+        listen 80;          
+        server_name 121.12.134.11;   #server ip
+
+        location /{
+            uwsgi_pass http://127.0.0.1:3011;
+        }
+    }
+
+可以为一个uWSGI配置多个Nginx
+Server和location，这样就轻松实现了以多个域名访问同一个Python程序

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.18. 多态-鸭子类型 &mdash; 运维开发修炼之路</title>
+  <title>7.23. 多态-鸭子类型 &mdash; 运维开发修炼之路</title>
   
 
   
@@ -46,8 +46,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.19. 类属性描述符" href="19.类属性描述符.html" />
-    <link rel="prev" title="7.17. 类的检测、判断、设置、删除、获取" href="17.类的反射，设置、删除、检测.html" /> 
+    <link rel="next" title="7.24. 类属性描述符" href="19.类属性描述符.html" />
+    <link rel="prev" title="7.22. 类的检测、判断、设置、删除、获取" href="17.类的反射，设置、删除、检测.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -125,17 +125,22 @@
 <li class="toctree-l3"><a class="reference internal" href="14.面对对象之封装.html">7.14. 面对对象之封装特性</a></li>
 <li class="toctree-l3"><a class="reference internal" href="15.类的高级特性.html">7.15. 类的高级特性</a></li>
 <li class="toctree-l3"><a class="reference internal" href="16.一些魔法方法.html">7.16. 一些魔法方法</a></li>
-<li class="toctree-l3"><a class="reference internal" href="17.类的反射，设置、删除、检测.html">7.17. 类的检测、判断、设置、删除、获取</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">7.18. 多态-鸭子类型</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">7.18.1. 用代码来理解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.一些魔法方法.html#usr-bin-env-python">7.17. !/usr/bin/env python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.一些魔法方法.html#coding-utf8">7.18. -<em>- coding:utf8 -</em>-</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.一些魔法方法.html#auther-18793">7.19. auther; 18793</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.一些魔法方法.html#date-2019-6-15-2-54">7.20. Date：2019/6/15 2:54</a></li>
+<li class="toctree-l3"><a class="reference internal" href="16.一些魔法方法.html#filename-getattrsetattr-py">7.21. filename: getattr和setattr.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="17.类的反射，设置、删除、检测.html">7.22. 类的检测、判断、设置、删除、获取</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">7.23. 多态-鸭子类型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">7.23.1. 用代码来理解</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="19.类属性描述符.html">7.19. 类属性描述符</a></li>
-<li class="toctree-l3"><a class="reference internal" href="20.一个简单的类示例.html">7.20. 一个简单的类的例子</a></li>
-<li class="toctree-l3"><a class="reference internal" href="21.人开枪射击子弹_OOP.html">7.21. 人开枪射击子弹_OOP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="22.组合.html">7.22. 组合</a></li>
-<li class="toctree-l3"><a class="reference internal" href="23.扩展列表、字典.html">7.23. 扩展列表、字典</a></li>
-<li class="toctree-l3"><a class="reference internal" href="24.工厂方法.html">7.24. 工厂方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="19.类属性描述符.html">7.24. 类属性描述符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="20.一个简单的类示例.html">7.25. 一个简单的类的例子</a></li>
+<li class="toctree-l3"><a class="reference internal" href="21.人开枪射击子弹_OOP.html">7.26. 人开枪射击子弹_OOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="22.组合.html">7.27. 组合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="23.扩展列表、字典.html">7.28. 扩展列表、字典</a></li>
+<li class="toctree-l3"><a class="reference internal" href="24.工厂方法.html">7.29. 工厂方法</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../08.异常处理/index.html">8. 异常处理</a></li>
@@ -211,7 +216,7 @@
         
           <li><a href="index.html">7. 面对对象设计_OOP</a> &raquo;</li>
         
-      <li>7.18. 多态-鸭子类型</li>
+      <li>7.23. 多态-鸭子类型</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -245,14 +250,14 @@
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id6">7.18. 多态-鸭子类型</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id6">7.23. 多态-鸭子类型</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>python语言本身就是动态语言，本身支持多态，不需要使用前先定义 元素类型
 它不关心元素的类型
 它会自动根据传入的参数进行 自动调用它本身的方法
 </pre></div>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id7">7.18.1. 用代码来理解</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">7.23.1. 用代码来理解</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id8">多态</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
@@ -437,10 +442,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="19.类属性描述符.html" class="btn btn-neutral float-right" title="7.19. 类属性描述符" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="19.类属性描述符.html" class="btn btn-neutral float-right" title="7.24. 类属性描述符" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="17.类的反射，设置、删除、检测.html" class="btn btn-neutral float-left" title="7.17. 类的检测、判断、设置、删除、获取" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="17.类的反射，设置、删除、检测.html" class="btn btn-neutral float-left" title="7.22. 类的检测、判断、设置、删除、获取" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

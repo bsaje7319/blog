@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>22.4.10. 玩转Django2.0-Auth认证系统 &mdash; 运维开发修炼之路</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="22.4.11. RESTful-API" href="RESTful-API.html" />
+    <link rel="prev" title="22.4.9. 玩转Django2.0-admin后台系统" href="08.玩转Django2.0-admin后台系统.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> 小健_Linux-Python-Devops_Blog
+          
+
+          
+            
+            <img src="../../../_static/python_go.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Go/index.html">Go语言学习</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Python自动化运维</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../01.Python数据类型/index.html">1. Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02.流程控制语句/index.html">2. Python中流程控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03.Python函数/index.html">3. Python函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04.Python内建函数/index.html">4. Python内建函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05.推导式学习/index.html">5. 推导式学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.迭代器_生成器_装饰器/index.html">6. 生成器、迭代器、装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07.面对对象设计_OOP/index.html">7. 面对对象设计_OOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../08.异常处理/index.html">8. 异常处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09.Python文件操作/index.html">9. Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10.Python中的包和模块/index.html">10. Python中包和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../11.正则表达式/index.html">11. Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../12.Python标准库/index.html">12. Python 标准库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../13.Python操作数据库/index.html">13. Python对数据库的操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../14.Python三方库/index.html">14. Python 三方库学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../15.Python网络编程/index.html">15. Python 网络编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../16.线程和进程/index.html">16. Python 进程和线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../17.Python语言的扩展与嵌入/index.html">17. Python与C语言扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20.Python自动化运维最佳实践/index.html">18. Python自动化运维最佳实践</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../21.Python进阶学习/index.html">19. Python进阶学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../22.Python网络爬虫/index.html">20. Python网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../23.前端技术/index.html">21. 前端技术</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">22. Python框架学习</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../01.常用的GUI框架/index.html">22.1. 常用的GUI框架</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02.Flask-Web框架及其应用/index.html">22.2. Flask-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../03.Scrapy爬虫框架/index.html">22.3. Scrapy爬虫框架</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">22.4. Django学习</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="01.安装DjangoWeb框架.html">22.4.1. 安装DjangoWeb框架</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02.Django框架的使用.html">22.4.2. Django框架的使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03.Django流程跑通.html">22.4.3. Django流程跑通</a></li>
+<li class="toctree-l4"><a class="reference internal" href="04.实战演练-开发Django站点.html">22.4.4. 实战演练-开发Django站点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="05.玩转Django2.0-视图.html">22.4.5. 玩转Django2.0-视图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06.玩转Django2.0-模型与数据库.html">22.4.6. 玩转Django2.0-模型与数据库</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06.玩转Django2.0-模板.html">22.4.7. 玩转Django2.0-模板</a></li>
+<li class="toctree-l4"><a class="reference internal" href="07.玩转Django2.0-表单与模型.html">22.4.8. 玩转Django2.0-表单与模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="08.玩转Django2.0-admin后台系统.html">22.4.9. 玩转Django2.0-admin后台系统</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">22.4.10. 玩转Django2.0-Auth认证系统</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RESTful-API.html">22.4.11. RESTful-API</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../05.Tornado-Web框架及其应用/index.html">22.5. Tornado-Web框架及其应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06.Python高效开发实战-Django、Flask/index.html">22.6. Python高效开发实战-Django、Flask</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../25.Python开发环境部署/index.html">23. Python开发环境部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../26.我的第一本算法书/index.html">24. 我的第一本算法书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../27.Python3网络爬虫开发实战/index.html">25. Python3网络爬虫开发实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../28.Python让繁琐的工作自动化/index.html">26. Python让繁琐的工作自动化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../29.疯狂的Python讲义/index.html">27. 疯狂的Python讲义</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Go_vs_Python/index.html">Go vs Python</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">小健_Linux-Python-Devops_Blog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Python自动化运维</a> &raquo;</li>
+        
+          <li><a href="../index.html">22. Python框架学习</a> &raquo;</li>
+        
+          <li><a href="index.html">22.4. Django学习</a> &raquo;</li>
+        
+      <li>22.4.10. 玩转Django2.0-Auth认证系统</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/Python/24.Python框架学习/04.Django学习/09.玩转Django2.0-Auth认证系统.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#django2-0-auth" id="id5">玩转Django2.0-Auth认证系统</a><ul>
+<li><a class="reference internal" href="#user" id="id6">1.内置User实现用户管理</a></li>
+<li><a class="reference internal" href="#id1" id="id7">2. 发送邮件实现密码找回</a></li>
+<li><a class="reference internal" href="#id2" id="id8">3.扩展User模型</a></li>
+<li><a class="reference internal" href="#id3" id="id9">4.设置用户权限</a></li>
+<li><a class="reference internal" href="#id4" id="id10">5. 自定义用户权限</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="django2-0-auth">
+<h1><a class="toc-backref" href="#id5">22.4.10. 玩转Django2.0-Auth认证系统</a><a class="headerlink" href="#django2-0-auth" title="Permalink to this headline">¶</a></h1>
+<p>　　Django除了有强大的Admin管理系统之外，还提供了完善的用户管理系统。整个用户管理系统可分为三大部分：用户信息、用户权限和用户组，在数据库中分别对应数据表auth_user、auth_permission和auth_group。</p>
+<div class="section" id="user">
+<h2><a class="toc-backref" href="#id6">1.内置User实现用户管理</a><a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
+<p>　　用户管理功能已经是一个网站必备的功能之一，而Django内置了强大的用户管理系统，并且具有灵活的扩展性，可以满足多方面的开发需求。在创建Django项目时，Django已默认使用内置用户管理系统，在settings.py的INSTALLED_APPS、MIDDLEWARE和AUTH_PASSWORD_VALIDATORS中可以看到相关的配置信息。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#settings.py配置信息</span>
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;index.apps.IndexConfig&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;user.apps.UserConfig&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;user_defined&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1">#文件夹MyDjango的urls.py的URL地址配置</span>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span><span class="p">,</span><span class="n">include</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;index/&#39;</span><span class="p">,</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;index.urls&#39;</span><span class="p">)),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;user/&#39;</span><span class="p">,</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;user.urls&#39;</span><span class="p">)),</span>
+<span class="p">]</span>
+
+<span class="c1"># 文件夹MyDjango下的user下的urls.py地址配置</span>
+<span class="c1">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="k">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">login_index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;login_index&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;login.html&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">loginView</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;register.html&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">registerView</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;register&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;setpassword.html&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">setpasswordView</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;setpassword&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;logout.html&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">logoutView</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;logout&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>…..省略具体步骤，参考参考文献，本人代码以实现。</p>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id7">2. 发送邮件实现密码找回</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 文件夹MyDjango下的user下的urls.py地址配置</span>
+<span class="c1">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="k">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">login_index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;login_index&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;login.html&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">loginView</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;register.html&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">registerView</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;register&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;setpassword.html&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">setpasswordView</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;setpassword&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;logout.html&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">logoutView</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;logout&#39;</span><span class="p">),</span>
+    <span class="c1"># 发邮件找回密码</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;findPassword.html&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">findPassword</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;findPassword&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>…..省略具体步骤，参考参考文献，本人代码以实现。</p>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id8">3.扩展User模型</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>代码实现，不在此填写，可以查阅参考文献</p>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id9">4.设置用户权限</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>代码实现，不在此填写，可以查阅参考文献</p>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id10">5. 自定义用户权限</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>代码实现，不在此填写，可以查阅参考文献</p>
+<p>参考文献：</p>
+<p><a class="reference external" href="https://www.cnblogs.com/zhaop8078/p/11580590.html">https://www.cnblogs.com/zhaop8078/p/11580590.html</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="RESTful-API.html" class="btn btn-neutral float-right" title="22.4.11. RESTful-API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="08.玩转Django2.0-admin后台系统.html" class="btn btn-neutral float-left" title="22.4.9. 玩转Django2.0-admin后台系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, huxiaojian
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

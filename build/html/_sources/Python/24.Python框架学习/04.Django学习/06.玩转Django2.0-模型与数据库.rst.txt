@@ -1,0 +1,316 @@
+.. contents::
+   :depth: 3
+..
+
+玩转Django2.0-模型与数据库
+==========================
+
+Django对各种数据库提供了很好的支持，包括：PostgreSQL、MySQL、SQLite和Oracle，而且为这些数据库提供了统一的调用API，这些API统称为ORM框架。通过使用Django内置的ORM框架可以实现数据库连接和读写操作。
+
+以MyDjangl项目为例，配置信息如下：
+
+::
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'mydjango',
+            'HOST': '127.0.0.1',
+            'USER': 'root',
+            'PASSWORD': 'admin#123',
+            'PORT': '3306',
+        }
+    }
+
+　　
+
+1.构建模型
+----------
+
+在项目index的models.py文件中定义模型如下：
+
+::
+
+    from django.db import models
+
+
+    # 创建产品分类表
+    class Type(models.Model):
+        id = models.AutoField(primary_key=True)
+        type_name = models.CharField(max_length=20)
+
+
+    class Product(models.Model):
+        id = models.IntegerField(primary_key=True, auto_created=True)
+        name = models.CharField(max_length=50)
+        weight = models.CharField(max_length=20)
+        size = models.CharField(max_length=20)
+        type = models.CharField(max_length=20)
+
+　　上述代码分别定义了模型Type和Product，说明如下：
+
+　　　　1、模型以类的形式进行定义，并且继承Django的models.Model类。一个类代表模板数据库的一张数据表，类的命名一般以首字母大写开头。
+
+　　　　2、模型的字段以类属性进行定义，如id=models.IntegerField(primary\_key=True)代表在数据表Type中命名一个名为id的字段，该字段的数据类型为整型并设置为主键。
+
+　　完成模型的定义后，接着在目标数据库中创建相应的数据表，在模板数据库中创建表是通过Django的管理工具manage.py完成的，创建指令如下：
+
+::
+
+    #根据models.py内容生成相关的py文件，该文件用于创建数据表
+    python manage.py makemigrations
+    或者
+    python manage.py makemigrations index
+
+    #创建数据表
+    python manage.py migrate
+    #or
+    python manage.py migrate index
+
+2. 数据表的关系
+---------------
+
+一个模型对应目标数据库的一个数据表，但我们知道，每个数据表之间是可以存在关联的，表与表之间有三种关系：一对一/一对多和多对多。
+
+2.1 一对一关系
+~~~~~~~~~~~~~~
+
+　　一对一存在于在两个数据表中，第一个表的某一行数据只与第二个表的某一行数据相关，同时第二个表的某一行数据也只与第一个表的某一行数据相关，这种表关系被称为一对一关系。
+
+::
+
+    #一对一关系
+    class Performer(models.Model):
+        id = models.IntegerField(primary_key=True)
+        name = models.CharField(max_length=20)
+        nationality = models.CharField(max_length=20)
+        masterpiece = models.CharField(max_length=50)
+        
+    class Performer_info(models.Model):
+        id = models.IntegerField(primary_key=True)
+        performer = models.OneToOneField(Performer, on_delete=models.CASCADE)
+        birth = models.CharField(max_length=20)
+        elapse = models.CharField(max_length=20)
+
+2.2 一对多关系
+~~~~~~~~~~~~~~
+
+一对多存在于两个或两个以上的数据表中，第一个表的数据可以与第二个表的一道多行数据进行关联，但是第二个表的每一行数据只能与第一个表的某一行进行管理。
+
+::
+
+    #一对多关系
+    class Performer(models.Model):
+        id = models.IntegerField(primary_key=True)
+        name = models.CharField(max_length=20)
+        nationality = models.CharField(max_length=20)
+        masterpiece = models.CharField(max_length=50)
+
+    class Program(models.Model):
+        id = models.IntegerField(primary_key=True)
+        performer = models.ForeignKey(Performer,on_delete=models.CASCADE)
+        name = models.CharField(max_length=20)
+
+2.3 多对多关系
+~~~~~~~~~~~~~~
+
+　多对多存在于两个或两个以上的数据表中，第一个表的某一行数据可以与第二个表的一到多行数据进行关联，同时在第二个表中的某一行数据也可以与第一个表的一到多行数据进行关联。
+
+多对多关系会在两张表的基础之上，新增一个映射表。
+
+::
+
+    #多对多
+    class Performer(models.Model):
+        id = models.IntegerField(primary_key=True)
+        name = models.CharField(max_length=20)
+        nationality = models.CharField(max_length=20)
+        masterpiece = models.CharField(max_length=50)
+
+    class Manytomany(models.Model):
+        id = models.IntegerField(primary_key=True)
+        name = models.CharField(max_length=20)
+        performer = models.ManyToManyField(Performer)
+
+3.数据表的读写
+--------------
+
+在MyDjango项目中使用shell模式(启动命令行和执行脚本)进行讲述，该模式主要为方便开发人员开发和调式程序。在PyCharm的Terminal下开启shell模式，输入python
+manage.py shell指令即可开启。
+
+-  插入数据
+
+方法1
+
+::
+
+    (djangoProject) D:\djangoProject>python manage.py shell
+    >>> from index.models import *
+    >>> p = Product()
+    >>> p.name ="荣耀v2"
+    >>> p.weight=10
+    >>> p.size=10
+    >>> p.type="手机"
+    >>> p.save()
+
+方法2
+
+::
+
+    (djangoProject) D:\djangoProject>python manage.py shell
+    >>> from index.models import *
+    >>> p = Product(name="荣耀v2",weight=10,size=10,type="手机")
+    >>> p.save()
+
+-  update更新数据
+
+::
+
+    >>> p = Product.objects.get(id=2)
+    >>> p.name = "Huawei v1"
+    >>> p.save()
+
+　除此之外，还可以使用update方法实现单条和多条数据的更新，使用方法如下：
+
+::
+
+    #通过Django的ORM框架提供的API实现
+    #更新单条数据，查询条件filter使用于查询单条数据
+    Product.objects.filter(id=9).update(name='华为荣耀V10')
+    #更新多条数据，查询条件filter以列表格式返回，查询结果可能是一条或多条数据
+    Product.objects.filter(name='荣耀V9').update(name='华为荣耀V9')
+    #全表数据更新，不使用查询条件，默认对全表的数据进行更新
+    Product.objects.update(name='华为荣耀V9')
+
+如果要对数据进行删除处理，有三种方式：删除表中全部数据、删除一条数据和删除多条数据。实现三种删除方式的代码如下：
+
+::
+
+    #删除一条id为1的数据
+    Product.objects.get(id=1).delete()
+
+    #删除多条数据
+    Product.objects.filter(weight='119g').delete()
+
+    #删除表中全部数据
+    Product.objects.all().delete()
+
+　数据删除有ORM框架的delete方法实现。从数据的删除和更新可以看到这两种数据操作都使用查询条件get和filter，查询条件get和filter的区别如下：
+
+　　　　1、查询条件get：查询字段必须是主键或者唯一约束的字段，并且查询的数据必须存在，如果查询的字段有重复值或者查询的数据不存在，程序都会抛出异常信息。
+
+　　　　2、查询条件filter：查询字段没有限制，只要该字段是数据表的某一字段即可。查询结果以列表的形式返回，如果查询结果为空（查询的数据在数据库中找不到），就返回空列表。
+
+数据查询是数据库操作中最为复杂并且内容最多的部分，我们以代码的形式来讲述如何通过ORM框架提供的API实现数据查询，代码如下：
+
+::
+
+    In [39]: from index.models import *
+    #全表查询，等同于SQL语句Select * from index_product,数据以类不形式返回
+    In [40]: p = Product.objects.all()
+
+    In [41]: p[1].name
+    Out[41]: '华为荣耀V9'
+
+    #查询前5条数据，等同于SQL语句Select * from index_product LIMIT 5
+    #SQL语句里面的LIMIT方法，在Django中使用Python的列表截取分解即可实现
+    In [43]: p = Product.objects.all()[:5]
+
+    In [44]: p
+
+
+    #查询某个字段，等同于SQL语句Select  name from index_product
+    #values方法，以列表形式返回数据，列表元素以字典格式表示
+    In [45]: p = Product.objects.values('name')
+
+    In [46]: p[1]['name']
+    Out[46]: '华为荣耀V9'
+
+    #values_list方法，以列表表示返回数据，列表元素以元组格式表示
+    In [47]: p = Product.objects.values_list('name')[:3]
+
+    In [48]: p
+    Out[48]: <QuerySet [('华为荣耀V9',), ('华为荣耀V9',), ('华为荣耀V9',)]>
+
+    #使用get方法查询数据，等于同SQL语句Select * from index_product where id=2
+    In [49]: p = Product.objects.get(id = 2)
+
+    In [50]: p.name
+    Out[50]: '华为荣耀V9'
+
+    #使用filter方法查询数据，注意区分get和filter的差异
+    In [51]: p = Product.objects.filter(id = 2)
+
+    In [52]: p[0].name
+    Out[52]: '华为荣耀V9'
+
+
+    #SQL的 and查询主要在filter里面添加多个查询条件
+    In [53]: p = Product.objects.filter(name='华为荣耀V9',id=9)
+
+    In [54]: p
+    Out[54]: <QuerySet [<Product: Product object (9)>]>
+
+
+    #SQL的or查询，需要引入Q，编写格式Q(field=value)|Q(field=value)
+    #等同于SQL语句Select * from index_product where name='华为荣耀V9‘ or id=9
+    In [55]: from django.db.models import Q
+
+    In [57]: p = Product.objects.filter(Q(name='华为荣耀V')|Q(id=9))
+
+    In [58]: p
+    Out[58]: <QuerySet [<Product: Product object (9)>]>
+
+    #使用count方法统计查询数据的数据量
+    In [63]: p = Product.objects.filter(name='华为荣耀V9').count()
+
+    In [64]: p
+    Out[64]: 8
+
+    #去重查询，distinct方法无需设置参数，去重方式根据values设置的字段执行
+    #等同SQL语句Select DISTINCT name from index_product where name='华为荣耀V9’
+    In [65]: p = Product.objects.values('name').filter(name='华为荣耀V9').distinct()
+
+    In [66]: p
+    Out[66]: <QuerySet [{'name': '华为荣耀V9'}]>
+
+
+    #根据字段id降序排列，降序只要在order_by里面的字段前面加"-即可"
+    #order_by可设置多字段排序，如Product.objects.order_by('-id', 'name')
+    In [67]: p = Product.objects.order_by('-id')
+
+    In [68]: p
+    Out[68]: <QuerySet [<Product: Product object (11)>, <Product: Product object (9)>, <Product: Product object (8)>, <Product: Product object (7)>, <Product: Product object (5)>, <Product: Product object (4)>, <Product: Product object (3)>, <Product: Product object (2)>]>
+
+    #聚合查询，实现对数据值求和、求平均值等。Django提供annotate和aggregate方法实现
+    #annotate类似于SQL里面的GROUP BY方法，如果不设置values，就会默认对主键进行GROUP BY分组
+    #等同于SQL语句Select name,SUM(id) AS 'id_sum' from index_product GROUP BY NAME ORDER BY NULL
+    In [69]: from django.db.models import Sum, Count
+
+    In [70]: p = Product.objects.values('name').annotate(Sum('id'))
+    In [71]: print(p.query)
+    SELECT "index_product"."name", SUM("index_product"."id") AS "id__sum" FROM "index_product" GROUP BY "index_product"."name"
+
+    #aggregate是将某个字段的值进行计算并置返回技术结果
+    #等同于SQL语句Select COUNT(id) AS 'id_count' from index_product
+    In [72]: from django.db.models import Count
+
+    In [73]: p = Product.objects.aggregate(id_count=Count('id'))
+
+    In [74]: p
+    Out[74]: {'id_count': 8}
+
+3.1 多表查询
+~~~~~~~~~~~~
+
+　　一对多或一对一的表关系是通过外键实现关联的，而多表查询分为正向查询和反向查询。以模型Product和Type为例：
+
+　　　　1、如果查询对象的主体是模型Type，要查询模型Type的数据，那么该查询成为正向查询。
+
+　　　　2、如果查询对象的主体是模型Type，要通过模型Type查询模型Product的数据，那么该查询称为反向查询。
+
+　　无论是正向查询还是反向查询，两者的实现方法大致相同，代码如下：
+
+参考：
+
+https://www.cnblogs.com/zhaop8078/p/11553275.html
